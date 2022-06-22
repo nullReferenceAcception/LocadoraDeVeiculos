@@ -16,5 +16,12 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxa
             this.Descricao = registro.Descricao;
             this.Valor = registro.Valor;
         }
+        public override bool Equals(object? obj)
+        {
+            return obj is Taxa taxa &&
+                   Id == taxa.Id &&
+                   Descricao == taxa.Descricao &&
+                   Valor == taxa.Valor;
+        }
     }
 }
