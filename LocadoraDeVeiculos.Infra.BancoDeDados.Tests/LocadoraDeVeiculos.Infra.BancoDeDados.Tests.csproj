@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LocadoraDeVeiculosDeVeiculos.Infra.BancoDeDados\LocadoraDeVeiculosDeVeiculos.Infra.BancoDeDados.csproj" />
+    <ProjectReference Include="..\LocadoraDeVeiculos.Infra.BancoDeDados\LocadoraDeVeiculos.Infra.BancoDeDados.csproj" />
   </ItemGroup>
 
 </Project>

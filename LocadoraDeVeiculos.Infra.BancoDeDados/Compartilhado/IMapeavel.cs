@@ -1,5 +1,4 @@
 ﻿using LocadoraDeVeiculosDeVeiculosDeVeiculos.Dominio;
-using System;
 using System.Data.SqlClient;
 
 namespace ControleMedicamentos.Infra.BancoDados.Compartilhado

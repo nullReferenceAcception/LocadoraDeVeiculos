@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LocadoraDeVeiculosDeVeiculos.Dominio\LocadoraDeVeiculosDeVeiculos.Dominio.csproj" />
+    <ProjectReference Include="..\LocadoraDeVeiculos.Dominio\LocadoraDeVeiculos.Dominio.csproj" />
   </ItemGroup>
 
 </Project>
