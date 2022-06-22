@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "TXrvT359602yN0XaKCUN+GgUnIztsYmHTjyfJNeSaJc9JpN+UJbTF5RWiMBhR0yYSEgaXE9s2zyoNOjMA+TL2w==",
+  "dgSpecHash": "29BF5x0A3K3fx4fam2dGXgl8mEx8QZE5sAjOjyqjmnmnWkyRMXb/2oAMK7rzySpH0fqs9iCfJAUXIRfOgXnI2w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jose\\.nuget\\packages\\fluentvalidation\\11.1.0\\fluentvalidation.11.1.0.nupkg.sha512"
+  ],
   "logs": []
 }
