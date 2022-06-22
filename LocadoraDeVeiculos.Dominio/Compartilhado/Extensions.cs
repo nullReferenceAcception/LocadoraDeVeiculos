@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace LocadoraDeVeiculosDeVeiculosDeVeiculos.Dominio
+namespace LocadoraDeVeiculos.Dominio
 {
     public static class IEnumerableExtensions
     {

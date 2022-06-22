@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocadoraDeVeiculosDeVeiculos.Infra.BancoDados.Compartilhado
+namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 {
     public static class Db
     {

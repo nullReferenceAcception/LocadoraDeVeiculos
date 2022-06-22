@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using LocadoraDeVeiculosDeVeiculosDeVeiculos.Dominio;
+using LocadoraDeVeiculos.Dominio;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;

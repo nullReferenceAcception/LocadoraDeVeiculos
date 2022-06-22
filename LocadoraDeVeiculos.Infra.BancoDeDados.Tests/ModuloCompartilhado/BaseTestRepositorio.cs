@@ -1,6 +1,6 @@
-﻿using LocadoraDeVeiculosDeVeiculos.Infra.BancoDados.Compartilhado;
+﻿using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 
-namespace LocadoraDeVeiculosDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
+namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
 {
     public class BaseTestRepositorio
     {

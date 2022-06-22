@@ -1,7 +1,7 @@
 ﻿using FluentValidation.Results;
 using System.Collections.Generic;
 
-namespace LocadoraDeVeiculosDeVeiculosDeVeiculos.Dominio
+namespace LocadoraDeVeiculos.Dominio
 {
     public interface IRepositorio<T> where T : EntidadeBase<T>
     {

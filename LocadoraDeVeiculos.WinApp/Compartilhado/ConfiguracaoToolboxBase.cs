@@ -1,4 +1,4 @@
-﻿namespace LocadoraDeVeiculosDeVeiculos.WinApp
+﻿namespace LocadoraDeVeiculos.WinApp
 {
     public abstract class ConfiguracaoToolboxBase
     {

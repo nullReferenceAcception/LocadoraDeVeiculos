@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace LocadoraDeVeiculosDeVeiculos.WinApp
+namespace LocadoraDeVeiculos.WinApp
 {
     public static class FormExtensions
     {

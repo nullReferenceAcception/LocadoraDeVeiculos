@@ -1,4 +1,4 @@
-﻿namespace LocadoraDeVeiculosDeVeiculosDeVeiculos.Dominio
+﻿namespace LocadoraDeVeiculos.Dominio
 {
     public abstract class EntidadeBase<T>
     {

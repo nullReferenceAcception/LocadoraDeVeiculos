@@ -1,4 +1,4 @@
-﻿using LocadoraDeVeiculosDeVeiculosDeVeiculos.Dominio;
+﻿using LocadoraDeVeiculos.Dominio;
 using System.Data.SqlClient;
 
 namespace ControleMedicamentos.Infra.BancoDados.Compartilhado
