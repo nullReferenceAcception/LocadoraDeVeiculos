@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControleMedicamentos.Infra.BancoDados.Compartilhado
+namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 {
     public abstract class RepositorioBaseEmBancoDeDados<T,TValidador,TMapeamento> 
         where T : EntidadeBase<T>
