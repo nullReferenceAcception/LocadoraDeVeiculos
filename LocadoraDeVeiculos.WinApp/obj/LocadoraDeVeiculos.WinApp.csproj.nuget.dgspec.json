@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marco\\Desktop\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj": {}
+    "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marco\\Desktop\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj": {
+    "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marco\\Desktop\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj",
+        "projectUniqueName": "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj",
         "projectName": "LocadoraDeVeiculos.WinApp",
-        "projectPath": "C:\\Users\\marco\\Desktop\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj",
+        "projectPath": "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj",
         "packagesPath": "C:\\Users\\marco\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marco\\Desktop\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\obj\\",
+        "outputPath": "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
