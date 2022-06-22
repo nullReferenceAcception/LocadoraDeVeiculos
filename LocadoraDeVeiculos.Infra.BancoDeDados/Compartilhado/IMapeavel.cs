@@ -1,7 +1,7 @@
 ﻿using LocadoraDeVeiculos.Dominio;
 using System.Data.SqlClient;
 
-namespace ControleMedicamentos.Infra.BancoDados.Compartilhado
+namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 {
     public interface IMapeavel<T> where T : EntidadeBase<T>
     {

@@ -42,19 +42,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\marco\\.nuget\\packages\\": {}
+    "C:\\Users\\jose\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj",
+      "projectUniqueName": "D:\\visual studio files\\LocadoraDeVeiculoss\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj",
       "projectName": "LocadoraDeVeiculos.WinApp",
-      "projectPath": "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj",
-      "packagesPath": "C:\\Users\\marco\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\obj\\",
+      "projectPath": "D:\\visual studio files\\LocadoraDeVeiculoss\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj",
+      "packagesPath": "C:\\Users\\jose\\.nuget\\packages\\",
+      "outputPath": "D:\\visual studio files\\LocadoraDeVeiculoss\\LocadoraDeVeiculos.WinApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jose\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -103,7 +103,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
       }
     }
   }
