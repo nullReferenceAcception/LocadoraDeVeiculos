@@ -139,7 +139,7 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 41);
             // 
             // btnVisualizar
             // 
@@ -154,7 +154,7 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 41);
             // 
             // btnGerarPdf
             // 
@@ -169,7 +169,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 41);
             // 
             // btnFiltrar
             // 
@@ -184,13 +184,13 @@
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 41);
             // 
             // labelTipoCadastro
             // 
             this.labelTipoCadastro.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.labelTipoCadastro.Name = "labelTipoCadastro";
-            this.labelTipoCadastro.Size = new System.Drawing.Size(90, 22);
+            this.labelTipoCadastro.Size = new System.Drawing.Size(90, 38);
             this.labelTipoCadastro.Text = "[tipoCadastro]";
             // 
             // menu
@@ -221,6 +221,7 @@
             this.clientesMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.clientesMenuItem.Size = new System.Drawing.Size(193, 22);
             this.clientesMenuItem.Text = "Cilentes";
+            this.clientesMenuItem.Click += new System.EventHandler(this.clientesMenuItem_Click);
             // 
             // gruposDeVeiculosMenuItem
             // 
@@ -228,6 +229,7 @@
             this.gruposDeVeiculosMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
             this.gruposDeVeiculosMenuItem.Size = new System.Drawing.Size(193, 22);
             this.gruposDeVeiculosMenuItem.Text = "Grupos de Veículos";
+            this.gruposDeVeiculosMenuItem.Click += new System.EventHandler(this.gruposDeVeiculosMenuItem_Click);
             // 
             // taxasMenuItem
             // 
@@ -235,6 +237,7 @@
             this.taxasMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
             this.taxasMenuItem.Size = new System.Drawing.Size(193, 22);
             this.taxasMenuItem.Text = "Taxas";
+            this.taxasMenuItem.Click += new System.EventHandler(this.taxasMenuItem_Click);
             // 
             // funcionariosMenuItem
             // 
@@ -242,6 +245,7 @@
             this.funcionariosMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
             this.funcionariosMenuItem.Size = new System.Drawing.Size(193, 22);
             this.funcionariosMenuItem.Text = "Funcionários";
+            this.funcionariosMenuItem.Click += new System.EventHandler(this.funcionariosMenuItem_Click);
             // 
             // TelaPrincipalForm
             // 
