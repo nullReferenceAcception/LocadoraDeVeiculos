@@ -91,7 +91,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
         #endregion
 
         
-        protected override ValidationResult ValidarSQL(Taxa registro, SqlConnection conexaoComBanco)
+        protected override ValidationResult MandarSQLParaValidador(Taxa registro, SqlConnection conexaoComBanco)
         {
             return Validar("SELECT * FROM TB_TAXA WHERE ([DESCRICAO] = '" + registro.Descricao + "')", registro, conexaoComBanco);
         }

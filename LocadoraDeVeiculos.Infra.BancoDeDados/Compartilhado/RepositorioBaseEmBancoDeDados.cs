@@ -29,7 +29,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
         protected abstract string sqlSelecionarPorID { get; }
         #endregion
 
-        protected abstract ValidationResult ValidarSQL(T registro, SqlConnection conexaoComBanco);
+        protected abstract ValidationResult MandarSQLParaValidador(T registro, SqlConnection conexaoComBanco);
 
         #region variaveis
         TValidador validador;
@@ -51,7 +51,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             conexao.Open();
 
 
-            ValidationResult resultadoValidacao = ValidarSQL(registro,conexao);
+            ValidationResult resultadoValidacao = MandarSQLParaValidador(registro,conexao);
 
             if (resultadoValidacao.IsValid == false)
                 return resultadoValidacao;
@@ -101,7 +101,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 
 
 
-            ValidationResult resultadoValidacao = ValidarSQL(registro, conexaoComBanco);
+            ValidationResult resultadoValidacao = MandarSQLParaValidador(registro, conexaoComBanco);
 
 
             if (resultadoValidacao.IsValid == false)
