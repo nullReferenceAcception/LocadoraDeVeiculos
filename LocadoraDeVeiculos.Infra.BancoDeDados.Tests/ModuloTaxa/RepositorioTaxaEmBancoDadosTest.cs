@@ -129,7 +129,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
 
         private Taxa CriarTaxa()
         {
-            return new Taxa(random.Next(100,500).ToString(),random.Next(0,100));
+            return new Taxa(random.Next(100,500).ToString(),(random.Next(0,100) + (decimal)Math.Round(random.NextDouble(),2)));
         }
     }
 }
