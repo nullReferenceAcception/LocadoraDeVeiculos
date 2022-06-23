@@ -1,9 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloTaxa;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
@@ -23,7 +19,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             TelaCadastroTaxaForm tela = new();
             tela.Taxa = new();
 
-            //tela.GravarRegistro = _repositorioTaxa.Inserir;
+            tela.GravarRegistro = _repositorioTaxa.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -32,21 +28,21 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         }
         public override void Editar()
         {
-            var numero = _tabelaTaxas!.ObtemNumeroTarefaSelecionada();
+            var numero = _tabelaTaxas!.ObtemNumeroTaxaSelecionada();
 
-            //Taxa taxaSelecionada = _repositorioTaxa.SelecionarPorNumero(numero);
+            Taxa taxaSelecionada = _repositorioTaxa.SelecionarPorID(numero);
 
-            //if(taxaSelecionada == null)
-            //{
-            //    MessageBox.Show("Selecione uma taxa primeiro!", "Edição de Taxas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    return;
-            //}
+            if (taxaSelecionada == null)
+            {
+                MessageBox.Show("Selecione uma taxa primeiro!", "Edição de Taxas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
 
             var tela = new TelaCadastroTaxaForm();
 
-            //tela.Taxa = taxaSelecionada;
+            tela.Taxa = taxaSelecionada;
 
-            //tela.GravarRegistro = _repositorioTaxa.Editar();
+            tela.GravarRegistro = _repositorioTaxa.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -56,22 +52,22 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
         public override void Excluir()
         {
-            var numero = _tabelaTaxas!.ObtemNumeroTarefaSelecionada();
+            var numero = _tabelaTaxas!.ObtemNumeroTaxaSelecionada();
 
-            //Taxa taxaSelecionada = _repositorioTaxa.SelecionarPorId(numero);
+            Taxa taxaSelecionada = _repositorioTaxa.SelecionarPorID(numero);
 
-            //if(taxaSelecionada == null)
-            //{
-            //    MessageBox.Show("Selecione uma taxa primeiro!", "Edição de Taxas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    return;
-            //}
+            if (taxaSelecionada == null)
+            {
+                MessageBox.Show("Selecione uma taxa primeiro!", "Edição de Taxas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
 
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir a disciplina?",
                "Exclusão de Disciplinas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if(resultado == DialogResult.OK)
             {
-                //_repositorioTaxa.Excluir(taxaSelecionada);
+                _repositorioTaxa.Excluir(taxaSelecionada);
                 CarregarTaxas();
             }
         }
@@ -86,24 +82,18 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             if (_tabelaTaxas == null)
                 _tabelaTaxas = new TabelaTaxaControl();
 
-            //CarregarTaxas();
+            CarregarTaxas();
 
             return _tabelaTaxas;
         }
 
         private void CarregarTaxas()
         {
-        //    List<Taxa> taxas = _repositorioTaxa.SelecionarTodos();
+            List<Taxa> taxas = _repositorioTaxa.SelecionarTodos();
 
-        //    _tabelaTaxas.AtualizarRegistros(taxas);
+            _tabelaTaxas!.AtualizarRegistros(taxas);
 
-        //    TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {taxas.Count} taxas");
-        //}
-
-        //private Taxa ObtemTaxaSelecionada()
-        //{
-        //    var numero = _tabelaTaxas!.ObtemNumeroTarefaSelecionada();
-        //    return _repositorioTaxa.SelecionarPorId(numero);
+            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {taxas.Count} taxas");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxa
 
         public Taxa()
         {
-
+            
         }
 
         public Taxa(string? descricao, decimal? valor)

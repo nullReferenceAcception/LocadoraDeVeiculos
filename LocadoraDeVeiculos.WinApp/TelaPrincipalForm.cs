@@ -1,5 +1,4 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloTaxa;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa;
+﻿using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa;
 using LocadoraDeVeiculos.WinApp.ModuloTaxa;
 using System;
 using System.Collections.Generic;
@@ -9,8 +8,8 @@ namespace LocadoraDeVeiculos.WinApp
 {
     public partial class TelaPrincipalForm : Form
     {
-        private ControladorBase controlador;
-        private Dictionary<string, ControladorBase> controladores;
+        private ControladorBase? controlador;
+        private Dictionary<string, ControladorBase>? controladores;
 
         public TelaPrincipalForm()
         {
@@ -28,6 +27,19 @@ namespace LocadoraDeVeiculos.WinApp
         {
             get;
             private set;
+        }
+
+        private void btnInserir_Click(object sender, EventArgs e)
+        {
+            controlador!.Inserir();
+        }
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            controlador!.Editar();
+        }
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            controlador!.Excluir();
         }
 
         private void clientesMenuItem_Click(object sender, EventArgs e)
@@ -48,36 +60,6 @@ namespace LocadoraDeVeiculos.WinApp
         private void funcionariosMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
-        }
-
-        private void btnInserir_Click(object sender, EventArgs e)
-        {
-            controlador.Inserir();
-        }
-
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            controlador.Editar();
-        }
-
-        private void btnExcluir_Click(object sender, EventArgs e)
-        {
-            controlador.Excluir();
-        }
-
-        private void btnFiltrar_Click(object sender, EventArgs e)
-        {
-            controlador.Filtrar();
-        }
-
-        private void btnGerarPdf_Click(object sender, EventArgs e)
-        {
-            controlador.GerarPdf();
-        }
-
-        private void btnVisualizar_Click(object sender, EventArgs e)
-        {
-            controlador.Visualizar();
         }
 
         private void ConfigurarBotoes(ConfiguracaoToolboxBase configuracao)
@@ -104,7 +86,7 @@ namespace LocadoraDeVeiculos.WinApp
         {
             var tipo = opcaoSelecionada.Text;
 
-            controlador = controladores[tipo];
+            controlador = controladores![tipo];
 
             ConfigurarToolbox();
 
@@ -113,7 +95,7 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void ConfigurarToolbox()
         {
-            ConfiguracaoToolboxBase configuracao = controlador.ObtemConfiguracaoToolbox();
+            ConfiguracaoToolboxBase configuracao = controlador!.ObtemConfiguracaoToolbox();
 
             if (configuracao != null)
             {
@@ -131,7 +113,7 @@ namespace LocadoraDeVeiculos.WinApp
         {
             AtualizarRodape("");
 
-            var listagemControl = controlador.ObtemListagem();
+            var listagemControl = controlador!.ObtemListagem();
 
             panelRegistros.Controls.Clear();
 
@@ -142,8 +124,6 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void InicializarControladores()
         {
-            //exemplos
-            //  IRepositorioMateria repositorioMateria = new RepositorioMateriaEmArquivo(contextoDados);
             RepositorioTaxa repositorioTaxa = new(); 
 
             controladores = new Dictionary<string, ControladorBase>();

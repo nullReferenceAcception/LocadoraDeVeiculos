@@ -14,8 +14,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             set
             {
                 _taxa = value!;
-                _taxa.Descricao = textBoxDescricao.Text;
-                _taxa.Valor = Convert.ToDecimal(textBoxValor.Text);
+                textBoxDescricao.Text = _taxa.Descricao;
+                textBoxValor.Text = _taxa.Valor.ToString();
             }
         }
         public TelaCadastroTaxaForm()
