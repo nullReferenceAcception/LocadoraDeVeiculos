@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using FluentValidation.TestHelper;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -30,9 +31,10 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloTaxa
             taxa.Id = 1;
             taxa.Descricao = "";
 
-            var x = validation.Validate(taxa);
 
-            x.Errors[0].ErrorMessage.Should().Contain("Descricao");
+            var resultado = validation.TestValidate(taxa);
+
+            resultado.ShouldHaveValidationErrorFor(x => x.Descricao);
 
         }
 
@@ -45,9 +47,10 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloTaxa
             taxa.Id = 1;
             taxa.Descricao = "   ";
 
-            var x = validation.Validate(taxa);
 
-            x.Errors[0].ErrorMessage.Should().Contain("Descricao");
+            var resultado = validation.TestValidate(taxa);
+
+            resultado.ShouldHaveValidationErrorFor(x => x.Descricao);
 
         }
 
@@ -61,9 +64,9 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloTaxa
             taxa.Id = 1;
             taxa.Descricao = "a";
 
-           var x = validation.Validate(taxa);
+            var resultado = validation.TestValidate(taxa);
 
-            x.Errors[0].ErrorMessage.Should().Contain("Descricao");
+            resultado.ShouldHaveValidationErrorFor(x => x.Descricao);
 
         }
 
@@ -76,9 +79,9 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloTaxa
             taxa.Id = 1;
             taxa.Valor = 0;
 
-            var x = validation.Validate(taxa);
+            var resultado = validation.TestValidate(taxa);
 
-            x.Errors[0].ErrorMessage.Should().Contain("Valor");
+            resultado.ShouldHaveValidationErrorFor(x => x.Valor);
 
         }
 
@@ -91,9 +94,11 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloTaxa
             taxa.Id = 1;
             taxa.Descricao = "!@#$%¨%¨&*()(";
 
-            var x = validation.Validate(taxa);
+            var resultado = validation.TestValidate(taxa);
 
-            x.Errors[0].ErrorMessage.Should().Contain("Descricao");
+
+
+            resultado.ShouldHaveValidationErrorFor(x => x.Descricao);
 
         }
 
