@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 {
-    internal class ControladorTaxa : ControladorBase
+    public class ControladorTaxa : ControladorBase
     {
         private IRepositorioTaxa _repositorioTaxa;
         private TabelaTaxaControl? _tabelaTaxas;
@@ -62,8 +62,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
                 return;
             }
 
-            DialogResult resultado = MessageBox.Show("Deseja realmente excluir a disciplina?",
-               "Exclusão de Disciplinas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show("Deseja realmente excluir a Taxa?",
+               "Exclusão de Taxas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if(resultado == DialogResult.OK)
             {

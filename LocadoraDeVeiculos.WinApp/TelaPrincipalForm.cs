@@ -1,4 +1,6 @@
-﻿using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa;
+﻿using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa;
+using LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo;
 using LocadoraDeVeiculos.WinApp.ModuloTaxa;
 using System;
 using System.Collections.Generic;
@@ -17,7 +19,7 @@ namespace LocadoraDeVeiculos.WinApp
 
             Instancia = this;
 
-            labelRodape.Text = string.Empty;
+            statusStrip1.Text = string.Empty;
             labelTipoCadastro.Text = string.Empty;
 
             InicializarControladores();
@@ -124,11 +126,15 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void InicializarControladores()
         {
-            RepositorioTaxa repositorioTaxa = new(); 
+            RepositorioTaxa repositorioTaxa = new();
+
+            RepositorioGrupoVeiculos repositorioGrupoVeiculos = new();
 
             controladores = new Dictionary<string, ControladorBase>();
 
             controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa));
+
+            controladores.Add("Grupos de Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos));
         }
         public void AtualizarRodape(string mensagem)
         {
