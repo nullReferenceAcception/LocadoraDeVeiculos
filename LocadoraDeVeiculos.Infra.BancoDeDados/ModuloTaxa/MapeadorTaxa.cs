@@ -14,7 +14,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 
         public void ConfigurarParametrosRegistro(Taxa registro, SqlCommand cmdInserir)
         {
-            cmdInserir.Parameters.AddWithValue("ID_taxa", registro.Id);
+            cmdInserir.Parameters.AddWithValue("ID_TAXA", registro.Id);
             cmdInserir.Parameters.AddWithValue("DESCRICAO", registro.Descricao);
             cmdInserir.Parameters.AddWithValue("VALOR", registro.Valor);
         }
