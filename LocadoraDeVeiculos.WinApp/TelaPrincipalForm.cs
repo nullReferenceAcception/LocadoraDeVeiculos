@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloTaxa;
+using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa;
 using LocadoraDeVeiculos.WinApp.ModuloTaxa;
 using System;
 using System.Collections.Generic;
@@ -29,19 +30,16 @@ namespace LocadoraDeVeiculos.WinApp
             private set;
         }
 
-        //Exemplo
-        //private void tarefasMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
-        //}
         private void clientesMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
+
         private void gruposDeVeiculosMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
+
         private void taxasMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
@@ -146,7 +144,7 @@ namespace LocadoraDeVeiculos.WinApp
         {
             //exemplos
             //  IRepositorioMateria repositorioMateria = new RepositorioMateriaEmArquivo(contextoDados);
-            IRepositorioTaxa repositorioTaxa = new(); 
+            RepositorioTaxa repositorioTaxa = new(); 
 
             controladores = new Dictionary<string, ControladorBase>();
 
