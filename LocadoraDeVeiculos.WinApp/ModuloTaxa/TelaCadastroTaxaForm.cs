@@ -29,6 +29,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         private void buttonGravar_Click(object sender, EventArgs e)
         {
             Taxa!.Descricao = textBoxDescricao.Text;
+
+            if (string.IsNullOrEmpty(textBoxValor.Text))
+            {
+                TelaPrincipalForm.Instancia!.AtualizarRodape("Campo valor nao poder ser vazio");
+                DialogResult = DialogResult.None;
+                return;
+            }
+
             Taxa.Valor = Convert.ToDecimal(textBoxValor.Text);
 
             var resultadoValidacao = GravarRegistro!(Taxa);
