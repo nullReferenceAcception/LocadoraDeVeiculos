@@ -11,6 +11,18 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxa
         public string? Descricao { get; set; }
         public decimal? Valor { get; set; }
 
+
+        public Taxa()
+        {
+
+        }
+
+        public Taxa(string? descricao, decimal? valor)
+        {
+            Descricao = descricao;
+            Valor = valor;
+        }
+
         public override void Atualizar(Taxa registro)
         {
             this.Descricao = registro.Descricao;

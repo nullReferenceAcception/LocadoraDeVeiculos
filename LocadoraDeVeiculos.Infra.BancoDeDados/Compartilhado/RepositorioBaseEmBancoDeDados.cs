@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 {
-    public abstract class RepositorioBaseEmBancoDeDados<T,TValidador,TMapeamento> 
+    public abstract class RepositorioBaseEmBancoDeDados<T, TValidador, TMapeamento>
         where T : EntidadeBase<T>
         where TValidador : AbstractValidator<T>
         where TMapeamento : IMapeavel<T>
@@ -19,7 +19,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
         #region abstract sqls
 
         protected const string enderecoBanco =
- "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DBMed;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+     "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=locadora_db;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
 
         protected abstract string sqlInserir { get; }
         protected abstract string sqlEditar { get; }
@@ -28,6 +29,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
         protected abstract string sqlSelecionarPorID { get; }
         #endregion
 
+        protected abstract ValidationResult MandarSQLParaValidador(T registro, SqlConnection conexaoComBanco);
 
         #region variaveis
         TValidador validador;
@@ -45,17 +47,20 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 
         public ValidationResult Inserir(T registro)
         {
+            SqlConnection conexao = new SqlConnection(enderecoBanco);
+            conexao.Open();
 
-            var resultadoValidacao = validador.Validate(registro);
+
+            ValidationResult resultadoValidacao = MandarSQLParaValidador(registro,conexao);
 
             if (resultadoValidacao.IsValid == false)
                 return resultadoValidacao;
 
-            SqlConnection conexao = new SqlConnection(enderecoBanco);
+
             SqlCommand cmdInserir = new SqlCommand(sqlInserir, conexao);
 
             mapeador.ConfigurarParametrosRegistro(registro, cmdInserir);
-            conexao.Open();
+          
 
             var ID = cmdInserir.ExecuteScalar();
 
@@ -65,21 +70,48 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 
         }
 
-        public ValidationResult Editar(T registro)
+        protected virtual ValidationResult Validar(string sql,T registro, SqlConnection conexaoComBanco)
         {
-
             var resultadoValidacao = validador.Validate(registro);
 
             if (resultadoValidacao.IsValid == false)
                 return resultadoValidacao;
 
+
+            var sqlCommand = new SqlCommand(sql, conexaoComBanco);
+
+
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+            if (reader.HasRows)
+                resultadoValidacao.Errors.Add(new ValidationFailure("", "Nome já está cadastrado"));
+
+            reader.Close();
+            reader.Dispose();
+
+
+            return resultadoValidacao;
+        }
+       
+
+        public ValidationResult Editar(T registro)
+        {
+
             SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
+            conexaoComBanco.Open();
+
+
+
+            ValidationResult resultadoValidacao = MandarSQLParaValidador(registro, conexaoComBanco);
+
+
+            if (resultadoValidacao.IsValid == false)
+                return resultadoValidacao;
+
 
             SqlCommand comandoEdicao = new SqlCommand(sqlEditar, conexaoComBanco);
 
             mapeador.ConfigurarParametrosRegistro(registro, comandoEdicao);
 
-            conexaoComBanco.Open();
             comandoEdicao.ExecuteNonQuery();
             conexaoComBanco.Close();
 
@@ -97,6 +129,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             conexaoComBanco.Open();
             var resultadoValidacao = new ValidationResult();
             int IDRegistrosExcluidos = 0;
+
+            // essa gambiarra foi feita porcausa das foreign keys
             try
             {
                 IDRegistrosExcluidos = comandoExclusao.ExecuteNonQuery();

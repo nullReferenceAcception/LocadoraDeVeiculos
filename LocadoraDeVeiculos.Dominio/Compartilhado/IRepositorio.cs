@@ -13,6 +13,6 @@ namespace LocadoraDeVeiculos.Dominio
 
         List<T> SelecionarTodos();
 
-        T SelecionarPorNumero(int numero);
+        T SelecionarPorID(int numero);
     }
 }

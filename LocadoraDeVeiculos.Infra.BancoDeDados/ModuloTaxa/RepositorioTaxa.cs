@@ -1,20 +1,23 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloTaxa;
+﻿using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 {
-    public class RepositorioTaxa : RepositorioBaseEmBancoDeDados<Taxa,ValidadorTaxa,MapeadorTaxa>
+    public class RepositorioTaxa : RepositorioBaseEmBancoDeDados<Taxa,ValidadorTaxa,MapeadorTaxa>, IRepositorioTaxa
     {
 
+        
 
         public RepositorioTaxa() : base(new ValidadorTaxa(), new MapeadorTaxa())
         {
-
+            
         }
 
 
@@ -35,7 +38,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 		        (
 		        @DESCRICAO,
 		        @VALOR
-		        );";
+		        );SELECT SCOPE_IDENTITY();";
         }
         protected override string sqlEditar
         {
@@ -56,14 +59,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 	            FROM
 		            TB_TAXA
 	            WHERE
-		            ID_TAXA = @ID_TAXA;";
+		            ID_TAXA = @ID;";
         }
 
         protected override string sqlSelecionarTodos
         {
             get =>
             @"SELECT
-                    ID_TAXA AS ID_TAXA
+                    ID_TAXA AS ID_TAXA,
 	                DESCRICAO AS DESCRICAO_TAXA,
 	                VALOR AS VALOR_TAXA
                 FROM
@@ -75,16 +78,22 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
         {
             get =>
            @"SELECT
-                ID_TAXA AS ID_TAXA
+                ID_TAXA AS ID_TAXA,
 	                DESCRICAO AS DESCRICAO_TAXA,
 	                VALOR AS VALOR_TAXA
                 FROM
 	                TB_TAXA
                 WHERE
-	            ID_TAXA = @ID_TAXA;";
+	            ID_TAXA = @ID;";
         }
+
 
         #endregion
 
+        
+        protected override ValidationResult MandarSQLParaValidador(Taxa registro, SqlConnection conexaoComBanco)
+        {
+            return Validar("SELECT * FROM TB_TAXA WHERE ([DESCRICAO] = '" + registro.Descricao + "')", registro, conexaoComBanco);
+        }
     }
 }
