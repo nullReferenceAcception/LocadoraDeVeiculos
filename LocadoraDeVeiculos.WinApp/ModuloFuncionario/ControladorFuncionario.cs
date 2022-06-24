@@ -38,7 +38,24 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            var numero = _tabelaFuncionario!.ObtemNumeroFuncionarioSelecionado();
+
+            Funcionario funcionarioSelecionado = _repositorioFuncionario!.SelecionarPorID(numero);
+
+            if (funcionarioSelecionado == null)
+            {
+                MessageBox.Show("Selecione um funcionário primeiro!", "Exclusão de Funcionário", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            DialogResult resultado = MessageBox.Show("Deseja realmente excluir o funcionário?",
+               "Exclusão de Disciplinas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.OK)
+            {
+                _repositorioTaxa.Excluir(funcionarioSelecionado);
+                CarregarTaxas();
+            }
         }
 
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()

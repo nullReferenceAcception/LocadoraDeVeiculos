@@ -24,9 +24,10 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                         DATA_ADMISSAO,
                         LOGIN,
                         SENHA,
-                        TIPO_PERFIL,
+                        EH_ADMIN,
                         TELEFONE,
-                        ENDERECO
+                        ENDERECO,
+                        EMAIL
                         )
                     VALUES
                         (
@@ -35,9 +36,10 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                         @DATA_ADMISSAO,
                         @LOGIN,
                         @SENHA,
-                        @TIPO_PERFIL,
+                        @EH_ADMIN,
                         @TELEFONE,
-                        @ENDERECO
+                        @ENDERECO,
+                        @EMAIL
                         ); SELECT SCOPE_IDENTITY();";
         }
 
@@ -52,9 +54,10 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                             DATA_ADMISSAO = @DATA_ADMISSAO,
                             LOGIN = @LOGIN,
                             SENHA = @SENHA,
-                            TIPO_PERFIL = @TIPO_PERFIL,
+                            EH_ADMIN = @EH_ADMIN,
                             @TELEFONE = @TELEFONE,
-                            ENDERECO = @ENDERECO
+                            ENDERECO = @ENDERECO,
+                            EMAIL = @EMAIL
                         WHERE
                             ID_FUNCIONARIO = @ID_FUNCIONARIO";
         }
@@ -78,9 +81,10 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                     DATA_ADMISSAO AS DATA_ADMISSAO, 
                     LOGIN AS LOGIN,
                     SENHA AS SENHA,
-                    TIPO_PERFIL AS TIPO_PERFIL, 
+                    EH_ADMIN AS EH_ADMIN, 
                     TELEFONE AS TELEFONE, 
-                    ENDERECO AS ENDERECO
+                    ENDERECO AS ENDERECO,
+                    EMAIL AS EMAIL
                 FROM            
                     TB_FUNCIONARIO";
         }
@@ -95,9 +99,10 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                     DATA_ADMISSAO AS DATA_ADMISSAO, 
                     LOGIN AS LOGIN,
                     SENHA AS SENHA,
-                    TIPO_PERFIL AS TIPO_PERFIL, 
+                    EH_ADMIN AS EH_ADMIN, 
                     TELEFONE AS TELEFONE, 
-                    ENDERECO AS ENDERECO
+                    ENDERECO AS ENDERECO,
+                    EMAIL AS EMAIL
                 FROM            
                     TB_FUNCIONARIO
                 WHERE

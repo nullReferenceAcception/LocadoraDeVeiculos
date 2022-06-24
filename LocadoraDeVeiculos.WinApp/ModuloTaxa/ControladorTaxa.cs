@@ -59,12 +59,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             if (taxaSelecionada == null)
             {
-                MessageBox.Show("Selecione uma taxa primeiro!", "Edição de Taxas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Selecione uma taxa primeiro!", "Exclusão de Taxa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
-            DialogResult resultado = MessageBox.Show("Deseja realmente excluir a disciplina?",
-               "Exclusão de Disciplinas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show("Deseja realmente excluir a taxa?",
+               "Exclusão de Taxas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if(resultado == DialogResult.OK)
             {
