@@ -136,8 +136,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
                 resultadoValidacao.Errors.Add(new ValidationFailure("", ex.Message));
             }
 
-
-
             if (IDRegistrosExcluidos == 0)
                 resultadoValidacao.Errors.Add(new ValidationFailure("", "Não foi possível remover o registro"));
 

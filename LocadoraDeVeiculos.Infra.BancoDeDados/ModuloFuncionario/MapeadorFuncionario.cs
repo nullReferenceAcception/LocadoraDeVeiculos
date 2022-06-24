@@ -9,7 +9,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
     {
         public void ConfigurarParametrosRegistro(Funcionario registro, SqlCommand cmdInserir)
         {
-            cmdInserir.Parameters.AddWithValue("ID_FUNCIONARIO", registro.Id);
+            cmdInserir.Parameters.AddWithValue("ID", registro.Id);
             cmdInserir.Parameters.AddWithValue("NOME", registro.Nome);
             cmdInserir.Parameters.AddWithValue("ENDERECO", registro.Endereco == null ? DBNull.Value : registro.Endereco);
             cmdInserir.Parameters.AddWithValue("EMAIL", registro.Email == null ? DBNull.Value : registro.Email);
@@ -18,17 +18,18 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
             cmdInserir.Parameters.AddWithValue("EH_ADMIN", registro.EhAdmin);
             cmdInserir.Parameters.AddWithValue("SENHA", registro.Senha); // TODO > Criptografar
             cmdInserir.Parameters.AddWithValue("DATA_ADMISSAO", registro.DataAdmissao);
-            cmdInserir.Parameters.AddWithValue("SALARIO", registro.Senha);
+            cmdInserir.Parameters.AddWithValue("SALARIO", registro.Salario);
         }
 
         public Funcionario ConverterParaRegistro(SqlDataReader leitorRegistro)
         {
-            int idFuncionario = Convert.ToInt32(leitorRegistro["ID_FUNCIONARIO"]);
+            int idFuncionario = Convert.ToInt32(leitorRegistro["ID"]);
             string nome = leitorRegistro["NOME"].ToString()!;
             string endereco = leitorRegistro["ENDERECO"].ToString()!;
             string email = leitorRegistro["EMAIL"].ToString()!;
             string telefone = leitorRegistro["TELEFONE"].ToString()!;
             string login = leitorRegistro["LOGIN"].ToString()!;
+            string senha = leitorRegistro["SENHA"].ToString()!;
             bool ehAdmin = Convert.ToBoolean(leitorRegistro["EH_ADMIN"]);
             DateTime dataAdmissao = Convert.ToDateTime(leitorRegistro["DATA_ADMISSAO"]);
             Decimal salario = Convert.ToDecimal(leitorRegistro["SALARIO"]);
@@ -41,6 +42,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
             funcionario.Email = email;
             funcionario.Telefone = telefone;
             funcionario.Login = login;
+            funcionario.Senha = senha;
             funcionario.DataAdmissao = dataAdmissao;
             funcionario.Salario = salario;
             funcionario.EhAdmin = ehAdmin;
