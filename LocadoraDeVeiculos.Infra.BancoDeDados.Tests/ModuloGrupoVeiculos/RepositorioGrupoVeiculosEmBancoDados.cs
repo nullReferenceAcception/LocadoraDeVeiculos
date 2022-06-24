@@ -131,7 +131,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
 
         private GrupoVeiculos CriarGrupoVeiculos()
         {
-            return new GrupoVeiculos("Nome " + random.Next(100, 500).ToString());
+            return new GrupoVeiculos("Nomé são");
         }
     }
 }

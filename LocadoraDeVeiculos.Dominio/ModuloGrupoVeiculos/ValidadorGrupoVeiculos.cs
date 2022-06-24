@@ -14,10 +14,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
     {
         public ValidadorGrupoVeiculos()
         {
-            Regex regEx = new Regex("^[a-z A-Z0-9]*$");
+            Regex padraoNome = new Regex("^[A-Z\\sa-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]*$");
 
             RuleFor(x => x.Nome)
-                    .NotNull().NotEmpty().MinimumLength(3).Matches(regEx);
+                    .NotNull().NotEmpty().MinimumLength(3).Matches(padraoNome);
         }
     }
 }
