@@ -55,7 +55,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                             LOGIN = @LOGIN,
                             SENHA = @SENHA,
                             EH_ADMIN = @EH_ADMIN,
-                            @TELEFONE = @TELEFONE,
+                            TELEFONE = @TELEFONE,
                             ENDERECO = @ENDERECO,
                             EMAIL = @EMAIL
                         WHERE
