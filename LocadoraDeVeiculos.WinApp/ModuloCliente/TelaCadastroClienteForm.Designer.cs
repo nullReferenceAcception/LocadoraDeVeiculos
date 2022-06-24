@@ -67,6 +67,7 @@
             // textBoxCNH
             // 
             this.textBoxCNH.Location = new System.Drawing.Point(98, 96);
+            this.textBoxCNH.MaxLength = 11;
             this.textBoxCNH.Name = "textBoxCNH";
             this.textBoxCNH.Size = new System.Drawing.Size(239, 23);
             this.textBoxCNH.TabIndex = 2;
@@ -81,6 +82,7 @@
             // textBoxTelefone
             // 
             this.textBoxTelefone.Location = new System.Drawing.Point(98, 154);
+            this.textBoxTelefone.MaxLength = 11;
             this.textBoxTelefone.Name = "textBoxTelefone";
             this.textBoxTelefone.Size = new System.Drawing.Size(239, 23);
             this.textBoxTelefone.TabIndex = 4;
@@ -89,6 +91,7 @@
             // 
             this.textBoxCNPJ.Enabled = false;
             this.textBoxCNPJ.Location = new System.Drawing.Point(339, 251);
+            this.textBoxCNPJ.MaxLength = 14;
             this.textBoxCNPJ.Name = "textBoxCNPJ";
             this.textBoxCNPJ.Size = new System.Drawing.Size(139, 23);
             this.textBoxCNPJ.TabIndex = 5;
@@ -159,7 +162,7 @@
             this.radioCNPJbtn.TabStop = true;
             this.radioCNPJbtn.Text = "Pessoa Jurídica";
             this.radioCNPJbtn.UseVisualStyleBackColor = true;
-            this.radioCNPJbtn.CheckedChanged += new System.EventHandler(this.radioCNOJbtn_CheckedChanged);
+            this.radioCNPJbtn.CheckedChanged += new System.EventHandler(this.radioCNPJbtn_CheckedChanged);
             // 
             // radioCPFbtn
             // 
@@ -171,12 +174,13 @@
             this.radioCPFbtn.TabStop = true;
             this.radioCPFbtn.Text = "Pessoa Fisica";
             this.radioCPFbtn.UseVisualStyleBackColor = true;
-            this.radioCPFbtn.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radioCPFbtn.CheckedChanged += new System.EventHandler(this.radioCPFbtn_CheckedChanged);
             // 
             // textBoxCPF
             // 
             this.textBoxCPF.Enabled = false;
             this.textBoxCPF.Location = new System.Drawing.Point(339, 215);
+            this.textBoxCPF.MaxLength = 11;
             this.textBoxCPF.Name = "textBoxCPF";
             this.textBoxCPF.Size = new System.Drawing.Size(139, 23);
             this.textBoxCPF.TabIndex = 14;
@@ -208,6 +212,7 @@
             this.btnGravar.TabIndex = 17;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // btnCancelar
             // 

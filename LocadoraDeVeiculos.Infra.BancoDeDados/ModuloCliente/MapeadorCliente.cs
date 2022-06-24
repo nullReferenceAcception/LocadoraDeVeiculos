@@ -33,8 +33,15 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
             string email = Convert.ToString(leitorRegistro["EMAIL_CLIENTE"]);
             string telefone = Convert.ToString(leitorRegistro["TELEFONE_CLIENTE"]);
             bool pessoaFisica = Convert.ToBoolean(leitorRegistro["TIPO_CLIENTE_CLIENTE"]);
-            string cpf = Convert.ToString(leitorRegistro["CPF_CLIENTE"]);
-            string cnpj = Convert.ToString(leitorRegistro["CNPJ_CLIENTE"]);
+
+
+            string cpf = null;
+            string cnpj = null;
+
+            if (! DBNull.Value.Equals(leitorRegistro["CPF_CLIENTE"]))
+                 cpf =  Convert.ToString(leitorRegistro["CPF_CLIENTE"]);
+            else
+             cnpj = Convert.ToString(leitorRegistro["CNPJ_CLIENTE"]);
 
             var cliente = new Cliente();
             cliente.Id = idCliente;

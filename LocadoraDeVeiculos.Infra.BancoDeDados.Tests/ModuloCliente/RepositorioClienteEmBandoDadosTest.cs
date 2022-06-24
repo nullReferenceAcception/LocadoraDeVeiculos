@@ -20,7 +20,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
         [TestMethod]
         public void Deve_selecionar_por_id()
         {
-            Cliente registro = CriarCliente();
+            Cliente registro = CriarClienteComCPF();
             repositorio.Inserir(registro);
 
             Cliente registro2 = repositorio.SelecionarPorID(registro.Id);
@@ -29,10 +29,23 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
         }
 
         [TestMethod]
-        public void Deve_inserir_cliente()
+        public void Deve_inserir_cliente_CPF()
         {
 
-            Cliente cliente = CriarCliente();
+            Cliente cliente = CriarClienteComCPF();
+
+            repositorio.Inserir(cliente);
+
+            Cliente cliente2 = repositorio.SelecionarPorID(cliente.Id);
+
+            Assert.AreEqual(cliente, cliente2);
+
+        }
+
+        public void Deve_inserir_cliente_CNPJ()
+        {
+
+            Cliente cliente = CriarClienteComCNPJ();
 
             repositorio.Inserir(cliente);
 
@@ -47,7 +60,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
         {
 
 
-            Cliente cliente = CriarCliente();
+            Cliente cliente = CriarClienteComCPF();
 
             repositorio.Inserir(cliente);
 
@@ -86,7 +99,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
         {
 
 
-            Cliente cliente = CriarCliente();
+            Cliente cliente = CriarClienteComCPF();
 
             repositorio.Inserir(cliente);
 
@@ -100,9 +113,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
             Assert.AreEqual(cliente2, cliente);
 
         }
-        private Cliente CriarCliente()
+        private Cliente CriarClienteComCPF()
         {
-            return new Cliente("joao" + random.Next(100, 500).ToString(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "09876543211", "12340567889879");
+            return new Cliente("joao" + random.Next(100, 500).ToString(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "12340567889", null);
+        }
+
+        private Cliente CriarClienteComCNPJ()
+        {
+            return new Cliente("joao" + random.Next(100, 500).ToString(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, null, "12340567889876");
         }
     }
 }

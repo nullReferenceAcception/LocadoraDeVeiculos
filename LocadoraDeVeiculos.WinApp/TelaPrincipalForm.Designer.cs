@@ -50,7 +50,6 @@
             this.taxasMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionariosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
-            this.panelRegistros.SuspendLayout();
             this.toolbox.SuspendLayout();
             this.menu.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +59,7 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.labelRodape});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 363);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(800, 22);
             this.statusStrip1.TabIndex = 3;
@@ -74,11 +73,9 @@
             // 
             // panelRegistros
             // 
-            this.panelRegistros.Controls.Add(this.statusStrip1);
-            this.panelRegistros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelRegistros.Location = new System.Drawing.Point(0, 65);
             this.panelRegistros.Name = "panelRegistros";
-            this.panelRegistros.Size = new System.Drawing.Size(800, 385);
+            this.panelRegistros.Size = new System.Drawing.Size(800, 363);
             this.panelRegistros.TabIndex = 7;
             // 
             // toolbox
@@ -113,6 +110,7 @@
             this.btnInserir.Padding = new System.Windows.Forms.Padding(5);
             this.btnInserir.Size = new System.Drawing.Size(38, 38);
             this.btnInserir.Text = "Inserir";
+            this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
             // 
             // btnEditar
             // 
@@ -124,6 +122,7 @@
             this.btnEditar.Padding = new System.Windows.Forms.Padding(5);
             this.btnEditar.Size = new System.Drawing.Size(38, 38);
             this.btnEditar.Text = "Editar";
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnExcluir
             // 
@@ -135,6 +134,7 @@
             this.btnExcluir.Padding = new System.Windows.Forms.Padding(5);
             this.btnExcluir.Size = new System.Drawing.Size(38, 38);
             this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // toolStripSeparator2
             // 
@@ -150,6 +150,7 @@
             this.btnVisualizar.Name = "btnVisualizar";
             this.btnVisualizar.Padding = new System.Windows.Forms.Padding(5);
             this.btnVisualizar.Size = new System.Drawing.Size(38, 38);
+            this.btnVisualizar.Click += new System.EventHandler(this.btnVisualizar_Click);
             // 
             // toolStripSeparator3
             // 
@@ -165,6 +166,7 @@
             this.btnGerarPdf.Name = "btnGerarPdf";
             this.btnGerarPdf.Padding = new System.Windows.Forms.Padding(5);
             this.btnGerarPdf.Size = new System.Drawing.Size(38, 38);
+            this.btnGerarPdf.Click += new System.EventHandler(this.btnGerarPdf_Click);
             // 
             // toolStripSeparator1
             // 
@@ -180,6 +182,7 @@
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Padding = new System.Windows.Forms.Padding(5);
             this.btnFiltrar.Size = new System.Drawing.Size(38, 38);
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // toolStripSeparator4
             // 
@@ -220,7 +223,7 @@
             this.clientesMenuItem.Name = "clientesMenuItem";
             this.clientesMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.clientesMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.clientesMenuItem.Text = "Cilentes";
+            this.clientesMenuItem.Text = "Clientes";
             this.clientesMenuItem.Click += new System.EventHandler(this.clientesMenuItem_Click);
             // 
             // gruposDeVeiculosMenuItem
@@ -252,6 +255,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panelRegistros);
             this.Controls.Add(this.toolbox);
             this.Controls.Add(this.menu);
@@ -259,8 +263,6 @@
             this.Text = "TelaPrincipalForm";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.panelRegistros.ResumeLayout(false);
-            this.panelRegistros.PerformLayout();
             this.toolbox.ResumeLayout(false);
             this.toolbox.PerformLayout();
             this.menu.ResumeLayout(false);

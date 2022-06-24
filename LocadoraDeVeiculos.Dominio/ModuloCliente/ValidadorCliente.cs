@@ -10,6 +10,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 {
     public class ValidadorCliente : AbstractValidator<Cliente>
     {
+        Cliente c;
         public ValidadorCliente()
         {
             Regex regEx = new Regex("^[0-9]{2}([0-9]{8}|[0-9]{9})");
@@ -30,13 +31,23 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
                 .NotNull().NotEmpty().MinimumLength(4);
 
             RuleFor(x => x.PessoaFisica)
-                .NotNull().NotEmpty();
+                .NotNull();
 
-            RuleFor(x => x.CPF)
-                .NotNull().NotEmpty().MinimumLength(11);
 
-            RuleFor(x => x.CNPJ)
+            When(x => x.PessoaFisica, () =>
+            {
+                RuleFor(x => x.CPF)
+                  .NotNull().NotEmpty().MinimumLength(11);
+            });
+
+
+            When(x => !x.PessoaFisica, () =>
+            {
+                RuleFor(x => x.CNPJ)
                 .NotNull().NotEmpty().MinimumLength(14);
+            });
         }
+
+
     }
 }
