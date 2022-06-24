@@ -13,14 +13,14 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
 
             RuleFor(x => x.Nome)
                 .NotNull().NotEmpty().MinimumLength(2).Matches(padraoNome);
-            //RuleFor(x => x.Telefone)
-            //    .NotNull().NotEmpty().Matches(padraoTelefone);
-            //RuleFor(x => x.Endereco)
-            //    .NotNull().NotEmpty();
-            //RuleFor(x => x.Email)
-            //    .NotNull().NotEmpty().EmailAddress();
-            //RuleFor(x => x.EhAdmin)
-            //    .NotEmpty();
+            RuleFor(x => x.Telefone)
+                .NotNull().NotEmpty().Matches(padraoTelefone);
+            RuleFor(x => x.Endereco)
+                .NotNull().NotEmpty();
+            RuleFor(x => x.Email)
+                .NotNull().NotEmpty().EmailAddress();
+            RuleFor(x => x.EhAdmin)
+                .NotNull();
             RuleFor(x => x.Login)
                 .NotNull().NotEmpty();
             RuleFor(x => x.Senha)

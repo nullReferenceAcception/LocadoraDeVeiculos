@@ -52,13 +52,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             textBoxNome.Text = _funcionario!.Nome;
             textBoxEmail.Text = _funcionario.Email;
             textBoxTelefone.Text = _funcionario.Telefone;
-            Funcionario!.Endereco = _funcionario.Endereco;
+            textBoxEndereco.Text = _funcionario.Endereco;
             textBoxLogin.Text = _funcionario.Login;
             textBoxSalario.Text = Convert.ToDecimal(_funcionario.Salario).ToString();
             textBoxSenha.Text = _funcionario.Senha;
             if (_funcionario.DataAdmissao > DateTime.MinValue)
                 dateTimePickerDataAdmissao.Value = _funcionario.DataAdmissao;
-            radioButtonAdmin.Checked = _funcionario.EhAdmin == true ? radioButtonAdmin.Checked : radioButtonFuncionario.Checked;
+
+            if(_funcionario.Id != 0)
+                _ = _funcionario.EhAdmin ? radioButtonAdmin.Checked = true : radioButtonFuncionario.Checked = true;
         }
     }
 }

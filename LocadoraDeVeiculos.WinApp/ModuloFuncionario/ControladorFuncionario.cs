@@ -1,9 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
@@ -33,7 +29,26 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            var numero = _tabelaFuncionario!.ObtemNumeroFuncionarioSelecionado();
+
+            Funcionario funcionarioSelecionado = _repositorioFuncionario!.SelecionarPorID(numero);
+
+            if (funcionarioSelecionado == null)
+            {
+                MessageBox.Show("Selecione um funcionário primeiro!", "Edição de Funcionário", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            var tela = new TelaCadastroFuncionarioForm();
+
+            tela.Funcionario = funcionarioSelecionado;
+
+            tela.GravarRegistro = _repositorioFuncionario.Editar;
+
+            DialogResult resultado = tela.ShowDialog();
+
+            if (resultado == DialogResult.OK)
+                CarregarFuncionarios();
         }
 
         public override void Excluir()
