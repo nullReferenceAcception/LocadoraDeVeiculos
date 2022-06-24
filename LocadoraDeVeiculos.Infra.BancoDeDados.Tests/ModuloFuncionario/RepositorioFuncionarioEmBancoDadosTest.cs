@@ -130,7 +130,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
         private Funcionario CriarFuncionario()
         {
-            return new("nome", "endereco", "email", "telefone", "login", "senha", DateTime.Today, 12, true);
+            return new("nome", "endereco", "e@e.e", "(49)99111-3939", "login", "senha", DateTime.Today, 12, true);
         }
     }
 }

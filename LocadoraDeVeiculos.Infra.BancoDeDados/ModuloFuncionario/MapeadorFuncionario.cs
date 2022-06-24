@@ -9,7 +9,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
     {
         public void ConfigurarParametrosRegistro(Funcionario registro, SqlCommand cmdInserir)
         {
-            cmdInserir.Parameters.AddWithValue("ID", registro.Id);
+            cmdInserir.Parameters.AddWithValue("ID_FUNCIONARIO", registro.Id);
             cmdInserir.Parameters.AddWithValue("NOME", registro.Nome);
             cmdInserir.Parameters.AddWithValue("ENDERECO", registro.Endereco == null ? DBNull.Value : registro.Endereco);
             cmdInserir.Parameters.AddWithValue("EMAIL", registro.Email == null ? DBNull.Value : registro.Email);
@@ -23,7 +23,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
 
         public Funcionario ConverterParaRegistro(SqlDataReader leitorRegistro)
         {
-            int idFuncionario = Convert.ToInt32(leitorRegistro["ID"]);
+            int idFuncionario = Convert.ToInt32(leitorRegistro["ID_FUNCIONARIO"]);
             string nome = leitorRegistro["NOME"].ToString()!;
             string endereco = leitorRegistro["ENDERECO"].ToString()!;
             string email = leitorRegistro["EMAIL"].ToString()!;
@@ -33,7 +33,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
             bool ehAdmin = Convert.ToBoolean(leitorRegistro["EH_ADMIN"]);
             DateTime dataAdmissao = Convert.ToDateTime(leitorRegistro["DATA_ADMISSAO"]);
             Decimal salario = Convert.ToDecimal(leitorRegistro["SALARIO"]);
-            string senha = Convert.ToString(leitorRegistro["SENHA"]);
 
             var funcionario = new Funcionario();
 
@@ -47,7 +46,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
             funcionario.DataAdmissao = dataAdmissao;
             funcionario.Salario = salario;
             funcionario.EhAdmin = ehAdmin;
-            funcionario.Senha = senha;
 
             return funcionario;
         }

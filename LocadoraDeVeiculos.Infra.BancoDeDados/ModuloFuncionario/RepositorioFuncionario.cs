@@ -59,7 +59,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                             ENDERECO = @ENDERECO,
                             EMAIL = @EMAIL
                         WHERE
-                            ID_FUNCIONARIO = @ID";
+                            ID_FUNCIONARIO = @ID_FUNCIONARIO";
         }
 
         protected override string sqlExcluir
@@ -75,7 +75,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
         {
             get =>
                 @"SELECT        
-                    ID_FUNCIONARIO AS ID, 
+                    ID_FUNCIONARIO AS ID_FUNCIONARIO, 
                     NOME AS NOME, 
                     SALARIO AS SALARIO,
                     DATA_ADMISSAO AS DATA_ADMISSAO, 
@@ -93,7 +93,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
         {
             get =>
                 @"SELECT        
-                    ID_FUNCIONARIO AS ID, 
+                    ID_FUNCIONARIO AS ID_FUNCIONARIO, 
                     NOME AS NOME, 
                     SALARIO AS SALARIO,
                     DATA_ADMISSAO AS DATA_ADMISSAO, 
