@@ -10,6 +10,21 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
         public DateTime DataAdmissao { get; set; }
         public Decimal Salario { get; set; }
         public bool EhAdmin { get; set; } // True é admin, false é comum
+
+        public Funcionario()
+        {
+
+        }
+
+        public Funcionario(string nome,string endereco,string email,string telefone,string login, string senha,DateTime dataAdmissao,Decimal salario,bool ehAdmin) : base(nome,endereco,email,telefone)
+        {
+            Login = login;
+            Senha = senha;
+            DataAdmissao = dataAdmissao;
+            Salario = salario;
+            EhAdmin = ehAdmin;
+        }
+
         public override void Atualizar(Funcionario registro)
         {
             this.Nome = registro.Nome;

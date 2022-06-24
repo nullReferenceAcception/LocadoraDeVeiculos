@@ -21,7 +21,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                         (
                         NOME,
                         SALARIO,
-                        DATA_ADMISSAO,
+                        DATA_ADIMISSAO,
                         LOGIN,
                         SENHA,
                         TIPO_PERFIL,
