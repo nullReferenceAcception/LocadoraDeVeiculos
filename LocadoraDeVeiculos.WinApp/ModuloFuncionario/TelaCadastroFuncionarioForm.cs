@@ -1,13 +1,6 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
@@ -21,25 +14,24 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             set
             {
                 _funcionario = value!;
-                textBoxNome.Text = _funcionario.Nome;
-                textBoxLogin.Text = _funcionario.Login;
-                textBoxSalario.Text = Convert.ToDecimal(_funcionario.Salario).ToString();
-                textBoxSenha.Text = _funcionario.Senha;
-                if(_funcionario.DataAdmissao > DateTime.MinValue)
-                    dateTimePickerDataAdmissao.Value = _funcionario.DataAdmissao;
-                radioButtonAdmin.Checked = _funcionario.EhAdmin == true ? radioButtonAdmin.Checked : radioButtonFuncionario.Checked;
+                ConfigurarTelaEditar();
             }
         }
+
         public TelaCadastroFuncionarioForm()
         {
             InitializeComponent();
             this.ConfigurarTela();
         }
+
         public Func<Funcionario, ValidationResult>? GravarRegistro { get; set; }
 
         private void buttonGravar_Click(object sender, EventArgs e)
         {
             Funcionario!.Nome = textBoxNome.Text;
+            Funcionario!.Email = textBoxEmail.Text;
+            Funcionario!.Telefone = textBoxTelefone.Text;
+            Funcionario!.Endereco = textBoxEndereco.Text;
             Funcionario!.Login = textBoxLogin.Text;
             Funcionario!.Senha = textBoxSenha.Text;
             Funcionario!.DataAdmissao = dateTimePickerDataAdmissao.Value;
@@ -53,6 +45,20 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
                 TelaPrincipalForm.Instancia!.AtualizarRodape(resultado.Errors[0].ErrorMessage);
                 DialogResult = DialogResult.None;
             }
+        }
+
+        private void ConfigurarTelaEditar()
+        {
+            textBoxNome.Text = _funcionario!.Nome;
+            textBoxEmail.Text = _funcionario.Email;
+            textBoxTelefone.Text = _funcionario.Telefone;
+            Funcionario!.Endereco = _funcionario.Endereco;
+            textBoxLogin.Text = _funcionario.Login;
+            textBoxSalario.Text = Convert.ToDecimal(_funcionario.Salario).ToString();
+            textBoxSenha.Text = _funcionario.Senha;
+            if (_funcionario.DataAdmissao > DateTime.MinValue)
+                dateTimePickerDataAdmissao.Value = _funcionario.DataAdmissao;
+            radioButtonAdmin.Checked = _funcionario.EhAdmin == true ? radioButtonAdmin.Checked : radioButtonFuncionario.Checked;
         }
     }
 }

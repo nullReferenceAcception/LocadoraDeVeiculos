@@ -43,23 +43,29 @@
             this.groupBoxEhAdmin = new System.Windows.Forms.GroupBox();
             this.radioButtonFuncionario = new System.Windows.Forms.RadioButton();
             this.radioButtonAdmin = new System.Windows.Forms.RadioButton();
+            this.labelEmail = new System.Windows.Forms.Label();
+            this.labelTelefone = new System.Windows.Forms.Label();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.textBoxTelefone = new System.Windows.Forms.TextBox();
+            this.labelEndereco = new System.Windows.Forms.Label();
+            this.textBoxEndereco = new System.Windows.Forms.TextBox();
             this.groupBoxEhAdmin.SuspendLayout();
             this.SuspendLayout();
             // 
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(314, 355);
+            this.button2.Location = new System.Drawing.Point(328, 334);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(67, 33);
-            this.button2.TabIndex = 11;
+            this.button2.TabIndex = 10;
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // labelNome
             // 
             this.labelNome.AutoSize = true;
-            this.labelNome.Location = new System.Drawing.Point(81, 36);
+            this.labelNome.Location = new System.Drawing.Point(81, 15);
             this.labelNome.Name = "labelNome";
             this.labelNome.Size = new System.Drawing.Size(43, 15);
             this.labelNome.TabIndex = 7;
@@ -68,26 +74,26 @@
             // buttonGravar
             // 
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonGravar.Location = new System.Drawing.Point(241, 355);
+            this.buttonGravar.Location = new System.Drawing.Point(255, 334);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
-            this.buttonGravar.TabIndex = 10;
+            this.buttonGravar.TabIndex = 9;
             this.buttonGravar.Text = "Gravar";
             this.buttonGravar.UseVisualStyleBackColor = true;
             this.buttonGravar.Click += new System.EventHandler(this.buttonGravar_Click);
             // 
             // textBoxNome
             // 
-            this.textBoxNome.Location = new System.Drawing.Point(148, 33);
+            this.textBoxNome.Location = new System.Drawing.Point(147, 12);
             this.textBoxNome.MaxLength = 255;
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(233, 23);
-            this.textBoxNome.TabIndex = 6;
+            this.textBoxNome.TabIndex = 0;
             // 
             // labelLogin
             // 
             this.labelLogin.AutoSize = true;
-            this.labelLogin.Location = new System.Drawing.Point(84, 76);
+            this.labelLogin.Location = new System.Drawing.Point(84, 131);
             this.labelLogin.Name = "labelLogin";
             this.labelLogin.Size = new System.Drawing.Size(40, 15);
             this.labelLogin.TabIndex = 9;
@@ -95,16 +101,16 @@
             // 
             // textBoxLogin
             // 
-            this.textBoxLogin.Location = new System.Drawing.Point(148, 73);
+            this.textBoxLogin.Location = new System.Drawing.Point(147, 128);
             this.textBoxLogin.MaxLength = 255;
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(143, 23);
-            this.textBoxLogin.TabIndex = 8;
+            this.textBoxLogin.TabIndex = 4;
             // 
             // labelSenha
             // 
             this.labelSenha.AutoSize = true;
-            this.labelSenha.Location = new System.Drawing.Point(84, 118);
+            this.labelSenha.Location = new System.Drawing.Point(82, 165);
             this.labelSenha.Name = "labelSenha";
             this.labelSenha.Size = new System.Drawing.Size(42, 15);
             this.labelSenha.TabIndex = 13;
@@ -112,24 +118,24 @@
             // 
             // textBoxSenha
             // 
-            this.textBoxSenha.Location = new System.Drawing.Point(148, 115);
+            this.textBoxSenha.Location = new System.Drawing.Point(147, 157);
             this.textBoxSenha.MaxLength = 255;
             this.textBoxSenha.Name = "textBoxSenha";
             this.textBoxSenha.PasswordChar = '°';
             this.textBoxSenha.Size = new System.Drawing.Size(175, 23);
-            this.textBoxSenha.TabIndex = 12;
+            this.textBoxSenha.TabIndex = 5;
             // 
             // dateTimePickerDataAdmissao
             // 
-            this.dateTimePickerDataAdmissao.Location = new System.Drawing.Point(148, 161);
+            this.dateTimePickerDataAdmissao.Location = new System.Drawing.Point(145, 186);
             this.dateTimePickerDataAdmissao.Name = "dateTimePickerDataAdmissao";
-            this.dateTimePickerDataAdmissao.Size = new System.Drawing.Size(233, 23);
-            this.dateTimePickerDataAdmissao.TabIndex = 14;
+            this.dateTimePickerDataAdmissao.Size = new System.Drawing.Size(235, 23);
+            this.dateTimePickerDataAdmissao.TabIndex = 6;
             // 
             // labelDataAdmissao
             // 
             this.labelDataAdmissao.AutoSize = true;
-            this.labelDataAdmissao.Location = new System.Drawing.Point(19, 167);
+            this.labelDataAdmissao.Location = new System.Drawing.Point(19, 192);
             this.labelDataAdmissao.Name = "labelDataAdmissao";
             this.labelDataAdmissao.Size = new System.Drawing.Size(105, 15);
             this.labelDataAdmissao.TabIndex = 15;
@@ -138,7 +144,7 @@
             // labelSalario
             // 
             this.labelSalario.AutoSize = true;
-            this.labelSalario.Location = new System.Drawing.Point(84, 207);
+            this.labelSalario.Location = new System.Drawing.Point(79, 218);
             this.labelSalario.Name = "labelSalario";
             this.labelSalario.Size = new System.Drawing.Size(45, 15);
             this.labelSalario.TabIndex = 17;
@@ -146,20 +152,20 @@
             // 
             // textBoxSalario
             // 
-            this.textBoxSalario.Location = new System.Drawing.Point(148, 204);
+            this.textBoxSalario.Location = new System.Drawing.Point(147, 215);
             this.textBoxSalario.MaxLength = 11;
             this.textBoxSalario.Name = "textBoxSalario";
-            this.textBoxSalario.Size = new System.Drawing.Size(96, 23);
-            this.textBoxSalario.TabIndex = 16;
+            this.textBoxSalario.Size = new System.Drawing.Size(110, 23);
+            this.textBoxSalario.TabIndex = 7;
             // 
             // groupBoxEhAdmin
             // 
             this.groupBoxEhAdmin.Controls.Add(this.radioButtonFuncionario);
             this.groupBoxEhAdmin.Controls.Add(this.radioButtonAdmin);
-            this.groupBoxEhAdmin.Location = new System.Drawing.Point(148, 245);
+            this.groupBoxEhAdmin.Location = new System.Drawing.Point(147, 244);
             this.groupBoxEhAdmin.Name = "groupBoxEhAdmin";
             this.groupBoxEhAdmin.Size = new System.Drawing.Size(175, 84);
-            this.groupBoxEhAdmin.TabIndex = 18;
+            this.groupBoxEhAdmin.TabIndex = 8;
             this.groupBoxEhAdmin.TabStop = false;
             this.groupBoxEhAdmin.Text = "Tipo de perfil:";
             // 
@@ -185,11 +191,68 @@
             this.radioButtonAdmin.Text = "Admin";
             this.radioButtonAdmin.UseVisualStyleBackColor = true;
             // 
+            // labelEmail
+            // 
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.Location = new System.Drawing.Point(80, 44);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(44, 15);
+            this.labelEmail.TabIndex = 19;
+            this.labelEmail.Text = "E-mail:";
+            // 
+            // labelTelefone
+            // 
+            this.labelTelefone.AutoSize = true;
+            this.labelTelefone.Location = new System.Drawing.Point(70, 73);
+            this.labelTelefone.Name = "labelTelefone";
+            this.labelTelefone.Size = new System.Drawing.Size(54, 15);
+            this.labelTelefone.TabIndex = 20;
+            this.labelTelefone.Text = "Telefone:";
+            // 
+            // textBoxEmail
+            // 
+            this.textBoxEmail.Location = new System.Drawing.Point(147, 41);
+            this.textBoxEmail.MaxLength = 255;
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(233, 23);
+            this.textBoxEmail.TabIndex = 1;
+            // 
+            // textBoxTelefone
+            // 
+            this.textBoxTelefone.Location = new System.Drawing.Point(147, 70);
+            this.textBoxTelefone.MaxLength = 255;
+            this.textBoxTelefone.Name = "textBoxTelefone";
+            this.textBoxTelefone.Size = new System.Drawing.Size(233, 23);
+            this.textBoxTelefone.TabIndex = 2;
+            // 
+            // labelEndereco
+            // 
+            this.labelEndereco.AutoSize = true;
+            this.labelEndereco.Location = new System.Drawing.Point(65, 102);
+            this.labelEndereco.Name = "labelEndereco";
+            this.labelEndereco.Size = new System.Drawing.Size(59, 15);
+            this.labelEndereco.TabIndex = 24;
+            this.labelEndereco.Text = "Endereço:";
+            // 
+            // textBoxEndereco
+            // 
+            this.textBoxEndereco.Location = new System.Drawing.Point(147, 99);
+            this.textBoxEndereco.MaxLength = 255;
+            this.textBoxEndereco.Name = "textBoxEndereco";
+            this.textBoxEndereco.Size = new System.Drawing.Size(143, 23);
+            this.textBoxEndereco.TabIndex = 3;
+            // 
             // TelaCadastroFuncionarioForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(403, 408);
+            this.ClientSize = new System.Drawing.Size(403, 377);
+            this.Controls.Add(this.labelEndereco);
+            this.Controls.Add(this.textBoxEndereco);
+            this.Controls.Add(this.textBoxTelefone);
+            this.Controls.Add(this.textBoxEmail);
+            this.Controls.Add(this.labelTelefone);
+            this.Controls.Add(this.labelEmail);
             this.Controls.Add(this.groupBoxEhAdmin);
             this.Controls.Add(this.labelSalario);
             this.Controls.Add(this.textBoxSalario);
@@ -229,5 +292,11 @@
         private System.Windows.Forms.GroupBox groupBoxEhAdmin;
         private System.Windows.Forms.RadioButton radioButtonFuncionario;
         private System.Windows.Forms.RadioButton radioButtonAdmin;
+        private System.Windows.Forms.Label labelEmail;
+        private System.Windows.Forms.Label labelTelefone;
+        private System.Windows.Forms.TextBox textBoxEmail;
+        private System.Windows.Forms.TextBox textBoxTelefone;
+        private System.Windows.Forms.Label labelEndereco;
+        private System.Windows.Forms.TextBox textBoxEndereco;
     }
 }

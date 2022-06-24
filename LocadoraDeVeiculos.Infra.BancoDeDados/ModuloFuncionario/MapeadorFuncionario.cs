@@ -15,10 +15,10 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
             cmdInserir.Parameters.AddWithValue("EMAIL", registro.Email == null ? DBNull.Value : registro.Email);
             cmdInserir.Parameters.AddWithValue("TELEFONE", registro.Telefone == null ? DBNull.Value : registro.Telefone);
             cmdInserir.Parameters.AddWithValue("LOGIN", registro.Login);
-            cmdInserir.Parameters.AddWithValue("TIPO_PERFIL", registro.EhAdmin);
+            cmdInserir.Parameters.AddWithValue("EH_ADMIN", registro.EhAdmin);
             cmdInserir.Parameters.AddWithValue("SENHA", registro.Senha); // TODO > Criptografar
             cmdInserir.Parameters.AddWithValue("DATA_ADMISSAO", registro.DataAdmissao);
-            cmdInserir.Parameters.AddWithValue("SALARIO", registro.Senha);
+            cmdInserir.Parameters.AddWithValue("SALARIO", registro.Salario);
         }
 
         public Funcionario ConverterParaRegistro(SqlDataReader leitorRegistro)
@@ -29,7 +29,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
             string email = leitorRegistro["EMAIL"].ToString()!;
             string telefone = leitorRegistro["TELEFONE"].ToString()!;
             string login = leitorRegistro["LOGIN"].ToString()!;
-            bool ehAdmin = Convert.ToBoolean(leitorRegistro["TIPO_PERFIL"]);
+            bool ehAdmin = Convert.ToBoolean(leitorRegistro["EH_ADMIN"]);
             DateTime dataAdmissao = Convert.ToDateTime(leitorRegistro["DATA_ADMISSAO"]);
             Decimal salario = Convert.ToDecimal(leitorRegistro["SALARIO"]);
 
