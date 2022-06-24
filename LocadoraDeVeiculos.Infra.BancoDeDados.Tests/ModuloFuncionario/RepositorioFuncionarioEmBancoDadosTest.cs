@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario;
@@ -90,7 +91,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             for (int i = 0; i < 10; i++)
             {
-                Funcionario registro = new("nome " + i.ToString(), "senha", "endereco", "telefone", "login", "senha", DateTime.Now, 12, true);
+                Funcionario registro = new("nome " + i.ToString(), "senha", "endereco", "telefone", "login", "senha", DateTime.Today, 12, true);
 
                 repositorio.Inserir(registro);
                 registros.Add(registro);
@@ -129,7 +130,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
         private Funcionario CriarFuncionario()
         {
-            return new("nome", "endereco", "email", "telefone", "login", "senha", DateTime.Now, 12, true);
+            return new("nome", "endereco", "email", "telefone", "login", "senha", DateTime.Today, 12, true);
         }
     }
 }

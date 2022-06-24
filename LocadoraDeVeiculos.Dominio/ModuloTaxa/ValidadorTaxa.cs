@@ -12,7 +12,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxa
     {
         public ValidadorTaxa()
         {
-             Regex regEx = new Regex("^[a-zA-Z0-9]*$");
+             Regex regEx = new Regex("^[a-z A-Z0-9]*$");
 
             RuleFor(x => x.Descricao)
                 .NotNull().NotEmpty().MinimumLength(2).Matches(regEx);

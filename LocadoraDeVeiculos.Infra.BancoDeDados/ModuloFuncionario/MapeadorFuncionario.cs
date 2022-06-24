@@ -32,6 +32,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
             bool ehAdmin = Convert.ToBoolean(leitorRegistro["EH_ADMIN"]);
             DateTime dataAdmissao = Convert.ToDateTime(leitorRegistro["DATA_ADMISSAO"]);
             Decimal salario = Convert.ToDecimal(leitorRegistro["SALARIO"]);
+            string senha = Convert.ToString(leitorRegistro["SENHA"]);
 
             var funcionario = new Funcionario();
 
@@ -44,6 +45,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
             funcionario.DataAdmissao = dataAdmissao;
             funcionario.Salario = salario;
             funcionario.EhAdmin = ehAdmin;
+            funcionario.Senha = senha;
 
             return funcionario;
         }

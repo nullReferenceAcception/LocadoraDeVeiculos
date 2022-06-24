@@ -68,7 +68,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                 @"DELETE FROM
                     TB_FUNCIONARIO
                 WHERE
-                    ID_FUNCIONARIO = @ID_FUNCIONARIO";
+                    ID_FUNCIONARIO = @ID";
         }
 
         protected override string sqlSelecionarTodos
