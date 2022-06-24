@@ -21,6 +21,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         public TelaCadastroTaxaForm()
         {
             InitializeComponent();
+            this.ConfigurarTela();
         }
 
         public Func<Taxa, ValidationResult>? GravarRegistro { get; set; }

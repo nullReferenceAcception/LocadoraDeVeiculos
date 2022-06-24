@@ -1,31 +1,21 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 {
     public class RepositorioTaxa : RepositorioBaseEmBancoDeDados<Taxa,ValidadorTaxa,MapeadorTaxa>, IRepositorioTaxa
     {
-
-        
-
         public RepositorioTaxa() : base(new ValidadorTaxa(), new MapeadorTaxa())
         {
             
         }
 
-
         #region Sql Queries
 
         protected override string sqlInserir
         {
-
             get =>
             @"INSERT
 	            INTO
@@ -90,7 +80,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 
         #endregion
 
-        
         protected override ValidationResult MandarSQLParaValidador(Taxa registro, SqlConnection conexaoComBanco)
         {
             return Validar("SELECT * FROM TB_TAXA WHERE ([DESCRICAO] = '" + registro.Descricao + "')", registro, conexaoComBanco);

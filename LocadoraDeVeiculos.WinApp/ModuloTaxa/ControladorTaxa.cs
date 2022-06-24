@@ -17,6 +17,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         public override void Inserir()
         {
             TelaCadastroTaxaForm tela = new();
+
             tela.Taxa = new();
 
             tela.GravarRegistro = _repositorioTaxa.Inserir;

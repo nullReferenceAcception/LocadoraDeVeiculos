@@ -50,7 +50,6 @@
             this.taxasMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionariosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
-            this.panelRegistros.SuspendLayout();
             this.toolbox.SuspendLayout();
             this.menu.SuspendLayout();
             this.SuspendLayout();
@@ -60,9 +59,9 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.labelRodape});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 363);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 451);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(801, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -74,11 +73,10 @@
             // 
             // panelRegistros
             // 
-            this.panelRegistros.Controls.Add(this.statusStrip1);
             this.panelRegistros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelRegistros.Location = new System.Drawing.Point(0, 65);
             this.panelRegistros.Name = "panelRegistros";
-            this.panelRegistros.Size = new System.Drawing.Size(800, 385);
+            this.panelRegistros.Size = new System.Drawing.Size(801, 408);
             this.panelRegistros.TabIndex = 7;
             // 
             // toolbox
@@ -99,7 +97,7 @@
             this.labelTipoCadastro});
             this.toolbox.Location = new System.Drawing.Point(0, 24);
             this.toolbox.Name = "toolbox";
-            this.toolbox.Size = new System.Drawing.Size(800, 41);
+            this.toolbox.Size = new System.Drawing.Size(801, 41);
             this.toolbox.TabIndex = 6;
             this.toolbox.Text = "toolStrip1";
             // 
@@ -203,7 +201,7 @@
             this.cadastrosToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(800, 24);
+            this.menu.Size = new System.Drawing.Size(801, 24);
             this.menu.TabIndex = 5;
             this.menu.Text = "menuStrip1";
             // 
@@ -254,7 +252,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(801, 473);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panelRegistros);
             this.Controls.Add(this.toolbox);
             this.Controls.Add(this.menu);
@@ -262,8 +261,6 @@
             this.Text = "TelaPrincipalForm";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.panelRegistros.ResumeLayout(false);
-            this.panelRegistros.PerformLayout();
             this.toolbox.ResumeLayout(false);
             this.toolbox.PerformLayout();
             this.menu.ResumeLayout(false);
