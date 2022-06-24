@@ -10,20 +10,14 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxa
 {
     public class ValidadorTaxa : AbstractValidator<Taxa>
     {
-    
         public ValidadorTaxa()
         {
              Regex regEx = new Regex("^[a-z A-Z0-9]*$");
 
             RuleFor(x => x.Descricao)
-                .NotNull().NotEmpty().MinimumLength(3).Matches(regEx);
+                .NotNull().NotEmpty().MinimumLength(2).Matches(regEx);
             RuleFor(x => x.Valor)
                 .NotNull().NotEmpty().GreaterThan(0);
-
         }
-
-        
-
-
     }
 }

@@ -17,6 +17,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         public override void Inserir()
         {
             TelaCadastroTaxaForm tela = new();
+
             tela.Taxa = new();
 
             tela.GravarRegistro = _repositorioTaxa.Inserir;
@@ -58,7 +59,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             if (taxaSelecionada == null)
             {
-                MessageBox.Show("Selecione uma taxa primeiro!", "Edição de Taxas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Selecione uma taxa primeiro!", "Exclusão de Taxa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 

@@ -1,6 +1,8 @@
 ﻿using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa;
 using LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo;
+using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
 using LocadoraDeVeiculos.WinApp.ModuloTaxa;
 using System;
 using System.Collections.Generic;
@@ -23,6 +25,8 @@ namespace LocadoraDeVeiculos.WinApp
             labelTipoCadastro.Text = string.Empty;
 
             InicializarControladores();
+
+            this.ConfigurarTela();
         }
 
         public static TelaPrincipalForm? Instancia
@@ -127,6 +131,7 @@ namespace LocadoraDeVeiculos.WinApp
         private void InicializarControladores()
         {
             RepositorioTaxa repositorioTaxa = new();
+            RepositorioFuncionario repositorioFuncionario = new();
 
             RepositorioGrupoVeiculos repositorioGrupoVeiculos = new();
 
@@ -135,6 +140,7 @@ namespace LocadoraDeVeiculos.WinApp
             controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa));
 
             controladores.Add("Grupos de Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos));
+            controladores.Add("Funcionários", new ControladorFuncionario(repositorioFuncionario));
         }
         public void AtualizarRodape(string mensagem)
         {

@@ -55,6 +55,7 @@
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // 
             // toolbox
             // 
             this.toolbox.Enabled = false;
@@ -176,8 +177,8 @@
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastrosToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
-            this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(881, 24);
+            this.menu.Size = new System.Drawing.Size(800, 24);
             this.menu.TabIndex = 5;
             this.menu.Text = "menuStrip1";
             // 
@@ -259,14 +260,14 @@
             // TelaPrincipalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(881, 510);
             this.Controls.Add(this.statusStrip1);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panelRegistros);
             this.Controls.Add(this.toolbox);
             this.Controls.Add(this.menu);
             this.Name = "TelaPrincipalForm";
-            this.Text = "TelaPrincipalForm";
+            this.panelRegistros.PerformLayout();
             this.toolbox.ResumeLayout(false);
             this.toolbox.PerformLayout();
             this.menu.ResumeLayout(false);
