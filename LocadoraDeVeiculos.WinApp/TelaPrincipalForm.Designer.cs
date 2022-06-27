@@ -128,6 +128,7 @@
             this.btnVisualizar.Name = "btnVisualizar";
             this.btnVisualizar.Padding = new System.Windows.Forms.Padding(5);
             this.btnVisualizar.Size = new System.Drawing.Size(38, 38);
+            this.btnVisualizar.Click += new System.EventHandler(this.btnVisualizar_Click);
             // 
             // toolStripSeparator3
             // 
@@ -143,6 +144,7 @@
             this.btnGerarPdf.Name = "btnGerarPdf";
             this.btnGerarPdf.Padding = new System.Windows.Forms.Padding(5);
             this.btnGerarPdf.Size = new System.Drawing.Size(38, 38);
+            this.btnGerarPdf.Click += new System.EventHandler(this.btnGerarPdf_Click);
             // 
             // toolStripSeparator1
             // 
@@ -158,6 +160,7 @@
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Padding = new System.Windows.Forms.Padding(5);
             this.btnFiltrar.Size = new System.Drawing.Size(38, 38);
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // toolStripSeparator4
             // 
@@ -199,7 +202,7 @@
             this.clientesMenuItem.Name = "clientesMenuItem";
             this.clientesMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.clientesMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.clientesMenuItem.Text = "Cilentes";
+            this.clientesMenuItem.Text = "Clientes";
             this.clientesMenuItem.Click += new System.EventHandler(this.clientesMenuItem_Click);
             // 
             // gruposDeVeiculosMenuItem
@@ -263,6 +266,7 @@
             this.ClientSize = new System.Drawing.Size(881, 510);
             this.Controls.Add(this.statusStrip1);
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panelRegistros);
             this.Controls.Add(this.toolbox);
             this.Controls.Add(this.menu);

@@ -1,6 +1,9 @@
-﻿using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
+﻿using LocadoraDeVeiculos.Dominio.ModuloTaxa;
+using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente;
+using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa;
+using LocadoraDeVeiculos.WinApp.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
 using LocadoraDeVeiculos.WinApp.ModuloTaxa;
@@ -130,12 +133,19 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void InicializarControladores()
         {
+            //exemplos
+            //  IRepositorioMateria repositorioMateria = new RepositorioMateriaEmArquivo(contextoDados);
             RepositorioTaxa repositorioTaxa = new();
             RepositorioFuncionario repositorioFuncionario = new();
 
             RepositorioGrupoVeiculos repositorioGrupoVeiculos = new();
 
+            RepositorioCliente repositorioCliente = new();
+
+
             controladores = new Dictionary<string, ControladorBase>();
+
+            controladores.Add("Clientes", new ControladorCliente(repositorioCliente));
 
             controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa));
 

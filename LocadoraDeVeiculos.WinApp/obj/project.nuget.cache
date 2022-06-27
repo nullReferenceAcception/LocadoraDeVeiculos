@@ -1,5 +1,6 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "hej+Hp0mtb1BB5W+iIki/X9Fbqfhg3PjB+dCQXbp1a5gxTQkVPkzYWxxW7nzodn/peTO/LOEnEs9KoHULStmeA==",
   "success": true,
   "projectFilePath": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj",
@@ -14,6 +15,22 @@
     "C:\\Users\\jose\\.nuget\\packages\\system.data.sqlclient\\4.8.3\\system.data.sqlclient.4.8.3.nupkg.sha512",
     "C:\\Users\\jose\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\jose\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
+=======
+  "dgSpecHash": "CCbZnpAmmWKovr+o0A6S12717jkzatlYYSQct01T8sV79nROfDAtzd7PWR9EybWt4zKDbqQ8fBdJtu+rL+Sxzg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\vitor\\.nuget\\packages\\fluentvalidation\\11.1.0\\fluentvalidation.11.1.0.nupkg.sha512",
+    "C:\\Users\\vitor\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\vitor\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\vitor\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
+    "C:\\Users\\vitor\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\vitor\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\vitor\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\vitor\\.nuget\\packages\\system.data.sqlclient\\4.8.3\\system.data.sqlclient.4.8.3.nupkg.sha512",
+    "C:\\Users\\vitor\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
+    "C:\\Users\\vitor\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
+>>>>>>> feature/CadastroCliente
   ],
   "logs": []
 }
