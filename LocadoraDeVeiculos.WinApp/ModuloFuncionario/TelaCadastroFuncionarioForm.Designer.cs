@@ -239,7 +239,7 @@
             this.maskedTextBoxTelefone.Mask = "(00) 90000-0000";
             this.maskedTextBoxTelefone.Name = "maskedTextBoxTelefone";
             this.maskedTextBoxTelefone.Size = new System.Drawing.Size(100, 23);
-            this.maskedTextBoxTelefone.TabIndex = 25;
+            this.maskedTextBoxTelefone.TabIndex = 2;
             this.maskedTextBoxTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // TelaCadastroFuncionarioForm

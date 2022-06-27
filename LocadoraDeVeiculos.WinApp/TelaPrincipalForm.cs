@@ -133,24 +133,17 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void InicializarControladores()
         {
-            //exemplos
-            //  IRepositorioMateria repositorioMateria = new RepositorioMateriaEmArquivo(contextoDados);
             RepositorioTaxa repositorioTaxa = new();
             RepositorioFuncionario repositorioFuncionario = new();
-
             RepositorioGrupoVeiculos repositorioGrupoVeiculos = new();
-
             RepositorioCliente repositorioCliente = new();
-
 
             controladores = new Dictionary<string, ControladorBase>();
 
-            controladores.Add("Clientes", new ControladorCliente(repositorioCliente));
-
             controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa));
-
-            controladores.Add("Grupos de Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos));
             controladores.Add("Funcionários", new ControladorFuncionario(repositorioFuncionario));
+            controladores.Add("Grupos de Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos));
+            controladores.Add("Clientes", new ControladorCliente(repositorioCliente));
         }
         public void AtualizarRodape(string mensagem)
         {
