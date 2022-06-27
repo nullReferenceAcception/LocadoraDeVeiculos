@@ -30,7 +30,7 @@
         {
             this.textBoxNome = new System.Windows.Forms.TextBox();
             this.groupBoxGrupoVeiculo = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonCancelar = new System.Windows.Forms.Button();
             this.labelDescricao = new System.Windows.Forms.Label();
             this.buttonGravar = new System.Windows.Forms.Button();
             this.textBoxName = new System.Windows.Forms.TextBox();
@@ -47,7 +47,7 @@
             // 
             // groupBoxGrupoVeiculo
             // 
-            this.groupBoxGrupoVeiculo.Controls.Add(this.button2);
+            this.groupBoxGrupoVeiculo.Controls.Add(this.buttonCancelar);
             this.groupBoxGrupoVeiculo.Controls.Add(this.labelDescricao);
             this.groupBoxGrupoVeiculo.Controls.Add(this.buttonGravar);
             this.groupBoxGrupoVeiculo.Controls.Add(this.textBoxName);
@@ -59,15 +59,15 @@
             this.groupBoxGrupoVeiculo.TabStop = false;
             this.groupBoxGrupoVeiculo.Text = "Dados de Grupo de veiculo:";
             // 
-            // button2
+            // buttonCancelar
             // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(160, 91);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(67, 33);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancelar.Location = new System.Drawing.Point(160, 91);
+            this.buttonCancelar.Name = "buttonCancelar";
+            this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
+            this.buttonCancelar.TabIndex = 5;
+            this.buttonCancelar.Text = "Cancelar";
+            this.buttonCancelar.UseVisualStyleBackColor = true;
             // 
             // labelDescricao
             // 
@@ -117,7 +117,7 @@
 
         private System.Windows.Forms.TextBox textBoxNome;
         private System.Windows.Forms.GroupBox groupBoxGrupoVeiculo;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.Label labelDescricao;
         private System.Windows.Forms.Button buttonGravar;
         private System.Windows.Forms.TextBox textBoxName;

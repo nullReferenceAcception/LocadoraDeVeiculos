@@ -1,21 +1,18 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 {
     public partial class TelaCadastroClienteForm : Form
     {
-
         private Cliente? _cliente;
+
+        public TelaCadastroClienteForm()
+        {
+            InitializeComponent();
+        }
 
         public Cliente? cliente
         {
@@ -26,6 +23,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 ConfigurarTelaEditar();
             }
         }
+
+        public Func<Cliente, ValidationResult>? GravarRegistro { get; set; }
 
         private void ConfigurarTelaEditar()
         {
@@ -49,11 +48,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             }
         }
 
-        public TelaCadastroClienteForm()
-        {
-            InitializeComponent();
-        }
-
         private void radioCPFbtn_CheckedChanged(object sender, EventArgs e)
         {
             textBoxCNH.Enabled = true;
@@ -61,7 +55,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             maskedTextBoxCNPJ.Enabled = false;
             maskedTextBoxCNPJ.Clear();
             maskedTextBoxCPF.Focus();
-
         }
 
         private void radioCNPJbtn_CheckedChanged(object sender, EventArgs e)
@@ -74,10 +67,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             textBoxCNH.Clear();
         }
 
-        public Func<Cliente, ValidationResult>? GravarRegistro { get; set; }
-
-       
-
         private void btnGravar_Click(object sender, EventArgs e)
         {
             _cliente!.Nome = textBoxNome.Text;
@@ -89,16 +78,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             _cliente.Telefone = maskedTextBoxTelefone.Text;
             _cliente.PessoaFisica = radioButtonCPF.Checked == true ? _cliente.PessoaFisica = true : _cliente.PessoaFisica = false;
 
-
             if (_cliente.PessoaFisica)
-                _cliente.CNPJ = null;
+                _cliente.CNPJ = null!;
 
             else
-                _cliente.CPF = null;
+                _cliente.CPF = null!;
 
             var resultadoValidacao = GravarRegistro!(_cliente);
-
-
 
             if (!resultadoValidacao.IsValid)
             {
