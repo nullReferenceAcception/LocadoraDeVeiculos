@@ -94,7 +94,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             _tabelaTaxas!.AtualizarRegistros(taxas);
 
-            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {taxas.Count} taxas");
+            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {taxas.Count} {(taxas.Count == 1 ? "taxa" : "taxas")}");
         }
     }
 }

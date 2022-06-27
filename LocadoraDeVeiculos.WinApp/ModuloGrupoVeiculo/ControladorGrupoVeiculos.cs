@@ -94,7 +94,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 
             tabela!.AtualizarRegistros(registros);
 
-            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {registros.Count} grupo de veiculos");
+            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {registros.Count} {(registros.Count == 1 ? "grupo de veículos" : "grupos de veículos")}");
         }
     }
 }

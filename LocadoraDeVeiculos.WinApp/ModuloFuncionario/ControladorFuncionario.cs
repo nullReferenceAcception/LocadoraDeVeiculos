@@ -94,7 +94,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             _tabelaFuncionario!.AtualizarRegistros(funcionarios);
 
-            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {funcionarios.Count} funcionários");
+            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {funcionarios.Count} {(funcionarios.Count == 1 ? "funcionário" : "funcionários")}");
         }
     }
 }

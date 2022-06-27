@@ -94,7 +94,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             _tabelaCliente!.AtualizarRegistros(clientes);
 
-            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {clientes.Count} clientes");
+            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {clientes.Count} {(clientes.Count == 1 ? "cliente" : "clientes")}");
         }
     }
 }
