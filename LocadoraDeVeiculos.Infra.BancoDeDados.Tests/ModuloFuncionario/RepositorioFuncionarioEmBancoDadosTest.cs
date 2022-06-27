@@ -87,7 +87,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
         }
 
         [TestMethod]
-        public void Nao_Deve_inserir_Funcionario_duplicada()
+        public void Nao_Deve_inserir_Funcionario_Com_Nome_duplicada()
         {
             Funcionario registro = CriarFuncionario();
 
@@ -101,6 +101,26 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             validationResult.Errors[0].ErrorMessage.Should().Contain("Nome já está cadastrado");
         }
+        [TestMethod]
+        public void Nao_Deve_inserir_Funcionario_Com_Login_duplicada()
+        {
+            Funcionario registro = CriarFuncionario();
+
+            repositorio.Inserir(registro);
+
+            Funcionario registro2 = CriarFuncionario();
+
+            registro2.Nome = "asjkdhasjkdh";
+
+            registro2.Login = registro.Login;
+
+            ValidationResult validationResult = repositorio.Inserir(registro2);
+
+            validationResult.Errors[0].ErrorMessage.Should().Contain("Login já está cadastrado");
+        }
+
+
+
 
         private Funcionario CriarFuncionario()
         {
