@@ -46,9 +46,9 @@
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelTelefone = new System.Windows.Forms.Label();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.textBoxTelefone = new System.Windows.Forms.TextBox();
             this.labelEndereco = new System.Windows.Forms.Label();
             this.textBoxEndereco = new System.Windows.Forms.TextBox();
+            this.maskedTextBoxTelefone = new System.Windows.Forms.MaskedTextBox();
             this.groupBoxEhAdmin.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -216,14 +216,6 @@
             this.textBoxEmail.Size = new System.Drawing.Size(233, 23);
             this.textBoxEmail.TabIndex = 1;
             // 
-            // textBoxTelefone
-            // 
-            this.textBoxTelefone.Location = new System.Drawing.Point(147, 70);
-            this.textBoxTelefone.MaxLength = 255;
-            this.textBoxTelefone.Name = "textBoxTelefone";
-            this.textBoxTelefone.Size = new System.Drawing.Size(233, 23);
-            this.textBoxTelefone.TabIndex = 2;
-            // 
             // labelEndereco
             // 
             this.labelEndereco.AutoSize = true;
@@ -241,14 +233,23 @@
             this.textBoxEndereco.Size = new System.Drawing.Size(143, 23);
             this.textBoxEndereco.TabIndex = 3;
             // 
+            // maskedTextBoxTelefone
+            // 
+            this.maskedTextBoxTelefone.Location = new System.Drawing.Point(147, 70);
+            this.maskedTextBoxTelefone.Mask = "(00) 90000-0000";
+            this.maskedTextBoxTelefone.Name = "maskedTextBoxTelefone";
+            this.maskedTextBoxTelefone.Size = new System.Drawing.Size(100, 23);
+            this.maskedTextBoxTelefone.TabIndex = 25;
+            this.maskedTextBoxTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
             // TelaCadastroFuncionarioForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(403, 377);
+            this.Controls.Add(this.maskedTextBoxTelefone);
             this.Controls.Add(this.labelEndereco);
             this.Controls.Add(this.textBoxEndereco);
-            this.Controls.Add(this.textBoxTelefone);
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.labelTelefone);
             this.Controls.Add(this.labelEmail);
@@ -294,8 +295,8 @@
         private System.Windows.Forms.Label labelEmail;
         private System.Windows.Forms.Label labelTelefone;
         private System.Windows.Forms.TextBox textBoxEmail;
-        private System.Windows.Forms.TextBox textBoxTelefone;
         private System.Windows.Forms.Label labelEndereco;
         private System.Windows.Forms.TextBox textBoxEndereco;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxTelefone;
     }
 }

@@ -30,7 +30,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         {
             Funcionario!.Nome = textBoxNome.Text;
             Funcionario!.Email = textBoxEmail.Text;
-            Funcionario!.Telefone = textBoxTelefone.Text;
+            Funcionario!.Telefone = maskedTextBoxTelefone.Text;
             Funcionario!.Endereco = textBoxEndereco.Text;
             Funcionario!.Login = textBoxLogin.Text;
             Funcionario!.Senha = textBoxSenha.Text;
@@ -51,11 +51,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         {
             textBoxNome.Text = _funcionario!.Nome;
             textBoxEmail.Text = _funcionario.Email;
-            textBoxTelefone.Text = _funcionario.Telefone;
+            maskedTextBoxTelefone.Text = _funcionario.Telefone;
             textBoxEndereco.Text = _funcionario.Endereco;
             textBoxLogin.Text = _funcionario.Login;
             textBoxSalario.Text = Convert.ToDecimal(_funcionario.Salario).ToString();
             textBoxSenha.Text = _funcionario.Senha;
+
             if (_funcionario.DataAdmissao > DateTime.MinValue)
                 dateTimePickerDataAdmissao.Value = _funcionario.DataAdmissao;
 
