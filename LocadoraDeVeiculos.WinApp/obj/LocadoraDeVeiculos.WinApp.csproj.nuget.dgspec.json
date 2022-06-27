@@ -1,7 +1,12 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj": {}
+=======
+<<<<<<< HEAD
+    "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj": {}
+>>>>>>> 396a94ce4886b9711e22855f780f092a3718f43d
   },
   "projects": {
     "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj": {
@@ -14,7 +19,27 @@
         "outputPath": "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "C:\\Users\\jose\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+    "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj",
+        "projectName": "LocadoraDeVeiculos.Dominio",
+        "projectPath": "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj",
+        "packagesPath": "C:\\Users\\vitor\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\vitor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> feature/CadastroCliente
+>>>>>>> 396a94ce4886b9711e22855f780f092a3718f43d
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -60,7 +85,12 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+=======
+<<<<<<< HEAD
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
+>>>>>>> 396a94ce4886b9711e22855f780f092a3718f43d
         }
       }
     },
@@ -74,7 +104,28 @@
         "outputPath": "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "C:\\Users\\jose\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj",
+        "projectName": "LocadoraDeVeiculos.Infra.BancoDeDados",
+        "projectPath": "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj",
+        "packagesPath": "C:\\Users\\vitor\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\vitor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> feature/CadastroCliente
+>>>>>>> 396a94ce4886b9711e22855f780f092a3718f43d
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -88,8 +139,18 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
+<<<<<<< HEAD
               "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj": {
                 "projectPath": "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj"
+=======
+<<<<<<< HEAD
+              "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj": {
+                "projectPath": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj"
+=======
+              "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj": {
+                "projectPath": "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj"
+>>>>>>> feature/CadastroCliente
+>>>>>>> 396a94ce4886b9711e22855f780f092a3718f43d
               }
             }
           }
@@ -128,7 +189,12 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+=======
+<<<<<<< HEAD
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
+>>>>>>> 396a94ce4886b9711e22855f780f092a3718f43d
         }
       }
     },
@@ -142,7 +208,28 @@
         "outputPath": "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "C:\\Users\\jose\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj",
+        "projectName": "LocadoraDeVeiculos.WinApp",
+        "projectPath": "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj",
+        "packagesPath": "C:\\Users\\vitor\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\vitor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> feature/CadastroCliente
+>>>>>>> 396a94ce4886b9711e22855f780f092a3718f43d
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -156,11 +243,27 @@
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
             "projectReferences": {
+<<<<<<< HEAD
               "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj": {
                 "projectPath": "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj"
               },
               "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj": {
                 "projectPath": "C:\\Users\\marco\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj"
+=======
+<<<<<<< HEAD
+              "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj": {
+                "projectPath": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj"
+              },
+              "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj": {
+                "projectPath": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj"
+=======
+              "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj": {
+                "projectPath": "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj"
+              },
+              "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj": {
+                "projectPath": "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj"
+>>>>>>> feature/CadastroCliente
+>>>>>>> 396a94ce4886b9711e22855f780f092a3718f43d
               }
             }
           }
@@ -198,7 +301,15 @@
               "privateAssets": "none"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+=======
+<<<<<<< HEAD
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+>>>>>>> feature/CadastroCliente
+>>>>>>> 396a94ce4886b9711e22855f780f092a3718f43d
         }
       }
     }

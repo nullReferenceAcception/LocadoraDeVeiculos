@@ -7,6 +7,12 @@
     <Compile Update="ModuloFuncionario\TelaCadastroFuncionarioForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ModuloCliente\TabelaClienteControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ModuloCliente\TelaCadastroClienteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ModuloGrupoVeiculo\TabelaGrupoVeiculoControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
