@@ -26,7 +26,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
             RuleFor(x => x.Senha)
                 .NotNull().NotEmpty();
             RuleFor(x => x.DataAdmissao)
-                .NotNull().NotEmpty().GreaterThan(DateTime.MinValue);
+                .NotNull().NotEmpty().GreaterThan(DateTime.MinValue).LessThan(DateTime.Today);
             RuleFor(x => x.Salario)
                 .NotNull().NotEmpty().GreaterThan(0);
         }

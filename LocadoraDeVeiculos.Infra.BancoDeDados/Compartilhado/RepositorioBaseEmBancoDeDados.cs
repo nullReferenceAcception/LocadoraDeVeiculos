@@ -1,13 +1,9 @@
-﻿
-using FluentValidation;
+﻿using FluentValidation;
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 {
@@ -36,7 +32,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
         TMapeamento mapeador;
         #endregion
 
-
         #region construtor
         public RepositorioBaseEmBancoDeDados(AbstractValidator<T> validationRules, IMapeavel<T> mapeavel)
         {
@@ -56,11 +51,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             if (resultadoValidacao.IsValid == false)
                 return resultadoValidacao;
 
-
             SqlCommand cmdInserir = new SqlCommand(sqlInserir, conexao);
 
             mapeador.ConfigurarParametrosRegistro(registro, cmdInserir);
-          
 
             var ID = cmdInserir.ExecuteScalar();
 
@@ -77,9 +70,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             if (resultadoValidacao.IsValid == false)
                 return resultadoValidacao;
 
-
             var sqlCommand = new SqlCommand(sql, conexaoComBanco);
-
 
             SqlDataReader reader = sqlCommand.ExecuteReader();
             if (reader.HasRows)
@@ -88,25 +79,19 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             reader.Close();
             reader.Dispose();
 
-
             return resultadoValidacao;
         }
        
 
         public ValidationResult Editar(T registro)
         {
-
             SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
             conexaoComBanco.Open();
 
-
-
             ValidationResult resultadoValidacao = MandarSQLParaValidador(registro, conexaoComBanco);
-
 
             if (resultadoValidacao.IsValid == false)
                 return resultadoValidacao;
-
 
             SqlCommand comandoEdicao = new SqlCommand(sqlEditar, conexaoComBanco);
 
@@ -162,7 +147,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             while (leitorRegistro.Read())
             {
                 T registro = mapeador.ConverterParaRegistro(leitorRegistro);
-
                 registros.Add(registro);
             }
 
@@ -182,7 +166,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             conexaoComBanco.Open();
             SqlDataReader leitorRegistro = comandoSelecao.ExecuteReader();
 
-            T registro = null;
+            T registro = null!;
+
             if (leitorRegistro.Read())
                 registro = mapeador.ConverterParaRegistro(leitorRegistro);
 
@@ -190,6 +175,5 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 
             return registro;
         }
-
     }
 }
