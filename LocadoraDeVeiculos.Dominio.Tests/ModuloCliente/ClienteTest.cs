@@ -100,7 +100,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
         [TestMethod]
         public void Nao_Deve_inserir_cnpj_invalido()
         {
-            Cliente cliente = new("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "(49)98909-0909", true, "09876543211", "1234567889879");
+            Cliente cliente = new("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", false, "09876543211", "1234567889879");
             cliente.Id = 1;
             cliente.CNPJ = "111";
 

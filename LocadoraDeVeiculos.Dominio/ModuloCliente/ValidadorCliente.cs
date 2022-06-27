@@ -13,7 +13,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
         Cliente c;
         public ValidadorCliente()
         {
-            Regex regEx = new Regex("^[0-9]{2}([0-9]{8}|[0-9]{9})");
+            Regex regEx = new Regex("^[1-9]{2}[0-9]{4,5}[0-9]{4}$");
 
             RuleFor(x => x.Telefone)
                 .NotNull().NotEmpty().Matches(regEx);
