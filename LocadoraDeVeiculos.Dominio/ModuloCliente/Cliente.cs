@@ -1,9 +1,4 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 {
@@ -19,6 +14,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
         {
 
         }
+
         public Cliente(string nome, string endereco, string cnh, string email, string telefone, bool pessoafisica, string cpf, string cnpj)
         {
             Nome = nome;
@@ -56,7 +52,5 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
                    CPF == cliente.CPF &&
                    CNPJ == cliente.CNPJ;
         }
-
-        
     }
 }

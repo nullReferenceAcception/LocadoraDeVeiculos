@@ -41,7 +41,7 @@ namespace LocadoraDeVeiculos.Dominio
         {
             var field = enumValue.GetType().GetField(enumValue.ToString());
             
-            if (Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) is DescriptionAttribute attribute)            
+            if (Attribute.GetCustomAttribute(field!, typeof(DescriptionAttribute)) is DescriptionAttribute attribute)            
                 return attribute.Description;            
 
             return "Anotação não informada";

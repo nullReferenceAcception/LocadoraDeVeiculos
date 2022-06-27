@@ -10,11 +10,11 @@
 
         public abstract string TooltipExcluir { get; }
 
-        public virtual string TooltipFiltrar { get; }
+        public virtual string? TooltipFiltrar { get; }
 
-        public virtual string TooltipGerarPdf { get; }
+        public virtual string? TooltipGerarPdf { get; }
 
-        public virtual string TooltipVisualizar { get; }
+        public virtual string? TooltipVisualizar { get; }
 
         public virtual bool InserirHabilitado { get { return true; } }
 
