@@ -6,18 +6,8 @@
       "version": "5.0.0"
     },
     "additionalProbingPaths": [
-<<<<<<< HEAD
       "C:\\Users\\marco\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\marco\\.nuget\\packages"
-=======
-<<<<<<< HEAD
-      "C:\\Users\\jose\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\jose\\.nuget\\packages"
-=======
-      "C:\\Users\\vitor\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\vitor\\.nuget\\packages"
->>>>>>> feature/CadastroCliente
->>>>>>> 396a94ce4886b9711e22855f780f092a3718f43d
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true
