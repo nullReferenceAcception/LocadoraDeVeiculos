@@ -113,7 +113,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
 
         protected override ValidationResult MandarSQLParaValidador(Funcionario registro, SqlConnection conexaoComBanco)
         {
-            return Validar("SELECT * FROM TB_FUNCIONARIO WHERE ([NOME] = '" + registro.Nome + "')", registro, conexaoComBanco);
+            return Validar("SELECT * FROM TB_FUNCIONARIO WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_FUNCIONARIO] != {registro.Id}", registro, conexaoComBanco);
         }
     }
 }

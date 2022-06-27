@@ -78,7 +78,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
 
         protected override ValidationResult MandarSQLParaValidador(GrupoVeiculos registro, SqlConnection conexaoComBanco)
         {
-            return Validar("SELECT * FROM TB_GRUPO_VEICULO WHERE ([NOME] = '" + registro.Nome + "')", registro, conexaoComBanco);
+            return Validar("SELECT * FROM TB_GRUPO_VEICULO WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_GRUPO_VEICULO] != {registro.Id}", registro, conexaoComBanco);
         }
     }
 }

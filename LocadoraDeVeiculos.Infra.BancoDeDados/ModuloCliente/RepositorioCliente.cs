@@ -101,7 +101,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
 
         protected override ValidationResult MandarSQLParaValidador(Cliente registro, SqlConnection conexaoComBanco)
         {
-            return Validar("SELECT * FROM TB_CLIENTE WHERE ([NOME] = '" + registro.Nome + "')", registro, conexaoComBanco);
+            return Validar("SELECT * FROM TB_CLIENTE WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_CLIENTE] != {registro.Id}", registro, conexaoComBanco);
         }
     }
 }
