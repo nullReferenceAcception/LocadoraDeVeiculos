@@ -9,7 +9,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
         public ValidadorFuncionario()
         {
             Regex padraoNome = new Regex("^[A-Z a-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]*$");
-            Regex padraoTelefone = new(@"^\([1-9]{2}\)9[7-9]{1}[0-9]{3}\-[0-9]{4}$");
+            Regex padraoTelefone = new Regex("^[1-9]{2}[0-9]{4,5}[0-9]{4}$");
+
 
             RuleFor(x => x.Nome)
                 .NotNull().NotEmpty().MinimumLength(2).Matches(padraoNome);

@@ -91,7 +91,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             for (int i = 0; i < 10; i++)
             {
-                Funcionario registro = new("nome " + i.ToString(), "senha", "endereco", "telefone", "login", "senha", DateTime.Today, 12, true);
+                Funcionario registro = new("nome " + i.ToString(), "senha", "endereco", "49989090909", "login", "senha", DateTime.Today, 12, true);
 
                 repositorio.Inserir(registro);
                 registros.Add(registro);
@@ -130,7 +130,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
         private Funcionario CriarFuncionario()
         {
-            return new("nome", "endereco", "e@e.e", "(49)99111-3939", "login", "senha", DateTime.Today, 12, true);
+            return new("nome", "endereco", "e@e.e", "49989090909", "login", "senha", DateTime.Today, 12, true);
         }
     }
 }

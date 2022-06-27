@@ -76,10 +76,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
         {
             List<Cliente> registros = new List<Cliente>();
 
+            Cliente cliente;
+
             for (int i = 0; i < 10; i++)
             {
-                Cliente cliente = new Cliente("joao" + random.Next(100, 500).ToString(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "09876543211", "12340567889879"); 
-
+                if (i <= 5)
+                    cliente = new Cliente("joao" + random.Next(100, 500).ToString(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "09876543211", null);
+                else
+                    cliente = new Cliente("joao" + random.Next(100, 500).ToString(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", false, null, "09876543211");
                 repositorio.Inserir(cliente);
                 registros.Add(cliente);
             }
