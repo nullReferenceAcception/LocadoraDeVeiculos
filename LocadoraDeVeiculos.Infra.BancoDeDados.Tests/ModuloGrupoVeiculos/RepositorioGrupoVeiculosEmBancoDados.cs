@@ -6,19 +6,13 @@ using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
 {
     [TestClass]
     public class RepositorioGrupoVeiculosEmBancoDados : BaseTestRepositorio
     {
-        Random random = new Random();
         RepositorioGrupoVeiculos repositorio = new();
-
-
 
         [TestMethod]
         public void Deve_selecionar_por_id()
@@ -35,7 +29,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
         [TestMethod]
         public void Nao_Deve_inserir_GrupoVeiculos_duplicada()
         {
-
             GrupoVeiculos GrupoVeiculos = CriarGrupoVeiculos();
 
             repositorio.Inserir(GrupoVeiculos);
@@ -46,9 +39,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
 
             ValidationResult validationResult = repositorio.Inserir(GrupoVeiculos2);
 
-
             validationResult.Errors[0].ErrorMessage.Should().Contain("Nome já está cadastrado");
-
         }
 
 
@@ -56,7 +47,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
         [TestMethod]
         public void Deve_inserir_GrupoVeiculos()
         {
-
             GrupoVeiculos GrupoVeiculos = CriarGrupoVeiculos();
 
             repositorio.Inserir(GrupoVeiculos);
@@ -64,14 +54,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
             GrupoVeiculos GrupoVeiculos2 = repositorio.SelecionarPorID(GrupoVeiculos.Id);
 
             Assert.AreEqual(GrupoVeiculos, GrupoVeiculos2);
-
         }
 
         [TestMethod]
         public void Deve_excluir_GrupoVeiculos()
         {
-
-
             GrupoVeiculos GrupoVeiculos = CriarGrupoVeiculos();
 
             repositorio.Inserir(GrupoVeiculos);
@@ -81,8 +68,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
             GrupoVeiculos GrupoVeiculos2 = repositorio.SelecionarPorID(GrupoVeiculos.Id);
 
             GrupoVeiculos2.Should().Be(null);
-
         }
+
         [TestMethod]
         public void Deve_selecionar_todos_GrupoVeiculoss()
         {
@@ -99,11 +86,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
             List<GrupoVeiculos> registrosDoBanco = repositorio.SelecionarTodos();
 
             for (int i = 0; i < registrosDoBanco.Count; i++)
-            {
                 Assert.AreEqual(registrosDoBanco[i], registros[i]);
-            }
-
-
         }
 
         //TODO Não pode deixar excluir caso esteja linkado em outro registro
@@ -111,8 +94,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
         [TestMethod]
         public void Deve_editar_GrupoVeiculos()
         {
-
-
             GrupoVeiculos GrupoVeiculos = CriarGrupoVeiculos();
 
             repositorio.Inserir(GrupoVeiculos);
@@ -123,9 +104,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
 
             GrupoVeiculos GrupoVeiculos2 = repositorio.SelecionarPorID(GrupoVeiculos.Id);
 
-
             Assert.AreEqual(GrupoVeiculos2, GrupoVeiculos);
-
         }
         //TODO Não pode deixar excluir caso esteja linkado em outro registro
 

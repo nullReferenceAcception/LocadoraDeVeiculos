@@ -5,9 +5,6 @@ using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 {
@@ -31,7 +28,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
         [TestMethod]
         public void Deve_inserir_cliente_CPF()
         {
-
             Cliente cliente = CriarClienteComCPF();
 
             repositorio.Inserir(cliente);
@@ -39,12 +35,10 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
             Cliente cliente2 = repositorio.SelecionarPorID(cliente.Id);
 
             Assert.AreEqual(cliente, cliente2);
-
         }
 
         public void Deve_inserir_cliente_CNPJ()
         {
-
             Cliente cliente = CriarClienteComCNPJ();
 
             repositorio.Inserir(cliente);
@@ -52,14 +46,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
             Cliente cliente2 = repositorio.SelecionarPorID(cliente.Id);
 
             Assert.AreEqual(cliente, cliente2);
-
         }
 
         [TestMethod]
         public void Deve_excluir_Cliente()
         {
-
-
             Cliente cliente = CriarClienteComCPF();
 
             repositorio.Inserir(cliente);
@@ -69,7 +60,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
             Cliente cliente2 = repositorio.SelecionarPorID(cliente.Id);
 
             cliente2.Should().Be(null);
-
         }
         [TestMethod]
         public void Deve_selecionar_todos_cliente()
@@ -91,18 +81,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
             List<Cliente> registrosDoBanco = repositorio.SelecionarTodos();
 
             for (int i = 0; i < registrosDoBanco.Count; i++)
-            {
                 Assert.AreEqual(registrosDoBanco[i], registros[i]);
-            }
-
-
         }
 
         [TestMethod]
         public void Deve_editar_cliente()
         {
-
-
             Cliente cliente = CriarClienteComCPF();
 
             repositorio.Inserir(cliente);
@@ -113,18 +97,17 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             Cliente cliente2 = repositorio.SelecionarPorID(cliente.Id);
 
-
             Assert.AreEqual(cliente2, cliente);
-
         }
+
         private Cliente CriarClienteComCPF()
         {
-            return new Cliente("joao" + random.Next(100, 500).ToString(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "12340567889", null);
+            return new Cliente("joao" + random.Next(100, 500).ToString(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "12340567889", null!);
         }
 
         private Cliente CriarClienteComCNPJ()
         {
-            return new Cliente("joao" + random.Next(100, 500).ToString(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, null, "12340567889876");
+            return new Cliente("joao" + random.Next(100, 500).ToString(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, null!, "12340567889876");
         }
     }
 }

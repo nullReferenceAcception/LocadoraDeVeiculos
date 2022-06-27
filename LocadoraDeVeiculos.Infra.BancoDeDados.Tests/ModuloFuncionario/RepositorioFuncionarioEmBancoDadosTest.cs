@@ -24,7 +24,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
             Funcionario registro2 = repositorio.SelecionarPorID(registro.Id);
 
             Assert.AreEqual(registro, registro2);
-
         }
 
         [TestMethod]
@@ -56,6 +55,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             registro2.Should().Be(null);
         }
+
         [TestMethod]
         public void Deve_selecionar_todos_Funcionarios()
         {
