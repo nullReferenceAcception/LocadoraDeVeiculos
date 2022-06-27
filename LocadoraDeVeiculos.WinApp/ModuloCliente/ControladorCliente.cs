@@ -1,9 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloCliente
@@ -37,10 +33,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             Cliente clienteSelecionado = _repositorioCliente.SelecionarPorID(numero);
 
-            if(clienteSelecionado == null)
+            if (clienteSelecionado == null)
             {
                 MessageBox.Show("Selecione um cliente primeiro!", "Edição de clientes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-               return;
+                return;
             }
 
             var tela = new TelaCadastroClienteForm();
@@ -61,11 +57,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             Cliente clienteSelecionado = _repositorioCliente.SelecionarPorID(numero);
 
-            if(clienteSelecionado == null)
+            if (clienteSelecionado == null)
             {
-             MessageBox.Show("Selecione um cliente primeiro!", "Edição de Cliente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-               return;
-           }
+                MessageBox.Show("Selecione um cliente primeiro!", "Edição de Cliente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
 
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir o Cliente?",
                "Exclusão de Cliente", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -94,17 +90,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         private void CarregarCliente()
         {
-                List<Cliente> clientes = _repositorioCliente.SelecionarTodos();
+            List<Cliente> clientes = _repositorioCliente.SelecionarTodos();
 
-            _tabelaCliente.AtualizarRegistros(clientes);
+            _tabelaCliente!.AtualizarRegistros(clientes);
 
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {clientes.Count} clientes");
-            }
-
-            private Cliente ObtemClienteSelecionada()
-            {
-                var numero = _tabelaCliente!.ObtemNumeroClienteSelecionado();
-               return _repositorioCliente.SelecionarPorID(numero);
+            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {clientes.Count} clientes");
         }
     }
 }

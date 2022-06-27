@@ -39,13 +39,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             if(string.IsNullOrEmpty(_cliente.CPF))
             {
                 maskedTextBoxCNPJ.Text = _cliente.CNPJ;
-                radioCNPJbtn.Checked = true;
+                radioButtonCNPJ.Checked = true;
             }
 
             else
             {
                 maskedTextBoxCPF.Text = _cliente.CPF;
-                radioCPFbtn.Checked = true;
+                radioButtonCPF.Checked = true;
             }
         }
 
@@ -87,7 +87,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             _cliente.CPF = maskedTextBoxCPF.Text;
             _cliente.Email = textBoxEmail.Text;
             _cliente.Telefone = maskedTextBoxTelefone.Text;
-            _cliente.PessoaFisica = radioCPFbtn.Checked == true ? _cliente.PessoaFisica = true : _cliente.PessoaFisica = false;
+            _cliente.PessoaFisica = radioButtonCPF.Checked == true ? _cliente.PessoaFisica = true : _cliente.PessoaFisica = false;
 
 
             if (_cliente.PessoaFisica)

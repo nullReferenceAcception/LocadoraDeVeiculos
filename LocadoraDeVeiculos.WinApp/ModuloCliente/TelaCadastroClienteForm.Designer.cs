@@ -32,16 +32,16 @@
             this.textBoxEndereco = new System.Windows.Forms.TextBox();
             this.textBoxCNH = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.labelNome = new System.Windows.Forms.Label();
+            this.labelTelefone = new System.Windows.Forms.Label();
+            this.labelEmail = new System.Windows.Forms.Label();
+            this.labelCNH = new System.Windows.Forms.Label();
+            this.labelEndereco = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioCNPJbtn = new System.Windows.Forms.RadioButton();
-            this.radioCPFbtn = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.radioButtonCNPJ = new System.Windows.Forms.RadioButton();
+            this.radioButtonCPF = new System.Windows.Forms.RadioButton();
+            this.labelCPF = new System.Windows.Forms.Label();
+            this.labelCNPJ = new System.Windows.Forms.Label();
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.maskedTextBoxCPF = new System.Windows.Forms.MaskedTextBox();
@@ -79,103 +79,103 @@
             this.textBoxEmail.Size = new System.Drawing.Size(239, 23);
             this.textBoxEmail.TabIndex = 3;
             // 
-            // label1
+            // labelNome
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 15);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Nome";
+            this.labelNome.AutoSize = true;
+            this.labelNome.Location = new System.Drawing.Point(28, 41);
+            this.labelNome.Name = "labelNome";
+            this.labelNome.Size = new System.Drawing.Size(40, 15);
+            this.labelNome.TabIndex = 6;
+            this.labelNome.Text = "Nome";
             // 
-            // label4
+            // labelTelefone
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 157);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 15);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Telefone";
+            this.labelTelefone.AutoSize = true;
+            this.labelTelefone.Location = new System.Drawing.Point(17, 157);
+            this.labelTelefone.Name = "labelTelefone";
+            this.labelTelefone.Size = new System.Drawing.Size(51, 15);
+            this.labelTelefone.TabIndex = 9;
+            this.labelTelefone.Text = "Telefone";
             // 
-            // label5
+            // labelEmail
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 125);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 15);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Email";
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.Location = new System.Drawing.Point(32, 125);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(36, 15);
+            this.labelEmail.TabIndex = 10;
+            this.labelEmail.Text = "Email";
             // 
-            // label6
+            // labelCNH
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 96);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 15);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "CNH";
+            this.labelCNH.AutoSize = true;
+            this.labelCNH.Location = new System.Drawing.Point(35, 96);
+            this.labelCNH.Name = "labelCNH";
+            this.labelCNH.Size = new System.Drawing.Size(33, 15);
+            this.labelCNH.TabIndex = 11;
+            this.labelCNH.Text = "CNH";
             // 
-            // label7
+            // labelEndereco
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 67);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(56, 15);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Endereço";
+            this.labelEndereco.AutoSize = true;
+            this.labelEndereco.Location = new System.Drawing.Point(12, 67);
+            this.labelEndereco.Name = "labelEndereco";
+            this.labelEndereco.Size = new System.Drawing.Size(56, 15);
+            this.labelEndereco.TabIndex = 12;
+            this.labelEndereco.Text = "Endereço";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioCNPJbtn);
-            this.groupBox1.Controls.Add(this.radioCPFbtn);
+            this.groupBox1.Controls.Add(this.radioButtonCNPJ);
+            this.groupBox1.Controls.Add(this.radioButtonCPF);
             this.groupBox1.Location = new System.Drawing.Point(98, 196);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 100);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Tipo de cliente:";
             // 
-            // radioCNPJbtn
+            // radioButtonCNPJ
             // 
-            this.radioCNPJbtn.AutoSize = true;
-            this.radioCNPJbtn.Location = new System.Drawing.Point(19, 59);
-            this.radioCNPJbtn.Name = "radioCNPJbtn";
-            this.radioCNPJbtn.Size = new System.Drawing.Size(104, 19);
-            this.radioCNPJbtn.TabIndex = 1;
-            this.radioCNPJbtn.TabStop = true;
-            this.radioCNPJbtn.Text = "Pessoa Jurídica";
-            this.radioCNPJbtn.UseVisualStyleBackColor = true;
-            this.radioCNPJbtn.CheckedChanged += new System.EventHandler(this.radioCNPJbtn_CheckedChanged);
+            this.radioButtonCNPJ.AutoSize = true;
+            this.radioButtonCNPJ.Location = new System.Drawing.Point(19, 59);
+            this.radioButtonCNPJ.Name = "radioButtonCNPJ";
+            this.radioButtonCNPJ.Size = new System.Drawing.Size(104, 19);
+            this.radioButtonCNPJ.TabIndex = 1;
+            this.radioButtonCNPJ.TabStop = true;
+            this.radioButtonCNPJ.Text = "Pessoa Jurídica";
+            this.radioButtonCNPJ.UseVisualStyleBackColor = true;
+            this.radioButtonCNPJ.CheckedChanged += new System.EventHandler(this.radioCNPJbtn_CheckedChanged);
             // 
-            // radioCPFbtn
+            // radioButtonCPF
             // 
-            this.radioCPFbtn.AutoSize = true;
-            this.radioCPFbtn.Location = new System.Drawing.Point(19, 23);
-            this.radioCPFbtn.Name = "radioCPFbtn";
-            this.radioCPFbtn.Size = new System.Drawing.Size(93, 19);
-            this.radioCPFbtn.TabIndex = 0;
-            this.radioCPFbtn.TabStop = true;
-            this.radioCPFbtn.Text = "Pessoa Fisica";
-            this.radioCPFbtn.UseVisualStyleBackColor = true;
-            this.radioCPFbtn.CheckedChanged += new System.EventHandler(this.radioCPFbtn_CheckedChanged);
+            this.radioButtonCPF.AutoSize = true;
+            this.radioButtonCPF.Location = new System.Drawing.Point(19, 23);
+            this.radioButtonCPF.Name = "radioButtonCPF";
+            this.radioButtonCPF.Size = new System.Drawing.Size(93, 19);
+            this.radioButtonCPF.TabIndex = 0;
+            this.radioButtonCPF.TabStop = true;
+            this.radioButtonCPF.Text = "Pessoa Fisica";
+            this.radioButtonCPF.UseVisualStyleBackColor = true;
+            this.radioButtonCPF.CheckedChanged += new System.EventHandler(this.radioCPFbtn_CheckedChanged);
             // 
-            // label2
+            // labelCPF
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(304, 219);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 15);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "CPF";
+            this.labelCPF.AutoSize = true;
+            this.labelCPF.Location = new System.Drawing.Point(310, 219);
+            this.labelCPF.Name = "labelCPF";
+            this.labelCPF.Size = new System.Drawing.Size(28, 15);
+            this.labelCPF.TabIndex = 15;
+            this.labelCPF.Text = "CPF";
             // 
-            // label3
+            // labelCNPJ
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(304, 257);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 15);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "CNPJ";
+            this.labelCNPJ.AutoSize = true;
+            this.labelCNPJ.Location = new System.Drawing.Point(304, 257);
+            this.labelCNPJ.Name = "labelCNPJ";
+            this.labelCNPJ.Size = new System.Drawing.Size(34, 15);
+            this.labelCNPJ.TabIndex = 16;
+            this.labelCNPJ.Text = "CNPJ";
             // 
             // btnGravar
             // 
@@ -235,14 +235,14 @@
             this.Controls.Add(this.maskedTextBoxCPF);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGravar);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelCNPJ);
+            this.Controls.Add(this.labelCPF);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelEndereco);
+            this.Controls.Add(this.labelCNH);
+            this.Controls.Add(this.labelEmail);
+            this.Controls.Add(this.labelTelefone);
+            this.Controls.Add(this.labelNome);
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.textBoxCNH);
             this.Controls.Add(this.textBoxEndereco);
@@ -258,16 +258,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelNome;
+        private System.Windows.Forms.Label labelTelefone;
+        private System.Windows.Forms.Label labelEmail;
+        private System.Windows.Forms.Label labelCNH;
+        private System.Windows.Forms.Label labelEndereco;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioCNPJbtn;
-        private System.Windows.Forms.RadioButton radioCPFbtn;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RadioButton radioButtonCNPJ;
+        private System.Windows.Forms.RadioButton radioButtonCPF;
+        private System.Windows.Forms.Label labelCPF;
+        private System.Windows.Forms.Label labelCNPJ;
         private System.Windows.Forms.TextBox textBoxNome;
         private System.Windows.Forms.TextBox textBoxEndereco;
         private System.Windows.Forms.TextBox textBoxCNH;
