@@ -128,7 +128,6 @@
             this.btnVisualizar.Name = "btnVisualizar";
             this.btnVisualizar.Padding = new System.Windows.Forms.Padding(5);
             this.btnVisualizar.Size = new System.Drawing.Size(38, 38);
-            this.btnVisualizar.Click += new System.EventHandler(this.btnVisualizar_Click);
             // 
             // toolStripSeparator3
             // 
@@ -144,7 +143,6 @@
             this.btnGerarPdf.Name = "btnGerarPdf";
             this.btnGerarPdf.Padding = new System.Windows.Forms.Padding(5);
             this.btnGerarPdf.Size = new System.Drawing.Size(38, 38);
-            this.btnGerarPdf.Click += new System.EventHandler(this.btnGerarPdf_Click);
             // 
             // toolStripSeparator1
             // 
@@ -160,7 +158,6 @@
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Padding = new System.Windows.Forms.Padding(5);
             this.btnFiltrar.Size = new System.Drawing.Size(38, 38);
-            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // toolStripSeparator4
             // 
