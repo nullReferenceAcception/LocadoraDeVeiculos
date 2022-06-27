@@ -24,9 +24,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             RuleFor(x => x.Nome)
                 .NotNull().NotEmpty().MinimumLength(3);
 
-            RuleFor(x => x.CNH)
-                .NotNull().NotEmpty().MinimumLength(11);
-
             RuleFor(x => x.Endereco)
                 .NotNull().NotEmpty().MinimumLength(4);
 
@@ -34,10 +31,14 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
                 .NotNull();
 
 
+
             When(x => x.PessoaFisica, () =>
             {
                 RuleFor(x => x.CPF)
                   .NotNull().NotEmpty().MinimumLength(11);
+
+                RuleFor(x => x.CNH)
+                .NotNull().NotEmpty().MinimumLength(11);
             });
 
 

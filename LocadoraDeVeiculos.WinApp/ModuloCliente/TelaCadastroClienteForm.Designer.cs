@@ -32,8 +32,6 @@
             this.textBoxEndereco = new System.Windows.Forms.TextBox();
             this.textBoxCNH = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.textBoxTelefone = new System.Windows.Forms.TextBox();
-            this.textBoxCNPJ = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -42,11 +40,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioCNPJbtn = new System.Windows.Forms.RadioButton();
             this.radioCPFbtn = new System.Windows.Forms.RadioButton();
-            this.textBoxCPF = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.maskedTextBoxCPF = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBoxCNPJ = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBoxTelefone = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,23 +78,6 @@
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(239, 23);
             this.textBoxEmail.TabIndex = 3;
-            // 
-            // textBoxTelefone
-            // 
-            this.textBoxTelefone.Location = new System.Drawing.Point(98, 154);
-            this.textBoxTelefone.MaxLength = 11;
-            this.textBoxTelefone.Name = "textBoxTelefone";
-            this.textBoxTelefone.Size = new System.Drawing.Size(239, 23);
-            this.textBoxTelefone.TabIndex = 4;
-            // 
-            // textBoxCNPJ
-            // 
-            this.textBoxCNPJ.Enabled = false;
-            this.textBoxCNPJ.Location = new System.Drawing.Point(339, 251);
-            this.textBoxCNPJ.MaxLength = 14;
-            this.textBoxCNPJ.Name = "textBoxCNPJ";
-            this.textBoxCNPJ.Size = new System.Drawing.Size(139, 23);
-            this.textBoxCNPJ.TabIndex = 5;
             // 
             // label1
             // 
@@ -176,15 +159,6 @@
             this.radioCPFbtn.UseVisualStyleBackColor = true;
             this.radioCPFbtn.CheckedChanged += new System.EventHandler(this.radioCPFbtn_CheckedChanged);
             // 
-            // textBoxCPF
-            // 
-            this.textBoxCPF.Enabled = false;
-            this.textBoxCPF.Location = new System.Drawing.Point(339, 215);
-            this.textBoxCPF.MaxLength = 11;
-            this.textBoxCPF.Name = "textBoxCPF";
-            this.textBoxCPF.Size = new System.Drawing.Size(139, 23);
-            this.textBoxCPF.TabIndex = 14;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -224,24 +198,51 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
+            // maskedTextBoxCPF
+            // 
+            this.maskedTextBoxCPF.Location = new System.Drawing.Point(338, 215);
+            this.maskedTextBoxCPF.Mask = "000\\.000\\.000-00";
+            this.maskedTextBoxCPF.Name = "maskedTextBoxCPF";
+            this.maskedTextBoxCPF.Size = new System.Drawing.Size(140, 23);
+            this.maskedTextBoxCPF.TabIndex = 19;
+            this.maskedTextBoxCPF.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // maskedTextBoxCNPJ
+            // 
+            this.maskedTextBoxCNPJ.Location = new System.Drawing.Point(338, 251);
+            this.maskedTextBoxCNPJ.Mask = "00\\.000\\.000/0000-00";
+            this.maskedTextBoxCNPJ.Name = "maskedTextBoxCNPJ";
+            this.maskedTextBoxCNPJ.Size = new System.Drawing.Size(140, 23);
+            this.maskedTextBoxCNPJ.TabIndex = 20;
+            this.maskedTextBoxCNPJ.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // maskedTextBoxTelefone
+            // 
+            this.maskedTextBoxTelefone.Location = new System.Drawing.Point(98, 154);
+            this.maskedTextBoxTelefone.Mask = "(00) 90000-0000";
+            this.maskedTextBoxTelefone.Name = "maskedTextBoxTelefone";
+            this.maskedTextBoxTelefone.Size = new System.Drawing.Size(239, 23);
+            this.maskedTextBoxTelefone.TabIndex = 21;
+            this.maskedTextBoxTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
             // TelaCadastroClienteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(490, 366);
+            this.Controls.Add(this.maskedTextBoxTelefone);
+            this.Controls.Add(this.maskedTextBoxCNPJ);
+            this.Controls.Add(this.maskedTextBoxCPF);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBoxCPF);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxCNPJ);
-            this.Controls.Add(this.textBoxTelefone);
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.textBoxCNH);
             this.Controls.Add(this.textBoxEndereco);
@@ -257,12 +258,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBoxCNPJ;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -271,15 +266,16 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioCNPJbtn;
         private System.Windows.Forms.RadioButton radioCPFbtn;
-        private System.Windows.Forms.TextBox textBoxCPF;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxNome;
         private System.Windows.Forms.TextBox textBoxEndereco;
         private System.Windows.Forms.TextBox textBoxCNH;
         private System.Windows.Forms.TextBox textBoxEmail;
-        private System.Windows.Forms.TextBox textBoxTelefone;
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxCPF;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxCNPJ;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxTelefone;
     }
 }

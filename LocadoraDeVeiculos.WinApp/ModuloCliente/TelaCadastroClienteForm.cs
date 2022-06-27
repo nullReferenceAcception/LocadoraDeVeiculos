@@ -29,25 +29,22 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         private void ConfigurarTelaEditar()
         {
-            textBoxNome.Text = _cliente.Nome;
+            textBoxNome.Text = _cliente!.Nome;
             textBoxEndereco.Text = _cliente.Endereco;
             textBoxCNH.Text = _cliente.CNH;
-            //textBoxCNPJ.Text = _cliente.CNPJ;
-            //textBoxCPF.Text = _cliente.CPF;
             textBoxEmail.Text = _cliente.Email;
-            textBoxTelefone.Text = _cliente.Telefone;
-            //radioCPFbtn.Checked = _cliente.PessoaFisica == true ? true : false;
-            //radioCNPJbtn.Checked = _cliente.PessoaFisica == false ? false : true;
+            maskedTextBoxTelefone.Text = _cliente.Telefone;
+
 
             if(string.IsNullOrEmpty(_cliente.CPF))
             {
-                textBoxCNPJ.Text = _cliente.CNPJ;
+                maskedTextBoxCNPJ.Text = _cliente.CNPJ;
                 radioCNPJbtn.Checked = true;
             }
 
             else
             {
-                textBoxCPF.Text = _cliente.CPF;
+                maskedTextBoxCPF.Text = _cliente.CPF;
                 radioCPFbtn.Checked = true;
             }
         }
@@ -59,20 +56,22 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         private void radioCPFbtn_CheckedChanged(object sender, EventArgs e)
         {
-            
-            textBoxCPF.Enabled = true;
-            textBoxCNPJ.Enabled = false;
-            textBoxCNPJ.Clear();
-            textBoxCPF.Focus();
+            textBoxCNH.Enabled = true;
+            maskedTextBoxCPF.Enabled = true;
+            maskedTextBoxCNPJ.Enabled = false;
+            maskedTextBoxCNPJ.Clear();
+            maskedTextBoxCPF.Focus();
+
         }
 
         private void radioCNPJbtn_CheckedChanged(object sender, EventArgs e)
         {
-            textBoxCNPJ.Enabled = true;
-            textBoxCPF.Enabled = false;
-            textBoxCPF.Clear();
-            textBoxCNPJ.Focus();
-            
+            textBoxCNH.Enabled = false;
+            maskedTextBoxCNPJ.Enabled = true;
+            maskedTextBoxCPF.Enabled = false;
+            maskedTextBoxCPF.Clear();
+            maskedTextBoxCNPJ.Focus();
+            textBoxCNH.Clear();
         }
 
         public Func<Cliente, ValidationResult>? GravarRegistro { get; set; }
@@ -84,10 +83,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             _cliente!.Nome = textBoxNome.Text;
             _cliente.Endereco = textBoxEndereco.Text;
             _cliente.CNH = textBoxCNH.Text;
-            _cliente.CNPJ = textBoxCNPJ.Text;
-            _cliente.CPF = textBoxCPF.Text;
+            _cliente.CNPJ = maskedTextBoxCNPJ.Text;
+            _cliente.CPF = maskedTextBoxCPF.Text;
             _cliente.Email = textBoxEmail.Text;
-            _cliente.Telefone = textBoxTelefone.Text;
+            _cliente.Telefone = maskedTextBoxTelefone.Text;
             _cliente.PessoaFisica = radioCPFbtn.Checked == true ? _cliente.PessoaFisica = true : _cliente.PessoaFisica = false;
 
 
