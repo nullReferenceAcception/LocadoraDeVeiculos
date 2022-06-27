@@ -29,7 +29,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloFuncionario
 
         private static Funcionario CriarFuncionario()
         {
-            return new("nome","senha","endereco","telefone","login", "senha", DateTime.Now, 12, true);
+            return new("nome","senha","endereco","telefone","login", "senha", DateTime.Now, 12, true, "Lages");
         }
 
         public void Nao_pode_nome_so_com_espaco()
@@ -37,7 +37,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloFuncionario
             Funcionario Funcionario = CriarFuncionario();
             Funcionario.Id = 1;
             Funcionario.Nome = "   ";
-
 
             var resultado = validation.TestValidate(Funcionario);
 

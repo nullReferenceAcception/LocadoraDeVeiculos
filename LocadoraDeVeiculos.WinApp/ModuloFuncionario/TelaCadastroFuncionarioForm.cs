@@ -36,6 +36,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             Funcionario!.Senha = textBoxSenha.Text;
             Funcionario!.DataAdmissao = dateTimePickerDataAdmissao.Value;
             Funcionario!.Salario = Convert.ToDecimal(textBoxSalario.Text);
+            Funcionario!.Cidade = textBoxCidade.Text;
             Funcionario!.EhAdmin = radioButtonAdmin.Checked == true ? Funcionario.EhAdmin = true : Funcionario.EhAdmin = false;
 
             var resultado = GravarRegistro!(Funcionario);
@@ -56,6 +57,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             textBoxLogin.Text = _funcionario.Login;
             textBoxSalario.Text = Convert.ToDecimal(_funcionario.Salario).ToString();
             textBoxSenha.Text = _funcionario.Senha;
+            textBoxCidade.Text = _funcionario.Cidade;
 
             if (_funcionario.DataAdmissao > DateTime.MinValue)
                 dateTimePickerDataAdmissao.Value = _funcionario.DataAdmissao;

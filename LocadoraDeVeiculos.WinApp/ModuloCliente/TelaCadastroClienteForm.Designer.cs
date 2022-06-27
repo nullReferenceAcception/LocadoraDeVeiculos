@@ -248,7 +248,7 @@
             this.Controls.Add(this.textBoxEndereco);
             this.Controls.Add(this.textBoxNome);
             this.Name = "TelaCadastroClienteForm";
-            this.Text = "TelaCadastroClienteForm";
+            this.Text = "Cliente";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

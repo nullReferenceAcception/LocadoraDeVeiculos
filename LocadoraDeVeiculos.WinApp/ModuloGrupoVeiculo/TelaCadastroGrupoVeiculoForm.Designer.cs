@@ -105,7 +105,7 @@
             this.Controls.Add(this.groupBoxGrupoVeiculo);
             this.Controls.Add(this.textBoxNome);
             this.Name = "TelaCadastroGrupoVeiculoForm";
-            this.Text = "TelaCadastroGrupoVeiculoForm";
+            this.Text = "Grupo de Veículos";
             this.groupBoxGrupoVeiculo.ResumeLayout(false);
             this.groupBoxGrupoVeiculo.PerformLayout();
             this.ResumeLayout(false);

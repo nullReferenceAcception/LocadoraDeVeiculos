@@ -27,7 +27,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                         EH_ADMIN,
                         TELEFONE,
                         ENDERECO,
-                        EMAIL
+                        EMAIL,
+                        CIDADE
                         )
                     VALUES
                         (
@@ -39,7 +40,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                         @EH_ADMIN,
                         @TELEFONE,
                         @ENDERECO,
-                        @EMAIL
+                        @EMAIL,
+                        @CIDADE
                         ); SELECT SCOPE_IDENTITY();";
         }
 
@@ -57,7 +59,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                             EH_ADMIN = @EH_ADMIN,
                             TELEFONE = @TELEFONE,
                             ENDERECO = @ENDERECO,
-                            EMAIL = @EMAIL
+                            EMAIL = @EMAIL,
+                            CIDADE = @CIDADE
                         WHERE
                             ID_FUNCIONARIO = @ID_FUNCIONARIO";
         }
@@ -84,7 +87,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                     EH_ADMIN AS EH_ADMIN, 
                     TELEFONE AS TELEFONE, 
                     ENDERECO AS ENDERECO,
-                    EMAIL AS EMAIL
+                    EMAIL AS EMAIL,
+                    CIDADE AS CIDADE
                 FROM            
                     TB_FUNCIONARIO";
         }
@@ -102,7 +106,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                     EH_ADMIN AS EH_ADMIN, 
                     TELEFONE AS TELEFONE, 
                     ENDERECO AS ENDERECO,
-                    EMAIL AS EMAIL
+                    EMAIL AS EMAIL,
+                    CIDADE AS CIDADE
                 FROM            
                     TB_FUNCIONARIO
                 WHERE
