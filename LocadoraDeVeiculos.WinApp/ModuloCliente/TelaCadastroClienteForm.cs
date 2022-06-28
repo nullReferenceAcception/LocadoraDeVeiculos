@@ -28,22 +28,25 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         private void ConfigurarTelaEditar()
         {
+            textBoxID.Text = _cliente!.Id.ToString();
             textBoxNome.Text = _cliente!.Nome;
             textBoxEndereco.Text = _cliente.Endereco;
             textBoxCNH.Text = _cliente.CNH;
             textBoxEmail.Text = _cliente.Email;
             maskedTextBoxTelefone.Text = _cliente.Telefone;
 
-            if(string.IsNullOrEmpty(_cliente.CPF))
+            if (_cliente.Id != 0)
             {
-                maskedTextBoxCNPJ.Text = _cliente.CNPJ;
-                radioButtonCNPJ.Checked = true;
-            }
-
-            else
-            {
-                maskedTextBoxCPF.Text = _cliente.CPF;
-                radioButtonCPF.Checked = true;
+                if (string.IsNullOrEmpty(_cliente.CPF))
+                {
+                    maskedTextBoxCNPJ.Text = _cliente.CNPJ;
+                    radioButtonCNPJ.Checked = true;
+                }
+                else
+                {
+                    maskedTextBoxCPF.Text = _cliente.CPF;
+                    radioButtonCPF.Checked = true;
+                }
             }
         }
 
@@ -96,6 +99,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             }
         }
 
-        
+
     }
 }

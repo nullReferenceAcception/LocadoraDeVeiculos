@@ -31,7 +31,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             if (string.IsNullOrEmpty(textBoxValor.Text))
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape("Campo valor nao poder ser vazio");
+                TelaPrincipalForm.Instancia!.AtualizarRodape("Campo valor não pode ser vazio");
                 DialogResult = DialogResult.None;
                 return;
             }
@@ -47,6 +47,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
         private void ConfigurarTelaEditar()
         {
+            textBoxID.Text = _taxa!.Id.ToString();
             textBoxDescricao.Text = _taxa!.Descricao;
             textBoxValor.Text = _taxa.Valor.ToString();
         }

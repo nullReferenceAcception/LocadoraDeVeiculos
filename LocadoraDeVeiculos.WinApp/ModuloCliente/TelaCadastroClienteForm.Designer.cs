@@ -48,27 +48,29 @@
             this.maskedTextBoxCNPJ = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBoxTelefone = new System.Windows.Forms.MaskedTextBox();
             this.groupBoxDadosCliente = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxID = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBoxDadosCliente.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxNome
             // 
-            this.textBoxNome.Location = new System.Drawing.Point(98, 38);
+            this.textBoxNome.Location = new System.Drawing.Point(87, 58);
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(239, 23);
             this.textBoxNome.TabIndex = 0;
             // 
             // textBoxEndereco
             // 
-            this.textBoxEndereco.Location = new System.Drawing.Point(98, 67);
+            this.textBoxEndereco.Location = new System.Drawing.Point(87, 87);
             this.textBoxEndereco.Name = "textBoxEndereco";
             this.textBoxEndereco.Size = new System.Drawing.Size(239, 23);
             this.textBoxEndereco.TabIndex = 1;
             // 
             // textBoxCNH
             // 
-            this.textBoxCNH.Location = new System.Drawing.Point(98, 96);
+            this.textBoxCNH.Location = new System.Drawing.Point(87, 116);
             this.textBoxCNH.MaxLength = 11;
             this.textBoxCNH.Name = "textBoxCNH";
             this.textBoxCNH.Size = new System.Drawing.Size(239, 23);
@@ -76,7 +78,7 @@
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(98, 125);
+            this.textBoxEmail.Location = new System.Drawing.Point(87, 145);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(239, 23);
             this.textBoxEmail.TabIndex = 3;
@@ -84,7 +86,7 @@
             // labelNome
             // 
             this.labelNome.AutoSize = true;
-            this.labelNome.Location = new System.Drawing.Point(28, 41);
+            this.labelNome.Location = new System.Drawing.Point(17, 61);
             this.labelNome.Name = "labelNome";
             this.labelNome.Size = new System.Drawing.Size(43, 15);
             this.labelNome.TabIndex = 6;
@@ -93,7 +95,7 @@
             // labelTelefone
             // 
             this.labelTelefone.AutoSize = true;
-            this.labelTelefone.Location = new System.Drawing.Point(17, 157);
+            this.labelTelefone.Location = new System.Drawing.Point(6, 177);
             this.labelTelefone.Name = "labelTelefone";
             this.labelTelefone.Size = new System.Drawing.Size(54, 15);
             this.labelTelefone.TabIndex = 9;
@@ -102,7 +104,7 @@
             // labelEmail
             // 
             this.labelEmail.AutoSize = true;
-            this.labelEmail.Location = new System.Drawing.Point(32, 125);
+            this.labelEmail.Location = new System.Drawing.Point(21, 145);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(39, 15);
             this.labelEmail.TabIndex = 10;
@@ -111,7 +113,7 @@
             // labelCNH
             // 
             this.labelCNH.AutoSize = true;
-            this.labelCNH.Location = new System.Drawing.Point(35, 96);
+            this.labelCNH.Location = new System.Drawing.Point(24, 116);
             this.labelCNH.Name = "labelCNH";
             this.labelCNH.Size = new System.Drawing.Size(36, 15);
             this.labelCNH.TabIndex = 11;
@@ -120,7 +122,7 @@
             // labelEndereco
             // 
             this.labelEndereco.AutoSize = true;
-            this.labelEndereco.Location = new System.Drawing.Point(12, 67);
+            this.labelEndereco.Location = new System.Drawing.Point(1, 87);
             this.labelEndereco.Name = "labelEndereco";
             this.labelEndereco.Size = new System.Drawing.Size(59, 15);
             this.labelEndereco.TabIndex = 12;
@@ -130,7 +132,7 @@
             // 
             this.groupBox1.Controls.Add(this.radioButtonCNPJ);
             this.groupBox1.Controls.Add(this.radioButtonCPF);
-            this.groupBox1.Location = new System.Drawing.Point(28, 197);
+            this.groupBox1.Location = new System.Drawing.Point(17, 217);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(133, 79);
             this.groupBox1.TabIndex = 13;
@@ -143,7 +145,7 @@
             this.radioButtonCNPJ.Location = new System.Drawing.Point(19, 48);
             this.radioButtonCNPJ.Name = "radioButtonCNPJ";
             this.radioButtonCNPJ.Size = new System.Drawing.Size(104, 19);
-            this.radioButtonCNPJ.TabIndex = 1;
+            this.radioButtonCNPJ.TabIndex = 6;
             this.radioButtonCNPJ.TabStop = true;
             this.radioButtonCNPJ.Text = "Pessoa Jurídica";
             this.radioButtonCNPJ.UseVisualStyleBackColor = true;
@@ -155,7 +157,7 @@
             this.radioButtonCPF.Location = new System.Drawing.Point(19, 23);
             this.radioButtonCPF.Name = "radioButtonCPF";
             this.radioButtonCPF.Size = new System.Drawing.Size(93, 19);
-            this.radioButtonCPF.TabIndex = 0;
+            this.radioButtonCPF.TabIndex = 5;
             this.radioButtonCPF.TabStop = true;
             this.radioButtonCPF.Text = "Pessoa Fisica";
             this.radioButtonCPF.UseVisualStyleBackColor = true;
@@ -164,7 +166,7 @@
             // labelCPF
             // 
             this.labelCPF.AutoSize = true;
-            this.labelCPF.Location = new System.Drawing.Point(35, 279);
+            this.labelCPF.Location = new System.Drawing.Point(35, 319);
             this.labelCPF.Name = "labelCPF";
             this.labelCPF.Size = new System.Drawing.Size(31, 15);
             this.labelCPF.TabIndex = 15;
@@ -173,7 +175,7 @@
             // labelCNPJ
             // 
             this.labelCNPJ.AutoSize = true;
-            this.labelCNPJ.Location = new System.Drawing.Point(29, 317);
+            this.labelCNPJ.Location = new System.Drawing.Point(29, 357);
             this.labelCNPJ.Name = "labelCNPJ";
             this.labelCNPJ.Size = new System.Drawing.Size(37, 15);
             this.labelCNPJ.TabIndex = 16;
@@ -182,10 +184,10 @@
             // buttonGravar
             // 
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonGravar.Location = new System.Drawing.Point(197, 369);
+            this.buttonGravar.Location = new System.Drawing.Point(198, 409);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
-            this.buttonGravar.TabIndex = 17;
+            this.buttonGravar.TabIndex = 9;
             this.buttonGravar.Text = "Gravar";
             this.buttonGravar.UseVisualStyleBackColor = true;
             this.buttonGravar.Click += new System.EventHandler(this.btnGravar_Click);
@@ -193,80 +195,100 @@
             // buttonCancelar
             // 
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancelar.Location = new System.Drawing.Point(270, 369);
+            this.buttonCancelar.Location = new System.Drawing.Point(271, 409);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
-            this.buttonCancelar.TabIndex = 18;
+            this.buttonCancelar.TabIndex = 10;
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.UseVisualStyleBackColor = true;
             // 
             // maskedTextBoxCPF
             // 
-            this.maskedTextBoxCPF.Location = new System.Drawing.Point(83, 275);
+            this.maskedTextBoxCPF.Location = new System.Drawing.Point(83, 315);
             this.maskedTextBoxCPF.Mask = "000\\.000\\.000-00";
             this.maskedTextBoxCPF.Name = "maskedTextBoxCPF";
             this.maskedTextBoxCPF.Size = new System.Drawing.Size(140, 23);
-            this.maskedTextBoxCPF.TabIndex = 19;
+            this.maskedTextBoxCPF.TabIndex = 7;
             this.maskedTextBoxCPF.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // maskedTextBoxCNPJ
             // 
-            this.maskedTextBoxCNPJ.Location = new System.Drawing.Point(83, 311);
+            this.maskedTextBoxCNPJ.Location = new System.Drawing.Point(83, 351);
             this.maskedTextBoxCNPJ.Mask = "00\\.000\\.000/0000-00";
             this.maskedTextBoxCNPJ.Name = "maskedTextBoxCNPJ";
             this.maskedTextBoxCNPJ.Size = new System.Drawing.Size(140, 23);
-            this.maskedTextBoxCNPJ.TabIndex = 20;
+            this.maskedTextBoxCNPJ.TabIndex = 8;
             this.maskedTextBoxCNPJ.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // maskedTextBoxTelefone
             // 
-            this.maskedTextBoxTelefone.Location = new System.Drawing.Point(98, 154);
+            this.maskedTextBoxTelefone.Location = new System.Drawing.Point(87, 174);
             this.maskedTextBoxTelefone.Mask = "(00) 90000-0000";
             this.maskedTextBoxTelefone.Name = "maskedTextBoxTelefone";
             this.maskedTextBoxTelefone.Size = new System.Drawing.Size(239, 23);
-            this.maskedTextBoxTelefone.TabIndex = 21;
+            this.maskedTextBoxTelefone.TabIndex = 4;
             this.maskedTextBoxTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // groupBoxDadosCliente
             // 
+            this.groupBoxDadosCliente.Controls.Add(this.maskedTextBoxTelefone);
+            this.groupBoxDadosCliente.Controls.Add(this.label1);
+            this.groupBoxDadosCliente.Controls.Add(this.textBoxID);
             this.groupBoxDadosCliente.Controls.Add(this.labelCPF);
+            this.groupBoxDadosCliente.Controls.Add(this.groupBox1);
             this.groupBoxDadosCliente.Controls.Add(this.maskedTextBoxCNPJ);
+            this.groupBoxDadosCliente.Controls.Add(this.labelEndereco);
             this.groupBoxDadosCliente.Controls.Add(this.labelCNPJ);
+            this.groupBoxDadosCliente.Controls.Add(this.labelCNH);
             this.groupBoxDadosCliente.Controls.Add(this.maskedTextBoxCPF);
+            this.groupBoxDadosCliente.Controls.Add(this.labelEmail);
+            this.groupBoxDadosCliente.Controls.Add(this.textBoxNome);
+            this.groupBoxDadosCliente.Controls.Add(this.labelTelefone);
+            this.groupBoxDadosCliente.Controls.Add(this.textBoxEndereco);
+            this.groupBoxDadosCliente.Controls.Add(this.labelNome);
+            this.groupBoxDadosCliente.Controls.Add(this.textBoxCNH);
+            this.groupBoxDadosCliente.Controls.Add(this.textBoxEmail);
             this.groupBoxDadosCliente.Location = new System.Drawing.Point(12, 11);
             this.groupBoxDadosCliente.Name = "groupBoxDadosCliente";
-            this.groupBoxDadosCliente.Size = new System.Drawing.Size(331, 352);
+            this.groupBoxDadosCliente.Size = new System.Drawing.Size(331, 392);
             this.groupBoxDadosCliente.TabIndex = 22;
             this.groupBoxDadosCliente.TabStop = false;
             this.groupBoxDadosCliente.Text = "Dados do cliente:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(35, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(21, 15);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "ID:";
+            // 
+            // textBoxID
+            // 
+            this.textBoxID.Enabled = false;
+            this.textBoxID.Location = new System.Drawing.Point(86, 29);
+            this.textBoxID.Name = "textBoxID";
+            this.textBoxID.ReadOnly = true;
+            this.textBoxID.Size = new System.Drawing.Size(75, 23);
+            this.textBoxID.TabIndex = 23;
             // 
             // TelaCadastroClienteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 411);
-            this.Controls.Add(this.maskedTextBoxTelefone);
+            this.ClientSize = new System.Drawing.Size(355, 454);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonGravar);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.labelEndereco);
-            this.Controls.Add(this.labelCNH);
-            this.Controls.Add(this.labelEmail);
-            this.Controls.Add(this.labelTelefone);
-            this.Controls.Add(this.labelNome);
-            this.Controls.Add(this.textBoxEmail);
-            this.Controls.Add(this.textBoxCNH);
-            this.Controls.Add(this.textBoxEndereco);
-            this.Controls.Add(this.textBoxNome);
             this.Controls.Add(this.groupBoxDadosCliente);
             this.Name = "TelaCadastroClienteForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliente";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBoxDadosCliente.ResumeLayout(false);
             this.groupBoxDadosCliente.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -292,5 +314,7 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBoxTelefone;
         public System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.GroupBox groupBoxDadosCliente;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxID;
     }
 }

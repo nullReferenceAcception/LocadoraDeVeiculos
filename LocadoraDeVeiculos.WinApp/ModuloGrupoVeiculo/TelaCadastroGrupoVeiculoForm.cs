@@ -29,6 +29,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 
         private void ConfigurarTelaEditar()
         {
+            textBoxID.Text = grupoVeiculos!.Id.ToString();
             textBoxName.Text = grupoVeiculos!.Nome;
         }
 

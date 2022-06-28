@@ -35,13 +35,15 @@
             this.textBoxDescricao = new System.Windows.Forms.TextBox();
             this.labelValor = new System.Windows.Forms.Label();
             this.textBoxValor = new System.Windows.Forms.TextBox();
+            this.labelID = new System.Windows.Forms.Label();
+            this.textBoxID = new System.Windows.Forms.TextBox();
             this.groupBoxTaxa.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonCancelar
             // 
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancelar.Location = new System.Drawing.Point(186, 124);
+            this.buttonCancelar.Location = new System.Drawing.Point(186, 149);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
             this.buttonCancelar.TabIndex = 5;
@@ -51,7 +53,7 @@
             // buttonGravar
             // 
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonGravar.Location = new System.Drawing.Point(109, 124);
+            this.buttonGravar.Location = new System.Drawing.Point(109, 149);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
             this.buttonGravar.TabIndex = 4;
@@ -61,13 +63,15 @@
             // 
             // groupBoxTaxa
             // 
+            this.groupBoxTaxa.Controls.Add(this.labelID);
+            this.groupBoxTaxa.Controls.Add(this.textBoxID);
             this.groupBoxTaxa.Controls.Add(this.labelDescricao);
             this.groupBoxTaxa.Controls.Add(this.textBoxDescricao);
             this.groupBoxTaxa.Controls.Add(this.labelValor);
             this.groupBoxTaxa.Controls.Add(this.textBoxValor);
             this.groupBoxTaxa.Location = new System.Drawing.Point(12, 14);
             this.groupBoxTaxa.Name = "groupBoxTaxa";
-            this.groupBoxTaxa.Size = new System.Drawing.Size(241, 104);
+            this.groupBoxTaxa.Size = new System.Drawing.Size(241, 129);
             this.groupBoxTaxa.TabIndex = 6;
             this.groupBoxTaxa.TabStop = false;
             this.groupBoxTaxa.Text = "Dados de taxas:";
@@ -75,7 +79,7 @@
             // labelDescricao
             // 
             this.labelDescricao.AutoSize = true;
-            this.labelDescricao.Location = new System.Drawing.Point(17, 26);
+            this.labelDescricao.Location = new System.Drawing.Point(5, 57);
             this.labelDescricao.Name = "labelDescricao";
             this.labelDescricao.Size = new System.Drawing.Size(61, 15);
             this.labelDescricao.TabIndex = 1;
@@ -83,7 +87,7 @@
             // 
             // textBoxDescricao
             // 
-            this.textBoxDescricao.Location = new System.Drawing.Point(84, 22);
+            this.textBoxDescricao.Location = new System.Drawing.Point(84, 54);
             this.textBoxDescricao.MaxLength = 255;
             this.textBoxDescricao.Name = "textBoxDescricao";
             this.textBoxDescricao.Size = new System.Drawing.Size(143, 23);
@@ -92,7 +96,7 @@
             // labelValor
             // 
             this.labelValor.AutoSize = true;
-            this.labelValor.Location = new System.Drawing.Point(42, 66);
+            this.labelValor.Location = new System.Drawing.Point(30, 86);
             this.labelValor.Name = "labelValor";
             this.labelValor.Size = new System.Drawing.Size(36, 15);
             this.labelValor.TabIndex = 3;
@@ -100,21 +104,40 @@
             // 
             // textBoxValor
             // 
-            this.textBoxValor.Location = new System.Drawing.Point(84, 62);
+            this.textBoxValor.Location = new System.Drawing.Point(84, 83);
             this.textBoxValor.MaxLength = 255;
             this.textBoxValor.Name = "textBoxValor";
             this.textBoxValor.Size = new System.Drawing.Size(143, 23);
             this.textBoxValor.TabIndex = 2;
             // 
+            // labelID
+            // 
+            this.labelID.AutoSize = true;
+            this.labelID.Location = new System.Drawing.Point(45, 29);
+            this.labelID.Name = "labelID";
+            this.labelID.Size = new System.Drawing.Size(21, 15);
+            this.labelID.TabIndex = 29;
+            this.labelID.Text = "ID:";
+            // 
+            // textBoxID
+            // 
+            this.textBoxID.Enabled = false;
+            this.textBoxID.Location = new System.Drawing.Point(84, 25);
+            this.textBoxID.Name = "textBoxID";
+            this.textBoxID.ReadOnly = true;
+            this.textBoxID.Size = new System.Drawing.Size(75, 23);
+            this.textBoxID.TabIndex = 30;
+            // 
             // TelaCadastroTaxaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(267, 164);
+            this.ClientSize = new System.Drawing.Size(267, 189);
             this.Controls.Add(this.groupBoxTaxa);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonGravar);
             this.Name = "TelaCadastroTaxaForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Taxas";
             this.groupBoxTaxa.ResumeLayout(false);
             this.groupBoxTaxa.PerformLayout();
@@ -130,5 +153,7 @@
         private System.Windows.Forms.TextBox textBoxDescricao;
         private System.Windows.Forms.Label labelValor;
         private System.Windows.Forms.TextBox textBoxValor;
+        private System.Windows.Forms.Label labelID;
+        private System.Windows.Forms.TextBox textBoxID;
     }
 }

@@ -23,7 +23,7 @@ namespace LocadoraDeVeiculos.WinApp
             {
                 foreach (Control c in con.Controls)
                 {
-                    c.Enabled =enable;
+                    c.Enabled = enable;
                 }
 
                 try
@@ -36,7 +36,4 @@ namespace LocadoraDeVeiculos.WinApp
             }
         }
     }
-
-
-
 }
