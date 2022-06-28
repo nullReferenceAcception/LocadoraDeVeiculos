@@ -78,7 +78,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         {
             var numero = _tabelaFuncionario!.ObtemNumeroFuncionarioSelecionado();
 
-            Funcionario selecionado = _repositorioFuncionario!.SelecionarPorID(numero);
+            Funcionario selecionado = servicoFuncionario!.SelecionarPorID(numero);
 
             if (selecionado == null)
             {

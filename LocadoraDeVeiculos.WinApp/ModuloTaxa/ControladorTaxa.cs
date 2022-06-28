@@ -77,7 +77,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         {
             var numero = _tabelaTaxas!.ObtemNumeroTaxaSelecionada();
 
-            Taxa taxaSelecionada = _repositorioTaxa.SelecionarPorID(numero);
+            Taxa taxaSelecionada = servicoTaxa.SelecionarPorID(numero);
 
             if (taxaSelecionada == null)
             {

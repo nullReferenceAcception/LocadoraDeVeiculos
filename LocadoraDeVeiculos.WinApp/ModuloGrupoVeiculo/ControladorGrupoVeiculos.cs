@@ -77,7 +77,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
         {
             var numero = tabela!.ObtemNumeroSelecionada();
 
-            GrupoVeiculos Selecionado = repositorio.SelecionarPorID(numero);
+            GrupoVeiculos Selecionado = servico.SelecionarPorID(numero);
 
             if (Selecionado == null)
             {
