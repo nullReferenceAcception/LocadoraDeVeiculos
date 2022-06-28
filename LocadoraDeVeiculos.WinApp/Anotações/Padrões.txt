@@ -6,4 +6,9 @@
 - label1 > labelLogin;
 etc...
 
-Ao utilizar maskedTextBoxes, alterar a propriedade 'TextMaskFormat' para 'ExcludePromptAndLiterals' => Verificar possíveis alterações nos validadores
+Ao utilizar maskedTextBoxes, alterar a propriedade 'TextMaskFormat' para 'ExcludePromptAndLiterals' 
+=> Verificar possíveis alterações nos validadores
+
+Ao criar uma nova tela, utilizar o padrão já seguido:
+
+Um groupBox com: 'Dados do xxx', e com os componentes dentro, deixando os botões fora do group box.

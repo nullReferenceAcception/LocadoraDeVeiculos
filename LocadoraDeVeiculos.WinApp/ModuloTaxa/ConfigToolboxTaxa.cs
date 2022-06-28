@@ -6,6 +6,6 @@
         public override string TooltipInserir => "Inserir uma nova taxa";
         public override string TooltipEditar => "Editar uma taxa existente";
         public override string TooltipExcluir => "Excluir uma taxa existente";
-        public override string? TooltipVisualizar => "Visualizar um grupo de veiculos";
+        public override string? TooltipVisualizar => "Visualizar uma taxa existente";
     }
 }

@@ -28,6 +28,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         private void buttonGravar_Click(object sender, EventArgs e)
         {
+            ObterDadosDaTela();
+
+            var resultado = GravarRegistro!(Funcionario!);
+
+            if (!resultado.IsValid)
+            {
+                TelaPrincipalForm.Instancia!.AtualizarRodape(resultado.Errors[0].ErrorMessage);
+                DialogResult = DialogResult.None;
+            }
+        }
+
+        private void ObterDadosDaTela()
+        {
             Funcionario!.Nome = textBoxNome.Text;
             Funcionario!.Email = textBoxEmail.Text;
             Funcionario!.Telefone = maskedTextBoxTelefone.Text;
@@ -35,17 +48,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             Funcionario!.Login = textBoxLogin.Text;
             Funcionario!.Senha = textBoxSenha.Text;
             Funcionario!.DataAdmissao = dateTimePickerDataAdmissao.Value;
-            Funcionario!.Salario = Convert.ToDecimal(textBoxSalario.Text);
+            Funcionario!.Salario = Convert.ToDecimal(textBoxSalario.Text.ToString().Replace("R$", ""));
             Funcionario!.Cidade = textBoxCidade.Text;
             Funcionario!.EhAdmin = radioButtonAdmin.Checked == true ? Funcionario.EhAdmin = true : Funcionario.EhAdmin = false;
-
-            var resultado = GravarRegistro!(Funcionario);
-
-            if(!resultado.IsValid)
-            {
-                TelaPrincipalForm.Instancia!.AtualizarRodape(resultado.Errors[0].ErrorMessage);
-                DialogResult = DialogResult.None;
-            }
         }
 
         private void ConfigurarTelaEditar()
@@ -55,7 +60,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             maskedTextBoxTelefone.Text = _funcionario.Telefone;
             textBoxEndereco.Text = _funcionario.Endereco;
             textBoxLogin.Text = _funcionario.Login;
-            textBoxSalario.Text = Convert.ToDecimal(_funcionario.Salario).ToString();
+            textBoxSalario.Text = string.Format("R$" + "{0:C}", Convert.ToDecimal(_funcionario.Salario).ToString());
             textBoxSenha.Text = _funcionario.Senha;
             textBoxCidade.Text = _funcionario.Cidade;
 

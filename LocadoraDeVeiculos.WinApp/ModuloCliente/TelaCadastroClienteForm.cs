@@ -34,7 +34,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             textBoxEmail.Text = _cliente.Email;
             maskedTextBoxTelefone.Text = _cliente.Telefone;
 
-
             if(string.IsNullOrEmpty(_cliente.CPF))
             {
                 maskedTextBoxCNPJ.Text = _cliente.CNPJ;
@@ -46,6 +45,23 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 maskedTextBoxCPF.Text = _cliente.CPF;
                 radioButtonCPF.Checked = true;
             }
+        }
+
+        private void ObterDadosDaTela()
+        {
+            _cliente!.Nome = textBoxNome.Text;
+            _cliente.Endereco = textBoxEndereco.Text;
+            _cliente.CNH = textBoxCNH.Text;
+            _cliente.CNPJ = maskedTextBoxCNPJ.Text;
+            _cliente.CPF = maskedTextBoxCPF.Text;
+            _cliente.Email = textBoxEmail.Text;
+            _cliente.Telefone = maskedTextBoxTelefone.Text;
+            _cliente.PessoaFisica = radioButtonCPF.Checked == true ? _cliente.PessoaFisica = true : _cliente.PessoaFisica = false;
+
+            if (_cliente.PessoaFisica)
+                _cliente.CNPJ = null!;
+            else
+                _cliente.CPF = null!;
         }
 
         private void radioCPFbtn_CheckedChanged(object sender, EventArgs e)
@@ -69,22 +85,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            _cliente!.Nome = textBoxNome.Text;
-            _cliente.Endereco = textBoxEndereco.Text;
-            _cliente.CNH = textBoxCNH.Text;
-            _cliente.CNPJ = maskedTextBoxCNPJ.Text;
-            _cliente.CPF = maskedTextBoxCPF.Text;
-            _cliente.Email = textBoxEmail.Text;
-            _cliente.Telefone = maskedTextBoxTelefone.Text;
-            _cliente.PessoaFisica = radioButtonCPF.Checked == true ? _cliente.PessoaFisica = true : _cliente.PessoaFisica = false;
+            ObterDadosDaTela();
 
-            if (_cliente.PessoaFisica)
-                _cliente.CNPJ = null!;
-
-            else
-                _cliente.CPF = null!;
-
-            var resultadoValidacao = GravarRegistro!(_cliente);
+            var resultadoValidacao = GravarRegistro!(_cliente!);
 
             if (!resultadoValidacao.IsValid)
             {
@@ -92,5 +95,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 DialogResult = DialogResult.None;
             }
         }
+
+        
     }
 }

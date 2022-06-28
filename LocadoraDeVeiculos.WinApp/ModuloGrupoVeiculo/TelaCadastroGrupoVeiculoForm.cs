@@ -15,7 +15,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
             set
             {
                 grupoVeiculos = value!;
-                textBoxName.Text = grupoVeiculos.Nome;
+                ConfigurarTelaEditar();
             }
         }
 
@@ -27,17 +27,27 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
             this.ConfigurarTela();
         }
 
+        private void ConfigurarTelaEditar()
+        {
+            textBoxName.Text = grupoVeiculos!.Nome;
+        }
+
         private void buttonGravar_Click(object sender, EventArgs e)
         {
-            GrupoVeiculos!.Nome = textBoxName.Text;
+            ObterDadosDaTela();
 
-            var resultadoValidacao = GravarRegistro!(GrupoVeiculos);
+            var resultadoValidacao = GravarRegistro!(GrupoVeiculos!);
 
             if (!resultadoValidacao.IsValid)
             {
                 TelaPrincipalForm.Instancia!.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage);
                 DialogResult = DialogResult.None;
             }
+        }
+
+        private void ObterDadosDaTela()
+        {
+            GrupoVeiculos!.Nome = textBoxName.Text;
         }
     }
 }

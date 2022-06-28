@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonCancelar = new System.Windows.Forms.Button();
             this.labelNome = new System.Windows.Forms.Label();
             this.buttonGravar = new System.Windows.Forms.Button();
             this.textBoxNome = new System.Windows.Forms.TextBox();
@@ -56,15 +56,15 @@
             this.groupBoxDadosFuncionario.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button2
+            // buttonCancelar
             // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(323, 401);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(67, 33);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancelar.Location = new System.Drawing.Point(323, 401);
+            this.buttonCancelar.Name = "buttonCancelar";
+            this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
+            this.buttonCancelar.TabIndex = 10;
+            this.buttonCancelar.Text = "Cancelar";
+            this.buttonCancelar.UseVisualStyleBackColor = true;
             // 
             // labelNome
             // 
@@ -130,9 +130,10 @@
             // 
             // dateTimePickerDataAdmissao
             // 
+            this.dateTimePickerDataAdmissao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDataAdmissao.Location = new System.Drawing.Point(141, 211);
             this.dateTimePickerDataAdmissao.Name = "dateTimePickerDataAdmissao";
-            this.dateTimePickerDataAdmissao.Size = new System.Drawing.Size(235, 23);
+            this.dateTimePickerDataAdmissao.Size = new System.Drawing.Size(77, 23);
             this.dateTimePickerDataAdmissao.TabIndex = 6;
             // 
             // labelDataAdmissao
@@ -292,7 +293,7 @@
             this.Controls.Add(this.dateTimePickerDataAdmissao);
             this.Controls.Add(this.labelSenha);
             this.Controls.Add(this.textBoxSenha);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.labelNome);
             this.Controls.Add(this.buttonGravar);
             this.Controls.Add(this.textBoxNome);
@@ -334,6 +335,6 @@
         private System.Windows.Forms.GroupBox groupBoxDadosFuncionario;
         private System.Windows.Forms.TextBox textBoxCidade;
         private System.Windows.Forms.Label labelCidade;
-        public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Button buttonCancelar;
     }
 }
