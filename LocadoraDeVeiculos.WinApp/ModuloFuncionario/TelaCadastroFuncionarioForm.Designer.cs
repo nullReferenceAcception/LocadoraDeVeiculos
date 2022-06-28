@@ -50,8 +50,8 @@
             this.textBoxEndereco = new System.Windows.Forms.TextBox();
             this.maskedTextBoxTelefone = new System.Windows.Forms.MaskedTextBox();
             this.groupBoxDadosFuncionario = new System.Windows.Forms.GroupBox();
-            this.labelCidade = new System.Windows.Forms.Label();
             this.textBoxCidade = new System.Windows.Forms.TextBox();
+            this.labelCidade = new System.Windows.Forms.Label();
             this.groupBoxEhAdmin.SuspendLayout();
             this.groupBoxDadosFuncionario.SuspendLayout();
             this.SuspendLayout();
@@ -258,6 +258,14 @@
             this.groupBoxDadosFuncionario.TabStop = false;
             this.groupBoxDadosFuncionario.Text = "Dados do funcionário:";
             // 
+            // textBoxCidade
+            // 
+            this.textBoxCidade.Location = new System.Drawing.Point(128, 257);
+            this.textBoxCidade.MaxLength = 11;
+            this.textBoxCidade.Name = "textBoxCidade";
+            this.textBoxCidade.Size = new System.Drawing.Size(110, 23);
+            this.textBoxCidade.TabIndex = 26;
+            // 
             // labelCidade
             // 
             this.labelCidade.AutoSize = true;
@@ -266,14 +274,6 @@
             this.labelCidade.Size = new System.Drawing.Size(47, 15);
             this.labelCidade.TabIndex = 0;
             this.labelCidade.Text = "Cidade:";
-            // 
-            // textBoxCidade
-            // 
-            this.textBoxCidade.Location = new System.Drawing.Point(128, 257);
-            this.textBoxCidade.MaxLength = 11;
-            this.textBoxCidade.Name = "textBoxCidade";
-            this.textBoxCidade.Size = new System.Drawing.Size(110, 23);
-            this.textBoxCidade.TabIndex = 26;
             // 
             // TelaCadastroFuncionarioForm
             // 
@@ -311,8 +311,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label labelNome;
         private System.Windows.Forms.Button buttonGravar;
         private System.Windows.Forms.TextBox textBoxNome;
@@ -336,5 +334,6 @@
         private System.Windows.Forms.GroupBox groupBoxDadosFuncionario;
         private System.Windows.Forms.TextBox textBoxCidade;
         private System.Windows.Forms.Label labelCidade;
+        public System.Windows.Forms.Button button2;
     }
 }

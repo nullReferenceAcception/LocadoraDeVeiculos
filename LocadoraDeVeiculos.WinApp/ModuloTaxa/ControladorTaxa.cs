@@ -14,6 +14,29 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             _repositorioTaxa = rep;
         }
 
+        public override void Visualizar()
+        {
+            var numero = _tabelaTaxas!.ObtemNumeroTaxaSelecionada();
+
+            Taxa Selecionado = _repositorioTaxa.SelecionarPorID(numero);
+
+            if (Selecionado == null)
+            {
+                MessageBox.Show("Selecione uma Taxa!", "Edição de Taxas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            var tela = new TelaCadastroTaxaForm();
+
+            tela.Taxa = Selecionado;
+
+            tela.Enable(false);
+            tela.button2.Enabled = true;
+            tela.button2.Text = "voltar";
+            tela.ShowDialog();
+
+        }
+
         public override void Inserir()
         {
             TelaCadastroTaxaForm tela = new();

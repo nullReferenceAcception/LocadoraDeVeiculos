@@ -51,6 +51,11 @@ namespace LocadoraDeVeiculos.WinApp
             controlador!.Excluir();
         }
 
+        private void btnVisualizar_Click(object sender, EventArgs e)
+        {
+            controlador!.Visualizar();
+        }
+
         private void clientesMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
@@ -76,7 +81,6 @@ namespace LocadoraDeVeiculos.WinApp
             btnInserir.Enabled = configuracao.InserirHabilitado;
             btnEditar.Enabled = configuracao.EditarHabilitado;
             btnExcluir.Enabled = configuracao.ExcluirHabilitado;
-            btnFiltrar.Enabled = configuracao.FiltrarHabilitado;
             btnGerarPdf.Enabled = configuracao.GerarPdfHabilitado;
             btnVisualizar.Enabled = configuracao.VisualizarHabilitado;
         }
@@ -86,7 +90,6 @@ namespace LocadoraDeVeiculos.WinApp
             btnInserir.ToolTipText = configuracao.TooltipInserir;
             btnEditar.ToolTipText = configuracao.TooltipEditar;
             btnExcluir.ToolTipText = configuracao.TooltipExcluir;
-            btnFiltrar.ToolTipText = configuracao.TooltipFiltrar;
             btnGerarPdf.ToolTipText = configuracao.TooltipGerarPdf;
             btnVisualizar.ToolTipText = configuracao.TooltipVisualizar;
         }
@@ -149,5 +152,7 @@ namespace LocadoraDeVeiculos.WinApp
         {
             labelRodape.Text = mensagem;
         }
+
+       
     }
 }

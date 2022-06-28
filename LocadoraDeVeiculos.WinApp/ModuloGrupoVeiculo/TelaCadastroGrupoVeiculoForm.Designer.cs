@@ -117,9 +117,9 @@
 
         private System.Windows.Forms.TextBox textBoxNome;
         private System.Windows.Forms.GroupBox groupBoxGrupoVeiculo;
-        private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.Label labelDescricao;
         private System.Windows.Forms.Button buttonGravar;
         private System.Windows.Forms.TextBox textBoxName;
+        public System.Windows.Forms.Button buttonCancelar;
     }
 }

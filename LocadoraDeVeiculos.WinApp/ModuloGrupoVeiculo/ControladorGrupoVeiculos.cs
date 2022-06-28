@@ -14,6 +14,28 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
             repositorio = rep;
         }
 
+        public override void Visualizar()
+        {
+            var numero = tabela!.ObtemNumeroSelecionada();
+
+            GrupoVeiculos Selecionado = repositorio.SelecionarPorID(numero);
+
+            if (Selecionado == null)
+            {
+                MessageBox.Show("Selecione um grupo de veiculos primeiro!", "Edição de grupo de veiculos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            var tela = new TelaCadastroGrupoVeiculoForm();
+
+            tela.GrupoVeiculos = Selecionado;
+
+            tela.Enable(false);
+            tela.buttonCancelar.Enabled = true;
+            tela.buttonCancelar.Text = "voltar";
+            tela.ShowDialog();
+
+        }
         public override void Inserir()
         {
             TelaCadastroGrupoVeiculoForm tela = new();
