@@ -14,28 +14,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             _repositorioFuncionario = rep;
         }
 
-        public override void Visualizar()
-        {
-            var numero = _tabelaFuncionario!.ObtemNumeroFuncionarioSelecionado();
-
-            Funcionario selecionado = _repositorioFuncionario!.SelecionarPorID(numero);
-
-            if (selecionado == null)
-            {
-                MessageBox.Show("Selecione um Funcionario primeiro!", "Edição de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-
-            var tela = new TelaCadastroFuncionarioForm();
-
-            tela.Funcionario = selecionado;
-
-            tela.Enable(false);
-            tela.buttonCancelar.Enabled = true;
-            tela.buttonCancelar.Text = "Voltar";
-            tela.ShowDialog();
-
-        }
         public override void Inserir()
         {
             TelaCadastroFuncionarioForm tela = new();
@@ -58,7 +36,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             if (funcionarioSelecionado == null)
             {
-                MessageBox.Show("Selecione um funcionário primeiro!", "Edição de Funcionário", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um funcionário para editar");
                 return;
             }
 
@@ -82,7 +60,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             if (funcionarioSelecionado == null)
             {
-                MessageBox.Show("Selecione um funcionário primeiro!", "Exclusão de Funcionário", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um funcionário para excluir");
                 return;
             }
 
@@ -94,6 +72,28 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
                 _repositorioFuncionario.Excluir(funcionarioSelecionado);
                 CarregarFuncionarios();
             }
+        }
+
+        public override void Visualizar()
+        {
+            var numero = _tabelaFuncionario!.ObtemNumeroFuncionarioSelecionado();
+
+            Funcionario selecionado = _repositorioFuncionario!.SelecionarPorID(numero);
+
+            if (selecionado == null)
+            {
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um funcionário para visualizar");
+                return;
+            }
+
+            var tela = new TelaCadastroFuncionarioForm();
+
+            tela.Funcionario = selecionado;
+
+            tela.Enable(false);
+            tela.buttonCancelar.Enabled = true;
+            tela.buttonCancelar.Text = "Voltar";
+            tela.ShowDialog();
         }
 
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()

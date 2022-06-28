@@ -152,7 +152,5 @@ namespace LocadoraDeVeiculos.WinApp
         {
             labelRodape.Text = mensagem;
         }
-
-       
     }
 }

@@ -27,6 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraDeVeiculos.Infra.Ba
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "LocadoraDeVeiculos.Projeto.BandoDeDados", "LocadoraDeVeiculos.Projeto.BandoDeDados\LocadoraDeVeiculos.Projeto.BandoDeDados.sqlproj", "{C3992F70-5F7A-43AE-979F-F18D1E8CA0CC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Guia", "Guia", "{59F0FD54-5D55-4319-9028-667A68DA9279}"
+	ProjectSection(SolutionItems) = preProject
+		Guia.md = Guia.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

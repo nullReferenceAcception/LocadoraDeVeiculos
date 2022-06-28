@@ -216,8 +216,8 @@
             // labelRodape
             // 
             this.labelRodape.Name = "labelRodape";
-            this.labelRodape.Size = new System.Drawing.Size(52, 17);
-            this.labelRodape.Text = "[rodapé]";
+            this.labelRodape.Size = new System.Drawing.Size(40, 17);
+            this.labelRodape.Text = "           ";
             // 
             // statusStripRodape
             // 

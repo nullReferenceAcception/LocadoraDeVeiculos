@@ -28,9 +28,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Telefone", HeaderText = "Telefone" },
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Endereco", HeaderText = "Endereço" },
-
                 new DataGridViewTextBoxColumn { DataPropertyName = "DataAdmissao", HeaderText = "Data de Admissão" },
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Salario", HeaderText = "Salário"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Endereco", HeaderText = "Endereço" },
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Cidade", HeaderText = "Cidade" }
             };
@@ -48,7 +50,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             grid.Rows.Clear();
 
             foreach (Funcionario funcionario in funcionarios)
-                grid.Rows.Add(funcionario.Id, funcionario.Nome, funcionario.Email, funcionario.Login, funcionario.Telefone, funcionario.Endereco, funcionario.DataAdmissao, funcionario.Cidade);
+                grid.Rows.Add(funcionario.Id, funcionario.Nome, funcionario.Email, funcionario.Login, funcionario.Telefone, funcionario.DataAdmissao, funcionario.Salario, funcionario.Endereco,  funcionario.Cidade);
         }
     }
 }

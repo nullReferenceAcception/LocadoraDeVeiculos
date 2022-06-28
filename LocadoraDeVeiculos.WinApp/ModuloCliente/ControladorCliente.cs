@@ -14,29 +14,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             _repositorioCliente = rep;
         }
 
-        public override void Visualizar()
-        {
-            var numero = _tabelaCliente!.ObtemNumeroClienteSelecionado();
-
-            Cliente clienteSelecionado = _repositorioCliente.SelecionarPorID(numero);
-
-            if (clienteSelecionado == null)
-            {
-                MessageBox.Show("Selecione um cliente primeiro!", "Edição de clientes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-
-            var tela = new TelaCadastroClienteForm();
-
-            tela.cliente = clienteSelecionado;
-
-            tela.Enable(false);
-            tela.btnCancelar.Enabled = true;
-            tela.btnCancelar.Text = "voltar";
-            tela.ShowDialog();
-
-        }
-
         public override void Inserir()
         {
             TelaCadastroClienteForm tela = new();
@@ -58,7 +35,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             if (clienteSelecionado == null)
             {
-                MessageBox.Show("Selecione um cliente primeiro!", "Edição de clientes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um cliente para editar");
                 return;
             }
 
@@ -82,7 +59,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             if (clienteSelecionado == null)
             {
-                MessageBox.Show("Selecione um cliente primeiro!", "Edição de Cliente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um cliente para excluir");
                 return;
             }
 
@@ -94,6 +71,28 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 _repositorioCliente.Excluir(clienteSelecionado);
                 CarregarCliente();
             }
+        }
+
+        public override void Visualizar()
+        {
+            var numero = _tabelaCliente!.ObtemNumeroClienteSelecionado();
+
+            Cliente clienteSelecionado = _repositorioCliente.SelecionarPorID(numero);
+
+            if (clienteSelecionado == null)
+            {
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um cliente para visualizar");
+                return;
+            }
+
+            var tela = new TelaCadastroClienteForm();
+
+            tela.cliente = clienteSelecionado;
+
+            tela.Enable(false);
+            tela.buttonCancelar.Enabled = true;
+            tela.buttonCancelar.Text = "Voltar";
+            tela.ShowDialog();
         }
 
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
