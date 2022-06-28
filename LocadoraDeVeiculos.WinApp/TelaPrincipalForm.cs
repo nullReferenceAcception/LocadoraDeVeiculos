@@ -24,7 +24,7 @@ namespace LocadoraDeVeiculos.WinApp
 
             Instancia = this;
 
-            statusStrip1.Text = string.Empty;
+            statusStripRodape.Text = string.Empty;
             labelTipoCadastro.Text = string.Empty;
 
             InicializarControladores();

@@ -60,7 +60,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             registro.Id = Convert.ToInt32(ID);
             conexao.Close();
             return resultadoValidacao;
-
         }
 
         protected virtual ValidationResult Validar(string sql,T registro, SqlConnection conexaoComBanco)
