@@ -14,29 +14,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             servicoTaxa = rep;
         }
 
-        public override void Visualizar()
-        {
-            var numero = _tabelaTaxas!.ObtemNumeroTaxaSelecionada();
-
-            Taxa Selecionado = servicoTaxa.SelecionarPorID(numero);
-
-            if (Selecionado == null)
-            {
-                MessageBox.Show("Selecione uma Taxa!", "Edição de Taxas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-
-            var tela = new TelaCadastroTaxaForm();
-
-            tela.Taxa = Selecionado;
-
-            tela.Enable(false);
-            tela.button2.Enabled = true;
-            tela.button2.Text = "voltar";
-            tela.ShowDialog();
-
-        }
-
         public override void Inserir()
         {
             TelaCadastroTaxaForm tela = new();
@@ -58,7 +35,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             if (taxaSelecionada == null)
             {
-                MessageBox.Show("Selecione uma taxa primeiro!", "Edição de Taxas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma taxa para editar");
                 return;
             }
 
@@ -82,7 +59,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             if (taxaSelecionada == null)
             {
-                MessageBox.Show("Selecione uma taxa primeiro!", "Exclusão de Taxa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma taxa para excluir");
                 return;
             }
 
@@ -94,6 +71,28 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
                 servicoTaxa.Excluir(taxaSelecionada);
                 CarregarTaxas();
             }
+        }
+
+        public override void Visualizar()
+        {
+            var numero = _tabelaTaxas!.ObtemNumeroTaxaSelecionada();
+
+            Taxa taxaSelecionada = _repositorioTaxa.SelecionarPorID(numero);
+
+            if (taxaSelecionada == null)
+            {
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma taxa para visualizar");
+                return;
+            }
+
+            var tela = new TelaCadastroTaxaForm();
+
+            tela.Taxa = taxaSelecionada;
+
+            tela.Enable(false);
+            tela.buttonCancelar.Enabled = true;
+            tela.buttonCancelar.Text = "Voltar";
+            tela.ShowDialog();
         }
 
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()

@@ -18,7 +18,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         {
             var numero = _tabelaCliente!.ObtemNumeroClienteSelecionado();
 
-            Cliente clienteSelecionado = ServicoCliente.SelecionarPorID(numero);
+            Cliente clienteSelecionado = _repositorioCliente.SelecionarPorID(numero);
 
             if (clienteSelecionado == null)
             {
@@ -58,7 +58,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             if (clienteSelecionado == null)
             {
-                MessageBox.Show("Selecione um cliente primeiro!", "Edição de clientes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um cliente para editar");
                 return;
             }
 
@@ -82,7 +82,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             if (clienteSelecionado == null)
             {
-                MessageBox.Show("Selecione um cliente primeiro!", "Edição de Cliente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um cliente para excluir");
                 return;
             }
 
@@ -94,6 +94,28 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 ServicoCliente.Excluir(clienteSelecionado);
                 CarregarCliente();
             }
+        }
+
+        public override void Visualizar()
+        {
+            var numero = _tabelaCliente!.ObtemNumeroClienteSelecionado();
+
+            Cliente clienteSelecionado = _repositorioCliente.SelecionarPorID(numero);
+
+            if (clienteSelecionado == null)
+            {
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um cliente para visualizar");
+                return;
+            }
+
+            var tela = new TelaCadastroClienteForm();
+
+            tela.cliente = clienteSelecionado;
+
+            tela.Enable(false);
+            tela.buttonCancelar.Enabled = true;
+            tela.buttonCancelar.Text = "Voltar";
+            tela.ShowDialog();
         }
 
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()

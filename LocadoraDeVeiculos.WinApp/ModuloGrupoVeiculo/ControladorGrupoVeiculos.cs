@@ -13,29 +13,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
         {
             servico = rep;
         }
-
-        public override void Visualizar()
-        {
-            var numero = tabela!.ObtemNumeroSelecionada();
-
-            GrupoVeiculos Selecionado = servico.SelecionarPorID(numero);
-
-            if (Selecionado == null)
-            {
-                MessageBox.Show("Selecione um grupo de veiculos primeiro!", "Edição de grupo de veiculos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-
-            var tela = new TelaCadastroGrupoVeiculoForm();
-
-            tela.GrupoVeiculos = Selecionado;
-
-            tela.Enable(false);
-            tela.buttonCancelar.Enabled = true;
-            tela.buttonCancelar.Text = "voltar";
-            tela.ShowDialog();
-
-        }
+        
         public override void Inserir()
         {
             TelaCadastroGrupoVeiculoForm tela = new();
@@ -57,7 +35,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 
             if (Selecionada == null)
             {
-                MessageBox.Show("Selecione um grupo de veiculos primeiro!", "Edição de grupo de veiculos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um grupo de veículos para editar");
                 return;
             }
 
@@ -81,7 +59,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 
             if (Selecionada == null)
             {
-                MessageBox.Show("Selecione um Grupo de Veiculos primeiro!", "Edição de Grupo de Veiculos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um grupo de veículos para excluir");
                 return;
             }
 
@@ -93,6 +71,28 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
                 servico.Excluir(Selecionada);
                 carregarGrupoVeiculos();
             }
+        }
+
+        public override void Visualizar()
+        {
+            var numero = tabela!.ObtemNumeroSelecionada();
+
+            GrupoVeiculos Selecionado = repositorio.SelecionarPorID(numero);
+
+            if (Selecionado == null)
+            {
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um grupo de veículos para visualizar");
+                return;
+            }
+
+            var tela = new TelaCadastroGrupoVeiculoForm();
+
+            tela.GrupoVeiculos = Selecionado;
+
+            tela.Enable(false);
+            tela.buttonCancelar.Enabled = true;
+            tela.buttonCancelar.Text = "Voltar";
+            tela.ShowDialog();
         }
 
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()

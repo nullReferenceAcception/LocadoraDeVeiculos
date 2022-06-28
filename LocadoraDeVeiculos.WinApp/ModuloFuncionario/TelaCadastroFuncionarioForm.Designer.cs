@@ -133,7 +133,7 @@
             this.dateTimePickerDataAdmissao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDataAdmissao.Location = new System.Drawing.Point(141, 211);
             this.dateTimePickerDataAdmissao.Name = "dateTimePickerDataAdmissao";
-            this.dateTimePickerDataAdmissao.Size = new System.Drawing.Size(77, 23);
+            this.dateTimePickerDataAdmissao.Size = new System.Drawing.Size(87, 23);
             this.dateTimePickerDataAdmissao.TabIndex = 6;
             // 
             // labelDataAdmissao
