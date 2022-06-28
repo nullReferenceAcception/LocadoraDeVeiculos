@@ -6,19 +6,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 {
     public class ControladorTaxa : ControladorBase
     {
-        private IRepositorioTaxa _repositorioTaxa;
+        private IServicoTaxa servicoTaxa;
         private TabelaTaxaControl? _tabelaTaxas;
 
-        public ControladorTaxa(IRepositorioTaxa rep)
+        public ControladorTaxa(IServicoTaxa rep)
         {
-            _repositorioTaxa = rep;
+            servicoTaxa = rep;
         }
 
         public override void Visualizar()
         {
             var numero = _tabelaTaxas!.ObtemNumeroTaxaSelecionada();
 
-            Taxa Selecionado = _repositorioTaxa.SelecionarPorID(numero);
+            Taxa Selecionado = servicoTaxa.SelecionarPorID(numero);
 
             if (Selecionado == null)
             {
@@ -43,7 +43,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             tela.Taxa = new();
 
-            tela.GravarRegistro = _repositorioTaxa.Inserir;
+            tela.GravarRegistro = servicoTaxa.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -54,7 +54,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         {
             var numero = _tabelaTaxas!.ObtemNumeroTaxaSelecionada();
 
-            Taxa taxaSelecionada = _repositorioTaxa.SelecionarPorID(numero);
+            Taxa taxaSelecionada = servicoTaxa.SelecionarPorID(numero);
 
             if (taxaSelecionada == null)
             {
@@ -66,7 +66,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             tela.Taxa = taxaSelecionada;
 
-            tela.GravarRegistro = _repositorioTaxa.Editar;
+            tela.GravarRegistro = servicoTaxa.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -78,7 +78,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         {
             var numero = _tabelaTaxas!.ObtemNumeroTaxaSelecionada();
 
-            Taxa taxaSelecionada = _repositorioTaxa.SelecionarPorID(numero);
+            Taxa taxaSelecionada = servicoTaxa.SelecionarPorID(numero);
 
             if (taxaSelecionada == null)
             {
@@ -91,7 +91,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             if(resultado == DialogResult.OK)
             {
-                _repositorioTaxa.Excluir(taxaSelecionada);
+                servicoTaxa.Excluir(taxaSelecionada);
                 CarregarTaxas();
             }
         }
@@ -113,7 +113,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
         private void CarregarTaxas()
         {
-            List<Taxa> taxas = _repositorioTaxa.SelecionarTodos();
+            List<Taxa> taxas = servicoTaxa.SelecionarTodos();
 
             _tabelaTaxas!.AtualizarRegistros(taxas);
 

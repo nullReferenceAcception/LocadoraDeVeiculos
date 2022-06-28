@@ -1,15 +1,17 @@
 ﻿using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
+using LocadoraDeVeiculos.Servico.ModuloTaxa;
 using System.Data.SqlClient;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 {
-    public class RepositorioTaxa : RepositorioBaseEmBancoDeDados<Taxa,ValidadorTaxa,MapeadorTaxa>, IRepositorioTaxa
+    public class RepositorioTaxa : RepositorioBaseEmBancoDeDados<Taxa, ValidadorTaxa, MapeadorTaxa>, IRepositorioTaxa
     {
         public RepositorioTaxa() : base(new ValidadorTaxa(), new MapeadorTaxa())
         {
-            
+
         }
 
         #region Sql Queries
@@ -80,9 +82,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 
         #endregion
 
-        protected override ValidationResult MandarSQLParaValidador(Taxa registro, SqlConnection conexaoComBanco)
+        string IRepositorio<Taxa>.SqlDuplicidade(Taxa registro)
         {
-            return Validar("SELECT * FROM TB_TAXA WHERE ([DESCRICAO] = '" + registro.Descricao + "')" + $"AND [ID_TAXA] != {registro.Id}", registro, conexaoComBanco);
+            return "SELECT * FROM TB_TAXA WHERE ([DESCRICAO] = '" + registro.Descricao + "')" + $"AND [ID_TAXA] != {registro.Id}";
         }
     }
 }

@@ -73,12 +73,16 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
 	            ID_GRUPO_VEICULO = @ID;";
         }
 
+      
+
 
         #endregion
 
-        protected override ValidationResult MandarSQLParaValidador(GrupoVeiculos registro, SqlConnection conexaoComBanco)
+
+        public string SqlDuplicidade(GrupoVeiculos registro)
         {
-            return Validar("SELECT * FROM TB_GRUPO_VEICULO WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_GRUPO_VEICULO] != {registro.Id}", registro, conexaoComBanco);
+            return "SELECT * FROM TB_GRUPO_VEICULO WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_GRUPO_VEICULO] != {registro.Id}";
         }
+
     }
 }

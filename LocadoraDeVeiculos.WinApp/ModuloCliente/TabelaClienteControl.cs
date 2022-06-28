@@ -52,13 +52,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         {
             grid.Rows.Clear();
 
+            //TODO arrumar mascara para o telefone e CNPJ/CPF aqui
             foreach (Cliente cliente in clientes)
             {
                 if(cliente.CNPJ == null)                   
-                grid.Rows.Add(cliente.Id, cliente.Nome, cliente.Email, cliente.Endereco, cliente.Telefone,cliente.CNH, cliente.CPF);
+                grid.Rows.Add(cliente.Id, cliente.Nome, cliente.Endereco, cliente.Telefone, cliente.Telefone,cliente.CNH, cliente.Email,cliente.CPF);
 
                 else
-                    grid.Rows.Add(cliente.Id, cliente.Nome, cliente.Email, cliente.Endereco, cliente.Telefone, cliente.CNH, cliente.CNPJ);
+                    grid.Rows.Add(cliente.Id, cliente.Nome, cliente.Endereco, cliente.Telefone, cliente.Telefone, cliente.CNH, cliente.Email,cliente.CNPJ);
             }
 
             

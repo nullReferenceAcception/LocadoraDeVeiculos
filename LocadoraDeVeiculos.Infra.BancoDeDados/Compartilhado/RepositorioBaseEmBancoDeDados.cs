@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio;
+using LocadoraDeVeiculos.Servico.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -25,31 +26,22 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
         protected abstract string sqlSelecionarPorID { get; }
         #endregion
 
-        protected abstract ValidationResult MandarSQLParaValidador(T registro, SqlConnection conexaoComBanco);
-
         #region variaveis
-        TValidador validador;
         TMapeamento mapeador;
+        SqlConnection conexao;
         #endregion
 
         #region construtor
-        public RepositorioBaseEmBancoDeDados(AbstractValidator<T> validationRules, IMapeavel<T> mapeavel)
+        public RepositorioBaseEmBancoDeDados(TValidador validationRules, TMapeamento mapeavel)
         {
-            this.validador = (TValidador)validationRules;
-            this.mapeador = (TMapeamento)mapeavel;
+            this.mapeador = mapeavel;
+            conexao = new SqlConnection(enderecoBanco);
         }
         #endregion
 
-        public ValidationResult Inserir(T registro)
+        public void Inserir(T registro)
         {
-            SqlConnection conexao = new SqlConnection(enderecoBanco);
             conexao.Open();
-
-
-            ValidationResult resultadoValidacao = MandarSQLParaValidador(registro,conexao);
-
-            if (resultadoValidacao.IsValid == false)
-                return resultadoValidacao;
 
             SqlCommand cmdInserir = new SqlCommand(sqlInserir, conexao);
 
@@ -59,86 +51,74 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 
             registro.Id = Convert.ToInt32(ID);
             conexao.Close();
-            return resultadoValidacao;
         }
 
-        protected virtual ValidationResult Validar(string sql,T registro, SqlConnection conexaoComBanco)
+        public bool VerificarDuplicidade(string sql)
         {
-            var resultadoValidacao = validador.Validate(registro);
-
-            if (resultadoValidacao.IsValid == false)
-                return resultadoValidacao;
-
-            var sqlCommand = new SqlCommand(sql, conexaoComBanco);
+            conexao.Open();
+            var sqlCommand = new SqlCommand(sql, conexao);
 
             SqlDataReader reader = sqlCommand.ExecuteReader();
-            if (reader.HasRows)
-                resultadoValidacao.Errors.Add(new ValidationFailure("", "Nome já está cadastrado"));
+
+            bool haRegistro = reader.HasRows;
+
 
             reader.Close();
             reader.Dispose();
-
-            return resultadoValidacao;
+            conexao.Close();
+            return haRegistro;
         }
-       
 
-        public ValidationResult Editar(T registro)
+        public void Editar(T registro)
         {
-            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
-            conexaoComBanco.Open();
+            conexao.Open();
 
-            ValidationResult resultadoValidacao = MandarSQLParaValidador(registro, conexaoComBanco);
-
-            if (resultadoValidacao.IsValid == false)
-                return resultadoValidacao;
-
-            SqlCommand comandoEdicao = new SqlCommand(sqlEditar, conexaoComBanco);
+            SqlCommand comandoEdicao = new SqlCommand(sqlEditar, conexao);
 
             mapeador.ConfigurarParametrosRegistro(registro, comandoEdicao);
 
             comandoEdicao.ExecuteNonQuery();
-            conexaoComBanco.Close();
+            conexao.Close();
 
-            return resultadoValidacao;
         }
 
-        public ValidationResult Excluir(T registro)
+        public string Excluir(T registro)
         {
-            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
+            SqlConnection conexao = new SqlConnection(enderecoBanco);
 
-            SqlCommand comandoExclusao = new SqlCommand(sqlExcluir, conexaoComBanco);
+            SqlCommand comandoExclusao = new SqlCommand(sqlExcluir, conexao);
 
             comandoExclusao.Parameters.AddWithValue("ID", registro.Id);
 
-            conexaoComBanco.Open();
-            var resultadoValidacao = new ValidationResult();
+            conexao.Open();
             int IDRegistrosExcluidos = 0;
+
+            string mensagen = null;
 
             // essa gambiarra foi feita porcausa das foreign keys
             try
             {
                 IDRegistrosExcluidos = comandoExclusao.ExecuteNonQuery();
+                if (IDRegistrosExcluidos == 0)
+                    mensagen = "Não foi possível remover o registro";
             }
-            catch (SqlException ex)
+            catch (SqlException excecao)
             {
-                resultadoValidacao.Errors.Add(new ValidationFailure("", ex.Message));
+                mensagen = excecao.Message;
             }
 
-            if (IDRegistrosExcluidos == 0)
-                resultadoValidacao.Errors.Add(new ValidationFailure("", "Não foi possível remover o registro"));
+            conexao.Close();
 
-            conexaoComBanco.Close();
-
-            return resultadoValidacao;
+            return mensagen;
         }
 
         public List<T> SelecionarTodos()
         {
-            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
+            SqlConnection conexao = new SqlConnection(enderecoBanco);
 
-            SqlCommand comandoSelecao = new SqlCommand(sqlSelecionarTodos, conexaoComBanco);
+            SqlCommand comandoSelecao = new SqlCommand(sqlSelecionarTodos, conexao);
 
-            conexaoComBanco.Open();
+            conexao.Open();
             SqlDataReader leitorRegistro = comandoSelecao.ExecuteReader();
 
             List<T> registros = new List<T>();
@@ -149,20 +129,20 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
                 registros.Add(registro);
             }
 
-            conexaoComBanco.Close();
+            conexao.Close();
 
             return registros;
         }
 
         public T SelecionarPorID(int ID)
         {
-            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
+            SqlConnection conexao = new SqlConnection(enderecoBanco);
 
-            SqlCommand comandoSelecao = new SqlCommand(sqlSelecionarPorID, conexaoComBanco);
+            SqlCommand comandoSelecao = new SqlCommand(sqlSelecionarPorID, conexao);
 
             comandoSelecao.Parameters.AddWithValue("ID", ID);
 
-            conexaoComBanco.Open();
+            conexao.Open();
             SqlDataReader leitorRegistro = comandoSelecao.ExecuteReader();
 
             T registro = null!;
@@ -170,7 +150,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             if (leitorRegistro.Read())
                 registro = mapeador.ConverterParaRegistro(leitorRegistro);
 
-            conexaoComBanco.Close();
+            conexao.Close();
 
             return registro;
         }

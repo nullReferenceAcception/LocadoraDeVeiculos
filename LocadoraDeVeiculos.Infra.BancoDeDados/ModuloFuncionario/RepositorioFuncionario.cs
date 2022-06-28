@@ -114,30 +114,22 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                     ID_FUNCIONARIO = @ID";
         }
 
+
+
+
+
         #endregion
 
-        protected override ValidationResult MandarSQLParaValidador(Funcionario registro, SqlConnection conexaoComBanco)
+
+
+        public string SqlDuplicidadeLogin(Funcionario registro)
         {
-            ValidationResult resultadoValidacao;
-            //return Validar("SELECT * FROM TB_FUNCIONARIO WHERE ([NOME] = '" + registro.Nome + "')" + $"OR ([LOGIN] = '{registro.Login}')" + $"AND [ID_FUNCIONARIO] != {registro.Id}", registro, conexaoComBanco);
+            return  "SELECT * FROM TB_FUNCIONARIO WHERE ([LOGIN] = '" + registro.Login + "')" + $"AND [ID_FUNCIONARIO] != {registro.Id}";
+        }
 
-
-            resultadoValidacao = Validar("SELECT * FROM TB_FUNCIONARIO WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_FUNCIONARIO] != {registro.Id}", registro, conexaoComBanco);
-
-            if (resultadoValidacao.IsValid == false)
-            {
-                return resultadoValidacao;
-            }
-
-            resultadoValidacao = Validar("SELECT * FROM TB_FUNCIONARIO WHERE ([LOGIN] = '" + registro.Login + "')" + $"AND [ID_FUNCIONARIO] != {registro.Id}", registro, conexaoComBanco);
-
-            if (resultadoValidacao.IsValid == false)
-            {
-                resultadoValidacao.Errors[0].ErrorMessage = "Login já está cadastrado";
-                return resultadoValidacao;
-            }
-
-            return resultadoValidacao;
+        public string SqlDuplicidadeNome(Funcionario registro)
+        {
+            return "SELECT * FROM TB_FUNCIONARIO WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_FUNCIONARIO] != {registro.Id}";
         }
 
     }

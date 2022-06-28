@@ -99,9 +99,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
                     ID_CLIENTE = @ID;";
         }
 
-        protected override ValidationResult MandarSQLParaValidador(Cliente registro, SqlConnection conexaoComBanco)
+        public string SqlDuplicidade(Cliente registro)
         {
-            return Validar("SELECT * FROM TB_CLIENTE WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_CLIENTE] != {registro.Id}", registro, conexaoComBanco);
+           return "SELECT * FROM TB_CLIENTE WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_CLIENTE] != {registro.Id}";
         }
     }
 }

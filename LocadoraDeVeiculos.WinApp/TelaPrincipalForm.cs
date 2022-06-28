@@ -10,6 +10,10 @@ using LocadoraDeVeiculos.WinApp.ModuloTaxa;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using LocadoraDeVeiculos.Servico.ModuloTaxa;
+using LocadoraDeVeiculos.Servico.ModuloFuncionario;
+using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Servico.ModuloCliente;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -141,12 +145,21 @@ namespace LocadoraDeVeiculos.WinApp
             RepositorioGrupoVeiculos repositorioGrupoVeiculos = new();
             RepositorioCliente repositorioCliente = new();
 
+
+            ServicoTaxa servicoTaxa = new ServicoTaxa(repositorioTaxa);
+
+            ServicoFuncionario servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
+
+            ServicoGrupoVeiculos servicoGrupoVeiculos = new ServicoGrupoVeiculos(repositorioGrupoVeiculos);
+
+            ServicoCliente servicoCliente = new ServicoCliente(repositorioCliente);
+
             controladores = new Dictionary<string, ControladorBase>();
 
-            controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa));
-            controladores.Add("Funcionários", new ControladorFuncionario(repositorioFuncionario));
-            controladores.Add("Grupos de Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos));
-            controladores.Add("Clientes", new ControladorCliente(repositorioCliente));
+            controladores.Add("Taxas", new ControladorTaxa(servicoTaxa));
+            controladores.Add("Funcionários", new ControladorFuncionario(servicoFuncionario));
+            controladores.Add("Grupos de Veículos", new ControladorGrupoVeiculos(servicoGrupoVeiculos));
+            controladores.Add("Clientes", new ControladorCliente(servicoCliente));
         }
         public void AtualizarRodape(string mensagem)
         {

@@ -6,19 +6,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 {
     public class ControladorGrupoVeiculos : ControladorBase
     {
-        private IRepositorioGrupoVeiculos repositorio;
+        private IServicoGrupoVeiculos servico;
         private TabelaGrupoVeiculoControl? tabela;
 
-        public ControladorGrupoVeiculos(IRepositorioGrupoVeiculos rep)
+        public ControladorGrupoVeiculos(IServicoGrupoVeiculos rep)
         {
-            repositorio = rep;
+            servico = rep;
         }
 
         public override void Visualizar()
         {
             var numero = tabela!.ObtemNumeroSelecionada();
 
-            GrupoVeiculos Selecionado = repositorio.SelecionarPorID(numero);
+            GrupoVeiculos Selecionado = servico.SelecionarPorID(numero);
 
             if (Selecionado == null)
             {
@@ -41,7 +41,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
             TelaCadastroGrupoVeiculoForm tela = new();
             tela.GrupoVeiculos = new();
 
-            tela.GravarRegistro = repositorio.Inserir;
+            tela.GravarRegistro = servico.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -53,7 +53,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
         {
             var numero = tabela!.ObtemNumeroSelecionada();
 
-            GrupoVeiculos Selecionada = repositorio.SelecionarPorID(numero);
+            GrupoVeiculos Selecionada = servico.SelecionarPorID(numero);
 
             if (Selecionada == null)
             {
@@ -65,7 +65,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 
             tela.GrupoVeiculos = Selecionada;
 
-            tela.GravarRegistro = repositorio.Editar;
+            tela.GravarRegistro = servico.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -77,7 +77,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
         {
             var numero = tabela!.ObtemNumeroSelecionada();
 
-            GrupoVeiculos Selecionada = repositorio.SelecionarPorID(numero);
+            GrupoVeiculos Selecionada = servico.SelecionarPorID(numero);
 
             if (Selecionada == null)
             {
@@ -90,7 +90,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 
             if (resultado == DialogResult.OK)
             {
-                repositorio.Excluir(Selecionada);
+                servico.Excluir(Selecionada);
                 carregarGrupoVeiculos();
             }
         }
@@ -112,7 +112,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 
         private void carregarGrupoVeiculos()
         {
-            List<GrupoVeiculos> registros = repositorio.SelecionarTodos();
+            List<GrupoVeiculos> registros = servico.SelecionarTodos();
 
             tabela!.AtualizarRegistros(registros);
 

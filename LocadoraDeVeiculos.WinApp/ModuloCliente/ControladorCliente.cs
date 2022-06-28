@@ -6,19 +6,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 {
     public class ControladorCliente : ControladorBase
     {
-        private IRepositorioCliente _repositorioCliente;
+        private IServicoCliente ServicoCliente;
         private TabelaClienteControl? _tabelaCliente;
 
-        public ControladorCliente(IRepositorioCliente rep)
+        public ControladorCliente(IServicoCliente ser)
         {
-            _repositorioCliente = rep;
+            ServicoCliente = ser;
         }
 
         public override void Visualizar()
         {
             var numero = _tabelaCliente!.ObtemNumeroClienteSelecionado();
 
-            Cliente clienteSelecionado = _repositorioCliente.SelecionarPorID(numero);
+            Cliente clienteSelecionado = ServicoCliente.SelecionarPorID(numero);
 
             if (clienteSelecionado == null)
             {
@@ -43,7 +43,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             tela.cliente = new();
 
-            tela.GravarRegistro = _repositorioCliente.Inserir;
+            tela.GravarRegistro = ServicoCliente.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -54,7 +54,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         {
             var numero = _tabelaCliente!.ObtemNumeroClienteSelecionado();
 
-            Cliente clienteSelecionado = _repositorioCliente.SelecionarPorID(numero);
+            Cliente clienteSelecionado = ServicoCliente.SelecionarPorID(numero);
 
             if (clienteSelecionado == null)
             {
@@ -66,7 +66,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             tela.cliente = clienteSelecionado;
 
-            tela.GravarRegistro = _repositorioCliente.Editar;
+            tela.GravarRegistro = ServicoCliente.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -78,7 +78,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         {
             var numero = _tabelaCliente!.ObtemNumeroClienteSelecionado();
 
-            Cliente clienteSelecionado = _repositorioCliente.SelecionarPorID(numero);
+            Cliente clienteSelecionado = ServicoCliente.SelecionarPorID(numero);
 
             if (clienteSelecionado == null)
             {
@@ -91,7 +91,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             if (resultado == DialogResult.OK)
             {
-                _repositorioCliente.Excluir(clienteSelecionado);
+                ServicoCliente.Excluir(clienteSelecionado);
                 CarregarCliente();
             }
         }
@@ -113,7 +113,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         private void CarregarCliente()
         {
-            List<Cliente> clientes = _repositorioCliente.SelecionarTodos();
+            List<Cliente> clientes = ServicoCliente.SelecionarTodos();
 
             _tabelaCliente!.AtualizarRegistros(clientes);
 
