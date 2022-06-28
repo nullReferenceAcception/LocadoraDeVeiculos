@@ -13,6 +13,30 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         {
             _repositorioFuncionario = rep;
         }
+
+
+        public override void Visualizar()
+        {
+            var numero = _tabelaFuncionario!.ObtemNumeroFuncionarioSelecionado();
+
+            Funcionario Selecionado = _repositorioFuncionario.SelecionarPorID(numero);
+
+            if (Selecionado == null)
+            {
+                MessageBox.Show("Selecione um Funcionario primeiro!", "Edição de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            var tela = new TelaCadastroFuncionarioForm();
+
+            tela.Funcionario = Selecionado;
+
+            tela.Enable(false);
+            tela.button2.Enabled = true;
+            tela.button2.Text = "voltar";
+            tela.ShowDialog();
+
+        }
         public override void Inserir()
         {
             TelaCadastroFuncionarioForm tela = new();

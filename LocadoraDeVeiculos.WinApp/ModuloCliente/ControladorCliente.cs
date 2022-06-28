@@ -14,6 +14,29 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             _repositorioCliente = rep;
         }
 
+        public override void Visualizar()
+        {
+            var numero = _tabelaCliente!.ObtemNumeroClienteSelecionado();
+
+            Cliente clienteSelecionado = _repositorioCliente.SelecionarPorID(numero);
+
+            if (clienteSelecionado == null)
+            {
+                MessageBox.Show("Selecione um cliente primeiro!", "Edição de clientes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            var tela = new TelaCadastroClienteForm();
+
+            tela.cliente = clienteSelecionado;
+
+            tela.Enable(false);
+            tela.btnCancelar.Enabled = true;
+            tela.btnCancelar.Text = "voltar";
+            tela.ShowDialog();
+
+        }
+
         public override void Inserir()
         {
             TelaCadastroClienteForm tela = new();

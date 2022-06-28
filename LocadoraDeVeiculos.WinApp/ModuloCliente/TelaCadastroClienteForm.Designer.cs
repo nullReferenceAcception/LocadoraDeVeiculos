@@ -273,9 +273,9 @@
         private System.Windows.Forms.TextBox textBoxCNH;
         private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.Button btnGravar;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxCPF;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxCNPJ;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxTelefone;
+        public System.Windows.Forms.Button btnCancelar;
     }
 }

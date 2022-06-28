@@ -30,12 +30,12 @@
         {
             this.panelFundo = new System.Windows.Forms.Panel();
             this.groupBoxTaxa = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.labelDescricao = new System.Windows.Forms.Label();
-            this.buttonGravar = new System.Windows.Forms.Button();
             this.textBoxDescricao = new System.Windows.Forms.TextBox();
             this.labelValor = new System.Windows.Forms.Label();
             this.textBoxValor = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.buttonGravar = new System.Windows.Forms.Button();
             this.panelFundo.SuspendLayout();
             this.groupBoxTaxa.SuspendLayout();
             this.SuspendLayout();
@@ -61,16 +61,6 @@
             this.groupBoxTaxa.TabStop = false;
             this.groupBoxTaxa.Text = "Dados de taxas:";
             // 
-            // button2
-            // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(263, 134);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(67, 33);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // labelDescricao
             // 
             this.labelDescricao.AutoSize = true;
@@ -79,17 +69,6 @@
             this.labelDescricao.Size = new System.Drawing.Size(61, 15);
             this.labelDescricao.TabIndex = 1;
             this.labelDescricao.Text = "Descrição:";
-            // 
-            // buttonGravar
-            // 
-            this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonGravar.Location = new System.Drawing.Point(186, 134);
-            this.buttonGravar.Name = "buttonGravar";
-            this.buttonGravar.Size = new System.Drawing.Size(67, 33);
-            this.buttonGravar.TabIndex = 4;
-            this.buttonGravar.Text = "Gravar";
-            this.buttonGravar.UseVisualStyleBackColor = true;
-            this.buttonGravar.Click += new System.EventHandler(this.buttonGravar_Click);
             // 
             // textBoxDescricao
             // 
@@ -116,6 +95,27 @@
             this.textBoxValor.Size = new System.Drawing.Size(143, 23);
             this.textBoxValor.TabIndex = 2;
             // 
+            // button2
+            // 
+            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button2.Location = new System.Drawing.Point(263, 134);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(67, 33);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "Cancelar";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // buttonGravar
+            // 
+            this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonGravar.Location = new System.Drawing.Point(186, 134);
+            this.buttonGravar.Name = "buttonGravar";
+            this.buttonGravar.Size = new System.Drawing.Size(67, 33);
+            this.buttonGravar.TabIndex = 4;
+            this.buttonGravar.Text = "Gravar";
+            this.buttonGravar.UseVisualStyleBackColor = true;
+            this.buttonGravar.Click += new System.EventHandler(this.buttonGravar_Click);
+            // 
             // TelaCadastroTaxaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -139,9 +139,9 @@
         private System.Windows.Forms.Label labelDescricao;
         private System.Windows.Forms.TextBox textBoxDescricao;
         private System.Windows.Forms.GroupBox groupBoxTaxa;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button buttonGravar;
         private System.Windows.Forms.Label labelValor;
         private System.Windows.Forms.TextBox textBoxValor;
+        public System.Windows.Forms.Button button2;
     }
 }
