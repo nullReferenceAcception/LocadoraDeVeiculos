@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
+﻿using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Servico.Compartilhado;
 using System;
@@ -13,6 +14,12 @@ namespace LocadoraDeVeiculos.Servico.ModuloCliente
     {
         public ServicoCliente(IRepositorioCliente repositorio) : base(new ValidadorCliente(), repositorio)
         {
+        }
+
+        public override ValidationResult HaDuplicidadeFilha(Cliente registro, ValidationResult resultadoValidacao)
+        {
+
+           return HaDuplicidadeMae("Nome já está cadastrado",registro, resultadoValidacao);
         }
     }
 }

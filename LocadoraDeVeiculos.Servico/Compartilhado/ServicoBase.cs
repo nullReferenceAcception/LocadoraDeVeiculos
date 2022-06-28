@@ -18,6 +18,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
         TValidador validador;
         IRepositorio<T> repositorio;
 
+        public abstract ValidationResult HaDuplicidadeFilha(T registro,ValidationResult resultadoValidacao);
 
         public ServicoBase(AbstractValidator<T> validationRules, IRepositorio<T> repositorio)
         {
@@ -29,7 +30,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
         {
             var resultadoValidacao = validador.Validate(registro);
 
-            resultadoValidacao = HaDuplicidade(registro, resultadoValidacao);
+            resultadoValidacao = HaDuplicidadeFilha(registro, resultadoValidacao);
 
             if (resultadoValidacao.IsValid == false)
                 return resultadoValidacao;
@@ -39,11 +40,11 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         }
 
-        public virtual ValidationResult HaDuplicidade(T registro, ValidationResult resultadoValidacao)
+        protected virtual ValidationResult HaDuplicidadeMae(string error,T registro, ValidationResult resultadoValidacao)
         {
             if (repositorio.VerificarDuplicidade(repositorio.SqlDuplicidade(registro)))
             {
-                resultadoValidacao.Errors.Add(new ValidationFailure("", "Nome já está cadastrado"));
+                resultadoValidacao.Errors.Add(new ValidationFailure("", error));
             }
             return resultadoValidacao;
 
@@ -54,7 +55,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
         {
             var resultadoValidacao = validador.Validate(registro);
 
-            resultadoValidacao = HaDuplicidade(registro, resultadoValidacao);
+            resultadoValidacao = HaDuplicidadeFilha(registro, resultadoValidacao);
 
             if (resultadoValidacao.IsValid == false)
                 return resultadoValidacao;

@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Servico.Compartilhado;
@@ -14,6 +15,11 @@ namespace LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos
     {
         public ServicoGrupoVeiculos(IRepositorioGrupoVeiculos repositorio) : base(new ValidadorGrupoVeiculos(), repositorio)
         {
+        }
+
+        public override ValidationResult HaDuplicidadeFilha(GrupoVeiculos registro, ValidationResult resultadoValidacao)
+        {
+            return HaDuplicidadeMae("Nome já está cadastrado", registro, resultadoValidacao);
         }
     }
 }

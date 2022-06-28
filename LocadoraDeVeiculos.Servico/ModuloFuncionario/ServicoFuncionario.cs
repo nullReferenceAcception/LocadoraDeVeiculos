@@ -17,21 +17,19 @@ namespace LocadoraDeVeiculos.Servico.ModuloFuncionario
             this.repositorio = repositorio;
         }
 
-        public override ValidationResult HaDuplicidade(Funcionario registro, ValidationResult resultadoValidacao)
+        public override ValidationResult HaDuplicidadeFilha(Funcionario registro, ValidationResult resultadoValidacao)
         {
             if (repositorio.VerificarDuplicidade(repositorio.SqlDuplicidadeLogin(registro)))
             {
                 resultadoValidacao.Errors.Add(new ValidationFailure("", "Login já está cadastrado"));
             }
 
-           else if (repositorio.VerificarDuplicidade(repositorio.SqlDuplicidadeNome(registro)))
+            else if (repositorio.VerificarDuplicidade(repositorio.SqlDuplicidadeNome(registro)))
             {
                 resultadoValidacao.Errors.Add(new ValidationFailure("", "Nome já está cadastrado"));
             }
 
             return resultadoValidacao;
-
         }
-
     }
 }
