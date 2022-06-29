@@ -7,7 +7,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
 {
     public class RepositorioCliente : RepositorioBaseEmBancoDeDados<Cliente, ValidadorCliente, MapeadorCliente>, IRepositorioCliente
     {
-        public RepositorioCliente() : base(new ValidadorCliente(), new MapeadorCliente())
+        public RepositorioCliente() : base(new MapeadorCliente())
         {
         }
 

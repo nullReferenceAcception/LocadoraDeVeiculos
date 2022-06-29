@@ -7,7 +7,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
 {
     public class RepositorioFuncionario : RepositorioBaseEmBancoDeDados<Funcionario, ValidadorFuncionario, MapeadorFuncionario>, IRepositorioFuncionario
     {
-        public RepositorioFuncionario() : base(new ValidadorFuncionario(), new MapeadorFuncionario())
+        public RepositorioFuncionario() : base( new MapeadorFuncionario())
         {
 
         }

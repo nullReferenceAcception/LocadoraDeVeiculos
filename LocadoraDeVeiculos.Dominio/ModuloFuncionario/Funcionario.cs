@@ -27,19 +27,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
             Cidade = cidade;
         }
 
-        public override void Atualizar(Funcionario registro)
-        {
-            this.Nome = registro.Nome;
-            this.Endereco = registro.Endereco;
-            this.Email = registro.Email;
-            this.Telefone = registro.Telefone;
-            this.Login = registro.Login;
-            this.Senha = registro.Senha;
-            this.DataAdmissao = registro.DataAdmissao;
-            this.Salario = registro.Salario;
-            this.EhAdmin = registro.EhAdmin;
-        }
-
+     
         public override bool Equals(object? obj)
         {
             return obj is Funcionario funcionario &&

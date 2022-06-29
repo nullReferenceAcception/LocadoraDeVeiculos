@@ -9,7 +9,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 {
     public class RepositorioTaxa : RepositorioBaseEmBancoDeDados<Taxa, ValidadorTaxa, MapeadorTaxa>, IRepositorioTaxa
     {
-        public RepositorioTaxa() : base(new ValidadorTaxa(), new MapeadorTaxa())
+        public RepositorioTaxa() : base(new MapeadorTaxa())
         {
 
         }

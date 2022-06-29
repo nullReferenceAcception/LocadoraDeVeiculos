@@ -27,18 +27,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             CNPJ = cnpj;
         }
 
-        public override void Atualizar(Cliente registro)
-        {
-            this.Nome = registro.Nome;
-            this.CNH = registro.CNH;
-            this.Endereco = registro.Endereco;
-            this.Email = registro.Email;
-            this.Telefone = registro.Telefone;
-            this.PessoaFisica = registro.PessoaFisica;
-            this.CPF = registro.CPF;
-            this.CNPJ = registro.CNPJ;
-        }
-
         public override bool Equals(object? obj)
         {
             return obj is Cliente cliente &&

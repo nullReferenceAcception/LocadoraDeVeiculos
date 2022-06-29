@@ -13,12 +13,7 @@
             Nome = v;
         }
 
-
-        public override void Atualizar(GrupoVeiculos registro)
-        {
-                   Id = registro.Id;
-                  Nome = registro.Nome;
-        }
+   
 
         //TODO lista de veiculos
 

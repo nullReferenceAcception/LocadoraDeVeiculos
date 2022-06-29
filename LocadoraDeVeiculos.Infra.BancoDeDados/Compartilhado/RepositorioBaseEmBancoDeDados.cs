@@ -32,7 +32,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
         #endregion
 
         #region construtor
-        public RepositorioBaseEmBancoDeDados(TValidador validationRules, TMapeamento mapeavel)
+        public RepositorioBaseEmBancoDeDados(TMapeamento mapeavel)
         {
             this.mapeador = mapeavel;
             conexao = new SqlConnection(enderecoBanco);

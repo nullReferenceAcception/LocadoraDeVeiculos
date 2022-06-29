@@ -7,7 +7,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
 {
     public class RepositorioGrupoVeiculos : RepositorioBaseEmBancoDeDados<GrupoVeiculos, ValidadorGrupoVeiculos, MapeadorGrupoVeiculos>, IRepositorioGrupoVeiculos
     {
-        public RepositorioGrupoVeiculos() : base(new ValidadorGrupoVeiculos(), new MapeadorGrupoVeiculos())
+        public RepositorioGrupoVeiculos() : base( new MapeadorGrupoVeiculos())
         {
 
         }

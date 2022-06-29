@@ -16,11 +16,6 @@
             Valor = valor;
         }
 
-        public override void Atualizar(Taxa registro)
-        {
-            this.Descricao = registro.Descricao;
-            this.Valor = registro.Valor;
-        }
         public override bool Equals(object? obj)
         {
             return obj is Taxa taxa &&
