@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.Compartilhado
 {
-    public static class Funcoes
+    public static class FuncoesTextBox
     {
         public static void ApenasValorNumericoMoeda(object sender, KeyPressEventArgs e)
         {
@@ -29,11 +29,11 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado
             txt.Text = txt.Text.Replace("R$", "").Trim();
         }
 
-        public static void AplicarMascaraMoeda(TextBoxBase txt)
+        public static void AplicarMascaraMoeda(this TextBox textBox)
         {
-            txt.Enter += TirarMascaraMoeda!;
-            txt.Leave += RetornarMascaraMoeda!;
-            txt.KeyPress += ApenasValorNumericoMoeda!;
+            textBox.Enter += TirarMascaraMoeda!;
+            textBox.Leave += RetornarMascaraMoeda!;
+            textBox.KeyPress += ApenasValorNumericoMoeda!;
         }
     }
 }

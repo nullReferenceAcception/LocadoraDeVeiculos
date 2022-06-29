@@ -16,7 +16,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             {
                 _funcionario = value!;
                 ConfigurarTelaEditar();
-                Funcoes.AplicarMascaraMoeda(textBoxSalario);
+                textBoxSalario.AplicarMascaraMoeda();
             }
         }
 
