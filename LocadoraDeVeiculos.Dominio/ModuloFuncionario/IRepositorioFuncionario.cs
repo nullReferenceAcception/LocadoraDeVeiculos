@@ -2,6 +2,5 @@
 {
     public interface IRepositorioFuncionario : IRepositorio<Funcionario>
     {
-        string SqlDuplicidadeLogin(Funcionario registro);
     }
 }

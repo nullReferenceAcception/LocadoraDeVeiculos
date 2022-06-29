@@ -14,7 +14,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloFuncionario
 
         public override ValidationResult HaDuplicidadeFilha(Funcionario registro, ValidationResult resultadoValidacao)
         {
-            if (repositorio.VerificarDuplicidade(repositorio.SqlDuplicidadeLogin(registro)))
+            if (repositorio.VerificarDuplicidade(repositorio.SqlDuplicidade(registro)))
                 resultadoValidacao.Errors.Add(new ValidationFailure("", "Login já está cadastrado"));
 
             return resultadoValidacao;

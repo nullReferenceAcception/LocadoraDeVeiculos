@@ -54,7 +54,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             Funcionario registro2 = servico.SelecionarPorID(registro.Id);
 
-            registro2.Should().Be(null);
+            registro2.EstaAtivo.Should().Be(false);
         }
 
         [TestMethod]
@@ -88,22 +88,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
         }
 
         [TestMethod]
-        public void Nao_Deve_inserir_Funcionario_Com_Nome_duplicada()
-        {
-            Funcionario registro = CriarFuncionario();
-
-            servico.Inserir(registro);
-
-            Funcionario registro2 = CriarFuncionario();
-
-            registro2.Nome = registro.Nome;
-            registro2.Login = "jksdhasjkdh";
-
-            ValidationResult validationResult = servico.Inserir(registro2);
-
-            validationResult.Errors[0].ErrorMessage.Should().Contain("Nome já está cadastrado");
-        }
-        [TestMethod]
         public void Nao_Deve_inserir_Funcionario_Com_Login_duplicada()
         {
             Funcionario registro = CriarFuncionario();
@@ -126,7 +110,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
         private Funcionario CriarFuncionario()
         {
-            return new("nome", "endereco", "e@e.e", "49991113939", "login", "senha", new DateTime(2020,02,02), 12, true, "Lages");
+            return new("nome", "endereco", "e@e.e", "49991113939", "login", "senha", new DateTime(2020,02,02), 12, true, "Lages",true);
         }
     }
 }
