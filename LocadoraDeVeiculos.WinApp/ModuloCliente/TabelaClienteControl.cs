@@ -56,10 +56,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             foreach (Cliente cliente in clientes)
             {
                 if(cliente.CNPJ == null)                   
-                grid.Rows.Add(cliente.Id, cliente.Nome, cliente.Endereco, cliente.Telefone, cliente.Telefone,cliente.CNH, cliente.Email,cliente.CPF);
+                grid.Rows.Add(cliente.Id, cliente.Nome, cliente.Endereco, cliente.Telefone, cliente.CNH, cliente.Email,cliente.CPF);
 
                 else
-                    grid.Rows.Add(cliente.Id, cliente.Nome, cliente.Endereco, cliente.Telefone, cliente.Telefone, cliente.CNH, cliente.Email,cliente.CNPJ);
+                    grid.Rows.Add(cliente.Id, cliente.Nome, cliente.Endereco, cliente.Telefone, cliente.CNH, cliente.Email,cliente.CNPJ);
             }
 
             
