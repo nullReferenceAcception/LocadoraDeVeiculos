@@ -21,7 +21,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
             get =>
             @"INSERT
 	            INTO
-		        TB_PLANO_COBRANCA
+		        [TB_PLANO_COBRANCA]
 		        (
 		        NOME,
                 KM_LIVRE_INCLUSO,
@@ -108,7 +108,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
         #endregion
         public string SqlDuplicidade(PlanoCobranca registro)
         {
-            return "SELECT * FROM TB_PLANO_COBRANCA WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [TB_PLANO_COBRANCA] != {registro.Id}";
+            return "SELECT * FROM [TB_PLANO_COBRANCA] WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_PLANO_COBRANCA] != {registro.Id}";
         }
     }
 }
