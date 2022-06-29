@@ -11,6 +11,6 @@ namespace LocadoraDeVeiculos.Dominio
         List<T> SelecionarTodos();
         T SelecionarPorID(int numero);
         public bool VerificarDuplicidade(string sql);
-        string SqlDuplicidade(T registro) { throw new NotImplementedException(); }
+        string SqlDuplicidade(T registro);
     }
 }
