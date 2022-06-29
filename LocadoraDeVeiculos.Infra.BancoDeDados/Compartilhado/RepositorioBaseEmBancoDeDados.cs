@@ -61,7 +61,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 
             comandoEdicao.ExecuteNonQuery();
             conexao.Close();
-
         }
 
         public string Excluir(T registro)

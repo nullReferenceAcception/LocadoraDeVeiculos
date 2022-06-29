@@ -123,12 +123,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
 
         public string SqlDuplicidadeLogin(Funcionario registro)
         {
-            return  "SELECT * FROM TB_FUNCIONARIO WHERE ([LOGIN] = '" + registro.Login + "')" + $"AND [ID_FUNCIONARIO] != {registro.Id} AND ESTA_ATIVO = 1";
-        }
-
-        public string SqlDuplicidadeNome(Funcionario registro)
-        {
-            return "SELECT * FROM TB_FUNCIONARIO WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_FUNCIONARIO] != {registro.Id} AND ESTA_ATIVO = 1";
+            return  "SELECT * FROM TB_FUNCIONARIO WHERE ([LOGIN] = '" + registro.Login + "')" + $"AND [ID_FUNCIONARIO] != {registro.Id}";
         }
     }
 }

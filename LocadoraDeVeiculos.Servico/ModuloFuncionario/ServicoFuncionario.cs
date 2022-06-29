@@ -16,8 +16,6 @@ namespace LocadoraDeVeiculos.Servico.ModuloFuncionario
         {
             if (repositorio.VerificarDuplicidade(repositorio.SqlDuplicidadeLogin(registro)))
                 resultadoValidacao.Errors.Add(new ValidationFailure("", "Login já está cadastrado"));
-            else if (repositorio.VerificarDuplicidade(repositorio.SqlDuplicidadeNome(registro)))
-                resultadoValidacao.Errors.Add(new ValidationFailure("", "Nome já está cadastrado"));
 
             return resultadoValidacao;
         }
