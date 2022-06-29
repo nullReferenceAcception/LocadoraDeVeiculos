@@ -1,1 +1,0 @@
-﻿Ao criar uma nova classe, implementar o override de Equals e gerar seus construtores necessários
