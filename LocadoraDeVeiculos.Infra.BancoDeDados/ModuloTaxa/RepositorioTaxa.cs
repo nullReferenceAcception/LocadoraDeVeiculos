@@ -24,12 +24,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 		        TB_TAXA
 		        (
 		        DESCRICAO, 
-		        VALOR
+		        VALOR,
+                EH_DIARIA
 		        )
 		        VALUES
 		        (
 		        @DESCRICAO,
-		        @VALOR
+		        @VALOR,
+                @EH_DIARIA
 		        );SELECT SCOPE_IDENTITY();";
         }
         protected override string sqlEditar
@@ -39,7 +41,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 	        TB_TAXA
 		        SET
 			DESCRICAO = @DESCRICAO,
-			VALOR = @VALOR
+			VALOR = @VALOR,
+            EH_DIARIA = @EH_DIARIA
 		        WHERE
 			ID_TAXA = @ID_TAXA;";
         }
@@ -60,7 +63,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
             @"SELECT
                     ID_TAXA AS ID_TAXA,
 	                DESCRICAO AS DESCRICAO_TAXA,
-	                VALOR AS VALOR_TAXA
+	                VALOR AS VALOR_TAXA,
+                    EH_DIARIA AS EH_DIARIA_TAXA
                 FROM
 	                TB_TAXA
 ";
@@ -72,7 +76,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
            @"SELECT
                 ID_TAXA AS ID_TAXA,
 	                DESCRICAO AS DESCRICAO_TAXA,
-	                VALOR AS VALOR_TAXA
+	                VALOR AS VALOR_TAXA,
+                    EH_DIARIA AS EH_DIARIA_TAXA
                 FROM
 	                TB_TAXA
                 WHERE

@@ -5,15 +5,18 @@
         public string? Descricao { get; set; }
         public decimal? Valor { get; set; }
 
+        public bool EhDiaria { get; set; }
+
         public Taxa()
         {
             Valor = 0;
         }
 
-        public Taxa(string? descricao, decimal? valor)
+        public Taxa(string? descricao, decimal? valor,bool ehDiaria)
         {
             Descricao = descricao;
             Valor = valor;
+            this.EhDiaria = ehDiaria;
         }
 
         public override bool Equals(object? obj)

@@ -20,7 +20,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Descricao", HeaderText = "Descrição"}
+                new DataGridViewTextBoxColumn { DataPropertyName = "Descricao", HeaderText = "Descrição"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Valor", HeaderText = "Valor"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Tipo", HeaderText = "Tipo"}
             };
 
             return colunas;
@@ -36,7 +40,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             grid.Rows.Clear();
 
             foreach (Taxa taxa in taxas)
-                grid.Rows.Add(taxa.Id, taxa.Descricao);
+                if (taxa.EhDiaria)
+                grid.Rows.Add(taxa.Id, taxa.Descricao,taxa.Valor,"Diária");
+            else
+                    grid.Rows.Add(taxa.Id, taxa.Descricao, taxa.Valor,"Fixo");
         }
     }
 }

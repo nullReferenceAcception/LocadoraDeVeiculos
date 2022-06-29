@@ -93,7 +93,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
 
             for (int i = 0; i < 10; i++)
             {
-                Taxa Taxa = new Taxa("descricao " + i.ToString(), (random.Next(0, 100) + (decimal)Math.Round(random.NextDouble(), 2))); ;
+                Taxa Taxa = new Taxa("descricao " + i.ToString(), (random.Next(0, 100) + (decimal)Math.Round(random.NextDouble(), 2)), true); ;
 
                 Servico.Inserir(Taxa);
                 registros.Add(Taxa);
@@ -109,7 +109,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
 
         private Taxa CriarTaxa()
         {
-            return new Taxa("descrição", (random.Next(0, 100) + (decimal)Math.Round(random.NextDouble(), 2)));
+            return new Taxa("descrição", (random.Next(0, 100) + (decimal)Math.Round(random.NextDouble(), 2)), true);
         }
     }
 }
