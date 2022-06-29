@@ -133,7 +133,7 @@
             // dateTimePickerDataAdmissao
             // 
             this.dateTimePickerDataAdmissao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDataAdmissao.Location = new System.Drawing.Point(141, 242);
+            this.dateTimePickerDataAdmissao.Location = new System.Drawing.Point(128, 230);
             this.dateTimePickerDataAdmissao.Name = "dateTimePickerDataAdmissao";
             this.dateTimePickerDataAdmissao.Size = new System.Drawing.Size(87, 23);
             this.dateTimePickerDataAdmissao.TabIndex = 6;
@@ -258,6 +258,7 @@
             this.groupBoxDadosFuncionario.Controls.Add(this.groupBoxEhAdmin);
             this.groupBoxDadosFuncionario.Controls.Add(this.labelSenha);
             this.groupBoxDadosFuncionario.Controls.Add(this.labelDataAdmissao);
+            this.groupBoxDadosFuncionario.Controls.Add(this.dateTimePickerDataAdmissao);
             this.groupBoxDadosFuncionario.Location = new System.Drawing.Point(15, 12);
             this.groupBoxDadosFuncionario.Name = "groupBoxDadosFuncionario";
             this.groupBoxDadosFuncionario.Size = new System.Drawing.Size(375, 411);
@@ -313,7 +314,6 @@
             this.Controls.Add(this.labelEmail);
             this.Controls.Add(this.labelSalario);
             this.Controls.Add(this.textBoxSalario);
-            this.Controls.Add(this.dateTimePickerDataAdmissao);
             this.Controls.Add(this.textBoxSenha);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.labelNome);

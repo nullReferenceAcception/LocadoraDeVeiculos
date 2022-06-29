@@ -1,5 +1,6 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
+using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
 using System.Windows.Forms;
 
@@ -15,6 +16,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             {
                 _funcionario = value!;
                 ConfigurarTelaEditar();
+                Funcoes.AplicarMascaraMoeda(textBoxSalario);
             }
         }
 
