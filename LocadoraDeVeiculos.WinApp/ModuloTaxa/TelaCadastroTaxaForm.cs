@@ -22,7 +22,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         {
             InitializeComponent();
             this.ConfigurarTela();
-            Funcoes.AplicarMascaraMoeda(textBoxValor);
+            textBoxValor.AplicarMascaraMoeda();
         }
 
         public Func<Taxa, ValidationResult>? GravarRegistro { get; set; }

@@ -7,7 +7,7 @@
 
         public Taxa()
         {
-            
+            Valor = 0;
         }
 
         public Taxa(string? descricao, decimal? valor)
