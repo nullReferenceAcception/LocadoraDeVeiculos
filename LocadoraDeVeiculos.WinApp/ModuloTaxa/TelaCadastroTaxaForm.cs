@@ -1,5 +1,6 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
+using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
 using System.Windows.Forms;
 
@@ -21,6 +22,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         {
             InitializeComponent();
             this.ConfigurarTela();
+            Funcoes.AplicarMascaraMoeda(textBoxValor);
         }
 
         public Func<Taxa, ValidationResult>? GravarRegistro { get; set; }
@@ -49,13 +51,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         {
             textBoxID.Text = _taxa!.Id.ToString();
             textBoxDescricao.Text = _taxa!.Descricao;
-            textBoxValor.Text = _taxa.Valor.ToString();
+            textBoxValor.Text = "R$ " + _taxa.Valor.ToString();
         }
 
         private void ObterDadosDaTela()
         {
             Taxa!.Descricao = textBoxDescricao.Text;
-            Taxa!.Valor = Convert.ToDecimal(textBoxValor.Text);
+            Taxa!.Valor = Convert.ToDecimal(textBoxValor.Text.ToString().Replace("R$ ", ""));
         }
     }
 }

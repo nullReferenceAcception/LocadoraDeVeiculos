@@ -16,7 +16,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             {
                 _funcionario = value!;
                 ConfigurarTelaEditar();
-                Funcoes.AplicarMascaraMoeda(textBoxSalario);
             }
         }
 
@@ -24,6 +23,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         {
             InitializeComponent();
             this.ConfigurarTela();
+            Funcoes.AplicarMascaraMoeda(textBoxSalario);
         }
 
         public Func<Funcionario, ValidationResult>? GravarRegistro { get; set; }
@@ -63,7 +63,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             maskedTextBoxTelefone.Text = _funcionario.Telefone;
             textBoxEndereco.Text = _funcionario.Endereco;
             textBoxLogin.Text = _funcionario.Login;
-            textBoxSalario.Text = string.Format("R$" + "{0:C}", Convert.ToDecimal(_funcionario.Salario).ToString());
+            textBoxSalario.Text = "R$ " + _funcionario.Salario.ToString();
             textBoxSenha.Text = _funcionario.Senha;
             textBoxCidade.Text = _funcionario.Cidade;
 

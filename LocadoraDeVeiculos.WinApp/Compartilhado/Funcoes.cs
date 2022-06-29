@@ -5,7 +5,14 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado
 {
     public static class Funcoes
     {
-        public static void ApenasValorNumericoMoeda(object sender, KeyPressEventArgs e)
+        public static void AplicarMascaraMoeda(TextBoxBase txt)
+        {
+            txt.Enter += TirarMascaraMoeda!;
+            txt.Leave += RetornarMascaraMoeda!;
+            txt.KeyPress += ApenasValorNumericoMoeda!;
+        }
+
+        private static void ApenasValorNumericoMoeda(object sender, KeyPressEventArgs e)
         {
             TextBoxBase txt = (TextBoxBase)sender;
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
@@ -17,23 +24,16 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado
             }
         }
 
-        public static void RetornarMascaraMoeda(object sender, EventArgs e)
+        private static void RetornarMascaraMoeda(object sender, EventArgs e)
         {
             TextBoxBase txt = (TextBoxBase)sender;
             txt.Text = double.Parse(txt.Text).ToString("C2");
         }
 
-        public static void TirarMascaraMoeda(object sender, EventArgs e)
+        private static void TirarMascaraMoeda(object sender, EventArgs e)
         {
             TextBoxBase txt = (TextBoxBase)sender;
             txt.Text = txt.Text.Replace("R$", "").Trim();
-        }
-
-        public static void AplicarMascaraMoeda(TextBoxBase txt)
-        {
-            txt.Enter += TirarMascaraMoeda!;
-            txt.Leave += RetornarMascaraMoeda!;
-            txt.KeyPress += ApenasValorNumericoMoeda!;
         }
     }
 }
