@@ -1,7 +1,5 @@
-﻿using FluentValidation.Results;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 
 namespace LocadoraDeVeiculos.Dominio
 {
@@ -12,9 +10,7 @@ namespace LocadoraDeVeiculos.Dominio
         string Excluir(T registro);
         List<T> SelecionarTodos();
         T SelecionarPorID(int numero);
-
         public bool VerificarDuplicidade(string sql);
-
         string SqlDuplicidade(T registro) { throw new NotImplementedException(); }
     }
 }

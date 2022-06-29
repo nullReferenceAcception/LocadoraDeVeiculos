@@ -1,12 +1,6 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
-using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Servico.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Servico.ModuloCliente
 {
@@ -18,8 +12,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloCliente
 
         public override ValidationResult HaDuplicidadeFilha(Cliente registro, ValidationResult resultadoValidacao)
         {
-
-           return HaDuplicidadeMae("Nome já está cadastrado",registro, resultadoValidacao);
+            return HaDuplicidadeMae("Nome já está cadastrado", registro, resultadoValidacao);
         }
     }
 }
