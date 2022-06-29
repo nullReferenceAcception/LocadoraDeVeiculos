@@ -18,7 +18,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloTaxa
         [TestMethod]
         public void Nao_pode_nome_vazio()
         {
-            Taxa taxa = new("des1", 500);
+            Taxa taxa = new("des1", 500,true);
             taxa.Id = 1;
             taxa.Descricao = "";
 
@@ -30,7 +30,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloTaxa
 
         public void Nao_pode_nome_so_com_espaco()
         {
-            Taxa taxa = new("des1", 500);
+            Taxa taxa = new("des1", 500, true);
             taxa.Id = 1;
             taxa.Descricao = "   ";
 
@@ -42,7 +42,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloTaxa
         [TestMethod]
         public void Nao_pode_nome_com_menos_de_2_caracters()
         {
-            Taxa taxa = new("des1",500);
+            Taxa taxa = new("des1",500, true);
             taxa.Id = 1;
             taxa.Descricao = "a";
 
@@ -54,7 +54,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloTaxa
         [TestMethod]
         public void Valor_Nao_pode_ser_nulo()
         {
-            Taxa taxa = new("des1", 500);
+            Taxa taxa = new("des1", 500, true);
             taxa.Id = 1;
             taxa.Valor = 0;
 
@@ -66,7 +66,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloTaxa
         [TestMethod]
         public void nome_nao_poder_ter_caracters_especias()
         {
-            Taxa taxa = new("des1", 500);
+            Taxa taxa = new("des1", 500, true);
             taxa.Id = 1;
             taxa.Descricao = "!@#$%¨%¨&*()(";
 

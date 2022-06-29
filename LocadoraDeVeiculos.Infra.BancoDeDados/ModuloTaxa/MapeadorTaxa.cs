@@ -12,6 +12,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
             cmdInserir.Parameters.AddWithValue("ID_TAXA", registro.Id);
             cmdInserir.Parameters.AddWithValue("DESCRICAO", registro.Descricao);
             cmdInserir.Parameters.AddWithValue("VALOR", registro.Valor);
+            cmdInserir.Parameters.AddWithValue("EH_DIARIA", registro.EhDiaria);
         }
 
         public Taxa ConverterParaRegistro(SqlDataReader leitorRegistro)
@@ -19,11 +20,13 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
             int idTaxa = Convert.ToInt32(leitorRegistro["ID_TAXA"]);
             string descricao = Convert.ToString(leitorRegistro["DESCRICAO_TAXA"])!;
             decimal valor = Convert.ToDecimal(leitorRegistro["VALOR_TAXA"]);
+            bool ehDiaria = Convert.ToBoolean(leitorRegistro["EH_DIARIA_TAXA"]);
 
             var taxa = new Taxa();
             taxa.Id = idTaxa;
             taxa.Descricao = descricao;
             taxa.Valor = valor;
+            taxa.EhDiaria = ehDiaria;
 
             return taxa;
         }

@@ -52,12 +52,17 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             textBoxID.Text = _taxa!.Id.ToString();
             textBoxDescricao.Text = _taxa!.Descricao;
             textBoxValor.Text = "R$ " + _taxa.Valor.ToString();
+           _ = Taxa!.EhDiaria ? radioButtonDiario.Checked=true : radioButtonFixo.Checked=true;
         }
 
         private void ObterDadosDaTela()
         {
             Taxa!.Descricao = textBoxDescricao.Text;
             Taxa!.Valor = Convert.ToDecimal(textBoxValor.Text.ToString().Replace("R$ ", ""));
+            if (radioButtonDiario.Checked)
+                Taxa!.EhDiaria = true;
+            else
+                Taxa!.EhDiaria = false;
         }
     }
 }
