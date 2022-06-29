@@ -20,9 +20,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         public virtual ValidationResult Inserir(T registro)
         {
-            var resultadoValidacao = validador.Validate(registro);
-
-            resultadoValidacao = HaDuplicidadeFilha(registro, resultadoValidacao);
+            ValidationResult resultadoValidacao = ValidarRegistro(registro);
 
             if (resultadoValidacao.IsValid == false)
                 return resultadoValidacao;
@@ -33,14 +31,20 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         public virtual ValidationResult Editar(T registro)
         {
-            var resultadoValidacao = validador.Validate(registro);
-
-            resultadoValidacao = HaDuplicidadeFilha(registro, resultadoValidacao);
+            ValidationResult resultadoValidacao = ValidarRegistro(registro);
 
             if (resultadoValidacao.IsValid == false)
                 return resultadoValidacao;
 
             repositorio.Editar(registro);
+            return resultadoValidacao;
+        }
+
+        private ValidationResult ValidarRegistro(T registro)
+        {
+            var resultadoValidacao = validador.Validate(registro);
+
+            resultadoValidacao = HaDuplicidadeFilha(registro, resultadoValidacao);
             return resultadoValidacao;
         }
 
