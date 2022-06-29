@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj": {}
+    "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj": {}
   },
   "projects": {
-    "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj": {
+    "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj",
+        "projectUniqueName": "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj",
         "projectName": "LocadoraDeVeiculos.Dominio",
-        "projectPath": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj",
-        "packagesPath": "C:\\Users\\jose\\.nuget\\packages\\",
-        "outputPath": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\obj\\",
+        "projectPath": "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj",
+        "packagesPath": "C:\\Users\\Silvia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Silvia\\source\\repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jose\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Silvia\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,21 +64,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj": {
+    "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj",
+        "projectUniqueName": "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj",
         "projectName": "LocadoraDeVeiculos.Infra.BancoDeDados",
-        "projectPath": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj",
-        "packagesPath": "C:\\Users\\jose\\.nuget\\packages\\",
-        "outputPath": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\obj\\",
+        "projectPath": "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj",
+        "packagesPath": "C:\\Users\\Silvia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Silvia\\source\\repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jose\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Silvia\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -92,11 +92,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj": {
-                "projectPath": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj"
+              "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj": {
+                "projectPath": "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj"
               },
-              "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Servico\\LocadoraDeVeiculos.Servico.csproj": {
-                "projectPath": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Servico\\LocadoraDeVeiculos.Servico.csproj"
+              "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Servico\\LocadoraDeVeiculos.Servico.csproj": {
+                "projectPath": "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Servico\\LocadoraDeVeiculos.Servico.csproj"
               }
             }
           }
@@ -135,21 +135,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Servico\\LocadoraDeVeiculos.Servico.csproj": {
+    "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Servico\\LocadoraDeVeiculos.Servico.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Servico\\LocadoraDeVeiculos.Servico.csproj",
+        "projectUniqueName": "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Servico\\LocadoraDeVeiculos.Servico.csproj",
         "projectName": "LocadoraDeVeiculos.Servico",
-        "projectPath": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Servico\\LocadoraDeVeiculos.Servico.csproj",
-        "packagesPath": "C:\\Users\\jose\\.nuget\\packages\\",
-        "outputPath": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Servico\\obj\\",
+        "projectPath": "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Servico\\LocadoraDeVeiculos.Servico.csproj",
+        "packagesPath": "C:\\Users\\Silvia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Silvia\\source\\repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Servico\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jose\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Silvia\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -163,8 +163,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj": {
-                "projectPath": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj"
+              "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj": {
+                "projectPath": "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj"
               }
             }
           }
@@ -203,21 +203,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj": {
+    "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj",
+        "projectUniqueName": "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj",
         "projectName": "LocadoraDeVeiculos.WinApp",
-        "projectPath": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj",
-        "packagesPath": "C:\\Users\\jose\\.nuget\\packages\\",
-        "outputPath": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\obj\\",
+        "projectPath": "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj",
+        "packagesPath": "C:\\Users\\Silvia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Silvia\\source\\repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jose\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Silvia\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -231,14 +231,14 @@
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
             "projectReferences": {
-              "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj": {
-                "projectPath": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj"
+              "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj": {
+                "projectPath": "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Dominio\\LocadoraDeVeiculos.Dominio.csproj"
               },
-              "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj": {
-                "projectPath": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj"
+              "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj": {
+                "projectPath": "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj"
               },
-              "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Servico\\LocadoraDeVeiculos.Servico.csproj": {
-                "projectPath": "D:\\visual studio files\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Servico\\LocadoraDeVeiculos.Servico.csproj"
+              "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Servico\\LocadoraDeVeiculos.Servico.csproj": {
+                "projectPath": "C:\\Users\\Silvia\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Servico\\LocadoraDeVeiculos.Servico.csproj"
               }
             }
           }
@@ -276,7 +276,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
