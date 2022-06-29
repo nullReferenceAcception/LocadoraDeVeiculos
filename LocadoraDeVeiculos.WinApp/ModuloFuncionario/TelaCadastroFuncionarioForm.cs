@@ -16,6 +16,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             {
                 _funcionario = value!;
                 ConfigurarTelaEditar();
+                textBoxSalario.AplicarMascaraMoeda();
             }
         }
 
@@ -23,7 +24,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         {
             InitializeComponent();
             this.ConfigurarTela();
-            Funcoes.AplicarMascaraMoeda(textBoxSalario);
         }
 
         public Func<Funcionario, ValidationResult>? GravarRegistro { get; set; }
