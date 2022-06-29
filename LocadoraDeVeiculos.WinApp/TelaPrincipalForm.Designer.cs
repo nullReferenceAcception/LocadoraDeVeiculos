@@ -44,6 +44,7 @@
             this.gruposDeVeiculosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.taxasMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionariosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.planoDeCobrançaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelRegistros = new System.Windows.Forms.Panel();
             this.labelRodape = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStripRodape = new System.Windows.Forms.StatusStrip();
@@ -168,7 +169,8 @@
             this.clientesMenuItem,
             this.gruposDeVeiculosMenuItem,
             this.taxasMenuItem,
-            this.funcionariosMenuItem});
+            this.funcionariosMenuItem,
+            this.planoDeCobrançaToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -204,6 +206,14 @@
             this.funcionariosMenuItem.Size = new System.Drawing.Size(193, 22);
             this.funcionariosMenuItem.Text = "Funcionários";
             this.funcionariosMenuItem.Click += new System.EventHandler(this.funcionariosMenuItem_Click);
+            // 
+            // planoDeCobrançaToolStripMenuItem
+            // 
+            this.planoDeCobrançaToolStripMenuItem.Name = "planoDeCobrançaToolStripMenuItem";
+            this.planoDeCobrançaToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F7;
+            this.planoDeCobrançaToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.planoDeCobrançaToolStripMenuItem.Text = "Plano de cobrança";
+            this.planoDeCobrançaToolStripMenuItem.Click += new System.EventHandler(this.planoDeCobrançaToolStripMenuItem_Click);
             // 
             // panelRegistros
             // 
@@ -271,5 +281,6 @@
         private System.Windows.Forms.Panel panelRegistros;
         private System.Windows.Forms.ToolStripStatusLabel labelRodape;
         private System.Windows.Forms.StatusStrip statusStripRodape;
+        private System.Windows.Forms.ToolStripMenuItem planoDeCobrançaToolStripMenuItem;
     }
 }

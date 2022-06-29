@@ -23,5 +23,10 @@
                    Id == veiculos.Id &&
                    Nome == veiculos.Nome;
         }
+
+        public override string? ToString()
+        {
+            return $"{Nome}";
+        }
     }
 }

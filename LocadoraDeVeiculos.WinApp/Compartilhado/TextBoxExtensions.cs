@@ -26,8 +26,10 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado
 
         private static void RetornarMascaraMoeda(object sender, EventArgs e)
         {
+            double valor = 0;
             TextBoxBase txt = (TextBoxBase)sender;
-            txt.Text = double.Parse(txt.Text).ToString("C2");
+            double.TryParse(txt.Text, out valor );
+            txt.Text = valor.ToString("C2");
         }
 
         private static void TirarMascaraMoeda(object sender, EventArgs e)

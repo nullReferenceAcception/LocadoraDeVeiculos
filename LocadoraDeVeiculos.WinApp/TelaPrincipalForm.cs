@@ -14,6 +14,9 @@ using LocadoraDeVeiculos.Servico.ModuloTaxa;
 using LocadoraDeVeiculos.Servico.ModuloFuncionario;
 using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Servico.ModuloCliente;
+using LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca;
+using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca;
+using LocadoraDeVeiculos.Servico.ModuloPlanoCobranca;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -58,6 +61,11 @@ namespace LocadoraDeVeiculos.WinApp
         private void btnVisualizar_Click(object sender, EventArgs e)
         {
             controlador!.Visualizar();
+        }
+
+        private void planoDeCobrançaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
 
         private void clientesMenuItem_Click(object sender, EventArgs e)
@@ -144,7 +152,7 @@ namespace LocadoraDeVeiculos.WinApp
             RepositorioFuncionario repositorioFuncionario = new();
             RepositorioGrupoVeiculos repositorioGrupoVeiculos = new();
             RepositorioCliente repositorioCliente = new();
-
+            RepositorioPlanoCobranca repositorioPlanoCobranca = new();
 
             ServicoTaxa servicoTaxa = new ServicoTaxa(repositorioTaxa);
 
@@ -154,16 +162,22 @@ namespace LocadoraDeVeiculos.WinApp
 
             ServicoCliente servicoCliente = new ServicoCliente(repositorioCliente);
 
-            controladores = new Dictionary<string, ControladorBase>();
+            ServicoPlanoCobranca servicoPlanoCobranca = new ServicoPlanoCobranca(repositorioPlanoCobranca);
 
+
+            controladores = new Dictionary<string, ControladorBase>();
+           
             controladores.Add("Taxas", new ControladorTaxa(servicoTaxa));
             controladores.Add("Funcionários", new ControladorFuncionario(servicoFuncionario));
             controladores.Add("Grupos de Veículos", new ControladorGrupoVeiculos(servicoGrupoVeiculos));
             controladores.Add("Clientes", new ControladorCliente(servicoCliente));
+            controladores.Add("Plano de cobrança", new ControladorPlanoCobranca(servicoPlanoCobranca, servicoGrupoVeiculos));
         }
         public void AtualizarRodape(string mensagem)
         {
             labelRodape.Text = mensagem;
         }
+
+        
     }
 }

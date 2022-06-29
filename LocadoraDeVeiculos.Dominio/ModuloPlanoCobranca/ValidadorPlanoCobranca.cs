@@ -16,6 +16,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
 
             RuleFor(x => x.Nome)
                 .NotNull().NotEmpty().MinimumLength(2).Matches(padraoNome);
+            RuleFor(x => x.GrupoVeiculos)
+               .NotNull().NotEmpty();
         }
     }
 }
