@@ -1,12 +1,7 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio;
-using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Servico.Compartilhado
 {
@@ -14,11 +9,8 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
         where T : EntidadeBase<T>
         where TValidador : AbstractValidator<T>
     {
-
         TValidador validador;
         IRepositorio<T> repositorio;
-
-        public abstract ValidationResult HaDuplicidadeFilha(T registro,ValidationResult resultadoValidacao);
 
         public ServicoBase(AbstractValidator<T> validationRules, IRepositorio<T> repositorio)
         {
@@ -35,19 +27,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
             repositorio.Inserir(registro);
             return resultadoValidacao;
-
         }
-
-        protected virtual ValidationResult HaDuplicidadeMae(string error,T registro, ValidationResult resultadoValidacao)
-        {
-            if (repositorio.VerificarDuplicidade(repositorio.SqlDuplicidade(registro)))
-            {
-                resultadoValidacao.Errors.Add(new ValidationFailure("", error));
-            }
-            return resultadoValidacao;
-
-        }
-
 
         public virtual ValidationResult Editar(T registro)
         {
@@ -58,7 +38,6 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
             repositorio.Editar(registro);
             return resultadoValidacao;
-
         }
 
         private ValidationResult ValidarRegistro(T registro)
@@ -78,23 +57,27 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             if (!string.IsNullOrEmpty(mensagem))
                 resultadoValidacao.Errors.Add(new ValidationFailure("", mensagem));
 
-
             return resultadoValidacao;
         }
 
-
-
         public List<T> SelecionarTodos()
         {
-          return repositorio.SelecionarTodos();
+            return repositorio.SelecionarTodos();
         }
-
 
         public T SelecionarPorID(int ID)
         {
             return repositorio.SelecionarPorID(ID);
         }
 
+        public abstract ValidationResult HaDuplicidadeFilha(T registro, ValidationResult resultadoValidacao);
 
+        protected virtual ValidationResult HaDuplicidadeMae(string error, T registro, ValidationResult resultadoValidacao)
+        {
+            if (repositorio.VerificarDuplicidade(repositorio.SqlDuplicidade(registro)))
+                resultadoValidacao.Errors.Add(new ValidationFailure("", error));
+
+            return resultadoValidacao;
+        }
     }
 }

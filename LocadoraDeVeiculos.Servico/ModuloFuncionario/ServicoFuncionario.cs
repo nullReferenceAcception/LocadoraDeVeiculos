@@ -1,11 +1,6 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Servico.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Servico.ModuloFuncionario
 {
@@ -20,14 +15,9 @@ namespace LocadoraDeVeiculos.Servico.ModuloFuncionario
         public override ValidationResult HaDuplicidadeFilha(Funcionario registro, ValidationResult resultadoValidacao)
         {
             if (repositorio.VerificarDuplicidade(repositorio.SqlDuplicidadeLogin(registro)))
-            {
                 resultadoValidacao.Errors.Add(new ValidationFailure("", "Login já está cadastrado"));
-            }
-
             else if (repositorio.VerificarDuplicidade(repositorio.SqlDuplicidadeNome(registro)))
-            {
                 resultadoValidacao.Errors.Add(new ValidationFailure("", "Nome já está cadastrado"));
-            }
 
             return resultadoValidacao;
         }
