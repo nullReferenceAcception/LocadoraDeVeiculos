@@ -42,6 +42,7 @@ ___
 <div id='aplicacao'/>
 <h1 style="color:#76d7c4">Aplicação</h1>
 
+Esta é a camada de serviço.
 ___
 
 <div id='dominio'/>

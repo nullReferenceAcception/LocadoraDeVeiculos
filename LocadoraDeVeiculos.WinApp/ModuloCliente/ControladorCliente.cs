@@ -14,8 +14,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             ServicoCliente = ser;
         }
 
-     
-
         public override void Inserir()
         {
             TelaCadastroClienteForm tela = new();

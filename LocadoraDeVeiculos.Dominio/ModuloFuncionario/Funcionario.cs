@@ -11,13 +11,14 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
         public DateTime DataAdmissao { get; set; }
         public Decimal Salario { get; set; }
         public bool EhAdmin { get; set; } // True é admin, false é comum
+        public bool EstaAtivo { get; set; } // True = 1 no BD
 
         public Funcionario()
         {
 
         }
 
-        public Funcionario(string nome, string endereco, string email, string telefone, string login, string senha, DateTime dataAdmissao, Decimal salario, bool ehAdmin, string cidade) : base(nome, endereco, email, telefone)
+        public Funcionario(string nome, string endereco, string email, string telefone, string login, string senha, DateTime dataAdmissao, Decimal salario, bool ehAdmin, string cidade, bool estaAtivo) : base(nome, endereco, email, telefone)
         {
             Login = login;
             Senha = senha;
@@ -25,6 +26,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
             Salario = salario;
             EhAdmin = ehAdmin;
             Cidade = cidade;
+            EstaAtivo = estaAtivo;
         }
 
      
@@ -41,7 +43,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
                    DataAdmissao == funcionario.DataAdmissao &&
                    Salario == funcionario.Salario &&
                    Cidade == funcionario.Cidade &&
-                   EhAdmin == funcionario.EhAdmin;
+                   EhAdmin == funcionario.EhAdmin &&
+                   EstaAtivo == funcionario.EstaAtivo;
         }
     }
 }

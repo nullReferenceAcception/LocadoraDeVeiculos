@@ -29,7 +29,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloFuncionario
 
         private static Funcionario CriarFuncionario()
         {
-            return new("nome","senha","endereco","telefone","login", "senha", DateTime.Now, 12, true, "Lages");
+            return new("nome","senha","endereco","telefone","login", "senha", DateTime.Now, 12, true, "Lages", true);
         }
 
         public void Nao_pode_nome_so_com_espaco()
