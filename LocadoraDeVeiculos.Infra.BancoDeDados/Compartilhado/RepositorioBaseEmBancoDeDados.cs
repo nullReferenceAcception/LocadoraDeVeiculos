@@ -1,7 +1,5 @@
 ﻿using FluentValidation;
-using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio;
-using LocadoraDeVeiculos.Servico.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -53,22 +51,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             conexao.Close();
         }
 
-        public bool VerificarDuplicidade(string sql)
-        {
-            conexao.Open();
-            var sqlCommand = new SqlCommand(sql, conexao);
-
-            SqlDataReader reader = sqlCommand.ExecuteReader();
-
-            bool haRegistro = reader.HasRows;
-
-
-            reader.Close();
-            reader.Dispose();
-            conexao.Close();
-            return haRegistro;
-        }
-
         public void Editar(T registro)
         {
             conexao.Open();
@@ -79,7 +61,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 
             comandoEdicao.ExecuteNonQuery();
             conexao.Close();
-
         }
 
         public string Excluir(T registro)
@@ -91,25 +72,26 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             comandoExclusao.Parameters.AddWithValue("ID", registro.Id);
 
             conexao.Open();
+
             int IDRegistrosExcluidos = 0;
 
-            string mensagen = null;
+            string mensagem = null!;
 
             // essa gambiarra foi feita porcausa das foreign keys
             try
             {
                 IDRegistrosExcluidos = comandoExclusao.ExecuteNonQuery();
                 if (IDRegistrosExcluidos == 0)
-                    mensagen = "Não foi possível remover o registro";
+                    mensagem = "Não foi possível remover o registro";
             }
-            catch (SqlException excecao)
+            catch (SqlException ex)
             {
-                mensagen = excecao.Message;
+                mensagem = ex.Message;
             }
 
             conexao.Close();
 
-            return mensagen;
+            return mensagem;
         }
 
         public List<T> SelecionarTodos()
@@ -153,6 +135,22 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             conexao.Close();
 
             return registro;
+        }
+
+        public bool VerificarDuplicidade(string sql)
+        {
+            conexao.Open();
+            var sqlCommand = new SqlCommand(sql, conexao);
+
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+
+            bool haRegistro = reader.HasRows;
+
+
+            reader.Close();
+            reader.Dispose();
+            conexao.Close();
+            return haRegistro;
         }
     }
 }

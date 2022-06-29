@@ -53,6 +53,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             Funcionario!.Salario = Convert.ToDecimal(textBoxSalario.Text.ToString().Replace("R$", ""));
             Funcionario!.Cidade = textBoxCidade.Text;
             Funcionario!.EhAdmin = radioButtonAdmin.Checked == true ? Funcionario.EhAdmin = true : Funcionario.EhAdmin = false;
+            Funcionario!.EstaAtivo = true;
         }
 
         private void ConfigurarTelaEditar()

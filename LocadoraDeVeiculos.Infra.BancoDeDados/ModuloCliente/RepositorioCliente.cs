@@ -1,7 +1,5 @@
-﻿using FluentValidation.Results;
-using LocadoraDeVeiculos.Dominio.ModuloCliente;
+﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
-using System.Data.SqlClient;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
 {
@@ -11,6 +9,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
         {
         }
 
+        #region SQL Queries
         protected override string sqlInserir
         {
             get =>
@@ -98,6 +97,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
                 WHERE 
                     ID_CLIENTE = @ID;";
         }
+        #endregion
 
         public string SqlDuplicidade(Cliente registro)
         {
