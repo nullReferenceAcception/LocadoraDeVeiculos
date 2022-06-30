@@ -28,7 +28,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
                     CNH,
                     EMAIL,
                     TELEFONE,
-                    CPF
+                    CPF,
+                    CLIENTE_ID,
+                    DATA_VALIDADE_CNH
                 )
                 VALUES
                 (
@@ -37,7 +39,10 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
                     @CNH,
                     @EMAIL,
                     @TELEFONE,
-                    @CPF
+                    @CPF,
+                    @CLIENTE_ID,
+                    @DATA_VALIDADE_CNH
+                        
                 ); SELECT SCOPE_IDENTITY();";
         }
 
@@ -52,7 +57,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
                         CNH = @CNH,
                         EMAIL = @EMAIL,
                         TELEFONE = @TELEFONE,
-                        CPF = @CPF
+                        CPF = @CPF,
+                        CLIENTE_ID = @CLIENTE_ID,
+                        DATA_VALIDADE_CNH = @DATA_VALIDADE_CNH
 		            WHERE
 			            ID_CONDUTOR = @ID_CONDUTOR;";
         }
@@ -70,31 +77,55 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
         {
             get =>
             @"SELECT
-                    ID_CONDUTOR AS ID_CONDUTOR,
-	                NOME AS NOME_CLIENTE,
-	                ENDERECO AS ENDERECO_CLIENTE,
-                    CNH AS CNH_CLIENTE,
-                    EMAIL AS EMAIL_CLIENTE,
-                    TELEFONE AS TELEFONE_CLIENTE,
-                    CPF AS CPF_CLIENTE
+                    CON.ID_CONDUTOR AS ID_CONDUTOR,
+	                CON.NOME AS NOME_CONDUTOR,
+	                CON.ENDERECO AS ENDERECO_CONDUTOR,
+                    CON.CNH AS CNH_CONDUTOR,
+                    CON.EMAIL AS EMAIL_CONDUTOR,
+                    CON.TELEFONE AS TELEFONE_CONDUTOR,
+                    CON.CPF AS CPF_CONDUTOR,
+                    CON.DATA_VALIDADE_CNH AS DATA_VALIDADE_CNH_CONDUTOR,
+
+                                                CLI.ID_CLIENTE AS ID_CLIENTE,
+	                                            CLI.NOME AS NOME_CLIENTE,
+	                                            CLI.ENDERECO AS ENDERECO_CLIENTE,
+                                                CLI.CNH AS CNH_CLIENTE,
+                                                CLI.EMAIL AS EMAIL_CLIENTE,
+                                                CLI.TELEFONE AS TELEFONE_CLIENTE,
+                                                CLI.TIPO_CLIENTE AS TIPO_CLIENTE_CLIENTE,
+                                                CLI.CPF AS CPF_CLIENTE,
+                                                CLI.CNPJ AS CNPJ_CLIENTE                  
                 FROM
-	                TB_CONDUTOR";
+	                TB_CONDUTOR AS CON INNER JOIN
+                        TB_CLIENTE AS CLI ON CON.CLIENTE_ID = CLI.ID_CLIENTE";
         }
 
         protected override string sqlSelecionarPorID
         {
             get => @"SELECT
-                    ID_CONDUTOR AS ID_CONDUTOR,
-	                NOME AS NOME_CONDUTOR,
-	                ENDERECO AS ENDERECO_CONDUTOR,
-                    CNH AS CNH_CONDUTOR,
-                    EMAIL AS EMAIL_CONDUTOR,
-                    TELEFONE AS TELEFONE_CONDUTOR,
-                    CPF AS CPF_CONDUTOR
+                    CON.ID_CONDUTOR AS ID_CONDUTOR,
+	                CON.NOME AS NOME_CONDUTOR,
+	                CON.ENDERECO AS ENDERECO_CONDUTOR,
+                    CON.CNH AS CNH_CONDUTOR,
+                    CON.EMAIL AS EMAIL_CONDUTOR,
+                    CON.TELEFONE AS TELEFONE_CONDUTOR,
+                    CON.CPF AS CPF_CONDUTOR,
+                    CON.DATA_VALIDADE_CNH AS DATA_VALIDADE_CNH_CONDUTOR,
+
+                                                CLI.ID_CLIENTE AS ID_CLIENTE,
+	                                            CLI.NOME AS NOME_CLIENTE,
+	                                            CLI.ENDERECO AS ENDERECO_CLIENTE,
+                                                CLI.CNH AS CNH_CLIENTE,
+                                                CLI.EMAIL AS EMAIL_CLIENTE,
+                                                CLI.TELEFONE AS TELEFONE_CLIENTE,
+                                                CLI.TIPO_CLIENTE AS TIPO_CLIENTE_CLIENTE,
+                                                CLI.CPF AS CPF_CLIENTE,
+                                                CLI.CNPJ AS CNPJ_CLIENTE
                 FROM
-	                TB_CONDUTOR
-                WHERE 
-                    ID_CONDUTOR = @ID;";
+	                TB_CONDUTOR AS CON INNER JOIN
+                        TB_CLIENTE AS CLI ON CON.CLIENTE_ID = CLI.ID_CLIENTE   
+                            WHERE
+                            CLI.ID_CLIENTE = @ID";
         }
 
         public string SqlDuplicidade(Condutor registro)

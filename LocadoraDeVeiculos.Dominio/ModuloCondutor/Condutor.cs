@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,14 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
     {
         public string CNH { get; set; }
         public string CPF { get; set; }
-
+        public Cliente Cliente { get; set; }
+        public DateTime DataValidadeCNH { get; set; }
         public Condutor()
         {
 
         }
 
-        public Condutor(string nome, string endereco, string cnh, string email, string telefone, bool pessoafisica, string cpf, string cnpj)
+        public Condutor(string nome, string endereco, string cnh, string email, string telefone, string cpf, DateTime dataValidadeCNH)
         {
             Nome = nome;
             CNH = cnh;
@@ -25,6 +27,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
             Email = email;
             Telefone = telefone;
             CPF = cpf;
+            DataValidadeCNH = dataValidadeCNH;
+
         }
 
         public override bool Equals(object? obj)
@@ -36,7 +40,9 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
                    Email == condutor.Email &&
                    Telefone == condutor.Telefone &&
                    CNH == condutor.CNH &&
-                   CPF == condutor.CPF;
+                   CPF == condutor.CPF &&
+                   EqualityComparer<Cliente>.Default.Equals(Cliente, condutor.Cliente) &&
+                   DataValidadeCNH == condutor.DataValidadeCNH;
         }
     }
 }
