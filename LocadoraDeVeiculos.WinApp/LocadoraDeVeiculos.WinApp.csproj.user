@@ -25,6 +25,12 @@
     <Compile Update="ModuloTaxa\TelaCadastroTaxaForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ModuloVeiculo\TabelaVeiculoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ModuloVeiculo\TelaCadastroVeiculoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="TelaPrincipalForm.cs">
       <SubType>Form</SubType>
     </Compile>

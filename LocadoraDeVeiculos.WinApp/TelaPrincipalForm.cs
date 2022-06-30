@@ -1,5 +1,4 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloTaxa;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente;
+﻿using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa;
@@ -14,6 +13,9 @@ using LocadoraDeVeiculos.Servico.ModuloTaxa;
 using LocadoraDeVeiculos.Servico.ModuloFuncionario;
 using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Servico.ModuloCliente;
+using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo;
+using LocadoraDeVeiculos.Servico.ModuloVeiculos;
+using LocadoraDeVeiculos.WinApp.ModuloVeiculo;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -76,6 +78,11 @@ namespace LocadoraDeVeiculos.WinApp
         }
 
         private void funcionariosMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+        }
+
+        private void veículosMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
@@ -144,15 +151,13 @@ namespace LocadoraDeVeiculos.WinApp
             RepositorioFuncionario repositorioFuncionario = new();
             RepositorioGrupoVeiculos repositorioGrupoVeiculos = new();
             RepositorioCliente repositorioCliente = new();
-
+            RepositorioVeiculo repositorioVeiculo = new();
 
             ServicoTaxa servicoTaxa = new ServicoTaxa(repositorioTaxa);
-
             ServicoFuncionario servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
-
             ServicoGrupoVeiculos servicoGrupoVeiculos = new ServicoGrupoVeiculos(repositorioGrupoVeiculos);
-
             ServicoCliente servicoCliente = new ServicoCliente(repositorioCliente);
+            ServicoVeiculo servicoVeiculo = new(repositorioVeiculo);
 
             controladores = new Dictionary<string, ControladorBase>();
 
@@ -160,6 +165,7 @@ namespace LocadoraDeVeiculos.WinApp
             controladores.Add("Funcionários", new ControladorFuncionario(servicoFuncionario));
             controladores.Add("Grupos de Veículos", new ControladorGrupoVeiculos(servicoGrupoVeiculos));
             controladores.Add("Clientes", new ControladorCliente(servicoCliente));
+            controladores.Add("Veículos", new ControladorVeiculo(servicoVeiculo));
         }
         public void AtualizarRodape(string mensagem)
         {

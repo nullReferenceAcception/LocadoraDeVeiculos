@@ -44,6 +44,7 @@
             this.gruposDeVeiculosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.taxasMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionariosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.veículosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelRegistros = new System.Windows.Forms.Panel();
             this.labelRodape = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStripRodape = new System.Windows.Forms.StatusStrip();
@@ -168,7 +169,8 @@
             this.clientesMenuItem,
             this.gruposDeVeiculosMenuItem,
             this.taxasMenuItem,
-            this.funcionariosMenuItem});
+            this.funcionariosMenuItem,
+            this.veículosMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -204,6 +206,14 @@
             this.funcionariosMenuItem.Size = new System.Drawing.Size(193, 22);
             this.funcionariosMenuItem.Text = "Funcionários";
             this.funcionariosMenuItem.Click += new System.EventHandler(this.funcionariosMenuItem_Click);
+            // 
+            // veículosMenuItem
+            // 
+            this.veículosMenuItem.Name = "veículosMenuItem";
+            this.veículosMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.veículosMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.veículosMenuItem.Text = "Veículos";
+            this.veículosMenuItem.Click += new System.EventHandler(this.veículosMenuItem_Click);
             // 
             // panelRegistros
             // 
@@ -271,5 +281,6 @@
         private System.Windows.Forms.Panel panelRegistros;
         private System.Windows.Forms.ToolStripStatusLabel labelRodape;
         private System.Windows.Forms.StatusStrip statusStripRodape;
+        private System.Windows.Forms.ToolStripMenuItem veículosMenuItem;
     }
 }
