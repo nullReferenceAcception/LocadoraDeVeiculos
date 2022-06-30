@@ -28,12 +28,12 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
                 .NotNull().NotEmpty();
 
             RuleFor(x => x.Ano)
-                .NotNull().NotEmpty().GreaterThan(2000);
+                .NotNull().NotEmpty().GreaterThanOrEqualTo(2000);
 
             RuleFor(x => x.CapacidadeTanque)
                 .NotNull().NotEmpty().GreaterThan(0);
 
-            RuleFor(x => x.KmsPercorridos)
+            RuleFor(x => x.KmPercorrido)
                 .NotNull().NotEmpty().GreaterThan(0);
         }
     }

@@ -18,7 +18,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloTaxa
         [TestMethod]
         public void Nao_pode_nome_vazio()
         {
-            Taxa taxa = new("des1", 500,true);
+            Taxa taxa = new("des1", 500, true);
             taxa.Id = 1;
             taxa.Descricao = "";
 

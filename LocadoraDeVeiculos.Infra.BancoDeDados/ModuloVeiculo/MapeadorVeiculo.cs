@@ -9,7 +9,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
 {
     public class MapeadorVeiculo : IMapeavel<Veiculo>
     {
-        MapeadorGrupoVeiculos _mapeadorGrupoVeiculos;
+        MapeadorGrupoVeiculos _mapeadorGrupoVeiculos = new();
         public void ConfigurarParametrosRegistro(Veiculo registro, SqlCommand cmdInserir)
         {
             cmdInserir.Parameters.AddWithValue("@ID", registro.Id);
@@ -17,7 +17,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
             cmdInserir.Parameters.AddWithValue("@PLACA", registro.Placa);
             cmdInserir.Parameters.AddWithValue("@ANO", registro.Ano);
             cmdInserir.Parameters.AddWithValue("@CAPACIDADE_TANQUE", registro.CapacidadeTanque);
-            cmdInserir.Parameters.AddWithValue("@KM_PERCORRIDOS", registro.KmsPercorridos);
+            cmdInserir.Parameters.AddWithValue("@KM_PERCORRIDO", registro.KmPercorrido);
             cmdInserir.Parameters.AddWithValue("@COR", registro.Cor);
             cmdInserir.Parameters.AddWithValue("@COMBUSTIVEL", registro.Combustivel);
             cmdInserir.Parameters.AddWithValue("@GRUPO_DE_VEICULO_ID", registro.GrupoVeiculos.Id);
@@ -31,7 +31,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
             string placa = leitorRegistro["@PLACA"].ToString();
             int ano = Convert.ToInt32(leitorRegistro["@ANO"]);
             decimal capacidadeTanque = Convert.ToDecimal(leitorRegistro["@CAPACIDADE_TANQUE"]);
-            decimal kmPercorridos = Convert.ToDecimal(leitorRegistro["@KM_PERCORRIDOS"]);
+            decimal kmPercorrido = Convert.ToDecimal(leitorRegistro["@KM_PERCORRIDO"]);
             CorEnum cor = (CorEnum)leitorRegistro["@COR"];
             CombustivelEnum combustivel = (CombustivelEnum)leitorRegistro["@COMBUSTIVEL"];
             byte[] foto = (byte[])leitorRegistro["@FOTO"];
@@ -45,7 +45,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
             veiculo.Placa = placa;
             veiculo.Ano = ano;
             veiculo.CapacidadeTanque = capacidadeTanque;
-            veiculo.KmsPercorridos = kmPercorridos;
+            veiculo.KmPercorrido = kmPercorrido;
             veiculo.Cor = cor;
             veiculo.Combustivel = combustivel;
             veiculo.Foto = foto;
