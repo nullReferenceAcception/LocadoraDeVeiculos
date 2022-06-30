@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
 {
-    public class PlanoEnum
+    public enum PlanoEnum
     {
-       public enum Plano
-        {
             Diario,
             KmControlado,
             KmLivre
-        }
     }
 }

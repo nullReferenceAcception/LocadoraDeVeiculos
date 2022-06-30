@@ -15,15 +15,15 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
         public decimal ValorPorKm { get; set; }
         public GrupoVeiculos GrupoVeiculos { get; set; }
 
-        public PlanoEnum.Plano Plano { 
+        public PlanoEnum Plano { 
             get 
             {
                 if (ValorDia > 0 && ValorPorKm > 0 && KmLivreIncluso == 0)
-                    return PlanoEnum.Plano.Diario;
+                    return PlanoEnum.Diario;
                 else if (KmLivreIncluso > 0)
-                    return PlanoEnum.Plano.KmControlado;
+                    return PlanoEnum.KmControlado;
 
-                else return PlanoEnum.Plano.KmLivre;
+                else return PlanoEnum.KmLivre;
             }            
         }
 

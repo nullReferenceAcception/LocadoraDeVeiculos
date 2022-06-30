@@ -56,7 +56,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
         private void ConfigurarTelaEditar()
         {
-            comboBoxPlano.DataSource = Enum.GetValues(typeof(PlanoEnum.Plano));
+            comboBoxPlano.DataSource = Enum.GetValues(typeof(PlanoEnum));
             comboBoxGrupoVeiculos.DataSource = servicoGrupoVeiculos.SelecionarTodos();
 
             textBoxID.Text = planoCobranca.Id.ToString();
@@ -64,7 +64,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             textBoxValorDia.Text = "R$ " + planoCobranca.ValorDia.ToString();
             textBoxValorPorKm.Text = "R$ " + planoCobranca.ValorPorKm.ToString();
             numericUpDownKmIncluso.Value = planoCobranca.KmLivreIncluso;
-            comboBoxPlano.SelectedItem = (PlanoEnum.Plano)planoCobranca.Plano;
+            comboBoxPlano.SelectedItem = (PlanoEnum)planoCobranca.Plano;
             comboBoxGrupoVeiculos.SelectedItem = planoCobranca.GrupoVeiculos;
         }
 
@@ -82,14 +82,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
         {
             switch (comboBoxPlano.SelectedItem)
             {
-                case PlanoEnum.Plano.Diario:
+                case PlanoEnum.Diario:
                     numericUpDownKmIncluso.Value = 0;
                     numericUpDownKmIncluso.Enabled = false;
                     textBoxValorPorKm.Enabled = true;
                     textBoxValorDia.Enabled = true;
                     break;
 
-                case PlanoEnum.Plano.KmLivre:
+                case PlanoEnum.KmLivre:
                     numericUpDownKmIncluso.Value = 0;
                     numericUpDownKmIncluso.Enabled = false;
                     textBoxValorPorKm.Enabled = false;
@@ -97,7 +97,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
                     textBoxValorDia.Enabled = true;
                     break;
 
-                case PlanoEnum.Plano.KmControlado:
+                case PlanoEnum.KmControlado:
                     numericUpDownKmIncluso.Enabled = true;
                     textBoxValorPorKm.Enabled = true;
                     textBoxValorDia.Enabled = true;
