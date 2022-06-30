@@ -30,8 +30,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             RuleFor(x => x.PessoaFisica)
                 .NotNull();
 
-
-
             When(x => x.PessoaFisica, () =>
             {
                 RuleFor(x => x.CPF)

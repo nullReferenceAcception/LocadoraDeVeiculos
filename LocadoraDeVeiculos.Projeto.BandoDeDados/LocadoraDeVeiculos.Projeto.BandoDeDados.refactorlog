@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="af76ec39-41ff-4ff1-bd3b-caf9b9dbd3ae" ChangeDateTime="06/27/2022 18:05:22">
+    <Property Name="ElementName" Value="[dbo].[tb_funcionario].[tipo_perfil]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tb_funcionario]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="eh_admin" />
+  </Operation>
+</Operations>

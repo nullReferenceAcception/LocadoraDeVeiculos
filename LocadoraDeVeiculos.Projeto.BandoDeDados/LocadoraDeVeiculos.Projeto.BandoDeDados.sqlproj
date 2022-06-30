@@ -67,4 +67,7 @@
     <Build Include="dbo\Tables\tb_funcionario.sql" />
     <Build Include="dbo\Tables\tb_taxa.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="LocadoraDeVeiculos.Projeto.BandoDeDados.refactorlog" />
+  </ItemGroup>
 </Project>

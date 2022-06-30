@@ -6,8 +6,8 @@
     [email]        VARCHAR (MAX) NOT NULL,
     [telefone]     VARCHAR (MAX) NOT NULL,
     [tipo_cliente] BIT           NOT NULL,
-    [cpf]          CHAR (11)     NOT NULL,
-    [cnpj]         CHAR (14)     NOT NULL,
+    [cpf]          CHAR (11)     NULL,
+    [cnpj]         CHAR (14)     NULL,
     CONSTRAINT [PK__Table__677F38F5C26098D1] PRIMARY KEY CLUSTERED ([id_cliente] ASC)
 );
 
