@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+﻿using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
 using System;
@@ -74,10 +75,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir a PlanoCobranca?",
                "Exclusão de PlanoCobrancas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
+
             if (resultado == DialogResult.OK)
             {
                 servicoPlanoCobranca.Excluir(PlanoCobrancaSelecionada);
                 CarregarPlanoCobrancas();
+
             }
         }
 

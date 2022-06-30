@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+﻿using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -66,10 +67,18 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir a Grupo de Veiculos?",
                "Exclusão de Grupo de Veiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
+            ValidationResult validationResult;
+
             if (resultado == DialogResult.OK)
             {
-                servico.Excluir(Selecionada);
+                validationResult = servico.Excluir(Selecionada);
                 carregarGrupoVeiculos();
+
+
+                if (validationResult.Errors.Count > 0)
+                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro");
+
+
             }
         }
 
