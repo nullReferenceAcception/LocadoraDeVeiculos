@@ -23,7 +23,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloPlanoCobranca
         [TestMethod]
         public void Nao_pode_nome_vazio()
         {
-            PlanoCobranca PlanoCobranca = new("nome",100,100,0,new GrupoVeiculos("grupo"));
+            PlanoCobranca PlanoCobranca = new("nome",100,100,0,PlanoEnum.KmLivre,new GrupoVeiculos("grupo"));
             PlanoCobranca.Id = 1;
             PlanoCobranca.Nome = "";
 
@@ -35,7 +35,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloPlanoCobranca
 
         public void Nao_pode_nome_so_com_espaco()
         {
-            PlanoCobranca PlanoCobranca = new("nome", 100, 100, 0, new GrupoVeiculos("grupo"));
+            PlanoCobranca PlanoCobranca = new("nome", 100, 100, 0, PlanoEnum.KmLivre, new GrupoVeiculos("grupo"));
             PlanoCobranca.Id = 1;
             PlanoCobranca.Nome = "   ";
 
@@ -47,7 +47,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloPlanoCobranca
         [TestMethod]
         public void Nao_pode_nome_com_menos_de_2_caracters()
         {
-            PlanoCobranca PlanoCobranca = new("nome", 100, 100, 0, new GrupoVeiculos("grupo"));
+            PlanoCobranca PlanoCobranca = new("nome", 100, 100, 0, PlanoEnum.KmLivre, new GrupoVeiculos("grupo"));
             PlanoCobranca.Id = 1;
             PlanoCobranca.Nome = "a";
 
@@ -59,7 +59,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloPlanoCobranca
         [TestMethod]
         public void nome_nao_poder_ter_caracters_especias()
         {
-            PlanoCobranca PlanoCobranca = new("nome", 100, 100, 0, new GrupoVeiculos("grupo"));
+            PlanoCobranca PlanoCobranca = new("nome", 100, 100, 0, PlanoEnum.KmLivre, new GrupoVeiculos("grupo"));
             PlanoCobranca.Id = 1;
             PlanoCobranca.Nome = "!@#$%¨%¨&*()(";
 

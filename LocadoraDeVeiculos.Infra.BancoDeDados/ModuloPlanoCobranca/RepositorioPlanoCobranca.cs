@@ -27,6 +27,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
                 KM_LIVRE_INCLUSO,
                 VALOR_DIA,
                 VALOR_POR_KM,
+                PLANO,
                 GRUPO_VEICULO_ID
 		        )
 		        VALUES
@@ -35,6 +36,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
 		        @KM_LIVRE_INCLUSO,
                 @VALOR_DIA,
                 @VALOR_POR_KM,
+                @PLANO,
                 @GRUPO_VEICULO_ID
 		        );SELECT SCOPE_IDENTITY();";
         }
@@ -48,6 +50,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
 			KM_LIVRE_INCLUSO = @KM_LIVRE_INCLUSO,
             VALOR_DIA = @VALOR_DIA,
             VALOR_POR_KM = @VALOR_POR_KM,
+            PLANO = @PLANO,
             GRUPO_VEICULO_ID = @GRUPO_VEICULO_ID
 		        WHERE
 			ID_PLANO_COBRANCA = @ID_PLANO_COBRANCA;";
@@ -72,6 +75,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
 	                P.KM_LIVRE_INCLUSO AS KM_LIVRE_INCLUSO_PLANO_COBRANCA,
                     P.VALOR_DIA AS VALOR_DIA_PLANO_COBRANCA,
                     P.VALOR_POR_KM AS VALOR_POR_KM_PLANO_COBRANCA,
+                    P.PLANO AS PLANO_PLANO_COBRANCA,
                     G.ID_GRUPO_VEICULO AS ID_GRUPO_VEICULO,
 	                G.NOME AS NOME_GRUPO_VEICULO
                 FROM
@@ -91,6 +95,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
 	                P.KM_LIVRE_INCLUSO AS KM_LIVRE_INCLUSO_PLANO_COBRANCA,
                     P.VALOR_DIA AS VALOR_DIA_PLANO_COBRANCA,
                     P.VALOR_POR_KM AS VALOR_POR_KM_PLANO_COBRANCA,
+                    P.PLANO AS PLANO_PLANO_COBRANCA,
                     G.ID_GRUPO_VEICULO AS ID_GRUPO_VEICULO,
 	                G.NOME AS NOME_GRUPO_VEICULO
                 FROM

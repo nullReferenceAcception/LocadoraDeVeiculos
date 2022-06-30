@@ -76,6 +76,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             planoCobranca.ValorPorKm = Convert.ToDecimal(textBoxValorPorKm.Text.ToString().Replace("R$ ", ""));
             planoCobranca.KmLivreIncluso = (int)numericUpDownKmIncluso.Value;
             planoCobranca.GrupoVeiculos = (GrupoVeiculos)comboBoxGrupoVeiculos.SelectedItem;
+            planoCobranca.Plano = (PlanoEnum)comboBoxPlano.SelectedItem;
         }
 
         private void comboBoxPlano_SelectedIndexChanged(object sender, EventArgs e)

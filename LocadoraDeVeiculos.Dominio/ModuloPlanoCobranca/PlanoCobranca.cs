@@ -15,30 +15,22 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
         public decimal ValorPorKm { get; set; }
         public GrupoVeiculos GrupoVeiculos { get; set; }
 
-        public PlanoEnum Plano { 
-            get 
-            {
-                if (ValorDia > 0 && ValorPorKm > 0 && KmLivreIncluso == 0)
-                    return PlanoEnum.Diario;
-                else if (KmLivreIncluso > 0)
-                    return PlanoEnum.KmControlado;
-
-                else return PlanoEnum.KmLivre;
-            }            
-        }
+        public PlanoEnum Plano { get; set; }
+        
 
         public PlanoCobranca()
         {
 
         }
 
-        public PlanoCobranca(string nome, int kmLivreIncluso, decimal valorDia, decimal valorPorKm, GrupoVeiculos GrupoVeiculos)
+        public PlanoCobranca(string nome, int kmLivreIncluso, decimal valorDia, decimal valorPorKm, PlanoEnum planoEnum , GrupoVeiculos GrupoVeiculos)
         {
             Nome = nome;
             KmLivreIncluso = kmLivreIncluso;
             ValorDia = valorDia;
             ValorPorKm = valorPorKm;
             this.GrupoVeiculos = GrupoVeiculos;
+            this.Plano = planoEnum;
         }
 
         public PlanoCobranca(string nome, int kmLivreIncluso, decimal valorDia, decimal valorPorKm)

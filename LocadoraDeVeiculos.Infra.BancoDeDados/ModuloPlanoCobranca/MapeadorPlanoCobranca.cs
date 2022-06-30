@@ -21,6 +21,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
             cmdInserir.Parameters.AddWithValue("VALOR_DIA", registro.ValorDia);
             cmdInserir.Parameters.AddWithValue("VALOR_POR_KM", registro.ValorPorKm);
             cmdInserir.Parameters.AddWithValue("GRUPO_VEICULO_ID", registro.GrupoVeiculos.Id);
+            cmdInserir.Parameters.AddWithValue("PLANO", registro.Plano.ToString());
         }
 
         public PlanoCobranca ConverterParaRegistro(SqlDataReader leitorRegistro)
@@ -31,13 +32,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
             int kmLivre = Convert.ToInt32(leitorRegistro["KM_LIVRE_INCLUSO_PLANO_COBRANCA"]);
             decimal valorDia = Convert.ToDecimal(leitorRegistro["VALOR_DIA_PLANO_COBRANCA"]);
             decimal valorPorKm = Convert.ToDecimal(leitorRegistro["VALOR_POR_KM_PLANO_COBRANCA"]);
+            Enum.TryParse(leitorRegistro["PLANO_PLANO_COBRANCA"].ToString(),out PlanoEnum planoEnum);
 
 
             MapeadorGrupoVeiculos mapeadorGrupoVeiculos = new();
 
             GrupoVeiculos grupoVeiculos = mapeadorGrupoVeiculos.ConverterParaRegistro(leitorRegistro);
 
-            var plano = new PlanoCobranca(nome, kmLivre, valorDia, valorPorKm, grupoVeiculos);
+            var plano = new PlanoCobranca(nome, kmLivre, valorDia, valorPorKm, planoEnum, grupoVeiculos);
             plano.Id = idTaxa;
 
             return plano;

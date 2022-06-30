@@ -104,7 +104,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
             for (int i = 0; i < 10; i++)
             {
 
-                PlanoCobranca PlanoCobranca = new PlanoCobranca("nome", random.Next(1,200), random.Next(1, 200), random.Next(1, 200), grupoVeiculos);
+                PlanoCobranca PlanoCobranca = new PlanoCobranca("nome", random.Next(1,200), random.Next(1, 200), random.Next(1, 200),PlanoEnum.KmLivre, grupoVeiculos);
 
                 Servico.Inserir(PlanoCobranca);
                 registros.Add(PlanoCobranca);
@@ -120,7 +120,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
         {
             GrupoVeiculos grupoVeiculos = new GrupoVeiculos("grupo");
             ServicoGrupo.Inserir(grupoVeiculos);
-            return new PlanoCobranca("nome", random.Next(1, 200), random.Next(1, 200), random.Next(1, 200), grupoVeiculos);
+            return new PlanoCobranca("nome", random.Next(1, 200), random.Next(1, 200), random.Next(1, 200),PlanoEnum.KmControlado, grupoVeiculos);
         }
     }
 }
