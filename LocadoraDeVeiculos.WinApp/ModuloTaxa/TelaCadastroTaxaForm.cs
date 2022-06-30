@@ -31,13 +31,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         {
             ObterDadosDaTela();
 
-            if (string.IsNullOrEmpty(textBoxValor.Text))
-            {
-                TelaPrincipalForm.Instancia!.AtualizarRodape("Campo valor não pode ser vazio");
-                DialogResult = DialogResult.None;
-                return;
-            }
-
             var resultadoValidacao = GravarRegistro!(Taxa!);
 
             if (!resultadoValidacao.IsValid)
