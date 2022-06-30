@@ -1,30 +1,26 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
-using System;
+﻿using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 {
     public class ControladorGrupoVeiculos : ControladorBase
     {
-
-        private IRepositorioGrupoVeiculos repositorio;
+        private IServicoGrupoVeiculos servico;
         private TabelaGrupoVeiculoControl? tabela;
 
-        public ControladorGrupoVeiculos(IRepositorioGrupoVeiculos rep)
+        public ControladorGrupoVeiculos(IServicoGrupoVeiculos rep)
         {
-            repositorio = rep;
+            servico = rep;
         }
-
+        
         public override void Inserir()
         {
             TelaCadastroGrupoVeiculoForm tela = new();
             tela.GrupoVeiculos = new();
 
-            tela.GravarRegistro = repositorio.Inserir;
+            tela.GravarRegistro = servico.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -36,11 +32,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
         {
             var numero = tabela!.ObtemNumeroSelecionada();
 
-            GrupoVeiculos Selecionada = repositorio.SelecionarPorID(numero);
+            GrupoVeiculos Selecionada = servico.SelecionarPorID(numero);
 
             if (Selecionada == null)
             {
-                MessageBox.Show("Selecione um grupo de veiculos primeiro!", "Edição de grupo de veiculos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um grupo de veículos para editar");
                 return;
             }
 
@@ -48,7 +44,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 
             tela.GrupoVeiculos = Selecionada;
 
-            tela.GravarRegistro = repositorio.Editar;
+            tela.GravarRegistro = servico.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -60,22 +56,52 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
         {
             var numero = tabela!.ObtemNumeroSelecionada();
 
-            GrupoVeiculos Selecionada = repositorio.SelecionarPorID(numero);
+            GrupoVeiculos Selecionada = servico.SelecionarPorID(numero);
 
             if (Selecionada == null)
             {
-                MessageBox.Show("Selecione um Grupo de Veiculos primeiro!", "Edição de Grupo de Veiculos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um grupo de veículos para excluir");
                 return;
             }
 
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir a Grupo de Veiculos?",
                "Exclusão de Grupo de Veiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
+            ValidationResult validationResult;
+
             if (resultado == DialogResult.OK)
             {
-                repositorio.Excluir(Selecionada);
+                validationResult = servico.Excluir(Selecionada);
                 carregarGrupoVeiculos();
+
+
+                if (validationResult.Errors.Count > 0)
+                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro");
+
+
             }
+        }
+
+        public override void Visualizar()
+        {
+            var numero = tabela!.ObtemNumeroSelecionada();
+
+            GrupoVeiculos Selecionado = servico.SelecionarPorID(numero);
+
+            if (Selecionado == null)
+            {
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um grupo de veículos para visualizar");
+                return;
+            }
+
+            var tela = new TelaCadastroGrupoVeiculoForm();
+
+            tela.GrupoVeiculos = Selecionado;
+
+            tela.Enable(false);
+            tela.buttonCancelar.Enabled = true;
+            tela.buttonCancelar.Text = "Voltar";
+            tela.ShowDialog();
         }
 
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
@@ -95,12 +121,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 
         private void carregarGrupoVeiculos()
         {
-            List<GrupoVeiculos> registros = repositorio.SelecionarTodos();
+            List<GrupoVeiculos> registros = servico.SelecionarTodos();
 
             tabela!.AtualizarRegistros(registros);
 
-            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {registros.Count} grupo de veiculos");
+            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {registros.Count} {(registros.Count == 1 ? "grupo de veículos" : "grupos de veículos")}");
         }
     }
 }
-

@@ -1,9 +1,4 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 {
@@ -19,6 +14,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
         {
 
         }
+
         public Cliente(string nome, string endereco, string cnh, string email, string telefone, bool pessoafisica, string cpf, string cnpj)
         {
             Nome = nome;
@@ -29,18 +25,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             PessoaFisica = pessoafisica;
             CPF = cpf;
             CNPJ = cnpj;
-        }
-
-        public override void Atualizar(Cliente registro)
-        {
-            this.Nome = registro.Nome;
-            this.CNH = registro.CNH;
-            this.Endereco = registro.Endereco;
-            this.Email = registro.Email;
-            this.Telefone = registro.Telefone;
-            this.PessoaFisica = registro.PessoaFisica;
-            this.CPF = registro.CPF;
-            this.CNPJ = registro.CNPJ;
         }
 
         public override bool Equals(object? obj)
@@ -56,7 +40,5 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
                    CPF == cliente.CPF &&
                    CNPJ == cliente.CNPJ;
         }
-
-        
     }
 }

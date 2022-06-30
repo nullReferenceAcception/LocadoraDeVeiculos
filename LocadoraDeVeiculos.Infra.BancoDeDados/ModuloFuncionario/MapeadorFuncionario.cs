@@ -19,6 +19,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
             cmdInserir.Parameters.AddWithValue("SENHA", registro.Senha); // TODO > Criptografar
             cmdInserir.Parameters.AddWithValue("DATA_ADMISSAO", registro.DataAdmissao);
             cmdInserir.Parameters.AddWithValue("SALARIO", registro.Salario);
+            cmdInserir.Parameters.AddWithValue("CIDADE", registro.Cidade);
+            cmdInserir.Parameters.AddWithValue("ESTA_ATIVO", registro.EstaAtivo);
         }
 
         public Funcionario ConverterParaRegistro(SqlDataReader leitorRegistro)
@@ -33,6 +35,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
             bool ehAdmin = Convert.ToBoolean(leitorRegistro["EH_ADMIN"]);
             DateTime dataAdmissao = Convert.ToDateTime(leitorRegistro["DATA_ADMISSAO"]);
             Decimal salario = Convert.ToDecimal(leitorRegistro["SALARIO"]);
+            string cidade = leitorRegistro["CIDADE"].ToString()!;
+            bool estaAtivo = Convert.ToBoolean(leitorRegistro["ESTA_ATIVO"]);
 
             var funcionario = new Funcionario();
 
@@ -46,6 +50,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
             funcionario.DataAdmissao = dataAdmissao;
             funcionario.Salario = salario;
             funcionario.EhAdmin = ehAdmin;
+            funcionario.Cidade = cidade;
+            funcionario.EstaAtivo = estaAtivo;
 
             return funcionario;
         }

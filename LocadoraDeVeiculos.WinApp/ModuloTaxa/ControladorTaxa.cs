@@ -6,12 +6,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 {
     public class ControladorTaxa : ControladorBase
     {
-        private IRepositorioTaxa _repositorioTaxa;
+        private IServicoTaxa servicoTaxa;
         private TabelaTaxaControl? _tabelaTaxas;
 
-        public ControladorTaxa(IRepositorioTaxa rep)
+        public ControladorTaxa(IServicoTaxa rep)
         {
-            _repositorioTaxa = rep;
+            servicoTaxa = rep;
         }
 
         public override void Inserir()
@@ -20,7 +20,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             tela.Taxa = new();
 
-            tela.GravarRegistro = _repositorioTaxa.Inserir;
+            tela.GravarRegistro = servicoTaxa.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -31,11 +31,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         {
             var numero = _tabelaTaxas!.ObtemNumeroTaxaSelecionada();
 
-            Taxa taxaSelecionada = _repositorioTaxa.SelecionarPorID(numero);
+            Taxa taxaSelecionada = servicoTaxa.SelecionarPorID(numero);
 
             if (taxaSelecionada == null)
             {
-                MessageBox.Show("Selecione uma taxa primeiro!", "Edição de Taxas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma taxa para editar");
                 return;
             }
 
@@ -43,7 +43,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             tela.Taxa = taxaSelecionada;
 
-            tela.GravarRegistro = _repositorioTaxa.Editar;
+            tela.GravarRegistro = servicoTaxa.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -55,11 +55,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         {
             var numero = _tabelaTaxas!.ObtemNumeroTaxaSelecionada();
 
-            Taxa taxaSelecionada = _repositorioTaxa.SelecionarPorID(numero);
+            Taxa taxaSelecionada = servicoTaxa.SelecionarPorID(numero);
 
             if (taxaSelecionada == null)
             {
-                MessageBox.Show("Selecione uma taxa primeiro!", "Exclusão de Taxa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma taxa para excluir");
                 return;
             }
 
@@ -68,9 +68,31 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             if(resultado == DialogResult.OK)
             {
-                _repositorioTaxa.Excluir(taxaSelecionada);
+                servicoTaxa.Excluir(taxaSelecionada);
                 CarregarTaxas();
             }
+        }
+
+        public override void Visualizar()
+        {
+            var numero = _tabelaTaxas!.ObtemNumeroTaxaSelecionada();
+
+            Taxa taxaSelecionada = servicoTaxa.SelecionarPorID(numero);
+
+            if (taxaSelecionada == null)
+            {
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma taxa para visualizar");
+                return;
+            }
+
+            var tela = new TelaCadastroTaxaForm();
+
+            tela.Taxa = taxaSelecionada;
+
+            tela.Enable(false);
+            tela.buttonCancelar.Enabled = true;
+            tela.buttonCancelar.Text = "Voltar";
+            tela.ShowDialog();
         }
 
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
@@ -90,11 +112,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
         private void CarregarTaxas()
         {
-            List<Taxa> taxas = _repositorioTaxa.SelecionarTodos();
+            List<Taxa> taxas = servicoTaxa.SelecionarTodos();
 
             _tabelaTaxas!.AtualizarRegistros(taxas);
 
-            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {taxas.Count} taxas");
+            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {taxas.Count} {(taxas.Count == 1 ? "taxa" : "taxas")}");
         }
     }
 }

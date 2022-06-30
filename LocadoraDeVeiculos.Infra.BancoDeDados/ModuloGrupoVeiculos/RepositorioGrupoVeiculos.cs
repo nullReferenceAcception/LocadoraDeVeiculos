@@ -1,18 +1,13 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
 {
     public class RepositorioGrupoVeiculos : RepositorioBaseEmBancoDeDados<GrupoVeiculos, ValidadorGrupoVeiculos, MapeadorGrupoVeiculos>, IRepositorioGrupoVeiculos
     {
-        public RepositorioGrupoVeiculos() : base(new ValidadorGrupoVeiculos(), new MapeadorGrupoVeiculos())
+        public RepositorioGrupoVeiculos() : base( new MapeadorGrupoVeiculos())
         {
 
         }
@@ -78,12 +73,15 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
 	            ID_GRUPO_VEICULO = @ID;";
         }
 
+      
+
 
         #endregion
 
-        protected override ValidationResult MandarSQLParaValidador(GrupoVeiculos registro, SqlConnection conexaoComBanco)
+
+        public string SqlDuplicidade(GrupoVeiculos registro)
         {
-            return Validar("SELECT * FROM TB_GRUPO_VEICULO WHERE ([NOME] = '" + registro.Nome + "')", registro, conexaoComBanco);
+            return "SELECT * FROM TB_GRUPO_VEICULO WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_GRUPO_VEICULO] != {registro.Id}";
         }
 
     }

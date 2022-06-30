@@ -1,9 +1,0 @@
-﻿Ao renomear um campo, deixar o nome original seguido por sua definição:
-
-- textBox1 > textBoxCPF;
-- maskedTextBox1 > maskedTextBoxTelefone;
-- radioButton1 > radioButtonAdmin;
-- label1 > labelLogin;
-etc...
-
-Ao utilizar maskedTextBoxes, alterar a propriedade 'TextMaskFormat' para 'ExcludePromptAndLiterals' => Verificar possíveis alterações nos validadores

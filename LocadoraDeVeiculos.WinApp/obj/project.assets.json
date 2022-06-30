@@ -144,7 +144,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "FluentValidation": "11.1.0"
+          "FluentValidation": "11.1.0",
+          "System.Data.SqlClient": "4.8.3"
         },
         "compile": {
           "bin/placeholder/LocadoraDeVeiculos.Dominio.dll": {}
@@ -159,6 +160,7 @@
         "dependencies": {
           "FluentValidation": "11.1.0",
           "LocadoraDeVeiculos.Dominio": "1.0.0",
+          "LocadoraDeVeiculos.Servico": "1.0.0",
           "System.Data.SqlClient": "4.8.3"
         },
         "compile": {
@@ -166,6 +168,21 @@
         },
         "runtime": {
           "bin/placeholder/LocadoraDeVeiculos.Infra.BancoDeDados.dll": {}
+        }
+      },
+      "LocadoraDeVeiculos.Servico/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "FluentValidation": "11.1.0",
+          "LocadoraDeVeiculos.Dominio": "1.0.0",
+          "System.Data.SqlClient": "4.8.3"
+        },
+        "compile": {
+          "bin/placeholder/LocadoraDeVeiculos.Servico.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LocadoraDeVeiculos.Servico.dll": {}
         }
       }
     }
@@ -514,13 +531,19 @@
       "type": "project",
       "path": "../LocadoraDeVeiculos.Infra.BancoDeDados/LocadoraDeVeiculos.Infra.BancoDeDados.csproj",
       "msbuildProject": "../LocadoraDeVeiculos.Infra.BancoDeDados/LocadoraDeVeiculos.Infra.BancoDeDados.csproj"
+    },
+    "LocadoraDeVeiculos.Servico/1.0.0": {
+      "type": "project",
+      "path": "../LocadoraDeVeiculos.Servico/LocadoraDeVeiculos.Servico.csproj",
+      "msbuildProject": "../LocadoraDeVeiculos.Servico/LocadoraDeVeiculos.Servico.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
       "FluentValidation >= 11.1.0",
       "LocadoraDeVeiculos.Dominio >= 1.0.0",
-      "LocadoraDeVeiculos.Infra.BancoDeDados >= 1.0.0"
+      "LocadoraDeVeiculos.Infra.BancoDeDados >= 1.0.0",
+      "LocadoraDeVeiculos.Servico >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -555,6 +578,9 @@
             },
             "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj": {
               "projectPath": "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Infra.BancoDeDados\\LocadoraDeVeiculos.Infra.BancoDeDados.csproj"
+            },
+            "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Servico\\LocadoraDeVeiculos.Servico.csproj": {
+              "projectPath": "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.Servico\\LocadoraDeVeiculos.Servico.csproj"
             }
           }
         }
@@ -595,5 +621,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

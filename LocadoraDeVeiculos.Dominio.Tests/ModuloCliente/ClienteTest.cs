@@ -1,11 +1,6 @@
 ﻿using FluentValidation.TestHelper;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
 {
@@ -19,7 +14,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
             validador = new();
         }
 
-
         [TestMethod]
         public void Nao_Deve_inserir_nome_apenas_com_espaco()
         {
@@ -30,12 +24,10 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
             var resultado = validador.TestValidate(cliente);
 
             resultado.ShouldHaveValidationErrorFor(x => x.Nome);
-
         }
 
         [TestMethod]
-
-            public void Nao_Deve_inserir_nome_vazio()
+        public void Nao_Deve_inserir_nome_vazio()
         {
             Cliente cliente = new("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "(49)98909-0909", true, "09876543211", "1234567889879");
             cliente.Id = 1;
@@ -44,7 +36,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
             var resultado = validador.TestValidate(cliente);
 
             resultado.ShouldHaveValidationErrorFor(x => x.Nome);
-
         }
 
         [TestMethod]
@@ -57,7 +48,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
             var resultado = validador.TestValidate(cliente);
 
             resultado.ShouldHaveValidationErrorFor(x => x.Nome);
-
         }
 
         [TestMethod]
@@ -70,7 +60,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
             var resultado = validador.TestValidate(cliente);
 
             resultado.ShouldHaveValidationErrorFor(x => x.Telefone);
-
         }
         [TestMethod]
         public void Nao_Deve_inserir_email_invalido()
@@ -82,7 +71,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
             var resultado = validador.TestValidate(cliente);
 
             resultado.ShouldHaveValidationErrorFor(x => x.Email);
-
         }
         [TestMethod]
         public void Nao_Deve_inserir_cpf_invalido()
@@ -94,7 +82,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
             var resultado = validador.TestValidate(cliente);
 
             resultado.ShouldHaveValidationErrorFor(x => x.CPF);
-
         }
 
         [TestMethod]
@@ -107,7 +94,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
             var resultado = validador.TestValidate(cliente);
 
             resultado.ShouldHaveValidationErrorFor(x => x.CNPJ);
-
         }
     }
 }

@@ -1,15 +1,17 @@
 ﻿using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
+using LocadoraDeVeiculos.Servico.ModuloTaxa;
 using System.Data.SqlClient;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 {
-    public class RepositorioTaxa : RepositorioBaseEmBancoDeDados<Taxa,ValidadorTaxa,MapeadorTaxa>, IRepositorioTaxa
+    public class RepositorioTaxa : RepositorioBaseEmBancoDeDados<Taxa, ValidadorTaxa, MapeadorTaxa>, IRepositorioTaxa
     {
-        public RepositorioTaxa() : base(new ValidadorTaxa(), new MapeadorTaxa())
+        public RepositorioTaxa() : base(new MapeadorTaxa())
         {
-            
+
         }
 
         #region Sql Queries
@@ -22,12 +24,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 		        TB_TAXA
 		        (
 		        DESCRICAO, 
-		        VALOR
+		        VALOR,
+                EH_DIARIA
 		        )
 		        VALUES
 		        (
 		        @DESCRICAO,
-		        @VALOR
+		        @VALOR,
+                @EH_DIARIA
 		        );SELECT SCOPE_IDENTITY();";
         }
         protected override string sqlEditar
@@ -37,7 +41,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 	        TB_TAXA
 		        SET
 			DESCRICAO = @DESCRICAO,
-			VALOR = @VALOR
+			VALOR = @VALOR,
+            EH_DIARIA = @EH_DIARIA
 		        WHERE
 			ID_TAXA = @ID_TAXA;";
         }
@@ -58,7 +63,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
             @"SELECT
                     ID_TAXA AS ID_TAXA,
 	                DESCRICAO AS DESCRICAO_TAXA,
-	                VALOR AS VALOR_TAXA
+	                VALOR AS VALOR_TAXA,
+                    EH_DIARIA AS EH_DIARIA_TAXA
                 FROM
 	                TB_TAXA
 ";
@@ -70,7 +76,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
            @"SELECT
                 ID_TAXA AS ID_TAXA,
 	                DESCRICAO AS DESCRICAO_TAXA,
-	                VALOR AS VALOR_TAXA
+	                VALOR AS VALOR_TAXA,
+                    EH_DIARIA AS EH_DIARIA_TAXA
                 FROM
 	                TB_TAXA
                 WHERE
@@ -80,9 +87,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 
         #endregion
 
-        protected override ValidationResult MandarSQLParaValidador(Taxa registro, SqlConnection conexaoComBanco)
+        string IRepositorio<Taxa>.SqlDuplicidade(Taxa registro)
         {
-            return Validar("SELECT * FROM TB_TAXA WHERE ([DESCRICAO] = '" + registro.Descricao + "')", registro, conexaoComBanco);
+            return "SELECT * FROM TB_TAXA WHERE ([DESCRICAO] = '" + registro.Descricao + "')" + $"AND [ID_TAXA] != {registro.Id}";
         }
     }
 }

@@ -3,30 +3,25 @@ using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
 {
     [TestClass]
     public class RepositorioGrupoVeiculosEmBancoDados : BaseTestRepositorio
     {
-        Random random = new Random();
-        RepositorioGrupoVeiculos repositorio = new();
-
-
+        ServicoGrupoVeiculos servico = new(new RepositorioGrupoVeiculos());
 
         [TestMethod]
         public void Deve_selecionar_por_id()
         {
             GrupoVeiculos registro = CriarGrupoVeiculos();
-            repositorio.Inserir(registro);
+            servico.Inserir(registro);
 
-            GrupoVeiculos registro2 = repositorio.SelecionarPorID(registro.Id);
+            GrupoVeiculos registro2 = servico.SelecionarPorID(registro.Id);
 
             Assert.AreEqual(registro2, registro);
         }
@@ -35,20 +30,17 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
         [TestMethod]
         public void Nao_Deve_inserir_GrupoVeiculos_duplicada()
         {
-
             GrupoVeiculos GrupoVeiculos = CriarGrupoVeiculos();
 
-            repositorio.Inserir(GrupoVeiculos);
+            servico.Inserir(GrupoVeiculos);
 
             GrupoVeiculos GrupoVeiculos2 = CriarGrupoVeiculos();
 
             GrupoVeiculos2.Nome = GrupoVeiculos.Nome;
 
-            ValidationResult validationResult = repositorio.Inserir(GrupoVeiculos2);
-
+            ValidationResult validationResult = servico.Inserir(GrupoVeiculos2);
 
             validationResult.Errors[0].ErrorMessage.Should().Contain("Nome já está cadastrado");
-
         }
 
 
@@ -56,33 +48,29 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
         [TestMethod]
         public void Deve_inserir_GrupoVeiculos()
         {
-
             GrupoVeiculos GrupoVeiculos = CriarGrupoVeiculos();
 
-            repositorio.Inserir(GrupoVeiculos);
+            servico.Inserir(GrupoVeiculos);
 
-            GrupoVeiculos GrupoVeiculos2 = repositorio.SelecionarPorID(GrupoVeiculos.Id);
+            GrupoVeiculos GrupoVeiculos2 = servico.SelecionarPorID(GrupoVeiculos.Id);
 
             Assert.AreEqual(GrupoVeiculos, GrupoVeiculos2);
-
         }
 
         [TestMethod]
         public void Deve_excluir_GrupoVeiculos()
         {
-
-
             GrupoVeiculos GrupoVeiculos = CriarGrupoVeiculos();
 
-            repositorio.Inserir(GrupoVeiculos);
+            servico.Inserir(GrupoVeiculos);
 
-            repositorio.Excluir(GrupoVeiculos);
+            servico.Excluir(GrupoVeiculos);
 
-            GrupoVeiculos GrupoVeiculos2 = repositorio.SelecionarPorID(GrupoVeiculos.Id);
+            GrupoVeiculos GrupoVeiculos2 = servico.SelecionarPorID(GrupoVeiculos.Id);
 
             GrupoVeiculos2.Should().Be(null);
-
         }
+
         [TestMethod]
         public void Deve_selecionar_todos_GrupoVeiculoss()
         {
@@ -92,18 +80,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
             {
                 GrupoVeiculos GrupoVeiculos = new GrupoVeiculos("Nome " + i.ToString());
 
-                repositorio.Inserir(GrupoVeiculos);
+                servico.Inserir(GrupoVeiculos);
                 registros.Add(GrupoVeiculos);
             }
 
-            List<GrupoVeiculos> registrosDoBanco = repositorio.SelecionarTodos();
+            List<GrupoVeiculos> registrosDoBanco = servico.SelecionarTodos();
 
             for (int i = 0; i < registrosDoBanco.Count; i++)
-            {
                 Assert.AreEqual(registrosDoBanco[i], registros[i]);
-            }
-
-
         }
 
         //TODO Não pode deixar excluir caso esteja linkado em outro registro
@@ -111,21 +95,17 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
         [TestMethod]
         public void Deve_editar_GrupoVeiculos()
         {
-
-
             GrupoVeiculos GrupoVeiculos = CriarGrupoVeiculos();
 
-            repositorio.Inserir(GrupoVeiculos);
+            servico.Inserir(GrupoVeiculos);
 
             GrupoVeiculos.Nome = "ssssss";
 
-            repositorio.Editar(GrupoVeiculos);
+            servico.Editar(GrupoVeiculos);
 
-            GrupoVeiculos GrupoVeiculos2 = repositorio.SelecionarPorID(GrupoVeiculos.Id);
-
+            GrupoVeiculos GrupoVeiculos2 = servico.SelecionarPorID(GrupoVeiculos.Id);
 
             Assert.AreEqual(GrupoVeiculos2, GrupoVeiculos);
-
         }
         //TODO Não pode deixar excluir caso esteja linkado em outro registro
 

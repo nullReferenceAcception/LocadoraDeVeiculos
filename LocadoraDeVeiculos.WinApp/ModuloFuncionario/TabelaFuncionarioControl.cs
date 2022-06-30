@@ -22,13 +22,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
 
+                new DataGridViewTextBoxColumn { DataPropertyName = "Email", HeaderText = "E-mail"},
+
                 new DataGridViewTextBoxColumn { DataPropertyName = "Login", HeaderText = "Login" },
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Telefone", HeaderText = "Telefone" },
 
+                new DataGridViewTextBoxColumn { DataPropertyName = "DataAdmissao", HeaderText = "Data de Admissão" },
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Salario", HeaderText = "Salário"},
+
                 new DataGridViewTextBoxColumn { DataPropertyName = "Endereco", HeaderText = "Endereço" },
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "DataAdmissao", HeaderText = "Data de Admissão" }
+                new DataGridViewTextBoxColumn { DataPropertyName = "Cidade", HeaderText = "Cidade" }
             };
 
             return colunas;
@@ -44,7 +50,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             grid.Rows.Clear();
 
             foreach (Funcionario funcionario in funcionarios)
-                grid.Rows.Add(funcionario.Id, funcionario.Nome, funcionario.Login, funcionario.Telefone, funcionario.Endereco, funcionario.DataAdmissao);
+                grid.Rows.Add(funcionario.Id, funcionario.Nome, funcionario.Email, funcionario.Login, double.Parse(funcionario.Telefone), funcionario.DataAdmissao, "R$ " + funcionario.Salario, funcionario.Endereco,  funcionario.Cidade);
+            this.grid.Columns[4].DefaultCellStyle.Format = "(##) #####-####";
         }
     }
 }

@@ -3,12 +3,10 @@ using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa;
+using LocadoraDeVeiculos.Servico.ModuloTaxa;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
 {
@@ -16,17 +14,57 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
     public class RepositorioTaxaEmBancoDadosTest : BaseTestRepositorio
     {
         Random random = new Random();
-        RepositorioTaxa repositorio = new();
+        ServicoTaxa Servico = new(new RepositorioTaxa());
 
+        [TestMethod]
+        public void Deve_inserir_Taxa()
+        {
+            Taxa Taxa = CriarTaxa();
 
+            Servico.Inserir(Taxa);
+
+            Taxa Taxa2 = Servico.SelecionarPorID(Taxa.Id);
+
+            Assert.AreEqual(Taxa, Taxa2);
+        }
+
+        [TestMethod]
+        public void Deve_editar_Taxa()
+        {
+            Taxa Taxa = CriarTaxa();
+
+            Servico.Inserir(Taxa);
+
+            Taxa.Descricao = "ssssss";
+
+            Servico.Editar(Taxa);
+
+            Taxa Taxa2 = Servico.SelecionarPorID(Taxa.Id);
+
+            Assert.AreEqual(Taxa2, Taxa);
+        }
+
+        [TestMethod]
+        public void Deve_excluir_Taxa()
+        {
+            Taxa Taxa = CriarTaxa();
+
+            Servico.Inserir(Taxa);
+
+            Servico.Excluir(Taxa);
+
+            Taxa Taxa2 = Servico.SelecionarPorID(Taxa.Id);
+
+            Taxa2.Should().Be(null);
+        }
 
         [TestMethod]
         public void Deve_selecionar_por_id()
         {
             Taxa registro = CriarTaxa();
-            repositorio.Inserir(registro);
+            Servico.Inserir(registro);
 
-            Taxa registro2 = repositorio.SelecionarPorID(registro.Id);
+            Taxa registro2 = Servico.SelecionarPorID(registro.Id);
 
             Assert.AreEqual(registro2, registro);
         }
@@ -35,54 +73,19 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
         [TestMethod]
         public void Nao_Deve_inserir_Taxa_duplicada()
         {
-
             Taxa Taxa = CriarTaxa();
 
-            repositorio.Inserir(Taxa);
+            Servico.Inserir(Taxa);
 
             Taxa Taxa2 = CriarTaxa();
 
             Taxa2.Descricao = Taxa.Descricao;
 
-          ValidationResult validationResult =  repositorio.Inserir(Taxa2);
+            ValidationResult validationResult = Servico.Inserir(Taxa2);
 
-
-            validationResult.Errors[0].ErrorMessage.Should().Contain("Nome já está cadastrado");
-
+            validationResult.Errors[0].ErrorMessage.Should().Contain("Descricao já está cadastrado");
         }
 
-
-
-        [TestMethod]
-        public void Deve_inserir_Taxa()
-        {
-
-            Taxa Taxa = CriarTaxa();
-
-            repositorio.Inserir(Taxa);
-
-            Taxa Taxa2 = repositorio.SelecionarPorID(Taxa.Id);
-
-            Assert.AreEqual(Taxa, Taxa2);
-
-        }
-
-        [TestMethod]
-        public void Deve_excluir_Taxa()
-        {
-
-
-            Taxa Taxa = CriarTaxa();
-
-            repositorio.Inserir(Taxa);
-
-            repositorio.Excluir(Taxa);
-
-            Taxa Taxa2 = repositorio.SelecionarPorID(Taxa.Id);
-
-            Taxa2.Should().Be(null);
-
-        }
         [TestMethod]
         public void Deve_selecionar_todos_Taxas()
         {
@@ -90,46 +93,23 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
 
             for (int i = 0; i < 10; i++)
             {
-                Taxa Taxa = new Taxa("descricao " + i.ToString(), (random.Next(0, 100) + (decimal)Math.Round(random.NextDouble(), 2))); ;
+                Taxa Taxa = new Taxa("descricao " + i.ToString(), (random.Next(0, 100) + (decimal)Math.Round(random.NextDouble(), 2)), true); ;
 
-                repositorio.Inserir(Taxa);
+                Servico.Inserir(Taxa);
                 registros.Add(Taxa);
             }
 
-            List<Taxa> registrosDoBanco = repositorio.SelecionarTodos();
+            List<Taxa> registrosDoBanco = Servico.SelecionarTodos();
 
             for (int i = 0; i < registrosDoBanco.Count; i++)
-            {
                 Assert.AreEqual(registrosDoBanco[i], registros[i]);
-            }
-
-
         }
 
-        [TestMethod]
-        public void Deve_editar_Taxa()
-        {
-
-
-            Taxa Taxa = CriarTaxa();
-
-            repositorio.Inserir(Taxa);
-
-            Taxa.Descricao = "ssssss";
-
-            repositorio.Editar(Taxa);
-
-            Taxa Taxa2 = repositorio.SelecionarPorID(Taxa.Id);
-
-
-            Assert.AreEqual(Taxa2, Taxa);
-
-        }
         //TODO Não pode deixar excluir caso esteja linkado em outro registro
 
         private Taxa CriarTaxa()
         {
-            return new Taxa("descrição",(random.Next(0,100) + (decimal)Math.Round(random.NextDouble(),2)));
+            return new Taxa("descrição", (random.Next(0, 100) + (decimal)Math.Round(random.NextDouble(), 2)), true);
         }
     }
 }

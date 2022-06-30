@@ -1,18 +1,16 @@
-﻿using FluentValidation.Results;
+﻿using System;
 using System.Collections.Generic;
 
 namespace LocadoraDeVeiculos.Dominio
 {
     public interface IRepositorio<T> where T : EntidadeBase<T>
     {
-        ValidationResult Inserir(T novoRegistro);
-
-        ValidationResult Editar(T registro);
-
-        ValidationResult Excluir(T registro);
-
+        void Inserir(T novoRegistro);
+        void Editar(T registro);
+        string Excluir(T registro);
         List<T> SelecionarTodos();
-
         T SelecionarPorID(int numero);
+        public bool VerificarDuplicidade(string sql);
+        string SqlDuplicidade(T registro);
     }
 }

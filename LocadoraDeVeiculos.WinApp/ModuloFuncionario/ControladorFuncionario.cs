@@ -6,20 +6,21 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 {
     public class ControladorFuncionario : ControladorBase
     {
-        private IRepositorioFuncionario? _repositorioFuncionario;
+        private IServicoFuncionario? servicoFuncionario;
         private TabelaFuncionarioControl? _tabelaFuncionario;
 
-        public ControladorFuncionario(IRepositorioFuncionario rep)
+        public ControladorFuncionario(IServicoFuncionario ser)
         {
-            _repositorioFuncionario = rep;
+            servicoFuncionario = ser;
         }
+
         public override void Inserir()
         {
             TelaCadastroFuncionarioForm tela = new();
 
             tela.Funcionario = new();
 
-            tela.GravarRegistro = _repositorioFuncionario!.Inserir;
+            tela.GravarRegistro = servicoFuncionario!.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -31,11 +32,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         {
             var numero = _tabelaFuncionario!.ObtemNumeroFuncionarioSelecionado();
 
-            Funcionario funcionarioSelecionado = _repositorioFuncionario!.SelecionarPorID(numero);
+            Funcionario funcionarioSelecionado = servicoFuncionario!.SelecionarPorID(numero);
 
             if (funcionarioSelecionado == null)
             {
-                MessageBox.Show("Selecione um funcionário primeiro!", "Edição de Funcionário", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um funcionário para editar");
                 return;
             }
 
@@ -43,7 +44,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             tela.Funcionario = funcionarioSelecionado;
 
-            tela.GravarRegistro = _repositorioFuncionario.Editar;
+            tela.GravarRegistro = servicoFuncionario.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -55,11 +56,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         {
             var numero = _tabelaFuncionario!.ObtemNumeroFuncionarioSelecionado();
 
-            Funcionario funcionarioSelecionado = _repositorioFuncionario!.SelecionarPorID(numero);
+            Funcionario funcionarioSelecionado = servicoFuncionario!.SelecionarPorID(numero);
 
             if (funcionarioSelecionado == null)
             {
-                MessageBox.Show("Selecione um funcionário primeiro!", "Exclusão de Funcionário", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um funcionário para excluir");
                 return;
             }
 
@@ -68,9 +69,31 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             if (resultado == DialogResult.OK)
             {
-                _repositorioFuncionario.Excluir(funcionarioSelecionado);
+                servicoFuncionario.Excluir(funcionarioSelecionado);
                 CarregarFuncionarios();
             }
+        }
+
+        public override void Visualizar()
+        {
+            var numero = _tabelaFuncionario!.ObtemNumeroFuncionarioSelecionado();
+
+            Funcionario selecionado = servicoFuncionario!.SelecionarPorID(numero);
+
+            if (selecionado == null)
+            {
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um funcionário para visualizar");
+                return;
+            }
+
+            var tela = new TelaCadastroFuncionarioForm();
+
+            tela.Funcionario = selecionado;
+
+            tela.Enable(false);
+            tela.buttonCancelar.Enabled = true;
+            tela.buttonCancelar.Text = "Voltar";
+            tela.ShowDialog();
         }
 
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
@@ -90,11 +113,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         private void CarregarFuncionarios()
         {
-            List<Funcionario> funcionarios = _repositorioFuncionario!.SelecionarTodos();
+            List<Funcionario> funcionarios = servicoFuncionario!.SelecionarTodos();
 
             _tabelaFuncionario!.AtualizarRegistros(funcionarios);
 
-            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {funcionarios.Count} funcionários");
+            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {funcionarios.Count} {(funcionarios.Count == 1 ? "funcionário" : "funcionários")}");
         }
     }
 }

@@ -1,19 +1,13 @@
 ﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 {
     public class ValidadorCliente : AbstractValidator<Cliente>
     {
-        Cliente c;
         public ValidadorCliente()
         {
-            Regex regEx = new Regex("^[0-9]{2}([0-9]{8}|[0-9]{9})");
+            Regex regEx = new Regex("^[1-9]{2}[0-9]{4,5}[0-9]{4}$");
 
             RuleFor(x => x.Telefone)
                 .NotNull().NotEmpty().Matches(regEx);
@@ -39,14 +33,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
                 .NotNull().NotEmpty().MinimumLength(11);
             });
 
-
             When(x => !x.PessoaFisica, () =>
             {
                 RuleFor(x => x.CNPJ)
                 .NotNull().NotEmpty().MinimumLength(14);
             });
         }
-
-
     }
 }

@@ -10,6 +10,13 @@ using LocadoraDeVeiculos.WinApp.ModuloTaxa;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using LocadoraDeVeiculos.Servico.ModuloTaxa;
+using LocadoraDeVeiculos.Servico.ModuloFuncionario;
+using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Servico.ModuloCliente;
+using LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca;
+using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca;
+using LocadoraDeVeiculos.Servico.ModuloPlanoCobranca;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -24,7 +31,7 @@ namespace LocadoraDeVeiculos.WinApp
 
             Instancia = this;
 
-            statusStrip1.Text = string.Empty;
+            statusStripRodape.Text = string.Empty;
             labelTipoCadastro.Text = string.Empty;
 
             InicializarControladores();
@@ -49,6 +56,16 @@ namespace LocadoraDeVeiculos.WinApp
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             controlador!.Excluir();
+        }
+
+        private void btnVisualizar_Click(object sender, EventArgs e)
+        {
+            controlador!.Visualizar();
+        }
+
+        private void planoDeCobrançaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
 
         private void clientesMenuItem_Click(object sender, EventArgs e)
@@ -76,7 +93,6 @@ namespace LocadoraDeVeiculos.WinApp
             btnInserir.Enabled = configuracao.InserirHabilitado;
             btnEditar.Enabled = configuracao.EditarHabilitado;
             btnExcluir.Enabled = configuracao.ExcluirHabilitado;
-            btnFiltrar.Enabled = configuracao.FiltrarHabilitado;
             btnGerarPdf.Enabled = configuracao.GerarPdfHabilitado;
             btnVisualizar.Enabled = configuracao.VisualizarHabilitado;
         }
@@ -86,7 +102,6 @@ namespace LocadoraDeVeiculos.WinApp
             btnInserir.ToolTipText = configuracao.TooltipInserir;
             btnEditar.ToolTipText = configuracao.TooltipEditar;
             btnExcluir.ToolTipText = configuracao.TooltipExcluir;
-            btnFiltrar.ToolTipText = configuracao.TooltipFiltrar;
             btnGerarPdf.ToolTipText = configuracao.TooltipGerarPdf;
             btnVisualizar.ToolTipText = configuracao.TooltipVisualizar;
         }
@@ -133,28 +148,36 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void InicializarControladores()
         {
-            //exemplos
-            //  IRepositorioMateria repositorioMateria = new RepositorioMateriaEmArquivo(contextoDados);
             RepositorioTaxa repositorioTaxa = new();
             RepositorioFuncionario repositorioFuncionario = new();
-
             RepositorioGrupoVeiculos repositorioGrupoVeiculos = new();
-
             RepositorioCliente repositorioCliente = new();
+            RepositorioPlanoCobranca repositorioPlanoCobranca = new();
+
+            ServicoTaxa servicoTaxa = new ServicoTaxa(repositorioTaxa);
+
+            ServicoFuncionario servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
+
+            ServicoGrupoVeiculos servicoGrupoVeiculos = new ServicoGrupoVeiculos(repositorioGrupoVeiculos);
+
+            ServicoCliente servicoCliente = new ServicoCliente(repositorioCliente);
+
+            ServicoPlanoCobranca servicoPlanoCobranca = new ServicoPlanoCobranca(repositorioPlanoCobranca);
 
 
             controladores = new Dictionary<string, ControladorBase>();
-
-            controladores.Add("Clientes", new ControladorCliente(repositorioCliente));
-
-            controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa));
-
-            controladores.Add("Grupos de Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos));
-            controladores.Add("Funcionários", new ControladorFuncionario(repositorioFuncionario));
+           
+            controladores.Add("Taxas", new ControladorTaxa(servicoTaxa));
+            controladores.Add("Funcionários", new ControladorFuncionario(servicoFuncionario));
+            controladores.Add("Grupos de Veículos", new ControladorGrupoVeiculos(servicoGrupoVeiculos));
+            controladores.Add("Clientes", new ControladorCliente(servicoCliente));
+            controladores.Add("Plano de cobrança", new ControladorPlanoCobranca(servicoPlanoCobranca, servicoGrupoVeiculos));
         }
         public void AtualizarRodape(string mensagem)
         {
             labelRodape.Text = mensagem;
         }
+
+        
     }
 }

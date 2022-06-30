@@ -1,11 +1,7 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
 {
@@ -27,21 +23,21 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
         public Cliente ConverterParaRegistro(SqlDataReader leitorRegistro)
         {
             int idCliente = Convert.ToInt32(leitorRegistro["ID_CLIENTE"]);
-            string nome = Convert.ToString(leitorRegistro["NOME_CLIENTE"]);
-            string endereco = Convert.ToString(leitorRegistro["ENDERECO_CLIENTE"]);
-            string cnh = Convert.ToString(leitorRegistro["CNH_CLIENTE"]);
-            string email = Convert.ToString(leitorRegistro["EMAIL_CLIENTE"]);
-            string telefone = Convert.ToString(leitorRegistro["TELEFONE_CLIENTE"]);
+            string nome = Convert.ToString(leitorRegistro["NOME_CLIENTE"])!;
+            string endereco = Convert.ToString(leitorRegistro["ENDERECO_CLIENTE"])!;
+            string cnh = Convert.ToString(leitorRegistro["CNH_CLIENTE"])!;
+            string email = Convert.ToString(leitorRegistro["EMAIL_CLIENTE"])!;
+            string telefone = Convert.ToString(leitorRegistro["TELEFONE_CLIENTE"])!;
             bool pessoaFisica = Convert.ToBoolean(leitorRegistro["TIPO_CLIENTE_CLIENTE"]);
 
 
-            string cpf = null;
-            string cnpj = null;
+            string cpf = null!;
+            string cnpj = null!;
 
             if (! DBNull.Value.Equals(leitorRegistro["CPF_CLIENTE"]))
-                 cpf =  Convert.ToString(leitorRegistro["CPF_CLIENTE"]);
+                 cpf =  Convert.ToString(leitorRegistro["CPF_CLIENTE"])!;
             else
-             cnpj = Convert.ToString(leitorRegistro["CNPJ_CLIENTE"]);
+             cnpj = Convert.ToString(leitorRegistro["CNPJ_CLIENTE"])!;
 
             var cliente = new Cliente();
             cliente.Id = idCliente;
@@ -51,8 +47,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
             cliente.Email = email;
             cliente.Telefone = telefone;
             cliente.PessoaFisica = pessoaFisica;
-            cliente.CPF = cpf;
-            cliente.CNPJ = cnpj;
+            cliente.CPF = cpf!;
+            cliente.CNPJ = cnpj!;
 
             return cliente;
         }

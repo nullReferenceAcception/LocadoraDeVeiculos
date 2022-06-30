@@ -1,15 +1,12 @@
-﻿using FluentValidation.Results;
-using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
+﻿using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
-using System.Data.SqlClient;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
 {
     public class RepositorioFuncionario : RepositorioBaseEmBancoDeDados<Funcionario, ValidadorFuncionario, MapeadorFuncionario>, IRepositorioFuncionario
     {
-        public RepositorioFuncionario() : base(new ValidadorFuncionario(), new MapeadorFuncionario())
+        public RepositorioFuncionario() : base( new MapeadorFuncionario())
         {
-
         }
 
         #region SQLQueries
@@ -27,7 +24,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                         EH_ADMIN,
                         TELEFONE,
                         ENDERECO,
-                        EMAIL
+                        EMAIL,
+                        CIDADE,
+                        ESTA_ATIVO
                         )
                     VALUES
                         (
@@ -39,7 +38,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                         @EH_ADMIN,
                         @TELEFONE,
                         @ENDERECO,
-                        @EMAIL
+                        @EMAIL,
+                        @CIDADE,
+                        @ESTA_ATIVO
                         ); SELECT SCOPE_IDENTITY();";
         }
 
@@ -57,7 +58,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                             EH_ADMIN = @EH_ADMIN,
                             TELEFONE = @TELEFONE,
                             ENDERECO = @ENDERECO,
-                            EMAIL = @EMAIL
+                            EMAIL = @EMAIL,
+                            CIDADE = @CIDADE
                         WHERE
                             ID_FUNCIONARIO = @ID_FUNCIONARIO";
         }
@@ -65,8 +67,10 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
         protected override string sqlExcluir
         {
             get =>
-                @"DELETE FROM
+                @"UPDATE
                     TB_FUNCIONARIO
+                SET
+                    ESTA_ATIVO = 0
                 WHERE
                     ID_FUNCIONARIO = @ID";
         }
@@ -84,9 +88,13 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                     EH_ADMIN AS EH_ADMIN, 
                     TELEFONE AS TELEFONE, 
                     ENDERECO AS ENDERECO,
-                    EMAIL AS EMAIL
+                    EMAIL AS EMAIL,
+                    CIDADE AS CIDADE,
+                    ESTA_ATIVO AS ESTA_ATIVO
                 FROM            
-                    TB_FUNCIONARIO";
+                    TB_FUNCIONARIO
+                WHERE
+                    ESTA_ATIVO = 1";
         }
 
         protected override string sqlSelecionarPorID
@@ -102,7 +110,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                     EH_ADMIN AS EH_ADMIN, 
                     TELEFONE AS TELEFONE, 
                     ENDERECO AS ENDERECO,
-                    EMAIL AS EMAIL
+                    EMAIL AS EMAIL,
+                    CIDADE AS CIDADE,
+                    ESTA_ATIVO AS ESTA_ATIVO
                 FROM            
                     TB_FUNCIONARIO
                 WHERE
@@ -111,9 +121,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
 
         #endregion
 
-        protected override ValidationResult MandarSQLParaValidador(Funcionario registro, SqlConnection conexaoComBanco)
+        public string SqlDuplicidade(Funcionario registro)
         {
-            return Validar("SELECT * FROM TB_FUNCIONARIO WHERE ([NOME] = '" + registro.Nome + "')", registro, conexaoComBanco);
+            return  "SELECT * FROM TB_FUNCIONARIO WHERE ([LOGIN] = '" + registro.Login + "')" + $"AND [ID_FUNCIONARIO] != {registro.Id}";
         }
     }
 }

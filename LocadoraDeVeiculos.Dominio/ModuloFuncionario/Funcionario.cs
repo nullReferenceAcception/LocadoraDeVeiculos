@@ -7,37 +7,29 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
     {
         public string? Login { get; set; }
         public string? Senha { get; set; }
+        public string? Cidade { get; set; }
         public DateTime DataAdmissao { get; set; }
         public Decimal Salario { get; set; }
         public bool EhAdmin { get; set; } // True é admin, false é comum
+        public bool EstaAtivo { get; set; } // True = 1 no BD
 
         public Funcionario()
         {
 
         }
 
-        public Funcionario(string nome,string endereco,string email,string telefone,string login, string senha,DateTime dataAdmissao,Decimal salario,bool ehAdmin) : base(nome,endereco,email,telefone)
+        public Funcionario(string nome, string endereco, string email, string telefone, string login, string senha, DateTime dataAdmissao, Decimal salario, bool ehAdmin, string cidade, bool estaAtivo) : base(nome, endereco, email, telefone)
         {
             Login = login;
             Senha = senha;
             DataAdmissao = dataAdmissao;
             Salario = salario;
             EhAdmin = ehAdmin;
+            Cidade = cidade;
+            EstaAtivo = estaAtivo;
         }
 
-        public override void Atualizar(Funcionario registro)
-        {
-            this.Nome = registro.Nome;
-            this.Endereco = registro.Endereco;
-            this.Email = registro.Email;
-            this.Telefone = registro.Telefone;
-            this.Login = registro.Login;
-            this.Senha = registro.Senha;
-            this.DataAdmissao = registro.DataAdmissao;
-            this.Salario = registro.Salario;
-            this.EhAdmin = registro.EhAdmin;
-        }
-
+     
         public override bool Equals(object? obj)
         {
             return obj is Funcionario funcionario &&
@@ -50,7 +42,9 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
                    Senha == funcionario.Senha &&
                    DataAdmissao == funcionario.DataAdmissao &&
                    Salario == funcionario.Salario &&
-                   EhAdmin == funcionario.EhAdmin;
+                   Cidade == funcionario.Cidade &&
+                   EhAdmin == funcionario.EhAdmin &&
+                   EstaAtivo == funcionario.EstaAtivo;
         }
     }
 }
