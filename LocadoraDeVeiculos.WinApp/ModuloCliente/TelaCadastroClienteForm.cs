@@ -46,6 +46,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 {
                     maskedTextBoxCPF.Text = _cliente.CPF;
                     radioButtonCPF.Checked = true;
+                    dateTimePickerValidadeCNH.Value = _cliente.DataValidadeCNH;
                 }
             }
         }
@@ -60,6 +61,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             _cliente.Email = textBoxEmail.Text;
             _cliente.Telefone = maskedTextBoxTelefone.Text;
             _cliente.PessoaFisica = radioButtonCPF.Checked == true ? _cliente.PessoaFisica = true : _cliente.PessoaFisica = false;
+            _cliente.DataValidadeCNH = dateTimePickerValidadeCNH.Value;
+
+
 
             if (_cliente.PessoaFisica)
                 _cliente.CNPJ = null!;

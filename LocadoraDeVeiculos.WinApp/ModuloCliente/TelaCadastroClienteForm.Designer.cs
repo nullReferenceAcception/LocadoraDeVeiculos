@@ -50,6 +50,8 @@
             this.groupBoxDadosCliente = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxID = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateTimePickerValidadeCNH = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBoxDadosCliente.SuspendLayout();
             this.SuspendLayout();
@@ -132,7 +134,7 @@
             // 
             this.groupBox1.Controls.Add(this.radioButtonCNPJ);
             this.groupBox1.Controls.Add(this.radioButtonCPF);
-            this.groupBox1.Location = new System.Drawing.Point(17, 217);
+            this.groupBox1.Location = new System.Drawing.Point(17, 233);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(133, 79);
             this.groupBox1.TabIndex = 13;
@@ -142,7 +144,7 @@
             // radioButtonCNPJ
             // 
             this.radioButtonCNPJ.AutoSize = true;
-            this.radioButtonCNPJ.Location = new System.Drawing.Point(19, 48);
+            this.radioButtonCNPJ.Location = new System.Drawing.Point(19, 64);
             this.radioButtonCNPJ.Name = "radioButtonCNPJ";
             this.radioButtonCNPJ.Size = new System.Drawing.Size(104, 19);
             this.radioButtonCNPJ.TabIndex = 6;
@@ -154,7 +156,7 @@
             // radioButtonCPF
             // 
             this.radioButtonCPF.AutoSize = true;
-            this.radioButtonCPF.Location = new System.Drawing.Point(19, 23);
+            this.radioButtonCPF.Location = new System.Drawing.Point(19, 39);
             this.radioButtonCPF.Name = "radioButtonCPF";
             this.radioButtonCPF.Size = new System.Drawing.Size(93, 19);
             this.radioButtonCPF.TabIndex = 5;
@@ -166,7 +168,7 @@
             // labelCPF
             // 
             this.labelCPF.AutoSize = true;
-            this.labelCPF.Location = new System.Drawing.Point(35, 319);
+            this.labelCPF.Location = new System.Drawing.Point(35, 335);
             this.labelCPF.Name = "labelCPF";
             this.labelCPF.Size = new System.Drawing.Size(31, 15);
             this.labelCPF.TabIndex = 15;
@@ -175,7 +177,7 @@
             // labelCNPJ
             // 
             this.labelCNPJ.AutoSize = true;
-            this.labelCNPJ.Location = new System.Drawing.Point(29, 357);
+            this.labelCNPJ.Location = new System.Drawing.Point(29, 373);
             this.labelCNPJ.Name = "labelCNPJ";
             this.labelCNPJ.Size = new System.Drawing.Size(37, 15);
             this.labelCNPJ.TabIndex = 16;
@@ -184,7 +186,7 @@
             // buttonGravar
             // 
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonGravar.Location = new System.Drawing.Point(198, 409);
+            this.buttonGravar.Location = new System.Drawing.Point(198, 415);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
             this.buttonGravar.TabIndex = 9;
@@ -195,7 +197,7 @@
             // buttonCancelar
             // 
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancelar.Location = new System.Drawing.Point(271, 409);
+            this.buttonCancelar.Location = new System.Drawing.Point(271, 415);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
             this.buttonCancelar.TabIndex = 10;
@@ -204,7 +206,7 @@
             // 
             // maskedTextBoxCPF
             // 
-            this.maskedTextBoxCPF.Location = new System.Drawing.Point(83, 315);
+            this.maskedTextBoxCPF.Location = new System.Drawing.Point(83, 331);
             this.maskedTextBoxCPF.Mask = "000\\.000\\.000-00";
             this.maskedTextBoxCPF.Name = "maskedTextBoxCPF";
             this.maskedTextBoxCPF.Size = new System.Drawing.Size(140, 23);
@@ -213,7 +215,7 @@
             // 
             // maskedTextBoxCNPJ
             // 
-            this.maskedTextBoxCNPJ.Location = new System.Drawing.Point(83, 351);
+            this.maskedTextBoxCNPJ.Location = new System.Drawing.Point(83, 367);
             this.maskedTextBoxCNPJ.Mask = "00\\.000\\.000/0000-00";
             this.maskedTextBoxCNPJ.Name = "maskedTextBoxCNPJ";
             this.maskedTextBoxCNPJ.Size = new System.Drawing.Size(140, 23);
@@ -231,6 +233,8 @@
             // 
             // groupBoxDadosCliente
             // 
+            this.groupBoxDadosCliente.Controls.Add(this.dateTimePickerValidadeCNH);
+            this.groupBoxDadosCliente.Controls.Add(this.label2);
             this.groupBoxDadosCliente.Controls.Add(this.maskedTextBoxTelefone);
             this.groupBoxDadosCliente.Controls.Add(this.label1);
             this.groupBoxDadosCliente.Controls.Add(this.textBoxID);
@@ -250,7 +254,7 @@
             this.groupBoxDadosCliente.Controls.Add(this.textBoxEmail);
             this.groupBoxDadosCliente.Location = new System.Drawing.Point(12, 11);
             this.groupBoxDadosCliente.Name = "groupBoxDadosCliente";
-            this.groupBoxDadosCliente.Size = new System.Drawing.Size(331, 392);
+            this.groupBoxDadosCliente.Size = new System.Drawing.Size(331, 398);
             this.groupBoxDadosCliente.TabIndex = 22;
             this.groupBoxDadosCliente.TabStop = false;
             this.groupBoxDadosCliente.Text = "Dados do cliente:";
@@ -272,6 +276,22 @@
             this.textBoxID.ReadOnly = true;
             this.textBoxID.Size = new System.Drawing.Size(75, 23);
             this.textBoxID.TabIndex = 23;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(5, 206);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(142, 15);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "Data de validade da CNH:";
+            // 
+            // dateTimePickerValidadeCNH
+            // 
+            this.dateTimePickerValidadeCNH.Location = new System.Drawing.Point(153, 203);
+            this.dateTimePickerValidadeCNH.Name = "dateTimePickerValidadeCNH";
+            this.dateTimePickerValidadeCNH.Size = new System.Drawing.Size(125, 23);
+            this.dateTimePickerValidadeCNH.TabIndex = 27;
             // 
             // TelaCadastroClienteForm
             // 
@@ -316,5 +336,7 @@
         private System.Windows.Forms.GroupBox groupBoxDadosCliente;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxID;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dateTimePickerValidadeCNH;
     }
 }

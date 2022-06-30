@@ -71,7 +71,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             for (int i = 0; i < 10; i++)
             {
-                 cliente = new Cliente("joao" + random.Next(100, 500).ToString(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "09876543211", null);
+                 cliente = new Cliente("joao" + random.Next(100, 500).ToString(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "09876543211", null, DateTime.Today);
 
                 servico.Inserir(cliente);
                 registros.Add(cliente);
@@ -101,12 +101,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
         private Cliente CriarClienteComCPF()
         {
-            return new Cliente("joao" + random.Next(100, 500).ToString(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "12340567889", null!);
+            return new Cliente("joao" + random.Next(100, 500).ToString(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "12340567889", null!, DateTime.Today);
         }
 
         private Cliente CriarClienteComCNPJ()
         {
-            return new Cliente("joao" + random.Next(100, 500).ToString(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, null!, "12340567889876");
+            return new Cliente("joao" + random.Next(100, 500).ToString(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, null!, "12340567889876", DateTime.Today);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using System;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 {
@@ -6,6 +7,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 
     {
         public string CNH { get; set; }
+        public DateTime DataValidadeCNH { get; set; }
         public bool PessoaFisica { get; set; } // Falso = Pessoa Juridica
         public string CPF { get; set; }
         public string CNPJ { get; set; }
@@ -15,7 +17,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 
         }
 
-        public Cliente(string nome, string endereco, string cnh, string email, string telefone, bool pessoafisica, string cpf, string cnpj)
+        public Cliente(string nome, string endereco, string cnh, string email, string telefone, bool pessoafisica, string cpf, string cnpj,DateTime data)
         {
             Nome = nome;
             CNH = cnh;
@@ -25,6 +27,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             PessoaFisica = pessoafisica;
             CPF = cpf;
             CNPJ = cnpj;
+            DataValidadeCNH = data;
         }
 
         public override bool Equals(object? obj)
@@ -32,10 +35,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             return obj is Cliente cliente &&
                    Id == cliente.Id &&
                    Nome == cliente.Nome &&
-                   CNH == cliente.CNH &&
                    Endereco == cliente.Endereco &&
                    Email == cliente.Email &&
                    Telefone == cliente.Telefone &&
+                   CNH == cliente.CNH &&
+                   DataValidadeCNH == cliente.DataValidadeCNH &&
                    PessoaFisica == cliente.PessoaFisica &&
                    CPF == cliente.CPF &&
                    CNPJ == cliente.CNPJ;

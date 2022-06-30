@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using System;
 using System.Text.RegularExpressions;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloCliente
@@ -8,6 +9,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
         public ValidadorCliente()
         {
             Regex regEx = new Regex("^[1-9]{2}[0-9]{4,5}[0-9]{4}$");
+
+            DateTime hoje = DateTime.Today;
+
+            hoje = hoje.AddHours(23).AddMinutes(59).AddSeconds(59);
 
             RuleFor(x => x.Telefone)
                 .NotNull().NotEmpty().Matches(regEx);
@@ -31,6 +36,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 
                 RuleFor(x => x.CNH)
                 .NotNull().NotEmpty().MinimumLength(11);
+
+                RuleFor(x => x.DataValidadeCNH)
+                .NotNull().NotEmpty().GreaterThan(DateTime.MinValue).LessThanOrEqualTo(hoje);
+
             });
 
             When(x => !x.PessoaFisica, () =>

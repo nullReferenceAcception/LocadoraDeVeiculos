@@ -18,6 +18,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
             cmdInserir.Parameters.AddWithValue("TIPO_CLIENTE", registro.PessoaFisica);
             cmdInserir.Parameters.AddWithValue("CPF", registro.CPF == null? DBNull.Value: registro.CPF);
             cmdInserir.Parameters.AddWithValue("CNPJ", registro.CNPJ == null ? DBNull.Value : registro.CNPJ);
+            cmdInserir.Parameters.AddWithValue("DATA_VALIDADE_CNH", registro.DataValidadeCNH == DateTime.MinValue ? DBNull.Value : registro.DataValidadeCNH);
         }
 
         public Cliente ConverterParaRegistro(SqlDataReader leitorRegistro)
@@ -33,6 +34,13 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
 
             string cpf = null!;
             string cnpj = null!;
+            DateTime data = DateTime.MinValue;
+
+
+            if (!DBNull.Value.Equals(leitorRegistro["DATA_VALIDADE_CNH_CLIENTE"]))
+                data = Convert.ToDateTime(leitorRegistro["DATA_VALIDADE_CNH_CLIENTE"])!;
+
+
 
             if (! DBNull.Value.Equals(leitorRegistro["CPF_CLIENTE"]))
                  cpf =  Convert.ToString(leitorRegistro["CPF_CLIENTE"])!;
@@ -49,6 +57,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
             cliente.PessoaFisica = pessoaFisica;
             cliente.CPF = cpf!;
             cliente.CNPJ = cnpj!;
+            cliente.DataValidadeCNH = data;
 
             return cliente;
         }

@@ -1,6 +1,7 @@
 ﻿using FluentValidation.TestHelper;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
 {
@@ -17,7 +18,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
         [TestMethod]
         public void Nao_Deve_inserir_nome_apenas_com_espaco()
         {
-            Cliente cliente = new("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "(49)98909-0909", true, "09876543211", "1234567889879");
+            Cliente cliente = new("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "(49)98909-0909", true, "09876543211", "1234567889879",DateTime.Today);
             cliente.Id = 1;
             cliente.Nome = " ";
 
@@ -29,7 +30,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
         [TestMethod]
         public void Nao_Deve_inserir_nome_vazio()
         {
-            Cliente cliente = new("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "(49)98909-0909", true, "09876543211", "1234567889879");
+            Cliente cliente = new("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "(49)98909-0909", true, "09876543211", "1234567889879", DateTime.Today);
             cliente.Id = 1;
             cliente.Nome = "";
 
@@ -41,7 +42,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
         [TestMethod]
         public void Nao_Deve_inserir_nome_com_menos_de_2_letra()
         {
-            Cliente cliente = new("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "(49)98909-0909", true, "09876543211", "1234567889879");
+            Cliente cliente = new("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "(49)98909-0909", true, "09876543211", "1234567889879", DateTime.Today);
             cliente.Id = 1;
             cliente.Nome = "jo";
 
@@ -53,7 +54,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
         [TestMethod]
         public void Nao_Deve_inserir_telefone_invalida()
         {
-            Cliente cliente = new("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "(49)98909-0909", true, "09876543211", "1234567889879");
+            Cliente cliente = new("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "(49)98909-0909", true, "09876543211", "1234567889879", DateTime.Today);
             cliente.Id = 1;
             cliente.Telefone = "000000000";
 
@@ -64,7 +65,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
         [TestMethod]
         public void Nao_Deve_inserir_email_invalido()
         {
-            Cliente cliente = new("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "(49)98909-0909", true, "09876543211", "1234567889879");
+            Cliente cliente = new("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "(49)98909-0909", true, "09876543211", "1234567889879", DateTime.Today);
             cliente.Id = 1;
             cliente.Email = "lalala";
 
@@ -75,7 +76,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
         [TestMethod]
         public void Nao_Deve_inserir_cpf_invalido()
         {
-            Cliente cliente = new("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "(49)98909-0909", true, "09876543211", "1234567889879");
+            Cliente cliente = new("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "(49)98909-0909", true, "09876543211", "1234567889879", DateTime.Today);
             cliente.Id = 1;
             cliente.CPF = "991";
 
@@ -87,7 +88,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
         [TestMethod]
         public void Nao_Deve_inserir_cnpj_invalido()
         {
-            Cliente cliente = new("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", false, "", "1234567889879");
+            Cliente cliente = new("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", false, "", "1234567889879",DateTime.Today);
             cliente.Id = 1;
             cliente.CNPJ = "111";
 
@@ -95,5 +96,19 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
 
             resultado.ShouldHaveValidationErrorFor(x => x.CNPJ);
         }
+
+        [TestMethod]
+        public void Nao_Deve_inserir_cnh_com_data_invalido()
+        {
+            Cliente cliente = new("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", false, "", "1234567889879", DateTime.Today);
+            cliente.Id = 1;
+            cliente.DataValidadeCNH = new DateTime(2020,02,02);
+
+            var resultado = validador.TestValidate(cliente);
+
+            resultado.ShouldHaveValidationErrorFor(x => x.CNPJ);
+        }
+
+
     }
 }

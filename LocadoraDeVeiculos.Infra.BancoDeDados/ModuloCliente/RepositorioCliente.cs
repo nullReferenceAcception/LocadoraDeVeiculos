@@ -22,7 +22,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
                     TELEFONE,
                     TIPO_CLIENTE,
                     CPF,
-                    CNPJ
+                    CNPJ,
+                    DATA_VALIDADE_CNH
                 )
                 VALUES
                 (
@@ -33,13 +34,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
                     @TELEFONE,
                     @TIPO_CLIENTE,
                     @CPF,
-                    @CNPJ
+                    @CNPJ,
+                    @DATA_VALIDADE_CNH
                 ); SELECT SCOPE_IDENTITY();";
         }
 
         protected override string sqlEditar
         {
-                get => 
+                get =>
                 @"UPDATE
 	                TB_CLIENTE
 		                SET
@@ -50,7 +52,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
                         TELEFONE = @TELEFONE,
                         TIPO_CLIENTE = @TIPO_CLIENTE,
                         CPF = @CPF,
-                        CNPJ = @CNPJ
+                        CNPJ = @CNPJ,
+                        DATA_VALIDADE_CNH = @DATA_VALIDADE_CNH
 		            WHERE
 			            ID_CLIENTE = @ID_CLIENTE;";
         }
@@ -76,7 +79,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
                     TELEFONE AS TELEFONE_CLIENTE,
                     TIPO_CLIENTE AS TIPO_CLIENTE_CLIENTE,
                     CPF AS CPF_CLIENTE,
-                    CNPJ AS CNPJ_CLIENTE
+                    CNPJ AS CNPJ_CLIENTE,
+                    DATA_VALIDADE_CNH AS  DATA_VALIDADE_CNH_CLIENTE
                 FROM
 	                TB_CLIENTE";
         }
@@ -91,7 +95,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
                     TELEFONE AS TELEFONE_CLIENTE,
                     TIPO_CLIENTE AS TIPO_CLIENTE_CLIENTE,
                     CPF AS CPF_CLIENTE,
-                    CNPJ AS CNPJ_CLIENTE
+                    CNPJ AS CNPJ_CLIENTE,
+                    DATA_VALIDADE_CNH AS DATA_VALIDADE_CNH_CLIENTE
                 FROM
 	                TB_CLIENTE
                 WHERE 
