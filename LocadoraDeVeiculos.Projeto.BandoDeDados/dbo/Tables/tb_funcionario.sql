@@ -10,6 +10,7 @@
     [endereco]       VARCHAR (MAX)   NOT NULL,
     [email]          VARCHAR (MAX)   CONSTRAINT [DF_tb_funcionario_email] DEFAULT (NULL) NOT NULL,
     [cidade]         VARCHAR (MAX)   NOT NULL,
+    [esta_ativo]     BIT             NOT NULL,
     CONSTRAINT [PK__tb_funci__6FBD69C4ACADEDC5] PRIMARY KEY CLUSTERED ([id_funcionario] ASC)
 );
 
