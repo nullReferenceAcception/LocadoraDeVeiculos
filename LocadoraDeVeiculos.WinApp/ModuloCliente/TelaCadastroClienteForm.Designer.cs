@@ -136,7 +136,7 @@
             this.groupBox1.Controls.Add(this.radioButtonCPF);
             this.groupBox1.Location = new System.Drawing.Point(17, 233);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(133, 92);
+            this.groupBox1.Size = new System.Drawing.Size(133, 79);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tipo de cliente:";
@@ -144,7 +144,7 @@
             // radioButtonCNPJ
             // 
             this.radioButtonCNPJ.AutoSize = true;
-            this.radioButtonCNPJ.Location = new System.Drawing.Point(19, 64);
+            this.radioButtonCNPJ.Location = new System.Drawing.Point(19, 47);
             this.radioButtonCNPJ.Name = "radioButtonCNPJ";
             this.radioButtonCNPJ.Size = new System.Drawing.Size(104, 19);
             this.radioButtonCNPJ.TabIndex = 6;
@@ -156,7 +156,7 @@
             // radioButtonCPF
             // 
             this.radioButtonCPF.AutoSize = true;
-            this.radioButtonCPF.Location = new System.Drawing.Point(19, 39);
+            this.radioButtonCPF.Location = new System.Drawing.Point(19, 22);
             this.radioButtonCPF.Name = "radioButtonCPF";
             this.radioButtonCPF.Size = new System.Drawing.Size(93, 19);
             this.radioButtonCPF.TabIndex = 5;
