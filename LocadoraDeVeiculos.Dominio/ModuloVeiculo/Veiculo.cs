@@ -47,7 +47,15 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
                    Cor == veiculo.Cor &&
                    Combustivel == veiculo.Combustivel &&
                    EqualityComparer<GrupoVeiculos>.Default.Equals(GrupoVeiculos, veiculo.GrupoVeiculos) &&
-                   EqualityComparer<byte[]>.Default.Equals(Foto, veiculo.Foto);
+                   EqualsFoto(veiculo);
+        }
+
+        private bool EqualsFoto(Veiculo veiculo)
+        {
+            for (int i = 0; i < veiculo.Foto.Length; i++)
+                if (!EqualityComparer<byte>.Default.Equals(Foto[i], veiculo.Foto[i])) return false;
+
+            return true;
         }
     }
 }

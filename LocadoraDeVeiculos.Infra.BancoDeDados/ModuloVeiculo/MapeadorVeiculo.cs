@@ -14,6 +14,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
         {
             cmdInserir.Parameters.AddWithValue("@ID", registro.Id);
             cmdInserir.Parameters.AddWithValue("@MODELO", registro.Modelo);
+            cmdInserir.Parameters.AddWithValue("@MARCA", registro.Marca);
             cmdInserir.Parameters.AddWithValue("@PLACA", registro.Placa);
             cmdInserir.Parameters.AddWithValue("@ANO", registro.Ano);
             cmdInserir.Parameters.AddWithValue("@CAPACIDADE_TANQUE", registro.CapacidadeTanque);
@@ -26,15 +27,16 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
 
         public Veiculo ConverterParaRegistro(SqlDataReader leitorRegistro)
         {
-            int id = Convert.ToInt32(leitorRegistro["@ID"]);
-            string modelo = leitorRegistro["@MODELO"].ToString();
-            string placa = leitorRegistro["@PLACA"].ToString();
-            int ano = Convert.ToInt32(leitorRegistro["@ANO"]);
-            decimal capacidadeTanque = Convert.ToDecimal(leitorRegistro["@CAPACIDADE_TANQUE"]);
-            decimal kmPercorrido = Convert.ToDecimal(leitorRegistro["@KM_PERCORRIDO"]);
-            CorEnum cor = (CorEnum)leitorRegistro["@COR"];
-            CombustivelEnum combustivel = (CombustivelEnum)leitorRegistro["@COMBUSTIVEL"];
-            byte[] foto = (byte[])leitorRegistro["@FOTO"];
+            int id = Convert.ToInt32(leitorRegistro["ID_VEICULO"]);
+            string modelo = leitorRegistro["MODELO"].ToString();
+            string placa = leitorRegistro["PLACA"].ToString();
+            string marca = leitorRegistro["MARCA"].ToString();
+            int ano = Convert.ToInt32(leitorRegistro["ANO"]);
+            decimal capacidadeTanque = Convert.ToDecimal(leitorRegistro["CAPACIDADE_TANQUE"]);
+            decimal kmPercorrido = Convert.ToDecimal(leitorRegistro["KM_PERCORRIDO"]);
+            CorEnum cor = (CorEnum)Enum.Parse(typeof(CorEnum), leitorRegistro["COR"].ToString());
+            CombustivelEnum combustivel = (CombustivelEnum)Enum.Parse(typeof(CombustivelEnum), leitorRegistro["COMBUSTIVEL"].ToString());
+            byte[] foto = (byte[])leitorRegistro["FOTO"];
 
             GrupoVeiculos grupo = _mapeadorGrupoVeiculos.ConverterParaRegistro(leitorRegistro);
 
@@ -43,6 +45,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
             veiculo.Id = id;
             veiculo.Modelo = modelo;
             veiculo.Placa = placa;
+            veiculo.Marca = marca;
             veiculo.Ano = ano;
             veiculo.CapacidadeTanque = capacidadeTanque;
             veiculo.KmPercorrido = kmPercorrido;
