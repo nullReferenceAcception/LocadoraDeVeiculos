@@ -68,7 +68,7 @@ namespace LocadoraDeVeiculos.WinApp
             controlador!.Visualizar();
         }
 
-        private void planoDeCobrançaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void planoDeCobrancaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
@@ -97,7 +97,6 @@ namespace LocadoraDeVeiculos.WinApp
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
 
         }
-
         private void veículosMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
@@ -169,8 +168,6 @@ namespace LocadoraDeVeiculos.WinApp
             RepositorioCliente repositorioCliente = new();
             RepositorioCondutor repositorioCondutor = new();
             RepositorioVeiculo repositorioVeiculo = new();
-
-
             RepositorioPlanoCobranca repositorioPlanoCobranca = new();
 
             ServicoTaxa servicoTaxa = new ServicoTaxa(repositorioTaxa);
@@ -178,11 +175,8 @@ namespace LocadoraDeVeiculos.WinApp
             ServicoGrupoVeiculos servicoGrupoVeiculos = new ServicoGrupoVeiculos(repositorioGrupoVeiculos);
             ServicoCliente servicoCliente = new ServicoCliente(repositorioCliente);
             ServicoVeiculo servicoVeiculo = new(repositorioVeiculo);
-
             ServicoCondutor servicoCondutor = new ServicoCondutor(repositorioCondutor);
-
             ServicoPlanoCobranca servicoPlanoCobranca = new ServicoPlanoCobranca(repositorioPlanoCobranca);
-
 
             controladores = new Dictionary<string, ControladorBase>();
            
@@ -198,7 +192,5 @@ namespace LocadoraDeVeiculos.WinApp
         {
             labelRodape.Text = mensagem;
         }
-
-        
     }
 }

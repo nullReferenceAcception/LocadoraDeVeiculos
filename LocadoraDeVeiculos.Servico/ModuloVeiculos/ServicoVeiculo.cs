@@ -12,12 +12,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloVeiculos
         {
             this._repositorioVeiculo = repositorio;
         }
-        public override ValidationResult HaDuplicidadeFilha(Veiculo registro, ValidationResult resultadoValidacao)
-        {
-            if (_repositorioVeiculo.VerificarDuplicidade(_repositorioVeiculo.SqlDuplicidadePlaca(registro)))
-                resultadoValidacao.Errors.Add(new ValidationFailure("", "Placa já cadastrada"));
 
-            return resultadoValidacao;
-        }
+        public override string SqlMensagemDeErro => "Placa já cadastrada";
     }
 }

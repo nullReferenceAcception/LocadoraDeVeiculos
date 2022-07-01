@@ -9,6 +9,12 @@ ___
 4. [Domínio](#dominio)
 5. [Infra](#infra)
 6. [Testes](#testes)
+7. 
+8.
+9.
+10.
+
+
 
 ___
 
@@ -17,6 +23,22 @@ ___
 <h1 style="color:white">Git</h1>
 
 Antes de realizar um <span style="color:#db0bb9">_pull_</span>, faça um <span style="color:#db0bb9">_fetch_</span> para ver as alterações que virão.
+
+Passos para voltar a <span style="color:#64b2d1">BRANCH</span> na <span style="color:#64b2d1">MAIN</span>:
+
+1. COMMIT
+
+2. CHECKOUT MAIN (...)
+
+3. FETCH => PULL (Main local atualizada com a main remota)
+
+4. Merge 'xxx' into 'main' (Enviando as adições de 'xxx' para a 'main' local)
+
+5. RESOLVE THE CONFLICTS
+
+6. Stage no que for necessário
+
+7. Push na main
 
 ___
 
