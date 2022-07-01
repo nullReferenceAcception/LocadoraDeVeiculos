@@ -98,5 +98,5 @@ d) SelecionarPorId<br>
 e) SelecionarTodos<br>
 f) Não pode fazer algo<br>
 
-Usando prioritariamente **FluentAssertions**
+Usando prioritariamente **<span style="color:orange">FluentAssertions</span>**
 ___

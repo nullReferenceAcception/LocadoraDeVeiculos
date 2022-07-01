@@ -9,9 +9,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         private IServicoTaxa servicoTaxa;
         private TabelaTaxaControl? _tabelaTaxas;
 
-        public ControladorTaxa(IServicoTaxa rep)
+        public ControladorTaxa(IServicoTaxa serv)
         {
-            servicoTaxa = rep;
+            servicoTaxa = serv;
         }
 
         public override void Inserir()
