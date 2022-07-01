@@ -13,8 +13,6 @@
             Nome = v;
         }
 
-   
-
         //TODO lista de veiculos
 
         public override bool Equals(object? obj)

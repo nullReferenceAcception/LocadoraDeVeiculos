@@ -88,7 +88,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
         }
 
         [TestMethod]
-        public void Nao_Deve_inserir_Funcionario_Com_Login_duplicada()
+        public void Nao_Deve_inserir_Funcionario_Com_Login_duplicado()
         {
             Funcionario registro = CriarFuncionario();
 
@@ -105,12 +105,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
             validationResult.Errors[0].ErrorMessage.Should().Contain("Login já está cadastrado");
         }
 
-
-
-
         private Funcionario CriarFuncionario()
         {
-            return new("nome", "endereco", "e@e.e", "49991113939", "login", "senha", new DateTime(2020,02,02), 12, true, "Lages",true);
+            return new("nome", "endereco", "e@e.e", "49991113939", "login", "senha", new DateTime(2020,02,02), 12, true, "Lages", true);
         }
     }
 }

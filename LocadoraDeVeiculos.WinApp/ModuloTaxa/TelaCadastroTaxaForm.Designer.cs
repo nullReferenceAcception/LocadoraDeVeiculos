@@ -158,7 +158,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 254);
+            this.ClientSize = new System.Drawing.Size(274, 218);
             this.Controls.Add(this.groupBoxTaxa);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonGravar);

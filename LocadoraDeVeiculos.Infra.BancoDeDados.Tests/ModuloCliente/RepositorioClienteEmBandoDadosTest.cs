@@ -16,17 +16,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
         ServicoCliente servico = new(new RepositorioCliente());
 
         [TestMethod]
-        public void Deve_selecionar_por_id()
-        {
-            Cliente registro = CriarClienteComCPF();
-            servico.Inserir(registro);
-
-            Cliente registro2 = servico.SelecionarPorID(registro.Id);
-
-            Assert.AreEqual(registro2, registro);
-        }
-
-        [TestMethod]
         public void Deve_inserir_cliente_CPF()
         {
             Cliente cliente = CriarClienteComCPF();
@@ -47,6 +36,22 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
             Cliente cliente2 = servico.SelecionarPorID(cliente.Id);
 
             Assert.AreEqual(cliente, cliente2);
+        }
+
+        [TestMethod]
+        public void Deve_editar_cliente()
+        {
+            Cliente cliente = CriarClienteComCPF();
+
+            servico.Inserir(cliente);
+
+            cliente.Nome = "ssssss";
+
+            servico.Editar(cliente);
+
+            Cliente cliente2 = servico.SelecionarPorID(cliente.Id);
+
+            Assert.AreEqual(cliente2, cliente);
         }
 
         [TestMethod]
@@ -114,17 +119,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
         [TestMethod]
         public void Deve_editar_cliente()
         {
-            Cliente cliente = CriarClienteComCPF();
+            Cliente registro = CriarClienteComCPF();
+            servico.Inserir(registro);
 
-            servico.Inserir(cliente);
+            Cliente registro2 = servico.SelecionarPorID(registro.Id);
 
-            cliente.Nome = "ssssss";
-
-            servico.Editar(cliente);
-
-            Cliente cliente2 = servico.SelecionarPorID(cliente.Id);
-
-            Assert.AreEqual(cliente2, cliente);
+            Assert.AreEqual(registro2, registro);
         }
 
         private Cliente CriarClienteComCPF()
