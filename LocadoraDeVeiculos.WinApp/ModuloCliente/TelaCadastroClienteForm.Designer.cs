@@ -48,10 +48,10 @@
             this.maskedTextBoxCNPJ = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBoxTelefone = new System.Windows.Forms.MaskedTextBox();
             this.groupBoxDadosCliente = new System.Windows.Forms.GroupBox();
+            this.dateTimePickerValidadeCNH = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxID = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePickerValidadeCNH = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBoxDadosCliente.SuspendLayout();
             this.SuspendLayout();
@@ -136,7 +136,7 @@
             this.groupBox1.Controls.Add(this.radioButtonCPF);
             this.groupBox1.Location = new System.Drawing.Point(17, 233);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(133, 79);
+            this.groupBox1.Size = new System.Drawing.Size(133, 92);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tipo de cliente:";
@@ -259,6 +259,22 @@
             this.groupBoxDadosCliente.TabStop = false;
             this.groupBoxDadosCliente.Text = "Dados do cliente:";
             // 
+            // dateTimePickerValidadeCNH
+            // 
+            this.dateTimePickerValidadeCNH.Location = new System.Drawing.Point(153, 203);
+            this.dateTimePickerValidadeCNH.Name = "dateTimePickerValidadeCNH";
+            this.dateTimePickerValidadeCNH.Size = new System.Drawing.Size(125, 23);
+            this.dateTimePickerValidadeCNH.TabIndex = 27;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(5, 206);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(142, 15);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "Data de validade da CNH:";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -276,22 +292,6 @@
             this.textBoxID.ReadOnly = true;
             this.textBoxID.Size = new System.Drawing.Size(75, 23);
             this.textBoxID.TabIndex = 23;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 206);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(142, 15);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "Data de validade da CNH:";
-            // 
-            // dateTimePickerValidadeCNH
-            // 
-            this.dateTimePickerValidadeCNH.Location = new System.Drawing.Point(153, 203);
-            this.dateTimePickerValidadeCNH.Name = "dateTimePickerValidadeCNH";
-            this.dateTimePickerValidadeCNH.Size = new System.Drawing.Size(125, 23);
-            this.dateTimePickerValidadeCNH.TabIndex = 27;
             // 
             // TelaCadastroClienteForm
             // 
