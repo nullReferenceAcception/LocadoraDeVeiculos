@@ -15,11 +15,6 @@ namespace LocadoraDeVeiculos.Servico.ModuloPlanoCobranca
         {
 
         }
-
-        public override ValidationResult HaDuplicidadeFilha(PlanoCobranca registro, ValidationResult resultadoValidacao)
-        {
-            return HaDuplicidadeMae("Nome já está cadastrado", registro, resultadoValidacao);
-        }
-
+        public override string SqlMensagemDeErro => "Nome já está cadastrado";
     }
 }

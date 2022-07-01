@@ -10,9 +10,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloCliente
         {
         }
 
-        public override ValidationResult HaDuplicidadeFilha(Cliente registro, ValidationResult resultadoValidacao)
-        {
-            return HaDuplicidadeMae("Nome já está cadastrado", registro, resultadoValidacao);
-        }
+        public override string SqlMensagemDeErro => "Nome já está cadastrado";
+
     }
 }

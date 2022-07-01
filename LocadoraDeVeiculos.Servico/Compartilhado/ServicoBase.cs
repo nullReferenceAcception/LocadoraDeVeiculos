@@ -44,7 +44,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
         {
             var resultadoValidacao = validador.Validate(registro);
 
-            resultadoValidacao = HaDuplicidadeFilha(registro, resultadoValidacao);
+            resultadoValidacao = HaDuplicidade(registro, resultadoValidacao);
             return resultadoValidacao;
         }
 
@@ -70,12 +70,12 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             return repositorio.SelecionarPorID(ID);
         }
 
-        public abstract ValidationResult HaDuplicidadeFilha(T registro, ValidationResult resultadoValidacao);
+        public abstract string SqlMensagemDeErro { get; }
 
-        protected virtual ValidationResult HaDuplicidadeMae(string error, T registro, ValidationResult resultadoValidacao)
+        protected virtual ValidationResult HaDuplicidade( T registro, ValidationResult resultadoValidacao)
         {
             if (repositorio.VerificarDuplicidade(repositorio.SqlDuplicidade(registro)))
-                resultadoValidacao.Errors.Add(new ValidationFailure("", error));
+                resultadoValidacao.Errors.Add(new ValidationFailure("", SqlMensagemDeErro));
 
             return resultadoValidacao;
         }

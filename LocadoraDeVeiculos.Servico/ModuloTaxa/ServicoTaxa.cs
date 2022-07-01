@@ -9,10 +9,6 @@ namespace LocadoraDeVeiculos.Servico.ModuloTaxa
         public ServicoTaxa(IRepositorioTaxa repositorio) : base(new ValidadorTaxa(), repositorio)
         {
         }
-
-        public override ValidationResult HaDuplicidadeFilha(Taxa registro, ValidationResult resultadoValidacao)
-        {
-            return HaDuplicidadeMae("Descricao já está cadastrado", registro, resultadoValidacao);
-        }
+        public override string SqlMensagemDeErro => "Descricao já está cadastrado";
     }
 }

@@ -9,10 +9,6 @@ namespace LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos
         public ServicoGrupoVeiculos(IRepositorioGrupoVeiculos repositorio) : base(new ValidadorGrupoVeiculos(), repositorio)
         {
         }
-
-        public override ValidationResult HaDuplicidadeFilha(GrupoVeiculos registro, ValidationResult resultadoValidacao)
-        {
-            return HaDuplicidadeMae("Nome já está cadastrado", registro, resultadoValidacao);
-        }
+        public override string SqlMensagemDeErro => "Nome já está cadastrado";
     }
 }
