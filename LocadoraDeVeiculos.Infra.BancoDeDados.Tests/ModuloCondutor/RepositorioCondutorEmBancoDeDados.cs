@@ -98,9 +98,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
             for (int i = 0; i < 10; i++)
             {
                 if (i <= 5)
-                    condutor = new Condutor("guilherme" + random.Next(100, 500).ToString(), "rua amaral junior 657", "12345678901", "guimotorista@gmail.com", "49998765432", "11111111111", DateTime.Today);
+                    condutor = new Condutor(GerarNovoNome(), "rua amaral junior 657", "12345678901", "guimotorista@gmail.com", "49998765432", "11111111111", DateTime.Today);
                 else
-                    condutor = new Condutor("guilherme" + random.Next(100, 500).ToString(), "rua juvenil 657", "12345678901", "guimotorista445@gmail.com", "49998789432", "11001111111", DateTime.Today);
+                    condutor = new Condutor(GerarNovoNome(), "rua juvenil 657", "12345678901", "guimotorista445@gmail.com", "49998789432", "11001111111", DateTime.Today);
                 condutor.Cliente = cliente;
 
                 servico.Inserir(condutor);
@@ -140,14 +140,27 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
         private Condutor CriarCondutor()
         {
             
-            return new Condutor("guilherme" + random.Next(100, 500).ToString(), "rua amaral junior 657", "12345678901", "guimotorista@gmail.com", "49998765432", "11111111111", DateTime.Today);
+            return new Condutor(GerarNovoNome(), "rua amaral junior 657", "12345678901", "guimotorista@gmail.com", "49998765432", "11111111111", DateTime.Today);
         }
         private Cliente CriarCliente()
         {
             
-            return   new Cliente("joao" + random.Next(100, 500).ToString(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", false, null!, "12340567123889");
+            return   new Cliente(GerarNovoNome(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", false, null!, "12340567123889");
             
     
+        }
+        private string GerarNovoNome()
+        {
+            const int qtdeLetras = 4;
+
+            const string letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string novoNome = "";
+            Random random = new();
+
+            for (int i = 0; i < qtdeLetras; i++)
+                novoNome += letras[random.Next(letras.Length)];
+
+            return novoNome;
         }
     }
 }

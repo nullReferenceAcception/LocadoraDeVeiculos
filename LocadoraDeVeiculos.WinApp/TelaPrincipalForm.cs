@@ -14,6 +14,9 @@ using LocadoraDeVeiculos.Servico.ModuloTaxa;
 using LocadoraDeVeiculos.Servico.ModuloFuncionario;
 using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Servico.ModuloCliente;
+using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor;
+using LocadoraDeVeiculos.Servico.ModuloCondutor;
+using LocadoraDeVeiculos.WinApp.ModuloCondutor;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -79,6 +82,12 @@ namespace LocadoraDeVeiculos.WinApp
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
+        private void condutoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+
+        }
+
 
         private void ConfigurarBotoes(ConfiguracaoToolboxBase configuracao)
         {
@@ -144,6 +153,8 @@ namespace LocadoraDeVeiculos.WinApp
             RepositorioFuncionario repositorioFuncionario = new();
             RepositorioGrupoVeiculos repositorioGrupoVeiculos = new();
             RepositorioCliente repositorioCliente = new();
+            RepositorioCondutor repositorioCondutor = new();
+
 
 
             ServicoTaxa servicoTaxa = new ServicoTaxa(repositorioTaxa);
@@ -154,16 +165,23 @@ namespace LocadoraDeVeiculos.WinApp
 
             ServicoCliente servicoCliente = new ServicoCliente(repositorioCliente);
 
+            ServicoCondutor servicoCondutor = new ServicoCondutor(repositorioCondutor);
+
             controladores = new Dictionary<string, ControladorBase>();
 
             controladores.Add("Taxas", new ControladorTaxa(servicoTaxa));
             controladores.Add("Funcionários", new ControladorFuncionario(servicoFuncionario));
             controladores.Add("Grupos de Veículos", new ControladorGrupoVeiculos(servicoGrupoVeiculos));
             controladores.Add("Clientes", new ControladorCliente(servicoCliente));
+            controladores.Add("Condutores", new ControladorCondutor(servicoCondutor, servicoCliente));
+
+
         }
         public void AtualizarRodape(string mensagem)
         {
             labelRodape.Text = mensagem;
         }
+
+        
     }
 }

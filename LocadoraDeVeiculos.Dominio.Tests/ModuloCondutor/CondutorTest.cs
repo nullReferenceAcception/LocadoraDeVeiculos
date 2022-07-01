@@ -90,7 +90,20 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCondutor
         }
         private Condutor CriarCondutor()
         {
-            return new Condutor("guilherme" + random.Next(100, 500).ToString(), "rua amaral junior 657", "12345678901", "guimotorista@gmail.com", "49998765432", "111111111111", DateTime.Today);
+            return new Condutor(GerarNovoNome(), "rua amaral junior 657", "12345678901", "guimotorista@gmail.com", "49998765432", "111111111111", DateTime.Today);
+        }
+        private string GerarNovoNome()
+        {
+            const int qtdeLetras = 4;
+
+            const string letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string novoNome = "";
+            Random random = new();
+
+            for (int i = 0; i < qtdeLetras; i++)
+                novoNome += letras[random.Next(letras.Length)];
+
+            return novoNome;
         }
     }
 }

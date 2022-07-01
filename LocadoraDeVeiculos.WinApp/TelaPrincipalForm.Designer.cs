@@ -47,6 +47,7 @@
             this.panelRegistros = new System.Windows.Forms.Panel();
             this.labelRodape = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStripRodape = new System.Windows.Forms.StatusStrip();
+            this.condutoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolbox.SuspendLayout();
             this.menu.SuspendLayout();
             this.statusStripRodape.SuspendLayout();
@@ -168,7 +169,8 @@
             this.clientesMenuItem,
             this.gruposDeVeiculosMenuItem,
             this.taxasMenuItem,
-            this.funcionariosMenuItem});
+            this.funcionariosMenuItem,
+            this.condutoresToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -230,6 +232,14 @@
             this.statusStripRodape.TabIndex = 4;
             this.statusStripRodape.Text = "statusStrip1";
             // 
+            // condutoresToolStripMenuItem
+            // 
+            this.condutoresToolStripMenuItem.Name = "condutoresToolStripMenuItem";
+            this.condutoresToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.condutoresToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.condutoresToolStripMenuItem.Text = "Condutores";
+            this.condutoresToolStripMenuItem.Click += new System.EventHandler(this.condutoresToolStripMenuItem_Click);
+            // 
             // TelaPrincipalForm
             // 
             this.ClientSize = new System.Drawing.Size(1109, 596);
@@ -271,5 +281,6 @@
         private System.Windows.Forms.Panel panelRegistros;
         private System.Windows.Forms.ToolStripStatusLabel labelRodape;
         private System.Windows.Forms.StatusStrip statusStripRodape;
+        private System.Windows.Forms.ToolStripMenuItem condutoresToolStripMenuItem;
     }
 }

@@ -27,6 +27,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             CNPJ = cnpj;
         }
 
+        public override string? ToString()
+        {
+            return Nome;
+        }
+
         public override bool Equals(object? obj)
         {
             return obj is Cliente cliente &&
