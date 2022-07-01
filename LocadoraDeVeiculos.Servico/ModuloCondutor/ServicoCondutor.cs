@@ -18,7 +18,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloCondutor
             
         }
 
-        public override string SqlMensagemDeErro => "Nome já cadastrado";
+        protected override string SqlMensagemDeErro => "Nome já cadastrado";
     }
 }
 

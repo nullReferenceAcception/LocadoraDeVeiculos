@@ -70,7 +70,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             return repositorio.SelecionarPorID(ID);
         }
 
-        public abstract string SqlMensagemDeErro { get; }
+        protected abstract string SqlMensagemDeErro { get; }
 
         protected virtual ValidationResult HaDuplicidade( T registro, ValidationResult resultadoValidacao)
         {
