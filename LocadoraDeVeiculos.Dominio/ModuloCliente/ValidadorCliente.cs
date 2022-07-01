@@ -38,7 +38,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
                 .NotNull().NotEmpty().MinimumLength(11).MaximumLength(11);
 
                 RuleFor(x => x.DataValidadeCNH)
-                .NotNull().NotEmpty().GreaterThan(DateTime.MinValue).LessThanOrEqualTo(hoje);
+                .NotNull().NotEmpty().GreaterThan(DateTime.MinValue).GreaterThanOrEqualTo(hoje);
 
             });
 
