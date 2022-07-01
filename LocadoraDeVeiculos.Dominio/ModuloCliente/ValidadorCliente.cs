@@ -32,10 +32,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             When(x => x.PessoaFisica, () =>
             {
                 RuleFor(x => x.CPF)
-                  .NotNull().NotEmpty().MinimumLength(11);
+                  .NotNull().NotEmpty().MinimumLength(11).MaximumLength(11);
 
                 RuleFor(x => x.CNH)
-                .NotNull().NotEmpty().MinimumLength(11);
+                .NotNull().NotEmpty().MinimumLength(11).MaximumLength(11);
 
                 RuleFor(x => x.DataValidadeCNH)
                 .NotNull().NotEmpty().GreaterThan(DateTime.MinValue).LessThanOrEqualTo(hoje);
@@ -45,7 +45,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             When(x => !x.PessoaFisica, () =>
             {
                 RuleFor(x => x.CNPJ)
-                .NotNull().NotEmpty().MinimumLength(14);
+                .NotNull().NotEmpty().MinimumLength(14).MaximumLength(14);
             });
         }
     }

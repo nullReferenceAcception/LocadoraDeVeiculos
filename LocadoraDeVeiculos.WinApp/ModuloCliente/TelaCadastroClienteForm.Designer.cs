@@ -30,7 +30,6 @@
         {
             this.textBoxNome = new System.Windows.Forms.TextBox();
             this.textBoxEndereco = new System.Windows.Forms.TextBox();
-            this.textBoxCNH = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.labelNome = new System.Windows.Forms.Label();
             this.labelTelefone = new System.Windows.Forms.Label();
@@ -52,6 +51,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxID = new System.Windows.Forms.TextBox();
+            this.maskedTextBoxCNH = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBoxDadosCliente.SuspendLayout();
             this.SuspendLayout();
@@ -69,14 +69,6 @@
             this.textBoxEndereco.Name = "textBoxEndereco";
             this.textBoxEndereco.Size = new System.Drawing.Size(239, 23);
             this.textBoxEndereco.TabIndex = 1;
-            // 
-            // textBoxCNH
-            // 
-            this.textBoxCNH.Location = new System.Drawing.Point(87, 116);
-            this.textBoxCNH.MaxLength = 11;
-            this.textBoxCNH.Name = "textBoxCNH";
-            this.textBoxCNH.Size = new System.Drawing.Size(239, 23);
-            this.textBoxCNH.TabIndex = 2;
             // 
             // textBoxEmail
             // 
@@ -233,6 +225,7 @@
             // 
             // groupBoxDadosCliente
             // 
+            this.groupBoxDadosCliente.Controls.Add(this.maskedTextBoxCNH);
             this.groupBoxDadosCliente.Controls.Add(this.dateTimePickerValidadeCNH);
             this.groupBoxDadosCliente.Controls.Add(this.label2);
             this.groupBoxDadosCliente.Controls.Add(this.maskedTextBoxTelefone);
@@ -250,7 +243,6 @@
             this.groupBoxDadosCliente.Controls.Add(this.labelTelefone);
             this.groupBoxDadosCliente.Controls.Add(this.textBoxEndereco);
             this.groupBoxDadosCliente.Controls.Add(this.labelNome);
-            this.groupBoxDadosCliente.Controls.Add(this.textBoxCNH);
             this.groupBoxDadosCliente.Controls.Add(this.textBoxEmail);
             this.groupBoxDadosCliente.Location = new System.Drawing.Point(12, 11);
             this.groupBoxDadosCliente.Name = "groupBoxDadosCliente";
@@ -293,6 +285,14 @@
             this.textBoxID.Size = new System.Drawing.Size(75, 23);
             this.textBoxID.TabIndex = 23;
             // 
+            // maskedTextBoxCNH
+            // 
+            this.maskedTextBoxCNH.Location = new System.Drawing.Point(86, 116);
+            this.maskedTextBoxCNH.Mask = "00000000000";
+            this.maskedTextBoxCNH.Name = "maskedTextBoxCNH";
+            this.maskedTextBoxCNH.Size = new System.Drawing.Size(100, 23);
+            this.maskedTextBoxCNH.TabIndex = 28;
+            // 
             // TelaCadastroClienteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -326,7 +326,6 @@
         private System.Windows.Forms.Label labelCNPJ;
         private System.Windows.Forms.TextBox textBoxNome;
         private System.Windows.Forms.TextBox textBoxEndereco;
-        private System.Windows.Forms.TextBox textBoxCNH;
         private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.Button buttonGravar;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxCPF;
@@ -338,5 +337,6 @@
         private System.Windows.Forms.TextBox textBoxID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateTimePickerValidadeCNH;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxCNH;
     }
 }

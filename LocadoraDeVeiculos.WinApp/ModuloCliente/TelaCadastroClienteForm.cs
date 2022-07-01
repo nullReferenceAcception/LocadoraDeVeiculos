@@ -31,7 +31,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             textBoxID.Text = _cliente!.Id.ToString();
             textBoxNome.Text = _cliente!.Nome;
             textBoxEndereco.Text = _cliente.Endereco;
-            textBoxCNH.Text = _cliente.CNH;
+            maskedTextBoxCNH.Text = _cliente.CNH;
             textBoxEmail.Text = _cliente.Email;
             maskedTextBoxTelefone.Text = _cliente.Telefone;
 
@@ -55,7 +55,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         {
             _cliente!.Nome = textBoxNome.Text;
             _cliente.Endereco = textBoxEndereco.Text;
-            _cliente.CNH = textBoxCNH.Text;
+            _cliente.CNH = maskedTextBoxCNH.Text;
             _cliente.CNPJ = maskedTextBoxCNPJ.Text;
             _cliente.CPF = maskedTextBoxCPF.Text;
             _cliente.Email = textBoxEmail.Text;
@@ -73,7 +73,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         private void radioCPFbtn_CheckedChanged(object sender, EventArgs e)
         {
-            textBoxCNH.Enabled = true;
+            maskedTextBoxCNH.Enabled = true;
             maskedTextBoxCPF.Enabled = true;
             maskedTextBoxCNPJ.Enabled = false;
             maskedTextBoxCNPJ.Clear();
@@ -82,12 +82,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         private void radioCNPJbtn_CheckedChanged(object sender, EventArgs e)
         {
-            textBoxCNH.Enabled = false;
+            maskedTextBoxCNH.Enabled = false;
             maskedTextBoxCNPJ.Enabled = true;
             maskedTextBoxCPF.Enabled = false;
             maskedTextBoxCPF.Clear();
             maskedTextBoxCNPJ.Focus();
-            textBoxCNH.Clear();
+            maskedTextBoxCNH.Clear();
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
