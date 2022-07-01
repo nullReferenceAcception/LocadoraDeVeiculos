@@ -70,5 +70,6 @@
     <Build Include="dbo\Tables\tb_grupo_veiculo.sql" />
     <Build Include="dbo\Tables\tb_taxa.sql" />
     <Build Include="dbo\Tables\tb_plano_cobranca.sql" />
+    <Build Include="dbo\Tables\tb_condutor.sql" />
   </ItemGroup>
 </Project>

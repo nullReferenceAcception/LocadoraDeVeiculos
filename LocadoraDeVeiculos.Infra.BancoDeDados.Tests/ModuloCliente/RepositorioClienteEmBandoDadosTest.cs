@@ -115,18 +115,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
         }
 
 
-
-        [TestMethod]
-        public void Deve_editar_cliente()
-        {
-            Cliente registro = CriarClienteComCPF();
-            servico.Inserir(registro);
-
-            Cliente registro2 = servico.SelecionarPorID(registro.Id);
-
-            Assert.AreEqual(registro2, registro);
-        }
-
         private Cliente CriarClienteComCPF()
         {
             return new Cliente("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "12340567889", null!, DateTime.Today);
