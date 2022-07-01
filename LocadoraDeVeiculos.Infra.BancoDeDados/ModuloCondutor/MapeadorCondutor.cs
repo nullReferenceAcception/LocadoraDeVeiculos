@@ -28,8 +28,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
             cmdInserir.Parameters.AddWithValue("CLIENTE_ID", registro.Cliente.Id);
             cmdInserir.Parameters.AddWithValue("DATA_VALIDADE_CNH", registro.DataValidadeCNH);
 
-
-
         }
 
         public Condutor ConverterParaRegistro(SqlDataReader leitorRegistro)

@@ -94,7 +94,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
                                                 CLI.TELEFONE AS TELEFONE_CLIENTE,
                                                 CLI.TIPO_CLIENTE AS TIPO_CLIENTE_CLIENTE,
                                                 CLI.CPF AS CPF_CLIENTE,
-                                                CLI.CNPJ AS CNPJ_CLIENTE                  
+                                                CLI.CNPJ AS CNPJ_CLIENTE,
+                                                CLI.DATA_VALIDADE_CNH AS DATA_VALIDADE_CNH_CLIENTE     
                 FROM
 	                TB_CONDUTOR AS CON INNER JOIN
                         TB_CLIENTE AS CLI ON CON.CLIENTE_ID = CLI.ID_CLIENTE";
@@ -120,7 +121,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
                                                 CLI.TELEFONE AS TELEFONE_CLIENTE,
                                                 CLI.TIPO_CLIENTE AS TIPO_CLIENTE_CLIENTE,
                                                 CLI.CPF AS CPF_CLIENTE,
-                                                CLI.CNPJ AS CNPJ_CLIENTE
+                                                CLI.CNPJ AS CNPJ_CLIENTE,
+                                                CLI.DATA_VALIDADE_CNH AS DATA_VALIDADE_CNH_CLIENTE  
                 FROM
 	                TB_CONDUTOR AS CON INNER JOIN
                         TB_CLIENTE AS CLI ON CON.CLIENTE_ID = CLI.ID_CLIENTE   

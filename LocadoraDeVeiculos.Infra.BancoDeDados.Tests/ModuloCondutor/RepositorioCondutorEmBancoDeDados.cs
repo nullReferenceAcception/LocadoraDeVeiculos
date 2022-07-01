@@ -145,7 +145,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
         private Cliente CriarCliente()
         {
             
-            return   new Cliente(GerarNovoNome(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", false, null!, "12340567123889");
+            return   new Cliente(GerarNovoNome(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", false, null!, "12340567123889", DateTime.Today);
             
     
         }

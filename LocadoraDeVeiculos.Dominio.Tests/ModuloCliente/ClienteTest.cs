@@ -90,6 +90,8 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
         {
             Cliente cliente = CriarCliente();
             cliente.Id = 1;
+            cliente.PessoaFisica = false;
+            cliente.CPF = null;
             cliente.CNPJ = "111";
 
             var resultado = validador.TestValidate(cliente);
@@ -113,7 +115,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
 
         private Cliente CriarCliente()
         {
-            return new Cliente("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "(49)98909-0909", true, "09876543211", "1234567889879");
+            return new Cliente("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "09876543211", "1234567889879", DateTime.Today);
         }
     }
 }
