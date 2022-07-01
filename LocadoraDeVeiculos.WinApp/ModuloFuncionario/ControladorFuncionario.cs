@@ -8,7 +8,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
     {
         private IServicoFuncionario? servicoFuncionario;
         private TabelaFuncionarioControl? _tabelaFuncionario;
-
+        private bool estadoFuncionarios = true;
         public ControladorFuncionario(IServicoFuncionario ser)
         {
             servicoFuncionario = ser;
@@ -25,7 +25,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             DialogResult resultado = tela.ShowDialog();
 
             if (resultado == DialogResult.OK)
-                CarregarFuncionarios();
+                CarregarFuncionariosAtivos();
         }
 
         public override void Editar()
@@ -49,7 +49,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             DialogResult resultado = tela.ShowDialog();
 
             if (resultado == DialogResult.OK)
-                CarregarFuncionarios();
+                CarregarFuncionariosAtivos();
         }
 
         public override void Excluir()
@@ -70,7 +70,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             if (resultado == DialogResult.OK)
             {
                 servicoFuncionario.Excluir(funcionarioSelecionado);
-                CarregarFuncionarios();
+                CarregarFuncionariosAtivos();
             }
         }
 
@@ -96,7 +96,22 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             tela.ShowDialog();
         }
 
-        public override void VisualizarDesabilitados()
+        public override bool VisualizarDesativados()
+        {
+            if (estadoFuncionarios == false)
+            {
+                CarregarFuncionariosAtivos();
+                estadoFuncionarios = true;
+            }
+            else
+            {
+                CarregarFuncionarioInativos();
+                estadoFuncionarios = false;
+            }
+            return estadoFuncionarios;
+        }
+
+        private void CarregarFuncionarioInativos()
         {
             List<Funcionario> funcionariosDesativados = servicoFuncionario!.SelecionarDesativados();
 
@@ -115,12 +130,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             if (_tabelaFuncionario == null)
                 _tabelaFuncionario = new TabelaFuncionarioControl();
 
-            CarregarFuncionarios();
+            CarregarFuncionariosAtivos();
 
             return _tabelaFuncionario;
         }
 
-        private void CarregarFuncionarios()
+        private void CarregarFuncionariosAtivos()
         {
             List<Funcionario> funcionarios = servicoFuncionario!.SelecionarTodos();
 

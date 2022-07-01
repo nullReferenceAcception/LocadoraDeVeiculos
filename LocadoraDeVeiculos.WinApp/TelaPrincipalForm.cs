@@ -1,27 +1,27 @@
 ﻿using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario;
+using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa;
+using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo;
+using LocadoraDeVeiculos.Servico.ModuloCliente;
+using LocadoraDeVeiculos.Servico.ModuloCondutor;
+using LocadoraDeVeiculos.Servico.ModuloFuncionario;
+using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Servico.ModuloPlanoCobranca;
+using LocadoraDeVeiculos.Servico.ModuloTaxa;
+using LocadoraDeVeiculos.Servico.ModuloVeiculos;
 using LocadoraDeVeiculos.WinApp.ModuloCliente;
-using LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo;
+using LocadoraDeVeiculos.WinApp.ModuloCondutor;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
+using LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo;
+using LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.WinApp.ModuloTaxa;
+using LocadoraDeVeiculos.WinApp.ModuloVeiculo;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using LocadoraDeVeiculos.Servico.ModuloTaxa;
-using LocadoraDeVeiculos.Servico.ModuloFuncionario;
-using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
-using LocadoraDeVeiculos.Servico.ModuloCliente;
-using LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca;
-using LocadoraDeVeiculos.Servico.ModuloPlanoCobranca;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor;
-using LocadoraDeVeiculos.Servico.ModuloCondutor;
-using LocadoraDeVeiculos.WinApp.ModuloCondutor;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo;
-using LocadoraDeVeiculos.Servico.ModuloVeiculos;
-using LocadoraDeVeiculos.WinApp.ModuloVeiculo;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -69,7 +69,11 @@ namespace LocadoraDeVeiculos.WinApp
         }
         private void btnFuncionariosDesativados_Click(object sender, EventArgs e)
         {
-            controlador!.VisualizarDesabilitados();
+            bool status = controlador!.VisualizarDesativados();
+
+            DesabilitarBotoes(status);
+
+            ConfigurarToolTips(status);
         }
 
         private void planoDeCobrancaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -124,6 +128,15 @@ namespace LocadoraDeVeiculos.WinApp
             btnGerarPdf.ToolTipText = configuracao.TooltipGerarPdf;
             btnVisualizar.ToolTipText = configuracao.TooltipVisualizar;
             btnFuncionariosDesativados.ToolTipText = configuracao.ToolTipFuncionariosDesabilitados;
+        }
+
+        private void ConfigurarTooltipsInativos()
+        {
+            btnVisualizar.ToolTipText = "Visualizar funcionário desativado";
+            btnFuncionariosDesativados.ToolTipText = "Visualizar funcionários ativos";
+            btnInserir.ToolTipText = string.Empty;
+            btnEditar.ToolTipText = string.Empty;
+            btnExcluir.ToolTipText = string.Empty;
         }
 
         private void ConfigurarTelaPrincipal(ToolStripMenuItem opcaoSelecionada)
@@ -185,7 +198,7 @@ namespace LocadoraDeVeiculos.WinApp
             ServicoPlanoCobranca servicoPlanoCobranca = new ServicoPlanoCobranca(repositorioPlanoCobranca);
 
             controladores = new Dictionary<string, ControladorBase>();
-           
+
             controladores.Add("Taxas", new ControladorTaxa(servicoTaxa));
             controladores.Add("Funcionários", new ControladorFuncionario(servicoFuncionario));
             controladores.Add("Grupos de Veículos", new ControladorGrupoVeiculos(servicoGrupoVeiculos));
@@ -199,6 +212,19 @@ namespace LocadoraDeVeiculos.WinApp
             labelRodape.Text = mensagem;
         }
 
-        
+        private void DesabilitarBotoes(bool status)
+        {
+            btnInserir.Enabled = status;
+            btnEditar.Enabled = status;
+            btnExcluir.Enabled = status;
+        }
+
+        private void ConfigurarToolTips(bool status)
+        {
+            if (status)
+                ConfigurarToolbox();
+            else
+                ConfigurarTooltipsInativos();
+        }
     }
 }

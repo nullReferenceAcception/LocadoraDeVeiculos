@@ -86,7 +86,7 @@
             this.btnInserir.Name = "btnInserir";
             this.btnInserir.Padding = new System.Windows.Forms.Padding(5);
             this.btnInserir.Size = new System.Drawing.Size(38, 38);
-            this.btnInserir.Text = "Inserir";
+            this.btnInserir.ToolTipText = "\r\n";
             this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
             // 
             // btnEditar
@@ -98,7 +98,7 @@
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Padding = new System.Windows.Forms.Padding(5);
             this.btnEditar.Size = new System.Drawing.Size(38, 38);
-            this.btnEditar.Text = "Editar";
+            this.btnEditar.ToolTipText = "\r\n";
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnExcluir
@@ -110,7 +110,7 @@
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Padding = new System.Windows.Forms.Padding(5);
             this.btnExcluir.Size = new System.Drawing.Size(38, 38);
-            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.ToolTipText = "\r\n";
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // toolStripSeparator2
