@@ -7,6 +7,9 @@
 *.rsuser
 *.suo
 *.user
+bin
+obj
+packages
 *.userosscache
 *.sln.docstates
 
