@@ -9,5 +9,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 {
     public interface IServicoCliente : IServico<Cliente>
     {
+        List<Cliente> SelecionarTodosClientesQueSaoPessoaFisica();
     }
 }

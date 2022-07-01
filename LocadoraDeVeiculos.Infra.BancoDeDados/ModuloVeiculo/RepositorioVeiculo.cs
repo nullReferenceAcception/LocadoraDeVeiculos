@@ -116,14 +116,13 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
                         VEICULO.ID_VEICULO = @ID";
         }
 
-        public string SqlDuplicidade(Veiculo registro)
-        {
-            throw new System.NotImplementedException();
-        }
+
 
         #endregion
 
-        public string SqlDuplicidadePlaca(Veiculo registro)
+
+
+        public string SqlDuplicidade(Veiculo registro)
         {
             return "SELECT * FROM TB_VEICULO WHERE ([PLACA] = '" + registro.Placa + "')" + $"AND [ID_VEICULO] != {registro.Id}";
         }

@@ -89,15 +89,31 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
         }
 
         [TestMethod]
-        public void Deve_selecionar_por_id()
+        public void Deve_Selecionar_todos_clientes_que_sao_pessoas_fisicas()
         {
-            Cliente registro = CriarClienteComCPF();
-            servico.Inserir(registro);
+            Cliente clienteCPF = CriarClienteComCPF();
 
-            Cliente registro2 = servico.SelecionarPorID(registro.Id);
+            Cliente clienteCPF2 = new Cliente("joaos", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "12340567889", null!, DateTime.Today);
 
-            Assert.AreEqual(registro2, registro);
+            Cliente clienteCPF3= new Cliente("joaoes", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "12340567889", null!, DateTime.Today);
+
+            Cliente clienteCNPJ = new Cliente("jo", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, null!, "12340567889876", DateTime.Today);
+
+            servico.Inserir(clienteCPF);
+
+            servico.Inserir(clienteCPF2);
+
+            servico.Inserir(clienteCPF3);
+
+            servico.Inserir(clienteCNPJ);
+
+            List<Cliente> clientes = servico.SelecionarTodosClientesQueSaoPessoaFisica();
+
+            clientes.Should().Contain(clienteCPF);
+            clientes.Should().Contain(clienteCPF2);
+            clientes.Should().Contain(clienteCPF3);
         }
+
 
         private Cliente CriarClienteComCPF()
         {

@@ -24,7 +24,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             InitializeComponent();
 
             this.servicoCliente = servicoCliente;
-            comboBoxEmpresa.DataSource = servicoCliente.SelecionarTodos();
+            comboBoxEmpresa.DataSource = servicoCliente.SelecionarTodosClientesQueSaoPessoaFisica();
         }
 
         public Condutor? Condutor

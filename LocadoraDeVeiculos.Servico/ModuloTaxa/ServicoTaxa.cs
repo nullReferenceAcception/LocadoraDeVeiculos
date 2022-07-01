@@ -9,6 +9,6 @@ namespace LocadoraDeVeiculos.Servico.ModuloTaxa
         public ServicoTaxa(IRepositorioTaxa repositorio) : base(new ValidadorTaxa(), repositorio)
         {
         }
-        public override string SqlMensagemDeErro => "Descricao já está cadastrado";
+        protected override string SqlMensagemDeErro => "Descricao já está cadastrado";
     }
 }

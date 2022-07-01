@@ -11,6 +11,6 @@ namespace LocadoraDeVeiculos.Servico.ModuloFuncionario
         {
             this.repositorio = repositorio;
         }
-        public override string SqlMensagemDeErro => "Login já está cadastrado";
+        protected override string SqlMensagemDeErro => "Login já está cadastrado";
     }
 }
