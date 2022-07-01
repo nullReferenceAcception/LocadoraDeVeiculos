@@ -47,11 +47,11 @@
             this.maskedTextBoxCNPJ = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBoxTelefone = new System.Windows.Forms.MaskedTextBox();
             this.groupBoxDadosCliente = new System.Windows.Forms.GroupBox();
+            this.maskedTextBoxCNH = new System.Windows.Forms.MaskedTextBox();
             this.dateTimePickerValidadeCNH = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxID = new System.Windows.Forms.TextBox();
-            this.maskedTextBoxCNH = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBoxDadosCliente.SuspendLayout();
             this.SuspendLayout();
@@ -251,11 +251,20 @@
             this.groupBoxDadosCliente.TabStop = false;
             this.groupBoxDadosCliente.Text = "Dados do cliente:";
             // 
+            // maskedTextBoxCNH
+            // 
+            this.maskedTextBoxCNH.Location = new System.Drawing.Point(86, 116);
+            this.maskedTextBoxCNH.Mask = "00000000000";
+            this.maskedTextBoxCNH.Name = "maskedTextBoxCNH";
+            this.maskedTextBoxCNH.Size = new System.Drawing.Size(100, 23);
+            this.maskedTextBoxCNH.TabIndex = 28;
+            // 
             // dateTimePickerValidadeCNH
             // 
+            this.dateTimePickerValidadeCNH.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerValidadeCNH.Location = new System.Drawing.Point(153, 203);
             this.dateTimePickerValidadeCNH.Name = "dateTimePickerValidadeCNH";
-            this.dateTimePickerValidadeCNH.Size = new System.Drawing.Size(125, 23);
+            this.dateTimePickerValidadeCNH.Size = new System.Drawing.Size(100, 23);
             this.dateTimePickerValidadeCNH.TabIndex = 27;
             // 
             // label2
@@ -284,14 +293,6 @@
             this.textBoxID.ReadOnly = true;
             this.textBoxID.Size = new System.Drawing.Size(75, 23);
             this.textBoxID.TabIndex = 23;
-            // 
-            // maskedTextBoxCNH
-            // 
-            this.maskedTextBoxCNH.Location = new System.Drawing.Point(86, 116);
-            this.maskedTextBoxCNH.Mask = "00000000000";
-            this.maskedTextBoxCNH.Name = "maskedTextBoxCNH";
-            this.maskedTextBoxCNH.Size = new System.Drawing.Size(100, 23);
-            this.maskedTextBoxCNH.TabIndex = 28;
             // 
             // TelaCadastroClienteForm
             // 
