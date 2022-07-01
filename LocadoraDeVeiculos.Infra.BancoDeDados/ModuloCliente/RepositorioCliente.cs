@@ -141,24 +141,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
 
         public List<Cliente> SelecionarTodosClientesQueSaoPessoaFisica()
         {
-            SqlConnection conexao = new SqlConnection(enderecoBanco);
-
-            SqlCommand comandoSelecao = new SqlCommand(sqlSelecionarTodosPessoasFisicas, conexao);
-
-            conexao.Open();
-            SqlDataReader leitorRegistro = comandoSelecao.ExecuteReader();
-
-            List<Cliente> registros = new List<Cliente>();
-
-            while (leitorRegistro.Read())
-            {
-                Cliente registro = mapeador.ConverterParaRegistro(leitorRegistro);
-                registros.Add(registro);
-            }
-
-            conexao.Close();
-
-            return registros;
+            return SelecionarTodosPersonalizado(sqlSelecionarTodosPessoasFisicas);
         }
 
 

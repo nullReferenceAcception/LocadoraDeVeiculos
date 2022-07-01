@@ -148,26 +148,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
 
         public List<Funcionario> SelecionarDesativados()
         {
-            SqlConnection conexao = new SqlConnection(enderecoBanco);
-
-            SqlCommand comandoSelecao = new SqlCommand(sqlSelecionarDesativados, conexao);
-
-            conexao.Open();
-
-            SqlDataReader leitorRegistro = comandoSelecao.ExecuteReader();
-
-            List<Funcionario> funcionariosDesativados = new();
-
-            while (leitorRegistro.Read())
-            {
-                Funcionario funcionario = mapeadorFuncionario.ConverterParaRegistro(leitorRegistro);
-                funcionariosDesativados.Add(funcionario);
-            }
-
-            conexao.Close();
-
-            return funcionariosDesativados;
-        }
+            return SelecionarTodosPersonalizado(sqlSelecionarDesativados);
+;        }
 
         public string SqlDuplicidade(Funcionario registro)
         {

@@ -116,6 +116,28 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             return registros;
         }
 
+        protected List<T> SelecionarTodosPersonalizado(string sql)
+        {
+            SqlConnection conexao = new SqlConnection(enderecoBanco);
+
+            SqlCommand comandoSelecao = new SqlCommand(sql, conexao);
+
+            conexao.Open();
+            SqlDataReader leitorRegistro = comandoSelecao.ExecuteReader();
+
+            List<T> registros = new List<T>();
+
+            while (leitorRegistro.Read())
+            {
+                T registro = mapeador.ConverterParaRegistro(leitorRegistro);
+                registros.Add(registro);
+            }
+
+            conexao.Close();
+
+            return registros;
+        }
+
         public T SelecionarPorID(int ID)
         {
             SqlConnection conexao = new SqlConnection(enderecoBanco);
