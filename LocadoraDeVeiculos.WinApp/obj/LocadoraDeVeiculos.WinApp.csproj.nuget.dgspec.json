@@ -256,6 +256,10 @@
             "FluentValidation": {
               "target": "Package",
               "version": "[11.1.0, )"
+            },
+            "Xamarin.Forms": {
+              "target": "Package",
+              "version": "[5.0.0.2478, )"
             }
           },
           "imports": [

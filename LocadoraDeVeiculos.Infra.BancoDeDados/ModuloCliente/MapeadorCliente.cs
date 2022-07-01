@@ -54,7 +54,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
             cliente.CNH = cnh;
             cliente.Email = email;
             cliente.Telefone = telefone;
-            cliente.PessoaFisica = pessoaFisica;
+            cliente.PessoaFisica = pessoaFisica; 
             cliente.CPF = cpf!;
             cliente.CNPJ = cnpj!;
             cliente.DataValidadeCNH = data;

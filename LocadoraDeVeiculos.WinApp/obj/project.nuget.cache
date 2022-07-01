@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Whlg57lsJr0Or369kLPguTePDxsvRCjzD4m8Y7g/fLDkxdeDH9IjCekUQKwINkCDHYTbF5nsO+9AoiBk2L8Z1w==",
+  "dgSpecHash": "SHGwLYyOluu8cots6gwaSlAWC7556uy6p9wMOnFVd0ZDEU3uwg2H7ehSiJVL2QD7Mk8IaOFHVZi2DsrIGyCrLw==",
   "success": true,
   "projectFilePath": "C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\LocadoraDeVeiculos.WinApp.csproj",
   "expectedPackageFiles": [
@@ -13,7 +13,15 @@
     "C:\\Users\\vitor\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\vitor\\.nuget\\packages\\system.data.sqlclient\\4.8.3\\system.data.sqlclient.4.8.3.nupkg.sha512",
     "C:\\Users\\vitor\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
-    "C:\\Users\\vitor\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
+    "C:\\Users\\vitor\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
+    "C:\\Users\\vitor\\.nuget\\packages\\xamarin.forms\\5.0.0.2478\\xamarin.forms.5.0.0.2478.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\vitor\\Source\\Repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

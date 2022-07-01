@@ -30,6 +30,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             DataValidadeCNH = data;
         }
 
+        public override string? ToString()
+        {
+            return Nome;
+        }
+
         public override bool Equals(object? obj)
         {
             return obj is Cliente cliente &&

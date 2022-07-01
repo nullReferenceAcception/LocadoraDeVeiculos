@@ -14,6 +14,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 
             hoje = hoje.AddHours(23).AddMinutes(59).AddSeconds(59);
 
+            Regex padraoNome = new Regex("^[A-Z a-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]*$");
             RuleFor(x => x.Telefone)
                 .NotNull().NotEmpty().Matches(regEx);
 
@@ -21,7 +22,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
                 .NotNull().NotEmpty().EmailAddress();
 
             RuleFor(x => x.Nome)
-                .NotNull().NotEmpty().MinimumLength(3);
+                .NotNull().NotEmpty().MinimumLength(3).Matches(padraoNome);
 
             RuleFor(x => x.Endereco)
                 .NotNull().NotEmpty().MinimumLength(4);
