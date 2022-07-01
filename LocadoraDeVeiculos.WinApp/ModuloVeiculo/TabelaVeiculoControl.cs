@@ -38,7 +38,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "GrupoVeiculos", HeaderText = "Grupo de Veículos"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Foto", HeaderText = "Foto"},
+                new DataGridViewImageColumn { DataPropertyName = "Foto", HeaderText = "Foto"},
             };
 
             return colunas;

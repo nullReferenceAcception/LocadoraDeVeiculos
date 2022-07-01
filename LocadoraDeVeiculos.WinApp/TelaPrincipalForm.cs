@@ -165,7 +165,7 @@ namespace LocadoraDeVeiculos.WinApp
             controladores.Add("Funcionários", new ControladorFuncionario(servicoFuncionario));
             controladores.Add("Grupos de Veículos", new ControladorGrupoVeiculos(servicoGrupoVeiculos));
             controladores.Add("Clientes", new ControladorCliente(servicoCliente));
-            controladores.Add("Veículos", new ControladorVeiculo(servicoVeiculo));
+            controladores.Add("Veículos", new ControladorVeiculo(servicoVeiculo, servicoGrupoVeiculos));
         }
         public void AtualizarRodape(string mensagem)
         {

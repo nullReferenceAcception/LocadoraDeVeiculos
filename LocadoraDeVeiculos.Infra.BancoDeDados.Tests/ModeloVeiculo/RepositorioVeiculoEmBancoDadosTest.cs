@@ -1,12 +1,8 @@
 ﻿using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FluentAssertions;
-using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo;
 using LocadoraDeVeiculos.Servico.ModuloVeiculos;
@@ -128,26 +124,29 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
         }
 
         //TODO: Verificar duplicidade de placas
-        //[TestMethod]
-        //public void Nao_deve_inserir_placa_duplicada()
-        //{
-        //    GrupoVeiculos grupo = CriarGrupoDeVeiculos();
+        [TestMethod]
+        public void Nao_deve_inserir_placa_duplicada()
+        {
+            GrupoVeiculos grupo = CriarGrupoDeVeiculos();
 
-        //    _servicoGrupoVeiculo.Inserir(grupo);
+            _servicoGrupoVeiculo.Inserir(grupo);
 
-        //    Veiculo veiculo = CriarVeiculoSemGrupo();
+            Veiculo veiculo = CriarVeiculoSemGrupo();
 
-        //    veiculo.GrupoVeiculos = grupo;
+            veiculo.GrupoVeiculos = grupo;
 
-        //    _servicoVeiculo.Inserir(veiculo);
+            _servicoVeiculo.Inserir(veiculo);
 
-        //    var resultado = _servicoVeiculo.Inserir(veiculo);
-        //}
+            veiculo.Id = 2;
+            var resultado = _servicoVeiculo.Inserir(veiculo);
+
+            resultado.ToString().Should().Be("Placa já cadastrada");
+        }
 
         private Veiculo CriarVeiculoSemGrupo()
         {
             byte[] array = { 0, 100, 120, 210, 255 };
-            return new("Uno", GerarNovaPlaca(), "Fiat", 2005, 29.50m, 200000.00M, CorEnum.Azul, CombustivelEnum.Gasolina, array);
+            return new("Uno", GerarNovaPlaca(), "Fiat", 2005, 29.50m, 200000.00m, CorEnum.Azul, CombustivelEnum.Gasolina, array);
         }
 
         private GrupoVeiculos CriarGrupoDeVeiculos()

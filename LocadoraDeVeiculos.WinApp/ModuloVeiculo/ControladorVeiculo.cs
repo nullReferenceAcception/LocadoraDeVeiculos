@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
+﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -7,16 +8,18 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
     public class ControladorVeiculo : ControladorBase
     {
         private IServicoVeiculo servicoVeiculo;
+        private IServicoGrupoVeiculos servicoGrupoVeiculos;
         private TabelaVeiculoControl _tabelaVeiculos;
 
-        public ControladorVeiculo(IServicoVeiculo serv)
+        public ControladorVeiculo(IServicoVeiculo servVeiculo, IServicoGrupoVeiculos servGrupo)
         {
-            this.servicoVeiculo = serv;
+            this.servicoVeiculo = servVeiculo;
+            this.servicoGrupoVeiculos = servGrupo;
         }
 
         public override void Inserir()
         {
-            TelaCadastroVeiculoForm tela = new();
+            TelaCadastroVeiculoForm tela = new(servicoGrupoVeiculos);
 
             tela.Veiculo = new();
 
@@ -40,7 +43,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
                 return;
             }
 
-            var tela = new TelaCadastroVeiculoForm();
+            TelaCadastroVeiculoForm tela = new(servicoGrupoVeiculos);
 
             tela.Veiculo = veiculoSelecionado;
 
@@ -86,7 +89,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
                 return;
             }
 
-            var tela = new TelaCadastroVeiculoForm();
+            TelaCadastroVeiculoForm tela = new(servicoGrupoVeiculos);
 
             tela.Veiculo = veiculoSelecionado;
 
