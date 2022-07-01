@@ -8,6 +8,7 @@
     [tipo_cliente] BIT           NOT NULL,
     [cpf]          CHAR (11)     NULL,
     [cnpj]         CHAR (14)     NULL,
+    [data_validade_cnh] DATE NULL, 
     CONSTRAINT [PK__Table__677F38F5C26098D1] PRIMARY KEY CLUSTERED ([id_cliente] ASC)
 );
 
