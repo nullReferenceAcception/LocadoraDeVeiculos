@@ -60,11 +60,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             if (funcionarioSelecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um funcionário para excluir");
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um funcionário para desabilitar");
                 return;
             }
 
-            DialogResult resultado = MessageBox.Show("Deseja realmente excluir o funcionário?",
+            DialogResult resultado = MessageBox.Show("Deseja realmente desabilitar o funcionário?",
                "Exclusão de Disciplinas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if (resultado == DialogResult.OK)
@@ -94,6 +94,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             tela.buttonCancelar.Enabled = true;
             tela.buttonCancelar.Text = "Voltar";
             tela.ShowDialog();
+        }
+
+        public override void VisualizarDesabilitados()
+        {
+            List<Funcionario> funcionariosDesativados = servicoFuncionario!.SelecionarDesativados();
+
+            _tabelaFuncionario!.AtualizarRegistros(funcionariosDesativados);
+
+            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {funcionariosDesativados.Count} {(funcionariosDesativados.Count == 1 ? "funcionário desativado" : "funcionários desativados")}");
         }
 
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()

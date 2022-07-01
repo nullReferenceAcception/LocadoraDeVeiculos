@@ -34,6 +34,7 @@
             this.btnExcluir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnVisualizar = new System.Windows.Forms.ToolStripButton();
+            this.btnFuncionariosDesativados = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnGerarPdf = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -65,6 +66,7 @@
             this.btnExcluir,
             this.toolStripSeparator2,
             this.btnVisualizar,
+            this.btnFuncionariosDesativados,
             this.toolStripSeparator3,
             this.btnGerarPdf,
             this.toolStripSeparator1,
@@ -126,6 +128,17 @@
             this.btnVisualizar.Padding = new System.Windows.Forms.Padding(5);
             this.btnVisualizar.Size = new System.Drawing.Size(38, 38);
             this.btnVisualizar.Click += new System.EventHandler(this.btnVisualizar_Click);
+            // 
+            // btnFuncionariosDesativados
+            // 
+            this.btnFuncionariosDesativados.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnFuncionariosDesativados.Image = global::LocadoraDeVeiculos.WinApp.Properties.Resources.turn_off;
+            this.btnFuncionariosDesativados.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnFuncionariosDesativados.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFuncionariosDesativados.Name = "btnFuncionariosDesativados";
+            this.btnFuncionariosDesativados.Padding = new System.Windows.Forms.Padding(5);
+            this.btnFuncionariosDesativados.Size = new System.Drawing.Size(30, 38);
+            this.btnFuncionariosDesativados.Click += new System.EventHandler(this.btnFuncionariosDesativados_Click);
             // 
             // toolStripSeparator3
             // 
@@ -304,5 +317,6 @@
         private System.Windows.Forms.ToolStripMenuItem veículosMenuItem;
         private System.Windows.Forms.ToolStripMenuItem condutoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem planoDeCobrancaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton btnFuncionariosDesativados;
     }
 }

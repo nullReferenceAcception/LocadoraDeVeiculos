@@ -1,10 +1,13 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
 {
     public class RepositorioFuncionario : RepositorioBaseEmBancoDeDados<Funcionario, ValidadorFuncionario, MapeadorFuncionario>, IRepositorioFuncionario
     {
+        MapeadorFuncionario mapeadorFuncionario = new();
         public RepositorioFuncionario() : base( new MapeadorFuncionario())
         {
         }
@@ -97,6 +100,28 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                     ESTA_ATIVO = 1";
         }
 
+        protected string sqlSelecionarDesativados
+        {
+            get =>
+                @"SELECT        
+                    ID_FUNCIONARIO AS ID_FUNCIONARIO, 
+                    NOME AS NOME, 
+                    SALARIO AS SALARIO,
+                    DATA_ADMISSAO AS DATA_ADMISSAO, 
+                    LOGIN AS LOGIN,
+                    SENHA AS SENHA,
+                    EH_ADMIN AS EH_ADMIN, 
+                    TELEFONE AS TELEFONE, 
+                    ENDERECO AS ENDERECO,
+                    EMAIL AS EMAIL,
+                    CIDADE AS CIDADE,
+                    ESTA_ATIVO AS ESTA_ATIVO
+                FROM            
+                    TB_FUNCIONARIO
+                WHERE
+                    ESTA_ATIVO = 0";
+        }
+
         protected override string sqlSelecionarPorID
         {
             get =>
@@ -120,6 +145,29 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
         }
 
         #endregion
+
+        public List<Funcionario> SelecionarDesativados()
+        {
+            SqlConnection conexao = new SqlConnection(enderecoBanco);
+
+            SqlCommand comandoSelecao = new SqlCommand(sqlSelecionarDesativados, conexao);
+
+            conexao.Open();
+
+            SqlDataReader leitorRegistro = comandoSelecao.ExecuteReader();
+
+            List<Funcionario> funcionariosDesativados = new();
+
+            while (leitorRegistro.Read())
+            {
+                Funcionario funcionario = mapeadorFuncionario.ConverterParaRegistro(leitorRegistro);
+                funcionariosDesativados.Add(funcionario);
+            }
+
+            conexao.Close();
+
+            return funcionariosDesativados;
+        }
 
         public string SqlDuplicidade(Funcionario registro)
         {

@@ -93,6 +93,16 @@ namespace LocadoraDeVeiculos.WinApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap funcionariosDesativados {
+            get {
+                object obj = ResourceManager.GetObject("funcionariosDesativados", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap library_add_FILL0_wght400_GRAD0_opsz24 {
             get {
                 object obj = ResourceManager.GetObject("library_add_FILL0_wght400_GRAD0_opsz24", resourceCulture);
@@ -176,6 +186,16 @@ namespace LocadoraDeVeiculos.WinApp.Properties {
         internal static System.Drawing.Bitmap search_FILL0_wght400_GRAD0_opsz24 {
             get {
                 object obj = ResourceManager.GetObject("search_FILL0_wght400_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap turn_off {
+            get {
+                object obj = ResourceManager.GetObject("turn-off", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

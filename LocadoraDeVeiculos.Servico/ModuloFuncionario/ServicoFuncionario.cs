@@ -1,6 +1,6 @@
-﻿using FluentValidation.Results;
-using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
+﻿using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Servico.Compartilhado;
+using System.Collections.Generic;
 
 namespace LocadoraDeVeiculos.Servico.ModuloFuncionario
 {
@@ -12,5 +12,10 @@ namespace LocadoraDeVeiculos.Servico.ModuloFuncionario
             this.repositorio = repositorio;
         }
         protected override string SqlMensagemDeErro => "Login já está cadastrado";
+
+        public List<Funcionario> SelecionarDesativados()
+        {
+            return repositorio.SelecionarDesativados();
+        }
     }
 }

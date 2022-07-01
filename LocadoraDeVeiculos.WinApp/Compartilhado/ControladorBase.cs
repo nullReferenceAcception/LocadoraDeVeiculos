@@ -9,6 +9,7 @@ namespace LocadoraDeVeiculos.WinApp
         public abstract void Excluir();
         public virtual void GerarPdf() { }
         public virtual void Visualizar() { }
+        public virtual void VisualizarDesabilitados() { }
         public abstract UserControl ObtemListagem();
         public abstract ConfiguracaoToolboxBase ObtemConfiguracaoToolbox();
     }

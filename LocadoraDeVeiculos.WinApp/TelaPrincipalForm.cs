@@ -67,6 +67,10 @@ namespace LocadoraDeVeiculos.WinApp
         {
             controlador!.Visualizar();
         }
+        private void btnFuncionariosDesativados_Click(object sender, EventArgs e)
+        {
+            controlador!.VisualizarDesabilitados();
+        }
 
         private void planoDeCobrancaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -109,6 +113,7 @@ namespace LocadoraDeVeiculos.WinApp
             btnExcluir.Enabled = configuracao.ExcluirHabilitado;
             btnGerarPdf.Enabled = configuracao.GerarPdfHabilitado;
             btnVisualizar.Enabled = configuracao.VisualizarHabilitado;
+            btnFuncionariosDesativados.Enabled = configuracao.FuncionariosDesabilitados;
         }
 
         private void ConfigurarTooltips(ConfiguracaoToolboxBase configuracao)
@@ -118,6 +123,7 @@ namespace LocadoraDeVeiculos.WinApp
             btnExcluir.ToolTipText = configuracao.TooltipExcluir;
             btnGerarPdf.ToolTipText = configuracao.TooltipGerarPdf;
             btnVisualizar.ToolTipText = configuracao.TooltipVisualizar;
+            btnFuncionariosDesativados.ToolTipText = configuracao.ToolTipFuncionariosDesabilitados;
         }
 
         private void ConfigurarTelaPrincipal(ToolStripMenuItem opcaoSelecionada)
@@ -192,5 +198,7 @@ namespace LocadoraDeVeiculos.WinApp
         {
             labelRodape.Text = mensagem;
         }
+
+        
     }
 }

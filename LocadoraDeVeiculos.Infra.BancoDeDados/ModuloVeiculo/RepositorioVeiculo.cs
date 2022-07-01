@@ -120,8 +120,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
 
         #endregion
 
-
-
         public string SqlDuplicidade(Veiculo registro)
         {
             return "SELECT * FROM TB_VEICULO WHERE ([PLACA] = '" + registro.Placa + "')" + $"AND [ID_VEICULO] != {registro.Id}";
