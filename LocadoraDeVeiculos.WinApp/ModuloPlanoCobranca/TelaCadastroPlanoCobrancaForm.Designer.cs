@@ -82,7 +82,7 @@
             this.comboBoxPlano.Location = new System.Drawing.Point(109, 114);
             this.comboBoxPlano.Name = "comboBoxPlano";
             this.comboBoxPlano.Size = new System.Drawing.Size(143, 23);
-            this.comboBoxPlano.TabIndex = 38;
+            this.comboBoxPlano.TabIndex = 2;
             this.comboBoxPlano.SelectedIndexChanged += new System.EventHandler(this.comboBoxPlano_SelectedIndexChanged);
             // 
             // labelPlano
@@ -100,16 +100,16 @@
             this.textBoxValorPorKm.MaxLength = 255;
             this.textBoxValorPorKm.Name = "textBoxValorPorKm";
             this.textBoxValorPorKm.Size = new System.Drawing.Size(143, 23);
-            this.textBoxValorPorKm.TabIndex = 36;
+            this.textBoxValorPorKm.TabIndex = 5;
             // 
             // labelValorPorKm
             // 
             this.labelValorPorKm.AutoSize = true;
             this.labelValorPorKm.Location = new System.Drawing.Point(27, 206);
             this.labelValorPorKm.Name = "labelValorPorKm";
-            this.labelValorPorKm.Size = new System.Drawing.Size(75, 15);
+            this.labelValorPorKm.Size = new System.Drawing.Size(78, 15);
             this.labelValorPorKm.TabIndex = 35;
-            this.labelValorPorKm.Text = "Valor por Km";
+            this.labelValorPorKm.Text = "Valor por Km:";
             // 
             // textBoxValorDia
             // 
@@ -117,16 +117,16 @@
             this.textBoxValorDia.MaxLength = 255;
             this.textBoxValorDia.Name = "textBoxValorDia";
             this.textBoxValorDia.Size = new System.Drawing.Size(143, 23);
-            this.textBoxValorDia.TabIndex = 34;
+            this.textBoxValorDia.TabIndex = 4;
             // 
             // labelValorDia
             // 
             this.labelValorDia.AutoSize = true;
             this.labelValorDia.Location = new System.Drawing.Point(50, 177);
             this.labelValorDia.Name = "labelValorDia";
-            this.labelValorDia.Size = new System.Drawing.Size(52, 15);
+            this.labelValorDia.Size = new System.Drawing.Size(55, 15);
             this.labelValorDia.TabIndex = 33;
-            this.labelValorDia.Text = "Valor dia";
+            this.labelValorDia.Text = "Valor dia:";
             // 
             // labelKmIncluso
             // 
@@ -147,7 +147,7 @@
             0});
             this.numericUpDownKmIncluso.Name = "numericUpDownKmIncluso";
             this.numericUpDownKmIncluso.Size = new System.Drawing.Size(143, 23);
-            this.numericUpDownKmIncluso.TabIndex = 10;
+            this.numericUpDownKmIncluso.TabIndex = 3;
             // 
             // comboBoxGrupoVeiculos
             // 
@@ -155,7 +155,7 @@
             this.comboBoxGrupoVeiculos.Location = new System.Drawing.Point(109, 83);
             this.comboBoxGrupoVeiculos.Name = "comboBoxGrupoVeiculos";
             this.comboBoxGrupoVeiculos.Size = new System.Drawing.Size(143, 23);
-            this.comboBoxGrupoVeiculos.TabIndex = 31;
+            this.comboBoxGrupoVeiculos.TabIndex = 1;
             // 
             // labelID
             // 
@@ -204,20 +204,20 @@
             // buttonCancelar
             // 
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancelar.Location = new System.Drawing.Point(197, 256);
+            this.buttonCancelar.Location = new System.Drawing.Point(225, 256);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
-            this.buttonCancelar.TabIndex = 8;
+            this.buttonCancelar.TabIndex = 7;
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.UseVisualStyleBackColor = true;
             // 
             // buttonGravar
             // 
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonGravar.Location = new System.Drawing.Point(124, 256);
+            this.buttonGravar.Location = new System.Drawing.Point(152, 256);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
-            this.buttonGravar.TabIndex = 7;
+            this.buttonGravar.TabIndex = 6;
             this.buttonGravar.Text = "Gravar";
             this.buttonGravar.UseVisualStyleBackColor = true;
             this.buttonGravar.Click += new System.EventHandler(this.buttonGravar_Click);
@@ -226,7 +226,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(304, 299);
             this.Controls.Add(this.groupBoxTaxa);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonGravar);

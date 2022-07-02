@@ -18,11 +18,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
                 ConfigurarTelaEditar();
             }
         }
+
         public TelaCadastroTaxaForm()
         {
             InitializeComponent();
             this.ConfigurarTela();
             textBoxValor.AplicarMascaraMoeda();
+            textBoxDescricao.Focus();
         }
 
         public Func<Taxa, ValidationResult>? GravarRegistro { get; set; }
@@ -45,7 +47,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             textBoxID.Text = _taxa!.Id.ToString();
             textBoxDescricao.Text = _taxa!.Descricao;
             textBoxValor.Text = "R$ " + _taxa.Valor.ToString();
-           _ = Taxa!.EhDiaria ? radioButtonDiario.Checked=true : radioButtonFixo.Checked=true;
+            _ = Taxa!.EhDiaria ? radioButtonDiario.Checked = true : radioButtonFixo.Checked = true;
         }
 
         private void ObterDadosDaTela()

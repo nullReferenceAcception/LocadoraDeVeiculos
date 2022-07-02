@@ -86,7 +86,7 @@
             this.radioButtonDiario.Location = new System.Drawing.Point(84, 133);
             this.radioButtonDiario.Name = "radioButtonDiario";
             this.radioButtonDiario.Size = new System.Drawing.Size(56, 19);
-            this.radioButtonDiario.TabIndex = 32;
+            this.radioButtonDiario.TabIndex = 3;
             this.radioButtonDiario.TabStop = true;
             this.radioButtonDiario.Text = "Diario";
             this.radioButtonDiario.UseVisualStyleBackColor = true;
@@ -97,7 +97,7 @@
             this.radioButtonFixo.Location = new System.Drawing.Point(84, 112);
             this.radioButtonFixo.Name = "radioButtonFixo";
             this.radioButtonFixo.Size = new System.Drawing.Size(47, 19);
-            this.radioButtonFixo.TabIndex = 31;
+            this.radioButtonFixo.TabIndex = 2;
             this.radioButtonFixo.TabStop = true;
             this.radioButtonFixo.Text = "Fixo";
             this.radioButtonFixo.UseVisualStyleBackColor = true;
@@ -152,7 +152,7 @@
             this.textBoxValor.MaxLength = 255;
             this.textBoxValor.Name = "textBoxValor";
             this.textBoxValor.Size = new System.Drawing.Size(143, 23);
-            this.textBoxValor.TabIndex = 2;
+            this.textBoxValor.TabIndex = 1;
             // 
             // TelaCadastroTaxaForm
             // 

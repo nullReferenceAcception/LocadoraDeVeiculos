@@ -24,6 +24,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             InitializeComponent();
             this.ConfigurarTela();
             textBoxSalario.AplicarMascaraMoeda();
+            textBoxNome.Focus();
         }
 
         public Func<Funcionario, ValidationResult>? GravarRegistro { get; set; }

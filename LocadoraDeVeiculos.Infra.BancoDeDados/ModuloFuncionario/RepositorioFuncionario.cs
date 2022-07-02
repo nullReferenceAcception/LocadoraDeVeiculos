@@ -1,7 +1,6 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
 {

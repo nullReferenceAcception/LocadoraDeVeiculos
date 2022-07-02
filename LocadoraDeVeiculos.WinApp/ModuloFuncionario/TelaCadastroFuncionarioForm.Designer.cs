@@ -64,7 +64,7 @@
             this.buttonCancelar.Location = new System.Drawing.Point(323, 429);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
-            this.buttonCancelar.TabIndex = 10;
+            this.buttonCancelar.TabIndex = 12;
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.UseVisualStyleBackColor = true;
             // 
@@ -83,7 +83,7 @@
             this.buttonGravar.Location = new System.Drawing.Point(250, 429);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
-            this.buttonGravar.TabIndex = 9;
+            this.buttonGravar.TabIndex = 11;
             this.buttonGravar.Text = "Gravar";
             this.buttonGravar.UseVisualStyleBackColor = true;
             this.buttonGravar.Click += new System.EventHandler(this.buttonGravar_Click);
@@ -91,7 +91,7 @@
             // textBoxNome
             // 
             this.textBoxNome.Location = new System.Drawing.Point(143, 68);
-            this.textBoxNome.MaxLength = 255;
+            this.textBoxNome.MaxLength = 100;
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(233, 23);
             this.textBoxNome.TabIndex = 0;
@@ -108,7 +108,7 @@
             // textBoxLogin
             // 
             this.textBoxLogin.Location = new System.Drawing.Point(143, 184);
-            this.textBoxLogin.MaxLength = 255;
+            this.textBoxLogin.MaxLength = 100;
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(143, 23);
             this.textBoxLogin.TabIndex = 4;
@@ -182,7 +182,7 @@
             this.radioButtonFuncionario.Location = new System.Drawing.Point(22, 47);
             this.radioButtonFuncionario.Name = "radioButtonFuncionario";
             this.radioButtonFuncionario.Size = new System.Drawing.Size(88, 19);
-            this.radioButtonFuncionario.TabIndex = 1;
+            this.radioButtonFuncionario.TabIndex = 10;
             this.radioButtonFuncionario.TabStop = true;
             this.radioButtonFuncionario.Text = "Funcionário";
             this.radioButtonFuncionario.UseVisualStyleBackColor = true;
@@ -193,7 +193,7 @@
             this.radioButtonAdmin.Location = new System.Drawing.Point(22, 22);
             this.radioButtonAdmin.Name = "radioButtonAdmin";
             this.radioButtonAdmin.Size = new System.Drawing.Size(61, 19);
-            this.radioButtonAdmin.TabIndex = 0;
+            this.radioButtonAdmin.TabIndex = 9;
             this.radioButtonAdmin.TabStop = true;
             this.radioButtonAdmin.Text = "Admin";
             this.radioButtonAdmin.UseVisualStyleBackColor = true;
@@ -219,7 +219,7 @@
             // textBoxEmail
             // 
             this.textBoxEmail.Location = new System.Drawing.Point(143, 97);
-            this.textBoxEmail.MaxLength = 255;
+            this.textBoxEmail.MaxLength = 100;
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(233, 23);
             this.textBoxEmail.TabIndex = 1;
@@ -236,7 +236,7 @@
             // textBoxEndereco
             // 
             this.textBoxEndereco.Location = new System.Drawing.Point(143, 155);
-            this.textBoxEndereco.MaxLength = 255;
+            this.textBoxEndereco.MaxLength = 100;
             this.textBoxEndereco.Name = "textBoxEndereco";
             this.textBoxEndereco.Size = new System.Drawing.Size(143, 23);
             this.textBoxEndereco.TabIndex = 3;
@@ -288,10 +288,10 @@
             // textBoxCidade
             // 
             this.textBoxCidade.Location = new System.Drawing.Point(128, 288);
-            this.textBoxCidade.MaxLength = 11;
+            this.textBoxCidade.MaxLength = 100;
             this.textBoxCidade.Name = "textBoxCidade";
             this.textBoxCidade.Size = new System.Drawing.Size(110, 23);
-            this.textBoxCidade.TabIndex = 26;
+            this.textBoxCidade.TabIndex = 8;
             // 
             // labelCidade
             // 

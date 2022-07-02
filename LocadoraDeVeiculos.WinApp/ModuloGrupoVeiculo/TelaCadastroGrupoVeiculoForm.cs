@@ -25,12 +25,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
         {
             InitializeComponent();
             this.ConfigurarTela();
-        }
-
-        private void ConfigurarTelaEditar()
-        {
-            textBoxID.Text = grupoVeiculos!.Id.ToString();
-            textBoxName.Text = grupoVeiculos!.Nome;
+            textBoxNome.Focus();
         }
 
         private void buttonGravar_Click(object sender, EventArgs e)
@@ -44,6 +39,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
                 TelaPrincipalForm.Instancia!.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage);
                 DialogResult = DialogResult.None;
             }
+        }
+
+        private void ConfigurarTelaEditar()
+        {
+            textBoxID.Text = grupoVeiculos!.Id.ToString();
+            textBoxName.Text = grupoVeiculos!.Nome;
         }
 
         private void ObterDadosDaTela()

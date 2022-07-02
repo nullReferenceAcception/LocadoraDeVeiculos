@@ -101,7 +101,7 @@
             this.buttonCancelar.Location = new System.Drawing.Point(210, 121);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
-            this.buttonCancelar.TabIndex = 5;
+            this.buttonCancelar.TabIndex = 2;
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.UseVisualStyleBackColor = true;
             // 
@@ -111,7 +111,7 @@
             this.buttonGravar.Location = new System.Drawing.Point(137, 121);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
-            this.buttonGravar.TabIndex = 4;
+            this.buttonGravar.TabIndex = 1;
             this.buttonGravar.Text = "Gravar";
             this.buttonGravar.UseVisualStyleBackColor = true;
             this.buttonGravar.Click += new System.EventHandler(this.buttonGravar_Click);

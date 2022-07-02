@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System.Drawing;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
-using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 {
@@ -32,7 +31,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             CarregarCores();
             CarregarCombustiveis();
             CarregarGrupoVeiculos();
+            textBoxModelo.Focus();
         }
+
         public Func<Veiculo, ValidationResult>? GravarRegistro { get; set; }
 
         private void ConfigurarTelaEditar()
@@ -67,7 +68,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             comboBoxGrupoVeiculos.DataSource = _servicoGrupoVeiculos.SelecionarTodos();
             comboBoxGrupoVeiculos.SelectedItem = -1;
         }
-
 
         private void buttonGravar_Click(object sender, EventArgs e)
         {

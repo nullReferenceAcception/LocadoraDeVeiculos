@@ -9,11 +9,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
     {
         private Cliente? _cliente;
 
-        public TelaCadastroClienteForm()
-        {
-            InitializeComponent();
-        }
-
         public Cliente? cliente
         {
             get { return _cliente; }
@@ -22,6 +17,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 _cliente = value!;
                 ConfigurarTelaEditar();
             }
+        }
+
+        public TelaCadastroClienteForm()
+        {
+            InitializeComponent();
+            textBoxNome.Focus();
         }
 
         public Func<Cliente, ValidationResult>? GravarRegistro { get; set; }
@@ -63,8 +64,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             _cliente.PessoaFisica = radioButtonCPF.Checked == true ? _cliente.PessoaFisica = true : _cliente.PessoaFisica = false;
             _cliente.DataValidadeCNH = dateTimePickerValidadeCNH.Value;
 
-
-
             if (_cliente.PessoaFisica)
                 _cliente.CNPJ = null!;
             else
@@ -102,7 +101,5 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 DialogResult = DialogResult.None;
             }
         }
-
-
     }
 }

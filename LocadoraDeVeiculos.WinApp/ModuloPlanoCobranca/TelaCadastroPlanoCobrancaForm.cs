@@ -1,16 +1,8 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
-using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
@@ -18,6 +10,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
     public partial class TelaCadastroPlanoCobrancaForm : Form
     {
         private PlanoCobranca planoCobranca;
+        IServicoGrupoVeiculos servicoGrupoVeiculos;
 
         public PlanoCobranca PlanoCobranca
         {
@@ -28,7 +21,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
                 ConfigurarTelaEditar();
             }
         }
-        IServicoGrupoVeiculos servicoGrupoVeiculos;
+
         public TelaCadastroPlanoCobrancaForm(IServicoGrupoVeiculos servicoGrupoVeiculos)
         {
             InitializeComponent();
@@ -36,6 +29,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             textBoxValorDia.AplicarMascaraMoeda();
             textBoxValorPorKm.AplicarMascaraMoeda();
             this.servicoGrupoVeiculos = servicoGrupoVeiculos;
+            textBoxNome.Focus();
         }
 
         public Func<PlanoCobranca, ValidationResult>? GravarRegistro { get; set; }
@@ -44,7 +38,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
         {
             ObterDadosDaTela();
 
-            
+
             var resultadoValidacao = GravarRegistro(PlanoCobranca);
 
             if (!resultadoValidacao.IsValid)
@@ -70,7 +64,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
         private void ObterDadosDaTela()
         {
-            
+
             planoCobranca.Nome = textBoxNome.Text;
             planoCobranca.ValorDia = Convert.ToDecimal(textBoxValorDia.Text.ToString().Replace("R$ ", ""));
             planoCobranca.ValorPorKm = Convert.ToDecimal(textBoxValorPorKm.Text.ToString().Replace("R$ ", ""));
@@ -103,8 +97,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
                     textBoxValorPorKm.Enabled = true;
                     textBoxValorDia.Enabled = true;
                     break;
-
-
             }
         }
     }
