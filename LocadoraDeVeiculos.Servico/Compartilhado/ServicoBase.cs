@@ -44,6 +44,9 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
         {
             var resultadoValidacao = validador.Validate(registro);
 
+            if (resultadoValidacao.IsValid == false)
+                return resultadoValidacao;
+
             resultadoValidacao = HaDuplicidade(registro, resultadoValidacao);
             return resultadoValidacao;
         }
