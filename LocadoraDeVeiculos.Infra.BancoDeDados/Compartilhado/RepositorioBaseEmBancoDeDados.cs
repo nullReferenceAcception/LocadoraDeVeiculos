@@ -167,10 +167,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             SqlDataReader reader = sqlCommand.ExecuteReader();
 
             bool haRegistro = reader.HasRows;
-
-
-            reader.Close();
-            reader.Dispose();
             conexao.Close();
             return haRegistro;
         }
