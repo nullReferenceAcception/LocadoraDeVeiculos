@@ -1,9 +1,4 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
 {
@@ -14,10 +9,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
         public decimal ValorDia { get; set; }
         public decimal ValorPorKm { get; set; }
         public GrupoVeiculos GrupoVeiculos { get; set; }
-
         public PlanoEnum Plano { get; set; }
         
-
         public PlanoCobranca()
         {
 

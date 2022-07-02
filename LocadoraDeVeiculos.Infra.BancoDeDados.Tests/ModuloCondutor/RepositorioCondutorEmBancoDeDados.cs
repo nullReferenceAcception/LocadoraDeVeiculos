@@ -9,9 +9,6 @@ using LocadoraDeVeiculos.Servico.ModuloCondutor;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 {
@@ -27,23 +24,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
         {
             validador = new();
         }
-        [TestMethod]
-        public void Deve_selecionar_por_id()
-        {
-            Cliente cliente = CriarCliente();
-
-            servicoCliente.Inserir(cliente);
-            
-            Condutor registro = CriarCondutor();
-
-            registro.Cliente = cliente;
-
-            servico.Inserir(registro);
-
-            Condutor registro2 = servico.SelecionarPorID(registro.Id);
-
-            Assert.AreEqual(registro2, registro);
-        }
+        
 
         [TestMethod]
         public void Deve_inserir_Condutor()
@@ -63,7 +44,27 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
             Assert.AreEqual(condutor, Condutor2);
         }
 
-        
+        [TestMethod]
+        public void Deve_editar_Condutor()
+        {
+            Cliente cliente = CriarCliente();
+
+            servicoCliente.Inserir(cliente);
+
+            Condutor condutor = CriarCondutor();
+
+            condutor.Cliente = cliente;
+
+            servico.Inserir(condutor);
+
+            condutor.Nome = "ssssss";
+
+            servico.Editar(condutor);
+
+            Condutor condutor2 = servico.SelecionarPorID(condutor.Id);
+
+            Assert.AreEqual(condutor2, condutor);
+        }
 
         [TestMethod]
         public void Deve_excluir_Condutor()
@@ -84,6 +85,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 
             Condutor2.Should().Be(null);
         }
+
         [TestMethod]
         public void Deve_selecionar_todos_Condutor()
         {
@@ -115,39 +117,30 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
         }
 
         [TestMethod]
-        public void Deve_editar_Condutor()
+        public void Deve_selecionar_por_id()
         {
             Cliente cliente = CriarCliente();
 
             servicoCliente.Inserir(cliente);
 
-            Condutor condutor = CriarCondutor();
+            Condutor registro = CriarCondutor();
 
-            condutor.Cliente = cliente;
+            registro.Cliente = cliente;
 
-            servico.Inserir(condutor);
+            servico.Inserir(registro);
 
-            condutor.Nome = "ssssss";
+            Condutor registro2 = servico.SelecionarPorID(registro.Id);
 
-            servico.Editar(condutor);
-
-            Condutor condutor2 = servico.SelecionarPorID(condutor.Id);
-
-            Assert.AreEqual(condutor2, condutor);
+            Assert.AreEqual(registro2, registro);
         }
-
-
+        
         private Condutor CriarCondutor()
         {
-            
             return new Condutor(GerarNovoNome(), "rua amaral junior 657", "12345678901", "guimotorista@gmail.com", "49998765432", "11111111111", DateTime.Today);
         }
         private Cliente CriarCliente()
         {
-            
             return   new Cliente(GerarNovoNome(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", false, null!, "12340567123889", DateTime.Today);
-            
-    
         }
         private string GerarNovoNome()
         {

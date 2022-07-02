@@ -1,21 +1,14 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
 {
     public class RepositorioCondutor : RepositorioBaseEmBancoDeDados<Condutor, ValidadorCondutor, MapeadorCondutor>, IRepositorioCondutor
     {
-
         public RepositorioCondutor() : base(new MapeadorCondutor())
         {
 
         }
-
 
         #region SQLs
         protected override string sqlInserir
@@ -130,8 +123,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
                             CLI.ID_CLIENTE = @ID";
         }
         #endregion
-
-
 
         public string SqlDuplicidade(Condutor registro)
         {

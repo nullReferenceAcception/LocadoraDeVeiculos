@@ -2,17 +2,11 @@
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.Tests.ModuloPlanoCobranca
 {
     public class PlanoCobrancaTest
     {
-
         ValidadorPlanoCobranca validation;
 
         public PlanoCobrancaTest()
@@ -31,7 +25,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloPlanoCobranca
 
             resultado.ShouldHaveValidationErrorFor(x => x.Nome);
         }
-
 
         public void Nao_pode_nome_so_com_espaco()
         {
@@ -67,8 +60,5 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloPlanoCobranca
 
             resultado.ShouldHaveValidationErrorFor(x => x.Nome);
         }
-
-
-
     }
 }

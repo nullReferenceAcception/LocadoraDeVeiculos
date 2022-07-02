@@ -1,12 +1,7 @@
 ﻿using FluentValidation.TestHelper;
-using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCondutor
 {
@@ -20,6 +15,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCondutor
         {
             validador = new();
         }
+
         [TestMethod]
         public void Nao_Deve_inserir_nome_apenas_com_espaco()
         {
@@ -31,6 +27,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCondutor
 
             resultado.ShouldHaveValidationErrorFor(x => x.Nome);
         }
+
         [TestMethod]
         public void Nao_Deve_inserir_nome_vazio()
         {
@@ -66,6 +63,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCondutor
 
             resultado.ShouldHaveValidationErrorFor(x => x.Telefone);
         }
+
         [TestMethod]
         public void Nao_Deve_inserir_email_invalido()
         {
@@ -77,6 +75,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCondutor
 
             resultado.ShouldHaveValidationErrorFor(x => x.Email);
         }
+
         [TestMethod]
         public void Nao_Deve_inserir_cpf_invalido()
         {
@@ -88,10 +87,12 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCondutor
 
             resultado.ShouldHaveValidationErrorFor(x => x.CPF);
         }
+
         private Condutor CriarCondutor()
         {
             return new Condutor(GerarNovoNome(), "rua amaral junior 657", "12345678901", "guimotorista@gmail.com", "49998765432", "111111111111", DateTime.Today);
         }
+
         private string GerarNovoNome()
         {
             const int qtdeLetras = 4;

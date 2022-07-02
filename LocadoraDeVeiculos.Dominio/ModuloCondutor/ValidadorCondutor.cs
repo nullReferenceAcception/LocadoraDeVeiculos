@@ -2,17 +2,13 @@
 using System;
 using System.Text.RegularExpressions;
 
-
 namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
 {
     public class ValidadorCondutor : AbstractValidator<Condutor>
     {
-
         public ValidadorCondutor()
         {
-
             Regex regEx = new Regex("^[1-9]{2}[0-9]{4,5}[0-9]{4}$");
-
             DateTime hoje = DateTime.Today;
 
             hoje = hoje.AddHours(23).AddMinutes(59).AddSeconds(59);
@@ -37,10 +33,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
 
             RuleFor(x => x.DataValidadeCNH)
                 .NotNull().NotEmpty().GreaterThan(DateTime.MinValue).LessThanOrEqualTo(hoje);  //maior que - - - - menor ou igual
-
-
         }
-
-
     }
 }
