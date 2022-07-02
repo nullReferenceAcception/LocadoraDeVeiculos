@@ -17,7 +17,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
         }
 
 
-
+        #region SQLs
         protected override string sqlInserir
         {
             get =>
@@ -129,6 +129,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
                             WHERE
                             CLI.ID_CLIENTE = @ID";
         }
+        #endregion
+
+
 
         public string SqlDuplicidade(Condutor registro)
         {
