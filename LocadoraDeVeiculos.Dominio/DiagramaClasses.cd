@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LocadoraDeVeiculos.Dominio.ModuloCliente.Cliente">
+    <Position X="1.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAACAACAIAABAAAAAAAAAACA=</HashCode>
+      <FileName>ModuloCliente\Cliente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LocadoraDeVeiculos.Dominio.ModuloCondutor.Condutor">
+    <Position X="3.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgACAAACAACAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>ModuloCondutor\Condutor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LocadoraDeVeiculos.Dominio.ModuloFuncionario.Funcionario">
+    <Position X="6" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAggAAAACAQCAAAAAAAAAQAAAgAAA=</HashCode>
+      <FileName>ModuloFuncionario\Funcionario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos.GrupoVeiculos">
+    <Position X="9.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ModuloGrupoVeiculos\GrupoVeiculos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca.PlanoCobranca">
+    <Position X="13" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAgAAEAAAAAAEAAAAAAAAAAgEAQAA=</HashCode>
+      <FileName>ModuloPlanoCobranca\PlanoCobranca.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GrupoVeiculos" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LocadoraDeVeiculos.Dominio.ModuloTaxa.Taxa">
+    <Position X="3" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAgAAAAAAEAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>ModuloTaxa\Taxa.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LocadoraDeVeiculos.Dominio.ModuloVeiculo.Veiculo">
+    <Position X="9.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MACAABQAgAAAAAAAgAAAAAAAAEEAAAAAAAgAQAAAAAg=</HashCode>
+      <FileName>ModuloVeiculo\Veiculo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GrupoVeiculos" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

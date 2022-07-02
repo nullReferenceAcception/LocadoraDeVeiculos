@@ -1,12 +1,6 @@
-﻿using FluentValidation.Results;
-using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
-using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
@@ -25,6 +19,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
         public override void Inserir()
         {
+            List<GrupoVeiculos> grupos = servicoGrupoVeiculo.SelecionarTodos();
+
+            if (grupos.Count == 0)
+            {
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Cadastre no mínimo 1 'Grupo de Veículos' para cadastrar um plano de cobrança");
+                return;
+            }
+
             TelaCadastroPlanoCobrancaForm tela = new(servicoGrupoVeiculo);
 
             tela.PlanoCobranca = new();

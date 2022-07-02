@@ -19,6 +19,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         public override void Inserir()
         {
+            List<GrupoVeiculos> grupos = servicoGrupoVeiculos.SelecionarTodos();
+
+            if (grupos.Count == 0)
+            {
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Cadastre no mínimo 1 'Grupo de Veículos' para cadastrar um veículo");
+                return;
+            }
+
             TelaCadastroVeiculoForm tela = new(servicoGrupoVeiculos);
 
             tela.Veiculo = new();
@@ -70,7 +78,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir o Veículo?",
                "Exclusão de Veículo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-            if(resultado == DialogResult.OK)
+            if (resultado == DialogResult.OK)
             {
                 servicoVeiculo.Excluir(veiculoSelecionado);
                 CarregarVeiculos();
