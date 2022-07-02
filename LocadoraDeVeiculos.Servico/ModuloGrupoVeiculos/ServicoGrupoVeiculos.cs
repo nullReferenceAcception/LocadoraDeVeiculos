@@ -9,6 +9,6 @@ namespace LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos
         public ServicoGrupoVeiculos(IRepositorioGrupoVeiculos repositorio) : base(new ValidadorGrupoVeiculos(), repositorio)
         {
         }
-        protected override string SqlMensagemDeErroDeDuplicidade => "Nome já está cadastrado";
+        protected override string SqlMensagemDeErroSeTiverDuplicidade => "Nome já está cadastrado";
     }
 }

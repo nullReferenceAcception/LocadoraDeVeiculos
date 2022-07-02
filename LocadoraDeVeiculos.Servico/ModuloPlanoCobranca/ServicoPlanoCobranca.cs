@@ -15,6 +15,6 @@ namespace LocadoraDeVeiculos.Servico.ModuloPlanoCobranca
         {
 
         }
-        protected override string SqlMensagemDeErroDeDuplicidade => "Nome já está cadastrado";
+        protected override string SqlMensagemDeErroSeTiverDuplicidade => "Nome já está cadastrado";
     }
 }
