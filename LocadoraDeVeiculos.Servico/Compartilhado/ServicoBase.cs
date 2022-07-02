@@ -74,10 +74,15 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         protected virtual ValidationResult HaDuplicidade( T registro, ValidationResult resultadoValidacao)
         {
-            if (repositorio.VerificarDuplicidade(repositorio.SqlDuplicidade(registro)))
+            if (TiverDuplicidade(registro))
                 resultadoValidacao.Errors.Add(new ValidationFailure("", SqlMensagemDeErro));
 
             return resultadoValidacao;
+        }
+
+        private bool TiverDuplicidade(T registro)
+        {
+            return repositorio.VerificarDuplicidade(repositorio.SqlDuplicidade(registro));
         }
     }
 }
