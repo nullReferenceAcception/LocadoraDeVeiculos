@@ -129,6 +129,27 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
 
         }
 
+        private string sqlSelecionarTodosPessoasJuridicas
+        {
+            get =>
+            @"SELECT
+                    ID_CLIENTE AS ID_CLIENTE,
+	                NOME AS NOME_CLIENTE,
+	                ENDERECO AS ENDERECO_CLIENTE,
+                    CNH AS CNH_CLIENTE,
+                    EMAIL AS EMAIL_CLIENTE,
+                    TELEFONE AS TELEFONE_CLIENTE,
+                    TIPO_CLIENTE AS TIPO_CLIENTE_CLIENTE,
+                    CPF AS CPF_CLIENTE,
+                    CNPJ AS CNPJ_CLIENTE,
+                    DATA_VALIDADE_CNH AS  DATA_VALIDADE_CNH_CLIENTE
+                FROM
+	                TB_CLIENTE
+                WHERE 
+                    TIPO_CLIENTE = 0;";
+
+        }
+
 
 
         #endregion
@@ -144,6 +165,10 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
             return SelecionarTodosPersonalizado(sqlSelecionarTodosPessoasFisicas);
         }
 
+        public List<Cliente> SelecionarTodosClientesQueSaoPessoaJuridica()
+        {
+            return SelecionarTodosPersonalizado(sqlSelecionarTodosPessoasJuridicas);
+        }
 
     }
 }

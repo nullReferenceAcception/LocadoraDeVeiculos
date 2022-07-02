@@ -60,6 +60,12 @@ Ao utilizar maskedTextBoxes, alterar a propriedade 'TextMaskFormat' para 'Exclud
 Ao criar uma nova tela, utilizar o padrão já seguido:
 
 Um groupBox com: 'Dados do xxx', e com os componentes dentro, deixando os botões fora do group box.
+
+Lembrar dessa duas funcoes no construtor:<div>
+            this.ConfigurarTela();<div>
+            primerioTextBox.Focus();
+
+
 ___
 <div id='aplicacao'/>
 <h1 style="color:#76d7c4">Aplicação</h1>
@@ -86,7 +92,7 @@ get =>
     FROM
         TB_TAXA
     WHERE
-        ID_TAXA = @ID;"; 
+        ID_TAXA = @ID;"; ---->@ID aqui
 }
 
 protected override string sqlSelecionarPorID

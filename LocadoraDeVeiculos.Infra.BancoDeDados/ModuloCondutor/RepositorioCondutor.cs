@@ -120,7 +120,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
 	                TB_CONDUTOR AS CON INNER JOIN
                         TB_CLIENTE AS CLI ON CON.CLIENTE_ID = CLI.ID_CLIENTE   
                             WHERE
-                            CLI.ID_CLIENTE = @ID";
+                            CON.ID_CONDUTOR = @ID";
         }
         #endregion
 

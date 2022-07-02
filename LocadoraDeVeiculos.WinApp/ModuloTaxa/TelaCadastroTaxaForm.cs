@@ -22,8 +22,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         public TelaCadastroTaxaForm()
         {
             InitializeComponent();
-            this.ConfigurarTela();
             textBoxValor.AplicarMascaraMoeda();
+            this.ConfigurarTela();
             textBoxDescricao.Focus();
         }
 

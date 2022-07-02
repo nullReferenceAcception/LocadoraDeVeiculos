@@ -19,5 +19,10 @@ namespace LocadoraDeVeiculos.Servico.ModuloCliente
         {
             return repositorio.SelecionarTodosClientesQueSaoPessoaFisica();
         }
+
+        public List<Cliente> SelecionarTodosClientesQueSaoPessoaJuridica()
+        {
+            return repositorio.SelecionarTodosClientesQueSaoPessoaJuridica();
+        }
     }
 }

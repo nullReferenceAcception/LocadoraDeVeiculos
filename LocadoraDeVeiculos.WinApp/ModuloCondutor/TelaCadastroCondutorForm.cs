@@ -25,7 +25,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         {
             InitializeComponent();
             this.servicoCliente = servicoCliente;
-            comboBoxEmpresa.DataSource = servicoCliente.SelecionarTodosClientesQueSaoPessoaFisica();
+            comboBoxEmpresa.DataSource = servicoCliente.SelecionarTodosClientesQueSaoPessoaJuridica();
+            this.ConfigurarTela();
             textBoxNome.Focus();
         }
 
@@ -41,6 +42,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
                 dateTimePickerValidadeCNH.Value = _condutor.DataValidadeCNH;
             textBoxEmail.Text = _condutor.Email;
             maskedTextBoxTelefone.Text = _condutor.Telefone;
+            maskedTextBoxCPF.Text = _condutor.CPF;
+            comboBoxEmpresa.SelectedItem = _condutor.Cliente;
         }
 
         private void ObterDadosDaTela()
@@ -52,6 +55,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             _condutor.CPF = maskedTextBoxCPF.Text;
             _condutor.Email = textBoxEmail.Text;
             _condutor.Telefone = maskedTextBoxTelefone.Text;
+            _condutor.Cliente = (Cliente)comboBoxEmpresa.SelectedItem;
         }
  
         private void buttonGravar_Click(object sender, EventArgs e)

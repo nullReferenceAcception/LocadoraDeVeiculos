@@ -32,7 +32,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
                 .NotNull().NotEmpty().MinimumLength(11);
 
             RuleFor(x => x.DataValidadeCNH)
-                .NotNull().NotEmpty().GreaterThan(DateTime.MinValue).LessThanOrEqualTo(hoje);  //maior que - - - - menor ou igual
+                .NotNull().NotEmpty().GreaterThan(DateTime.MinValue).GreaterThanOrEqualTo(hoje.AddDays(-1));  //maior que - - - - menor ou igual
         }
     }
 }

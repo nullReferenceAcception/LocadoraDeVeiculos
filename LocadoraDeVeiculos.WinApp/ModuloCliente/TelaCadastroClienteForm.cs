@@ -23,6 +23,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         {
             InitializeComponent();
             textBoxNome.Focus();
+            this.ConfigurarTela();
         }
 
         public Func<Cliente, ValidationResult>? GravarRegistro { get; set; }

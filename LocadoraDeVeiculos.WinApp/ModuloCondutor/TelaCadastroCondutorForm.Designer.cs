@@ -185,6 +185,7 @@
             this.buttonGravar.TabIndex = 8;
             this.buttonGravar.Text = "Gravar";
             this.buttonGravar.UseVisualStyleBackColor = true;
+            this.buttonGravar.Click += new System.EventHandler(this.buttonGravar_Click);
             // 
             // buttonCancelar
             // 

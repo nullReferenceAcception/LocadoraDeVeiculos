@@ -97,7 +97,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             Cliente clienteCPF3= new Cliente("joaoes", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "12340567889", null!, DateTime.Today);
 
-            Cliente clienteCNPJ = new Cliente("jo", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, null!, "12340567889876", DateTime.Today);
+            Cliente clienteCNPJ = new Cliente("jo", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", false, null!, "12340567889876", DateTime.Today);
 
             servico.Inserir(clienteCPF);
 
@@ -112,6 +112,30 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
             clientes.Should().Contain(clienteCPF);
             clientes.Should().Contain(clienteCPF2);
             clientes.Should().Contain(clienteCPF3);
+        }
+
+        [TestMethod]
+        public void Deve_Selecionar_todos_clientes_que_sao_pessoas_juridicas()
+        {
+            Cliente clienteCPF = CriarClienteComCPF();
+
+            Cliente clienteCPF2 = new Cliente("joaos", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "12340567889", null!, DateTime.Today);
+
+            Cliente clienteCPF3 = new Cliente("joaoes", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "12340567889", null!, DateTime.Today);
+
+            Cliente clienteCNPJ = new Cliente("joasdasdsa", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", false, null!, "12340567889876", DateTime.Today);
+
+            servico.Inserir(clienteCPF);
+
+            servico.Inserir(clienteCPF2);
+
+            servico.Inserir(clienteCPF3);
+
+            servico.Inserir(clienteCNPJ);
+
+            List<Cliente> clientes = servico.SelecionarTodosClientesQueSaoPessoaJuridica();
+
+            clientes.Should().Contain(clienteCNPJ);
         }
 
 
