@@ -13,6 +13,6 @@ namespace LocadoraDeVeiculos.Servico.ModuloVeiculos
             this._repositorioVeiculo = repositorio;
         }
 
-        protected override string SqlMensagemDeErro => "Placa já cadastrada";
+        protected override string SqlMensagemDeErroDeDuplicidade => "Placa já cadastrada";
     }
 }

@@ -13,7 +13,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloCliente
             this.repositorio = repositorio;
         }
 
-        protected override string SqlMensagemDeErro => "Nome já está cadastrado";
+        protected override string SqlMensagemDeErroDeDuplicidade => "Nome já está cadastrado";
 
         public List<Cliente> SelecionarTodosClientesQueSaoPessoaFisica()
         {
