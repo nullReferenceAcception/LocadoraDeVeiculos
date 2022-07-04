@@ -76,6 +76,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             maskedTextBoxCNH.Enabled = true;
             maskedTextBoxCPF.Enabled = true;
             maskedTextBoxCNPJ.Enabled = false;
+            dateTimePickerValidadeCNH.Enable(true);
             maskedTextBoxCNPJ.Clear();
             maskedTextBoxCPF.Focus();
         }
@@ -85,6 +86,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             maskedTextBoxCNH.Enabled = false;
             maskedTextBoxCNPJ.Enabled = true;
             maskedTextBoxCPF.Enabled = false;
+            dateTimePickerValidadeCNH.Enable(false);
             maskedTextBoxCPF.Clear();
             maskedTextBoxCNPJ.Focus();
             maskedTextBoxCNH.Clear();
