@@ -87,5 +87,10 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
         {
             return repositorio.VerificarDuplicidade(repositorio.SqlDuplicidade(registro));
         }
+
+        public int QuantidadeRegistro()
+        {
+            return repositorio.QuantidadeRegistros();
+        }
     }
 }

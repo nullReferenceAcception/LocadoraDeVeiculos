@@ -85,6 +85,13 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
         }
 
 
+        protected override string sqlQuantidade
+        {
+            get =>
+                    @"SELECT COUNT(*) from TB_TAXA";
+        }
+
+
         #endregion
 
         string IRepositorio<Taxa>.SqlDuplicidade(Taxa registro)

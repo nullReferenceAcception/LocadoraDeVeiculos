@@ -15,5 +15,7 @@ namespace LocadoraDeVeiculos.Dominio.Compartilhado
         List<T> SelecionarTodos();
         T SelecionarPorID(int numero);
 
+        int QuantidadeRegistro();
+
     }
 }

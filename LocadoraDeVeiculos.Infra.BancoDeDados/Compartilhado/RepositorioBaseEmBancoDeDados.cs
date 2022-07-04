@@ -22,6 +22,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
         protected abstract string sqlExcluir { get; }
         protected abstract string sqlSelecionarTodos { get; }
         protected abstract string sqlSelecionarPorID { get; }
+        protected abstract string sqlQuantidade { get; }
+
+
         #endregion
 
         #region variaveis
@@ -170,5 +173,17 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             conexao.Close();
             return haRegistro;
         }
+
+        public int QuantidadeRegistros()
+        {
+            conexao.Open();
+            var sqlCommand = new SqlCommand(sqlQuantidade, conexao);
+
+            int quantidade = (int)sqlCommand.ExecuteScalar();
+
+            conexao.Close();
+            return quantidade;
+        }
+
     }
 }

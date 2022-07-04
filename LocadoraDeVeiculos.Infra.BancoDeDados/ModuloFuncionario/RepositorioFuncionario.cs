@@ -143,6 +143,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                     ID_FUNCIONARIO = @ID";
         }
 
+
+        protected override string sqlQuantidade
+        {
+            get =>
+                    @"SELECT COUNT(*) from TB_FUNCIONARIO";
+        }
+
+
         #endregion
 
         public List<Funcionario> SelecionarDesativados()

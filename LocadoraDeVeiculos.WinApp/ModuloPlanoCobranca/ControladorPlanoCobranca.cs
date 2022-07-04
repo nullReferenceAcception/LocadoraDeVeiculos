@@ -19,9 +19,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
         public override void Inserir()
         {
-            List<GrupoVeiculos> grupos = servicoGrupoVeiculo.SelecionarTodos();
 
-            if (grupos.Count == 0)
+            if (servicoGrupoVeiculo.QuantidadeRegistro() == 0)
             {
                 TelaPrincipalForm.Instancia!.AtualizarRodape($"Cadastre no mínimo 1 'Grupo de Veículos' para cadastrar um plano de cobrança");
                 return;

@@ -19,9 +19,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         public override void Inserir()
         {
-            List<GrupoVeiculos> grupos = servicoGrupoVeiculos.SelecionarTodos();
+            
 
-            if (grupos.Count == 0)
+            if (servicoGrupoVeiculos.QuantidadeRegistro() == 0)
             {
                 TelaPrincipalForm.Instancia!.AtualizarRodape($"Cadastre no mínimo 1 'Grupo de Veículos' para cadastrar um veículo");
                 return;

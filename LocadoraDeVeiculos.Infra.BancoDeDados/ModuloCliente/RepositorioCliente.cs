@@ -150,7 +150,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
 
         }
 
-
+        protected override string sqlQuantidade
+        {
+            get =>
+                    @"SELECT COUNT(*) FROM TB_CLIENTE WHERE TIPO_CLIENTE = 0";
+        }
+        //sqlQuantidade so verifica quantidade de pessoas juridicas pq nao houve necessidade de ver quantidade de pessoas fisicas  ate agora caso precissa crie um metodo e de um override no outro ou crie um metodo no repositorio base que aceite um sql como parametro
 
         #endregion
 

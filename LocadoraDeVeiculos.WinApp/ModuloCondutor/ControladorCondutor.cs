@@ -25,6 +25,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
         public override void Inserir()
         {
+
+
+            if (servicoCliente.QuantidadeRegistro() == 0)
+            {
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Cadastre no mínimo uma empresa para cadastrar um veículo");
+                return;
+            }
+
             TelaCadastroCondutorForm tela = new(servicoCliente);
 
             tela.Condutor = new();

@@ -73,7 +73,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
 	            ID_GRUPO_VEICULO = @ID;";
         }
 
-      
+        protected override string sqlQuantidade
+        {
+            get =>
+                    @"SELECT COUNT(*) from TB_GRUPO_VEICULO";
+        }
 
 
         #endregion

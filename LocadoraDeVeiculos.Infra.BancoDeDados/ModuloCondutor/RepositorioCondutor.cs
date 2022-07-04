@@ -122,6 +122,15 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
                             WHERE
                             CON.ID_CONDUTOR = @ID";
         }
+
+        protected override string sqlQuantidade
+        {
+            get =>
+                    @"SELECT COUNT(*) from TB_CONDUTOR";
+        }
+
+
+
         #endregion
 
         public string SqlDuplicidade(Condutor registro)

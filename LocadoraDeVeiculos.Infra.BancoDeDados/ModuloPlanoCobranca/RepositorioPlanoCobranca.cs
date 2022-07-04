@@ -107,6 +107,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
 	            ID_PLANO_COBRANCA = @ID;";
         }
 
+        protected override string sqlQuantidade
+        {
+            get =>
+                    @"SELECT COUNT(*) from TB_PLANO_COBRANCA";
+        }
 
 
 
