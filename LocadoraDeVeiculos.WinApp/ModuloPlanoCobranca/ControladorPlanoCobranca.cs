@@ -24,7 +24,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             Stream str;
             if (servicoGrupoVeiculo.QuantidadeRegistro() == 0)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Cadastre no mínimo 1 'Grupo de Veículos' para cadastrar um plano de cobrança");
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Cadastre no mínimo 1 'Grupo de Veículos' para cadastrar um plano de cobrança",TelaPrincipalForm.Cor.Yellow);
                 str = Properties.Resources.som;
 
                 System.Media.SoundPlayer snd = new System.Media.SoundPlayer(str);
@@ -51,7 +51,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
             if (PlanoCobrancaSelecionada == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma PlanoCobranca para editar");
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma PlanoCobranca para editar",TelaPrincipalForm.Cor.Yellow);
                 return;
             }
 
@@ -75,7 +75,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
             if (PlanoCobrancaSelecionada == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma PlanoCobranca para excluir");
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma PlanoCobranca para excluir",TelaPrincipalForm.Cor.Red);
                 return;
             }
 
@@ -89,7 +89,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
                 CarregarPlanoCobrancas();
 
                 if (validationResult.Errors.Count > 0)
-                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro");
+                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro",TelaPrincipalForm.Cor.Red);
 
             }
         }
@@ -102,7 +102,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
             if (PlanoCobrancaSelecionada == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma PlanoCobranca para visualizar");
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma PlanoCobranca para visualizar",TelaPrincipalForm.Cor.Yellow);
                 return;
             }
 
@@ -137,7 +137,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
             _tabelaPlanoCobrancas!.AtualizarRegistros(PlanoCobrancas);
 
-            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {PlanoCobrancas.Count} {(PlanoCobrancas.Count == 1 ? "PlanoCobranca" : "PlanoCobrancas")}");
+            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {PlanoCobrancas.Count} {(PlanoCobrancas.Count == 1 ? "PlanoCobranca" : "PlanoCobrancas")}",TelaPrincipalForm.Cor.White);
         }
     }
 }

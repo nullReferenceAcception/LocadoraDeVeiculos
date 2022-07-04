@@ -36,7 +36,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             if (taxaSelecionada == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma taxa para editar");
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma taxa para editar",TelaPrincipalForm.Cor.Yellow);
                 return;
             }
 
@@ -60,7 +60,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             if (taxaSelecionada == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma taxa para excluir");
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma taxa para excluir",TelaPrincipalForm.Cor.Yellow);
                 return;
             }
 
@@ -76,7 +76,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
 
                 if (validationResult.Errors.Count > 0)
-                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro");
+                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro",TelaPrincipalForm.Cor.Red);
             }
         }
 
@@ -88,7 +88,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             if (taxaSelecionada == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma taxa para visualizar");
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma taxa para visualizar",TelaPrincipalForm.Cor.Yellow);
                 return;
             }
 
@@ -123,7 +123,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             _tabelaTaxas!.AtualizarRegistros(taxas);
 
-            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {taxas.Count} {(taxas.Count == 1 ? "taxa" : "taxas")}");
+            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {taxas.Count} {(taxas.Count == 1 ? "taxa" : "taxas")}",TelaPrincipalForm.Cor.White);
         }
     }
 }

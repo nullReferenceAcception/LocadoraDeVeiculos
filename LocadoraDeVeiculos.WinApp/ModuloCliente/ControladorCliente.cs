@@ -36,7 +36,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             if (clienteSelecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um cliente para editar");
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um cliente para editar",TelaPrincipalForm.Cor.Yellow);
                 return;
             }
 
@@ -60,7 +60,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             if (clienteSelecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um cliente para excluir");
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um cliente para excluir",TelaPrincipalForm.Cor.Yellow);
                 return;
             }
 
@@ -76,7 +76,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 CarregarCliente();
 
                 if (validationResult.Errors.Count > 0)
-                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro");
+                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro",TelaPrincipalForm.Cor.Red);
             }
         }
 
@@ -88,7 +88,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             if (clienteSelecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um cliente para visualizar");
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um cliente para visualizar",TelaPrincipalForm.Cor.Yellow);
                 return;
             }
 
@@ -123,7 +123,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             _tabelaCliente!.AtualizarRegistros(clientes);
 
-            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {clientes.Count} {(clientes.Count == 1 ? "cliente" : "clientes")}");
+            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {clientes.Count} {(clientes.Count == 1 ? "cliente" : "clientes")}",TelaPrincipalForm.Cor.White);
         }
     }
 }

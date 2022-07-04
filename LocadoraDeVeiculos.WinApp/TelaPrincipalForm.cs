@@ -21,6 +21,7 @@ using LocadoraDeVeiculos.WinApp.ModuloTaxa;
 using LocadoraDeVeiculos.WinApp.ModuloVeiculo;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp
@@ -168,7 +169,7 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void ConfigurarListagem()
         {
-            AtualizarRodape("");
+            AtualizarRodape("",Cor.White);
 
             var listagemControl = controlador!.ObtemListagem();
 
@@ -207,9 +208,19 @@ namespace LocadoraDeVeiculos.WinApp
             controladores.Add("Condutores", new ControladorCondutor(servicoCondutor, servicoCliente));
             controladores.Add("Plano de cobrança", new ControladorPlanoCobranca(servicoPlanoCobranca, servicoGrupoVeiculos));
         }
-        public void AtualizarRodape(string mensagem)
+
+        public enum Cor
+        {
+            Red,
+            Yellow,
+            White
+        }
+
+
+        public void AtualizarRodape(string mensagem,Cor cor)
         {
             labelRodape.Text = mensagem;
+            labelRodape.ForeColor = Color.FromName(cor.ToString());
         }
 
         private void DesabilitarBotoes(bool status)

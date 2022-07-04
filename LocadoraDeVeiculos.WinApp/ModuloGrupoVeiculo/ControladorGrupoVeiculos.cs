@@ -36,7 +36,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 
             if (Selecionada == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um grupo de veículos para editar");
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um grupo de veículos para editar",TelaPrincipalForm.Cor.Yellow);
                 return;
             }
 
@@ -60,7 +60,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 
             if (Selecionada == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um grupo de veículos para excluir");
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um grupo de veículos para excluir",TelaPrincipalForm.Cor.Yellow);
                 return;
             }
 
@@ -76,7 +76,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 
 
                 if (validationResult.Errors.Count > 0)
-                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro");
+                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro",TelaPrincipalForm.Cor.Red);
 
 
             }
@@ -90,7 +90,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 
             if (Selecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um grupo de veículos para visualizar");
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um grupo de veículos para visualizar",TelaPrincipalForm.Cor.Yellow);
                 return;
             }
 
@@ -125,7 +125,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 
             tabela!.AtualizarRegistros(registros);
 
-            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {registros.Count} {(registros.Count == 1 ? "grupo de veículos" : "grupos de veículos")}");
+            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {registros.Count} {(registros.Count == 1 ? "grupo de veículos" : "grupos de veículos")}",TelaPrincipalForm.Cor.White);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             if (servicoGrupoVeiculos.QuantidadeRegistro() == 0)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Cadastre no mínimo 1 'Grupo de Veículos' para cadastrar um veículo");
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Cadastre no mínimo 1 'Grupo de Veículos' para cadastrar um veículo",TelaPrincipalForm.Cor.Yellow);
                 return;
             }
 
@@ -48,7 +48,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             if (veiculoSelecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um veículo para editar");
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um veículo para editar",TelaPrincipalForm.Cor.Yellow);
                 return;
             }
 
@@ -72,7 +72,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             if (veiculoSelecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um veículo para excluir");
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um veículo para excluir",TelaPrincipalForm.Cor.Yellow);
                 return;
             }
 
@@ -87,7 +87,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
                 CarregarVeiculos();
 
                 if (validationResult.Errors.Count > 0)
-                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro");
+                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro",TelaPrincipalForm.Cor.Red);
             }
         }
 
@@ -99,7 +99,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             if (veiculoSelecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um veículo para excluir");
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um veículo para excluir",TelaPrincipalForm.Cor.Yellow);
                 return;
             }
 
@@ -134,7 +134,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             _tabelaVeiculos.AtualizarRegistros(veiculos);
 
-            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {veiculos.Count} {(veiculos.Count == 1 ? "veículo" : "veículos")}");
+            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {veiculos.Count} {(veiculos.Count == 1 ? "veículo" : "veículos")}",TelaPrincipalForm.Cor.Yellow);
         }
     }
 }
