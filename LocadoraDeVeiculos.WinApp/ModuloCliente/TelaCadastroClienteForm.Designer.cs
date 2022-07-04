@@ -58,7 +58,7 @@
             // 
             // textBoxNome
             // 
-            this.textBoxNome.Location = new System.Drawing.Point(87, 58);
+            this.textBoxNome.Location = new System.Drawing.Point(105, 45);
             this.textBoxNome.MaxLength = 100;
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(239, 23);
@@ -66,7 +66,7 @@
             // 
             // textBoxEndereco
             // 
-            this.textBoxEndereco.Location = new System.Drawing.Point(87, 87);
+            this.textBoxEndereco.Location = new System.Drawing.Point(105, 74);
             this.textBoxEndereco.MaxLength = 100;
             this.textBoxEndereco.Name = "textBoxEndereco";
             this.textBoxEndereco.Size = new System.Drawing.Size(239, 23);
@@ -74,16 +74,16 @@
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(87, 145);
+            this.textBoxEmail.Location = new System.Drawing.Point(108, 170);
             this.textBoxEmail.MaxLength = 100;
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(239, 23);
-            this.textBoxEmail.TabIndex = 3;
+            this.textBoxEmail.TabIndex = 4;
             // 
             // labelNome
             // 
             this.labelNome.AutoSize = true;
-            this.labelNome.Location = new System.Drawing.Point(17, 61);
+            this.labelNome.Location = new System.Drawing.Point(44, 48);
             this.labelNome.Name = "labelNome";
             this.labelNome.Size = new System.Drawing.Size(43, 15);
             this.labelNome.TabIndex = 6;
@@ -92,7 +92,7 @@
             // labelTelefone
             // 
             this.labelTelefone.AutoSize = true;
-            this.labelTelefone.Location = new System.Drawing.Point(6, 177);
+            this.labelTelefone.Location = new System.Drawing.Point(36, 202);
             this.labelTelefone.Name = "labelTelefone";
             this.labelTelefone.Size = new System.Drawing.Size(54, 15);
             this.labelTelefone.TabIndex = 9;
@@ -101,7 +101,7 @@
             // labelEmail
             // 
             this.labelEmail.AutoSize = true;
-            this.labelEmail.Location = new System.Drawing.Point(21, 145);
+            this.labelEmail.Location = new System.Drawing.Point(51, 170);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(39, 15);
             this.labelEmail.TabIndex = 10;
@@ -110,7 +110,7 @@
             // labelCNH
             // 
             this.labelCNH.AutoSize = true;
-            this.labelCNH.Location = new System.Drawing.Point(24, 116);
+            this.labelCNH.Location = new System.Drawing.Point(51, 109);
             this.labelCNH.Name = "labelCNH";
             this.labelCNH.Size = new System.Drawing.Size(36, 15);
             this.labelCNH.TabIndex = 11;
@@ -119,7 +119,7 @@
             // labelEndereco
             // 
             this.labelEndereco.AutoSize = true;
-            this.labelEndereco.Location = new System.Drawing.Point(1, 87);
+            this.labelEndereco.Location = new System.Drawing.Point(28, 77);
             this.labelEndereco.Name = "labelEndereco";
             this.labelEndereco.Size = new System.Drawing.Size(59, 15);
             this.labelEndereco.TabIndex = 12;
@@ -129,7 +129,7 @@
             // 
             this.groupBoxTipoCliente.Controls.Add(this.radioButtonCNPJ);
             this.groupBoxTipoCliente.Controls.Add(this.radioButtonCPF);
-            this.groupBoxTipoCliente.Location = new System.Drawing.Point(86, 238);
+            this.groupBoxTipoCliente.Location = new System.Drawing.Point(107, 228);
             this.groupBoxTipoCliente.Name = "groupBoxTipoCliente";
             this.groupBoxTipoCliente.Size = new System.Drawing.Size(133, 79);
             this.groupBoxTipoCliente.TabIndex = 6;
@@ -163,7 +163,7 @@
             // labelCPF
             // 
             this.labelCPF.AutoSize = true;
-            this.labelCPF.Location = new System.Drawing.Point(38, 327);
+            this.labelCPF.Location = new System.Drawing.Point(59, 317);
             this.labelCPF.Name = "labelCPF";
             this.labelCPF.Size = new System.Drawing.Size(31, 15);
             this.labelCPF.TabIndex = 15;
@@ -172,7 +172,7 @@
             // labelCNPJ
             // 
             this.labelCNPJ.AutoSize = true;
-            this.labelCNPJ.Location = new System.Drawing.Point(32, 358);
+            this.labelCNPJ.Location = new System.Drawing.Point(53, 348);
             this.labelCNPJ.Name = "labelCNPJ";
             this.labelCNPJ.Size = new System.Drawing.Size(37, 15);
             this.labelCNPJ.TabIndex = 16;
@@ -180,8 +180,9 @@
             // 
             // buttonGravar
             // 
+            this.buttonGravar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonGravar.Location = new System.Drawing.Point(198, 401);
+            this.buttonGravar.Location = new System.Drawing.Point(225, 389);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
             this.buttonGravar.TabIndex = 11;
@@ -191,8 +192,9 @@
             // 
             // buttonCancelar
             // 
+            this.buttonCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancelar.Location = new System.Drawing.Point(271, 401);
+            this.buttonCancelar.Location = new System.Drawing.Point(298, 389);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
             this.buttonCancelar.TabIndex = 12;
@@ -201,7 +203,7 @@
             // 
             // maskedTextBoxCPF
             // 
-            this.maskedTextBoxCPF.Location = new System.Drawing.Point(86, 323);
+            this.maskedTextBoxCPF.Location = new System.Drawing.Point(107, 313);
             this.maskedTextBoxCPF.Mask = "000\\.000\\.000-00";
             this.maskedTextBoxCPF.Name = "maskedTextBoxCPF";
             this.maskedTextBoxCPF.Size = new System.Drawing.Size(140, 23);
@@ -210,7 +212,7 @@
             // 
             // maskedTextBoxCNPJ
             // 
-            this.maskedTextBoxCNPJ.Location = new System.Drawing.Point(86, 352);
+            this.maskedTextBoxCNPJ.Location = new System.Drawing.Point(107, 342);
             this.maskedTextBoxCNPJ.Mask = "00\\.000\\.000/0000-00";
             this.maskedTextBoxCNPJ.Name = "maskedTextBoxCNPJ";
             this.maskedTextBoxCNPJ.Size = new System.Drawing.Size(140, 23);
@@ -219,11 +221,11 @@
             // 
             // maskedTextBoxTelefone
             // 
-            this.maskedTextBoxTelefone.Location = new System.Drawing.Point(87, 174);
+            this.maskedTextBoxTelefone.Location = new System.Drawing.Point(108, 199);
             this.maskedTextBoxTelefone.Mask = "(00) 90000-0000";
             this.maskedTextBoxTelefone.Name = "maskedTextBoxTelefone";
             this.maskedTextBoxTelefone.Size = new System.Drawing.Size(87, 23);
-            this.maskedTextBoxTelefone.TabIndex = 4;
+            this.maskedTextBoxTelefone.TabIndex = 5;
             this.maskedTextBoxTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // groupBoxDadosCliente
@@ -249,14 +251,14 @@
             this.groupBoxDadosCliente.Controls.Add(this.textBoxEmail);
             this.groupBoxDadosCliente.Location = new System.Drawing.Point(12, 11);
             this.groupBoxDadosCliente.Name = "groupBoxDadosCliente";
-            this.groupBoxDadosCliente.Size = new System.Drawing.Size(331, 384);
+            this.groupBoxDadosCliente.Size = new System.Drawing.Size(353, 372);
             this.groupBoxDadosCliente.TabIndex = 22;
             this.groupBoxDadosCliente.TabStop = false;
             this.groupBoxDadosCliente.Text = "Dados do cliente:";
             // 
             // maskedTextBoxCNH
             // 
-            this.maskedTextBoxCNH.Location = new System.Drawing.Point(86, 116);
+            this.maskedTextBoxCNH.Location = new System.Drawing.Point(107, 106);
             this.maskedTextBoxCNH.Mask = "00000000000";
             this.maskedTextBoxCNH.Name = "maskedTextBoxCNH";
             this.maskedTextBoxCNH.Size = new System.Drawing.Size(75, 23);
@@ -264,16 +266,17 @@
             // 
             // dateTimePickerValidadeCNH
             // 
+            this.dateTimePickerValidadeCNH.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dateTimePickerValidadeCNH.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerValidadeCNH.Location = new System.Drawing.Point(90, 209);
+            this.dateTimePickerValidadeCNH.Location = new System.Drawing.Point(107, 141);
             this.dateTimePickerValidadeCNH.Name = "dateTimePickerValidadeCNH";
             this.dateTimePickerValidadeCNH.Size = new System.Drawing.Size(100, 23);
-            this.dateTimePickerValidadeCNH.TabIndex = 5;
+            this.dateTimePickerValidadeCNH.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1, 215);
+            this.label2.Location = new System.Drawing.Point(10, 147);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 15);
             this.label2.TabIndex = 26;
@@ -282,7 +285,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 32);
+            this.label1.Location = new System.Drawing.Point(66, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(21, 15);
             this.label1.TabIndex = 24;
@@ -291,7 +294,7 @@
             // textBoxID
             // 
             this.textBoxID.Enabled = false;
-            this.textBoxID.Location = new System.Drawing.Point(86, 29);
+            this.textBoxID.Location = new System.Drawing.Point(104, 16);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.ReadOnly = true;
             this.textBoxID.Size = new System.Drawing.Size(75, 23);
@@ -301,7 +304,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 441);
+            this.ClientSize = new System.Drawing.Size(377, 428);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonGravar);
             this.Controls.Add(this.groupBoxDadosCliente);

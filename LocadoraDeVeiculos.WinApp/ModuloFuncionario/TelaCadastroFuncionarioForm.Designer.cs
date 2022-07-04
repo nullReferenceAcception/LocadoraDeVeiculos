@@ -60,6 +60,7 @@
             // 
             // buttonCancelar
             // 
+            this.buttonCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancelar.Location = new System.Drawing.Point(323, 429);
             this.buttonCancelar.Name = "buttonCancelar";
@@ -79,6 +80,7 @@
             // 
             // buttonGravar
             // 
+            this.buttonGravar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonGravar.Location = new System.Drawing.Point(250, 429);
             this.buttonGravar.Name = "buttonGravar";
@@ -133,10 +135,11 @@
             // 
             // dateTimePickerDataAdmissao
             // 
+            this.dateTimePickerDataAdmissao.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dateTimePickerDataAdmissao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDataAdmissao.Location = new System.Drawing.Point(128, 230);
             this.dateTimePickerDataAdmissao.Name = "dateTimePickerDataAdmissao";
-            this.dateTimePickerDataAdmissao.Size = new System.Drawing.Size(87, 23);
+            this.dateTimePickerDataAdmissao.Size = new System.Drawing.Size(100, 23);
             this.dateTimePickerDataAdmissao.TabIndex = 6;
             // 
             // labelDataAdmissao
