@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
+﻿using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -67,10 +68,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             DialogResult resultado = MessageBox.Show("Deseja realmente desabilitar o funcionário?",
                "Exclusão de Disciplinas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
+            ValidationResult validationResult;
+
+
             if (resultado == DialogResult.OK)
             {
-                servicoFuncionario.Excluir(funcionarioSelecionado);
+                validationResult = servicoFuncionario.Excluir(funcionarioSelecionado);
                 CarregarFuncionariosAtivos();
+
+                if (validationResult.Errors.Count > 0)
+                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro");
             }
         }
 

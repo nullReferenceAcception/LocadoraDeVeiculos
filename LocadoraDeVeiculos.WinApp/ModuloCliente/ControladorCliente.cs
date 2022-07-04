@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
+﻿using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -66,10 +67,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir o Cliente?",
                "Exclusão de Cliente", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
+
+            ValidationResult validationResult;
+
             if (resultado == DialogResult.OK)
             {
-                ServicoCliente.Excluir(clienteSelecionado);
+                validationResult = ServicoCliente.Excluir(clienteSelecionado);
                 CarregarCliente();
+
+                if (validationResult.Errors.Count > 0)
+                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro");
             }
         }
 

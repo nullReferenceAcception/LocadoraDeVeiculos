@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+﻿using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -76,10 +77,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir a PlanoCobranca?",
                "Exclusão de PlanoCobrancas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
+             ValidationResult validationResult;
             if (resultado == DialogResult.OK)
             {
-                servicoPlanoCobranca.Excluir(PlanoCobrancaSelecionada);
+                validationResult = servicoPlanoCobranca.Excluir(PlanoCobrancaSelecionada);
                 CarregarPlanoCobrancas();
+
+                if (validationResult.Errors.Count > 0)
+                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro");
+
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
+﻿using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using System;
 using System.Collections.Generic;
@@ -68,7 +69,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             if (resultado == DialogResult.OK)
                 Carregarcondutor();
         }
-
+  
         public override void Excluir()
         {
             var numero = _tabelacondutor!.ObtemNumeroCondutorSelecionado();
@@ -84,10 +85,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir o condutor?",
                "Exclusão de condutor", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
+            ValidationResult validationResult;
+
+
             if (resultado == DialogResult.OK)
             {
-                Servicocondutor.Excluir(condutorSelecionado);
+                validationResult = Servicocondutor.Excluir(condutorSelecionado);
                 Carregarcondutor();
+
+                if (validationResult.Errors.Count > 0)
+                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro");
             }
         }
 
