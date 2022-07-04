@@ -233,7 +233,8 @@
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonGravar);
             this.Name = "TelaCadastroPlanoCobrancaForm";
-            this.Text = "TelaCadastroPlanoCobranca";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Plano de Cobrança";
             this.groupBoxTaxa.ResumeLayout(false);
             this.groupBoxTaxa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownKmIncluso)).EndInit();

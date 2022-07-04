@@ -147,7 +147,7 @@
             this.maskedTextBoxTelefone.Location = new System.Drawing.Point(117, 123);
             this.maskedTextBoxTelefone.Mask = "(00) 90000-0000";
             this.maskedTextBoxTelefone.Name = "maskedTextBoxTelefone";
-            this.maskedTextBoxTelefone.Size = new System.Drawing.Size(89, 23);
+            this.maskedTextBoxTelefone.Size = new System.Drawing.Size(115, 23);
             this.maskedTextBoxTelefone.TabIndex = 2;
             this.maskedTextBoxTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
@@ -157,7 +157,7 @@
             this.maskedTextBoxCNH.Location = new System.Drawing.Point(105, 173);
             this.maskedTextBoxCNH.Mask = "00000000000";
             this.maskedTextBoxCNH.Name = "maskedTextBoxCNH";
-            this.maskedTextBoxCNH.Size = new System.Drawing.Size(89, 23);
+            this.maskedTextBoxCNH.Size = new System.Drawing.Size(115, 23);
             this.maskedTextBoxCNH.TabIndex = 4;
             this.maskedTextBoxCNH.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
@@ -181,7 +181,7 @@
             // buttonGravar
             // 
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonGravar.Location = new System.Drawing.Point(163, 314);
+            this.buttonGravar.Location = new System.Drawing.Point(290, 314);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
             this.buttonGravar.TabIndex = 8;
@@ -192,7 +192,7 @@
             // buttonCancelar
             // 
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancelar.Location = new System.Drawing.Point(236, 314);
+            this.buttonCancelar.Location = new System.Drawing.Point(363, 314);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
             this.buttonCancelar.TabIndex = 9;
@@ -279,7 +279,7 @@
             this.maskedTextBoxCPF.Location = new System.Drawing.Point(105, 139);
             this.maskedTextBoxCPF.Mask = "000\\.000\\.000-00";
             this.maskedTextBoxCPF.Name = "maskedTextBoxCPF";
-            this.maskedTextBoxCPF.Size = new System.Drawing.Size(89, 23);
+            this.maskedTextBoxCPF.Size = new System.Drawing.Size(115, 23);
             this.maskedTextBoxCPF.TabIndex = 3;
             this.maskedTextBoxCPF.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
@@ -287,7 +287,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(496, 354);
+            this.ClientSize = new System.Drawing.Size(449, 354);
             this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonGravar);

@@ -1,11 +1,12 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 {
-    // existe um textBoxNome que não existe no designer e nao sei tirar use o textBoxName
     public partial class TelaCadastroGrupoVeiculoForm : Form
     {
         private GrupoVeiculos? grupoVeiculos;
@@ -25,7 +26,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
         {
             InitializeComponent();
             this.ConfigurarTela();
-            textBoxNome.Focus();
+            ConfigurarComponentes();
         }
 
         private void buttonGravar_Click(object sender, EventArgs e)
@@ -44,12 +45,18 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
         private void ConfigurarTelaEditar()
         {
             textBoxID.Text = grupoVeiculos!.Id.ToString();
-            textBoxName.Text = grupoVeiculos!.Nome;
+            textBoxNome.Text = grupoVeiculos!.Nome;
         }
 
         private void ObterDadosDaTela()
         {
-            GrupoVeiculos!.Nome = textBoxName.Text;
+            GrupoVeiculos!.Nome = textBoxNome.Text;
+        }
+
+        private void ConfigurarComponentes()
+        {
+            textBoxNome.Focus();
+            textBoxNome.AceitaSoLetras();
         }
     }
 }

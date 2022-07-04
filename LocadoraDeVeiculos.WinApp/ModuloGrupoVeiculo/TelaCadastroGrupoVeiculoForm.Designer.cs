@@ -28,31 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxNome = new System.Windows.Forms.TextBox();
             this.groupBoxGrupoVeiculo = new System.Windows.Forms.GroupBox();
             this.labelID = new System.Windows.Forms.Label();
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.labelDescricao = new System.Windows.Forms.Label();
-            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxNome = new System.Windows.Forms.TextBox();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonGravar = new System.Windows.Forms.Button();
             this.groupBoxGrupoVeiculo.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // textBoxNome
-            // 
-            this.textBoxNome.Location = new System.Drawing.Point(24, 24);
-            this.textBoxNome.Name = "textBoxNome";
-            this.textBoxNome.PlaceholderText = "Nome";
-            this.textBoxNome.Size = new System.Drawing.Size(100, 23);
-            this.textBoxNome.TabIndex = 0;
             // 
             // groupBoxGrupoVeiculo
             // 
             this.groupBoxGrupoVeiculo.Controls.Add(this.labelID);
             this.groupBoxGrupoVeiculo.Controls.Add(this.textBoxID);
             this.groupBoxGrupoVeiculo.Controls.Add(this.labelDescricao);
-            this.groupBoxGrupoVeiculo.Controls.Add(this.textBoxName);
+            this.groupBoxGrupoVeiculo.Controls.Add(this.textBoxNome);
             this.groupBoxGrupoVeiculo.Location = new System.Drawing.Point(12, 12);
             this.groupBoxGrupoVeiculo.Name = "groupBoxGrupoVeiculo";
             this.groupBoxGrupoVeiculo.Size = new System.Drawing.Size(271, 103);
@@ -72,7 +63,7 @@
             // textBoxID
             // 
             this.textBoxID.Enabled = false;
-            this.textBoxID.Location = new System.Drawing.Point(79, 34);
+            this.textBoxID.Location = new System.Drawing.Point(67, 34);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.ReadOnly = true;
             this.textBoxID.Size = new System.Drawing.Size(75, 23);
@@ -87,13 +78,13 @@
             this.labelDescricao.TabIndex = 1;
             this.labelDescricao.Text = "Nome:";
             // 
-            // textBoxName
+            // textBoxNome
             // 
-            this.textBoxName.Location = new System.Drawing.Point(77, 63);
-            this.textBoxName.MaxLength = 255;
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(188, 23);
-            this.textBoxName.TabIndex = 0;
+            this.textBoxNome.Location = new System.Drawing.Point(67, 63);
+            this.textBoxNome.MaxLength = 255;
+            this.textBoxNome.Name = "textBoxNome";
+            this.textBoxNome.Size = new System.Drawing.Size(188, 23);
+            this.textBoxNome.TabIndex = 0;
             // 
             // buttonCancelar
             // 
@@ -122,26 +113,22 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(294, 158);
             this.Controls.Add(this.buttonCancelar);
-            this.Controls.Add(this.groupBoxGrupoVeiculo);
-            this.Controls.Add(this.textBoxNome);
             this.Controls.Add(this.buttonGravar);
+            this.Controls.Add(this.groupBoxGrupoVeiculo);
             this.Name = "TelaCadastroGrupoVeiculoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Grupo de Veículos";
             this.groupBoxGrupoVeiculo.ResumeLayout(false);
             this.groupBoxGrupoVeiculo.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBoxNome;
         private System.Windows.Forms.GroupBox groupBoxGrupoVeiculo;
         private System.Windows.Forms.Label labelDescricao;
         private System.Windows.Forms.Button buttonGravar;
-        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.TextBox textBoxNome;
         public System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.Label labelID;
         private System.Windows.Forms.TextBox textBoxID;

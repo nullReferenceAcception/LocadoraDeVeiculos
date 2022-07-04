@@ -31,7 +31,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             CarregarCores();
             CarregarCombustiveis();
             CarregarGrupoVeiculos();
-            textBoxModelo.Focus();
+            ConfigurarComponentes();
         }
 
         public Func<Veiculo, ValidationResult>? GravarRegistro { get; set; }
@@ -106,6 +106,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
                 pictureBoxFoto.Image = Image.FromFile(openFileDialogFoto.FileName);
                 pictureBoxFoto.Image = new Bitmap(pictureBoxFoto.Image, new Size(331, 301));
             }
+        }
+
+        private void ConfigurarComponentes()
+        {
+            textBoxAno.AceitaSoNumeros();
+            textBoxKmPercorrido.AceitaSoNumeros();
+            textBoxModelo.Focus();
         }
     }
 }

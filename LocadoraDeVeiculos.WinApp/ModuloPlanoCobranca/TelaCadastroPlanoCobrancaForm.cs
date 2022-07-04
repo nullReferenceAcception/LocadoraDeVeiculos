@@ -26,10 +26,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
         {
             InitializeComponent();
             this.ConfigurarTela();
-            textBoxValorDia.AplicarMascaraMoeda();
-            textBoxValorPorKm.AplicarMascaraMoeda();
+            textBoxValorDia.AceitaNumeroEVirgulaPoeMascaraMoeda();
+            textBoxValorPorKm.AceitaNumeroEVirgulaPoeMascaraMoeda();
             this.servicoGrupoVeiculos = servicoGrupoVeiculos;
             textBoxNome.Focus();
+            textBoxNome.AceitaSoLetras();
         }
 
         public Func<PlanoCobranca, ValidationResult>? GravarRegistro { get; set; }
