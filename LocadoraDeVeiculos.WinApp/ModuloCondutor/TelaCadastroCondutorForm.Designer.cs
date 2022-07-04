@@ -175,11 +175,12 @@
             this.dateTimePickerValidadeCNH.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerValidadeCNH.Location = new System.Drawing.Point(105, 202);
             this.dateTimePickerValidadeCNH.Name = "dateTimePickerValidadeCNH";
-            this.dateTimePickerValidadeCNH.Size = new System.Drawing.Size(89, 23);
+            this.dateTimePickerValidadeCNH.Size = new System.Drawing.Size(99, 23);
             this.dateTimePickerValidadeCNH.TabIndex = 5;
             // 
             // buttonGravar
             // 
+            this.buttonGravar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonGravar.Location = new System.Drawing.Point(290, 314);
             this.buttonGravar.Name = "buttonGravar";
@@ -191,6 +192,7 @@
             // 
             // buttonCancelar
             // 
+            this.buttonCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancelar.Location = new System.Drawing.Point(363, 314);
             this.buttonCancelar.Name = "buttonCancelar";
@@ -255,7 +257,7 @@
             // radioButtonUsarRegistro
             // 
             this.radioButtonUsarRegistro.AutoSize = true;
-            this.radioButtonUsarRegistro.Location = new System.Drawing.Point(283, 23);
+            this.radioButtonUsarRegistro.Location = new System.Drawing.Point(278, 24);
             this.radioButtonUsarRegistro.Name = "radioButtonUsarRegistro";
             this.radioButtonUsarRegistro.Size = new System.Drawing.Size(141, 19);
             this.radioButtonUsarRegistro.TabIndex = 29;

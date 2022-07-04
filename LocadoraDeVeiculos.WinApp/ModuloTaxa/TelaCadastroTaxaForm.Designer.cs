@@ -44,6 +44,7 @@
             // 
             // buttonCancelar
             // 
+            this.buttonCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancelar.Location = new System.Drawing.Point(186, 178);
             this.buttonCancelar.Name = "buttonCancelar";
@@ -54,6 +55,7 @@
             // 
             // buttonGravar
             // 
+            this.buttonGravar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonGravar.Location = new System.Drawing.Point(113, 178);
             this.buttonGravar.Name = "buttonGravar";

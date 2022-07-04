@@ -31,17 +31,18 @@
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonGravar = new System.Windows.Forms.Button();
             this.groupBoxDevolucao = new System.Windows.Forms.GroupBox();
-            this.labelLocacao = new System.Windows.Forms.Label();
-            this.comboBoxLocacao = new System.Windows.Forms.ComboBox();
-            this.labelTanque = new System.Windows.Forms.Label();
-            this.textBoxTanque = new System.Windows.Forms.TextBox();
-            this.labelDataDevolucao = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.labelDataDevolucao = new System.Windows.Forms.Label();
+            this.textBoxTanque = new System.Windows.Forms.TextBox();
+            this.labelTanque = new System.Windows.Forms.Label();
+            this.comboBoxLocacao = new System.Windows.Forms.ComboBox();
+            this.labelLocacao = new System.Windows.Forms.Label();
             this.groupBoxDevolucao.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonCancelar
             // 
+            this.buttonCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancelar.Location = new System.Drawing.Point(193, 143);
             this.buttonCancelar.Name = "buttonCancelar";
@@ -52,6 +53,7 @@
             // 
             // buttonGravar
             // 
+            this.buttonGravar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonGravar.Location = new System.Drawing.Point(120, 143);
             this.buttonGravar.Name = "buttonGravar";
@@ -75,40 +77,14 @@
             this.groupBoxDevolucao.TabStop = false;
             this.groupBoxDevolucao.Text = "Dados da devolução:";
             // 
-            // labelLocacao
+            // dateTimePicker1
             // 
-            this.labelLocacao.AutoSize = true;
-            this.labelLocacao.Location = new System.Drawing.Point(55, 25);
-            this.labelLocacao.Name = "labelLocacao";
-            this.labelLocacao.Size = new System.Drawing.Size(54, 15);
-            this.labelLocacao.TabIndex = 0;
-            this.labelLocacao.Text = "Locação:";
-            // 
-            // comboBoxLocacao
-            // 
-            this.comboBoxLocacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxLocacao.FormattingEnabled = true;
-            this.comboBoxLocacao.Location = new System.Drawing.Point(115, 22);
-            this.comboBoxLocacao.Name = "comboBoxLocacao";
-            this.comboBoxLocacao.Size = new System.Drawing.Size(121, 23);
-            this.comboBoxLocacao.TabIndex = 0;
-            // 
-            // labelTanque
-            // 
-            this.labelTanque.AutoSize = true;
-            this.labelTanque.Location = new System.Drawing.Point(61, 54);
-            this.labelTanque.Name = "labelTanque";
-            this.labelTanque.Size = new System.Drawing.Size(48, 15);
-            this.labelTanque.TabIndex = 2;
-            this.labelTanque.Text = "Tanque:";
-            // 
-            // textBoxTanque
-            // 
-            this.textBoxTanque.Location = new System.Drawing.Point(115, 51);
-            this.textBoxTanque.MaxLength = 11;
-            this.textBoxTanque.Name = "textBoxTanque";
-            this.textBoxTanque.Size = new System.Drawing.Size(100, 23);
-            this.textBoxTanque.TabIndex = 1;
+            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(115, 81);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(100, 23);
+            this.dateTimePicker1.TabIndex = 2;
             // 
             // labelDataDevolucao
             // 
@@ -119,13 +95,40 @@
             this.labelDataDevolucao.TabIndex = 4;
             this.labelDataDevolucao.Text = "Data da devolução:";
             // 
-            // dateTimePicker1
+            // textBoxTanque
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(115, 81);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(100, 23);
-            this.dateTimePicker1.TabIndex = 2;
+            this.textBoxTanque.Location = new System.Drawing.Point(115, 51);
+            this.textBoxTanque.MaxLength = 11;
+            this.textBoxTanque.Name = "textBoxTanque";
+            this.textBoxTanque.Size = new System.Drawing.Size(100, 23);
+            this.textBoxTanque.TabIndex = 1;
+            // 
+            // labelTanque
+            // 
+            this.labelTanque.AutoSize = true;
+            this.labelTanque.Location = new System.Drawing.Point(61, 54);
+            this.labelTanque.Name = "labelTanque";
+            this.labelTanque.Size = new System.Drawing.Size(48, 15);
+            this.labelTanque.TabIndex = 2;
+            this.labelTanque.Text = "Tanque:";
+            // 
+            // comboBoxLocacao
+            // 
+            this.comboBoxLocacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxLocacao.FormattingEnabled = true;
+            this.comboBoxLocacao.Location = new System.Drawing.Point(115, 22);
+            this.comboBoxLocacao.Name = "comboBoxLocacao";
+            this.comboBoxLocacao.Size = new System.Drawing.Size(121, 23);
+            this.comboBoxLocacao.TabIndex = 0;
+            // 
+            // labelLocacao
+            // 
+            this.labelLocacao.AutoSize = true;
+            this.labelLocacao.Location = new System.Drawing.Point(55, 25);
+            this.labelLocacao.Name = "labelLocacao";
+            this.labelLocacao.Size = new System.Drawing.Size(54, 15);
+            this.labelLocacao.TabIndex = 0;
+            this.labelLocacao.Text = "Locação:";
             // 
             // TelaCadastroDevolucaoForm
             // 
