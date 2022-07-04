@@ -264,7 +264,7 @@
             // 
             // statusStripRodape
             // 
-            this.statusStripRodape.BackColor = System.Drawing.Color.Black;
+            this.statusStripRodape.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.statusStripRodape.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStripRodape.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.labelRodape});
