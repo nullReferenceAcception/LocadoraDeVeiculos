@@ -23,9 +23,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         {
             InitializeComponent();
             this.ConfigurarTela();
-            textBoxSalario.AplicarMascaraMoeda();
-            textBoxNome.Focus();
+            ConfigurarComponentes();
         }
+
+        
 
         public Func<Funcionario, ValidationResult>? GravarRegistro { get; set; }
 
@@ -74,6 +75,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             if(_funcionario.Id != 0)
                 _ = _funcionario.EhAdmin ? radioButtonAdmin.Checked = true : radioButtonFuncionario.Checked = true;
+        }
+
+        private void ConfigurarComponentes()
+        {
+            textBoxSalario.AceitaNumeroEVirgulaPoeMascaraMoeda();
+            textBoxNome.AceitaSoLetras();
+            textBoxCidade.AceitaSoLetras();
+            textBoxNome.Focus();
         }
     }
 }
