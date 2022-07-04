@@ -47,6 +47,8 @@
             this.labelID = new System.Windows.Forms.Label();
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.groupBoxCondutor = new System.Windows.Forms.GroupBox();
+            this.comboBoxClienteFisico = new System.Windows.Forms.ComboBox();
+            this.radioButtonUsarRegistro = new System.Windows.Forms.RadioButton();
             this.labelCPF = new System.Windows.Forms.Label();
             this.maskedTextBoxCPF = new System.Windows.Forms.MaskedTextBox();
             this.groupBoxCondutor.SuspendLayout();
@@ -217,6 +219,8 @@
             // 
             // groupBoxCondutor
             // 
+            this.groupBoxCondutor.Controls.Add(this.comboBoxClienteFisico);
+            this.groupBoxCondutor.Controls.Add(this.radioButtonUsarRegistro);
             this.groupBoxCondutor.Controls.Add(this.labelID);
             this.groupBoxCondutor.Controls.Add(this.labelCPF);
             this.groupBoxCondutor.Controls.Add(this.maskedTextBoxCPF);
@@ -233,10 +237,33 @@
             this.groupBoxCondutor.Controls.Add(this.labelCNH);
             this.groupBoxCondutor.Location = new System.Drawing.Point(12, 12);
             this.groupBoxCondutor.Name = "groupBoxCondutor";
-            this.groupBoxCondutor.Size = new System.Drawing.Size(291, 296);
+            this.groupBoxCondutor.Size = new System.Drawing.Size(424, 296);
             this.groupBoxCondutor.TabIndex = 27;
             this.groupBoxCondutor.TabStop = false;
             this.groupBoxCondutor.Text = "Dados do condutor:";
+            // 
+            // comboBoxClienteFisico
+            // 
+            this.comboBoxClienteFisico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxClienteFisico.FormattingEnabled = true;
+            this.comboBoxClienteFisico.Location = new System.Drawing.Point(297, 48);
+            this.comboBoxClienteFisico.Name = "comboBoxClienteFisico";
+            this.comboBoxClienteFisico.Size = new System.Drawing.Size(121, 23);
+            this.comboBoxClienteFisico.TabIndex = 30;
+            this.comboBoxClienteFisico.SelectedIndexChanged += new System.EventHandler(this.comboBoxClienteFisico_SelectedIndexChanged);
+            // 
+            // radioButtonUsarRegistro
+            // 
+            this.radioButtonUsarRegistro.AutoSize = true;
+            this.radioButtonUsarRegistro.Location = new System.Drawing.Point(283, 23);
+            this.radioButtonUsarRegistro.Name = "radioButtonUsarRegistro";
+            this.radioButtonUsarRegistro.Size = new System.Drawing.Size(141, 19);
+            this.radioButtonUsarRegistro.TabIndex = 29;
+            this.radioButtonUsarRegistro.TabStop = true;
+            this.radioButtonUsarRegistro.Text = "Usar registro existente";
+            this.radioButtonUsarRegistro.UseVisualStyleBackColor = true;
+            this.radioButtonUsarRegistro.CheckedChanged += new System.EventHandler(this.radioButtonUsarRegistro_CheckedChanged);
+            this.radioButtonUsarRegistro.Click += new System.EventHandler(this.radioButtonUsarRegistro_Click);
             // 
             // labelCPF
             // 
@@ -260,7 +287,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(315, 354);
+            this.ClientSize = new System.Drawing.Size(496, 354);
             this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonGravar);
@@ -300,5 +327,7 @@
         private System.Windows.Forms.Label labelCPF;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxCPF;
         public System.Windows.Forms.Button buttonCancelar;
+        private System.Windows.Forms.ComboBox comboBoxClienteFisico;
+        private System.Windows.Forms.RadioButton radioButtonUsarRegistro;
     }
 }

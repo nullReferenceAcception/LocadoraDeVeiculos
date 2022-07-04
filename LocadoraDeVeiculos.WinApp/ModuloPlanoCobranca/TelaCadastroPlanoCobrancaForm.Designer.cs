@@ -74,6 +74,7 @@
             // 
             // comboBoxPlano
             // 
+            this.comboBoxPlano.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPlano.FormattingEnabled = true;
             this.comboBoxPlano.Items.AddRange(new object[] {
             "Diario",
@@ -151,6 +152,7 @@
             // 
             // comboBoxGrupoVeiculos
             // 
+            this.comboBoxGrupoVeiculos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGrupoVeiculos.FormattingEnabled = true;
             this.comboBoxGrupoVeiculos.Location = new System.Drawing.Point(109, 83);
             this.comboBoxGrupoVeiculos.Name = "comboBoxGrupoVeiculos";

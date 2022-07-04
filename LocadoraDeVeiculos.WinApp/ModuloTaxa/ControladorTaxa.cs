@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloTaxa;
+﻿using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -66,10 +67,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir a Taxa?",
                "Exclusão de Taxas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-            if(resultado == DialogResult.OK)
+            ValidationResult validationResult;
+
+            if (resultado == DialogResult.OK)
             {
-                servicoTaxa.Excluir(taxaSelecionada);
+                validationResult = servicoTaxa.Excluir(taxaSelecionada);
                 CarregarTaxas();
+
+
+                if (validationResult.Errors.Count > 0)
+                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro");
             }
         }
 
@@ -89,7 +96,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             tela.Taxa = taxaSelecionada;
 
-            tela.Enable(false);
+            tela.EstadoDeAbilitacao(false);
             tela.buttonCancelar.Enabled = true;
             tela.buttonCancelar.Text = "Voltar";
             tela.ShowDialog();
