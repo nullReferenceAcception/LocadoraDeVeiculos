@@ -28,6 +28,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             comboBoxEmpresa.DataSource = servicoCliente.SelecionarTodosClientesQueSaoPessoaJuridica();
             this.ConfigurarTela();
             textBoxNome.Focus();
+            comboBoxClienteFisico.Enabled = false;
+            comboBoxClienteFisico.DataSource = servicoCliente.SelecionarTodosClientesQueSaoPessoaFisica();
         }
 
         public Func<Condutor, ValidationResult>? GravarRegistro { get; set; }
@@ -69,6 +71,40 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
                 TelaPrincipalForm.Instancia!.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage);
                 DialogResult = DialogResult.None;
             }
+        }
+        bool isChecked = false;
+        private void radioButtonUsarRegistro_CheckedChanged(object sender, EventArgs e)
+        {
+            isChecked = radioButtonUsarRegistro.Checked;
+        }
+
+        private void radioButtonUsarRegistro_Click(object sender, EventArgs e)
+        {
+            if (radioButtonUsarRegistro.Checked && !isChecked)
+            {
+                radioButtonUsarRegistro.Checked = false;
+                comboBoxClienteFisico.Enabled = false;
+            }
+            else
+            {
+                radioButtonUsarRegistro.Checked = true;
+                isChecked = false;
+                comboBoxClienteFisico.Enabled = true;
+            }
+        }
+
+        private void comboBoxClienteFisico_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Cliente cliente = (Cliente)comboBoxClienteFisico.SelectedItem;
+
+
+            textBoxNome.Text = cliente.Nome;
+            textBoxEndereco.Text = cliente.Endereco;
+            maskedTextBoxCNH.Text = cliente.CNH;
+            dateTimePickerValidadeCNH.Value = cliente.DataValidadeCNH;
+            textBoxEmail.Text = cliente.Email;
+            maskedTextBoxTelefone.Text = cliente.Telefone;
+            maskedTextBoxCPF.Text = cliente.CPF;
         }
     }
 }

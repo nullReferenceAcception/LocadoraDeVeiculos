@@ -107,7 +107,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             tela.Veiculo = veiculoSelecionado;
 
-            tela.Enable(false);
+            tela.EstadoDeAbilitacao(false);
             tela.buttonCancelar.Enabled = true;
             tela.buttonCancelar.Text = "Voltar";
             tela.ShowDialog();

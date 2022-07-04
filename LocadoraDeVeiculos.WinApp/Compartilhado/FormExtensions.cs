@@ -17,7 +17,7 @@ namespace LocadoraDeVeiculos.WinApp
 
     public static class GuiExtensionMethods
     {
-        public static void Enable(this Control con, bool enable)
+        public static void EstadoDeAbilitacao(this Control con, bool enable)
         {
             if (con != null)
             {
