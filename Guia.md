@@ -40,6 +40,8 @@ Passos para voltar a <span style="color:#64b2d1">BRANCH</span> na <span style="c
 
 7. Push na main
 
+<a href="https://i.ibb.co/TB9Kj37/fluxoGit.png"><strong style="color:HotPink">Imagem auxiliar</strong></a>
+
 ___
 
 <div id='apresentacao'/>
