@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
+using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
 using System.Windows.Forms;
 
@@ -26,10 +27,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             InitializeComponent();
             this.servicoCliente = servicoCliente;
             comboBoxEmpresa.DataSource = servicoCliente.SelecionarTodosClientesQueSaoPessoaJuridica();
-            this.ConfigurarTela();
-            textBoxNome.Focus();
-            comboBoxClienteFisico.Enabled = false;
             comboBoxClienteFisico.DataSource = servicoCliente.SelecionarTodosClientesQueSaoPessoaFisica();
+            comboBoxClienteFisico.Enabled = false;
+            this.ConfigurarTela();
+            ConfigurarComponentes();
         }
 
         public Func<Condutor, ValidationResult>? GravarRegistro { get; set; }
@@ -105,6 +106,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             textBoxEmail.Text = cliente.Email;
             maskedTextBoxTelefone.Text = cliente.Telefone;
             maskedTextBoxCPF.Text = cliente.CPF;
+        }
+
+        private void ConfigurarComponentes()
+        {
+            textBoxNome.Focus();
+            textBoxNome.AceitaSoLetras();
         }
     }
 }

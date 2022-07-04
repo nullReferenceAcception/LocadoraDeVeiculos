@@ -24,7 +24,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             InitializeComponent();
             textBoxValor.AceitaNumeroEVirgulaPoeMascaraMoeda();
             this.ConfigurarTela();
-            textBoxDescricao.Focus();
+            ConfigurarComponentes();
         }
 
         public Func<Taxa, ValidationResult>? GravarRegistro { get; set; }
@@ -58,6 +58,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
                 Taxa!.EhDiaria = true;
             else
                 Taxa!.EhDiaria = false;
+        }
+
+        private void ConfigurarComponentes()
+        {
+            textBoxDescricao.AceitaSoLetras();
+            textBoxDescricao.Focus();
         }
     }
 }

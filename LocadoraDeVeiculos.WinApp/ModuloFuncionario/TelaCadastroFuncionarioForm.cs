@@ -26,8 +26,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             ConfigurarComponentes();
         }
 
-        
-
         public Func<Funcionario, ValidationResult>? GravarRegistro { get; set; }
 
         private void buttonGravar_Click(object sender, EventArgs e)

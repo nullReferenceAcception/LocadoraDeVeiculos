@@ -30,6 +30,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             textBoxValorPorKm.AceitaNumeroEVirgulaPoeMascaraMoeda();
             this.servicoGrupoVeiculos = servicoGrupoVeiculos;
             textBoxNome.Focus();
+            textBoxNome.AceitaSoLetras();
         }
 
         public Func<PlanoCobranca, ValidationResult>? GravarRegistro { get; set; }

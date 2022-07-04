@@ -1,5 +1,6 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
+using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
 using System.Windows.Forms;
 
@@ -22,8 +23,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         public TelaCadastroClienteForm()
         {
             InitializeComponent();
-            textBoxNome.Focus();
             this.ConfigurarTela();
+            ConfigurarComponentes();
         }
 
         public Func<Cliente, ValidationResult>? GravarRegistro { get; set; }
@@ -103,6 +104,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 TelaPrincipalForm.Instancia!.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage);
                 DialogResult = DialogResult.None;
             }
+        }
+
+        private void ConfigurarComponentes()
+        {
+            textBoxNome.AceitaSoLetras();
+            textBoxNome.Focus();
         }
     }
 }
