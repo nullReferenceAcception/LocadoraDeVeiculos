@@ -1,18 +1,16 @@
-<h2 style="color:red"> Guia de padrıes e roteiro de processo </h2>
+<h2 style="color:red" id='topo'> Guia de padr√µes e roteiro de processo </h2>
 
 ___
 
-*Sum·rio*:
+*Sum√°rio*:
 1. [Git](#git)
-2. [ApresentaÁ„o](#apresentacao)
-3. [AplicaÁ„o](#aplicacao)
-4. [DomÌnio](#dominio)
+   * [Erros no Git](#errosGit) 
+2. [Apresenta√ß√£o](#apresentacao)
+3. [Aplica√ß√£o](#aplicacao)
+4. [Dom√≠nio](#dominio)
 5. [Infra](#infra)
 6. [Testes](#testes)
-7. 
-8.
-9.
-10.
+
 
 
 
@@ -22,7 +20,7 @@ ___
 <div id='git'/>
 <h1 style="color:white">Git</h1>
 
-Antes de realizar um <span style="color:#db0bb9">_pull_</span>, faÁa um <span style="color:#db0bb9">_fetch_</span> para ver as alteraÁıes que vir„o.
+Antes de realizar um <span style="color:#db0bb9">_pull_</span>, fa√ßa um <span style="color:#db0bb9">_fetch_</span> para ver as altera√ß√µes que vir√£o.
 
 Passos para voltar a <span style="color:#64b2d1">BRANCH</span> na <span style="color:#64b2d1">MAIN</span>:
 
@@ -32,22 +30,33 @@ Passos para voltar a <span style="color:#64b2d1">BRANCH</span> na <span style="c
 
 3. FETCH => PULL (Main local atualizada com a main remota)
 
-4. Merge 'xxx' into 'main' (Enviando as adiÁıes de 'xxx' para a 'main' local)
+4. Merge 'xxx' into 'main' (Enviando as adi√ß√µes de 'xxx' para a 'main' local)
 
 5. RESOLVE THE CONFLICTS
 
-6. Stage no que for necess·rio
+6. Stage no que for necess√°rio
 
 7. Push na main
 
 <a href="https://i.ibb.co/TB9Kj37/fluxoGit.png"><strong style="color:HotPink">Imagem auxiliar</strong></a>
 
 ___
+<h3 id='errosGit'>Erros</h3>
+
+Se um arquivo est√° causando problemas por ser definido a todo hora como "modificado" (M), e est√° na lista do .gitignore, uma poss√≠vel solu√ß√£o √©:
+
+1. Ajustar o arquivo .gitignore incluindo as extens√µes indesejadas.
+2. Deletar a pasta/arquivo que est√° causando o problema do resposit√≥rio do Git.
+3. Desfazer as mudan√ßas da main local que envolvem o arquivo problem√°tico.
+4. <strong style="color:red">RAPIDAMENTE</strong> fazer um pull para que a pasta/arquivo seja removida da main loca.
+
+Se tudo ocorreu certo, o problema deve se encerrar.
+___
 
 <div id='apresentacao'/>
-<h1 style="color:#e59866">ApresentaÁ„o</h1>
+<h1 style="color:#e59866">Apresenta√ß√£o</h1>
 
-Ao renomear um campo, deixar o **<span style="color:cyan">NOME ORIGINAL** seguido por sua definiÁ„o:
+Ao renomear um campo, deixar o **<span style="color:cyan">NOME ORIGINAL** seguido por sua defini√ß√£o:
 
 - textBox1 > textBoxCPF;
 - maskedTextBox1 > maskedTextBoxTelefone;
@@ -57,11 +66,11 @@ Ao renomear um campo, deixar o **<span style="color:cyan">NOME ORIGINAL** seguid
 
 
 Ao utilizar maskedTextBoxes, alterar a propriedade 'TextMaskFormat' para 'ExcludePromptAndLiterals' 
-=> Verificar possÌveis alteraÁıes nos validadores
+=> Verificar poss√≠veis altera√ß√µes nos validadores
 
-Ao criar uma nova tela, utilizar o padr„o j· seguido:
+Ao criar uma nova tela, utilizar o padr√£o j√° seguido:
 
-Um groupBox com: 'Dados do xxx', e com os componentes dentro, deixando os botıes fora do group box.
+Um groupBox com: 'Dados do xxx', e com os componentes dentro, deixando os bot√µes fora do groupBox.
 
 Lembrar dessa duas funcoes no construtor:<div>
             this.ConfigurarTela();<div>
@@ -70,15 +79,15 @@ Lembrar dessa duas funcoes no construtor:<div>
 
 ___
 <div id='aplicacao'/>
-<h1 style="color:#76d7c4">AplicaÁ„o</h1>
+<h1 style="color:#76d7c4">Aplica√ß√£o</h1>
 
-Esta È a camada de serviÁo.
+Esta √© a camada de servi√ßo.
 ___
 
 <div id='dominio'/>
-<h1 style="color:#ec7063">DomÌnio</h1>
+<h1 style="color:#ec7063">Dom√≠nio</h1>
 
-Ao criar uma nova classe, implementar o override de Equals e gerar seus construtores necess·rios
+Ao criar uma nova classe, implementar o override de Equals e gerar seus construtores necess√°rios
 ___
 
 <div id='infra'/>
@@ -115,10 +124,10 @@ ___
 <div id='testes'/>
 <h1 style="color:#566573">Testes</h1>
 
-<h3>Unit·rios</h3>
+<h3>Unit√°rios</h3>
 
 
-<h3>IntegraÁ„o</h3>
+<h3>Integra√ß√£o</h3>
 Realizar os testes por ordem:
 
 a) Inserir<br>
@@ -126,7 +135,9 @@ b) Editar<br>
 c) Excluir<br>
 d) SelecionarPorId<br>
 e) SelecionarTodos<br>
-f) N„o pode fazer algo<br>
+f) N√£o pode fazer algo<br>
 
 Usando prioritariamente **<span style="color:orange">FluentAssertions</span>**
 ___
+
+<a href="#topo">Topo</a>
