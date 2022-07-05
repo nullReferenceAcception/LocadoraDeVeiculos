@@ -41,7 +41,7 @@ Passos para voltar a <span style="color:#64b2d1">BRANCH</span> na <span style="c
 <a href="https://i.ibb.co/TB9Kj37/fluxoGit.png"><strong style="color:HotPink">Imagem auxiliar</strong></a>
 
 ___
-<h3 id='errosGit'>Erros</h3>
+<h3 id='errosGit' style="color:violet">Erros</h3>
 
 Se um arquivo está causando problemas por ser definido a todo hora como "modificado" (M), e está na lista do .gitignore, uma possível solução é:
 

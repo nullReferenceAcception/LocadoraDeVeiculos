@@ -1,5 +1,4 @@
-﻿using FluentValidation.Results;
-using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
+﻿using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using LocadoraDeVeiculos.Servico.Compartilhado;
 
 namespace LocadoraDeVeiculos.Servico.ModuloVeiculos
@@ -11,6 +10,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloVeiculos
         public ServicoVeiculo(IRepositorioVeiculo repositorio) : base(new ValidadorVeiculo(), repositorio)
         {
             this._repositorioVeiculo = repositorio;
+            Serilog.Log.Logger.Information("Ué²");
         }
 
         protected override string SqlMensagemDeErroSeTiverDuplicidade => "Placa já cadastrada";

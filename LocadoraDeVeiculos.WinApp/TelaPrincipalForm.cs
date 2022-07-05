@@ -216,7 +216,6 @@ namespace LocadoraDeVeiculos.WinApp
             White
         }
 
-
         public void AtualizarRodape(string mensagem,Cor cor)
         {
             labelRodape.Text = mensagem;

@@ -7,6 +7,9 @@
     <Compile Update="ModuloCondutor\TelaCadastroCondutorForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ModuloDevolucao\TabelaDevolucaoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="ModuloDevolucao\TelaCadastroDevolucaoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -27,6 +30,9 @@
     </Compile>
     <Compile Update="ModuloGrupoVeiculo\TelaCadastroGrupoVeiculoForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ModuloLocacao\TabelaLocacaoControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="ModuloLocacao\TelaCadastroLocacaoForm.cs">
       <SubType>Form</SubType>
