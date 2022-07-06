@@ -28,6 +28,8 @@ namespace LocadoraDeVeiculos.WinApp
             Log.Logger.Information("Programa inicializado");
 
             Application.Run(new TelaPrincipalForm());
+
+            Log.Logger.Information("Programa finalizado");
         }
     }
 }

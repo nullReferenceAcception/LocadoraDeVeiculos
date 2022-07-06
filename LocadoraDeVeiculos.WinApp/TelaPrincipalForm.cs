@@ -190,13 +190,13 @@ namespace LocadoraDeVeiculos.WinApp
             RepositorioVeiculo repositorioVeiculo = new();
             RepositorioPlanoCobranca repositorioPlanoCobranca = new();
 
-            ServicoTaxa servicoTaxa = new ServicoTaxa(repositorioTaxa);
-            ServicoFuncionario servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
-            ServicoGrupoVeiculos servicoGrupoVeiculos = new ServicoGrupoVeiculos(repositorioGrupoVeiculos);
-            ServicoCliente servicoCliente = new ServicoCliente(repositorioCliente);
+            ServicoTaxa servicoTaxa = new(repositorioTaxa);
+            ServicoFuncionario servicoFuncionario = new(repositorioFuncionario);
+            ServicoGrupoVeiculos servicoGrupoVeiculos = new(repositorioGrupoVeiculos);
+            ServicoCliente servicoCliente = new(repositorioCliente);
             ServicoVeiculo servicoVeiculo = new(repositorioVeiculo);
-            ServicoCondutor servicoCondutor = new ServicoCondutor(repositorioCondutor);
-            ServicoPlanoCobranca servicoPlanoCobranca = new ServicoPlanoCobranca(repositorioPlanoCobranca);
+            ServicoCondutor servicoCondutor = new(repositorioCondutor);
+            ServicoPlanoCobranca servicoPlanoCobranca = new(repositorioPlanoCobranca);
 
             controladores = new Dictionary<string, ControladorBase>();
 
