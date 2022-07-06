@@ -25,8 +25,6 @@ namespace LocadoraDeVeiculos.WinApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Log.Logger.Information("Ué");
-
             Application.Run(new TelaPrincipalForm());
         }
     }

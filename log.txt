@@ -1,0 +1,6 @@
+2022-07-05 22:33:02.274 -03:00 [INF] Ué²
+2022-07-05 22:33:32.680 -03:00 [INF] Ué²
+2022-07-05 22:33:47.056 -03:00 [INF] Falha ao Excluir GrupoVeiculos  id: 23007
+2022-07-05 22:33:47.057 -03:00 [ERR] The DELETE statement conflicted with the REFERENCE constraint "FK_plano_cobranca_To_grupo_veiculo". The conflict occurred in database "locadora_db", table "dbo.tb_plano_cobranca", column 'grupo_veiculo_id'.
+The statement has been terminated.
+2022-07-05 22:33:47.057 -03:00 [INF] Excluido GrupoVeiculos  id: 23007

@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio;
+using Serilog;
 using System.Collections.Generic;
 
 namespace LocadoraDeVeiculos.Servico.Compartilhado
@@ -20,12 +21,19 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         public virtual ValidationResult Inserir(T registro)
         {
+
+            Log.Logger.Information($"Inserindo {typeof(T).Name}");
+
             ValidationResult resultadoValidacao = ValidarRegistro(registro);
 
             if (resultadoValidacao.IsValid == false)
+            {
+                LogFalha("Inserir",registro, resultadoValidacao);
                 return resultadoValidacao;
+            }
 
             repositorio.Inserir(registro);
+            Log.Logger.Information($"Inserido {typeof(T).Name}  id: {registro.Id}");
             return resultadoValidacao;
         }
 
@@ -34,10 +42,23 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             ValidationResult resultadoValidacao = ValidarRegistro(registro);
 
             if (resultadoValidacao.IsValid == false)
+            {
+                LogFalha("Editar",registro, resultadoValidacao);
                 return resultadoValidacao;
+            }
 
             repositorio.Editar(registro);
+            Log.Logger.Information($"Editado {typeof(T).Name}  id: {registro.Id}");
             return resultadoValidacao;
+        }
+
+        private static void LogFalha(string funcao,T registro, ValidationResult resultadoValidacao)
+        {
+            Log.Logger.Information($"Falha ao {funcao} {typeof(T).Name}  id: {registro.Id}");
+            foreach (var item in resultadoValidacao.Errors)
+            {
+                Log.Logger.Error(item.ErrorMessage);
+            }
         }
 
         private ValidationResult ValidarRegistro(T registro)
@@ -45,7 +66,9 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             var resultadoValidacao = validador.Validate(registro);
 
             if (resultadoValidacao.IsValid == false)
+            {
                 return resultadoValidacao;
+            }
 
             resultadoValidacao = HaDuplicidade(registro, resultadoValidacao);
             return resultadoValidacao;
@@ -58,8 +81,12 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             string mensagem = repositorio.Excluir(registro);
 
             if (!string.IsNullOrEmpty(mensagem))
+            {
                 resultadoValidacao.Errors.Add(new ValidationFailure("", mensagem));
-
+                LogFalha("Excluir",registro, resultadoValidacao);
+                return resultadoValidacao;
+            }
+            Log.Logger.Information($"Excluido {typeof(T).Name}  id: {registro.Id}");
             return resultadoValidacao;
         }
 
