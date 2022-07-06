@@ -45,7 +45,7 @@ namespace LocadoraDeVeiculos.WinApp
             this.ConfigurarTela();
         }
 
-        public static TelaPrincipalForm? Instancia
+        public static TelaPrincipalForm Instancia
         {
             get;
             private set;
@@ -53,24 +53,24 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-            controlador!.Inserir();
+            controlador.Inserir();
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            controlador!.Editar();
+            controlador.Editar();
         }
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            controlador!.Excluir();
+            controlador.Excluir();
         }
 
         private void btnVisualizar_Click(object sender, EventArgs e)
         {
-            controlador!.Visualizar();
+            controlador.Visualizar();
         }
         private void btnFuncionariosDesativados_Click(object sender, EventArgs e)
         {
-            bool tipoFuncionario = controlador!.VisualizarDesativados();
+            bool tipoFuncionario = controlador.VisualizarDesativados();
 
             DesabilitarBotoes(tipoFuncionario);
 
@@ -153,7 +153,7 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void ConfigurarToolbox()
         {
-            ConfiguracaoToolboxBase configuracao = controlador!.ObtemConfiguracaoToolbox();
+            ConfiguracaoToolboxBase configuracao = controlador.ObtemConfiguracaoToolbox();
 
             if (configuracao != null)
             {

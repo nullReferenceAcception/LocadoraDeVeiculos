@@ -7,12 +7,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 {
     public class ControladorFuncionario : ControladorBase
     {
-        private IServicoFuncionario? servicoFuncionario;
-        private TabelaFuncionarioControl? _tabelaFuncionario;
+        private IServicoFuncionario _servicoFuncionario;
+        private TabelaFuncionarioControl _tabelaFuncionario;
         private bool estadoFuncionarios = true;
         public ControladorFuncionario(IServicoFuncionario ser)
         {
-            servicoFuncionario = ser;
+            _servicoFuncionario = ser;
         }
 
         public override void Inserir()
@@ -21,7 +21,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             tela.Funcionario = new();
 
-            tela.GravarRegistro = servicoFuncionario!.Inserir;
+            tela.GravarRegistro = _servicoFuncionario.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -31,13 +31,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         public override void Editar()
         {
-            var numero = _tabelaFuncionario!.ObtemNumeroFuncionarioSelecionado();
+            var numero = _tabelaFuncionario.ObtemNumeroFuncionarioSelecionado();
 
-            Funcionario funcionarioSelecionado = servicoFuncionario!.SelecionarPorID(numero);
+            Funcionario funcionarioSelecionado = _servicoFuncionario.SelecionarPorID(numero);
 
             if (funcionarioSelecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um funcionário para editar",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione um funcionário para editar",CorParaRodape.Yellow);
                 return;
             }
 
@@ -45,7 +45,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             tela.Funcionario = funcionarioSelecionado;
 
-            tela.GravarRegistro = servicoFuncionario.Editar;
+            tela.GravarRegistro = _servicoFuncionario.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -55,41 +55,41 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         public override void Excluir()
         {
-            var numero = _tabelaFuncionario!.ObtemNumeroFuncionarioSelecionado();
+            var numero = _tabelaFuncionario.ObtemNumeroFuncionarioSelecionado();
 
-            Funcionario funcionarioSelecionado = servicoFuncionario!.SelecionarPorID(numero);
+            Funcionario funcionarioSelecionado = _servicoFuncionario.SelecionarPorID(numero);
 
             if (funcionarioSelecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um funcionário para desabilitar",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione um funcionário para desabilitar",CorParaRodape.Yellow);
                 return;
             }
 
             DialogResult resultado = MessageBox.Show("Deseja realmente desabilitar o funcionário?",
-               "Exclusão de Disciplinas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+               "Desabilitar funcionários", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             ValidationResult validationResult;
 
 
             if (resultado == DialogResult.OK)
             {
-                validationResult = servicoFuncionario.Excluir(funcionarioSelecionado);
+                validationResult = _servicoFuncionario.Excluir(funcionarioSelecionado);
                 CarregarFuncionariosAtivos();
 
                 if (validationResult.Errors.Count > 0)
-                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro",CorParaRodape.Red);
+                    TelaPrincipalForm.Instancia.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro", CorParaRodape.Red);
             }
         }
 
         public override void Visualizar()
         {
-            var numero = _tabelaFuncionario!.ObtemNumeroFuncionarioSelecionado();
+            var numero = _tabelaFuncionario.ObtemNumeroFuncionarioSelecionado();
 
-            Funcionario selecionado = servicoFuncionario!.SelecionarPorID(numero);
+            Funcionario selecionado = _servicoFuncionario.SelecionarPorID(numero);
 
             if (selecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um funcionário para visualizar",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione um funcionário para visualizar", CorParaRodape.Yellow);
                 return;
             }
 
@@ -115,16 +115,17 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
                 CarregarFuncionarioInativos();
                 estadoFuncionarios = false;
             }
+
             return estadoFuncionarios;
         }
 
         private void CarregarFuncionarioInativos()
         {
-            List<Funcionario> funcionariosDesativados = servicoFuncionario!.SelecionarDesativados();
+            List<Funcionario> funcionariosDesativados = _servicoFuncionario!.SelecionarDesativados();
 
             _tabelaFuncionario!.AtualizarRegistros(funcionariosDesativados);
 
-            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {funcionariosDesativados.Count} {(funcionariosDesativados.Count == 1 ? "funcionário desativado" : "funcionários desativados")}",CorParaRodape.White);
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {funcionariosDesativados.Count} {(funcionariosDesativados.Count == 1 ? "funcionário desativado" : "funcionários desativados")}", CorParaRodape.White);
         }
 
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
@@ -144,11 +145,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         private void CarregarFuncionariosAtivos()
         {
-            List<Funcionario> funcionarios = servicoFuncionario!.SelecionarTodos();
+            List<Funcionario> funcionarios = _servicoFuncionario!.SelecionarTodos();
 
             _tabelaFuncionario!.AtualizarRegistros(funcionarios);
 
-            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {funcionarios.Count} {(funcionarios.Count == 1 ? "funcionário" : "funcionários")}",CorParaRodape.White);
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {funcionarios.Count} {(funcionarios.Count == 1 ? "funcionário" : "funcionários")}", CorParaRodape.White);
         }
     }
 }

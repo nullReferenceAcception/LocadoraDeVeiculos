@@ -36,7 +36,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             if (taxaSelecionada == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma taxa para editar",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma taxa para editar",CorParaRodape.Yellow);
                 return;
             }
 
@@ -60,7 +60,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             if (taxaSelecionada == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma taxa para excluir",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma taxa para excluir",CorParaRodape.Yellow);
                 return;
             }
 
@@ -76,7 +76,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
 
                 if (validationResult.Errors.Count > 0)
-                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro",CorParaRodape.Red);
+                    TelaPrincipalForm.Instancia.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro",CorParaRodape.Red);
             }
         }
 
@@ -88,7 +88,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             if (taxaSelecionada == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione uma taxa para visualizar",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma taxa para visualizar",CorParaRodape.Yellow);
                 return;
             }
 
@@ -123,7 +123,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             _tabelaTaxas!.AtualizarRegistros(taxas);
 
-            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {taxas.Count} {(taxas.Count == 1 ? "taxa" : "taxas")}",CorParaRodape.White);
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {taxas.Count} {(taxas.Count == 1 ? "taxa" : "taxas")}",CorParaRodape.White);
         }
     }
 }

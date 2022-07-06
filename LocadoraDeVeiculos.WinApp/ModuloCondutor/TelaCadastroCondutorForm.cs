@@ -9,15 +9,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 {
     public partial class TelaCadastroCondutorForm : Form
     {
-        private Condutor? _condutor;
-        private IServicoCliente servicoCliente;
+        private Condutor _condutor;
+        private IServicoCliente _servicoCliente;
 
-        public Condutor? Condutor
+        public Condutor Condutor
         {
             get { return _condutor; }
             set
             {
-                _condutor = value!;
+                _condutor = value;
                 ConfigurarTelaEditar();
             }
         }
@@ -25,7 +25,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         public TelaCadastroCondutorForm(IServicoCliente servicoCliente)
         {
             InitializeComponent();
-            this.servicoCliente = servicoCliente;
+            this._servicoCliente = servicoCliente;
             comboBoxEmpresa.DataSource = servicoCliente.SelecionarTodosClientesQueSaoPessoaJuridica();
             comboBoxClienteFisico.DataSource = servicoCliente.SelecionarTodosClientesQueSaoPessoaFisica();
             comboBoxClienteFisico.Enabled = false;
@@ -33,12 +33,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             ConfigurarComponentes();
         }
 
-        public Func<Condutor, ValidationResult>? GravarRegistro { get; set; }
+        public Func<Condutor, ValidationResult> GravarRegistro { get; set; }
 
         private void ConfigurarTelaEditar()
         {
-            textBoxID.Text = _condutor!.Id.ToString();
-            textBoxNome.Text = _condutor!.Nome;
+            textBoxID.Text = _condutor.Id.ToString();
+            textBoxNome.Text = _condutor.Nome;
             textBoxEndereco.Text = _condutor.Endereco;
             maskedTextBoxCNH.Text = _condutor.CNH;
             if (_condutor.Id != 0)
@@ -51,7 +51,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
         private void ObterDadosDaTela()
         {
-            _condutor!.Nome = textBoxNome.Text;
+            _condutor.Nome = textBoxNome.Text;
             _condutor.Endereco = textBoxEndereco.Text;
             _condutor.CNH = maskedTextBoxCNH.Text;
             _condutor.DataValidadeCNH = dateTimePickerValidadeCNH.Value;
@@ -65,14 +65,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         {
             ObterDadosDaTela();
 
-            var resultadoValidacao = GravarRegistro!(_condutor!);
+            var resultadoValidacao = GravarRegistro(_condutor);
 
             if (!resultadoValidacao.IsValid)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage,CorParaRodape.Red);
+                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage, CorParaRodape.Red);
                 DialogResult = DialogResult.None;
             }
         }
+
         bool isChecked = false;
         private void radioButtonUsarRegistro_CheckedChanged(object sender, EventArgs e)
         {

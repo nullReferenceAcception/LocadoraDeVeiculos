@@ -77,7 +77,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             if (!resultadoValidacao.IsValid)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage,CorParaRodape.Red);
+                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage,CorParaRodape.Red);
                 DialogResult = DialogResult.None;
             }
         }

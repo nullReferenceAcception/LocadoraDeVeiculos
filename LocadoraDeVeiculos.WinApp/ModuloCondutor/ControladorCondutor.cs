@@ -9,7 +9,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
     public class ControladorCondutor : ControladorBase
     {
         private IServicoCondutor servicocondutor;
-        private TabelaCondutorControl? _tabelacondutor;
+        private TabelaCondutorControl _tabelacondutor;
         private IServicoCliente servicoCliente;
 
         public ControladorCondutor(IServicoCondutor ser, IServicoCliente servicoCliente)
@@ -22,7 +22,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         {
             if (servicoCliente.QuantidadeRegistro() == 0)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Cadastre no mínimo uma empresa para cadastrar um veículo",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Cadastre no mínimo uma empresa para cadastrar um veículo",CorParaRodape.Yellow);
                 return;
             }
 
@@ -41,13 +41,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
         public override void Editar()
         {
-            var numero = _tabelacondutor!.ObtemNumeroCondutorSelecionado();
+            var numero = _tabelacondutor.ObtemNumeroCondutorSelecionado();
 
             Condutor condutorSelecionado = servicocondutor.SelecionarPorID(numero);
 
             if (condutorSelecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um condutor para editar",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione um condutor para editar", CorParaRodape.Yellow);
                 return;
             }
 
@@ -65,13 +65,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
   
         public override void Excluir()
         {
-            var numero = _tabelacondutor!.ObtemNumeroCondutorSelecionado();
+            var numero = _tabelacondutor.ObtemNumeroCondutorSelecionado();
 
             Condutor condutorSelecionado = servicocondutor.SelecionarPorID(numero);
 
             if (condutorSelecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um condutor para excluir", CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione um condutor para excluir", CorParaRodape.Yellow);
                 return;
             }
 
@@ -87,19 +87,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
                 Carregarcondutor();
 
                 if (validationResult.Errors.Count > 0)
-                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro",CorParaRodape.Red);
+                    TelaPrincipalForm.Instancia.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro", CorParaRodape.Red);
             }
         }
 
         public override void Visualizar()
         {
-            var numero = _tabelacondutor!.ObtemNumeroCondutorSelecionado();
+            var numero = _tabelacondutor.ObtemNumeroCondutorSelecionado();
 
             Condutor condutorSelecionado = servicocondutor.SelecionarPorID(numero);
 
             if (condutorSelecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um condutor para visualizar",CorParaRodape.White);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione um condutor para visualizar", CorParaRodape.White);
                 return;
             }
 
@@ -132,9 +132,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         {
             List<Condutor> condutors = servicocondutor.SelecionarTodos();
 
-            _tabelacondutor!.AtualizarRegistros(condutors);
+            _tabelacondutor.AtualizarRegistros(condutors);
 
-            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {condutors.Count} {(condutors.Count == 1 ? "condutor" : "condutores")}",CorParaRodape.White);
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {condutors.Count} {(condutors.Count == 1 ? "condutor" : "condutores")}", CorParaRodape.White);
         }
     }
 }
