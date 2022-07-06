@@ -7,9 +7,9 @@ namespace LocadoraDeVeiculos.Servico.ModuloVeiculos
     {
         IRepositorioVeiculo _repositorioVeiculo;
 
-        public ServicoVeiculo(IRepositorioVeiculo repositorio) : base(new ValidadorVeiculo(), repositorio)
+        public ServicoVeiculo(IRepositorioVeiculo repositorioVeiculo) : base(new ValidadorVeiculo(), repositorioVeiculo)
         {
-            this._repositorioVeiculo = repositorio;
+            this._repositorioVeiculo = repositorioVeiculo;
         }
 
         protected override string SqlMensagemDeErroSeTiverDuplicidade => "Placa já cadastrada";

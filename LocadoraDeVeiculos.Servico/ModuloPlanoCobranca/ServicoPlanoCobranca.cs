@@ -5,9 +5,8 @@ namespace LocadoraDeVeiculos.Servico.ModuloPlanoCobranca
 {
     public class ServicoPlanoCobranca : ServicoBase<PlanoCobranca, ValidadorPlanoCobranca>, IServicoPlanoCobranca
     {
-        public ServicoPlanoCobranca(IRepositorioPlanoCobranca repositorio) : base(new ValidadorPlanoCobranca(),repositorio)
+        public ServicoPlanoCobranca(IRepositorioPlanoCobranca repositorioPlanoCobranca) : base(new ValidadorPlanoCobranca(),repositorioPlanoCobranca)
         {
-
         }
 
         protected override string SqlMensagemDeErroSeTiverDuplicidade => "Nome já está cadastrado";

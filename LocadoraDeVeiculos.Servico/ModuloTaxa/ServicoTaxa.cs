@@ -1,14 +1,14 @@
-﻿using FluentValidation.Results;
-using LocadoraDeVeiculos.Dominio.ModuloTaxa;
+﻿using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Servico.Compartilhado;
 
 namespace LocadoraDeVeiculos.Servico.ModuloTaxa
 {
     public class ServicoTaxa : ServicoBase<Taxa, ValidadorTaxa>, IServicoTaxa
     {
-        public ServicoTaxa(IRepositorioTaxa repositorio) : base(new ValidadorTaxa(), repositorio)
+        public ServicoTaxa(IRepositorioTaxa repositorioTaxa) : base(new ValidadorTaxa(), repositorioTaxa)
         {
         }
-        protected override string SqlMensagemDeErroSeTiverDuplicidade => "Descricao já está cadastrado";
+
+        protected override string SqlMensagemDeErroSeTiverDuplicidade => "Descrição já cadastrada";
     }
 }

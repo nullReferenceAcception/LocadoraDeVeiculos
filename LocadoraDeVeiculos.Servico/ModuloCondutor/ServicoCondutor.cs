@@ -5,7 +5,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloCondutor
 {
     public class ServicoCondutor : ServicoBase<Condutor, ValidadorCondutor>, IServicoCondutor
     {
-        public ServicoCondutor(IRepositorioCondutor repositorio) : base(new ValidadorCondutor(), repositorio)
+        public ServicoCondutor(IRepositorioCondutor repositorioCondutor) : base(new ValidadorCondutor(), repositorioCondutor)
         {
             
         }
