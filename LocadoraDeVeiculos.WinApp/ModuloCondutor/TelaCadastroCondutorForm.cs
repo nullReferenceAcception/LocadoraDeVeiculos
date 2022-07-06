@@ -37,7 +37,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
         private void ConfigurarTelaEditar()
         {
-            textBoxID.Text = Condutor.Id.ToString();
+            textBoxID.Text = _condutor.Id.ToString();
             textBoxNome.Text = _condutor.Nome;
             textBoxEndereco.Text = _condutor.Endereco;
             maskedTextBoxCNH.Text = _condutor.CNH;
