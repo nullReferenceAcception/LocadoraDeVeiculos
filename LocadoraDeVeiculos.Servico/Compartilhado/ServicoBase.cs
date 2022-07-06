@@ -21,19 +21,19 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         public virtual ValidationResult Inserir(T registro)
         {
-
             Log.Logger.Information($"Inserindo {typeof(T).Name}");
 
             ValidationResult resultadoValidacao = ValidarRegistro(registro);
 
             if (resultadoValidacao.IsValid == false)
             {
-                LogFalha("Inserir",registro, resultadoValidacao);
+                LogFalha("Inserir", registro, resultadoValidacao);
                 return resultadoValidacao;
             }
 
             repositorio.Inserir(registro);
             Log.Logger.Information($"Inserido {typeof(T).Name}  id: {registro.Id}");
+
             return resultadoValidacao;
         }
 
@@ -49,29 +49,16 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
             repositorio.Editar(registro);
             Log.Logger.Information($"Editado {typeof(T).Name}  id: {registro.Id}");
+
             return resultadoValidacao;
         }
 
         private static void LogFalha(string funcao,T registro, ValidationResult resultadoValidacao)
         {
             Log.Logger.Information($"Falha ao {funcao} {typeof(T).Name}  id: {registro.Id}");
+
             foreach (var item in resultadoValidacao.Errors)
-            {
                 Log.Logger.Error(item.ErrorMessage);
-            }
-        }
-
-        private ValidationResult ValidarRegistro(T registro)
-        {
-            var resultadoValidacao = validador.Validate(registro);
-
-            if (resultadoValidacao.IsValid == false)
-            {
-                return resultadoValidacao;
-            }
-
-            resultadoValidacao = HaDuplicidade(registro, resultadoValidacao);
-            return resultadoValidacao;
         }
 
         public ValidationResult Excluir(T registro)
@@ -86,7 +73,9 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
                 LogFalha("Excluir",registro, resultadoValidacao);
                 return resultadoValidacao;
             }
+
             Log.Logger.Information($"Excluido {typeof(T).Name}  id: {registro.Id}");
+
             return resultadoValidacao;
         }
 
@@ -98,6 +87,11 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
         public T SelecionarPorID(int ID)
         {
             return repositorio.SelecionarPorID(ID);
+        }
+
+        public int QuantidadeRegistro()
+        {
+            return repositorio.QuantidadeRegistros();
         }
 
         protected abstract string SqlMensagemDeErroSeTiverDuplicidade { get; }
@@ -115,9 +109,16 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             return repositorio.VerificarDuplicidade(repositorio.SqlDuplicidade(registro));
         }
 
-        public int QuantidadeRegistro()
+        private ValidationResult ValidarRegistro(T registro)
         {
-            return repositorio.QuantidadeRegistros();
+            var resultadoValidacao = validador.Validate(registro);
+
+            if (resultadoValidacao.IsValid == false)
+                return resultadoValidacao;
+
+            resultadoValidacao = HaDuplicidade(registro, resultadoValidacao);
+
+            return resultadoValidacao;
         }
     }
 }

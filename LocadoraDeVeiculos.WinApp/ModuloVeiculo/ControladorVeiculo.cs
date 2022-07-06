@@ -70,7 +70,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             if (veiculoSelecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um veículo para excluir",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um veículo para excluir", CorParaRodape.Yellow);
                 return;
             }
 
@@ -97,7 +97,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             if (veiculoSelecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um veículo para excluir",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um veículo para visualizar", CorParaRodape.Yellow);
                 return;
             }
 
