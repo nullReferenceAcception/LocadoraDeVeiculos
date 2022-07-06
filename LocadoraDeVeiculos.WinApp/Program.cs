@@ -3,7 +3,7 @@ using Serilog;
 using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
-using LocadoraDeVeiculos.Infra.BancoDeDados.Log;
+using LocadoraDeVeiculos.Infra.Logging.Log;
 
 namespace LocadoraDeVeiculos.WinApp
 {

@@ -1,8 +1,8 @@
-﻿    using Serilog;
+﻿using Serilog;
 using System;
 using System.IO;
 
-namespace LocadoraDeVeiculos.Infra.BancoDeDados.Log
+namespace LocadoraDeVeiculos.Infra.Logging.Log
 {
     public static class LoggerExtensions
     {
