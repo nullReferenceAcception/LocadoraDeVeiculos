@@ -28,8 +28,8 @@ namespace LocadoraDeVeiculos.WinApp
 {
     public partial class TelaPrincipalForm : Form
     {
-        private ControladorBase? controlador;
-        private Dictionary<string, ControladorBase>? controladores;
+        private ControladorBase controlador;
+        private Dictionary<string, ControladorBase> controladores;
 
         public TelaPrincipalForm()
         {
@@ -37,8 +37,8 @@ namespace LocadoraDeVeiculos.WinApp
 
             Instancia = this;
 
-            statusStripRodape.Text = string.Empty;
-            labelTipoCadastro.Text = string.Empty;
+            labelTipoCadastro.Text = "Olá";
+            AtualizarRodape("Seja bem-vindo(a)!", CorParaRodape.White);
 
             InicializarControladores();
 
@@ -70,11 +70,11 @@ namespace LocadoraDeVeiculos.WinApp
         }
         private void btnFuncionariosDesativados_Click(object sender, EventArgs e)
         {
-            bool status = controlador!.VisualizarDesativados();
+            bool tipoFuncionario = controlador!.VisualizarDesativados();
 
-            DesabilitarBotoes(status);
+            DesabilitarBotoes(tipoFuncionario);
 
-            ConfigurarToolTips(status);
+            ConfigurarToolTips(tipoFuncionario);
         }
 
         private void planoDeCobrancaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -144,7 +144,7 @@ namespace LocadoraDeVeiculos.WinApp
         {
             var tipo = opcaoSelecionada.Text;
 
-            controlador = controladores![tipo];
+            controlador = controladores[tipo];
 
             ConfigurarToolbox();
 
@@ -169,9 +169,9 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void ConfigurarListagem()
         {
-            AtualizarRodape("",CorParaRodape.White);
+            AtualizarRodape("", CorParaRodape.White);
 
-            var listagemControl = controlador!.ObtemListagem();
+            var listagemControl = controlador.ObtemListagem();
 
             panelRegistros.Controls.Clear();
 
@@ -209,7 +209,7 @@ namespace LocadoraDeVeiculos.WinApp
             controladores.Add("Plano de cobrança", new ControladorPlanoCobranca(servicoPlanoCobranca, servicoGrupoVeiculos));
         }
 
-        public void AtualizarRodape(string mensagem,CorParaRodape cor)
+        public void AtualizarRodape(string mensagem, CorParaRodape cor)
         {
             labelRodape.Text = mensagem;
             labelRodape.ForeColor = Color.FromName(cor.ToString());
@@ -222,9 +222,9 @@ namespace LocadoraDeVeiculos.WinApp
             btnExcluir.Enabled = status;
         }
 
-        private void ConfigurarToolTips(bool status)
+        private void ConfigurarToolTips(bool funcionarioAtivo)
         {
-            if (status)
+            if (funcionarioAtivo)
                 ConfigurarToolbox();
             else
                 ConfigurarTooltipsInativos();
