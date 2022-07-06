@@ -4,8 +4,8 @@ namespace LocadoraDeVeiculos.Dominio.Compartilhado
 {
     public abstract class Pessoa<T> : EntidadeBase<T>
     {
-       [JsonProperty(Order = -3)]
-       public string? Nome { get; set; }
+        [JsonProperty(Order = -3)]
+        public string? Nome { get; set; }
         [JsonProperty(Order = -2)]
         public string? Endereco { get; set; }
         [JsonProperty(Order = -1)]

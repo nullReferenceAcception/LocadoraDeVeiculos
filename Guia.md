@@ -13,15 +13,14 @@ ___
 4. [Domínio](#dominio)
 5. [Infra](#infra)
 6. [Testes](#testes)
+7. [Ordem de serialização de em json](#ordem) 
 
 
 
 
 ___
 
-
-<div id='git'/>
-<h1 style="color:white">Git</h1>
+<h1 id='git' style="color:white">Git</h1>
 
 Antes de realizar um <span style="color:#db0bb9">_pull_</span>, faça um <span style="color:#db0bb9">_fetch_</span> para ver as alterações que virão.
 
@@ -56,8 +55,7 @@ Se um arquivo está causando problemas por ser definido a todo hora como "modifi
 Se tudo ocorreu certo, o problema deve se encerrar.
 ___
 
-<div id='apresentacao'/>
-<h1 style="color:#e59866">Apresentação</h1>
+<h1 id='apresentacao' style="color:#e59866">Apresentação</h1>
 
 Ao renomear um campo, deixar o **<span style="color:cyan">NOME ORIGINAL** seguido por sua definição:
 
@@ -81,20 +79,17 @@ Lembrar dessa duas funcoes no construtor:<div>
 
 
 ___
-<div id='aplicacao'/>
-<h1 style="color:#76d7c4">Aplicação</h1>
+<h1 id='aplicacao' style="color:#76d7c4">Aplicação</h1>
 
 Esta é a camada de serviço.
 ___
 
-<div id='dominio'/>
-<h1 style="color:#ec7063">Domínio</h1>
+<h1 id='dominio' style="color:#ec7063">Domínio</h1>
 
 Ao criar uma nova classe, implementar o override de Equals e gerar seus construtores necessários
 ___
 
-<div id='infra'/>
-<h1 style="color:#a569bd">Infra</h1>
+<h1 id='infra' style="color:#a569bd">Infra</h1>
 
 Quando fizer o repositorio da classe o SQL de excluir e o de selecionarPorId precisa ser @ID exemplo: 
 
@@ -124,8 +119,7 @@ get =>
 ```
 ___
 
-<div id='testes'/>
-<h1 style="color:#566573">Testes</h1>
+<h1 id='testes' style="color:#566573">Testes</h1>
 
 <h3>Unitários</h3>
 
@@ -141,6 +135,14 @@ e) SelecionarTodos<br>
 f) Não pode fazer algo<br>
 
 Usando prioritariamente **<span style="color:orange">FluentAssertions</span>**
+___
+
+<h3 id='ordem' style="color:violet">Ordem de identação em JsonSerialize</h3>
+As classes base (EntidadeBase e Pessoa) proveem propriedades que todas as classes, dentro de suas áreas, possuem em comum. <br><br>
+EntidadeBase: Id<br>
+Pessoa: Nome, 
+
+
 ___
 
 <a href="#topo">Topo</a>
