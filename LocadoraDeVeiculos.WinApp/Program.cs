@@ -25,6 +25,8 @@ namespace LocadoraDeVeiculos.WinApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            Log.Logger.Information("Programa inicializado");
+
             Application.Run(new TelaPrincipalForm());
         }
     }
