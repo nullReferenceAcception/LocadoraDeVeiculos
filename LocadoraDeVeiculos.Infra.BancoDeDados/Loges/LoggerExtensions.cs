@@ -11,7 +11,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Log
             string caminho = Directory.GetParent(Environment.CurrentDirectory)!.Parent!.Parent!.Parent!.FullName + $"\\logs\\log {String.Format("{0}.txt", DateTime.Today.ToString("MM-dd-yyyy"))}";
 
             Serilog.Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Information()
+                .MinimumLevel.Debug()
                   .WriteTo.File(caminho,
         outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
                 .CreateLogger();

@@ -33,7 +33,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
 
             repositorio.Inserir(registro);
-            Log.Logger.Debug($"Inserido: {typeof(T).Name}{div}[ID: {registro.Id}]");
+            Log.Logger.Debug("Inserido: {@registro}", registro);
 
             return resultadoValidacao;
         }
@@ -51,7 +51,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
 
             repositorio.Editar(registro);
-            Log.Logger.Debug($"Editado: {typeof(T).Name}{div}[ID: {registro.Id}]");
+            Log.Logger.Debug("Editado: {@registro}", registro);
 
             return resultadoValidacao;
         }
@@ -71,7 +71,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
                 return resultadoValidacao;
             }
 
-            Log.Logger.Debug($"Excluido: {typeof(T).Name}{div}[ID: {registro.Id}]");
+            Log.Logger.Debug("Excluido: {@registro}", registro);
 
             return resultadoValidacao;
         }
@@ -103,7 +103,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         private static void LogFalha(string funcao, T registro, ValidationResult resultadoValidacao)
         {
-            Log.Logger.Error($"Falha ao {funcao} {typeof(T).Name}{div}[ID: {registro.Id}]");
+            Log.Logger.Error("Falha ao {funcao} {@registro}", funcao, registro);
 
             foreach (var item in resultadoValidacao.Errors)
                 Log.Logger.Error(item.ErrorMessage);
