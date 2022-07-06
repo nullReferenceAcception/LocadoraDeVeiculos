@@ -44,7 +44,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
             if (!resultadoValidacao.IsValid)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage,TelaPrincipalForm.Cor.Red);
+                TelaPrincipalForm.Instancia!.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage,CorParaRodape.Red);
                 DialogResult = DialogResult.None;
             }
         }

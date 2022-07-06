@@ -22,7 +22,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         {
             if (servicoCliente.QuantidadeRegistro() == 0)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Cadastre no mínimo uma empresa para cadastrar um veículo",TelaPrincipalForm.Cor.Yellow);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Cadastre no mínimo uma empresa para cadastrar um veículo",CorParaRodape.Yellow);
                 return;
             }
 
@@ -47,7 +47,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
             if (condutorSelecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um condutor para editar",TelaPrincipalForm.Cor.Yellow);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um condutor para editar",CorParaRodape.Yellow);
                 return;
             }
 
@@ -71,7 +71,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
             if (condutorSelecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um condutor para excluir", TelaPrincipalForm.Cor.Yellow);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um condutor para excluir", CorParaRodape.Yellow);
                 return;
             }
 
@@ -87,7 +87,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
                 Carregarcondutor();
 
                 if (validationResult.Errors.Count > 0)
-                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro",TelaPrincipalForm.Cor.Red);
+                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro",CorParaRodape.Red);
             }
         }
 
@@ -99,7 +99,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
             if (condutorSelecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um condutor para visualizar",TelaPrincipalForm.Cor.White);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um condutor para visualizar",CorParaRodape.White);
                 return;
             }
 
@@ -134,7 +134,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
             _tabelacondutor!.AtualizarRegistros(condutors);
 
-            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {condutors.Count} {(condutors.Count == 1 ? "condutor" : "condutores")}",TelaPrincipalForm.Cor.White);
+            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {condutors.Count} {(condutors.Count == 1 ? "condutor" : "condutores")}",CorParaRodape.White);
         }
     }
 }

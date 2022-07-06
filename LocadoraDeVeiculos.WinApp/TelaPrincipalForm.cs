@@ -169,7 +169,7 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void ConfigurarListagem()
         {
-            AtualizarRodape("",Cor.White);
+            AtualizarRodape("",CorParaRodape.White);
 
             var listagemControl = controlador!.ObtemListagem();
 
@@ -209,14 +209,7 @@ namespace LocadoraDeVeiculos.WinApp
             controladores.Add("Plano de cobrança", new ControladorPlanoCobranca(servicoPlanoCobranca, servicoGrupoVeiculos));
         }
 
-        public enum Cor
-        {
-            Red,
-            Yellow,
-            White
-        }
-
-        public void AtualizarRodape(string mensagem,Cor cor)
+        public void AtualizarRodape(string mensagem,CorParaRodape cor)
         {
             labelRodape.Text = mensagem;
             labelRodape.ForeColor = Color.FromName(cor.ToString());

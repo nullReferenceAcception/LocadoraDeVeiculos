@@ -37,7 +37,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             if (funcionarioSelecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um funcionário para editar",TelaPrincipalForm.Cor.Yellow);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um funcionário para editar",CorParaRodape.Yellow);
                 return;
             }
 
@@ -61,7 +61,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             if (funcionarioSelecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um funcionário para desabilitar",TelaPrincipalForm.Cor.Yellow);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um funcionário para desabilitar",CorParaRodape.Yellow);
                 return;
             }
 
@@ -77,7 +77,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
                 CarregarFuncionariosAtivos();
 
                 if (validationResult.Errors.Count > 0)
-                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro",TelaPrincipalForm.Cor.Red);
+                    TelaPrincipalForm.Instancia!.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro",CorParaRodape.Red);
             }
         }
 
@@ -89,7 +89,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             if (selecionado == null)
             {
-                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um funcionário para visualizar",TelaPrincipalForm.Cor.Yellow);
+                TelaPrincipalForm.Instancia!.AtualizarRodape($"Selecione um funcionário para visualizar",CorParaRodape.Yellow);
                 return;
             }
 
@@ -124,7 +124,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             _tabelaFuncionario!.AtualizarRegistros(funcionariosDesativados);
 
-            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {funcionariosDesativados.Count} {(funcionariosDesativados.Count == 1 ? "funcionário desativado" : "funcionários desativados")}",TelaPrincipalForm.Cor.White);
+            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {funcionariosDesativados.Count} {(funcionariosDesativados.Count == 1 ? "funcionário desativado" : "funcionários desativados")}",CorParaRodape.White);
         }
 
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
@@ -148,7 +148,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             _tabelaFuncionario!.AtualizarRegistros(funcionarios);
 
-            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {funcionarios.Count} {(funcionarios.Count == 1 ? "funcionário" : "funcionários")}",TelaPrincipalForm.Cor.White);
+            TelaPrincipalForm.Instancia!.AtualizarRodape($"Visualizando {funcionarios.Count} {(funcionarios.Count == 1 ? "funcionário" : "funcionários")}",CorParaRodape.White);
         }
     }
 }
