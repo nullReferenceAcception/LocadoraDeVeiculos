@@ -22,7 +22,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         public virtual ValidationResult Inserir(T registro)
         {
-            Log.Logger.Information($"Inserindo: {typeof(T).Name}");
+            Log.Logger.Debug($"Inserindo: {typeof(T).Name}");
 
             ValidationResult resultadoValidacao = ValidarRegistro(registro);
 
@@ -33,14 +33,14 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
 
             repositorio.Inserir(registro);
-            Log.Logger.Information($"Inserido: {typeof(T).Name}{div}[ID: {registro.Id}]");
+            Log.Logger.Debug($"Inserido: {typeof(T).Name}{div}[ID: {registro.Id}]");
 
             return resultadoValidacao;
         }
 
         public virtual ValidationResult Editar(T registro)
         {
-            Log.Logger.Information($"Editando: {typeof(T).Name}");
+            Log.Logger.Debug($"Editando: {typeof(T).Name}");
 
             ValidationResult resultadoValidacao = ValidarRegistro(registro);
 
@@ -51,14 +51,14 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
 
             repositorio.Editar(registro);
-            Log.Logger.Information($"Editado: {typeof(T).Name}{div}[ID: {registro.Id}]");
+            Log.Logger.Debug($"Editado: {typeof(T).Name}{div}[ID: {registro.Id}]");
 
             return resultadoValidacao;
         }
 
         public ValidationResult Excluir(T registro)
         {
-            Log.Logger.Information($"Excluindo: {typeof(T).Name}");
+            Log.Logger.Debug($"Excluindo: {typeof(T).Name}");
 
             ValidationResult resultadoValidacao = new();
 
@@ -71,7 +71,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
                 return resultadoValidacao;
             }
 
-            Log.Logger.Information($"Excluido: {typeof(T).Name}{div}[ID: {registro.Id}]");
+            Log.Logger.Debug($"Excluido: {typeof(T).Name}{div}[ID: {registro.Id}]");
 
             return resultadoValidacao;
         }
@@ -103,7 +103,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         private static void LogFalha(string funcao, T registro, ValidationResult resultadoValidacao)
         {
-            Log.Logger.Information($"Falha ao {funcao} {typeof(T).Name}{div}[ID: {registro.Id}]");
+            Log.Logger.Error($"Falha ao {funcao} {typeof(T).Name}{div}[ID: {registro.Id}]");
 
             foreach (var item in resultadoValidacao.Errors)
                 Log.Logger.Error(item.ErrorMessage);

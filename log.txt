@@ -1,4 +1,0 @@
-2022-07-05 23:00:03.651 -03:00 [INF] Editado Cliente  id: 1
-2022-07-05 23:00:15.478 -03:00 [INF] Inserindo Taxa
-2022-07-05 23:00:15.520 -03:00 [INF] Inserido Taxa  id: 1001
-2022-07-05 23:02:26.677 -03:00 [INF] Editado Taxa  id: 1001
