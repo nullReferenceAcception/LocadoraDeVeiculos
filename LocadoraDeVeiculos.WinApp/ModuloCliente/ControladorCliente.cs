@@ -19,7 +19,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         {
             TelaCadastroClienteForm tela = new();
 
-            tela.cliente = new();
+            tela.Cliente = new();
 
             tela.GravarRegistro = ServicoCliente.Inserir;
 
@@ -42,7 +42,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             var tela = new TelaCadastroClienteForm();
 
-            tela.cliente = clienteSelecionado;
+            tela.Cliente = clienteSelecionado;
 
             tela.GravarRegistro = ServicoCliente.Editar;
 
@@ -94,9 +94,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             var tela = new TelaCadastroClienteForm();
 
-            tela.cliente = clienteSelecionado;
+            tela.Cliente = clienteSelecionado;
 
-            tela.EstadoDeAbilitacao(false);
+            tela.EstadoDeHabilitacao(false);
             tela.buttonCancelar.Enabled = true;
             tela.buttonCancelar.Text = "Voltar";
             tela.ShowDialog();

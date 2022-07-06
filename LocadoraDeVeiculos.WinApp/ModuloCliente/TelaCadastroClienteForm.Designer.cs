@@ -224,7 +224,7 @@
             this.maskedTextBoxTelefone.Location = new System.Drawing.Point(108, 199);
             this.maskedTextBoxTelefone.Mask = "(00) 90000-0000";
             this.maskedTextBoxTelefone.Name = "maskedTextBoxTelefone";
-            this.maskedTextBoxTelefone.Size = new System.Drawing.Size(87, 23);
+            this.maskedTextBoxTelefone.Size = new System.Drawing.Size(111, 23);
             this.maskedTextBoxTelefone.TabIndex = 5;
             this.maskedTextBoxTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 

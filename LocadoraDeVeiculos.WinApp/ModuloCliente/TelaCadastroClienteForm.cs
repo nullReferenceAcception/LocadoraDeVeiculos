@@ -8,14 +8,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 {
     public partial class TelaCadastroClienteForm : Form
     {
-        private Cliente? _cliente;
+        private Cliente _cliente;
 
-        public Cliente? cliente
+        public Cliente Cliente
         {
             get { return _cliente; }
             set
             {
-                _cliente = value!;
+                _cliente = value;
                 ConfigurarTelaEditar();
             }
         }
@@ -27,49 +27,49 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             ConfigurarComponentes();
         }
 
-        public Func<Cliente, ValidationResult>? GravarRegistro { get; set; }
+        public Func<Cliente, ValidationResult> GravarRegistro { get; set; }
 
         private void ConfigurarTelaEditar()
         {
-            textBoxID.Text = _cliente!.Id.ToString();
-            textBoxNome.Text = _cliente!.Nome;
-            textBoxEndereco.Text = _cliente.Endereco;
-            maskedTextBoxCNH.Text = _cliente.CNH;
-            textBoxEmail.Text = _cliente.Email;
-            maskedTextBoxTelefone.Text = _cliente.Telefone;
+            textBoxID.Text = Cliente.Id.ToString();
+            textBoxNome.Text = Cliente.Nome;
+            textBoxEndereco.Text = Cliente.Endereco;
+            maskedTextBoxCNH.Text = Cliente.CNH;
+            textBoxEmail.Text = Cliente.Email;
+            maskedTextBoxTelefone.Text = Cliente.Telefone;
 
-            if (_cliente.Id != 0)
+            if (Cliente.Id != 0)
             {
-                if (string.IsNullOrEmpty(_cliente.CPF))
+                if (string.IsNullOrEmpty(Cliente.CPF))
                 {
-                    maskedTextBoxCNPJ.Text = _cliente.CNPJ;
+                    maskedTextBoxCNPJ.Text = Cliente.CNPJ;
                     radioButtonCNPJ.Checked = true;
                 }
                 else
                 {
-                    maskedTextBoxCPF.Text = _cliente.CPF;
+                    maskedTextBoxCPF.Text = Cliente.CPF;
                     radioButtonCPF.Checked = true;
-                    dateTimePickerValidadeCNH.Value = _cliente.DataValidadeCNH;
+                    dateTimePickerValidadeCNH.Value = Cliente.DataValidadeCNH;
                 }
             }
         }
 
         private void ObterDadosDaTela()
         {
-            _cliente!.Nome = textBoxNome.Text;
-            _cliente.Endereco = textBoxEndereco.Text;
-            _cliente.CNH = maskedTextBoxCNH.Text;
-            _cliente.CNPJ = maskedTextBoxCNPJ.Text;
-            _cliente.CPF = maskedTextBoxCPF.Text;
-            _cliente.Email = textBoxEmail.Text;
-            _cliente.Telefone = maskedTextBoxTelefone.Text;
-            _cliente.PessoaFisica = radioButtonCPF.Checked == true ? _cliente.PessoaFisica = true : _cliente.PessoaFisica = false;
-            _cliente.DataValidadeCNH = dateTimePickerValidadeCNH.Value;
+            Cliente.Nome = textBoxNome.Text;
+            Cliente.Endereco = textBoxEndereco.Text;
+            Cliente.CNH = maskedTextBoxCNH.Text;
+            Cliente.CNPJ = maskedTextBoxCNPJ.Text;
+            Cliente.CPF = maskedTextBoxCPF.Text;
+            Cliente.Email = textBoxEmail.Text;
+            Cliente.Telefone = maskedTextBoxTelefone.Text;
+            Cliente.PessoaFisica = radioButtonCPF.Checked == true ? Cliente.PessoaFisica = true : Cliente.PessoaFisica = false;
+            Cliente.DataValidadeCNH = dateTimePickerValidadeCNH.Value;
 
-            if (_cliente.PessoaFisica)
-                _cliente.CNPJ = null!;
+            if (Cliente.PessoaFisica)
+                Cliente.CNPJ = null!;
             else
-                _cliente.CPF = null!;
+                Cliente.CPF = null!;
         }
 
         private void radioCPFbtn_CheckedChanged(object sender, EventArgs e)
@@ -77,7 +77,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             maskedTextBoxCNH.Enabled = true;
             maskedTextBoxCPF.Enabled = true;
             maskedTextBoxCNPJ.Enabled = false;
-            dateTimePickerValidadeCNH.EstadoDeAbilitacao(true);
+            dateTimePickerValidadeCNH.EstadoDeHabilitacao(true);
             maskedTextBoxCNPJ.Clear();
             maskedTextBoxCPF.Focus();
         }
@@ -87,7 +87,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             maskedTextBoxCNH.Enabled = false;
             maskedTextBoxCNPJ.Enabled = true;
             maskedTextBoxCPF.Enabled = false;
-            dateTimePickerValidadeCNH.EstadoDeAbilitacao(false);
+            dateTimePickerValidadeCNH.EstadoDeHabilitacao(false);
             maskedTextBoxCPF.Clear();
             maskedTextBoxCNPJ.Focus();
             maskedTextBoxCNH.Clear();
@@ -97,11 +97,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         {
             ObterDadosDaTela();
 
-            var resultadoValidacao = GravarRegistro!(_cliente!);
+            var resultadoValidacao = GravarRegistro(Cliente);
 
             if (!resultadoValidacao.IsValid)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage,CorParaRodape.Red);
+                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage, CorParaRodape.Red);
                 DialogResult = DialogResult.None;
             }
         }

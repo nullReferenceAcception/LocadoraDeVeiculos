@@ -97,7 +97,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             tela.Funcionario = selecionado;
 
-            tela.EstadoDeAbilitacao(false);
+            tela.EstadoDeHabilitacao(false);
             tela.buttonCancelar.Enabled = true;
             tela.buttonCancelar.Text = "Voltar";
             tela.ShowDialog();

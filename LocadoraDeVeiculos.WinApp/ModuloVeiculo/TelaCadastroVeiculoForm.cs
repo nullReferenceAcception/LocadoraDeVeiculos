@@ -23,18 +23,18 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             }
         }
 
-        public TelaCadastroVeiculoForm(IServicoGrupoVeiculos serv)
+        public TelaCadastroVeiculoForm(IServicoGrupoVeiculos servicoGrupoVeiculo)
         {
             InitializeComponent();
             this.ConfigurarTela();
-            this._servicoGrupoVeiculos = serv;
+            this._servicoGrupoVeiculos = servicoGrupoVeiculo;
             CarregarCores();
             CarregarCombustiveis();
             CarregarGrupoVeiculos();
             ConfigurarComponentes();
         }
 
-        public Func<Veiculo, ValidationResult>? GravarRegistro { get; set; }
+        public Func<Veiculo, ValidationResult> GravarRegistro { get; set; }
 
         private void ConfigurarTelaEditar()
         {
@@ -73,7 +73,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
         {
             ObterDadosDaTela();
 
-            var resultadoValidacao = GravarRegistro!(Veiculo);
+            var resultadoValidacao = GravarRegistro(Veiculo);
 
             if (!resultadoValidacao.IsValid)
             {

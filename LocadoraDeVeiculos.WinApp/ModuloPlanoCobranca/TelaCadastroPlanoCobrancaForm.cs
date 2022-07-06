@@ -33,7 +33,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             textBoxNome.AceitaSoLetras();
         }
 
-        public Func<PlanoCobranca, ValidationResult>? GravarRegistro { get; set; }
+        public Func<PlanoCobranca, ValidationResult> GravarRegistro { get; set; }
 
         private void buttonGravar_Click(object sender, EventArgs e)
         {
