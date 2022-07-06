@@ -12,7 +12,6 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
     {
         TValidador validador;
         IRepositorio<T> repositorio;
-        private const string div = " | ";
 
         public ServicoBase(AbstractValidator<T> validationRules, IRepositorio<T> repositorio)
         {
