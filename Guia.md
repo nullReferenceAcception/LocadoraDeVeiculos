@@ -139,9 +139,47 @@ ___
 
 <h3 id='ordem' style="color:violet">Ordem de identação em JsonSerialize</h3>
 As classes base (EntidadeBase e Pessoa) proveem propriedades que todas as classes, dentro de suas áreas, possuem em comum. <br><br>
-EntidadeBase: Id<br>
-Pessoa: Nome, 
+EntidadeBase tem o campo 'Id' com a marcação de 
 
+```JSON
+[JsonProperty(Order = -6)]
+```
+para que seja o primeiro campo a ser serializado nos arquivos de log. <br>
+Em sequência, Pessoa tem os campos Nome, Endereco, Email, Telefone também com a mesma marcação, com as posições respectivas: -5, -4, -3 e -2 para que venham logo em seguida do Id de cada objeto.
+
+O restante das informações, de cada classe, deve ser posto em ordem que se queira serializar. Por exemplo:
+```JSON
+  "Id": 1,
+  "Nome": " ",
+  "Endereco": "nnnnnn",
+  "Email": "cond@cond.com",
+  "Telefone": "49999999999",
+  "CNH": "11111111111",
+  "CPF": "11111111111",
+  "DataValidadeCNH": "2029-02-23T00:00:00",
+  "Cliente": {
+    "Id": 1,
+    "Nome": "Empresa teste",
+    "Endereco": "Teste",
+    "Email": "teste@teste.com",
+    "Telefone": "49999999999",
+    "CNH": "           ",
+    "DataValidadeCNH": "2022-07-06T00:00:00",
+    "PessoaFisica": false,
+    "CPF": null,
+    "CNPJ": "00000000000000"
+  }
+```
+
+Da maneira exemplificado acima, as 5 primeiras propriedades foram serializadas por conta das marcações, e o restante veio pela ordem que estão na classe do domínio (Por não terem marcações). A instância de um objeto foi deixada por último para que tenha suas classes suas informações claras separadas do objeto-pai.
+
+Ordem padrão de serialização:
+<ol>
+    <li>Propriedades da classe em questão <strong>sem</strong> marcação (Se houver)</li>
+    <li>Propriedades da classe em questão <strong>com</strong> marcação</li>
+    <li>Propriedades herdadas <strong>sem</strong> marcação</li>
+    <li>Propriedades herdadas <strong>com</strong> marcação</li>
+</ol>
 
 ___
 
