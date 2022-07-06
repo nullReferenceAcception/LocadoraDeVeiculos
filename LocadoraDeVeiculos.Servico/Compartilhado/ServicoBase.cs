@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio;
+using Newtonsoft.Json;
 using Serilog;
 using System.Collections.Generic;
 
@@ -33,7 +34,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
 
             repositorio.Inserir(registro);
-            Log.Logger.Debug("Inserido: {@registro}", registro);
+            Log.Logger.Debug("Inserido: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
 
             return resultadoValidacao;
         }
@@ -51,7 +52,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
 
             repositorio.Editar(registro);
-            Log.Logger.Debug("Editado: {@registro}", registro);
+            Log.Logger.Debug("Editado: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
 
             return resultadoValidacao;
         }
@@ -71,7 +72,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
                 return resultadoValidacao;
             }
 
-            Log.Logger.Debug("Excluido: {@registro}", registro);
+            Log.Logger.Debug("Excluido: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
 
             return resultadoValidacao;
         }
@@ -103,7 +104,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         private static void LogFalha(string funcao, T registro, ValidationResult resultadoValidacao)
         {
-            Log.Logger.Error("Falha ao {funcao} {@registro}", funcao, registro);
+            Log.Logger.Error("Falha ao {funcao} \n {@registro}", funcao, JsonConvert.SerializeObject(registro, Formatting.Indented));
 
             foreach (var item in resultadoValidacao.Errors)
                 Log.Logger.Error(item.ErrorMessage);

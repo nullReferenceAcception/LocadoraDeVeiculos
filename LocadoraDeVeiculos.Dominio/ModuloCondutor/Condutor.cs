@@ -2,10 +2,12 @@
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using StackExchange.Redis;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
 {
-    public  class Condutor : Pessoa<Condutor>
+    public class Condutor : Pessoa<Condutor>
     {
         public string CNH { get; set; }
         public string CPF { get; set; }
