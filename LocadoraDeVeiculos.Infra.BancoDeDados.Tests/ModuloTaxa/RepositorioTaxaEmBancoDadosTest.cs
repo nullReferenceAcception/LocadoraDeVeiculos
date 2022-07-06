@@ -83,7 +83,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
 
             ValidationResult validationResult = Servico.Inserir(Taxa2);
 
-            validationResult.Errors[0].ErrorMessage.Should().Contain("Descricao já está cadastrado");
+            validationResult.Errors[0].ErrorMessage.Should().Contain("Descrição já cadastrada");
         }
 
         [TestMethod]
