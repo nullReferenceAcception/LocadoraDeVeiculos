@@ -175,6 +175,7 @@ Da maneira exemplificado acima, as 5 primeiras propriedades foram serializadas p
 
 Ordem padrão de serialização:
 <ol>
+    <li>Se a classe em questão herdar de alguma, que possua uma marcação <= -2, será serializada primeiro
     <li>Propriedades da classe em questão <strong>sem</strong> marcação (Se houver)</li>
     <li>Propriedades da classe em questão <strong>com</strong> marcação</li>
     <li>Propriedades herdadas <strong>sem</strong> marcação</li>
