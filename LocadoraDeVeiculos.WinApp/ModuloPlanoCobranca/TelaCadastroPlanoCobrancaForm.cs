@@ -9,15 +9,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 {
     public partial class TelaCadastroPlanoCobrancaForm : Form
     {
-        private PlanoCobranca planoCobranca;
-        IServicoGrupoVeiculos servicoGrupoVeiculos;
+        private PlanoCobranca _planoCobranca;
+        IServicoGrupoVeiculos _servicoGrupoVeiculos;
 
         public PlanoCobranca PlanoCobranca
         {
-            get { return planoCobranca; }
+            get { return _planoCobranca; }
             set
             {
-                planoCobranca = value!;
+                _planoCobranca = value;
                 ConfigurarTelaEditar();
             }
         }
@@ -28,7 +28,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             this.ConfigurarTela();
             textBoxValorDia.AceitaNumeroEVirgulaPoeMascaraMoeda();
             textBoxValorPorKm.AceitaNumeroEVirgulaPoeMascaraMoeda();
-            this.servicoGrupoVeiculos = servicoGrupoVeiculos;
+            this._servicoGrupoVeiculos = servicoGrupoVeiculos;
             textBoxNome.Focus();
             textBoxNome.AceitaSoLetras();
         }
@@ -52,26 +52,26 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
         private void ConfigurarTelaEditar()
         {
             comboBoxPlano.DataSource = Enum.GetValues(typeof(PlanoEnum));
-            comboBoxGrupoVeiculos.DataSource = servicoGrupoVeiculos.SelecionarTodos();
+            comboBoxGrupoVeiculos.DataSource = _servicoGrupoVeiculos.SelecionarTodos();
 
-            textBoxID.Text = planoCobranca.Id.ToString();
-            textBoxNome.Text = planoCobranca.Nome;
-            textBoxValorDia.Text = "R$ " + planoCobranca.ValorDia.ToString();
-            textBoxValorPorKm.Text = "R$ " + planoCobranca.ValorPorKm.ToString();
-            numericUpDownKmIncluso.Value = planoCobranca.KmLivreIncluso;
-            comboBoxPlano.SelectedItem = (PlanoEnum)planoCobranca.Plano;
-            comboBoxGrupoVeiculos.SelectedItem = planoCobranca.GrupoVeiculos;
+            textBoxID.Text = _planoCobranca.Id.ToString();
+            textBoxNome.Text = _planoCobranca.Nome;
+            textBoxValorDia.Text = "R$ " + _planoCobranca.ValorDia.ToString();
+            textBoxValorPorKm.Text = "R$ " + _planoCobranca.ValorPorKm.ToString();
+            numericUpDownKmIncluso.Value = _planoCobranca.KmLivreIncluso;
+            comboBoxPlano.SelectedItem = (PlanoEnum)_planoCobranca.Plano;
+            comboBoxGrupoVeiculos.SelectedItem = _planoCobranca.GrupoVeiculos;
         }
 
         private void ObterDadosDaTela()
         {
 
-            planoCobranca.Nome = textBoxNome.Text;
-            planoCobranca.ValorDia = Convert.ToDecimal(textBoxValorDia.Text.ToString().Replace("R$ ", ""));
-            planoCobranca.ValorPorKm = Convert.ToDecimal(textBoxValorPorKm.Text.ToString().Replace("R$ ", ""));
-            planoCobranca.KmLivreIncluso = (int)numericUpDownKmIncluso.Value;
-            planoCobranca.GrupoVeiculos = (GrupoVeiculos)comboBoxGrupoVeiculos.SelectedItem;
-            planoCobranca.Plano = (PlanoEnum)comboBoxPlano.SelectedItem;
+            _planoCobranca.Nome = textBoxNome.Text;
+            _planoCobranca.ValorDia = Convert.ToDecimal(textBoxValorDia.Text.ToString().Replace("R$ ", ""));
+            _planoCobranca.ValorPorKm = Convert.ToDecimal(textBoxValorPorKm.Text.ToString().Replace("R$ ", ""));
+            _planoCobranca.KmLivreIncluso = (int)numericUpDownKmIncluso.Value;
+            _planoCobranca.GrupoVeiculos = (GrupoVeiculos)comboBoxGrupoVeiculos.SelectedItem;
+            _planoCobranca.Plano = (PlanoEnum)comboBoxPlano.SelectedItem;
         }
 
         private void comboBoxPlano_SelectedIndexChanged(object sender, EventArgs e)
