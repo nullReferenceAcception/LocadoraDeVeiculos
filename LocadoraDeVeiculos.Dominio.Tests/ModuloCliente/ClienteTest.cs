@@ -62,6 +62,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
 
             resultado.ShouldHaveValidationErrorFor(x => x.Telefone);
         }
+
         [TestMethod]
         public void Nao_Deve_inserir_email_invalido()
         {
@@ -73,6 +74,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
 
             resultado.ShouldHaveValidationErrorFor(x => x.Email);
         }
+
         [TestMethod]
         public void Nao_Deve_inserir_cpf_invalido()
         {
@@ -110,8 +112,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
 
             resultado.ShouldHaveValidationErrorFor(x => x.CNPJ);
         }
-
-
 
         private Cliente CriarCliente()
         {
