@@ -7,12 +7,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 {
     public class ControladorCliente : ControladorBase
     {
-        private IServicoCliente ServicoCliente;
-        private TabelaClienteControl? _tabelaCliente;
+        private IServicoCliente _servicoCliente;
+        private TabelaClienteControl _tabelaCliente;
 
-        public ControladorCliente(IServicoCliente ser)
+        public ControladorCliente(IServicoCliente servicoCliente)
         {
-            ServicoCliente = ser;
+            _servicoCliente = servicoCliente;
         }
 
         public override void Inserir()
@@ -21,7 +21,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             tela.Cliente = new();
 
-            tela.GravarRegistro = ServicoCliente.Inserir;
+            tela.GravarRegistro = _servicoCliente.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -30,13 +30,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         }
         public override void Editar()
         {
-            var numero = _tabelaCliente!.ObtemNumeroClienteSelecionado();
+            var numero = _tabelaCliente.ObtemNumeroClienteSelecionado();
 
-            Cliente clienteSelecionado = ServicoCliente.SelecionarPorID(numero);
+            Cliente clienteSelecionado = _servicoCliente.SelecionarPorID(numero);
 
             if (clienteSelecionado == null)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione um cliente para editar",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione um cliente para editar", CorParaRodape.Yellow);
                 return;
             }
 
@@ -44,7 +44,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             tela.Cliente = clienteSelecionado;
 
-            tela.GravarRegistro = ServicoCliente.Editar;
+            tela.GravarRegistro = _servicoCliente.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -54,13 +54,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         public override void Excluir()
         {
-            var numero = _tabelaCliente!.ObtemNumeroClienteSelecionado();
+            var numero = _tabelaCliente.ObtemNumeroClienteSelecionado();
 
-            Cliente clienteSelecionado = ServicoCliente.SelecionarPorID(numero);
+            Cliente clienteSelecionado = _servicoCliente.SelecionarPorID(numero);
 
             if (clienteSelecionado == null)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione um cliente para excluir",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione um cliente para excluir", CorParaRodape.Yellow);
                 return;
             }
 
@@ -72,23 +72,23 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             if (resultado == DialogResult.OK)
             {
-                validationResult = ServicoCliente.Excluir(clienteSelecionado);
+                validationResult = _servicoCliente.Excluir(clienteSelecionado);
                 CarregarCliente();
 
                 if (validationResult.Errors.Count > 0)
-                    TelaPrincipalForm.Instancia.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro",CorParaRodape.Red);
+                    TelaPrincipalForm.Instancia.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro", CorParaRodape.Red);
             }
         }
 
         public override void Visualizar()
         {
-            var numero = _tabelaCliente!.ObtemNumeroClienteSelecionado();
+            var numero = _tabelaCliente.ObtemNumeroClienteSelecionado();
 
-            Cliente clienteSelecionado = ServicoCliente.SelecionarPorID(numero);
+            Cliente clienteSelecionado = _servicoCliente.SelecionarPorID(numero);
 
             if (clienteSelecionado == null)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione um cliente para visualizar",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione um cliente para visualizar", CorParaRodape.Yellow);
                 return;
             }
 
@@ -119,11 +119,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         private void CarregarCliente()
         {
-            List<Cliente> clientes = ServicoCliente.SelecionarTodos();
+            List<Cliente> clientes = _servicoCliente.SelecionarTodos();
 
-            _tabelaCliente!.AtualizarRegistros(clientes);
+            _tabelaCliente.AtualizarRegistros(clientes);
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {clientes.Count} {(clientes.Count == 1 ? "cliente" : "clientes")}",CorParaRodape.White);
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {clientes.Count} {(clientes.Count == 1 ? "cliente" : "clientes")}", CorParaRodape.White);
         }
     }
 }

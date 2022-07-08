@@ -7,12 +7,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 {
     public class ControladorTaxa : ControladorBase
     {
-        private IServicoTaxa servicoTaxa;
-        private TabelaTaxaControl? _tabelaTaxas;
+        private IServicoTaxa _servicoTaxa;
+        private TabelaTaxaControl _tabelaTaxas;
 
-        public ControladorTaxa(IServicoTaxa serv)
+        public ControladorTaxa(IServicoTaxa servicoTaxa)
         {
-            servicoTaxa = serv;
+            _servicoTaxa = servicoTaxa;
         }
 
         public override void Inserir()
@@ -21,7 +21,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             tela.Taxa = new();
 
-            tela.GravarRegistro = servicoTaxa.Inserir;
+            tela.GravarRegistro = _servicoTaxa.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -30,13 +30,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         }
         public override void Editar()
         {
-            var numero = _tabelaTaxas!.ObtemNumeroTaxaSelecionada();
+            var numero = _tabelaTaxas.ObtemNumeroTaxaSelecionada();
 
-            Taxa taxaSelecionada = servicoTaxa.SelecionarPorID(numero);
+            Taxa taxaSelecionada = _servicoTaxa.SelecionarPorID(numero);
 
             if (taxaSelecionada == null)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma taxa para editar",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma taxa para editar", CorParaRodape.Yellow);
                 return;
             }
 
@@ -44,7 +44,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             tela.Taxa = taxaSelecionada;
 
-            tela.GravarRegistro = servicoTaxa.Editar;
+            tela.GravarRegistro = _servicoTaxa.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -54,13 +54,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
         public override void Excluir()
         {
-            var numero = _tabelaTaxas!.ObtemNumeroTaxaSelecionada();
+            var numero = _tabelaTaxas.ObtemNumeroTaxaSelecionada();
 
-            Taxa taxaSelecionada = servicoTaxa.SelecionarPorID(numero);
+            Taxa taxaSelecionada = _servicoTaxa.SelecionarPorID(numero);
 
             if (taxaSelecionada == null)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma taxa para excluir",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma taxa para excluir", CorParaRodape.Yellow);
                 return;
             }
 
@@ -71,24 +71,23 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             if (resultado == DialogResult.OK)
             {
-                validationResult = servicoTaxa.Excluir(taxaSelecionada);
+                validationResult = _servicoTaxa.Excluir(taxaSelecionada);
                 CarregarTaxas();
 
-
                 if (validationResult.Errors.Count > 0)
-                    TelaPrincipalForm.Instancia.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro",CorParaRodape.Red);
+                    TelaPrincipalForm.Instancia.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro", CorParaRodape.Red);
             }
         }
 
         public override void Visualizar()
         {
-            var numero = _tabelaTaxas!.ObtemNumeroTaxaSelecionada();
+            var numero = _tabelaTaxas.ObtemNumeroTaxaSelecionada();
 
-            Taxa taxaSelecionada = servicoTaxa.SelecionarPorID(numero);
+            Taxa taxaSelecionada = _servicoTaxa.SelecionarPorID(numero);
 
             if (taxaSelecionada == null)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma taxa para visualizar",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma taxa para visualizar", CorParaRodape.Yellow);
                 return;
             }
 
@@ -119,11 +118,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
         private void CarregarTaxas()
         {
-            List<Taxa> taxas = servicoTaxa.SelecionarTodos();
+            List<Taxa> taxas = _servicoTaxa.SelecionarTodos();
 
-            _tabelaTaxas!.AtualizarRegistros(taxas);
+            _tabelaTaxas.AtualizarRegistros(taxas);
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {taxas.Count} {(taxas.Count == 1 ? "taxa" : "taxas")}",CorParaRodape.White);
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {taxas.Count} {(taxas.Count == 1 ? "taxa" : "taxas")}", CorParaRodape.White);
         }
     }
 }

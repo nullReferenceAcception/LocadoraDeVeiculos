@@ -8,13 +8,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 {
     public class ControladorVeiculo : ControladorBase
     {
-        private IServicoVeiculo servicoVeiculo;
+        private IServicoVeiculo _servicoVeiculo;
         private IServicoGrupoVeiculos servicoGrupoVeiculos;
         private TabelaVeiculoControl _tabelaVeiculos;
 
         public ControladorVeiculo(IServicoVeiculo servVeiculo, IServicoGrupoVeiculos servGrupo)
         {
-            this.servicoVeiculo = servVeiculo;
+            this._servicoVeiculo = servVeiculo;
             this.servicoGrupoVeiculos = servGrupo;
         }
 
@@ -30,7 +30,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             tela.Veiculo = new();
 
-            tela.GravarRegistro = servicoVeiculo.Inserir;
+            tela.GravarRegistro = _servicoVeiculo.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -40,13 +40,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         public override void Editar()
         {
-            var numero = _tabelaVeiculos!.ObtemNumeroVeiculoSelecionado();
+            var numero = _tabelaVeiculos.ObtemNumeroVeiculoSelecionado();
 
-            Veiculo veiculoSelecionado = servicoVeiculo.SelecionarPorID(numero);
+            Veiculo veiculoSelecionado = _servicoVeiculo.SelecionarPorID(numero);
 
             if (veiculoSelecionado == null)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione um veículo para editar",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione um veículo para editar", CorParaRodape.Yellow);
                 return;
             }
 
@@ -54,7 +54,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             tela.Veiculo = veiculoSelecionado;
 
-            tela.GravarRegistro = servicoVeiculo.Editar;
+            tela.GravarRegistro = _servicoVeiculo.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -64,9 +64,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         public override void Excluir()
         {
-            var numero = _tabelaVeiculos!.ObtemNumeroVeiculoSelecionado();
+            var numero = _tabelaVeiculos.ObtemNumeroVeiculoSelecionado();
 
-            Veiculo veiculoSelecionado = servicoVeiculo.SelecionarPorID(numero);
+            Veiculo veiculoSelecionado = _servicoVeiculo.SelecionarPorID(numero);
 
             if (veiculoSelecionado == null)
             {
@@ -81,7 +81,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             if (resultado == DialogResult.OK)
             {
-                validationResult = servicoVeiculo.Excluir(veiculoSelecionado);
+                validationResult = _servicoVeiculo.Excluir(veiculoSelecionado);
                 CarregarVeiculos();
 
                 if (validationResult.Errors.Count > 0)
@@ -91,9 +91,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         public override void Visualizar()
         {
-            var numero = _tabelaVeiculos!.ObtemNumeroVeiculoSelecionado();
+            var numero = _tabelaVeiculos.ObtemNumeroVeiculoSelecionado();
 
-            Veiculo veiculoSelecionado = servicoVeiculo.SelecionarPorID(numero);
+            Veiculo veiculoSelecionado = _servicoVeiculo.SelecionarPorID(numero);
 
             if (veiculoSelecionado == null)
             {
@@ -128,11 +128,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         private void CarregarVeiculos()
         {
-            List<Veiculo> veiculos = servicoVeiculo.SelecionarTodos();
+            List<Veiculo> veiculos = _servicoVeiculo.SelecionarTodos();
 
             _tabelaVeiculos.AtualizarRegistros(veiculos);
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {veiculos.Count} {(veiculos.Count == 1 ? "veículo" : "veículos")}",CorParaRodape.Yellow);
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {veiculos.Count} {(veiculos.Count == 1 ? "veículo" : "veículos")}", CorParaRodape.Yellow);
         }
     }
 }

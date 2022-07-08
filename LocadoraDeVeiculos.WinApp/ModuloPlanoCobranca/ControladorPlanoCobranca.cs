@@ -4,39 +4,40 @@ using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using System.Media;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 {
     public class ControladorPlanoCobranca : ControladorBase
     {
-        private IServicoPlanoCobranca servicoPlanoCobranca;
-        private IServicoGrupoVeiculos servicoGrupoVeiculo;
-        private TabelaPlanoCobrancaControl? _tabelaPlanoCobrancas;
+        private IServicoPlanoCobranca _servicoPlanoCobranca;
+        private IServicoGrupoVeiculos _servicoGrupoVeiculo;
+        private TabelaPlanoCobrancaControl _tabelaPlanoCobrancas;
 
-        public ControladorPlanoCobranca(IServicoPlanoCobranca rep, IServicoGrupoVeiculos rep2)
+        public ControladorPlanoCobranca(IServicoPlanoCobranca servicoPlanoCobranca, IServicoGrupoVeiculos servicoGrupoVeiculos)
         {
-            servicoPlanoCobranca = rep;
-            servicoGrupoVeiculo = rep2;
+            _servicoPlanoCobranca = servicoPlanoCobranca;
+            _servicoGrupoVeiculo = servicoGrupoVeiculos;
         }
 
         public override void Inserir()
         {
             Stream str;
-            if (servicoGrupoVeiculo.QuantidadeRegistro() == 0)
+            if (_servicoGrupoVeiculo.QuantidadeRegistro() == 0)
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape($"Cadastre no mínimo 1 'Grupo de Veículos' para cadastrar um plano de cobrança",CorParaRodape.Yellow);
                 str = Properties.Resources.som;
 
-                System.Media.SoundPlayer snd = new System.Media.SoundPlayer(str);
+                SoundPlayer snd = new(str);
                 snd.Play();
                 return;
             }
 
-            TelaCadastroPlanoCobrancaForm tela = new(servicoGrupoVeiculo);
+            TelaCadastroPlanoCobrancaForm tela = new(_servicoGrupoVeiculo);
 
             tela.PlanoCobranca = new();
 
-            tela.GravarRegistro = servicoPlanoCobranca.Inserir;
+            tela.GravarRegistro = _servicoPlanoCobranca.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -45,21 +46,21 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
         }
         public override void Editar()
         {
-            var numero = _tabelaPlanoCobrancas!.ObtemNumeroPlanoCobrancaSelecionada();
+            var numero = _tabelaPlanoCobrancas.ObtemNumeroPlanoCobrancaSelecionada();
 
-            PlanoCobranca PlanoCobrancaSelecionada = servicoPlanoCobranca.SelecionarPorID(numero);
+            PlanoCobranca planoCobrancaSelecionado = _servicoPlanoCobranca.SelecionarPorID(numero);
 
-            if (PlanoCobrancaSelecionada == null)
+            if (planoCobrancaSelecionado == null)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma PlanoCobranca para editar",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma PlanoCobranca para editar", CorParaRodape.Yellow);
                 return;
             }
 
-            var tela = new TelaCadastroPlanoCobrancaForm(servicoGrupoVeiculo);
+            var tela = new TelaCadastroPlanoCobrancaForm(_servicoGrupoVeiculo);
 
-            tela.PlanoCobranca = PlanoCobrancaSelecionada;
+            tela.PlanoCobranca = planoCobrancaSelecionado;
 
-            tela.GravarRegistro = servicoPlanoCobranca.Editar;
+            tela.GravarRegistro = _servicoPlanoCobranca.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -69,13 +70,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
         public override void Excluir()
         {
-            var numero = _tabelaPlanoCobrancas!.ObtemNumeroPlanoCobrancaSelecionada();
+            var numero = _tabelaPlanoCobrancas.ObtemNumeroPlanoCobrancaSelecionada();
 
-            PlanoCobranca PlanoCobrancaSelecionada = servicoPlanoCobranca.SelecionarPorID(numero);
+            PlanoCobranca planoCobrancaSelecionado = _servicoPlanoCobranca.SelecionarPorID(numero);
 
-            if (PlanoCobrancaSelecionada == null)
+            if (planoCobrancaSelecionado == null)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma PlanoCobranca para excluir",CorParaRodape.Red);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma PlanoCobranca para excluir", CorParaRodape.Red);
                 return;
             }
 
@@ -85,7 +86,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
              ValidationResult validationResult;
             if (resultado == DialogResult.OK)
             {
-                validationResult = servicoPlanoCobranca.Excluir(PlanoCobrancaSelecionada);
+                validationResult = _servicoPlanoCobranca.Excluir(planoCobrancaSelecionado);
                 CarregarPlanoCobrancas();
 
                 if (validationResult.Errors.Count > 0)
@@ -96,19 +97,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
         public override void Visualizar()
         {
-            var numero = _tabelaPlanoCobrancas!.ObtemNumeroPlanoCobrancaSelecionada();
+            var numero = _tabelaPlanoCobrancas.ObtemNumeroPlanoCobrancaSelecionada();
 
-            PlanoCobranca PlanoCobrancaSelecionada = servicoPlanoCobranca.SelecionarPorID(numero);
+            PlanoCobranca planoCobrancaSelecionado = _servicoPlanoCobranca.SelecionarPorID(numero);
 
-            if (PlanoCobrancaSelecionada == null)
+            if (planoCobrancaSelecionado == null)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma PlanoCobranca para visualizar",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma PlanoCobranca para visualizar", CorParaRodape.Yellow);
                 return;
             }
 
-            var tela = new TelaCadastroPlanoCobrancaForm(servicoGrupoVeiculo);
+            var tela = new TelaCadastroPlanoCobrancaForm(_servicoGrupoVeiculo);
 
-            tela.PlanoCobranca = PlanoCobrancaSelecionada;
+            tela.PlanoCobranca = planoCobrancaSelecionado;
 
             tela.EstadoDeHabilitacao(false);
             tela.buttonCancelar.Enabled = true;
@@ -133,11 +134,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
         private void CarregarPlanoCobrancas()
         {
-            List<PlanoCobranca> PlanoCobrancas = servicoPlanoCobranca.SelecionarTodos();
+            List<PlanoCobranca> planoCobrancas = _servicoPlanoCobranca.SelecionarTodos();
 
-            _tabelaPlanoCobrancas!.AtualizarRegistros(PlanoCobrancas);
+            _tabelaPlanoCobrancas.AtualizarRegistros(planoCobrancas);
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {PlanoCobrancas.Count} {(PlanoCobrancas.Count == 1 ? "PlanoCobranca" : "PlanoCobrancas")}",CorParaRodape.White);
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {planoCobrancas.Count} {(planoCobrancas.Count == 1 ? "PlanoCobranca" : "PlanoCobrancas")}", CorParaRodape.White);
         }
     }
 }
