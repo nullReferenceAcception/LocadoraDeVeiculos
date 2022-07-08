@@ -9,7 +9,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
 {
     public class MapeadorVeiculo : IMapeavel<Veiculo>
     {
-        MapeadorGrupoVeiculos _mapeadorGrupoVeiculos = new();
         public void ConfigurarParametrosRegistro(Veiculo registro, SqlCommand cmdInserir)
         {
             cmdInserir.Parameters.AddWithValue("@ID", registro.Id);
@@ -38,7 +37,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
             CombustivelEnum combustivel = (CombustivelEnum)Enum.Parse(typeof(CombustivelEnum), leitorRegistro["COMBUSTIVEL"].ToString());
             byte[] foto = (byte[])leitorRegistro["FOTO"];
 
-            GrupoVeiculos grupo = _mapeadorGrupoVeiculos.ConverterParaRegistro(leitorRegistro);
+            GrupoVeiculos grupo = new MapeadorGrupoVeiculos().ConverterParaRegistro(leitorRegistro);
 
             Veiculo veiculo = new();
 
