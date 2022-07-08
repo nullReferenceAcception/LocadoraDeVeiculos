@@ -41,8 +41,6 @@ namespace LocadoraDeVeiculos.WinApp
             AtualizarRodape("Seja bem-vindo(a)!", CorParaRodape.White);
 
             InicializarControladores();
-
-            this.ConfigurarTela();
         }
 
         public static TelaPrincipalForm Instancia

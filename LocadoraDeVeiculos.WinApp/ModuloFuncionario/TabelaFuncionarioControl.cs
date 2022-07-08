@@ -50,7 +50,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             grid.Rows.Clear();
 
             foreach (Funcionario funcionario in funcionarios)
-                grid.Rows.Add(funcionario.Id, funcionario.Nome, funcionario.Email, funcionario.Login, double.Parse(funcionario.Telefone), funcionario.DataAdmissao, "R$ " + funcionario.Salario, funcionario.Endereco,  funcionario.Cidade);
+                grid.Rows.Add(funcionario.Id, funcionario.Nome, funcionario.Email, funcionario.Login, double.Parse(funcionario.Telefone), funcionario.DataAdmissao.ToShortDateString(), "R$ " + funcionario.Salario, funcionario.Endereco,  funcionario.Cidade);
             this.grid.Columns[4].DefaultCellStyle.Format = "(##) #####-####";
         }
     }

@@ -37,7 +37,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Grupo de veiculo", HeaderText = "Grupo de veiculo" },
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Tipo do plano", HeaderText = "tipo do plano" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Tipo do plano", HeaderText = "Plano" },
 
         };
 

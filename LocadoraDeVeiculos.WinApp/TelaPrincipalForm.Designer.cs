@@ -73,7 +73,7 @@
             this.labelTipoCadastro});
             this.toolbox.Location = new System.Drawing.Point(0, 24);
             this.toolbox.Name = "toolbox";
-            this.toolbox.Size = new System.Drawing.Size(1109, 41);
+            this.toolbox.Size = new System.Drawing.Size(1515, 41);
             this.toolbox.TabIndex = 6;
             this.toolbox.Text = "toolStrip1";
             // 
@@ -174,7 +174,7 @@
             this.cadastrosToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(1109, 24);
+            this.menu.Size = new System.Drawing.Size(1515, 24);
             this.menu.TabIndex = 5;
             this.menu.Text = "menuStrip1";
             // 
@@ -253,7 +253,7 @@
             this.panelRegistros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelRegistros.Location = new System.Drawing.Point(0, 65);
             this.panelRegistros.Name = "panelRegistros";
-            this.panelRegistros.Size = new System.Drawing.Size(1109, 531);
+            this.panelRegistros.Size = new System.Drawing.Size(1515, 655);
             this.panelRegistros.TabIndex = 7;
             // 
             // labelRodape
@@ -268,20 +268,24 @@
             this.statusStripRodape.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStripRodape.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.labelRodape});
-            this.statusStripRodape.Location = new System.Drawing.Point(0, 574);
+            this.statusStripRodape.Location = new System.Drawing.Point(0, 698);
             this.statusStripRodape.Name = "statusStripRodape";
-            this.statusStripRodape.Size = new System.Drawing.Size(1109, 22);
+            this.statusStripRodape.Size = new System.Drawing.Size(1515, 22);
             this.statusStripRodape.TabIndex = 4;
             this.statusStripRodape.Text = "statusStrip1";
             // 
             // TelaPrincipalForm
             // 
-            this.ClientSize = new System.Drawing.Size(1109, 596);
+            this.ClientSize = new System.Drawing.Size(1515, 720);
             this.Controls.Add(this.statusStripRodape);
             this.Controls.Add(this.panelRegistros);
             this.Controls.Add(this.toolbox);
             this.Controls.Add(this.menu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TelaPrincipalForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Locadora de Veículos";
             this.toolbox.ResumeLayout(false);
