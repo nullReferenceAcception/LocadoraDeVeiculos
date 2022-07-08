@@ -8,9 +8,9 @@
         {
         }
 
-        public GrupoVeiculos(string v)
+        public GrupoVeiculos(string nome)
         {
-            Nome = v;
+            Nome = nome;
         }
 
         //TODO lista de veiculos
@@ -22,9 +22,9 @@
                    Nome == veiculos.Nome;
         }
 
-        public override string? ToString()
+        public override string ToString()
         {
-            return $"{Nome}";
+            return Nome;
         }
     }
 }
