@@ -4,6 +4,6 @@
   },
 
   "ConnectionStrings": {
-    "SqlServer": "Data Source=(LOCALDB)\\MSSQLLOCALDB;Initial Catalog=locadora_db_teste;Integrated Security=True"
+    "SqlServer": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=locadora_db_teste;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
   }
 } 
