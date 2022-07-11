@@ -11,7 +11,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
     {
         public void ConfigurarParametrosRegistro(Veiculo registro, SqlCommand cmdInserir)
         {
-            cmdInserir.Parameters.AddWithValue("@GUID_VEICULO", registro.guid);
+            cmdInserir.Parameters.AddWithValue("@GUID_VEICULO", registro.Guid);
             cmdInserir.Parameters.AddWithValue("@MODELO", registro.Modelo);
             cmdInserir.Parameters.AddWithValue("@MARCA", registro.Marca);
             cmdInserir.Parameters.AddWithValue("@PLACA", registro.Placa);

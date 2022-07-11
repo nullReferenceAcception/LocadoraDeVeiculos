@@ -163,7 +163,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
 
         public string SqlDuplicidade(Funcionario registro)
         {
-            return  "SELECT * FROM TB_FUNCIONARIO WHERE ([LOGIN] = '" + registro.Login + "')" + "AND [GUID_FUNCIONARIO] != + '" + registro.guid + "'";
+            return  "SELECT * FROM TB_FUNCIONARIO WHERE ([LOGIN] = '" + registro.Login + "')" + "AND [GUID_FUNCIONARIO] != + '" + registro.Guid + "'";
         }
     }
 }
