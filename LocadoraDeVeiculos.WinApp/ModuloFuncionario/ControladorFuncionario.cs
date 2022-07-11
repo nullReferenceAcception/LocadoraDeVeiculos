@@ -31,7 +31,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         public override void Editar()
         {
-            var numero = _tabelaFuncionario.ObtemNumeroFuncionarioSelecionado();
+            var numero = _tabelaFuncionario.ObtemGuidFuncionarioSelecionado();
 
             Funcionario funcionarioSelecionado = _servicoFuncionario.SelecionarPorGuid(numero);
 
@@ -55,7 +55,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         public override void Excluir()
         {
-            var numero = _tabelaFuncionario.ObtemNumeroFuncionarioSelecionado();
+            var numero = _tabelaFuncionario.ObtemGuidFuncionarioSelecionado();
 
             Funcionario funcionarioSelecionado = _servicoFuncionario.SelecionarPorGuid(numero);
 
@@ -82,7 +82,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         public override void Visualizar()
         {
-            var numero = _tabelaFuncionario.ObtemNumeroFuncionarioSelecionado();
+            var numero = _tabelaFuncionario.ObtemGuidFuncionarioSelecionado();
 
             Funcionario selecionado = _servicoFuncionario.SelecionarPorGuid(numero);
 

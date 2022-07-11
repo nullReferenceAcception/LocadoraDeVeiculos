@@ -18,6 +18,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                 @"INSERT INTO
                     TB_FUNCIONARIO
                         (
+                        GUID_FUNCIONARIO,
                         NOME,
                         SALARIO,
                         DATA_ADMISSAO,
@@ -32,6 +33,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                         )
                     VALUES
                         (
+                        @GUID_FUNCIONARIO,
                         @NOME,
                         @SALARIO,
                         @DATA_ADMISSAO,
@@ -52,6 +54,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                 @"UPDATE
                     TB_FUNCIONARIO
                         SET
+                            GUID_FUNCIONARIO = @GUID_FUNCIONARIO,
                             NOME = @NOME,
                             SALARIO = @SALARIO,
                             DATA_ADMISSAO = @DATA_ADMISSAO,
@@ -63,7 +66,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                             EMAIL = @EMAIL,
                             CIDADE = @CIDADE
                         WHERE
-                            ID_FUNCIONARIO = @ID_FUNCIONARIO";
+                            GUID_FUNCIONARIO = @GUID_FUNCIONARIO";
         }
 
         protected override string sqlExcluir
@@ -74,14 +77,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                 SET
                     ESTA_ATIVO = 0
                 WHERE
-                    ID_FUNCIONARIO = @guid";
+                    GUID_FUNCIONARIO = @guid";
         }
 
         protected override string sqlSelecionarTodos
         {
             get =>
                 @"SELECT        
-                    ID_FUNCIONARIO AS ID_FUNCIONARIO, 
+                    GUID_FUNCIONARIO AS GUID_FUNCIONARIO, 
                     NOME AS NOME, 
                     SALARIO AS SALARIO,
                     DATA_ADMISSAO AS DATA_ADMISSAO, 
@@ -103,7 +106,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
         {
             get =>
                 @"SELECT        
-                    ID_FUNCIONARIO AS ID_FUNCIONARIO, 
+                    GUID_FUNCIONARIO AS GUID_FUNCIONARIO, 
                     NOME AS NOME, 
                     SALARIO AS SALARIO,
                     DATA_ADMISSAO AS DATA_ADMISSAO, 
@@ -125,7 +128,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
         {
             get =>
                 @"SELECT        
-                    ID_FUNCIONARIO AS ID_FUNCIONARIO, 
+                    GUID_FUNCIONARIO AS GUID_FUNCIONARIO, 
                     NOME AS NOME, 
                     SALARIO AS SALARIO,
                     DATA_ADMISSAO AS DATA_ADMISSAO, 
@@ -140,7 +143,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                 FROM            
                     TB_FUNCIONARIO
                 WHERE
-                    ID_FUNCIONARIO = @guid";
+                    GUID_FUNCIONARIO = @guid";
         }
 
 
@@ -160,7 +163,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
 
         public string SqlDuplicidade(Funcionario registro)
         {
-            return  "SELECT * FROM TB_FUNCIONARIO WHERE ([LOGIN] = '" + registro.Login + "')" + $"AND [ID_FUNCIONARIO] != {registro.Guid}";
+            return  "SELECT * FROM TB_FUNCIONARIO WHERE ([LOGIN] = '" + registro.Login + "')" + "AND [GUID_FUNCIONARIO] != + '" + registro.guid + "'";
         }
     }
 }

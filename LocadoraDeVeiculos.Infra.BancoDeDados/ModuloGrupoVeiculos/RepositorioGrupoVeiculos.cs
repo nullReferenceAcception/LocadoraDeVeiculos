@@ -19,10 +19,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
 	            INTO
 		        TB_GRUPO_VEICULO
 		        (
+                GUID_GRUPO_VEICULO,
 		        NOME
 		        )
 		        VALUES
 		        (
+                @GUID_GRUPO_VEICULO,
 		        @NOME
 		        );SELECT SCOPE_IDENTITY();";
         }
@@ -32,9 +34,10 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
             @"UPDATE
 	       TB_GRUPO_VEICULO
 		        SET
+            GUID_GRUPO_VEICULO = @GUID_GRUPO_VEICULO,
 			NOME = @NOME
 		        WHERE
-			ID_GRUPO_VEICULO = @ID_GRUPO_VEICULO;";
+			GUID_GRUPO_VEICULO = @GUID_GRUPO_VEICULO;";
         }
 
         protected override string sqlExcluir
@@ -44,14 +47,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
 	            FROM
 		           TB_GRUPO_VEICULO
 	            WHERE
-		            ID_GRUPO_VEICULO = @guid;";
+		            GUID_GRUPO_VEICULO = @guid;";
         }
 
         protected override string sqlSelecionarTodos
         {
             get =>
             @"SELECT
-                    ID_GRUPO_VEICULO AS ID_GRUPO_VEICULO,
+                    GUID_GRUPO_VEICULO AS GUID_GRUPO_VEICULO,
 	                NOME AS NOME_GRUPO_VEICULO
                 FROM
 	               TB_GRUPO_VEICULO
@@ -62,12 +65,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
         {
             get =>
            @"SELECT
-                ID_GRUPO_VEICULO AS ID_GRUPO_VEICULO,
+                GUID_GRUPO_VEICULO AS GUID_GRUPO_VEICULO,
 	                NOME AS NOME_GRUPO_VEICULO
                 FROM
 	               TB_GRUPO_VEICULO
                 WHERE
-	            ID_GRUPO_VEICULO = @guid;";
+	            GUID_GRUPO_VEICULO = @guid;";
         }
 
         protected override string sqlQuantidade
@@ -81,7 +84,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
 
         public string SqlDuplicidade(GrupoVeiculos registro)
         {
-            return "SELECT * FROM TB_GRUPO_VEICULO WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_GRUPO_VEICULO] != {registro.Guid}";
+            return "SELECT * FROM TB_GRUPO_VEICULO WHERE ([NOME] = '" + registro.Nome + "')" + "AND [GUID_GRUPO_VEICULO] != '" + registro.guid + "'";
         }
 
     }

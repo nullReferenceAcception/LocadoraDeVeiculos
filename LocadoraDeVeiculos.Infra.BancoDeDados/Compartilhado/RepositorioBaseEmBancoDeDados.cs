@@ -48,6 +48,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 
             mapeador.ConfigurarParametrosRegistro(registro, cmdInserir);
 
+
             cmdInserir.ExecuteNonQuery();
 
             conexao.Close();

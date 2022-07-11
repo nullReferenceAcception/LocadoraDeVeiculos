@@ -19,6 +19,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
             get =>
                 @"INSERT INTO TB_CLIENTE
                 (
+                    GUID_CLIENTE,
                     NOME,
                     ENDERECO,
                     CNH,
@@ -31,6 +32,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
                 )
                 VALUES
                 (
+                    @GUID_CLIENTE,
                     @NOME,
                     @ENDERECO,
                     @CNH,
@@ -59,7 +61,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
                         CNPJ = @CNPJ,
                         DATA_VALIDADE_CNH = @DATA_VALIDADE_CNH
 		            WHERE
-			            ID_CLIENTE = @ID_CLIENTE;";
+			            GUID_CLIENTE = @GUID_CLIENTE;";
         }
         protected override string sqlExcluir
         {
@@ -68,14 +70,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
 	            FROM
 		            TB_CLIENTE
 	            WHERE
-		            ID_CLIENTE = @guid;";
+		            GUID_CLIENTE = @GUID;";
         }
 
         protected override string sqlSelecionarTodos 
         {
             get =>
             @"SELECT
-                    ID_CLIENTE AS ID_CLIENTE,
+                    GUID_CLIENTE AS GUID_CLIENTE,
 	                NOME AS NOME_CLIENTE,
 	                ENDERECO AS ENDERECO_CLIENTE,
                     CNH AS CNH_CLIENTE,
@@ -91,7 +93,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
 
         protected override string sqlSelecionarPorID 
         { get => @"SELECT
-                    ID_CLIENTE AS ID_CLIENTE,
+                    GUID_CLIENTE AS GUID_CLIENTE,
 	                NOME AS NOME_CLIENTE,
 	                ENDERECO AS ENDERECO_CLIENTE,
                     CNH AS CNH_CLIENTE,
@@ -104,7 +106,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
                 FROM
 	                TB_CLIENTE
                 WHERE 
-                    ID_CLIENTE = @guid;";
+                    GUID_CLIENTE = @guid;";
         }
 
 
@@ -112,7 +114,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
         {
             get =>
             @"SELECT
-                    ID_CLIENTE AS ID_CLIENTE,
+                    GUID_CLIENTE AS GUID_CLIENTE,
 	                NOME AS NOME_CLIENTE,
 	                ENDERECO AS ENDERECO_CLIENTE,
                     CNH AS CNH_CLIENTE,
@@ -133,7 +135,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
         {
             get =>
             @"SELECT
-                    ID_CLIENTE AS ID_CLIENTE,
+                    GUID_CLIENTE AS GUID_CLIENTE,
 	                NOME AS NOME_CLIENTE,
 	                ENDERECO AS ENDERECO_CLIENTE,
                     CNH AS CNH_CLIENTE,
@@ -161,7 +163,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
 
         public string SqlDuplicidade(Cliente registro)
         {
-           return "SELECT * FROM TB_CLIENTE WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_CLIENTE] != {registro.Guid}";
+           return "SELECT * FROM TB_CLIENTE WHERE ([NOME] = '" + registro.Nome + "')" + "AND [GUID_CLIENTE] != '" + registro.guid + "' ";
         }
 
 
