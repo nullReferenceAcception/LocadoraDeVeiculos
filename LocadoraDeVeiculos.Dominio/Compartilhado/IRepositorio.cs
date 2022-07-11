@@ -13,6 +13,5 @@ namespace LocadoraDeVeiculos.Dominio
         public bool VerificarDuplicidade(string sql);
         string SqlDuplicidade(T registro);
         int QuantidadeRegistros();
-
     }
 }

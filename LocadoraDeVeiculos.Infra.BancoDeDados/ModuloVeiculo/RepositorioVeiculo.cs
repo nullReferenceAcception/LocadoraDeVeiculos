@@ -29,7 +29,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
                             )
                         VALUES
                             (
-                            @GUID,
+                            @GUID_VEICULO,
                             @MODELO,
                             @PLACA,
                             @MARCA,
@@ -57,7 +57,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
                                 COR = @COR,
                                 COMBUSTIVEL = @COMBUSTIVEL,
                                 FOTO = @FOTO,
-                                GRUPO_DE_VEICULO_ID = @GRUPO_DE_VEICULO_ID
+                                GRUPO_VEICULO_ID = @GRUPO_VEICULO_ID
                             WHERE
                                 GUID_VEICULO = @GUID";
         }
@@ -83,14 +83,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
                         VEICULO.COR AS COR,
                         VEICULO.COMBUSTIVEL AS COMBUSTIVEL,
                         VEICULO.FOTO AS FOTO,
-                        VEICULO.GRUPO_DE_VEICULO_GUID AS GRUPO_DE_VEICULO_GUID,
+                        VEICULO.GRUPO_VEICULO_GUID AS GRUPO_VEICULO_GUID,
 
                         GRUPO_VEICULO.GUID_GRUPO_VEICULO AS GUID_GRUPO_VEICULO,
                         GRUPO_VEICULO.NOME AS NOME_GRUPO_VEICULO
                     FROM
                         TB_VEICULO AS VEICULO
                         INNER JOIN TB_GRUPO_VEICULO AS GRUPO_VEICULO
-                        ON GRUPO_VEICULO.GUID_GRUPO_VEICULO = VEICULO.GRUPO_DE_VEICULO_GUID";
+                        ON GRUPO_VEICULO.GUID_GRUPO_VEICULO = VEICULO.GRUPO_VEICULO_GUID";
         }
 
         protected override string sqlSelecionarPorID
@@ -128,7 +128,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
 
         public string SqlDuplicidade(Veiculo registro)
         {
-            return "SELECT * FROM TB_VEICULO WHERE ([PLACA] = '" + registro.Placa + "')" + $"AND [GUID_VEICULO] != {registro.Guid}";
+            return "SELECT * FROM TB_VEICULO WHERE ([PLACA] = '" + registro.Placa + "')" + $"AND [GUID_VEICULO] != '" + registro.Guid + "'";
         }
     }
 }

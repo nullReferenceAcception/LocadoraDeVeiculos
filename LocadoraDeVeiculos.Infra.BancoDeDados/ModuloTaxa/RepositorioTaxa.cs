@@ -27,7 +27,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 		        )
 		        VALUES
 		        (
-                @GUID,
+                @GUID_TAXA,
 		        @DESCRICAO,
 		        @VALOR,
                 @EH_DIARIA
@@ -60,7 +60,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
         {
             get =>
             @"SELECT
-                    GUID_TAXA AS ID_TAXA,
+                    GUID_TAXA AS GUID_TAXA,
 	                DESCRICAO AS DESCRICAO_TAXA,
 	                VALOR AS VALOR_TAXA,
                     EH_DIARIA AS EH_DIARIA_TAXA
@@ -92,7 +92,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 
         string IRepositorio<Taxa>.SqlDuplicidade(Taxa registro)
         {
-            return "SELECT * FROM TB_TAXA WHERE ([DESCRICAO] = '" + registro.Descricao + "')" + $"AND [GUID_TAXA] != {registro.Guid}";
+            return "SELECT * FROM TB_TAXA WHERE ([DESCRICAO] = '" + registro.Descricao + "')" + $"AND [GUID_TAXA] != '" + registro.Guid + "'";
         }
     }
 }
