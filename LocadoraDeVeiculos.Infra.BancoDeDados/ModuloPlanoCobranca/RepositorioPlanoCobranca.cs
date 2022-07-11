@@ -23,6 +23,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
 	            INTO
 		        [TB_PLANO_COBRANCA]
 		        (
+                GUID_PLANO_COBRANCA,
 		        NOME,
                 KM_LIVRE_INCLUSO,
                 VALOR_DIA,
@@ -32,6 +33,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
 		        )
 		        VALUES
 		        (
+                @GUID,
 		        @NOME,
 		        @KM_LIVRE_INCLUSO,
                 @VALOR_DIA,
@@ -53,7 +55,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
             PLANO = @PLANO,
             GRUPO_VEICULO_ID = @GRUPO_VEICULO_ID
 		        WHERE
-			ID_PLANO_COBRANCA = @ID_PLANO_COBRANCA;";
+			GUID_PLANO_COBRANCA = @GUID_PLANO_COBRANCA;";
         }
 
         protected override string sqlExcluir
@@ -63,14 +65,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
 	            FROM
 		            TB_PLANO_COBRANCA
 	            WHERE
-		            ID_PLANO_COBRANCA = @guid;";
+		            GUID_PLANO_COBRANCA = @GUID;";
         }
 
         protected override string sqlSelecionarTodos
         {
             get =>
             @"SELECT
-                    P.ID_PLANO_COBRANCA,
+                    P.GUID_PLANO_COBRANCA,
 	                P.NOME AS NOME_PLANO_COBRANCA,
 	                P.KM_LIVRE_INCLUSO AS KM_LIVRE_INCLUSO_PLANO_COBRANCA,
                     P.VALOR_DIA AS VALOR_DIA_PLANO_COBRANCA,
@@ -82,7 +84,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
                    TB_PLANO_COBRANCA AS P INNER JOIN
 	               TB_GRUPO_VEICULO AS G
                 ON
-	               P.GRUPO_VEICULO_ID = G.ID_GRUPO_VEICULO
+	               P.GRUPO_VEICULO_GUID = G.GUID_GRUPO_VEICULO
 ";
         }
 
@@ -90,7 +92,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
         {
             get =>
           @"SELECT
-                    P.ID_PLANO_COBRANCA,
+                    P.GUID_PLANO_COBRANCA,
 	                P.NOME AS NOME_PLANO_COBRANCA,
 	                P.KM_LIVRE_INCLUSO AS KM_LIVRE_INCLUSO_PLANO_COBRANCA,
                     P.VALOR_DIA AS VALOR_DIA_PLANO_COBRANCA,
@@ -102,23 +104,21 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
                    TB_PLANO_COBRANCA AS P INNER JOIN
 	               TB_GRUPO_VEICULO AS G
                 ON
-	               P.GRUPO_VEICULO_ID = G.ID_GRUPO_VEICULO
+	               P.GUGRUPO_VEICULO_ID = G.GUID_GRUPO_VEICULO
                 WHERE
-	            ID_PLANO_COBRANCA = @guid;";
+	            GUID_PLANO_COBRANCA = @guid;";
         }
 
         protected override string sqlQuantidade
         {
             get =>
-                    @"SELECT COUNT(*) from TB_PLANO_COBRANCA";
+                    @"SELECT COUNT(*) FROM TB_PLANO_COBRANCA";
         }
-
-
 
         #endregion
         public string SqlDuplicidade(PlanoCobranca registro)
         {
-            return "SELECT * FROM [TB_PLANO_COBRANCA] WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_PLANO_COBRANCA] != {registro.Guid}";
+            return "SELECT * FROM [TB_PLANO_COBRANCA] WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [GUID_PLANO_COBRANCA] != {registro.Guid}";
         }
     }
 }

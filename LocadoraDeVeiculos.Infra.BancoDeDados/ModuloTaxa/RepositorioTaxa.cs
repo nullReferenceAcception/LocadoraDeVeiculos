@@ -20,12 +20,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 	            INTO
 		        TB_TAXA
 		        (
+                GUID_TAXA,
 		        DESCRICAO, 
 		        VALOR,
                 EH_DIARIA
 		        )
 		        VALUES
 		        (
+                @GUID,
 		        @DESCRICAO,
 		        @VALOR,
                 @EH_DIARIA
@@ -41,7 +43,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 			VALOR = @VALOR,
             EH_DIARIA = @EH_DIARIA
 		        WHERE
-			ID_TAXA = @ID_TAXA;";
+			GUID_TAXA = @GUID_TAXA;";
         }
 
         protected override string sqlExcluir
@@ -51,49 +53,46 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 	            FROM
 		            TB_TAXA
 	            WHERE
-		            ID_TAXA = @guid;";
+		            GUID_TAXA = @GUID;";
         }
 
         protected override string sqlSelecionarTodos
         {
             get =>
             @"SELECT
-                    ID_TAXA AS ID_TAXA,
+                    GUID_TAXA AS ID_TAXA,
 	                DESCRICAO AS DESCRICAO_TAXA,
 	                VALOR AS VALOR_TAXA,
                     EH_DIARIA AS EH_DIARIA_TAXA
                 FROM
-	                TB_TAXA
-";
+	                TB_TAXA";
         }
 
         protected override string sqlSelecionarPorID
         {
             get =>
            @"SELECT
-                ID_TAXA AS ID_TAXA,
+                    GUID_TAXA AS GUID_TAXA,
 	                DESCRICAO AS DESCRICAO_TAXA,
 	                VALOR AS VALOR_TAXA,
                     EH_DIARIA AS EH_DIARIA_TAXA
                 FROM
 	                TB_TAXA
                 WHERE
-	            ID_TAXA = @guid;";
+	                GUID_TAXA = @GUID;";
         }
-
 
         protected override string sqlQuantidade
         {
             get =>
-                    @"SELECT COUNT(*) from TB_TAXA";
+                    @"SELECT COUNT(*) FROM TB_TAXA";
         }
-
 
         #endregion
 
         string IRepositorio<Taxa>.SqlDuplicidade(Taxa registro)
         {
-            return "SELECT * FROM TB_TAXA WHERE ([DESCRICAO] = '" + registro.Descricao + "')" + $"AND [ID_TAXA] != {registro.Guid}";
+            return "SELECT * FROM TB_TAXA WHERE ([DESCRICAO] = '" + registro.Descricao + "')" + $"AND [GUID_TAXA] != {registro.Guid}";
         }
     }
 }
