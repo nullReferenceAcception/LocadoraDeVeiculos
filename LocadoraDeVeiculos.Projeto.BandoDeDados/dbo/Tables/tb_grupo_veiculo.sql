@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[tb_grupo_veiculo] (
-    [id_grupo_veiculo] INT           IDENTITY (1, 1) NOT NULL,
-    [nome]             VARCHAR (MAX) NOT NULL,
-    CONSTRAINT [PK_tb_grupo_veiculo] PRIMARY KEY CLUSTERED ([id_grupo_veiculo] ASC)
+    [guid_grupo_veiculo] UNIQUEIDENTIFIER CONSTRAINT [DF_tb_grupo_veiculo_guid_grupo_veiculo] DEFAULT (newid()) NOT NULL,
+    [nome]               VARCHAR (MAX)    NOT NULL,
+    CONSTRAINT [PK_tb_grupo_veiculo_1] PRIMARY KEY CLUSTERED ([guid_grupo_veiculo] ASC)
 );
 
