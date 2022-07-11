@@ -51,6 +51,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
 
             repositorio.Editar(registro);
+
             Log.Logger.Debug("Editado: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
 
             return resultadoValidacao;
