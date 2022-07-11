@@ -1,4 +1,4 @@
-<h2 style="color:red" id='topo'> Guia de padrões e roteiro de processo </h2>
+<h2 style="color:red" guid='topo'> Guia de padrões e roteiro de processo </h2>
 
 ___
 <a href="https://i.ibb.co/k4TC8N8/image.png">Modelo atual MVC</a>
@@ -20,7 +20,7 @@ ___
 
 ___
 
-<h1 id='git' style="color:white">Git</h1>
+<h1 guid='git' style="color:white">Git</h1>
 
 Antes de realizar um <span style="color:#db0bb9">_pull_</span>, faça um <span style="color:#db0bb9">_fetch_</span> para ver as alterações que virão.
 
@@ -43,7 +43,7 @@ Passos para voltar a <span style="color:#64b2d1">BRANCH</span> na <span style="c
 <a href="https://i.ibb.co/TB9Kj37/fluxoGit.png"><strong style="color:HotPink">Imagem auxiliar</strong></a>
 
 ___
-<h3 id='errosGit' style="color:violet">Erros</h3>
+<h3 guid='errosGit' style="color:violet">Erros</h3>
 
 Se um arquivo está causando problemas por ser definido a todo hora como "modificado" (M), e está na lista do .gitignore, uma possível solução é:
 
@@ -55,7 +55,7 @@ Se um arquivo está causando problemas por ser definido a todo hora como "modifi
 Se tudo ocorreu certo, o problema deve se encerrar.
 ___
 
-<h1 id='apresentacao' style="color:#e59866">Apresentação</h1>
+<h1 guid='apresentacao' style="color:#e59866">Apresentação</h1>
 
 Ao renomear um campo, deixar o **<span style="color:cyan">NOME ORIGINAL** seguido por sua definição:
 
@@ -79,19 +79,19 @@ Lembrar dessa duas funcoes no construtor:<div>
 
 
 ___
-<h1 id='aplicacao' style="color:#76d7c4">Aplicação</h1>
+<h1 guid='aplicacao' style="color:#76d7c4">Aplicação</h1>
 
 Esta é a camada de serviço.
 ___
 
-<h1 id='dominio' style="color:#ec7063">Domínio</h1>
+<h1 guid='dominio' style="color:#ec7063">Domínio</h1>
 
 Ao criar uma nova classe, implementar o override de Equals e gerar seus construtores necessários
 ___
 
-<h1 id='infra' style="color:#a569bd">Infra</h1>
+<h1 guid='infra' style="color:#a569bd">Infra</h1>
 
-Quando fizer o repositorio da classe o SQL de excluir e o de selecionarPorId precisa ser @ID exemplo: 
+Quando fizer o repositorio da classe o SQL de excluir e o de SelecionarPorGuid precisa ser @guid exemplo: 
 
 ```SQL
 protected override string sqlExcluir
@@ -101,7 +101,7 @@ get =>
     FROM
         TB_TAXA
     WHERE
-        ID_TAXA = @ID;"; ---->@ID aqui
+        ID_TAXA = @guid;"; ---->@guid aqui
 }
 
 protected override string sqlSelecionarPorID
@@ -114,12 +114,12 @@ get =>
     FROM
         TB_TAXA
     WHERE
-        ID_TAXA = @ID;"; ---->@ID aqui tambem
+        ID_TAXA = @guid;"; ---->@guid aqui tambem
 }
 ```
 ___
 
-<h1 id='testes' style="color:#566573">Testes</h1>
+<h1 guid='testes' style="color:#566573">Testes</h1>
 
 <h3>Unitários</h3>
 
@@ -130,26 +130,26 @@ Realizar os testes por ordem:
 a) Inserir<br>
 b) Editar<br>
 c) Excluir<br>
-d) SelecionarPorId<br>
+d) SelecionarPorGuid<br>
 e) SelecionarTodos<br>
 f) Não pode fazer algo<br>
 
 Usando prioritariamente **<span style="color:orange">FluentAssertions</span>**
 ___
 
-<h3 id='ordem' style="color:violet">Ordem de identação em JsonSerialize</h3>
+<h3 guid='ordem' style="color:violet">Ordem de identação em JsonSerialize</h3>
 As classes base (EntidadeBase e Pessoa) proveem propriedades que todas as classes, dentro de suas áreas, possuem em comum. <br><br>
-EntidadeBase tem o campo 'Id' com a marcação de 
+EntidadeBase tem o campo 'guid' com a marcação de 
 
 ```JSON
 [JsonProperty(Order = -6)]
 ```
 para que seja o primeiro campo a ser serializado nos arquivos de log. <br>
-Em sequência, Pessoa tem os campos Nome, Endereco, Email, Telefone também com a mesma marcação, com as posições respectivas: -5, -4, -3 e -2 para que venham logo em seguida do Id de cada objeto.
+Em sequência, Pessoa tem os campos Nome, Endereco, Email, Telefone também com a mesma marcação, com as posições respectivas: -5, -4, -3 e -2 para que venham logo em seguida do guid de cada objeto.
 
 O restante das informações, de cada classe, deve ser posto em ordem que se queira serializar. Por exemplo:
 ```JSON
-  "Id": 1,
+  "guid": 1,
   "Nome": " ",
   "Endereco": "nnnnnn",
   "Email": "cond@cond.com",
@@ -158,7 +158,7 @@ O restante das informações, de cada classe, deve ser posto em ordem que se que
   "CPF": "11111111111",
   "DataValidadeCNH": "2029-02-23T00:00:00",
   "Cliente": {
-    "Id": 1,
+    "guid": 1,
     "Nome": "Empresa teste",
     "Endereco": "Teste",
     "Email": "teste@teste.com",

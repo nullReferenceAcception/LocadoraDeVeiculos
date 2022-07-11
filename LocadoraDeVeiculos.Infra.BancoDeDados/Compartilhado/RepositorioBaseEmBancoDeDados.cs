@@ -47,10 +47,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             SqlCommand cmdInserir = new SqlCommand(sqlInserir, conexao);
 
             mapeador.ConfigurarParametrosRegistro(registro, cmdInserir);
+            registro.guid = new Guid();
 
-            var ID = cmdInserir.ExecuteScalar();
 
-            registro.Id = Convert.ToInt32(ID);
+            cmdInserir.ExecuteNonQuery();
+
             conexao.Close();
         }
 
@@ -72,7 +73,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 
             SqlCommand comandoExclusao = new SqlCommand(sqlExcluir, conexao);
 
-            comandoExclusao.Parameters.AddWithValue("ID", registro.Id);
+            comandoExclusao.Parameters.AddWithValue("guid", registro.guid);
 
             conexao.Open();
 
@@ -141,13 +142,13 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             return registros;
         }
 
-        public T SelecionarPorID(int ID)
+        public T SelecionarPorGuid(Guid guid)
         {
             SqlConnection conexao = new SqlConnection(enderecoBanco);
 
             SqlCommand comandoSelecao = new SqlCommand(sqlSelecionarPorID, conexao);
 
-            comandoSelecao.Parameters.AddWithValue("ID", ID);
+            comandoSelecao.Parameters.AddWithValue("guid", guid);
 
             conexao.Open();
             SqlDataReader leitorRegistro = comandoSelecao.ExecuteReader();

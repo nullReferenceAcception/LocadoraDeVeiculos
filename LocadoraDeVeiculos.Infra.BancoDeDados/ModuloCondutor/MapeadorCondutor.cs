@@ -10,20 +10,20 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
     {
         public void ConfigurarParametrosRegistro(Condutor registro, SqlCommand cmdInserir)
         {
-            cmdInserir.Parameters.AddWithValue("ID_CONDUTOR", registro.Id);
+            cmdInserir.Parameters.AddWithValue("GUID_CONDUTOR", registro.guid);
             cmdInserir.Parameters.AddWithValue("NOME", registro.Nome);
             cmdInserir.Parameters.AddWithValue("ENDERECO", registro.Endereco);
             cmdInserir.Parameters.AddWithValue("CNH", registro.CNH);
             cmdInserir.Parameters.AddWithValue("EMAIL", registro.Email);
             cmdInserir.Parameters.AddWithValue("TELEFONE", registro.Telefone);
             cmdInserir.Parameters.AddWithValue("CPF", registro.CPF);
-            cmdInserir.Parameters.AddWithValue("CLIENTE_ID", registro.Cliente.Id);
+            cmdInserir.Parameters.AddWithValue("CLIENTE_ID", registro.Cliente.guid);
             cmdInserir.Parameters.AddWithValue("DATA_VALIDADE_CNH", registro.DataValidadeCNH);
         }
 
         public Condutor ConverterParaRegistro(SqlDataReader leitorRegistro)
         {
-            int idCondutor = Convert.ToInt32(leitorRegistro["ID_CONDUTOR"]);
+            Guid guidCondutor = Guid.Parse(leitorRegistro["GUID_CONDUTOR"].ToString());
             string nome = Convert.ToString(leitorRegistro["NOME_CONDUTOR"])!;
             string endereco = Convert.ToString(leitorRegistro["ENDERECO_CONDUTOR"])!;
             string cnh = Convert.ToString(leitorRegistro["CNH_CONDUTOR"])!;
@@ -33,7 +33,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
             DateTime dataValidadeCNH = Convert.ToDateTime(leitorRegistro["DATA_VALIDADE_CNH_CONDUTOR"])!;
 
             var condutor = new Condutor();
-            condutor.Id = idCondutor;
+            condutor.guid = guidCondutor;
             condutor.Nome = nome;
             condutor.Endereco = endereco;
             condutor.CNH = cnh;

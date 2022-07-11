@@ -22,7 +22,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             servico.Inserir(registro);
 
-            Funcionario registro2 = servico.SelecionarPorID(registro.Id);
+            Funcionario registro2 = servico.SelecionarPorGuid(registro.guid);
 
             Assert.AreEqual(registro, registro2);
         }
@@ -38,7 +38,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             servico.Editar(registro);
 
-            Funcionario registro2 = servico.SelecionarPorID(registro.Id);
+            Funcionario registro2 = servico.SelecionarPorGuid(registro.guid);
 
             Assert.AreEqual(registro2, registro);
         }
@@ -52,7 +52,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             servico.Excluir(registro);
 
-            Funcionario registro2 = servico.SelecionarPorID(registro.Id);
+            Funcionario registro2 = servico.SelecionarPorGuid(registro.guid);
 
             registro2.EstaAtivo.Should().Be(false);
         }
@@ -82,7 +82,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
             Funcionario registro = CriarFuncionario();
             servico.Inserir(registro);
 
-            Funcionario registro2 = servico.SelecionarPorID(registro.Id);
+            Funcionario registro2 = servico.SelecionarPorGuid(registro.guid);
 
             Assert.AreEqual(registro2, registro);
         }

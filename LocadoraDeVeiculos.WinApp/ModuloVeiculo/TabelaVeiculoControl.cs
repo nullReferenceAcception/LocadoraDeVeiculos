@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -18,7 +19,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "guid", HeaderText = "guid"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Modelo", HeaderText = "Modelo"},
 
@@ -44,9 +45,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             return colunas;
         }
 
-        public int ObtemNumeroVeiculoSelecionado()
+        public Guid ObtemGuidVeiculoSelecionado()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.ObterGuid<Guid>();
         }
 
         public void AtualizarRegistros(List<Veiculo> veiculos)
@@ -55,7 +56,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             foreach (Veiculo veiculo in veiculos)
 
-                grid.Rows.Add(veiculo.Id, veiculo.Modelo, veiculo.Marca, veiculo.Placa, veiculo.Cor, veiculo.Ano, veiculo.Combustivel, veiculo.CapacidadeTanque, veiculo.KmPercorrido, veiculo.GrupoVeiculos, veiculo.Foto);
+                grid.Rows.Add(veiculo.guid, veiculo.Modelo, veiculo.Marca, veiculo.Placa, veiculo.Cor, veiculo.Ano, veiculo.Combustivel, veiculo.CapacidadeTanque, veiculo.KmPercorrido, veiculo.GrupoVeiculos, veiculo.Foto);
         }
     }
 }

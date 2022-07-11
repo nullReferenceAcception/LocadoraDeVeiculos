@@ -44,7 +44,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
         private void ConfigurarTelaEditar()
         {
-            textBoxID.Text = _taxa.Id.ToString();
+            textBoxID.Text = _taxa.guid.ToString();
             textBoxDescricao.Text = _taxa.Descricao;
             textBoxValor.Text = "R$ " + _taxa.Valor.ToString();
             _ = Taxa.EhDiaria ? radioButtonDiario.Checked = true : radioButtonFixo.Checked = true;

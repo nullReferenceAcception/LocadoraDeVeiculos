@@ -32,7 +32,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         {
             var numero = _tabelaTaxas.ObtemNumeroTaxaSelecionada();
 
-            Taxa taxaSelecionada = _servicoTaxa.SelecionarPorID(numero);
+            Taxa taxaSelecionada = _servicoTaxa.SelecionarPorGuid(numero);
 
             if (taxaSelecionada == null)
             {
@@ -56,7 +56,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         {
             var numero = _tabelaTaxas.ObtemNumeroTaxaSelecionada();
 
-            Taxa taxaSelecionada = _servicoTaxa.SelecionarPorID(numero);
+            Taxa taxaSelecionada = _servicoTaxa.SelecionarPorGuid(numero);
 
             if (taxaSelecionada == null)
             {
@@ -83,7 +83,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         {
             var numero = _tabelaTaxas.ObtemNumeroTaxaSelecionada();
 
-            Taxa taxaSelecionada = _servicoTaxa.SelecionarPorID(numero);
+            Taxa taxaSelecionada = _servicoTaxa.SelecionarPorGuid(numero);
 
             if (taxaSelecionada == null)
             {

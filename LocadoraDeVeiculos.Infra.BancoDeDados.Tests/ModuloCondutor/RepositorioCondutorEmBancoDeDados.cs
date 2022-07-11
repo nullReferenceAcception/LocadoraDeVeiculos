@@ -39,7 +39,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 
             servico.Inserir(condutor);
 
-            Condutor Condutor2 = servico.SelecionarPorID(condutor.Id);
+            Condutor Condutor2 = servico.SelecionarPorGuid(condutor.guid);
 
             Assert.AreEqual(condutor, Condutor2);
         }
@@ -61,7 +61,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 
             servico.Editar(condutor);
 
-            Condutor condutor2 = servico.SelecionarPorID(condutor.Id);
+            Condutor condutor2 = servico.SelecionarPorGuid(condutor.guid);
 
             Assert.AreEqual(condutor2, condutor);
         }
@@ -81,7 +81,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 
             servico.Excluir(condutor);
 
-            Condutor Condutor2 = servico.SelecionarPorID(condutor.Id);
+            Condutor Condutor2 = servico.SelecionarPorGuid(condutor.guid);
 
             Condutor2.Should().Be(null);
         }
@@ -129,7 +129,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 
             servico.Inserir(registro);
 
-            Condutor registro2 = servico.SelecionarPorID(registro.Id);
+            Condutor registro2 = servico.SelecionarPorGuid(registro.guid);
 
             Assert.AreEqual(registro2, registro);
         }

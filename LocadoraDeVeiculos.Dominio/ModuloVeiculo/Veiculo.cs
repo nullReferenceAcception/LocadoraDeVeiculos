@@ -37,7 +37,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
         public override bool Equals(object? obj)
         {
             return obj is Veiculo veiculo &&
-                   Id == veiculo.Id &&
+                   guid == veiculo.guid &&
                    Modelo == veiculo.Modelo &&
                    Placa == veiculo.Placa &&
                    Marca == veiculo.Marca &&

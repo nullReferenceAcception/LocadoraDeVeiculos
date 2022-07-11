@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -18,7 +19,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "guid", HeaderText = "guid"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
 
@@ -36,9 +37,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             return colunas;
         }
 
-        public int ObtemNumeroClienteSelecionado()
+        public Guid ObtemGuidClienteSelecionado()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.ObterGuid<Guid>();
         }
 
         public void AtualizarRegistros(List<Cliente> clientes)
@@ -48,12 +49,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             {
                 if (cliente.CNPJ == null)
                 {
-                    grid.Rows.Add(cliente.Id, cliente.Nome, cliente.Endereco, double.Parse(cliente.Telefone), cliente.CNH, cliente.Email, double.Parse(cliente.CPF));
+                    grid.Rows.Add(cliente.guid, cliente.Nome, cliente.Endereco, double.Parse(cliente.Telefone), cliente.CNH, cliente.Email, double.Parse(cliente.CPF));
                     this.grid.Columns[6].DefaultCellStyle.Format = @"000\.000\.000\-00";
                 }
                 else
                 {
-                    grid.Rows.Add(cliente.Id, cliente.Nome, cliente.Endereco, double.Parse(cliente.Telefone), "Não cadastrado", cliente.Email, double.Parse(cliente.CNPJ));
+                    grid.Rows.Add(cliente.guid, cliente.Nome, cliente.Endereco, double.Parse(cliente.Telefone), "Não cadastrado", cliente.Email, double.Parse(cliente.CNPJ));
                     this.grid.Columns[6].DefaultCellStyle.Format = @"00\.000\.000\/0000\-00";
                 }
                 this.grid.Columns[3].DefaultCellStyle.Format = "(##) #####-####";

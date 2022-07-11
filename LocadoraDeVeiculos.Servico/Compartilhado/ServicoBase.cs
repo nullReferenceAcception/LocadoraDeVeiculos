@@ -3,6 +3,7 @@ using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio;
 using Newtonsoft.Json;
 using Serilog;
+using System;
 using System.Collections.Generic;
 
 namespace LocadoraDeVeiculos.Servico.Compartilhado
@@ -82,9 +83,9 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             return repositorio.SelecionarTodos();
         }
 
-        public T SelecionarPorID(int ID)
+        public T SelecionarPorGuid(Guid guid)
         {
-            return repositorio.SelecionarPorID(ID);
+            return repositorio.SelecionarPorGuid(guid);
         }
 
         public int QuantidadeRegistro()

@@ -44,7 +44,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
 	            FROM
 		           TB_GRUPO_VEICULO
 	            WHERE
-		            ID_GRUPO_VEICULO = @ID;";
+		            ID_GRUPO_VEICULO = @guid;";
         }
 
         protected override string sqlSelecionarTodos
@@ -67,7 +67,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
                 FROM
 	               TB_GRUPO_VEICULO
                 WHERE
-	            ID_GRUPO_VEICULO = @ID;";
+	            ID_GRUPO_VEICULO = @guid;";
         }
 
         protected override string sqlQuantidade
@@ -81,7 +81,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
 
         public string SqlDuplicidade(GrupoVeiculos registro)
         {
-            return "SELECT * FROM TB_GRUPO_VEICULO WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_GRUPO_VEICULO] != {registro.Id}";
+            return "SELECT * FROM TB_GRUPO_VEICULO WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_GRUPO_VEICULO] != {registro.guid}";
         }
 
     }

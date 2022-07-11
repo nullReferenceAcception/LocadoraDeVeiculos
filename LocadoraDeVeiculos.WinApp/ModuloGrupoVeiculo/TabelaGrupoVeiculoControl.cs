@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -18,7 +19,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "guid", HeaderText = "guid"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Descricao", HeaderText = "Descrição"}
             };
@@ -26,9 +27,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
             return colunas;
         }
 
-        public int ObtemNumeroSelecionada()
+        public Guid ObtemGuidSelecionada()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.ObterGuid<Guid>();
         }
 
         public void AtualizarRegistros(List<GrupoVeiculos> registros)
@@ -36,7 +37,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
             grid.Rows.Clear();
 
             foreach (GrupoVeiculos registro in registros)
-                grid.Rows.Add(registro.Id, registro.Nome);
+                grid.Rows.Add(registro.guid, registro.Nome);
         }
     }
 }

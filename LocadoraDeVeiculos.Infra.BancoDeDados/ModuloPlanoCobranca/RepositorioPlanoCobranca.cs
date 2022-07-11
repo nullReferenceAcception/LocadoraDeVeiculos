@@ -63,7 +63,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
 	            FROM
 		            TB_PLANO_COBRANCA
 	            WHERE
-		            ID_PLANO_COBRANCA = @ID;";
+		            ID_PLANO_COBRANCA = @guid;";
         }
 
         protected override string sqlSelecionarTodos
@@ -104,7 +104,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
                 ON
 	               P.GRUPO_VEICULO_ID = G.ID_GRUPO_VEICULO
                 WHERE
-	            ID_PLANO_COBRANCA = @ID;";
+	            ID_PLANO_COBRANCA = @guid;";
         }
 
         protected override string sqlQuantidade
@@ -118,7 +118,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
         #endregion
         public string SqlDuplicidade(PlanoCobranca registro)
         {
-            return "SELECT * FROM [TB_PLANO_COBRANCA] WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_PLANO_COBRANCA] != {registro.Id}";
+            return "SELECT * FROM [TB_PLANO_COBRANCA] WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_PLANO_COBRANCA] != {registro.guid}";
         }
     }
 }

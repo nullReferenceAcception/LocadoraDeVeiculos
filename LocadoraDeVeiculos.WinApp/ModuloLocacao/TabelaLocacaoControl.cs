@@ -15,16 +15,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "guid", HeaderText = "guid"},
 
             };
 
             return colunas;
         }
 
-        public int ObtemNumeroVeiculoSelecionado()
+        public int ObtemGuidVeiculoSelecionado()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.ObterGuid<int>();
         }
 
         public void AtualizarRegistros(/*List<Locacao> locacoes*/)

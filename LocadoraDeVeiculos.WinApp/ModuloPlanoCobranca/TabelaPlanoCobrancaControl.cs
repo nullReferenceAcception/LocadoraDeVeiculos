@@ -25,7 +25,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "guid", HeaderText = "guid"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
 
@@ -44,9 +44,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             return colunas;
         }
 
-        public int ObtemNumeroPlanoCobrancaSelecionada()
+        public Guid ObtemGuidPlanoCobrancaSelecionada()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.ObterGuid<Guid>();
         }
 
         public void AtualizarRegistros(List<PlanoCobranca> PlanoCobrancas)
@@ -54,7 +54,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             grid.Rows.Clear();
 
             foreach (PlanoCobranca PlanoCobranca in PlanoCobrancas)
-                    grid.Rows.Add(PlanoCobranca.Id, PlanoCobranca.Nome, PlanoCobranca.KmLivreIncluso, PlanoCobranca.ValorDia, PlanoCobranca.ValorPorKm, PlanoCobranca.GrupoVeiculos.Nome, PlanoCobranca.Plano);
+                    grid.Rows.Add(PlanoCobranca.guid, PlanoCobranca.Nome, PlanoCobranca.KmLivreIncluso, PlanoCobranca.ValorDia, PlanoCobranca.ValorPorKm, PlanoCobranca.GrupoVeiculos.Nome, PlanoCobranca.Plano);
         }
     }
 }

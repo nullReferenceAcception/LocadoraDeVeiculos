@@ -68,7 +68,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
 	            FROM
 		            TB_CLIENTE
 	            WHERE
-		            ID_CLIENTE = @ID;";
+		            ID_CLIENTE = @guid;";
         }
 
         protected override string sqlSelecionarTodos 
@@ -104,7 +104,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
                 FROM
 	                TB_CLIENTE
                 WHERE 
-                    ID_CLIENTE = @ID;";
+                    ID_CLIENTE = @guid;";
         }
 
 
@@ -161,7 +161,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
 
         public string SqlDuplicidade(Cliente registro)
         {
-           return "SELECT * FROM TB_CLIENTE WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_CLIENTE] != {registro.Id}";
+           return "SELECT * FROM TB_CLIENTE WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_CLIENTE] != {registro.guid}";
         }
 
 

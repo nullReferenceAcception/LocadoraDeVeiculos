@@ -16,7 +16,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "guid", HeaderText = "guid"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Modelo", HeaderText = "Modelo"},
             };
@@ -26,7 +26,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
         public int ObtemNumeroDevolucaoSelecionada()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.ObterGuid<int>();
         }
 
         public void AtualizarRegistros(/**/)

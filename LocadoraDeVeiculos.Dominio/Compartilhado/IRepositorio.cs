@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace LocadoraDeVeiculos.Dominio
 {
@@ -8,7 +9,7 @@ namespace LocadoraDeVeiculos.Dominio
         void Editar(T registro);
         string Excluir(T registro);
         List<T> SelecionarTodos();
-        T SelecionarPorID(int numero);
+        T SelecionarPorGuid(Guid numero);
         public bool VerificarDuplicidade(string sql);
         string SqlDuplicidade(T registro);
         int QuantidadeRegistros();

@@ -51,7 +51,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 	            FROM
 		            TB_TAXA
 	            WHERE
-		            ID_TAXA = @ID;";
+		            ID_TAXA = @guid;";
         }
 
         protected override string sqlSelecionarTodos
@@ -78,7 +78,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
                 FROM
 	                TB_TAXA
                 WHERE
-	            ID_TAXA = @ID;";
+	            ID_TAXA = @guid;";
         }
 
 
@@ -93,7 +93,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 
         string IRepositorio<Taxa>.SqlDuplicidade(Taxa registro)
         {
-            return "SELECT * FROM TB_TAXA WHERE ([DESCRICAO] = '" + registro.Descricao + "')" + $"AND [ID_TAXA] != {registro.Id}";
+            return "SELECT * FROM TB_TAXA WHERE ([DESCRICAO] = '" + registro.Descricao + "')" + $"AND [ID_TAXA] != {registro.guid}";
         }
     }
 }

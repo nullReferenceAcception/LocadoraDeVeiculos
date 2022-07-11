@@ -40,9 +40,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         public override void Editar()
         {
-            var numero = _tabelaVeiculos.ObtemNumeroVeiculoSelecionado();
+            var numero = _tabelaVeiculos.ObtemGuidVeiculoSelecionado();
 
-            Veiculo veiculoSelecionado = _servicoVeiculo.SelecionarPorID(numero);
+            Veiculo veiculoSelecionado = _servicoVeiculo.SelecionarPorGuid(numero);
 
             if (veiculoSelecionado == null)
             {
@@ -64,9 +64,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         public override void Excluir()
         {
-            var numero = _tabelaVeiculos.ObtemNumeroVeiculoSelecionado();
+            var numero = _tabelaVeiculos.ObtemGuidVeiculoSelecionado();
 
-            Veiculo veiculoSelecionado = _servicoVeiculo.SelecionarPorID(numero);
+            Veiculo veiculoSelecionado = _servicoVeiculo.SelecionarPorGuid(numero);
 
             if (veiculoSelecionado == null)
             {
@@ -91,9 +91,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         public override void Visualizar()
         {
-            var numero = _tabelaVeiculos.ObtemNumeroVeiculoSelecionado();
+            var numero = _tabelaVeiculos.ObtemGuidVeiculoSelecionado();
 
-            Veiculo veiculoSelecionado = _servicoVeiculo.SelecionarPorID(numero);
+            Veiculo veiculoSelecionado = _servicoVeiculo.SelecionarPorGuid(numero);
 
             if (veiculoSelecionado == null)
             {

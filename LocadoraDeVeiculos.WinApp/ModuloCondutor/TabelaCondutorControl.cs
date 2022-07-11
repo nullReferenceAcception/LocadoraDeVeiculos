@@ -28,7 +28,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "guid", HeaderText = "guid"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
 
@@ -47,9 +47,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         };
             return colunas;
         }
-        public int ObtemNumeroCondutorSelecionado()
+        public Guid ObtemGuidCondutorSelecionado()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.ObterGuid<Guid>();
         }
 
         public void AtualizarRegistros(List<Condutor> condutores)
@@ -61,7 +61,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
 
                 
-                    grid.Rows.Add(condutor.Id, condutor.Nome, condutor.Endereco, double.Parse(condutor.Telefone), condutor.CNH, condutor.Email, double.Parse(condutor.CPF), condutor.Cliente.Nome);
+                    grid.Rows.Add(condutor.guid, condutor.Nome, condutor.Endereco, double.Parse(condutor.Telefone), condutor.CNH, condutor.Email, double.Parse(condutor.CPF), condutor.Cliente.Nome);
                     this.grid.Columns[6].DefaultCellStyle.Format = @"000\.000\.000\-00";
                     this.grid.Columns[3].DefaultCellStyle.Format = "(##) #####-####";
 

@@ -20,7 +20,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCondutor
         public void Nao_Deve_inserir_nome_apenas_com_espaco()
         {
             Condutor condutor = CriarCondutor();
-            condutor.Id = 1;
             condutor.Nome = " ";
 
             var resultado = validador.TestValidate(condutor);
@@ -32,7 +31,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCondutor
         public void Nao_Deve_inserir_nome_vazio()
         {
             Condutor Condutor = CriarCondutor();
-            Condutor.Id = 1;
             Condutor.Nome = "";
 
             var resultado = validador.TestValidate(Condutor);
@@ -44,7 +42,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCondutor
         public void Nao_Deve_inserir_nome_com_menos_de_2_letra()
         {
             Condutor Condutor = CriarCondutor();
-            Condutor.Id = 1;
             Condutor.Nome = "jo";
 
             var resultado = validador.TestValidate(Condutor);
@@ -56,7 +53,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCondutor
         public void Nao_Deve_inserir_telefone_invalida()
         {
             Condutor Condutor = CriarCondutor();
-            Condutor.Id = 1;
             Condutor.Telefone = "000000000";
 
             var resultado = validador.TestValidate(Condutor);
@@ -68,7 +64,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCondutor
         public void Nao_Deve_inserir_email_invalido()
         {
             Condutor Condutor = CriarCondutor();
-            Condutor.Id = 1;
             Condutor.Email = "lalala";
 
             var resultado = validador.TestValidate(Condutor);
@@ -80,7 +75,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCondutor
         public void Nao_Deve_inserir_cpf_invalido()
         {
             Condutor Condutor = CriarCondutor();
-            Condutor.Id = 1;
             Condutor.CPF = "991";
 
             var resultado = validador.TestValidate(Condutor);

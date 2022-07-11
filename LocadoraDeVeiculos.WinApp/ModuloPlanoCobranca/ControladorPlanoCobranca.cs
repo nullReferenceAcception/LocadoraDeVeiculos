@@ -46,9 +46,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
         }
         public override void Editar()
         {
-            var numero = _tabelaPlanoCobrancas.ObtemNumeroPlanoCobrancaSelecionada();
+            var numero = _tabelaPlanoCobrancas.ObtemGuidPlanoCobrancaSelecionada();
 
-            PlanoCobranca planoCobrancaSelecionado = _servicoPlanoCobranca.SelecionarPorID(numero);
+            PlanoCobranca planoCobrancaSelecionado = _servicoPlanoCobranca.SelecionarPorGuid(numero);
 
             if (planoCobrancaSelecionado == null)
             {
@@ -70,9 +70,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
         public override void Excluir()
         {
-            var numero = _tabelaPlanoCobrancas.ObtemNumeroPlanoCobrancaSelecionada();
+            var numero = _tabelaPlanoCobrancas.ObtemGuidPlanoCobrancaSelecionada();
 
-            PlanoCobranca planoCobrancaSelecionado = _servicoPlanoCobranca.SelecionarPorID(numero);
+            PlanoCobranca planoCobrancaSelecionado = _servicoPlanoCobranca.SelecionarPorGuid(numero);
 
             if (planoCobrancaSelecionado == null)
             {
@@ -97,9 +97,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
         public override void Visualizar()
         {
-            var numero = _tabelaPlanoCobrancas.ObtemNumeroPlanoCobrancaSelecionada();
+            var numero = _tabelaPlanoCobrancas.ObtemGuidPlanoCobrancaSelecionada();
 
-            PlanoCobranca planoCobrancaSelecionado = _servicoPlanoCobranca.SelecionarPorID(numero);
+            PlanoCobranca planoCobrancaSelecionado = _servicoPlanoCobranca.SelecionarPorGuid(numero);
 
             if (planoCobrancaSelecionado == null)
             {

@@ -21,7 +21,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
 
             _servicoGrupoVeiculos.Inserir(GrupoVeiculos);
 
-            GrupoVeiculos GrupoVeiculos2 = _servicoGrupoVeiculos.SelecionarPorID(GrupoVeiculos.Id);
+            GrupoVeiculos GrupoVeiculos2 = _servicoGrupoVeiculos.SelecionarPorGuid(GrupoVeiculos.guid);
 
             Assert.AreEqual(GrupoVeiculos, GrupoVeiculos2);
         }
@@ -37,7 +37,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
 
             _servicoGrupoVeiculos.Editar(GrupoVeiculos);
 
-            GrupoVeiculos GrupoVeiculos2 = _servicoGrupoVeiculos.SelecionarPorID(GrupoVeiculos.Id);
+            GrupoVeiculos GrupoVeiculos2 = _servicoGrupoVeiculos.SelecionarPorGuid(GrupoVeiculos.guid);
 
             Assert.AreEqual(GrupoVeiculos2, GrupoVeiculos);
         }
@@ -51,7 +51,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
 
             _servicoGrupoVeiculos.Excluir(GrupoVeiculos);
 
-            GrupoVeiculos GrupoVeiculos2 = _servicoGrupoVeiculos.SelecionarPorID(GrupoVeiculos.Id);
+            GrupoVeiculos GrupoVeiculos2 = _servicoGrupoVeiculos.SelecionarPorGuid(GrupoVeiculos.guid);
 
             GrupoVeiculos2.Should().Be(null);
         }
@@ -81,7 +81,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
             GrupoVeiculos registro = CriarGrupoVeiculos();
             _servicoGrupoVeiculos.Inserir(registro);
 
-            GrupoVeiculos registro2 = _servicoGrupoVeiculos.SelecionarPorID(registro.Id);
+            GrupoVeiculos registro2 = _servicoGrupoVeiculos.SelecionarPorGuid(registro.guid);
 
             Assert.AreEqual(registro2, registro);
         }
