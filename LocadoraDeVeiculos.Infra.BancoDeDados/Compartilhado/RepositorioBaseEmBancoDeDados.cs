@@ -76,15 +76,15 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 
             conexao.Open();
 
-            int IDRegistrosExcluidos = 0;
+            int idRegistrosExcluidos = 0;
 
             string mensagem = null!;
 
             // essa gambiarra foi feita porcausa das foreign keys
             try
             {
-                IDRegistrosExcluidos = comandoExclusao.ExecuteNonQuery();
-                if (IDRegistrosExcluidos == 0)
+                idRegistrosExcluidos = comandoExclusao.ExecuteNonQuery();
+                if (idRegistrosExcluidos == 0)
                     mensagem = "Não foi possível remover o registro";
             }
             catch (SqlException ex)
@@ -184,6 +184,5 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             conexao.Close();
             return quantidade;
         }
-
     }
 }

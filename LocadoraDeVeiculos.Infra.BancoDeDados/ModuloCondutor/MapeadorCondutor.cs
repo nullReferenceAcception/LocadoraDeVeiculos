@@ -8,7 +8,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
 {
     public class MapeadorCondutor : IMapeavel<Condutor>
     {
-        MapeadorCliente  mapeadorCliente = new();
         public void ConfigurarParametrosRegistro(Condutor registro, SqlCommand cmdInserir)
         {
             cmdInserir.Parameters.AddWithValue("ID_CONDUTOR", registro.Id);
@@ -41,7 +40,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
             condutor.Email = email;
             condutor.Telefone = telefone;
             condutor.CPF = cpf!;
-            condutor.Cliente = mapeadorCliente.ConverterParaRegistro(leitorRegistro);
+            condutor.Cliente = new MapeadorCliente().ConverterParaRegistro(leitorRegistro);
             condutor.DataValidadeCNH = dataValidadeCNH;
 
             return condutor;

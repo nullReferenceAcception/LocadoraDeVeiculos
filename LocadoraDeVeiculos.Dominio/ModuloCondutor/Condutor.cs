@@ -2,8 +2,6 @@
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
-using StackExchange.Redis;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
 {

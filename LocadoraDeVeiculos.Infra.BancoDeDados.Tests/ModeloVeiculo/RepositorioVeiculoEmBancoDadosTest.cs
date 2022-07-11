@@ -123,7 +123,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
             veiculoEncontrado.Should().Be(veiculo);
         }
 
-        //TODO: Verificar duplicidade de placas
         [TestMethod]
         public void Nao_deve_inserir_placa_duplicada()
         {

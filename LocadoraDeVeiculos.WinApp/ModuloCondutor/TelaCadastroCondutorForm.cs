@@ -99,7 +99,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         {
             Cliente cliente = (Cliente)comboBoxClienteFisico.SelectedItem;
 
-
             textBoxNome.Text = cliente.Nome;
             textBoxEndereco.Text = cliente.Endereco;
             maskedTextBoxCNH.Text = cliente.CNH;

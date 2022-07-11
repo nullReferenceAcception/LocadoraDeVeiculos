@@ -8,8 +8,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 {
     public partial class TelaCadastroFuncionarioForm : Form
     {
-        private Funcionario? _funcionario;
-        public Funcionario? Funcionario
+        private Funcionario _funcionario;
+        public Funcionario Funcionario
         {
             get { return _funcionario; }
             set
@@ -26,13 +26,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             ConfigurarComponentes();
         }
 
-        public Func<Funcionario, ValidationResult>? GravarRegistro { get; set; }
+        public Func<Funcionario, ValidationResult> GravarRegistro { get; set; }
 
         private void buttonGravar_Click(object sender, EventArgs e)
         {
             ObterDadosDaTela();
 
-            var resultado = GravarRegistro!(Funcionario!);
+            var resultado = GravarRegistro(Funcionario);
 
             if (!resultado.IsValid)
             {
@@ -43,23 +43,23 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         private void ObterDadosDaTela()
         {
-            Funcionario!.Nome = textBoxNome.Text;
-            Funcionario!.Email = textBoxEmail.Text;
-            Funcionario!.Telefone = maskedTextBoxTelefone.Text;
-            Funcionario!.Endereco = textBoxEndereco.Text;
-            Funcionario!.Login = textBoxLogin.Text;
-            Funcionario!.Senha = textBoxSenha.Text;
-            Funcionario!.DataAdmissao = dateTimePickerDataAdmissao.Value;
-            Funcionario!.Salario = Convert.ToDecimal(textBoxSalario.Text.ToString().Replace("R$", ""));
-            Funcionario!.Cidade = textBoxCidade.Text;
-            Funcionario!.EhAdmin = radioButtonAdmin.Checked == true ? Funcionario.EhAdmin = true : Funcionario.EhAdmin = false;
-            Funcionario!.EstaAtivo = true;
+            Funcionario.Nome = textBoxNome.Text;
+            Funcionario.Email = textBoxEmail.Text;
+            Funcionario.Telefone = maskedTextBoxTelefone.Text;
+            Funcionario.Endereco = textBoxEndereco.Text;
+            Funcionario.Login = textBoxLogin.Text;
+            Funcionario.Senha = textBoxSenha.Text;
+            Funcionario.DataAdmissao = dateTimePickerDataAdmissao.Value;
+            Funcionario.Salario = Convert.ToDecimal(textBoxSalario.Text.ToString().Replace("R$", ""));
+            Funcionario.Cidade = textBoxCidade.Text;
+            Funcionario.EhAdmin = radioButtonAdmin.Checked == true ? Funcionario.EhAdmin = true : Funcionario.EhAdmin = false;
+            Funcionario.EstaAtivo = true;
         }
 
         private void ConfigurarTelaEditar()
         {
-            textBoxID.Text = _funcionario!.Id.ToString();
-            textBoxNome.Text = _funcionario!.Nome;
+            textBoxID.Text = _funcionario.Id.ToString();
+            textBoxNome.Text = _funcionario.Nome;
             textBoxEmail.Text = _funcionario.Email;
             maskedTextBoxTelefone.Text = _funcionario.Telefone;
             textBoxEndereco.Text = _funcionario.Endereco;

@@ -1,7 +1,5 @@
-﻿using FluentValidation.Results;
-using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
-using System.Data.SqlClient;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
 {
@@ -16,7 +14,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
 
         protected override string sqlInserir
         {
-
             get =>
             @"INSERT
 	            INTO
@@ -81,7 +78,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
 
 
         #endregion
-
 
         public string SqlDuplicidade(GrupoVeiculos registro)
         {

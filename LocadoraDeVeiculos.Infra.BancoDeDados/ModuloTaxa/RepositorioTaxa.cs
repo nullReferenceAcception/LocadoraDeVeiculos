@@ -1,9 +1,6 @@
-﻿using FluentValidation.Results;
-using LocadoraDeVeiculos.Dominio;
+﻿using LocadoraDeVeiculos.Dominio;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
-using LocadoraDeVeiculos.Servico.ModuloTaxa;
-using System.Data.SqlClient;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 {

@@ -5,9 +5,9 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
 {
     public class Funcionario : Pessoa<Funcionario>
     {
-        public string? Login { get; set; }
-        public string? Senha { get; set; }
-        public string? Cidade { get; set; }
+        public string Login { get; set; }
+        public string Senha { get; set; }
+        public string Cidade { get; set; }
         public DateTime DataAdmissao { get; set; }
         public Decimal Salario { get; set; }
         public bool EhAdmin { get; set; } // True é admin, false é comum

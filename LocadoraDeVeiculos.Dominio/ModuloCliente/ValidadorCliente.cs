@@ -11,10 +11,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             Regex regEx = new Regex("^[1-9]{2}[0-9]{4,5}[0-9]{4}$");
 
             DateTime hoje = DateTime.Today;
-
             hoje = hoje.AddHours(23).AddMinutes(59).AddSeconds(59);
 
             Regex padraoNome = new Regex("^[A-Z a-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]*$");
+
             RuleFor(x => x.Telefone)
                 .NotNull().NotEmpty().Matches(regEx);
 

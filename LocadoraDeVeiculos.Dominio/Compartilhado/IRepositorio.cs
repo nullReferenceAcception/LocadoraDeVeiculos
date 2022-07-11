@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace LocadoraDeVeiculos.Dominio
 {
@@ -12,7 +11,6 @@ namespace LocadoraDeVeiculos.Dominio
         T SelecionarPorID(int numero);
         public bool VerificarDuplicidade(string sql);
         string SqlDuplicidade(T registro);
-
         int QuantidadeRegistros();
 
     }

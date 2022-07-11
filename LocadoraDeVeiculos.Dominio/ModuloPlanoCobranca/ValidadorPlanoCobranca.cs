@@ -1,10 +1,5 @@
 ﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
 {
@@ -18,7 +13,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
                 .NotNull().NotEmpty().MinimumLength(2).Matches(padraoNome);
             RuleFor(x => x.GrupoVeiculos)
                .NotNull().NotEmpty();
-
             RuleFor(x => x.ValorDia)
                 .NotNull().NotEmpty().GreaterThan(0);
 
@@ -37,8 +31,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
                 RuleFor(x => x.KmLivreIncluso)
               .NotNull().NotEmpty().GreaterThan(0);
             });
-
-
         }
     }
 }
