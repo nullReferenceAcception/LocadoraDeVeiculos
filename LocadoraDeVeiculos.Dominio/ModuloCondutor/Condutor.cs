@@ -26,13 +26,12 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
             Telefone = telefone;
             CPF = cpf;
             DataValidadeCNH = dataValidadeCNH;
-
         }
 
         public override bool Equals(object? obj)
         {
             return obj is Condutor condutor &&
-                   Id == condutor.Id &&
+                   Guid == condutor.Guid &&
                    Nome == condutor.Nome &&
                    Endereco == condutor.Endereco &&
                    Email == condutor.Email &&
