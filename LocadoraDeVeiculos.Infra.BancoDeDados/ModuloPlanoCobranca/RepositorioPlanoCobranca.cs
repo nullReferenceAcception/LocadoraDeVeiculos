@@ -118,7 +118,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
         #endregion
         public string SqlDuplicidade(PlanoCobranca registro)
         {
-            return "SELECT * FROM [TB_PLANO_COBRANCA] WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_PLANO_COBRANCA] != {registro.guid}";
+            return "SELECT * FROM [TB_PLANO_COBRANCA] WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_PLANO_COBRANCA] != {registro.Guid}";
         }
     }
 }

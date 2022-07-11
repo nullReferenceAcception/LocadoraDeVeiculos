@@ -93,7 +93,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 
         string IRepositorio<Taxa>.SqlDuplicidade(Taxa registro)
         {
-            return "SELECT * FROM TB_TAXA WHERE ([DESCRICAO] = '" + registro.Descricao + "')" + $"AND [ID_TAXA] != {registro.guid}";
+            return "SELECT * FROM TB_TAXA WHERE ([DESCRICAO] = '" + registro.Descricao + "')" + $"AND [ID_TAXA] != {registro.Guid}";
         }
     }
 }

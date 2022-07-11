@@ -31,7 +31,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 
             _servicoVeiculo.Inserir(veiculo);
 
-            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.guid);
+            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.Guid);
 
             veiculoEncontrado.Should().Be(veiculo);
         }
@@ -56,7 +56,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 
             _servicoVeiculo.Editar(veiculo);
 
-            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.guid);
+            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.Guid);
 
             veiculoEncontrado.Should().Be(veiculo);
         }
@@ -76,7 +76,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 
             _servicoVeiculo.Excluir(veiculo);
 
-            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.guid);
+            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.Guid);
 
             veiculoEncontrado.Should().BeNull();
         }
@@ -118,7 +118,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 
             _servicoVeiculo.Inserir(veiculo);
 
-            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.guid);
+            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.Guid);
 
             veiculoEncontrado.Should().Be(veiculo);
         }
@@ -136,7 +136,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 
             _servicoVeiculo.Inserir(veiculo);
 
-            veiculo.guid = new Guid();
+            veiculo.Guid = new Guid();
             var resultado = _servicoVeiculo.Inserir(veiculo);
 
             resultado.ToString().Should().Be("Placa já cadastrada");

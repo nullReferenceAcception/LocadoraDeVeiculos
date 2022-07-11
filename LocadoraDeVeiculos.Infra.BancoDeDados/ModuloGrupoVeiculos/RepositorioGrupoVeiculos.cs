@@ -81,7 +81,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
 
         public string SqlDuplicidade(GrupoVeiculos registro)
         {
-            return "SELECT * FROM TB_GRUPO_VEICULO WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_GRUPO_VEICULO] != {registro.guid}";
+            return "SELECT * FROM TB_GRUPO_VEICULO WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_GRUPO_VEICULO] != {registro.Guid}";
         }
 
     }

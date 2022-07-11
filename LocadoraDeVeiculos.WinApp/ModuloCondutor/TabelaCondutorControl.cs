@@ -61,7 +61,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
 
                 
-                    grid.Rows.Add(condutor.guid, condutor.Nome, condutor.Endereco, double.Parse(condutor.Telefone), condutor.CNH, condutor.Email, double.Parse(condutor.CPF), condutor.Cliente.Nome);
+                    grid.Rows.Add(condutor.Guid, condutor.Nome, condutor.Endereco, double.Parse(condutor.Telefone), condutor.CNH, condutor.Email, double.Parse(condutor.CPF), condutor.Cliente.Nome);
                     this.grid.Columns[6].DefaultCellStyle.Format = @"000\.000\.000\-00";
                     this.grid.Columns[3].DefaultCellStyle.Format = "(##) #####-####";
 

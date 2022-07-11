@@ -47,7 +47,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             SqlCommand cmdInserir = new SqlCommand(sqlInserir, conexao);
 
             mapeador.ConfigurarParametrosRegistro(registro, cmdInserir);
-            registro.guid = new Guid();
+            registro.Guid = new Guid();
 
 
             cmdInserir.ExecuteNonQuery();
@@ -73,7 +73,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 
             SqlCommand comandoExclusao = new SqlCommand(sqlExcluir, conexao);
 
-            comandoExclusao.Parameters.AddWithValue("guid", registro.guid);
+            comandoExclusao.Parameters.AddWithValue("guid", registro.Guid);
 
             conexao.Open();
 

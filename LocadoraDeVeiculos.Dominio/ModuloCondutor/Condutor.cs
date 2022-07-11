@@ -31,7 +31,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
         public override bool Equals(object? obj)
         {
             return obj is Condutor condutor &&
-                   guid == condutor.guid &&
+                   Guid == condutor.Guid &&
                    Nome == condutor.Nome &&
                    Endereco == condutor.Endereco &&
                    Email == condutor.Email &&

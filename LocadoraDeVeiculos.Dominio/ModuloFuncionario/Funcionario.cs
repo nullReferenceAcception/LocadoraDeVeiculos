@@ -33,7 +33,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
         public override bool Equals(object? obj)
         {
             return obj is Funcionario funcionario &&
-                   guid == funcionario.guid &&
+                   Guid == funcionario.Guid &&
                    Nome == funcionario.Nome &&
                    Endereco == funcionario.Endereco &&
                    Email == funcionario.Email &&

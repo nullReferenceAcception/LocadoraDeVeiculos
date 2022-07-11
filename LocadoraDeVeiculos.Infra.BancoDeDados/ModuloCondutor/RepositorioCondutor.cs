@@ -133,7 +133,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
 
         public string SqlDuplicidade(Condutor registro)
         {
-            return "SELECT * FROM TB_CONDUTOR WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_CONDUTOR] != {registro.guid}";
+            return "SELECT * FROM TB_CONDUTOR WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_CONDUTOR] != {registro.Guid}";
         }
     }
 }

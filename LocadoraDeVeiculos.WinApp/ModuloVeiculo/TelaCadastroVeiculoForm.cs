@@ -38,7 +38,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         private void ConfigurarTelaEditar()
         {
-            textBoxID.Text = Veiculo.guid.ToString();
+            textBoxID.Text = Veiculo.Guid.ToString();
             textBoxModelo.Text = Veiculo.Modelo;
             textBoxMarca.Text = Veiculo.Marca;
             textBoxPlaca.Text = Veiculo.Placa;
