@@ -83,9 +83,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
                         VEICULO.COR AS COR,
                         VEICULO.COMBUSTIVEL AS COMBUSTIVEL,
                         VEICULO.FOTO AS FOTO,
-                        VEICULO.GRUPO_DE_VEICULO_ID AS GRUPO_DE_VEICULO_ID,
+                        VEICULO.GRUPO_DE_VEICULO_GUID AS GRUPO_DE_VEICULO_GUID,
 
-                        GRUPO_VEICULO.ID_GRUPO_VEICULO AS ID_GRUPO_VEICULO,
+                        GRUPO_VEICULO.GUID_GRUPO_VEICULO AS GUID_GRUPO_VEICULO,
                         GRUPO_VEICULO.NOME AS NOME_GRUPO_VEICULO
                     FROM
                         TB_VEICULO AS VEICULO
@@ -96,7 +96,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
         protected override string sqlSelecionarPorID
         {
             get => @"SELECT
-                        VEICULO.ID_VEICULO AS ID_VEICULO,
+                        VEICULO.GUID_VEICULO AS GUID_VEICULO,
                         VEICULO.MODELO AS MODELO,
                         VEICULO.PLACA AS PLACA,
                         VEICULO.MARCA AS MARCA,
@@ -106,9 +106,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
                         VEICULO.COR AS COR,
                         VEICULO.COMBUSTIVEL AS COMBUSTIVEL,
                         VEICULO.FOTO AS FOTO,
-                        VEICULO.GRUPO_DE_VEICULO_ID AS GRUPO_DE_VEICULO_ID,
+                        VEICULO.GRUPO_DE_VEICULO_GUID AS GRUPO_DE_VEICULO_GUID,
 
-                        GRUPO_VEICULO.ID_GRUPO_VEICULO AS ID_GRUPO_VEICULO,
+                        GRUPO_VEICULO.GUID_GRUPO_VEICULO AS GUID_GRUPO_VEICULO,
                         GRUPO_VEICULO.NOME AS NOME_GRUPO_VEICULO
                     FROM
                         TB_VEICULO AS VEICULO
