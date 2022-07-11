@@ -30,7 +30,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         }
         public override void Editar()
         {
-            var numero = _tabelaTaxas.ObtemNumeroTaxaSelecionada();
+            var numero = _tabelaTaxas.ObtemGuidTaxaSelecionada();
 
             Taxa taxaSelecionada = _servicoTaxa.SelecionarPorGuid(numero);
 
@@ -54,7 +54,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
         public override void Excluir()
         {
-            var numero = _tabelaTaxas.ObtemNumeroTaxaSelecionada();
+            var numero = _tabelaTaxas.ObtemGuidTaxaSelecionada();
 
             Taxa taxaSelecionada = _servicoTaxa.SelecionarPorGuid(numero);
 
@@ -81,7 +81,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
         public override void Visualizar()
         {
-            var numero = _tabelaTaxas.ObtemNumeroTaxaSelecionada();
+            var numero = _tabelaTaxas.ObtemGuidTaxaSelecionada();
 
             Taxa taxaSelecionada = _servicoTaxa.SelecionarPorGuid(numero);
 

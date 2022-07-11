@@ -16,24 +16,26 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
             get =>
                 @"INSERT INTO TB_CONDUTOR
                 (
+                    GUID_CONDUTOR,
                     NOME,
                     ENDERECO,
                     CNH,
                     EMAIL,
                     TELEFONE,
                     CPF,
-                    CLIENTE_ID,
+                    CLIENTE_GUID,
                     DATA_VALIDADE_CNH
                 )
                 VALUES
                 (
+                    @GUID_CONDUTOR,
                     @NOME,
                     @ENDERECO,
                     @CNH,
                     @EMAIL,
                     @TELEFONE,
                     @CPF,
-                    @CLIENTE_ID,
+                    @CLIENTE_GUID,
                     @DATA_VALIDADE_CNH
                         
                 ); SELECT SCOPE_IDENTITY();";
@@ -51,10 +53,10 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
                         EMAIL = @EMAIL,
                         TELEFONE = @TELEFONE,
                         CPF = @CPF,
-                        CLIENTE_ID = @CLIENTE_ID,
+                        CLIENTE_GUID = @CLIENTE_GUID,
                         DATA_VALIDADE_CNH = @DATA_VALIDADE_CNH
 		            WHERE
-			            ID_CONDUTOR = @ID_CONDUTOR;";
+			            GUID_CONDUTOR = @GUID_CONDUTOR;";
         }
         protected override string sqlExcluir
         {
@@ -63,14 +65,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
 	            FROM
 		            TB_CONDUTOR
 	            WHERE
-		            ID_CONDUTOR = @guid;";
+		            GUID_CONDUTOR = @guid;";
         }
 
         protected override string sqlSelecionarTodos
         {
             get =>
             @"SELECT
-                    CON.ID_CONDUTOR AS ID_CONDUTOR,
+                    CON.GUID_CONDUTOR AS GUID_CONDUTOR,
 	                CON.NOME AS NOME_CONDUTOR,
 	                CON.ENDERECO AS ENDERECO_CONDUTOR,
                     CON.CNH AS CNH_CONDUTOR,
@@ -79,7 +81,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
                     CON.CPF AS CPF_CONDUTOR,
                     CON.DATA_VALIDADE_CNH AS DATA_VALIDADE_CNH_CONDUTOR,
 
-                    CLI.ID_CLIENTE AS ID_CLIENTE,
+                    CLI.GUID_CLIENTE AS GUID_CLIENTE,
 	                CLI.NOME AS NOME_CLIENTE,
 	                CLI.ENDERECO AS ENDERECO_CLIENTE,
                     CLI.CNH AS CNH_CLIENTE,
@@ -91,13 +93,13 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
                     CLI.DATA_VALIDADE_CNH AS DATA_VALIDADE_CNH_CLIENTE     
                 FROM
 	                TB_CONDUTOR AS CON INNER JOIN
-                        TB_CLIENTE AS CLI ON CON.CLIENTE_ID = CLI.ID_CLIENTE";
+                        TB_CLIENTE AS CLI ON CON.CLIENTE_GUID = CLI.GUID_CLIENTE";
         }
 
         protected override string sqlSelecionarPorID
         {
             get => @"SELECT
-                    CON.ID_CONDUTOR AS ID_CONDUTOR,
+                    CON.GUID_CONDUTOR AS GUID_CONDUTOR,
 	                CON.NOME AS NOME_CONDUTOR,
 	                CON.ENDERECO AS ENDERECO_CONDUTOR,
                     CON.CNH AS CNH_CONDUTOR,
@@ -106,7 +108,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
                     CON.CPF AS CPF_CONDUTOR,
                     CON.DATA_VALIDADE_CNH AS DATA_VALIDADE_CNH_CONDUTOR,
 
-                    CLI.ID_CLIENTE AS ID_CLIENTE,
+                    CLI.GUID_CLIENTE AS GUID_CLIENTE,
 	                CLI.NOME AS NOME_CLIENTE,
 	                CLI.ENDERECO AS ENDERECO_CLIENTE,
                     CLI.CNH AS CNH_CLIENTE,
@@ -118,9 +120,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
                     CLI.DATA_VALIDADE_CNH AS DATA_VALIDADE_CNH_CLIENTE  
                 FROM
 	                TB_CONDUTOR AS CON INNER JOIN
-                        TB_CLIENTE AS CLI ON CON.CLIENTE_ID = CLI.ID_CLIENTE   
+                        TB_CLIENTE AS CLI ON CON.CLIENTE_GUID = CLI.GUID_CLIENTE   
                 WHERE
-                    CON.ID_CONDUTOR = @guid";
+                    CON.GUID_CONDUTOR = @GUID";
         }
 
         protected override string sqlQuantidade
@@ -133,7 +135,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
 
         public string SqlDuplicidade(Condutor registro)
         {
-            return "SELECT * FROM TB_CONDUTOR WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_CONDUTOR] != {registro.guid}";
+            return "SELECT * FROM TB_CONDUTOR WHERE ([NOME] = '" + registro.Nome + "')" + "AND [GUID_CONDUTOR] != '" + registro.guid + "'";
         }
     }
 }

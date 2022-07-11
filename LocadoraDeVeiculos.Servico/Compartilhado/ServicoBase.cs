@@ -23,6 +23,9 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         public virtual ValidationResult Inserir(T registro)
         {
+
+            registro.guid = Guid.NewGuid();
+
             Log.Logger.Debug($"Inserindo: {typeof(T).Name}");
 
             ValidationResult resultadoValidacao = ValidarRegistro(registro);

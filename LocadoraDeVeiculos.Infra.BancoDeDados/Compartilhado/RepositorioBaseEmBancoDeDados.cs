@@ -47,7 +47,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             SqlCommand cmdInserir = new SqlCommand(sqlInserir, conexao);
 
             mapeador.ConfigurarParametrosRegistro(registro, cmdInserir);
-            registro.guid = new Guid();
 
 
             cmdInserir.ExecuteNonQuery();

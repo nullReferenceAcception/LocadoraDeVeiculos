@@ -24,7 +24,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             return colunas;
         }
 
-        public int ObtemNumeroDevolucaoSelecionada()
+        public int ObtemGuidDevolucaoSelecionada()
         {
             return grid.ObterGuid<int>();
         }

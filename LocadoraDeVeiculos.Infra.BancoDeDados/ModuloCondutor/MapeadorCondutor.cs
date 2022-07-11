@@ -17,7 +17,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
             cmdInserir.Parameters.AddWithValue("EMAIL", registro.Email);
             cmdInserir.Parameters.AddWithValue("TELEFONE", registro.Telefone);
             cmdInserir.Parameters.AddWithValue("CPF", registro.CPF);
-            cmdInserir.Parameters.AddWithValue("CLIENTE_ID", registro.Cliente.guid);
+            cmdInserir.Parameters.AddWithValue("CLIENTE_GUID", registro.Cliente.guid);
             cmdInserir.Parameters.AddWithValue("DATA_VALIDADE_CNH", registro.DataValidadeCNH);
         }
 
