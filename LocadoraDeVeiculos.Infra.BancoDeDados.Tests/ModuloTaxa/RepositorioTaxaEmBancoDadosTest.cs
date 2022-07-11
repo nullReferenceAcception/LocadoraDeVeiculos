@@ -101,7 +101,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
             List<Taxa> registrosDoBanco = _servicoTaxa.SelecionarTodos();
 
             for (int i = 0; i < registrosDoBanco.Count; i++)
-                Assert.AreEqual(registrosDoBanco[i], registros[i]);
+                Assert.IsTrue(registrosDoBanco.Contains(registros[i]));
         }
 
         //TODO Não pode deixar excluir caso esteja linkado em outro registro

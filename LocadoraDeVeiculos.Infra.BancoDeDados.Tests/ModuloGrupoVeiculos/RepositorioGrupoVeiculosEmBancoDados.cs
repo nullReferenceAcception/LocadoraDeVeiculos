@@ -72,7 +72,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
             List<GrupoVeiculos> registrosDoBanco = _servicoGrupoVeiculos.SelecionarTodos();
 
             for (int i = 0; i < registrosDoBanco.Count; i++)
-                Assert.AreEqual(registrosDoBanco[i], registros[i]);
+                Assert.IsTrue(registrosDoBanco.Contains(registros[i]));
         }
 
         [TestMethod]

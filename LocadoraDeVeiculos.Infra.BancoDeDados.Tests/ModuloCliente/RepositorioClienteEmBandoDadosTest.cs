@@ -27,6 +27,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
             Assert.AreEqual(cliente, cliente2);
         }
 
+        [TestMethod]
         public void Deve_inserir_cliente_CNPJ()
         {
             Cliente cliente = CriarClienteComCNPJ();
@@ -84,7 +85,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
             List<Cliente> registrosDoBanco = _servicoCliente.SelecionarTodos();
 
             for (int i = 0; i < registrosDoBanco.Count; i++)
-                Assert.AreEqual(registrosDoBanco[i], registros[i]);
+                Assert.IsTrue(registrosDoBanco.Contains(registros[i]));
         }
 
         [TestMethod]

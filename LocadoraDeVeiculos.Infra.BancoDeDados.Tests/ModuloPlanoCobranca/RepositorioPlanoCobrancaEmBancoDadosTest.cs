@@ -108,7 +108,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
             List<PlanoCobranca> registrosDoBanco = _servicoPlanoCobranca.SelecionarTodos();
 
             for (int i = 0; i < registrosDoBanco.Count; i++)
-                Assert.AreEqual(registrosDoBanco[i], registros[i]);
+                Assert.IsTrue(registrosDoBanco.Contains(registros[i]));
         }
 
         private PlanoCobranca CriarPlanoCobranca()

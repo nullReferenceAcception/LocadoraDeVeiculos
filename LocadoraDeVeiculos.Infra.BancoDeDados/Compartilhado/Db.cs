@@ -12,8 +12,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
            .AddJsonFile("ConfiguracaoAplicacao.json")
            .Build();
 
-        static SqlConnection ConexcaoComBanco = new SqlConnection(configuracao.GetConnectionString("SqlServer"));
 
+        static SqlConnection ConexcaoComBanco = new SqlConnection(configuracao.GetConnectionString("SqlServer"));
 
 
         public static void ExecutarSql(string sql)

@@ -64,7 +64,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             for (int i = 0; i < 10; i++)
             {
-                Funcionario registro = new("nome " + i.ToString(), "senha", "endereco", "49989090909", "login", "senha", DateTime.Today, 12, true, "Lages", true);
+                Funcionario registro = new("Nome", "endereco", "s@s.s", "49989090909", GerarNovaPlaca(), "senha", DateTime.Today, 12, true, "Lages", true);
 
                 servico.Inserir(registro);
                 registros.Add(registro);
@@ -73,7 +73,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
             List<Funcionario> registrosDoBanco = servico.SelecionarTodos();
 
             for (int i = 0; i < registrosDoBanco.Count; i++)
-                Assert.AreEqual(registrosDoBanco[i], registros[i]);
+                Assert.IsTrue(registrosDoBanco.Contains(registros[i]));
         }
 
         [TestMethod]
@@ -109,5 +109,22 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
         {
             return new("nome", "endereco", "e@e.e", "49991113939", "login", "senha", new DateTime(2020,02,02), 12, true, "Lages", true);
         }
+
+        private string GerarNovaPlaca()
+        {
+            const int qtdeLetras = 8;
+
+            const string letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string novaPlaca = "";
+            Random random = new();
+
+            for (int i = 0; i < qtdeLetras; i++)
+                novaPlaca += letras[random.Next(letras.Length)];
+
+
+            return novaPlaca;
+        }
+
+
     }
 }
