@@ -11,18 +11,18 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
     {
         public void ConfigurarParametrosRegistro(PlanoCobranca registro, SqlCommand cmdInserir)
         {
-            cmdInserir.Parameters.AddWithValue("ID_PLANO_COBRANCA", registro.Id);
+            cmdInserir.Parameters.AddWithValue("GUID_PLANO_COBRANCA", registro.guid);
             cmdInserir.Parameters.AddWithValue("NOME", registro.Nome);
             cmdInserir.Parameters.AddWithValue("KM_LIVRE_INCLUSO", registro.KmLivreIncluso);
             cmdInserir.Parameters.AddWithValue("VALOR_DIA", registro.ValorDia);
             cmdInserir.Parameters.AddWithValue("VALOR_POR_KM", registro.ValorPorKm);
-            cmdInserir.Parameters.AddWithValue("GRUPO_VEICULO_ID", registro.GrupoVeiculos.Id);
+            cmdInserir.Parameters.AddWithValue("GRUPO_VEICULO_ID", registro.GrupoVeiculos.guid);
             cmdInserir.Parameters.AddWithValue("PLANO", registro.Plano.ToString());
         }
 
         public PlanoCobranca ConverterParaRegistro(SqlDataReader leitorRegistro)
         {
-            int idPlanoCobranca = Convert.ToInt32(leitorRegistro["ID_PLANO_COBRANCA"]);
+            Guid idPlanoCobranca = Guid.Parse(leitorRegistro["GUID_PLANO_COBRANCA"].ToString());
             string nome = Convert.ToString(leitorRegistro["NOME_PLANO_COBRANCA"])!;
             int kmLivre = Convert.ToInt32(leitorRegistro["KM_LIVRE_INCLUSO_PLANO_COBRANCA"]);
             decimal valorDia = Convert.ToDecimal(leitorRegistro["VALOR_DIA_PLANO_COBRANCA"]);
@@ -32,7 +32,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
             GrupoVeiculos grupoVeiculos = new MapeadorGrupoVeiculos().ConverterParaRegistro(leitorRegistro);
 
             var plano = new PlanoCobranca(nome, kmLivre, valorDia, valorPorKm, planoEnum, grupoVeiculos);
-            plano.Id = idPlanoCobranca;
+            plano.guid = idPlanoCobranca;
 
             return plano;
         }

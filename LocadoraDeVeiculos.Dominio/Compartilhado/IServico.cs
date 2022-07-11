@@ -1,4 +1,5 @@
 ﻿using FluentValidation.Results;
+using System;
 using System.Collections.Generic;
 
 namespace LocadoraDeVeiculos.Dominio.Compartilhado
@@ -9,7 +10,7 @@ namespace LocadoraDeVeiculos.Dominio.Compartilhado
         ValidationResult Editar(T registro);
         ValidationResult Excluir(T registro);
         List<T> SelecionarTodos();
-        T SelecionarPorID(int numero);
+        T SelecionarPorGuid(Guid numero);
         int QuantidadeRegistro();
     }
 }

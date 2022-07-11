@@ -63,7 +63,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
 	            FROM
 		            TB_CONDUTOR
 	            WHERE
-		            ID_CONDUTOR = @ID;";
+		            ID_CONDUTOR = @guid;";
         }
 
         protected override string sqlSelecionarTodos
@@ -120,7 +120,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
 	                TB_CONDUTOR AS CON INNER JOIN
                         TB_CLIENTE AS CLI ON CON.CLIENTE_ID = CLI.ID_CLIENTE   
                 WHERE
-                    CON.ID_CONDUTOR = @ID";
+                    CON.ID_CONDUTOR = @guid";
         }
 
         protected override string sqlQuantidade
@@ -133,7 +133,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
 
         public string SqlDuplicidade(Condutor registro)
         {
-            return "SELECT * FROM TB_CONDUTOR WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_CONDUTOR] != {registro.Id}";
+            return "SELECT * FROM TB_CONDUTOR WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [ID_CONDUTOR] != {registro.guid}";
         }
     }
 }

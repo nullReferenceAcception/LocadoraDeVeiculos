@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -18,7 +19,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "guid", HeaderText = "guid"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
 
@@ -40,9 +41,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             return colunas;
         }
 
-        public int ObtemNumeroFuncionarioSelecionado()
+        public Guid ObtemNumeroFuncionarioSelecionado()
         {
-            return grid.SelecionarNumero<int>();
+            return grid.ObterGuid<Guid>();
         }
 
         public void AtualizarRegistros(List<Funcionario> funcionarios)
@@ -50,7 +51,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             grid.Rows.Clear();
 
             foreach (Funcionario funcionario in funcionarios)
-                grid.Rows.Add(funcionario.Id, funcionario.Nome, funcionario.Email, funcionario.Login, double.Parse(funcionario.Telefone), funcionario.DataAdmissao.ToShortDateString(), "R$ " + funcionario.Salario, funcionario.Endereco,  funcionario.Cidade);
+                grid.Rows.Add(funcionario.guid, funcionario.Nome, funcionario.Email, funcionario.Login, double.Parse(funcionario.Telefone), funcionario.DataAdmissao.ToShortDateString(), "R$ " + funcionario.Salario, funcionario.Endereco,  funcionario.Cidade);
             this.grid.Columns[4].DefaultCellStyle.Format = "(##) #####-####";
         }
     }

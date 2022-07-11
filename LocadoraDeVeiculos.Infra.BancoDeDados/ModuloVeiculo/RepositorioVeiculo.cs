@@ -57,7 +57,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
                                 FOTO = @FOTO,
                                 GRUPO_DE_VEICULO_ID = @GRUPO_DE_VEICULO_ID
                             WHERE
-                                ID_VEICULO = @ID";
+                                ID_VEICULO = @guid";
         }
 
         protected override string sqlExcluir
@@ -65,7 +65,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
             get => @"DELETE FROM
                         TB_VEICULO
                     WHERE
-                        ID_VEICULO = @ID";
+                        ID_VEICULO = @guid";
         }
 
         protected override string sqlSelecionarTodos
@@ -113,7 +113,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
                         INNER JOIN TB_GRUPO_VEICULO AS GRUPO_VEICULO
                         ON GRUPO_VEICULO.ID_GRUPO_VEICULO = VEICULO.GRUPO_DE_VEICULO_ID
                     WHERE
-                        VEICULO.ID_VEICULO = @ID";
+                        VEICULO.ID_VEICULO = @guid";
         }
         protected override string sqlQuantidade
         {
@@ -126,7 +126,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
 
         public string SqlDuplicidade(Veiculo registro)
         {
-            return "SELECT * FROM TB_VEICULO WHERE ([PLACA] = '" + registro.Placa + "')" + $"AND [ID_VEICULO] != {registro.Id}";
+            return "SELECT * FROM TB_VEICULO WHERE ([PLACA] = '" + registro.Placa + "')" + $"AND [ID_VEICULO] != {registro.guid}";
         }
     }
 }

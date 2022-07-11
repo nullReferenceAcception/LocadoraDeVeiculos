@@ -19,7 +19,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloFuncionario
         public void Nao_pode_nome_vazio()
         {
             Funcionario funcionario = CriarFuncionario();
-            funcionario.Id = 1;
             funcionario.Nome = "";
 
             var resultado = validation.TestValidate(funcionario);
@@ -35,7 +34,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloFuncionario
         public void Nao_pode_nome_so_com_espaco()
         {
             Funcionario Funcionario = CriarFuncionario();
-            Funcionario.Id = 1;
             Funcionario.Nome = "   ";
 
             var resultado = validation.TestValidate(Funcionario);
@@ -47,7 +45,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloFuncionario
         public void Nao_pode_nome_com_menos_de_2_caracters()
         {
             Funcionario Funcionario = CriarFuncionario();
-            Funcionario.Id = 1;
             Funcionario.Nome = "a";
 
             var resultado = validation.TestValidate(Funcionario);
@@ -59,7 +56,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloFuncionario
         public void nome_nao_poder_ter_caracters_especias()
         {
             Funcionario Funcionario = CriarFuncionario();
-            Funcionario.Id = 1;
             Funcionario.Nome = "!@#$%¨%¨&*()(";
 
             var resultado = validation.TestValidate(Funcionario);

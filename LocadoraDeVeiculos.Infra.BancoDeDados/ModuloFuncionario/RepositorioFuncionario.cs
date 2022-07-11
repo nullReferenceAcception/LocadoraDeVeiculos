@@ -74,7 +74,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                 SET
                     ESTA_ATIVO = 0
                 WHERE
-                    ID_FUNCIONARIO = @ID";
+                    ID_FUNCIONARIO = @guid";
         }
 
         protected override string sqlSelecionarTodos
@@ -140,7 +140,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
                 FROM            
                     TB_FUNCIONARIO
                 WHERE
-                    ID_FUNCIONARIO = @ID";
+                    ID_FUNCIONARIO = @guid";
         }
 
 
@@ -160,7 +160,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
 
         public string SqlDuplicidade(Funcionario registro)
         {
-            return  "SELECT * FROM TB_FUNCIONARIO WHERE ([LOGIN] = '" + registro.Login + "')" + $"AND [ID_FUNCIONARIO] != {registro.Id}";
+            return  "SELECT * FROM TB_FUNCIONARIO WHERE ([LOGIN] = '" + registro.Login + "')" + $"AND [ID_FUNCIONARIO] != {registro.guid}";
         }
     }
 }

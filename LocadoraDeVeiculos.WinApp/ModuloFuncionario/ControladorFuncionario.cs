@@ -33,7 +33,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         {
             var numero = _tabelaFuncionario.ObtemNumeroFuncionarioSelecionado();
 
-            Funcionario funcionarioSelecionado = _servicoFuncionario.SelecionarPorID(numero);
+            Funcionario funcionarioSelecionado = _servicoFuncionario.SelecionarPorGuid(numero);
 
             if (funcionarioSelecionado == null)
             {
@@ -57,7 +57,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         {
             var numero = _tabelaFuncionario.ObtemNumeroFuncionarioSelecionado();
 
-            Funcionario funcionarioSelecionado = _servicoFuncionario.SelecionarPorID(numero);
+            Funcionario funcionarioSelecionado = _servicoFuncionario.SelecionarPorGuid(numero);
 
             if (funcionarioSelecionado == null)
             {
@@ -84,7 +84,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         {
             var numero = _tabelaFuncionario.ObtemNumeroFuncionarioSelecionado();
 
-            Funcionario selecionado = _servicoFuncionario.SelecionarPorID(numero);
+            Funcionario selecionado = _servicoFuncionario.SelecionarPorGuid(numero);
 
             if (selecionado == null)
             {

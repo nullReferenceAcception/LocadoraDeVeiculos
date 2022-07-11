@@ -166,7 +166,7 @@
             this.labelID.Name = "labelID";
             this.labelID.Size = new System.Drawing.Size(21, 15);
             this.labelID.TabIndex = 31;
-            this.labelID.Text = "ID:";
+            this.labelID.Text = "guid:";
             // 
             // textBoxID
             // 

@@ -9,17 +9,17 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
     {
         public void ConfigurarParametrosRegistro(GrupoVeiculos registro, SqlCommand cmdInserir)
         {
-            cmdInserir.Parameters.AddWithValue("ID_GRUPO_VEICULO", registro.Id);
+            cmdInserir.Parameters.AddWithValue("GUID_GRUPO_VEICULO", registro.guid);
             cmdInserir.Parameters.AddWithValue("NOME", registro.Nome);
         }
 
         public GrupoVeiculos ConverterParaRegistro(SqlDataReader leitorRegistro)
         {
-            int idregistro = Convert.ToInt32(leitorRegistro["ID_GRUPO_VEICULO"]);
+            Guid idregistro = Guid.Parse(leitorRegistro["GUID_GRUPO_VEICULO"].ToString());
             string nome = Convert.ToString(leitorRegistro["NOME_GRUPO_VEICULO"])!;
 
             var registro = new GrupoVeiculos();
-            registro.Id = idregistro;
+            registro.guid = idregistro;
             registro.Nome = nome;
 
             return registro;

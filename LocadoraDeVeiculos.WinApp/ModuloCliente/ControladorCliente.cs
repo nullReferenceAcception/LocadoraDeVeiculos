@@ -30,9 +30,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         }
         public override void Editar()
         {
-            var numero = _tabelaCliente.ObtemNumeroClienteSelecionado();
+            var numero = _tabelaCliente.ObtemGuidClienteSelecionado();
 
-            Cliente clienteSelecionado = _servicoCliente.SelecionarPorID(numero);
+            Cliente clienteSelecionado = _servicoCliente.SelecionarPorGuid(numero);
 
             if (clienteSelecionado == null)
             {
@@ -54,9 +54,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         public override void Excluir()
         {
-            var numero = _tabelaCliente.ObtemNumeroClienteSelecionado();
+            var numero = _tabelaCliente.ObtemGuidClienteSelecionado();
 
-            Cliente clienteSelecionado = _servicoCliente.SelecionarPorID(numero);
+            Cliente clienteSelecionado = _servicoCliente.SelecionarPorGuid(numero);
 
             if (clienteSelecionado == null)
             {
@@ -82,9 +82,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         public override void Visualizar()
         {
-            var numero = _tabelaCliente.ObtemNumeroClienteSelecionado();
+            var numero = _tabelaCliente.ObtemGuidClienteSelecionado();
 
-            Cliente clienteSelecionado = _servicoCliente.SelecionarPorID(numero);
+            Cliente clienteSelecionado = _servicoCliente.SelecionarPorGuid(numero);
 
             if (clienteSelecionado == null)
             {

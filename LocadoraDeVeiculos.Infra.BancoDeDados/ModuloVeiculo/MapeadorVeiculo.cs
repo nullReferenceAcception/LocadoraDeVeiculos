@@ -11,7 +11,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
     {
         public void ConfigurarParametrosRegistro(Veiculo registro, SqlCommand cmdInserir)
         {
-            cmdInserir.Parameters.AddWithValue("@ID", registro.Id);
+            cmdInserir.Parameters.AddWithValue("@GUID", registro.guid);
             cmdInserir.Parameters.AddWithValue("@MODELO", registro.Modelo);
             cmdInserir.Parameters.AddWithValue("@MARCA", registro.Marca);
             cmdInserir.Parameters.AddWithValue("@PLACA", registro.Placa);
@@ -20,13 +20,13 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
             cmdInserir.Parameters.AddWithValue("@KM_PERCORRIDO", registro.KmPercorrido);
             cmdInserir.Parameters.AddWithValue("@COR", registro.Cor);
             cmdInserir.Parameters.AddWithValue("@COMBUSTIVEL", registro.Combustivel);
-            cmdInserir.Parameters.AddWithValue("@GRUPO_DE_VEICULO_ID", registro.GrupoVeiculos.Id);
+            cmdInserir.Parameters.AddWithValue("@GRUPO_DE_VEICULO_GUID", registro.GrupoVeiculos.guid);
             cmdInserir.Parameters.AddWithValue("@FOTO", registro.Foto);
         }
 
         public Veiculo ConverterParaRegistro(SqlDataReader leitorRegistro)
         {
-            int id = Convert.ToInt32(leitorRegistro["ID_VEICULO"]);
+            Guid guid = Guid.Parse(leitorRegistro["GUID_VEICULO"].ToString());
             string modelo = leitorRegistro["MODELO"].ToString();
             string placa = leitorRegistro["PLACA"].ToString();
             string marca = leitorRegistro["MARCA"].ToString();
@@ -41,7 +41,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
 
             Veiculo veiculo = new();
 
-            veiculo.Id = id;
+            veiculo.guid = guid;
             veiculo.Modelo = modelo;
             veiculo.Placa = placa;
             veiculo.Marca = marca;

@@ -41,9 +41,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
         public override void Editar()
         {
-            var numero = _tabelaCondutor.ObtemNumeroCondutorSelecionado();
+            var numero = _tabelaCondutor.ObtemGuidCondutorSelecionado();
 
-            Condutor condutorSelecionado = _servicoCondutor.SelecionarPorID(numero);
+            Condutor condutorSelecionado = _servicoCondutor.SelecionarPorGuid(numero);
 
             if (condutorSelecionado == null)
             {
@@ -65,9 +65,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
   
         public override void Excluir()
         {
-            var numero = _tabelaCondutor.ObtemNumeroCondutorSelecionado();
+            var numero = _tabelaCondutor.ObtemGuidCondutorSelecionado();
 
-            Condutor condutorSelecionado = _servicoCondutor.SelecionarPorID(numero);
+            Condutor condutorSelecionado = _servicoCondutor.SelecionarPorGuid(numero);
 
             if (condutorSelecionado == null)
             {
@@ -92,9 +92,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
         public override void Visualizar()
         {
-            var numero = _tabelaCondutor.ObtemNumeroCondutorSelecionado();
+            var numero = _tabelaCondutor.ObtemGuidCondutorSelecionado();
 
-            Condutor condutorSelecionado = _servicoCondutor.SelecionarPorID(numero);
+            Condutor condutorSelecionado = _servicoCondutor.SelecionarPorGuid(numero);
 
             if (condutorSelecionado == null)
             {
