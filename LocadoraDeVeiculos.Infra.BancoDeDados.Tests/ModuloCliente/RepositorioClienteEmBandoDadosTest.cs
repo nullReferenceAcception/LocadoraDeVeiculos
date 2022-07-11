@@ -27,6 +27,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
             Assert.AreEqual(cliente, cliente2);
         }
 
+        [TestMethod]
         public void Deve_inserir_cliente_CNPJ()
         {
             Cliente cliente = CriarClienteComCNPJ();
