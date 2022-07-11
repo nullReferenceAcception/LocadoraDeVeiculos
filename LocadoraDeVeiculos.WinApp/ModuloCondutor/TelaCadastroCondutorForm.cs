@@ -37,11 +37,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
         private void ConfigurarTelaEditar()
         {
-            textBoxID.Text = _condutor.guid.ToString();
+            textBoxID.Text = _condutor.Guid.ToString();
             textBoxNome.Text = _condutor.Nome;
             textBoxEndereco.Text = _condutor.Endereco;
             maskedTextBoxCNH.Text = _condutor.CNH;
-            if (_condutor.guid != Guid.Empty)
+            if (_condutor.Guid != Guid.Empty)
                 dateTimePickerValidadeCNH.Value = _condutor.DataValidadeCNH;
             textBoxEmail.Text = _condutor.Email;
             maskedTextBoxTelefone.Text = _condutor.Telefone;

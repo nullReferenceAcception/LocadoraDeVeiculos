@@ -37,7 +37,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
             grid.Rows.Clear();
 
             foreach (GrupoVeiculos registro in registros)
-                grid.Rows.Add(registro.guid, registro.Nome);
+                grid.Rows.Add(registro.Guid, registro.Nome);
         }
     }
 }

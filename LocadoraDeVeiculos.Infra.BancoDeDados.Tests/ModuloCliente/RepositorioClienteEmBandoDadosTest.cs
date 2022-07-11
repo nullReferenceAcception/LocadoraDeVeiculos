@@ -22,7 +22,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Inserir(cliente);
 
-            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.guid);
+            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid);
 
             Assert.AreEqual(cliente, cliente2);
         }
@@ -33,7 +33,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Inserir(cliente);
 
-            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.guid);
+            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid);
 
             Assert.AreEqual(cliente, cliente2);
         }
@@ -49,7 +49,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Editar(cliente);
 
-            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.guid);
+            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid);
 
             Assert.AreEqual(cliente2, cliente);
         }
@@ -63,7 +63,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Excluir(cliente);
 
-            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.guid);
+            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid);
 
             cliente2.Should().Be(null);
         }

@@ -23,7 +23,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
 
             _servicoTaxa.Inserir(Taxa);
 
-            Taxa Taxa2 = _servicoTaxa.SelecionarPorGuid(Taxa.guid);
+            Taxa Taxa2 = _servicoTaxa.SelecionarPorGuid(Taxa.Guid);
 
             Assert.AreEqual(Taxa, Taxa2);
         }
@@ -39,7 +39,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
 
             _servicoTaxa.Editar(Taxa);
 
-            Taxa Taxa2 = _servicoTaxa.SelecionarPorGuid(Taxa.guid);
+            Taxa Taxa2 = _servicoTaxa.SelecionarPorGuid(Taxa.Guid);
 
             Assert.AreEqual(Taxa2, Taxa);
         }
@@ -53,7 +53,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
 
             _servicoTaxa.Excluir(Taxa);
 
-            Taxa Taxa2 = _servicoTaxa.SelecionarPorGuid(Taxa.guid);
+            Taxa Taxa2 = _servicoTaxa.SelecionarPorGuid(Taxa.Guid);
 
             Taxa2.Should().Be(null);
         }
@@ -64,7 +64,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
             Taxa registro = CriarTaxa();
             _servicoTaxa.Inserir(registro);
 
-            Taxa registro2 = _servicoTaxa.SelecionarPorGuid(registro.guid);
+            Taxa registro2 = _servicoTaxa.SelecionarPorGuid(registro.Guid);
 
             Assert.AreEqual(registro2, registro);
         }

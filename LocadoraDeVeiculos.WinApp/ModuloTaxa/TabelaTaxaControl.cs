@@ -42,9 +42,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             foreach (Taxa taxa in taxas)
                 if (taxa.EhDiaria)
-                grid.Rows.Add(taxa.guid, taxa.Descricao,taxa.Valor,"Diária");
+                grid.Rows.Add(taxa.Guid, taxa.Descricao,taxa.Valor,"Diária");
             else
-                    grid.Rows.Add(taxa.guid, taxa.Descricao, taxa.Valor,"Fixo");
+                    grid.Rows.Add(taxa.Guid, taxa.Descricao, taxa.Valor,"Fixo");
         }
     }
 }

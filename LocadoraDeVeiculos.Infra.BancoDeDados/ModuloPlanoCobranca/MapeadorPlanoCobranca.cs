@@ -11,12 +11,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
     {
         public void ConfigurarParametrosRegistro(PlanoCobranca registro, SqlCommand cmdInserir)
         {
-            cmdInserir.Parameters.AddWithValue("GUID_PLANO_COBRANCA", registro.guid);
+            cmdInserir.Parameters.AddWithValue("GUID_PLANO_COBRANCA", registro.Guid);
             cmdInserir.Parameters.AddWithValue("NOME", registro.Nome);
             cmdInserir.Parameters.AddWithValue("KM_LIVRE_INCLUSO", registro.KmLivreIncluso);
             cmdInserir.Parameters.AddWithValue("VALOR_DIA", registro.ValorDia);
             cmdInserir.Parameters.AddWithValue("VALOR_POR_KM", registro.ValorPorKm);
-            cmdInserir.Parameters.AddWithValue("GRUPO_VEICULO_ID", registro.GrupoVeiculos.guid);
+            cmdInserir.Parameters.AddWithValue("GRUPO_VEICULO_ID", registro.GrupoVeiculos.Guid);
             cmdInserir.Parameters.AddWithValue("PLANO", registro.Plano.ToString());
         }
 
@@ -32,7 +32,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
             GrupoVeiculos grupoVeiculos = new MapeadorGrupoVeiculos().ConverterParaRegistro(leitorRegistro);
 
             var plano = new PlanoCobranca(nome, kmLivre, valorDia, valorPorKm, planoEnum, grupoVeiculos);
-            plano.guid = idPlanoCobranca;
+            plano.Guid = idPlanoCobranca;
 
             return plano;
         }

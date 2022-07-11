@@ -56,7 +56,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             foreach (Veiculo veiculo in veiculos)
 
-                grid.Rows.Add(veiculo.guid, veiculo.Modelo, veiculo.Marca, veiculo.Placa, veiculo.Cor, veiculo.Ano, veiculo.Combustivel, veiculo.CapacidadeTanque, veiculo.KmPercorrido, veiculo.GrupoVeiculos, veiculo.Foto);
+                grid.Rows.Add(veiculo.Guid, veiculo.Modelo, veiculo.Marca, veiculo.Placa, veiculo.Cor, veiculo.Ano, veiculo.Combustivel, veiculo.CapacidadeTanque, veiculo.KmPercorrido, veiculo.GrupoVeiculos, veiculo.Foto);
         }
     }
 }

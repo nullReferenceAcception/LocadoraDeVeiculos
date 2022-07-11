@@ -54,7 +54,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             comboBoxPlano.DataSource = Enum.GetValues(typeof(PlanoEnum));
             comboBoxGrupoVeiculos.DataSource = _servicoGrupoVeiculos.SelecionarTodos();
 
-            textBoxID.Text = _planoCobranca.guid.ToString();
+            textBoxID.Text = _planoCobranca.Guid.ToString();
             textBoxNome.Text = _planoCobranca.Nome;
             textBoxValorDia.Text = "R$ " + _planoCobranca.ValorDia.ToString();
             textBoxValorPorKm.Text = "R$ " + _planoCobranca.ValorPorKm.ToString();

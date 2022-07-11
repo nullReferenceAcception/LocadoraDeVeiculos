@@ -9,7 +9,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
     {
         public void ConfigurarParametrosRegistro(Cliente registro, SqlCommand cmdInserir)
         {
-            cmdInserir.Parameters.AddWithValue("GUID_CLIENTE", registro.guid);
+            cmdInserir.Parameters.AddWithValue("GUID_CLIENTE", registro.Guid);
             cmdInserir.Parameters.AddWithValue("NOME", registro.Nome);
             cmdInserir.Parameters.AddWithValue("ENDERECO", registro.Endereco);
             cmdInserir.Parameters.AddWithValue("CNH", registro.CNH);
@@ -44,7 +44,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
                 cnpj = Convert.ToString(leitorRegistro["CNPJ_CLIENTE"])!;
 
             var cliente = new Cliente();
-            cliente.guid = GuidCliente;
+            cliente.Guid = GuidCliente;
             cliente.Nome = nome;
             cliente.Endereco = endereco;
             cliente.CNH = cnh;
