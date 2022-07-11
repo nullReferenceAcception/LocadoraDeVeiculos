@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 using LocadoraDeVeiculos.Infra.Logging.Log;
+using System.Configuration;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -17,9 +18,11 @@ namespace LocadoraDeVeiculos.WinApp
         {
             Log.Logger.ConfigurarLog();
 
-            CultureInfo newCulture = CultureInfo.CreateSpecificCulture("pt-BR");
-            Thread.CurrentThread.CurrentUICulture = newCulture;
-            Thread.CurrentThread.CurrentCulture = newCulture;
+            string Linguagem = ConfigurationManager.AppSettings.Get("Idioma");
+
+            Thread.CurrentThread.CurrentUICulture = new(Linguagem);
+
+            Thread.CurrentThread.CurrentCulture = new(Linguagem);
 
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();

@@ -1,8 +1,10 @@
 ﻿using FluentValidation;
 using LocadoraDeVeiculos.Dominio;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 {
@@ -13,9 +15,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
     {
         #region abstract sqls
 
-        protected const string enderecoBanco =
-     "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=locadora_db;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
+        private readonly string enderecoBanco;
 
         protected abstract string sqlInserir { get; }
         protected abstract string sqlEditar { get; }
@@ -36,6 +36,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
         public RepositorioBaseEmBancoDeDados(TMapeamento mapeavel)
         {
             this.mapeador = mapeavel;
+
+            var configuracao = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("ConfiguracaoAplicacao.json")
+                .Build();
+
+            enderecoBanco = configuracao.GetConnectionString("SqlServer");
+
             conexao = new SqlConnection(enderecoBanco);
         }
         #endregion

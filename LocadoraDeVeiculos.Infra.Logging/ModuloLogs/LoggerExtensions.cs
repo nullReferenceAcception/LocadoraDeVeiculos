@@ -1,4 +1,5 @@
-﻿using Serilog;
+﻿using Microsoft.Extensions.Configuration;
+using Serilog;
 using System;
 using System.IO;
 
@@ -8,13 +9,23 @@ namespace LocadoraDeVeiculos.Infra.Logging.Log
     {
         public static void ConfigurarLog(this ILogger log)
         {
-            string caminho = Directory.GetParent(Environment.CurrentDirectory)!.Parent!.Parent!.Parent!.FullName + $"\\logs\\log {String.Format("{0}.txt", DateTime.Today.ToString("dd-MM-yyyy"))}";
+            var configuracao = new ConfigurationBuilder()
+              .SetBasePath(Directory.GetCurrentDirectory())
+              .AddJsonFile("ConfiguracaoAplicacao.json")
+              .Build();
+
+            var diretorioSaida = configuracao
+                .GetSection("ConfiguracaoLogs")
+                .GetSection("DiretorioSaida")
+                .Value;
+
 
             Serilog.Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                  .WriteTo.File(caminho,
-        outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
-                .CreateLogger();
+                   .MinimumLevel.Debug()
+                   .WriteTo.File(diretorioSaida + "/log.txt",
+               rollingInterval: RollingInterval.Day,
+               outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
+               .CreateLogger();
         }
     }
 }
