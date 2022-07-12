@@ -91,6 +91,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             maskedTextBoxCPF.Clear();
             maskedTextBoxCNPJ.Focus();
             maskedTextBoxCNH.Clear();
+
+
+
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
@@ -110,6 +113,47 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         {
             textBoxNome.AceitaSoLetras();
             textBoxNome.Focus();
+        }
+
+        private void labelNome_Click(object sender, EventArgs e)
+        {
+            textBoxNome.Select();
+        }
+
+        private void labelEndereco_Click(object sender, EventArgs e)
+        {
+            textBoxEndereco.Select();
+        }
+
+        private void labelEmail_Click(object sender, EventArgs e)
+        {
+            textBoxEmail.Select();
+        }
+
+        private void labelTelefone_Click(object sender, EventArgs e)
+        {
+            maskedTextBoxTelefone.Select();
+        }
+
+        private void labelCPF_Click(object sender, EventArgs e)
+        {
+            maskedTextBoxCPF.Select();
+        }
+
+        private void labelCNPJ_Click(object sender, EventArgs e)
+        {
+            maskedTextBoxCNPJ.Select();
+        }
+
+        private void labelCNH_Click(object sender, EventArgs e)
+        {
+            maskedTextBoxCNH.Select();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            dateTimePickerValidadeCNH.Select();
+            SendKeys.Send("%{DOWN}");
         }
     }
 }
