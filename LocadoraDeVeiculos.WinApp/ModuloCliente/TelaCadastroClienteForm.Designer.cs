@@ -49,7 +49,7 @@
             this.groupBoxDadosCliente = new System.Windows.Forms.GroupBox();
             this.maskedTextBoxCNH = new System.Windows.Forms.MaskedTextBox();
             this.dateTimePickerValidadeCNH = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelValidadeCNH = new System.Windows.Forms.Label();
             this.labelGuid = new System.Windows.Forms.Label();
             this.textBoxGuid = new System.Windows.Forms.TextBox();
             this.groupBoxTipoCliente.SuspendLayout();
@@ -59,7 +59,7 @@
             // textBoxNome
             // 
             this.textBoxNome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxNome.Location = new System.Drawing.Point(2, 80);
+            this.textBoxNome.Location = new System.Drawing.Point(2, 81);
             this.textBoxNome.MaxLength = 100;
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(239, 23);
@@ -68,7 +68,7 @@
             // textBoxEndereco
             // 
             this.textBoxEndereco.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxEndereco.Location = new System.Drawing.Point(2, 124);
+            this.textBoxEndereco.Location = new System.Drawing.Point(2, 125);
             this.textBoxEndereco.MaxLength = 100;
             this.textBoxEndereco.Name = "textBoxEndereco";
             this.textBoxEndereco.Size = new System.Drawing.Size(239, 23);
@@ -77,7 +77,7 @@
             // textBoxEmail
             // 
             this.textBoxEmail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxEmail.Location = new System.Drawing.Point(2, 168);
+            this.textBoxEmail.Location = new System.Drawing.Point(2, 169);
             this.textBoxEmail.MaxLength = 100;
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(239, 23);
@@ -100,7 +100,7 @@
             this.labelTelefone.AutoSize = true;
             this.labelTelefone.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelTelefone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelTelefone.Location = new System.Drawing.Point(2, 194);
+            this.labelTelefone.Location = new System.Drawing.Point(2, 195);
             this.labelTelefone.Name = "labelTelefone";
             this.labelTelefone.Size = new System.Drawing.Size(54, 15);
             this.labelTelefone.TabIndex = 9;
@@ -112,7 +112,7 @@
             this.labelEmail.AutoSize = true;
             this.labelEmail.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelEmail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelEmail.Location = new System.Drawing.Point(2, 150);
+            this.labelEmail.Location = new System.Drawing.Point(2, 151);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(39, 15);
             this.labelEmail.TabIndex = 10;
@@ -124,7 +124,7 @@
             this.labelCNH.AutoSize = true;
             this.labelCNH.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelCNH.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelCNH.Location = new System.Drawing.Point(2, 416);
+            this.labelCNH.Location = new System.Drawing.Point(2, 409);
             this.labelCNH.Name = "labelCNH";
             this.labelCNH.Size = new System.Drawing.Size(36, 15);
             this.labelCNH.TabIndex = 11;
@@ -136,7 +136,7 @@
             this.labelEndereco.AutoSize = true;
             this.labelEndereco.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelEndereco.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelEndereco.Location = new System.Drawing.Point(2, 106);
+            this.labelEndereco.Location = new System.Drawing.Point(2, 107);
             this.labelEndereco.Name = "labelEndereco";
             this.labelEndereco.Size = new System.Drawing.Size(59, 15);
             this.labelEndereco.TabIndex = 12;
@@ -147,7 +147,7 @@
             // 
             this.groupBoxTipoCliente.Controls.Add(this.radioButtonCNPJ);
             this.groupBoxTipoCliente.Controls.Add(this.radioButtonCPF);
-            this.groupBoxTipoCliente.Location = new System.Drawing.Point(2, 241);
+            this.groupBoxTipoCliente.Location = new System.Drawing.Point(2, 239);
             this.groupBoxTipoCliente.Name = "groupBoxTipoCliente";
             this.groupBoxTipoCliente.Size = new System.Drawing.Size(133, 79);
             this.groupBoxTipoCliente.TabIndex = 6;
@@ -185,7 +185,7 @@
             this.labelCPF.AutoSize = true;
             this.labelCPF.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelCPF.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelCPF.Location = new System.Drawing.Point(2, 324);
+            this.labelCPF.Location = new System.Drawing.Point(2, 321);
             this.labelCPF.Name = "labelCPF";
             this.labelCPF.Size = new System.Drawing.Size(31, 15);
             this.labelCPF.TabIndex = 15;
@@ -197,7 +197,7 @@
             this.labelCNPJ.AutoSize = true;
             this.labelCNPJ.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelCNPJ.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelCNPJ.Location = new System.Drawing.Point(2, 372);
+            this.labelCNPJ.Location = new System.Drawing.Point(2, 365);
             this.labelCNPJ.Name = "labelCNPJ";
             this.labelCNPJ.Size = new System.Drawing.Size(37, 15);
             this.labelCNPJ.TabIndex = 16;
@@ -209,7 +209,7 @@
             this.buttonGravar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonGravar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.buttonGravar.Location = new System.Drawing.Point(133, 529);
+            this.buttonGravar.Location = new System.Drawing.Point(131, 514);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
             this.buttonGravar.TabIndex = 11;
@@ -222,7 +222,7 @@
             this.buttonCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancelar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.buttonCancelar.Location = new System.Drawing.Point(206, 529);
+            this.buttonCancelar.Location = new System.Drawing.Point(204, 514);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
             this.buttonCancelar.TabIndex = 12;
@@ -232,7 +232,7 @@
             // maskedTextBoxCPF
             // 
             this.maskedTextBoxCPF.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.maskedTextBoxCPF.Location = new System.Drawing.Point(2, 346);
+            this.maskedTextBoxCPF.Location = new System.Drawing.Point(2, 339);
             this.maskedTextBoxCPF.Mask = "000\\.000\\.000-00";
             this.maskedTextBoxCPF.Name = "maskedTextBoxCPF";
             this.maskedTextBoxCPF.Size = new System.Drawing.Size(140, 23);
@@ -242,7 +242,7 @@
             // maskedTextBoxCNPJ
             // 
             this.maskedTextBoxCNPJ.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.maskedTextBoxCNPJ.Location = new System.Drawing.Point(2, 390);
+            this.maskedTextBoxCNPJ.Location = new System.Drawing.Point(2, 383);
             this.maskedTextBoxCNPJ.Mask = "00\\.000\\.000/0000-00";
             this.maskedTextBoxCNPJ.Name = "maskedTextBoxCNPJ";
             this.maskedTextBoxCNPJ.Size = new System.Drawing.Size(140, 23);
@@ -252,7 +252,7 @@
             // maskedTextBoxTelefone
             // 
             this.maskedTextBoxTelefone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.maskedTextBoxTelefone.Location = new System.Drawing.Point(2, 212);
+            this.maskedTextBoxTelefone.Location = new System.Drawing.Point(2, 213);
             this.maskedTextBoxTelefone.Mask = "(00) 90000-0000";
             this.maskedTextBoxTelefone.Name = "maskedTextBoxTelefone";
             this.maskedTextBoxTelefone.Size = new System.Drawing.Size(111, 23);
@@ -263,7 +263,7 @@
             // 
             this.groupBoxDadosCliente.Controls.Add(this.maskedTextBoxCNH);
             this.groupBoxDadosCliente.Controls.Add(this.dateTimePickerValidadeCNH);
-            this.groupBoxDadosCliente.Controls.Add(this.label2);
+            this.groupBoxDadosCliente.Controls.Add(this.labelValidadeCNH);
             this.groupBoxDadosCliente.Controls.Add(this.maskedTextBoxTelefone);
             this.groupBoxDadosCliente.Controls.Add(this.labelGuid);
             this.groupBoxDadosCliente.Controls.Add(this.textBoxGuid);
@@ -283,7 +283,7 @@
             this.groupBoxDadosCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.groupBoxDadosCliente.Location = new System.Drawing.Point(12, 11);
             this.groupBoxDadosCliente.Name = "groupBoxDadosCliente";
-            this.groupBoxDadosCliente.Size = new System.Drawing.Size(259, 512);
+            this.groupBoxDadosCliente.Size = new System.Drawing.Size(259, 497);
             this.groupBoxDadosCliente.TabIndex = 22;
             this.groupBoxDadosCliente.TabStop = false;
             this.groupBoxDadosCliente.Text = "Dados do cliente:";
@@ -291,7 +291,7 @@
             // maskedTextBoxCNH
             // 
             this.maskedTextBoxCNH.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.maskedTextBoxCNH.Location = new System.Drawing.Point(2, 434);
+            this.maskedTextBoxCNH.Location = new System.Drawing.Point(2, 427);
             this.maskedTextBoxCNH.Mask = "00000000000";
             this.maskedTextBoxCNH.Name = "maskedTextBoxCNH";
             this.maskedTextBoxCNH.Size = new System.Drawing.Size(75, 23);
@@ -302,22 +302,22 @@
             this.dateTimePickerValidadeCNH.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dateTimePickerValidadeCNH.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePickerValidadeCNH.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerValidadeCNH.Location = new System.Drawing.Point(2, 478);
+            this.dateTimePickerValidadeCNH.Location = new System.Drawing.Point(2, 471);
             this.dateTimePickerValidadeCNH.Name = "dateTimePickerValidadeCNH";
             this.dateTimePickerValidadeCNH.Size = new System.Drawing.Size(100, 23);
             this.dateTimePickerValidadeCNH.TabIndex = 3;
             // 
-            // label2
+            // labelValidadeCNH
             // 
-            this.label2.AutoSize = true;
-            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(2, 460);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 15);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "Validade CNH:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.labelValidadeCNH.AutoSize = true;
+            this.labelValidadeCNH.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelValidadeCNH.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelValidadeCNH.Location = new System.Drawing.Point(2, 453);
+            this.labelValidadeCNH.Name = "labelValidadeCNH";
+            this.labelValidadeCNH.Size = new System.Drawing.Size(83, 15);
+            this.labelValidadeCNH.TabIndex = 26;
+            this.labelValidadeCNH.Text = "Validade CNH:";
+            this.labelValidadeCNH.Click += new System.EventHandler(this.labelValidadeCNH_Click);
             // 
             // labelGuid
             // 
@@ -343,7 +343,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(280, 566);
+            this.ClientSize = new System.Drawing.Size(280, 555);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonGravar);
             this.Controls.Add(this.groupBoxDadosCliente);
@@ -381,7 +381,7 @@
         private System.Windows.Forms.GroupBox groupBoxDadosCliente;
         private System.Windows.Forms.Label labelGuid;
         private System.Windows.Forms.TextBox textBoxGuid;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelValidadeCNH;
         private System.Windows.Forms.DateTimePicker dateTimePickerValidadeCNH;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxCNH;
     }

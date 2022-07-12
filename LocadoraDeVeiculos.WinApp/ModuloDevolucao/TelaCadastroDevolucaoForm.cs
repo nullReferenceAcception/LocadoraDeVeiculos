@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
@@ -16,6 +9,24 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         {
             InitializeComponent();
             this.ConfigurarTela();
+        }
+
+        private void labelLocacao_Click(object sender, EventArgs e)
+        {
+            comboBoxLocacao.DroppedDown = true;
+            comboBoxLocacao.SelectedIndex = 0;
+            comboBoxLocacao.Select();
+        }
+
+        private void labelTanque_Click(object sender, EventArgs e)
+        {
+            textBoxTanque.Focus();
+        }
+
+        private void labelDataDevolucao_Click(object sender, EventArgs e)
+        {
+            dateTimePickerDataDevolucao.Select();
+            SendKeys.Send("%{DOWN}");
         }
     }
 }

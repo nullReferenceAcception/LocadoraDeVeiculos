@@ -80,6 +80,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             dateTimePickerValidadeCNH.EstadoDeHabilitacao(true);
             maskedTextBoxCNPJ.Clear();
             maskedTextBoxCPF.Focus();
+            labelCNPJ.Cursor = DefaultCursor;
+            labelCPF.Cursor = Cursors.Hand;
+            labelCNH.Cursor = Cursors.Hand;
+            labelValidadeCNH.Cursor = Cursors.Hand;
         }
 
         private void radioCNPJbtn_CheckedChanged(object sender, EventArgs e)
@@ -91,9 +95,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             maskedTextBoxCPF.Clear();
             maskedTextBoxCNPJ.Focus();
             maskedTextBoxCNH.Clear();
-
-
-
+            labelCPF.Cursor = DefaultCursor;
+            labelCNH.Cursor = DefaultCursor;
+            labelValidadeCNH.Cursor = DefaultCursor;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
@@ -150,7 +154,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             maskedTextBoxCNH.Select();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void labelValidadeCNH_Click(object sender, EventArgs e)
         {
             dateTimePickerValidadeCNH.Select();
             SendKeys.Send("%{DOWN}");

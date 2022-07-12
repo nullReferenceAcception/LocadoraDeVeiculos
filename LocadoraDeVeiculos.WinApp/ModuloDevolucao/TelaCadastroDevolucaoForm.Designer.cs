@@ -33,7 +33,7 @@
             this.groupBoxDevolucao = new System.Windows.Forms.GroupBox();
             this.textBoxGuid = new System.Windows.Forms.TextBox();
             this.labelGuid = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerDataDevolucao = new System.Windows.Forms.DateTimePicker();
             this.labelDataDevolucao = new System.Windows.Forms.Label();
             this.textBoxTanque = new System.Windows.Forms.TextBox();
             this.labelTanque = new System.Windows.Forms.Label();
@@ -46,6 +46,7 @@
             // 
             this.buttonCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancelar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.buttonCancelar.Location = new System.Drawing.Point(224, 218);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
@@ -57,6 +58,7 @@
             // 
             this.buttonGravar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonGravar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.buttonGravar.Location = new System.Drawing.Point(151, 218);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
@@ -68,7 +70,7 @@
             // 
             this.groupBoxDevolucao.Controls.Add(this.textBoxGuid);
             this.groupBoxDevolucao.Controls.Add(this.labelGuid);
-            this.groupBoxDevolucao.Controls.Add(this.dateTimePicker1);
+            this.groupBoxDevolucao.Controls.Add(this.dateTimePickerDataDevolucao);
             this.groupBoxDevolucao.Controls.Add(this.labelDataDevolucao);
             this.groupBoxDevolucao.Controls.Add(this.textBoxTanque);
             this.groupBoxDevolucao.Controls.Add(this.labelTanque);
@@ -102,25 +104,27 @@
             this.labelGuid.TabIndex = 28;
             this.labelGuid.Text = "Guid:";
             // 
-            // dateTimePicker1
+            // dateTimePickerDataDevolucao
             // 
-            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(14, 169);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(100, 23);
-            this.dateTimePicker1.TabIndex = 2;
+            this.dateTimePickerDataDevolucao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dateTimePickerDataDevolucao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePickerDataDevolucao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerDataDevolucao.Location = new System.Drawing.Point(14, 169);
+            this.dateTimePickerDataDevolucao.Name = "dateTimePickerDataDevolucao";
+            this.dateTimePickerDataDevolucao.Size = new System.Drawing.Size(100, 23);
+            this.dateTimePickerDataDevolucao.TabIndex = 2;
             // 
             // labelDataDevolucao
             // 
             this.labelDataDevolucao.AutoSize = true;
+            this.labelDataDevolucao.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelDataDevolucao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelDataDevolucao.Location = new System.Drawing.Point(14, 151);
             this.labelDataDevolucao.Name = "labelDataDevolucao";
             this.labelDataDevolucao.Size = new System.Drawing.Size(108, 15);
             this.labelDataDevolucao.TabIndex = 4;
             this.labelDataDevolucao.Text = "Data da devolução:";
+            this.labelDataDevolucao.Click += new System.EventHandler(this.labelDataDevolucao_Click);
             // 
             // textBoxTanque
             // 
@@ -134,12 +138,14 @@
             // labelTanque
             // 
             this.labelTanque.AutoSize = true;
+            this.labelTanque.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelTanque.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelTanque.Location = new System.Drawing.Point(14, 107);
             this.labelTanque.Name = "labelTanque";
             this.labelTanque.Size = new System.Drawing.Size(48, 15);
             this.labelTanque.TabIndex = 2;
             this.labelTanque.Text = "Tanque:";
+            this.labelTanque.Click += new System.EventHandler(this.labelTanque_Click);
             // 
             // comboBoxLocacao
             // 
@@ -154,12 +160,14 @@
             // labelLocacao
             // 
             this.labelLocacao.AutoSize = true;
+            this.labelLocacao.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelLocacao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelLocacao.Location = new System.Drawing.Point(14, 63);
             this.labelLocacao.Name = "labelLocacao";
             this.labelLocacao.Size = new System.Drawing.Size(54, 15);
             this.labelLocacao.TabIndex = 0;
             this.labelLocacao.Text = "Locação:";
+            this.labelLocacao.Click += new System.EventHandler(this.labelLocacao_Click);
             // 
             // TelaCadastroDevolucaoForm
             // 
@@ -184,7 +192,7 @@
         private System.Windows.Forms.Button buttonGravar;
         private System.Windows.Forms.GroupBox groupBoxDevolucao;
         private System.Windows.Forms.Label labelLocacao;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDataDevolucao;
         private System.Windows.Forms.Label labelDataDevolucao;
         private System.Windows.Forms.TextBox textBoxTanque;
         private System.Windows.Forms.Label labelTanque;
