@@ -16,7 +16,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
             cmdInserir.Parameters.AddWithValue("KM_LIVRE_INCLUSO", registro.KmLivreIncluso);
             cmdInserir.Parameters.AddWithValue("VALOR_DIA", registro.ValorDia);
             cmdInserir.Parameters.AddWithValue("VALOR_POR_KM", registro.ValorPorKm);
-            cmdInserir.Parameters.AddWithValue("GRUPO_VEICULO_ID", registro.GrupoVeiculos.Guid);
+            cmdInserir.Parameters.AddWithValue("GRUPO_VEICULO_GUID", registro.GrupoVeiculos.Guid);
             cmdInserir.Parameters.AddWithValue("PLANO", registro.Plano.ToString());
         }
 

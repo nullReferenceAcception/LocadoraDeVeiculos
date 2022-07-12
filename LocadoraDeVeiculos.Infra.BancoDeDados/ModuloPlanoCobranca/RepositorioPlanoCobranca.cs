@@ -24,7 +24,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
                 VALOR_DIA,
                 VALOR_POR_KM,
                 PLANO,
-                GRUPO_VEICULO_ID
+                GRUPO_VEICULO_GUID
 		        )
 		        VALUES
 		        (
@@ -34,7 +34,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
                 @VALOR_DIA,
                 @VALOR_POR_KM,
                 @PLANO,
-                @GRUPO_VEICULO_ID
+                @GRUPO_VEICULO_GUID
 		        );SELECT SCOPE_IDENTITY();";
         }
 
@@ -49,7 +49,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
             VALOR_DIA = @VALOR_DIA,
             VALOR_POR_KM = @VALOR_POR_KM,
             PLANO = @PLANO,
-            GRUPO_VEICULO_ID = @GRUPO_VEICULO_ID
+            GRUPO_VEICULO_GUID = @GRUPO_VEICULO_GUID
 		        WHERE
 			GUID_PLANO_COBRANCA = @GUID_PLANO_COBRANCA;";
         }
@@ -100,7 +100,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
                    TB_PLANO_COBRANCA AS P INNER JOIN
 	               TB_GRUPO_VEICULO AS G
                 ON
-	               P.GUGRUPO_VEICULO_ID = G.GUID_GRUPO_VEICULO
+	               P.GRUPO_VEICULO_GUID = G.GUID_GRUPO_VEICULO
                 WHERE
 	                GUID_PLANO_COBRANCA = @GUID;";
         }

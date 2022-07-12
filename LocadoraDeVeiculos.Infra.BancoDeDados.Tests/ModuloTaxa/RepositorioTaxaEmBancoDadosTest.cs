@@ -3,6 +3,7 @@ using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa;
+using LocadoraDeVeiculos.Infra.BancoDeDados.Tests.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloTaxa;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -92,7 +93,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
 
             for (int i = 0; i < 10; i++)
             {
-                Taxa Taxa = new Taxa("descricao " + i.ToString(), (random.Next(0, 100) + (decimal)Math.Round(random.NextDouble(), 2)), true); ;
+                Taxa Taxa = new Taxa(FuncoesTeste.GerarNovaStringAleatoria(), (random.Next(0, 100) + (decimal)Math.Round(random.NextDouble(), 2)), true); ;
 
                 _servicoTaxa.Inserir(Taxa);
                 registros.Add(Taxa);
@@ -100,15 +101,18 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
 
             List<Taxa> registrosDoBanco = _servicoTaxa.SelecionarTodos();
 
+
+            Assert.IsTrue(registrosDoBanco.Count == registros.Count);
+
             for (int i = 0; i < registrosDoBanco.Count; i++)
-                Assert.AreEqual(registrosDoBanco[i], registros[i]);
+                Assert.IsTrue(registrosDoBanco.Contains(registros[i]));
         }
 
         //TODO Não pode deixar excluir caso esteja linkado em outro registro
 
         private Taxa CriarTaxa()
         {
-            return new Taxa("descrição", (random.Next(0, 100) + (decimal)Math.Round(random.NextDouble(), 2)), true);
+            return new Taxa(FuncoesTeste.GerarNovaStringAleatoria(), (random.Next(0, 100) + (decimal)Math.Round(random.NextDouble(), 2)), true);
         }
     }
 }

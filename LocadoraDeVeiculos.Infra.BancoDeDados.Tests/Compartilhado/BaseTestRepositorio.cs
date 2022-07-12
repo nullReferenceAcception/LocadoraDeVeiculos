@@ -11,7 +11,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
         {
             //colocar aqui sua tabela de acrodo com os exemplos
 
-
             Db.ExecutarSql("DELETE FROM TB_PLANO_COBRANCA");
             Db.ExecutarSql("DELETE FROM TB_CONDUTOR");
             Db.ExecutarSql("DELETE FROM TB_CLIENTE");

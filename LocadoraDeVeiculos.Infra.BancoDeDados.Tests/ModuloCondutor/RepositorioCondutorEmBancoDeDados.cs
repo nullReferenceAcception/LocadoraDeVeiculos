@@ -4,6 +4,7 @@ using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor;
+using LocadoraDeVeiculos.Infra.BancoDeDados.Tests.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloCliente;
 using LocadoraDeVeiculos.Servico.ModuloCondutor;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -100,9 +101,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
             for (int i = 0; i < 10; i++)
             {
                 if (i <= 5)
-                    condutor = new Condutor(GerarNovoNome(), "rua amaral junior 657", "12345678901", "guimotorista@gmail.com", "49998765432", "11111111111", DateTime.Today);
+                    condutor = new Condutor(FuncoesTeste.GerarNovaStringAleatoria(), "rua amaral junior 657", "12345678901", "guimotorista@gmail.com", "49998765432", "11111111111", DateTime.Today);
                 else
-                    condutor = new Condutor(GerarNovoNome(), "rua juvenil 657", "12345678901", "guimotorista445@gmail.com", "49998789432", "11001111111", DateTime.Today);
+                    condutor = new Condutor(FuncoesTeste.GerarNovaStringAleatoria(), "rua juvenil 657", "12345678901", "guimotorista445@gmail.com", "49998789432", "11001111111", DateTime.Today);
                 condutor.Cliente = cliente;
 
                 servico.Inserir(condutor);
@@ -112,8 +113,10 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 
             List<Condutor> registrosDoBanco = servico.SelecionarTodos();
 
+            Assert.IsTrue(registrosDoBanco.Count == registros.Count);
+
             for (int i = 0; i < registrosDoBanco.Count; i++)
-                Assert.AreEqual(registrosDoBanco[i], registros[i]);
+                Assert.IsTrue(registrosDoBanco.Contains(registros[i]));
         }
 
         [TestMethod]
@@ -136,24 +139,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
         
         private Condutor CriarCondutor()
         {
-            return new Condutor(GerarNovoNome(), "rua amaral junior 657", "12345678901", "guimotorista@gmail.com", "49998765432", "11111111111", DateTime.Today);
+            return new Condutor(FuncoesTeste.GerarNovaStringAleatoria(), FuncoesTeste.GerarNovaStringAleatoria(), "12345678901", "guimotorista@gmail.com", "49998765432", "11111111111", DateTime.Today);
         }
         private Cliente CriarCliente()
         {
-            return   new Cliente(GerarNovoNome(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", false, null!, "12340567123889", DateTime.Today);
-        }
-        private string GerarNovoNome()
-        {
-            const int qtdeLetras = 4;
-
-            const string letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            string novoNome = "";
-            Random random = new();
-
-            for (int i = 0; i < qtdeLetras; i++)
-                novoNome += letras[random.Next(letras.Length)];
-
-            return novoNome;
+            return   new Cliente(FuncoesTeste.GerarNovaStringAleatoria(), FuncoesTeste.GerarNovaStringAleatoria(), "12345678900", "joao@joao.com", "49989090909", false, null!, "12340567123889", DateTime.Today);
         }
     }
 }

@@ -3,6 +3,7 @@ using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Infra.BancoDeDados.Tests.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
@@ -63,7 +64,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
 
             for (int i = 0; i < 10; i++)
             {
-                GrupoVeiculos GrupoVeiculos = new GrupoVeiculos("Nome " + i.ToString());
+                GrupoVeiculos GrupoVeiculos = new GrupoVeiculos(FuncoesTeste.GerarNovaStringAleatoria());
 
                 _servicoGrupoVeiculos.Inserir(GrupoVeiculos);
                 registros.Add(GrupoVeiculos);
@@ -71,8 +72,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
 
             List<GrupoVeiculos> registrosDoBanco = _servicoGrupoVeiculos.SelecionarTodos();
 
+            Assert.IsTrue(registrosDoBanco.Count == registros.Count);
+
+
             for (int i = 0; i < registrosDoBanco.Count; i++)
-                Assert.AreEqual(registrosDoBanco[i], registros[i]);
+                Assert.IsTrue(registrosDoBanco.Contains(registros[i]));
         }
 
         [TestMethod]
@@ -104,7 +108,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
 
         private GrupoVeiculos CriarGrupoVeiculos()
         {
-            return new GrupoVeiculos("Nome é");
+            return new GrupoVeiculos(FuncoesTeste.GerarNovaStringAleatoria());
         }
     }
 }

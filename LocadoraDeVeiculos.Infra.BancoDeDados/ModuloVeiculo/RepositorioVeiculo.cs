@@ -25,7 +25,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
                             COR,
                             COMBUSTIVEL,
                             FOTO,
-                            GRUPO_DE_VEICULO_ID
+                            GRUPO_VEICULO_GUID
                             )
                         VALUES
                             (
@@ -39,7 +39,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
                             @COR,
                             @COMBUSTIVEL,
                             @FOTO,
-                            @GRUPO_DE_VEICULO_ID
+                            @GRUPO_VEICULO_GUID
                             ); SELECT SCOPE_IDENTITY();";
         }
 
@@ -57,9 +57,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
                                 COR = @COR,
                                 COMBUSTIVEL = @COMBUSTIVEL,
                                 FOTO = @FOTO,
-                                GRUPO_VEICULO_ID = @GRUPO_VEICULO_ID
+                                GRUPO_VEICULO_GUID = @GRUPO_VEICULO_GUID
                             WHERE
-                                GUID_VEICULO = @GUID";
+                                GUID_VEICULO = @GUID_VEICULO";
         }
 
         protected override string sqlExcluir
@@ -67,7 +67,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
             get => @"DELETE FROM
                         TB_VEICULO
                     WHERE
-                        ID_VEICULO = @GUID";
+                        GUID_VEICULO = @GUID";
         }
 
         protected override string sqlSelecionarTodos
@@ -106,14 +106,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
                         VEICULO.COR AS COR,
                         VEICULO.COMBUSTIVEL AS COMBUSTIVEL,
                         VEICULO.FOTO AS FOTO,
-                        VEICULO.GRUPO_DE_VEICULO_GUID AS GRUPO_DE_VEICULO_GUID,
+                        VEICULO.GRUPO_VEICULO_GUID AS GRUPO_VEICULO_GUID,
 
                         GRUPO_VEICULO.GUID_GRUPO_VEICULO AS GUID_GRUPO_VEICULO,
                         GRUPO_VEICULO.NOME AS NOME_GRUPO_VEICULO
                     FROM
                         TB_VEICULO AS VEICULO
                         INNER JOIN TB_GRUPO_VEICULO AS GRUPO_VEICULO
-                        ON GRUPO_VEICULO.GUID_GRUPO_VEICULO = VEICULO.GRUPO_DE_VEICULO_GUID
+                        ON GRUPO_VEICULO.GUID_GRUPO_VEICULO = VEICULO.GRUPO_VEICULO_GUID
                     WHERE
                         VEICULO.GUID_VEICULO = @GUID";
         }

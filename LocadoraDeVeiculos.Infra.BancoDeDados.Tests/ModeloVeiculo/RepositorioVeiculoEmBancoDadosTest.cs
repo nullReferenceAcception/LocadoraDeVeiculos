@@ -94,15 +94,23 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 
             int quantidade = 3;
 
+            List<Veiculo> veiculos = new();
+
             for (int i = 0; i < quantidade; i++)
             {
                 veiculo.Placa = GerarNovaPlaca();
                 _servicoVeiculo.Inserir(veiculo);
+                veiculos.Add(veiculo);
             }
 
             List<Veiculo> veiculosEncontrados = _servicoVeiculo.SelecionarTodos();
 
-            veiculosEncontrados.Count.Should().Be(quantidade);
+            Assert.IsTrue(veiculosEncontrados.Count == quantidade);
+
+            for (int i = 0; i < quantidade; i++)
+            {
+                Assert.IsTrue(veiculosEncontrados.Contains(veiculos[i]));
+            }
         }
 
         [TestMethod]

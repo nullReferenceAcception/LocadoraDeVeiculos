@@ -20,7 +20,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
             cmdInserir.Parameters.AddWithValue("@KM_PERCORRIDO", registro.KmPercorrido);
             cmdInserir.Parameters.AddWithValue("@COR", registro.Cor);
             cmdInserir.Parameters.AddWithValue("@COMBUSTIVEL", registro.Combustivel);
-            cmdInserir.Parameters.AddWithValue("@GRUPO_DE_VEICULO_GUID", registro.GrupoVeiculos.Guid);
+            cmdInserir.Parameters.AddWithValue("@GRUPO_VEICULO_GUID", registro.GrupoVeiculos.Guid);
             cmdInserir.Parameters.AddWithValue("@FOTO", registro.Foto);
         }
 
