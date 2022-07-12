@@ -7,6 +7,5 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
     {
         abstract T ConverterParaRegistro(SqlDataReader leitorRegistro);
         abstract void ConfigurarParametrosRegistro(T registro, SqlCommand cmdInserir);
-
     }
 }

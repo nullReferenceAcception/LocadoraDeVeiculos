@@ -16,7 +16,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
         #region abstract sqls
 
         private readonly string enderecoBanco;
-
         protected abstract string sqlInserir { get; }
         protected abstract string sqlEditar { get; }
         protected abstract string sqlExcluir { get; }
@@ -55,7 +54,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             SqlCommand cmdInserir = new SqlCommand(sqlInserir, conexao);
 
             mapeador.ConfigurarParametrosRegistro(registro, cmdInserir);
-
 
             cmdInserir.ExecuteNonQuery();
 

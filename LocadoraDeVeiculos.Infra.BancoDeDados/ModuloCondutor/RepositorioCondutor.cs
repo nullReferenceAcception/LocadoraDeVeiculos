@@ -7,7 +7,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
     {
         public RepositorioCondutor() : base(new MapeadorCondutor())
         {
-
         }
 
         #region SQLs

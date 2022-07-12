@@ -117,7 +117,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             textBoxNome.AceitaSoLetras();
         }
 
-
         private void LimparCampos()
         {
             textBoxNome.Clear();
@@ -139,6 +138,5 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             maskedTextBoxTelefone.Enabled = status;
             dateTimePickerValidadeCNH.Enabled = status;
         }
-
     }
 }

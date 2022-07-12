@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Serilog;
-using System;
 using System.IO;
 
 namespace LocadoraDeVeiculos.Infra.Logging.Log
@@ -18,7 +17,6 @@ namespace LocadoraDeVeiculos.Infra.Logging.Log
                 .GetSection("ConfiguracaoLogs")
                 .GetSection("DiretorioSaida")
                 .Value;
-
 
             Serilog.Log.Logger = new LoggerConfiguration()
                    .MinimumLevel.Debug()

@@ -1,7 +1,6 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
 {
@@ -109,7 +108,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
                     GUID_CLIENTE = @guid;";
         }
 
-
         private string sqlSelecionarTodosPessoasFisicas
         {
             get =>
@@ -149,7 +147,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
 	                TB_CLIENTE
                 WHERE 
                     TIPO_CLIENTE = 0;";
-
         }
 
         protected override string sqlQuantidade
@@ -165,8 +162,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
         {
            return "SELECT * FROM TB_CLIENTE WHERE ([NOME] = '" + registro.Nome + "')" + "AND [GUID_CLIENTE] != '" + registro.Guid + "' ";
         }
-
-
+        
         public List<Cliente> SelecionarTodosClientesQueSaoPessoaFisica()
         {
             return SelecionarTodosPersonalizado(sqlSelecionarTodosPessoasFisicas);
@@ -176,6 +172,5 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
         {
             return SelecionarTodosPersonalizado(sqlSelecionarTodosPessoasJuridicas);
         }
-
     }
 }
