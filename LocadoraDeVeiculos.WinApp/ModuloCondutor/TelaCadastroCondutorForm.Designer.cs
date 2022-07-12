@@ -163,6 +163,7 @@
             // 
             // comboBoxEmpresa
             // 
+            this.comboBoxEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEmpresa.FormattingEnabled = true;
             this.comboBoxEmpresa.ItemHeight = 15;
             this.comboBoxEmpresa.Location = new System.Drawing.Point(101, 315);

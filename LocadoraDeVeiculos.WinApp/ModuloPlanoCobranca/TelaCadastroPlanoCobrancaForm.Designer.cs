@@ -67,7 +67,7 @@
             this.groupBoxTaxa.Controls.Add(this.labelGrupoVeiculos);
             this.groupBoxTaxa.Location = new System.Drawing.Point(12, 12);
             this.groupBoxTaxa.Name = "groupBoxTaxa";
-            this.groupBoxTaxa.Size = new System.Drawing.Size(343, 238);
+            this.groupBoxTaxa.Size = new System.Drawing.Size(258, 329);
             this.groupBoxTaxa.TabIndex = 9;
             this.groupBoxTaxa.TabStop = false;
             this.groupBoxTaxa.Text = "Dados de taxas:";
@@ -80,7 +80,7 @@
             "Diario",
             "Km controlado",
             "Km livre"});
-            this.comboBoxPlano.Location = new System.Drawing.Point(109, 114);
+            this.comboBoxPlano.Location = new System.Drawing.Point(15, 169);
             this.comboBoxPlano.Name = "comboBoxPlano";
             this.comboBoxPlano.Size = new System.Drawing.Size(143, 23);
             this.comboBoxPlano.TabIndex = 2;
@@ -89,15 +89,17 @@
             // labelPlano
             // 
             this.labelPlano.AutoSize = true;
-            this.labelPlano.Location = new System.Drawing.Point(62, 117);
+            this.labelPlano.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelPlano.Location = new System.Drawing.Point(15, 151);
             this.labelPlano.Name = "labelPlano";
             this.labelPlano.Size = new System.Drawing.Size(40, 15);
             this.labelPlano.TabIndex = 37;
             this.labelPlano.Text = "Plano:";
+            this.labelPlano.Click += new System.EventHandler(this.labelPlano_Click);
             // 
             // textBoxValorPorKm
             // 
-            this.textBoxValorPorKm.Location = new System.Drawing.Point(109, 201);
+            this.textBoxValorPorKm.Location = new System.Drawing.Point(15, 301);
             this.textBoxValorPorKm.MaxLength = 255;
             this.textBoxValorPorKm.Name = "textBoxValorPorKm";
             this.textBoxValorPorKm.Size = new System.Drawing.Size(143, 23);
@@ -106,15 +108,17 @@
             // labelValorPorKm
             // 
             this.labelValorPorKm.AutoSize = true;
-            this.labelValorPorKm.Location = new System.Drawing.Point(27, 206);
+            this.labelValorPorKm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelValorPorKm.Location = new System.Drawing.Point(15, 283);
             this.labelValorPorKm.Name = "labelValorPorKm";
             this.labelValorPorKm.Size = new System.Drawing.Size(78, 15);
             this.labelValorPorKm.TabIndex = 35;
             this.labelValorPorKm.Text = "Valor por Km:";
+            this.labelValorPorKm.Click += new System.EventHandler(this.labelValorPorKm_Click);
             // 
             // textBoxValorDia
             // 
-            this.textBoxValorDia.Location = new System.Drawing.Point(109, 172);
+            this.textBoxValorDia.Location = new System.Drawing.Point(15, 257);
             this.textBoxValorDia.MaxLength = 255;
             this.textBoxValorDia.Name = "textBoxValorDia";
             this.textBoxValorDia.Size = new System.Drawing.Size(143, 23);
@@ -123,24 +127,28 @@
             // labelValorDia
             // 
             this.labelValorDia.AutoSize = true;
-            this.labelValorDia.Location = new System.Drawing.Point(50, 177);
+            this.labelValorDia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelValorDia.Location = new System.Drawing.Point(15, 239);
             this.labelValorDia.Name = "labelValorDia";
             this.labelValorDia.Size = new System.Drawing.Size(55, 15);
             this.labelValorDia.TabIndex = 33;
             this.labelValorDia.Text = "Valor dia:";
+            this.labelValorDia.Click += new System.EventHandler(this.labelValorDia_Click);
             // 
             // labelKmIncluso
             // 
             this.labelKmIncluso.AutoSize = true;
-            this.labelKmIncluso.Location = new System.Drawing.Point(36, 147);
+            this.labelKmIncluso.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelKmIncluso.Location = new System.Drawing.Point(15, 195);
             this.labelKmIncluso.Name = "labelKmIncluso";
             this.labelKmIncluso.Size = new System.Drawing.Size(69, 15);
             this.labelKmIncluso.TabIndex = 32;
             this.labelKmIncluso.Text = "Km incluso:";
+            this.labelKmIncluso.Click += new System.EventHandler(this.labelKmIncluso_Click);
             // 
             // numericUpDownKmIncluso
             // 
-            this.numericUpDownKmIncluso.Location = new System.Drawing.Point(109, 143);
+            this.numericUpDownKmIncluso.Location = new System.Drawing.Point(15, 213);
             this.numericUpDownKmIncluso.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -154,7 +162,7 @@
             // 
             this.comboBoxGrupoVeiculos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGrupoVeiculos.FormattingEnabled = true;
-            this.comboBoxGrupoVeiculos.Location = new System.Drawing.Point(109, 83);
+            this.comboBoxGrupoVeiculos.Location = new System.Drawing.Point(15, 125);
             this.comboBoxGrupoVeiculos.Name = "comboBoxGrupoVeiculos";
             this.comboBoxGrupoVeiculos.Size = new System.Drawing.Size(143, 23);
             this.comboBoxGrupoVeiculos.TabIndex = 1;
@@ -162,7 +170,7 @@
             // labelGuid
             // 
             this.labelGuid.AutoSize = true;
-            this.labelGuid.Location = new System.Drawing.Point(67, 28);
+            this.labelGuid.Location = new System.Drawing.Point(15, 19);
             this.labelGuid.Name = "labelGuid";
             this.labelGuid.Size = new System.Drawing.Size(35, 15);
             this.labelGuid.TabIndex = 29;
@@ -171,7 +179,7 @@
             // textBoxGuid
             // 
             this.textBoxGuid.Enabled = false;
-            this.textBoxGuid.Location = new System.Drawing.Point(109, 25);
+            this.textBoxGuid.Location = new System.Drawing.Point(15, 37);
             this.textBoxGuid.Name = "textBoxGuid";
             this.textBoxGuid.ReadOnly = true;
             this.textBoxGuid.Size = new System.Drawing.Size(228, 23);
@@ -180,34 +188,39 @@
             // labelNome
             // 
             this.labelNome.AutoSize = true;
-            this.labelNome.Location = new System.Drawing.Point(62, 57);
+            this.labelNome.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelNome.Location = new System.Drawing.Point(15, 63);
             this.labelNome.Name = "labelNome";
             this.labelNome.Size = new System.Drawing.Size(43, 15);
             this.labelNome.TabIndex = 1;
             this.labelNome.Text = "Nome:";
+            this.labelNome.Click += new System.EventHandler(this.labelNome_Click);
             // 
             // textBoxNome
             // 
-            this.textBoxNome.Location = new System.Drawing.Point(109, 54);
+            this.textBoxNome.Location = new System.Drawing.Point(15, 81);
             this.textBoxNome.MaxLength = 255;
             this.textBoxNome.Name = "textBoxNome";
-            this.textBoxNome.Size = new System.Drawing.Size(143, 23);
+            this.textBoxNome.Size = new System.Drawing.Size(185, 23);
             this.textBoxNome.TabIndex = 0;
             // 
             // labelGrupoVeiculos
             // 
             this.labelGrupoVeiculos.AutoSize = true;
-            this.labelGrupoVeiculos.Location = new System.Drawing.Point(0, 86);
+            this.labelGrupoVeiculos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelGrupoVeiculos.Location = new System.Drawing.Point(15, 107);
             this.labelGrupoVeiculos.Name = "labelGrupoVeiculos";
             this.labelGrupoVeiculos.Size = new System.Drawing.Size(105, 15);
             this.labelGrupoVeiculos.TabIndex = 3;
             this.labelGrupoVeiculos.Text = "Grupo de Veiculos:";
+            this.labelGrupoVeiculos.Click += new System.EventHandler(this.labelGrupoVeiculos_Click);
             // 
             // buttonCancelar
             // 
             this.buttonCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancelar.Location = new System.Drawing.Point(288, 254);
+            this.buttonCancelar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.buttonCancelar.Location = new System.Drawing.Point(203, 349);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
             this.buttonCancelar.TabIndex = 7;
@@ -218,7 +231,8 @@
             // 
             this.buttonGravar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonGravar.Location = new System.Drawing.Point(215, 254);
+            this.buttonGravar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.buttonGravar.Location = new System.Drawing.Point(130, 349);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
             this.buttonGravar.TabIndex = 6;
@@ -230,7 +244,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(367, 294);
+            this.ClientSize = new System.Drawing.Size(279, 388);
             this.Controls.Add(this.groupBoxTaxa);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonGravar);
