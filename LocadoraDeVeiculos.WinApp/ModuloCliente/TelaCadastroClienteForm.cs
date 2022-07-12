@@ -98,6 +98,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             labelCPF.Cursor = DefaultCursor;
             labelCNH.Cursor = DefaultCursor;
             labelValidadeCNH.Cursor = DefaultCursor;
+            labelCNPJ.Cursor = Cursors.Hand;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)

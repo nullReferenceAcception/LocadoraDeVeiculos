@@ -57,5 +57,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
             textBoxNome.Focus();
             textBoxNome.AceitaSoLetras();
         }
+
+        private void labelNome_Click(object sender, EventArgs e)
+        {
+            textBoxNome.Focus();
+        }
     }
 }

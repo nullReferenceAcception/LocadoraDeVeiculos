@@ -31,7 +31,7 @@
             this.groupBoxGrupoVeiculo = new System.Windows.Forms.GroupBox();
             this.labelGuid = new System.Windows.Forms.Label();
             this.textBoxGuid = new System.Windows.Forms.TextBox();
-            this.labelDescricao = new System.Windows.Forms.Label();
+            this.labelNome = new System.Windows.Forms.Label();
             this.textBoxNome = new System.Windows.Forms.TextBox();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonGravar = new System.Windows.Forms.Button();
@@ -42,7 +42,7 @@
             // 
             this.groupBoxGrupoVeiculo.Controls.Add(this.labelGuid);
             this.groupBoxGrupoVeiculo.Controls.Add(this.textBoxGuid);
-            this.groupBoxGrupoVeiculo.Controls.Add(this.labelDescricao);
+            this.groupBoxGrupoVeiculo.Controls.Add(this.labelNome);
             this.groupBoxGrupoVeiculo.Controls.Add(this.textBoxNome);
             this.groupBoxGrupoVeiculo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.groupBoxGrupoVeiculo.Location = new System.Drawing.Point(12, 12);
@@ -72,15 +72,16 @@
             this.textBoxGuid.Size = new System.Drawing.Size(294, 23);
             this.textBoxGuid.TabIndex = 28;
             // 
-            // labelDescricao
+            // labelNome
             // 
-            this.labelDescricao.AutoSize = true;
-            this.labelDescricao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelDescricao.Location = new System.Drawing.Point(6, 61);
-            this.labelDescricao.Name = "labelDescricao";
-            this.labelDescricao.Size = new System.Drawing.Size(43, 15);
-            this.labelDescricao.TabIndex = 1;
-            this.labelDescricao.Text = "Nome:";
+            this.labelNome.AutoSize = true;
+            this.labelNome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelNome.Location = new System.Drawing.Point(6, 61);
+            this.labelNome.Name = "labelNome";
+            this.labelNome.Size = new System.Drawing.Size(43, 15);
+            this.labelNome.TabIndex = 1;
+            this.labelNome.Text = "Nome:";
+            this.labelNome.Click += new System.EventHandler(this.labelNome_Click);
             // 
             // textBoxNome
             // 
@@ -135,7 +136,7 @@
 
         #endregion
         private System.Windows.Forms.GroupBox groupBoxGrupoVeiculo;
-        private System.Windows.Forms.Label labelDescricao;
+        private System.Windows.Forms.Label labelNome;
         private System.Windows.Forms.Button buttonGravar;
         private System.Windows.Forms.TextBox textBoxNome;
         public System.Windows.Forms.Button buttonCancelar;
