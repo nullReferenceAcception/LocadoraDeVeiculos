@@ -75,28 +75,29 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         }
 
         bool isChecked = false;
-        private void radioButtonUsarRegistro_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxUsarRegistro_Click(object sender, EventArgs e)
         {
-            isChecked = radioButtonUsarRegistro.Checked;
-        }
-
-        private void radioButtonUsarRegistro_Click(object sender, EventArgs e)
-        {
-            if (radioButtonUsarRegistro.Checked && !isChecked)
+            if (!checkBoxUsarRegistro.Checked && !isChecked)
             {
-                radioButtonUsarRegistro.Checked = false;
+                checkBoxUsarRegistro.Checked = false;
                 comboBoxClienteFisico.Enabled = false;
                 DefinirEstadoCampos(!isChecked);
                 LimparCampos();
             }
             else
             {
-                radioButtonUsarRegistro.Checked = true;
-                isChecked = false;
+                checkBoxUsarRegistro.Checked = true;
+                isChecked = true;
                 comboBoxClienteFisico.Enabled = true;
-                DefinirEstadoCampos(isChecked);
+                DefinirEstadoCampos(!isChecked);
             }
         }
+
+        private void checkBoxUsarRegistro_CheckedChanged(object sender, EventArgs e)
+        {
+            isChecked = checkBoxUsarRegistro.Checked;
+        }
+
 
         private void comboBoxClienteFisico_SelectedIndexChanged(object sender, EventArgs e)
         {

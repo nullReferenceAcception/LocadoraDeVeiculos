@@ -47,8 +47,8 @@
             this.labelGuid = new System.Windows.Forms.Label();
             this.textBoxGuid = new System.Windows.Forms.TextBox();
             this.groupBoxCondutor = new System.Windows.Forms.GroupBox();
+            this.checkBoxUsarRegistro = new System.Windows.Forms.CheckBox();
             this.comboBoxClienteFisico = new System.Windows.Forms.ComboBox();
-            this.radioButtonUsarRegistro = new System.Windows.Forms.RadioButton();
             this.labelCPF = new System.Windows.Forms.Label();
             this.maskedTextBoxCPF = new System.Windows.Forms.MaskedTextBox();
             this.groupBoxCondutor.SuspendLayout();
@@ -57,7 +57,7 @@
             // labelCNH
             // 
             this.labelCNH.AutoSize = true;
-            this.labelCNH.Location = new System.Drawing.Point(59, 224);
+            this.labelCNH.Location = new System.Drawing.Point(59, 230);
             this.labelCNH.Name = "labelCNH";
             this.labelCNH.Size = new System.Drawing.Size(36, 15);
             this.labelCNH.TabIndex = 2;
@@ -66,7 +66,7 @@
             // labelEndereco
             // 
             this.labelEndereco.AutoSize = true;
-            this.labelEndereco.Location = new System.Drawing.Point(36, 133);
+            this.labelEndereco.Location = new System.Drawing.Point(36, 139);
             this.labelEndereco.Name = "labelEndereco";
             this.labelEndereco.Size = new System.Drawing.Size(59, 15);
             this.labelEndereco.TabIndex = 3;
@@ -75,7 +75,7 @@
             // labelNome
             // 
             this.labelNome.AutoSize = true;
-            this.labelNome.Location = new System.Drawing.Point(52, 104);
+            this.labelNome.Location = new System.Drawing.Point(52, 110);
             this.labelNome.Name = "labelNome";
             this.labelNome.Size = new System.Drawing.Size(43, 15);
             this.labelNome.TabIndex = 4;
@@ -84,7 +84,7 @@
             // labelEmpresa
             // 
             this.labelEmpresa.AutoSize = true;
-            this.labelEmpresa.Location = new System.Drawing.Point(40, 312);
+            this.labelEmpresa.Location = new System.Drawing.Point(40, 318);
             this.labelEmpresa.Name = "labelEmpresa";
             this.labelEmpresa.Size = new System.Drawing.Size(55, 15);
             this.labelEmpresa.TabIndex = 5;
@@ -93,7 +93,7 @@
             // labelEmail
             // 
             this.labelEmail.AutoSize = true;
-            this.labelEmail.Location = new System.Drawing.Point(51, 283);
+            this.labelEmail.Location = new System.Drawing.Point(51, 289);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(44, 15);
             this.labelEmail.TabIndex = 6;
@@ -102,7 +102,7 @@
             // labelValidadeCNH
             // 
             this.labelValidadeCNH.AutoSize = true;
-            this.labelValidadeCNH.Location = new System.Drawing.Point(12, 256);
+            this.labelValidadeCNH.Location = new System.Drawing.Point(12, 262);
             this.labelValidadeCNH.Name = "labelValidadeCNH";
             this.labelValidadeCNH.Size = new System.Drawing.Size(83, 15);
             this.labelValidadeCNH.TabIndex = 7;
@@ -111,7 +111,7 @@
             // labelTelefone
             // 
             this.labelTelefone.AutoSize = true;
-            this.labelTelefone.Location = new System.Drawing.Point(41, 162);
+            this.labelTelefone.Location = new System.Drawing.Point(41, 168);
             this.labelTelefone.Name = "labelTelefone";
             this.labelTelefone.Size = new System.Drawing.Size(54, 15);
             this.labelTelefone.TabIndex = 8;
@@ -119,7 +119,7 @@
             // 
             // textBoxNome
             // 
-            this.textBoxNome.Location = new System.Drawing.Point(101, 101);
+            this.textBoxNome.Location = new System.Drawing.Point(101, 107);
             this.textBoxNome.MaxLength = 100;
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(228, 23);
@@ -127,7 +127,7 @@
             // 
             // textBoxEndereco
             // 
-            this.textBoxEndereco.Location = new System.Drawing.Point(101, 130);
+            this.textBoxEndereco.Location = new System.Drawing.Point(101, 136);
             this.textBoxEndereco.MaxLength = 100;
             this.textBoxEndereco.Name = "textBoxEndereco";
             this.textBoxEndereco.Size = new System.Drawing.Size(213, 23);
@@ -135,7 +135,7 @@
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(101, 280);
+            this.textBoxEmail.Location = new System.Drawing.Point(101, 286);
             this.textBoxEmail.MaxLength = 100;
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(163, 23);
@@ -144,7 +144,7 @@
             // maskedTextBoxTelefone
             // 
             this.maskedTextBoxTelefone.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.maskedTextBoxTelefone.Location = new System.Drawing.Point(101, 159);
+            this.maskedTextBoxTelefone.Location = new System.Drawing.Point(101, 165);
             this.maskedTextBoxTelefone.Mask = "(00) 90000-0000";
             this.maskedTextBoxTelefone.Name = "maskedTextBoxTelefone";
             this.maskedTextBoxTelefone.Size = new System.Drawing.Size(115, 23);
@@ -154,7 +154,7 @@
             // maskedTextBoxCNH
             // 
             this.maskedTextBoxCNH.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.maskedTextBoxCNH.Location = new System.Drawing.Point(101, 221);
+            this.maskedTextBoxCNH.Location = new System.Drawing.Point(101, 227);
             this.maskedTextBoxCNH.Mask = "00000000000";
             this.maskedTextBoxCNH.Name = "maskedTextBoxCNH";
             this.maskedTextBoxCNH.Size = new System.Drawing.Size(115, 23);
@@ -165,7 +165,7 @@
             // 
             this.comboBoxEmpresa.FormattingEnabled = true;
             this.comboBoxEmpresa.ItemHeight = 15;
-            this.comboBoxEmpresa.Location = new System.Drawing.Point(101, 309);
+            this.comboBoxEmpresa.Location = new System.Drawing.Point(101, 315);
             this.comboBoxEmpresa.Name = "comboBoxEmpresa";
             this.comboBoxEmpresa.Size = new System.Drawing.Size(163, 23);
             this.comboBoxEmpresa.TabIndex = 15;
@@ -173,7 +173,7 @@
             // dateTimePickerValidadeCNH
             // 
             this.dateTimePickerValidadeCNH.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerValidadeCNH.Location = new System.Drawing.Point(101, 250);
+            this.dateTimePickerValidadeCNH.Location = new System.Drawing.Point(101, 256);
             this.dateTimePickerValidadeCNH.Name = "dateTimePickerValidadeCNH";
             this.dateTimePickerValidadeCNH.Size = new System.Drawing.Size(99, 23);
             this.dateTimePickerValidadeCNH.TabIndex = 5;
@@ -182,7 +182,7 @@
             // 
             this.buttonGravar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonGravar.Location = new System.Drawing.Point(244, 355);
+            this.buttonGravar.Location = new System.Drawing.Point(244, 365);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
             this.buttonGravar.TabIndex = 8;
@@ -194,7 +194,7 @@
             // 
             this.buttonCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancelar.Location = new System.Drawing.Point(317, 355);
+            this.buttonCancelar.Location = new System.Drawing.Point(317, 365);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
             this.buttonCancelar.TabIndex = 9;
@@ -221,9 +221,9 @@
             // 
             // groupBoxCondutor
             // 
+            this.groupBoxCondutor.Controls.Add(this.checkBoxUsarRegistro);
             this.groupBoxCondutor.Controls.Add(this.textBoxGuid);
             this.groupBoxCondutor.Controls.Add(this.comboBoxClienteFisico);
-            this.groupBoxCondutor.Controls.Add(this.radioButtonUsarRegistro);
             this.groupBoxCondutor.Controls.Add(this.labelGuid);
             this.groupBoxCondutor.Controls.Add(this.maskedTextBoxTelefone);
             this.groupBoxCondutor.Controls.Add(this.labelCPF);
@@ -243,38 +243,37 @@
             this.groupBoxCondutor.Controls.Add(this.labelCNH);
             this.groupBoxCondutor.Location = new System.Drawing.Point(12, 12);
             this.groupBoxCondutor.Name = "groupBoxCondutor";
-            this.groupBoxCondutor.Size = new System.Drawing.Size(372, 339);
+            this.groupBoxCondutor.Size = new System.Drawing.Size(372, 347);
             this.groupBoxCondutor.TabIndex = 27;
             this.groupBoxCondutor.TabStop = false;
             this.groupBoxCondutor.Text = "Dados do condutor:";
+            // 
+            // checkBoxUsarRegistro
+            // 
+            this.checkBoxUsarRegistro.AutoSize = true;
+            this.checkBoxUsarRegistro.Location = new System.Drawing.Point(101, 53);
+            this.checkBoxUsarRegistro.Name = "checkBoxUsarRegistro";
+            this.checkBoxUsarRegistro.Size = new System.Drawing.Size(165, 19);
+            this.checkBoxUsarRegistro.TabIndex = 31;
+            this.checkBoxUsarRegistro.Text = "Utilizar cadastro existente?";
+            this.checkBoxUsarRegistro.UseVisualStyleBackColor = true;
+            this.checkBoxUsarRegistro.CheckedChanged += new System.EventHandler(this.checkBoxUsarRegistro_CheckedChanged);
+            this.checkBoxUsarRegistro.Click += new System.EventHandler(this.checkBoxUsarRegistro_Click);
             // 
             // comboBoxClienteFisico
             // 
             this.comboBoxClienteFisico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxClienteFisico.FormattingEnabled = true;
-            this.comboBoxClienteFisico.Location = new System.Drawing.Point(101, 72);
+            this.comboBoxClienteFisico.Location = new System.Drawing.Point(101, 78);
             this.comboBoxClienteFisico.Name = "comboBoxClienteFisico";
             this.comboBoxClienteFisico.Size = new System.Drawing.Size(159, 23);
             this.comboBoxClienteFisico.TabIndex = 30;
             this.comboBoxClienteFisico.SelectedIndexChanged += new System.EventHandler(this.comboBoxClienteFisico_SelectedIndexChanged);
             // 
-            // radioButtonUsarRegistro
-            // 
-            this.radioButtonUsarRegistro.AutoSize = true;
-            this.radioButtonUsarRegistro.Location = new System.Drawing.Point(101, 53);
-            this.radioButtonUsarRegistro.Name = "radioButtonUsarRegistro";
-            this.radioButtonUsarRegistro.Size = new System.Drawing.Size(141, 19);
-            this.radioButtonUsarRegistro.TabIndex = 29;
-            this.radioButtonUsarRegistro.TabStop = true;
-            this.radioButtonUsarRegistro.Text = "Usar registro existente";
-            this.radioButtonUsarRegistro.UseVisualStyleBackColor = true;
-            this.radioButtonUsarRegistro.CheckedChanged += new System.EventHandler(this.radioButtonUsarRegistro_CheckedChanged);
-            this.radioButtonUsarRegistro.Click += new System.EventHandler(this.radioButtonUsarRegistro_Click);
-            // 
             // labelCPF
             // 
             this.labelCPF.AutoSize = true;
-            this.labelCPF.Location = new System.Drawing.Point(64, 190);
+            this.labelCPF.Location = new System.Drawing.Point(64, 196);
             this.labelCPF.Name = "labelCPF";
             this.labelCPF.Size = new System.Drawing.Size(31, 15);
             this.labelCPF.TabIndex = 18;
@@ -282,7 +281,7 @@
             // 
             // maskedTextBoxCPF
             // 
-            this.maskedTextBoxCPF.Location = new System.Drawing.Point(101, 187);
+            this.maskedTextBoxCPF.Location = new System.Drawing.Point(101, 193);
             this.maskedTextBoxCPF.Mask = "000\\.000\\.000-00";
             this.maskedTextBoxCPF.Name = "maskedTextBoxCPF";
             this.maskedTextBoxCPF.Size = new System.Drawing.Size(115, 23);
@@ -293,7 +292,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 394);
+            this.ClientSize = new System.Drawing.Size(396, 402);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonGravar);
             this.Controls.Add(this.groupBoxCondutor);
@@ -329,6 +328,6 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBoxCPF;
         public System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.ComboBox comboBoxClienteFisico;
-        private System.Windows.Forms.RadioButton radioButtonUsarRegistro;
+        private System.Windows.Forms.CheckBox checkBoxUsarRegistro;
     }
 }
