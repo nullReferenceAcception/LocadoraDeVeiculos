@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
+using System;
 
 namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
 {
@@ -16,5 +17,22 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
             Db.ExecutarSql("DELETE FROM TB_GRUPO_VEICULO");
             Db.ExecutarSql("DELETE FROM TB_FUNCIONARIO");
         }
+
+        protected string GerarNovaStringAleatoria()
+        {
+            const int qtdeLetras = 10;
+
+            const string letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ";
+
+            string stringAleatoria = "";
+            Random random = new();
+
+            for (int i = 0; i < qtdeLetras; i++)
+                stringAleatoria += letras[random.Next(letras.Length)];
+
+            return stringAleatoria;
+        }
+
+
     }
 }

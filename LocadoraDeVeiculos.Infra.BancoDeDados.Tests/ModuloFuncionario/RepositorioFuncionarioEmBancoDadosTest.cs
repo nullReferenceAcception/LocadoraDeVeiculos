@@ -3,7 +3,6 @@ using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario;
-using LocadoraDeVeiculos.Infra.BancoDeDados.Tests.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloFuncionario;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -65,7 +64,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             for (int i = 0; i < 10; i++)
             {
-                Funcionario registro = new(FuncoesTeste.GerarNovaStringAleatoria(), FuncoesTeste.GerarNovaStringAleatoria(), "s@s.s", "49989090909", GerarNovaPlaca(), FuncoesTeste.GerarNovaStringAleatoria(), DateTime.Today, 12, true, FuncoesTeste.GerarNovaStringAleatoria(), true);
+                Funcionario registro = new(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "s@s.s", "49989090909", GerarNovaPlaca(), GerarNovaStringAleatoria(), DateTime.Today, 12, true, GerarNovaStringAleatoria(), true);
 
                 servico.Inserir(registro);
                 registros.Add(registro);
@@ -111,7 +110,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
         private Funcionario CriarFuncionario()
         {
-            return new(FuncoesTeste.GerarNovaStringAleatoria(), FuncoesTeste.GerarNovaStringAleatoria(), "e@e.e", "49991113939", FuncoesTeste.GerarNovaStringAleatoria(), FuncoesTeste.GerarNovaStringAleatoria(), new DateTime(2020,02,02), 12, true, FuncoesTeste.GerarNovaStringAleatoria(), true);
+            return new(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "e@e.e", "49991113939", GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), new DateTime(2020,02,02), 12, true, GerarNovaStringAleatoria(), true);
         }
 
         private string GerarNovaPlaca()
