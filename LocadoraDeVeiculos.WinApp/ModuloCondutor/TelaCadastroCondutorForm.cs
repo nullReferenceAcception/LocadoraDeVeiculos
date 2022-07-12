@@ -96,6 +96,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         private void checkBoxUsarRegistro_CheckedChanged(object sender, EventArgs e)
         {
             isChecked = checkBoxUsarRegistro.Checked;
+            if (isChecked && comboBoxClienteFisico.Items.Count > 0)
+            {
+                comboBoxClienteFisico.DroppedDown = true;
+                comboBoxClienteFisico.SelectedIndex = 0;
+                comboBoxClienteFisico.Select();
+            }
         }
 
 
@@ -138,6 +144,49 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             maskedTextBoxCPF.Enabled = status;
             maskedTextBoxTelefone.Enabled = status;
             dateTimePickerValidadeCNH.Enabled = status;
+        }
+
+        private void labelNome_Click(object sender, EventArgs e)
+        {
+            textBoxNome.Select();
+        }
+
+        private void labelEndereco_Click(object sender, EventArgs e)
+        {
+            textBoxEndereco.Select();
+        }
+
+        private void labelTelefone_Click(object sender, EventArgs e)
+        {
+            maskedTextBoxTelefone.Select();
+        }
+
+        private void labelCPF_Click(object sender, EventArgs e)
+        {
+            maskedTextBoxCPF.Select();
+        }
+
+        private void labelCNH_Click(object sender, EventArgs e)
+        {
+            maskedTextBoxCNH.Select();
+        }
+
+        private void labelValidadeCNH_Click(object sender, EventArgs e)
+        {
+            dateTimePickerValidadeCNH.Select();
+            SendKeys.Send("%{DOWN}");
+        }
+
+        private void labelEmail_Click(object sender, EventArgs e)
+        {
+            textBoxEmail.Select();
+        }
+
+        private void labelEmpresa_Click(object sender, EventArgs e)
+        {
+            comboBoxEmpresa.DroppedDown = true;
+            comboBoxEmpresa.SelectedIndex = 0;
+            comboBoxEmpresa.Select();
         }
     }
 }

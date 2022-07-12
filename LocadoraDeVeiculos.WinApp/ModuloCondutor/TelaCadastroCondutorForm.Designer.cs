@@ -57,72 +57,86 @@
             // labelCNH
             // 
             this.labelCNH.AutoSize = true;
+            this.labelCNH.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelCNH.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelCNH.Location = new System.Drawing.Point(6, 298);
             this.labelCNH.Name = "labelCNH";
             this.labelCNH.Size = new System.Drawing.Size(36, 15);
             this.labelCNH.TabIndex = 2;
             this.labelCNH.Text = "CNH:";
+            this.labelCNH.Click += new System.EventHandler(this.labelCNH_Click);
             // 
             // labelEndereco
             // 
             this.labelEndereco.AutoSize = true;
+            this.labelEndereco.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelEndereco.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelEndereco.Location = new System.Drawing.Point(6, 160);
             this.labelEndereco.Name = "labelEndereco";
             this.labelEndereco.Size = new System.Drawing.Size(59, 15);
             this.labelEndereco.TabIndex = 3;
             this.labelEndereco.Text = "Endereço:";
+            this.labelEndereco.Click += new System.EventHandler(this.labelEndereco_Click);
             // 
             // labelNome
             // 
             this.labelNome.AutoSize = true;
+            this.labelNome.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelNome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelNome.Location = new System.Drawing.Point(6, 114);
             this.labelNome.Name = "labelNome";
             this.labelNome.Size = new System.Drawing.Size(43, 15);
             this.labelNome.TabIndex = 4;
             this.labelNome.Text = "Nome:";
+            this.labelNome.Click += new System.EventHandler(this.labelNome_Click);
             // 
             // labelEmpresa
             // 
             this.labelEmpresa.AutoSize = true;
+            this.labelEmpresa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelEmpresa.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelEmpresa.Location = new System.Drawing.Point(6, 436);
             this.labelEmpresa.Name = "labelEmpresa";
             this.labelEmpresa.Size = new System.Drawing.Size(55, 15);
             this.labelEmpresa.TabIndex = 5;
             this.labelEmpresa.Text = "Empresa:";
+            this.labelEmpresa.Click += new System.EventHandler(this.labelEmpresa_Click);
             // 
             // labelEmail
             // 
             this.labelEmail.AutoSize = true;
+            this.labelEmail.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelEmail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelEmail.Location = new System.Drawing.Point(6, 390);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(44, 15);
             this.labelEmail.TabIndex = 6;
             this.labelEmail.Text = "E-mail:";
+            this.labelEmail.Click += new System.EventHandler(this.labelEmail_Click);
             // 
             // labelValidadeCNH
             // 
             this.labelValidadeCNH.AutoSize = true;
+            this.labelValidadeCNH.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelValidadeCNH.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelValidadeCNH.Location = new System.Drawing.Point(6, 344);
             this.labelValidadeCNH.Name = "labelValidadeCNH";
             this.labelValidadeCNH.Size = new System.Drawing.Size(83, 15);
             this.labelValidadeCNH.TabIndex = 7;
             this.labelValidadeCNH.Text = "Validade CNH:";
+            this.labelValidadeCNH.Click += new System.EventHandler(this.labelValidadeCNH_Click);
             // 
             // labelTelefone
             // 
             this.labelTelefone.AutoSize = true;
+            this.labelTelefone.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelTelefone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelTelefone.Location = new System.Drawing.Point(6, 206);
             this.labelTelefone.Name = "labelTelefone";
             this.labelTelefone.Size = new System.Drawing.Size(54, 15);
             this.labelTelefone.TabIndex = 8;
             this.labelTelefone.Text = "Telefone:";
+            this.labelTelefone.Click += new System.EventHandler(this.labelTelefone_Click);
             // 
             // textBoxNome
             // 
@@ -268,6 +282,7 @@
             // checkBoxUsarRegistro
             // 
             this.checkBoxUsarRegistro.AutoSize = true;
+            this.checkBoxUsarRegistro.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBoxUsarRegistro.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxUsarRegistro.Location = new System.Drawing.Point(6, 64);
             this.checkBoxUsarRegistro.Name = "checkBoxUsarRegistro";
@@ -292,12 +307,14 @@
             // labelCPF
             // 
             this.labelCPF.AutoSize = true;
+            this.labelCPF.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelCPF.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelCPF.Location = new System.Drawing.Point(6, 252);
             this.labelCPF.Name = "labelCPF";
             this.labelCPF.Size = new System.Drawing.Size(31, 15);
             this.labelCPF.TabIndex = 18;
             this.labelCPF.Text = "CPF:";
+            this.labelCPF.Click += new System.EventHandler(this.labelCPF_Click);
             // 
             // maskedTextBoxCPF
             // 
