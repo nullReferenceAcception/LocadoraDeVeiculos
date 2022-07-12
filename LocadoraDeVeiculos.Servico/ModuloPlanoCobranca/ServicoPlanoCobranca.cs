@@ -17,8 +17,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloPlanoCobranca
 
         protected override ValidationResult HaDuplicidade(PlanoCobranca registro, ValidationResult resultadoValidacao)
         {
-            if (TiverDuplicidade(registro))
-                resultadoValidacao.Errors.Add(new ValidationFailure("", SqlMensagemDeErroSeTiverDuplicidade));
+           base.HaDuplicidade(registro,resultadoValidacao);
 
             if (TiverDuplicidadePlano(registro))
                 resultadoValidacao.Errors.Add(new ValidationFailure("", "Plano já está cadastrado"));
