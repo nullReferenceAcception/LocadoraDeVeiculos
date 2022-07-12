@@ -189,6 +189,7 @@
             // 
             // comboBoxEmpresa
             // 
+            this.comboBoxEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEmpresa.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxEmpresa.FormattingEnabled = true;
             this.comboBoxEmpresa.ItemHeight = 15;

@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBoxGrupoVeiculo = new System.Windows.Forms.GroupBox();
+            this.labelGuid = new System.Windows.Forms.Label();
+            this.textBoxGuid = new System.Windows.Forms.TextBox();
             this.labelDescricao = new System.Windows.Forms.Label();
             this.textBoxNome = new System.Windows.Forms.TextBox();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonGravar = new System.Windows.Forms.Button();
-            this.textBoxGuid = new System.Windows.Forms.TextBox();
-            this.labelGuid = new System.Windows.Forms.Label();
             this.groupBoxGrupoVeiculo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,17 +44,39 @@
             this.groupBoxGrupoVeiculo.Controls.Add(this.textBoxGuid);
             this.groupBoxGrupoVeiculo.Controls.Add(this.labelDescricao);
             this.groupBoxGrupoVeiculo.Controls.Add(this.textBoxNome);
+            this.groupBoxGrupoVeiculo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.groupBoxGrupoVeiculo.Location = new System.Drawing.Point(12, 12);
             this.groupBoxGrupoVeiculo.Name = "groupBoxGrupoVeiculo";
-            this.groupBoxGrupoVeiculo.Size = new System.Drawing.Size(306, 103);
+            this.groupBoxGrupoVeiculo.Size = new System.Drawing.Size(306, 107);
             this.groupBoxGrupoVeiculo.TabIndex = 7;
             this.groupBoxGrupoVeiculo.TabStop = false;
             this.groupBoxGrupoVeiculo.Text = "Dados de Grupo de veiculo:";
             // 
+            // labelGuid
+            // 
+            this.labelGuid.AutoSize = true;
+            this.labelGuid.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelGuid.Location = new System.Drawing.Point(6, 19);
+            this.labelGuid.Name = "labelGuid";
+            this.labelGuid.Size = new System.Drawing.Size(35, 15);
+            this.labelGuid.TabIndex = 27;
+            this.labelGuid.Text = "Guid:";
+            // 
+            // textBoxGuid
+            // 
+            this.textBoxGuid.Enabled = false;
+            this.textBoxGuid.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxGuid.Location = new System.Drawing.Point(6, 36);
+            this.textBoxGuid.Name = "textBoxGuid";
+            this.textBoxGuid.ReadOnly = true;
+            this.textBoxGuid.Size = new System.Drawing.Size(294, 23);
+            this.textBoxGuid.TabIndex = 28;
+            // 
             // labelDescricao
             // 
             this.labelDescricao.AutoSize = true;
-            this.labelDescricao.Location = new System.Drawing.Point(18, 66);
+            this.labelDescricao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelDescricao.Location = new System.Drawing.Point(6, 61);
             this.labelDescricao.Name = "labelDescricao";
             this.labelDescricao.Size = new System.Drawing.Size(43, 15);
             this.labelDescricao.TabIndex = 1;
@@ -62,7 +84,8 @@
             // 
             // textBoxNome
             // 
-            this.textBoxNome.Location = new System.Drawing.Point(67, 63);
+            this.textBoxNome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxNome.Location = new System.Drawing.Point(6, 78);
             this.textBoxNome.MaxLength = 255;
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(233, 23);
@@ -72,7 +95,8 @@
             // 
             this.buttonCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancelar.Location = new System.Drawing.Point(251, 121);
+            this.buttonCancelar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.buttonCancelar.Location = new System.Drawing.Point(251, 125);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
             this.buttonCancelar.TabIndex = 2;
@@ -83,7 +107,8 @@
             // 
             this.buttonGravar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonGravar.Location = new System.Drawing.Point(178, 121);
+            this.buttonGravar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.buttonGravar.Location = new System.Drawing.Point(178, 125);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
             this.buttonGravar.TabIndex = 1;
@@ -91,29 +116,11 @@
             this.buttonGravar.UseVisualStyleBackColor = true;
             this.buttonGravar.Click += new System.EventHandler(this.buttonGravar_Click);
             // 
-            // textBoxGuid
-            // 
-            this.textBoxGuid.Enabled = false;
-            this.textBoxGuid.Location = new System.Drawing.Point(67, 34);
-            this.textBoxGuid.Name = "textBoxGuid";
-            this.textBoxGuid.ReadOnly = true;
-            this.textBoxGuid.Size = new System.Drawing.Size(233, 23);
-            this.textBoxGuid.TabIndex = 28;
-            // 
-            // labelGuid
-            // 
-            this.labelGuid.AutoSize = true;
-            this.labelGuid.Location = new System.Drawing.Point(26, 37);
-            this.labelGuid.Name = "labelGuid";
-            this.labelGuid.Size = new System.Drawing.Size(35, 15);
-            this.labelGuid.TabIndex = 27;
-            this.labelGuid.Text = "Guid:";
-            // 
             // TelaCadastroGrupoVeiculoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 158);
+            this.ClientSize = new System.Drawing.Size(330, 163);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonGravar);
             this.Controls.Add(this.groupBoxGrupoVeiculo);

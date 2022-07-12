@@ -39,7 +39,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
         {
             ObterDadosDaTela();
 
-
             var resultadoValidacao = GravarRegistro(PlanoCobranca);
 
             if (!resultadoValidacao.IsValid)
@@ -65,7 +64,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
         private void ObterDadosDaTela()
         {
-
             _planoCobranca.Nome = textBoxNome.Text;
             _planoCobranca.ValorDia = Convert.ToDecimal(textBoxValorDia.Text.ToString().Replace("R$ ", ""));
             _planoCobranca.ValorPorKm = Convert.ToDecimal(textBoxValorPorKm.Text.ToString().Replace("R$ ", ""));
@@ -81,6 +79,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
                 case PlanoEnum.Diario:
                     numericUpDownKmIncluso.Value = 0;
                     numericUpDownKmIncluso.Enabled = false;
+                    labelKmIncluso.Cursor = DefaultCursor;
+                    textBoxValorPorKm.Enabled = true;
+                    textBoxValorDia.Enabled = true;
+                    break;
+
+
+                case PlanoEnum.KmControlado:
+                    numericUpDownKmIncluso.Enabled = true;
+                    labelKmIncluso.Cursor = Cursors.Hand;
                     textBoxValorPorKm.Enabled = true;
                     textBoxValorDia.Enabled = true;
                     break;
@@ -88,17 +95,47 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
                 case PlanoEnum.KmLivre:
                     numericUpDownKmIncluso.Value = 0;
                     numericUpDownKmIncluso.Enabled = false;
+                    labelKmIncluso.Cursor = DefaultCursor;
                     textBoxValorPorKm.Enabled = false;
+                    labelValorPorKm.Cursor = DefaultCursor;
                     textBoxValorPorKm.Text = "R$ 0";
                     textBoxValorDia.Enabled = true;
                     break;
-
-                case PlanoEnum.KmControlado:
-                    numericUpDownKmIncluso.Enabled = true;
-                    textBoxValorPorKm.Enabled = true;
-                    textBoxValorDia.Enabled = true;
-                    break;
             }
+        }
+
+        private void labelNome_Click(object sender, EventArgs e)
+        {
+            textBoxNome.Focus();
+        }
+
+        private void labelGrupoVeiculos_Click(object sender, EventArgs e)
+        {
+            comboBoxGrupoVeiculos.DroppedDown = true;
+            comboBoxGrupoVeiculos.SelectedIndex = 0;
+            comboBoxGrupoVeiculos.Select();
+        }
+
+        private void labelPlano_Click(object sender, EventArgs e)
+        {
+            comboBoxPlano.DroppedDown = true;
+            comboBoxPlano.SelectedIndex = 0;
+            comboBoxPlano.Select();
+        }
+
+        private void labelKmIncluso_Click(object sender, EventArgs e)
+        {
+            numericUpDownKmIncluso.Focus();
+        }
+
+        private void labelValorDia_Click(object sender, EventArgs e)
+        {
+            textBoxValorDia.Focus();
+        }
+
+        private void labelValorPorKm_Click(object sender, EventArgs e)
+        {
+            textBoxValorPorKm.Focus();
         }
     }
 }

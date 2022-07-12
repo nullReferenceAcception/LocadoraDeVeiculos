@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Serilog;
 using System;
 using System.Collections.Generic;
+using Taikandi;
 
 namespace LocadoraDeVeiculos.Servico.Compartilhado
 {
@@ -23,7 +24,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         public virtual ValidationResult Inserir(T registro)
         {
-            registro.Guid = Guid.NewGuid();
+            registro.Guid = SequentialGuid.NewGuid();
 
             Log.Logger.Debug($"Inserindo: {typeof(T).Name}");
 

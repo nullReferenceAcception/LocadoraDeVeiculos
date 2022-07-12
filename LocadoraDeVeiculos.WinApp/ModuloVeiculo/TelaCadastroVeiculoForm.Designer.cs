@@ -152,7 +152,7 @@
             // textBoxPlaca
             // 
             this.textBoxPlaca.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxPlaca.Location = new System.Drawing.Point(7, 131);
+            this.textBoxPlaca.Location = new System.Drawing.Point(7, 126);
             this.textBoxPlaca.MaxLength = 7;
             this.textBoxPlaca.Name = "textBoxPlaca";
             this.textBoxPlaca.Size = new System.Drawing.Size(100, 23);
@@ -182,7 +182,7 @@
             // 
             this.textBoxGuid.Enabled = false;
             this.textBoxGuid.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxGuid.Location = new System.Drawing.Point(7, 43);
+            this.textBoxGuid.Location = new System.Drawing.Point(7, 42);
             this.textBoxGuid.Name = "textBoxGuid";
             this.textBoxGuid.ReadOnly = true;
             this.textBoxGuid.Size = new System.Drawing.Size(258, 23);
@@ -218,7 +218,7 @@
             0,
             0,
             65536});
-            this.numericUpDownTanque.Location = new System.Drawing.Point(7, 348);
+            this.numericUpDownTanque.Location = new System.Drawing.Point(7, 336);
             this.numericUpDownTanque.Name = "numericUpDownTanque";
             this.numericUpDownTanque.Size = new System.Drawing.Size(68, 23);
             this.numericUpDownTanque.TabIndex = 6;
@@ -228,7 +228,7 @@
             this.labelTanque.AutoSize = true;
             this.labelTanque.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelTanque.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelTanque.Location = new System.Drawing.Point(7, 330);
+            this.labelTanque.Location = new System.Drawing.Point(7, 319);
             this.labelTanque.Name = "labelTanque";
             this.labelTanque.Size = new System.Drawing.Size(129, 15);
             this.labelTanque.TabIndex = 21;
@@ -238,7 +238,7 @@
             // textBoxAno
             // 
             this.textBoxAno.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAno.Location = new System.Drawing.Point(7, 216);
+            this.textBoxAno.Location = new System.Drawing.Point(7, 210);
             this.textBoxAno.MaxLength = 4;
             this.textBoxAno.Name = "textBoxAno";
             this.textBoxAno.Size = new System.Drawing.Size(100, 23);
@@ -249,7 +249,7 @@
             this.labelAno.AutoSize = true;
             this.labelAno.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelAno.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelAno.Location = new System.Drawing.Point(7, 198);
+            this.labelAno.Location = new System.Drawing.Point(7, 193);
             this.labelAno.Name = "labelAno";
             this.labelAno.Size = new System.Drawing.Size(32, 15);
             this.labelAno.TabIndex = 19;
@@ -261,7 +261,7 @@
             this.comboBoxCombustivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCombustivel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxCombustivel.FormattingEnabled = true;
-            this.comboBoxCombustivel.Location = new System.Drawing.Point(7, 304);
+            this.comboBoxCombustivel.Location = new System.Drawing.Point(7, 294);
             this.comboBoxCombustivel.Name = "comboBoxCombustivel";
             this.comboBoxCombustivel.Size = new System.Drawing.Size(148, 23);
             this.comboBoxCombustivel.TabIndex = 5;
@@ -271,7 +271,7 @@
             this.labelCombustivel.AutoSize = true;
             this.labelCombustivel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelCombustivel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelCombustivel.Location = new System.Drawing.Point(7, 286);
+            this.labelCombustivel.Location = new System.Drawing.Point(7, 277);
             this.labelCombustivel.Name = "labelCombustivel";
             this.labelCombustivel.Size = new System.Drawing.Size(77, 15);
             this.labelCombustivel.TabIndex = 17;
@@ -283,7 +283,7 @@
             this.comboBoxCor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxCor.FormattingEnabled = true;
-            this.comboBoxCor.Location = new System.Drawing.Point(7, 260);
+            this.comboBoxCor.Location = new System.Drawing.Point(7, 252);
             this.comboBoxCor.Name = "comboBoxCor";
             this.comboBoxCor.Size = new System.Drawing.Size(147, 23);
             this.comboBoxCor.TabIndex = 4;
@@ -293,7 +293,7 @@
             this.labelCor.AutoSize = true;
             this.labelCor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelCor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelCor.Location = new System.Drawing.Point(7, 242);
+            this.labelCor.Location = new System.Drawing.Point(7, 235);
             this.labelCor.Name = "labelCor";
             this.labelCor.Size = new System.Drawing.Size(29, 15);
             this.labelCor.TabIndex = 15;
@@ -303,7 +303,7 @@
             // textBoxMarca
             // 
             this.textBoxMarca.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxMarca.Location = new System.Drawing.Point(7, 172);
+            this.textBoxMarca.Location = new System.Drawing.Point(7, 168);
             this.textBoxMarca.MaxLength = 40;
             this.textBoxMarca.Name = "textBoxMarca";
             this.textBoxMarca.Size = new System.Drawing.Size(120, 23);
@@ -314,7 +314,7 @@
             this.labelMarca.AutoSize = true;
             this.labelMarca.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelMarca.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelMarca.Location = new System.Drawing.Point(7, 157);
+            this.labelMarca.Location = new System.Drawing.Point(7, 151);
             this.labelMarca.Name = "labelMarca";
             this.labelMarca.Size = new System.Drawing.Size(43, 15);
             this.labelMarca.TabIndex = 13;
@@ -326,7 +326,7 @@
             this.labelPlaca.AutoSize = true;
             this.labelPlaca.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelPlaca.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelPlaca.Location = new System.Drawing.Point(7, 113);
+            this.labelPlaca.Location = new System.Drawing.Point(7, 109);
             this.labelPlaca.Name = "labelPlaca";
             this.labelPlaca.Size = new System.Drawing.Size(38, 15);
             this.labelPlaca.TabIndex = 11;
@@ -336,7 +336,7 @@
             // textBoxModelo
             // 
             this.textBoxModelo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxModelo.Location = new System.Drawing.Point(7, 87);
+            this.textBoxModelo.Location = new System.Drawing.Point(7, 84);
             this.textBoxModelo.MaxLength = 40;
             this.textBoxModelo.Name = "textBoxModelo";
             this.textBoxModelo.Size = new System.Drawing.Size(122, 23);
@@ -347,7 +347,7 @@
             this.labelModelo.AutoSize = true;
             this.labelModelo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelModelo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelModelo.Location = new System.Drawing.Point(7, 69);
+            this.labelModelo.Location = new System.Drawing.Point(7, 67);
             this.labelModelo.Name = "labelModelo";
             this.labelModelo.Size = new System.Drawing.Size(51, 15);
             this.labelModelo.TabIndex = 9;
