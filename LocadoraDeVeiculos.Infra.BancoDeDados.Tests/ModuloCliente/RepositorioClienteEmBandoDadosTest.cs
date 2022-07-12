@@ -2,6 +2,7 @@
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente;
+using LocadoraDeVeiculos.Infra.BancoDeDados.Tests.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloCliente;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -77,12 +78,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             for (int i = 0; i < 10; i++)
             {
-                 cliente = new Cliente("joao" + random.Next(100, 500).ToString(), "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "09876543211", null, DateTime.Today);
+                 cliente = new Cliente(FuncoesTeste.GerarNovaStringAleatoria(), FuncoesTeste.GerarNovaStringAleatoria(), "12345678900", "joao@joao.com", "49989090909", true, "09876543211", null, DateTime.Today);
                 _servicoCliente.Inserir(cliente);
                 registros.Add(cliente);
             }
 
             List<Cliente> registrosDoBanco = _servicoCliente.SelecionarTodos();
+
+            Assert.IsTrue(registrosDoBanco.Count == registros.Count);
 
             for (int i = 0; i < registrosDoBanco.Count; i++)
                 Assert.IsTrue(registrosDoBanco.Contains(registros[i]));
@@ -140,12 +143,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
         private Cliente CriarClienteComCPF()
         {
-            return new Cliente("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "12340567889", null!, DateTime.Today);
+            return new Cliente(FuncoesTeste.GerarNovaStringAleatoria(), FuncoesTeste.GerarNovaStringAleatoria(), "12345678900", "joao@joao.com", "49989090909", true, "12340567889", null!, DateTime.Today);
         }
 
         private Cliente CriarClienteComCNPJ()
         {
-            return new Cliente("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, null!, "12340567889876", DateTime.Today);
+            return new Cliente(FuncoesTeste.GerarNovaStringAleatoria(), FuncoesTeste.GerarNovaStringAleatoria(), "12345678900", "joao@joao.com", "49989090909", false, null!, "12340567889876", DateTime.Today);
         }
     }
 }

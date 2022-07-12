@@ -5,6 +5,7 @@ using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca;
+using LocadoraDeVeiculos.Infra.BancoDeDados.Tests.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Servico.ModuloPlanoCobranca;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -99,13 +100,16 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
 
             for (int i = 0; i < 10; i++)
             {
-                PlanoCobranca PlanoCobranca = new PlanoCobranca("nome", random.Next(1,200), random.Next(1, 200), random.Next(1, 200),PlanoEnum.KmLivre, grupoVeiculos);
+                PlanoCobranca PlanoCobranca = new PlanoCobranca(FuncoesTeste.GerarNovaStringAleatoria(), random.Next(1,200), random.Next(1, 200), random.Next(1, 200),PlanoEnum.KmLivre, grupoVeiculos);
 
                 _servicoPlanoCobranca.Inserir(PlanoCobranca);
                 registros.Add(PlanoCobranca);
             }
 
             List<PlanoCobranca> registrosDoBanco = _servicoPlanoCobranca.SelecionarTodos();
+
+
+            Assert.IsTrue(registrosDoBanco.Count == registros.Count);
 
             for (int i = 0; i < registrosDoBanco.Count; i++)
                 Assert.IsTrue(registrosDoBanco.Contains(registros[i]));
@@ -115,7 +119,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
         {
             GrupoVeiculos grupoVeiculos = new GrupoVeiculos("grupo");
             _servicoGrupoVeiculo.Inserir(grupoVeiculos);
-            return new PlanoCobranca("nome", random.Next(1, 200), random.Next(1, 200), random.Next(1, 200),PlanoEnum.KmControlado, grupoVeiculos);
+            return new PlanoCobranca(FuncoesTeste.GerarNovaStringAleatoria(), random.Next(1, 200), random.Next(1, 200), random.Next(1, 200),PlanoEnum.KmControlado, grupoVeiculos);
         }
     }
 }

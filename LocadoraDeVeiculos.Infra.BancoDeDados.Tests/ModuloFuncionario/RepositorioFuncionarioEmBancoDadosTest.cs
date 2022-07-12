@@ -3,6 +3,7 @@ using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario;
+using LocadoraDeVeiculos.Infra.BancoDeDados.Tests.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloFuncionario;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -64,13 +65,16 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             for (int i = 0; i < 10; i++)
             {
-                Funcionario registro = new("Nome", "endereco", "s@s.s", "49989090909", GerarNovaPlaca(), "senha", DateTime.Today, 12, true, "Lages", true);
+                Funcionario registro = new(FuncoesTeste.GerarNovaStringAleatoria(), FuncoesTeste.GerarNovaStringAleatoria(), "s@s.s", "49989090909", GerarNovaPlaca(), FuncoesTeste.GerarNovaStringAleatoria(), DateTime.Today, 12, true, FuncoesTeste.GerarNovaStringAleatoria(), true);
 
                 servico.Inserir(registro);
                 registros.Add(registro);
             }
 
             List<Funcionario> registrosDoBanco = servico.SelecionarTodos();
+
+
+            Assert.IsTrue(registrosDoBanco.Count == registros.Count);
 
             for (int i = 0; i < registrosDoBanco.Count; i++)
                 Assert.IsTrue(registrosDoBanco.Contains(registros[i]));
@@ -107,7 +111,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
         private Funcionario CriarFuncionario()
         {
-            return new("nome", "endereco", "e@e.e", "49991113939", "login", "senha", new DateTime(2020,02,02), 12, true, "Lages", true);
+            return new(FuncoesTeste.GerarNovaStringAleatoria(), FuncoesTeste.GerarNovaStringAleatoria(), "e@e.e", "49991113939", FuncoesTeste.GerarNovaStringAleatoria(), FuncoesTeste.GerarNovaStringAleatoria(), new DateTime(2020,02,02), 12, true, FuncoesTeste.GerarNovaStringAleatoria(), true);
         }
 
         private string GerarNovaPlaca()
