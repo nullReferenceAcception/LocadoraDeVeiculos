@@ -62,7 +62,7 @@
             // 
             this.buttonCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancelar.Location = new System.Drawing.Point(323, 429);
+            this.buttonCancelar.Location = new System.Drawing.Point(213, 610);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
             this.buttonCancelar.TabIndex = 12;
@@ -72,7 +72,8 @@
             // labelNome
             // 
             this.labelNome.AutoSize = true;
-            this.labelNome.Location = new System.Drawing.Point(79, 71);
+            this.labelNome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelNome.Location = new System.Drawing.Point(6, 65);
             this.labelNome.Name = "labelNome";
             this.labelNome.Size = new System.Drawing.Size(43, 15);
             this.labelNome.TabIndex = 7;
@@ -82,7 +83,7 @@
             // 
             this.buttonGravar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonGravar.Location = new System.Drawing.Point(250, 429);
+            this.buttonGravar.Location = new System.Drawing.Point(146, 610);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
             this.buttonGravar.TabIndex = 11;
@@ -92,7 +93,8 @@
             // 
             // textBoxNome
             // 
-            this.textBoxNome.Location = new System.Drawing.Point(143, 68);
+            this.textBoxNome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxNome.Location = new System.Drawing.Point(6, 85);
             this.textBoxNome.MaxLength = 100;
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(233, 23);
@@ -101,7 +103,8 @@
             // labelLogin
             // 
             this.labelLogin.AutoSize = true;
-            this.labelLogin.Location = new System.Drawing.Point(82, 187);
+            this.labelLogin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelLogin.Location = new System.Drawing.Point(6, 257);
             this.labelLogin.Name = "labelLogin";
             this.labelLogin.Size = new System.Drawing.Size(40, 15);
             this.labelLogin.TabIndex = 9;
@@ -109,7 +112,8 @@
             // 
             // textBoxLogin
             // 
-            this.textBoxLogin.Location = new System.Drawing.Point(143, 184);
+            this.textBoxLogin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxLogin.Location = new System.Drawing.Point(6, 277);
             this.textBoxLogin.MaxLength = 100;
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(143, 23);
@@ -118,7 +122,8 @@
             // labelSenha
             // 
             this.labelSenha.AutoSize = true;
-            this.labelSenha.Location = new System.Drawing.Point(64, 204);
+            this.labelSenha.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelSenha.Location = new System.Drawing.Point(6, 305);
             this.labelSenha.Name = "labelSenha";
             this.labelSenha.Size = new System.Drawing.Size(42, 15);
             this.labelSenha.TabIndex = 13;
@@ -126,7 +131,8 @@
             // 
             // textBoxSenha
             // 
-            this.textBoxSenha.Location = new System.Drawing.Point(143, 213);
+            this.textBoxSenha.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSenha.Location = new System.Drawing.Point(6, 325);
             this.textBoxSenha.MaxLength = 255;
             this.textBoxSenha.Name = "textBoxSenha";
             this.textBoxSenha.PasswordChar = '•';
@@ -136,8 +142,9 @@
             // dateTimePickerDataAdmissao
             // 
             this.dateTimePickerDataAdmissao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dateTimePickerDataAdmissao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePickerDataAdmissao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDataAdmissao.Location = new System.Drawing.Point(128, 230);
+            this.dateTimePickerDataAdmissao.Location = new System.Drawing.Point(6, 373);
             this.dateTimePickerDataAdmissao.Name = "dateTimePickerDataAdmissao";
             this.dateTimePickerDataAdmissao.Size = new System.Drawing.Size(100, 23);
             this.dateTimePickerDataAdmissao.TabIndex = 6;
@@ -145,7 +152,8 @@
             // labelDataAdmissao
             // 
             this.labelDataAdmissao.AutoSize = true;
-            this.labelDataAdmissao.Location = new System.Drawing.Point(2, 236);
+            this.labelDataAdmissao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelDataAdmissao.Location = new System.Drawing.Point(6, 353);
             this.labelDataAdmissao.Name = "labelDataAdmissao";
             this.labelDataAdmissao.Size = new System.Drawing.Size(105, 15);
             this.labelDataAdmissao.TabIndex = 15;
@@ -154,7 +162,8 @@
             // labelSalario
             // 
             this.labelSalario.AutoSize = true;
-            this.labelSalario.Location = new System.Drawing.Point(77, 274);
+            this.labelSalario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelSalario.Location = new System.Drawing.Point(6, 401);
             this.labelSalario.Name = "labelSalario";
             this.labelSalario.Size = new System.Drawing.Size(45, 15);
             this.labelSalario.TabIndex = 17;
@@ -162,7 +171,8 @@
             // 
             // textBoxSalario
             // 
-            this.textBoxSalario.Location = new System.Drawing.Point(143, 271);
+            this.textBoxSalario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSalario.Location = new System.Drawing.Point(6, 421);
             this.textBoxSalario.MaxLength = 11;
             this.textBoxSalario.Name = "textBoxSalario";
             this.textBoxSalario.Size = new System.Drawing.Size(110, 23);
@@ -172,7 +182,7 @@
             // 
             this.groupBoxEhAdmin.Controls.Add(this.radioButtonFuncionario);
             this.groupBoxEhAdmin.Controls.Add(this.radioButtonAdmin);
-            this.groupBoxEhAdmin.Location = new System.Drawing.Point(62, 317);
+            this.groupBoxEhAdmin.Location = new System.Drawing.Point(6, 498);
             this.groupBoxEhAdmin.Name = "groupBoxEhAdmin";
             this.groupBoxEhAdmin.Size = new System.Drawing.Size(175, 84);
             this.groupBoxEhAdmin.TabIndex = 8;
@@ -182,6 +192,7 @@
             // radioButtonFuncionario
             // 
             this.radioButtonFuncionario.AutoSize = true;
+            this.radioButtonFuncionario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radioButtonFuncionario.Location = new System.Drawing.Point(22, 47);
             this.radioButtonFuncionario.Name = "radioButtonFuncionario";
             this.radioButtonFuncionario.Size = new System.Drawing.Size(88, 19);
@@ -193,6 +204,7 @@
             // radioButtonAdmin
             // 
             this.radioButtonAdmin.AutoSize = true;
+            this.radioButtonAdmin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radioButtonAdmin.Location = new System.Drawing.Point(22, 22);
             this.radioButtonAdmin.Name = "radioButtonAdmin";
             this.radioButtonAdmin.Size = new System.Drawing.Size(61, 19);
@@ -204,7 +216,8 @@
             // labelEmail
             // 
             this.labelEmail.AutoSize = true;
-            this.labelEmail.Location = new System.Drawing.Point(78, 100);
+            this.labelEmail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelEmail.Location = new System.Drawing.Point(6, 113);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(44, 15);
             this.labelEmail.TabIndex = 19;
@@ -213,7 +226,8 @@
             // labelTelefone
             // 
             this.labelTelefone.AutoSize = true;
-            this.labelTelefone.Location = new System.Drawing.Point(68, 129);
+            this.labelTelefone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTelefone.Location = new System.Drawing.Point(6, 161);
             this.labelTelefone.Name = "labelTelefone";
             this.labelTelefone.Size = new System.Drawing.Size(54, 15);
             this.labelTelefone.TabIndex = 20;
@@ -221,7 +235,8 @@
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(143, 97);
+            this.textBoxEmail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxEmail.Location = new System.Drawing.Point(6, 133);
             this.textBoxEmail.MaxLength = 100;
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(233, 23);
@@ -230,7 +245,8 @@
             // labelEndereco
             // 
             this.labelEndereco.AutoSize = true;
-            this.labelEndereco.Location = new System.Drawing.Point(63, 158);
+            this.labelEndereco.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelEndereco.Location = new System.Drawing.Point(6, 209);
             this.labelEndereco.Name = "labelEndereco";
             this.labelEndereco.Size = new System.Drawing.Size(59, 15);
             this.labelEndereco.TabIndex = 24;
@@ -238,7 +254,8 @@
             // 
             // textBoxEndereco
             // 
-            this.textBoxEndereco.Location = new System.Drawing.Point(143, 155);
+            this.textBoxEndereco.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxEndereco.Location = new System.Drawing.Point(6, 229);
             this.textBoxEndereco.MaxLength = 100;
             this.textBoxEndereco.Name = "textBoxEndereco";
             this.textBoxEndereco.Size = new System.Drawing.Size(143, 23);
@@ -246,7 +263,8 @@
             // 
             // maskedTextBoxTelefone
             // 
-            this.maskedTextBoxTelefone.Location = new System.Drawing.Point(143, 126);
+            this.maskedTextBoxTelefone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.maskedTextBoxTelefone.Location = new System.Drawing.Point(6, 181);
             this.maskedTextBoxTelefone.Mask = "(00) 90000-0000";
             this.maskedTextBoxTelefone.Name = "maskedTextBoxTelefone";
             this.maskedTextBoxTelefone.Size = new System.Drawing.Size(100, 23);
@@ -255,17 +273,31 @@
             // 
             // groupBoxDadosFuncionario
             // 
+            this.groupBoxDadosFuncionario.Controls.Add(this.labelEmail);
+            this.groupBoxDadosFuncionario.Controls.Add(this.labelNome);
+            this.groupBoxDadosFuncionario.Controls.Add(this.textBoxEmail);
+            this.groupBoxDadosFuncionario.Controls.Add(this.maskedTextBoxTelefone);
+            this.groupBoxDadosFuncionario.Controls.Add(this.labelTelefone);
             this.groupBoxDadosFuncionario.Controls.Add(this.labelGuid);
+            this.groupBoxDadosFuncionario.Controls.Add(this.textBoxNome);
+            this.groupBoxDadosFuncionario.Controls.Add(this.labelEndereco);
             this.groupBoxDadosFuncionario.Controls.Add(this.textBoxGuid);
+            this.groupBoxDadosFuncionario.Controls.Add(this.textBoxEndereco);
             this.groupBoxDadosFuncionario.Controls.Add(this.textBoxCidade);
             this.groupBoxDadosFuncionario.Controls.Add(this.labelCidade);
             this.groupBoxDadosFuncionario.Controls.Add(this.groupBoxEhAdmin);
             this.groupBoxDadosFuncionario.Controls.Add(this.labelSenha);
+            this.groupBoxDadosFuncionario.Controls.Add(this.textBoxSenha);
+            this.groupBoxDadosFuncionario.Controls.Add(this.labelSalario);
             this.groupBoxDadosFuncionario.Controls.Add(this.labelDataAdmissao);
+            this.groupBoxDadosFuncionario.Controls.Add(this.textBoxSalario);
+            this.groupBoxDadosFuncionario.Controls.Add(this.labelLogin);
             this.groupBoxDadosFuncionario.Controls.Add(this.dateTimePickerDataAdmissao);
+            this.groupBoxDadosFuncionario.Controls.Add(this.textBoxLogin);
+            this.groupBoxDadosFuncionario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.groupBoxDadosFuncionario.Location = new System.Drawing.Point(15, 12);
             this.groupBoxDadosFuncionario.Name = "groupBoxDadosFuncionario";
-            this.groupBoxDadosFuncionario.Size = new System.Drawing.Size(390, 411);
+            this.groupBoxDadosFuncionario.Size = new System.Drawing.Size(266, 595);
             this.groupBoxDadosFuncionario.TabIndex = 25;
             this.groupBoxDadosFuncionario.TabStop = false;
             this.groupBoxDadosFuncionario.Text = "Dados do funcionário:";
@@ -273,7 +305,8 @@
             // labelGuid
             // 
             this.labelGuid.AutoSize = true;
-            this.labelGuid.Location = new System.Drawing.Point(71, 35);
+            this.labelGuid.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelGuid.Location = new System.Drawing.Point(6, 17);
             this.labelGuid.Name = "labelGuid";
             this.labelGuid.Size = new System.Drawing.Size(35, 15);
             this.labelGuid.TabIndex = 26;
@@ -282,7 +315,8 @@
             // textBoxGuid
             // 
             this.textBoxGuid.Enabled = false;
-            this.textBoxGuid.Location = new System.Drawing.Point(128, 27);
+            this.textBoxGuid.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxGuid.Location = new System.Drawing.Point(6, 37);
             this.textBoxGuid.Name = "textBoxGuid";
             this.textBoxGuid.ReadOnly = true;
             this.textBoxGuid.Size = new System.Drawing.Size(247, 23);
@@ -290,7 +324,8 @@
             // 
             // textBoxCidade
             // 
-            this.textBoxCidade.Location = new System.Drawing.Point(128, 288);
+            this.textBoxCidade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxCidade.Location = new System.Drawing.Point(6, 469);
             this.textBoxCidade.MaxLength = 100;
             this.textBoxCidade.Name = "textBoxCidade";
             this.textBoxCidade.Size = new System.Drawing.Size(110, 23);
@@ -299,7 +334,8 @@
             // labelCidade
             // 
             this.labelCidade.AutoSize = true;
-            this.labelCidade.Location = new System.Drawing.Point(60, 291);
+            this.labelCidade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelCidade.Location = new System.Drawing.Point(6, 449);
             this.labelCidade.Name = "labelCidade";
             this.labelCidade.Size = new System.Drawing.Size(47, 15);
             this.labelCidade.TabIndex = 0;
@@ -309,22 +345,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(417, 465);
-            this.Controls.Add(this.maskedTextBoxTelefone);
-            this.Controls.Add(this.labelEndereco);
-            this.Controls.Add(this.textBoxEndereco);
-            this.Controls.Add(this.textBoxEmail);
-            this.Controls.Add(this.labelTelefone);
-            this.Controls.Add(this.labelEmail);
-            this.Controls.Add(this.labelSalario);
-            this.Controls.Add(this.textBoxSalario);
-            this.Controls.Add(this.textBoxSenha);
+            this.ClientSize = new System.Drawing.Size(290, 653);
             this.Controls.Add(this.buttonCancelar);
-            this.Controls.Add(this.labelNome);
             this.Controls.Add(this.buttonGravar);
-            this.Controls.Add(this.textBoxNome);
-            this.Controls.Add(this.labelLogin);
-            this.Controls.Add(this.textBoxLogin);
             this.Controls.Add(this.groupBoxDadosFuncionario);
             this.Name = "TelaCadastroFuncionarioForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -334,7 +357,6 @@
             this.groupBoxDadosFuncionario.ResumeLayout(false);
             this.groupBoxDadosFuncionario.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
