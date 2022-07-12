@@ -31,22 +31,26 @@
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonGravar = new System.Windows.Forms.Button();
             this.groupBoxTaxa = new System.Windows.Forms.GroupBox();
-            this.radioButtonDiario = new System.Windows.Forms.RadioButton();
-            this.radioButtonFixo = new System.Windows.Forms.RadioButton();
             this.labelGuid = new System.Windows.Forms.Label();
             this.textBoxGuid = new System.Windows.Forms.TextBox();
             this.labelDescricao = new System.Windows.Forms.Label();
             this.textBoxDescricao = new System.Windows.Forms.TextBox();
             this.labelValor = new System.Windows.Forms.Label();
             this.textBoxValor = new System.Windows.Forms.TextBox();
+            this.groupBoxTipo = new System.Windows.Forms.GroupBox();
+            this.radioButtonDiario = new System.Windows.Forms.RadioButton();
+            this.radioButtonFixo = new System.Windows.Forms.RadioButton();
             this.groupBoxTaxa.SuspendLayout();
+            this.groupBoxTipo.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonCancelar
             // 
             this.buttonCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancelar.Location = new System.Drawing.Point(270, 178);
+            this.buttonCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.buttonCancelar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.buttonCancelar.Location = new System.Drawing.Point(202, 289);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
             this.buttonCancelar.TabIndex = 5;
@@ -57,7 +61,8 @@
             // 
             this.buttonGravar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonGravar.Location = new System.Drawing.Point(197, 178);
+            this.buttonGravar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.buttonGravar.Location = new System.Drawing.Point(129, 289);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
             this.buttonGravar.TabIndex = 4;
@@ -67,25 +72,100 @@
             // 
             // groupBoxTaxa
             // 
-            this.groupBoxTaxa.Controls.Add(this.radioButtonDiario);
-            this.groupBoxTaxa.Controls.Add(this.radioButtonFixo);
             this.groupBoxTaxa.Controls.Add(this.labelGuid);
             this.groupBoxTaxa.Controls.Add(this.textBoxGuid);
             this.groupBoxTaxa.Controls.Add(this.labelDescricao);
             this.groupBoxTaxa.Controls.Add(this.textBoxDescricao);
             this.groupBoxTaxa.Controls.Add(this.labelValor);
             this.groupBoxTaxa.Controls.Add(this.textBoxValor);
+            this.groupBoxTaxa.Controls.Add(this.groupBoxTipo);
+            this.groupBoxTaxa.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.groupBoxTaxa.Location = new System.Drawing.Point(12, 14);
             this.groupBoxTaxa.Name = "groupBoxTaxa";
-            this.groupBoxTaxa.Size = new System.Drawing.Size(325, 158);
+            this.groupBoxTaxa.Size = new System.Drawing.Size(257, 269);
             this.groupBoxTaxa.TabIndex = 6;
             this.groupBoxTaxa.TabStop = false;
             this.groupBoxTaxa.Text = "Dados de taxas:";
             // 
+            // labelGuid
+            // 
+            this.labelGuid.AutoSize = true;
+            this.labelGuid.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelGuid.Location = new System.Drawing.Point(6, 29);
+            this.labelGuid.Name = "labelGuid";
+            this.labelGuid.Size = new System.Drawing.Size(35, 15);
+            this.labelGuid.TabIndex = 29;
+            this.labelGuid.Text = "Guid:";
+            // 
+            // textBoxGuid
+            // 
+            this.textBoxGuid.Enabled = false;
+            this.textBoxGuid.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxGuid.Location = new System.Drawing.Point(6, 47);
+            this.textBoxGuid.Name = "textBoxGuid";
+            this.textBoxGuid.ReadOnly = true;
+            this.textBoxGuid.Size = new System.Drawing.Size(245, 23);
+            this.textBoxGuid.TabIndex = 30;
+            // 
+            // labelDescricao
+            // 
+            this.labelDescricao.AutoSize = true;
+            this.labelDescricao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelDescricao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelDescricao.Location = new System.Drawing.Point(6, 84);
+            this.labelDescricao.Name = "labelDescricao";
+            this.labelDescricao.Size = new System.Drawing.Size(61, 15);
+            this.labelDescricao.TabIndex = 1;
+            this.labelDescricao.Text = "Descrição:";
+            this.labelDescricao.Click += new System.EventHandler(this.labelDescricao_Click);
+            // 
+            // textBoxDescricao
+            // 
+            this.textBoxDescricao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxDescricao.Location = new System.Drawing.Point(6, 102);
+            this.textBoxDescricao.MaxLength = 255;
+            this.textBoxDescricao.Name = "textBoxDescricao";
+            this.textBoxDescricao.Size = new System.Drawing.Size(143, 23);
+            this.textBoxDescricao.TabIndex = 0;
+            // 
+            // labelValor
+            // 
+            this.labelValor.AutoSize = true;
+            this.labelValor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelValor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelValor.Location = new System.Drawing.Point(6, 137);
+            this.labelValor.Name = "labelValor";
+            this.labelValor.Size = new System.Drawing.Size(36, 15);
+            this.labelValor.TabIndex = 3;
+            this.labelValor.Text = "Valor:";
+            this.labelValor.Click += new System.EventHandler(this.labelValor_Click);
+            // 
+            // textBoxValor
+            // 
+            this.textBoxValor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxValor.Location = new System.Drawing.Point(6, 155);
+            this.textBoxValor.MaxLength = 255;
+            this.textBoxValor.Name = "textBoxValor";
+            this.textBoxValor.Size = new System.Drawing.Size(143, 23);
+            this.textBoxValor.TabIndex = 1;
+            // 
+            // groupBoxTipo
+            // 
+            this.groupBoxTipo.Controls.Add(this.radioButtonDiario);
+            this.groupBoxTipo.Controls.Add(this.radioButtonFixo);
+            this.groupBoxTipo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxTipo.Location = new System.Drawing.Point(6, 186);
+            this.groupBoxTipo.Name = "groupBoxTipo";
+            this.groupBoxTipo.Size = new System.Drawing.Size(88, 73);
+            this.groupBoxTipo.TabIndex = 31;
+            this.groupBoxTipo.TabStop = false;
+            this.groupBoxTipo.Text = "Tipo";
+            // 
             // radioButtonDiario
             // 
             this.radioButtonDiario.AutoSize = true;
-            this.radioButtonDiario.Location = new System.Drawing.Point(84, 133);
+            this.radioButtonDiario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.radioButtonDiario.Location = new System.Drawing.Point(14, 43);
             this.radioButtonDiario.Name = "radioButtonDiario";
             this.radioButtonDiario.Size = new System.Drawing.Size(56, 19);
             this.radioButtonDiario.TabIndex = 3;
@@ -96,7 +176,8 @@
             // radioButtonFixo
             // 
             this.radioButtonFixo.AutoSize = true;
-            this.radioButtonFixo.Location = new System.Drawing.Point(84, 112);
+            this.radioButtonFixo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.radioButtonFixo.Location = new System.Drawing.Point(14, 22);
             this.radioButtonFixo.Name = "radioButtonFixo";
             this.radioButtonFixo.Size = new System.Drawing.Size(47, 19);
             this.radioButtonFixo.TabIndex = 2;
@@ -104,63 +185,11 @@
             this.radioButtonFixo.Text = "Fixo";
             this.radioButtonFixo.UseVisualStyleBackColor = true;
             // 
-            // labelGuid
-            // 
-            this.labelGuid.AutoSize = true;
-            this.labelGuid.Location = new System.Drawing.Point(32, 29);
-            this.labelGuid.Name = "labelGuid";
-            this.labelGuid.Size = new System.Drawing.Size(35, 15);
-            this.labelGuid.TabIndex = 29;
-            this.labelGuid.Text = "Guid:";
-            // 
-            // textBoxGuid
-            // 
-            this.textBoxGuid.Enabled = false;
-            this.textBoxGuid.Location = new System.Drawing.Point(85, 26);
-            this.textBoxGuid.Name = "textBoxGuid";
-            this.textBoxGuid.ReadOnly = true;
-            this.textBoxGuid.Size = new System.Drawing.Size(234, 23);
-            this.textBoxGuid.TabIndex = 30;
-            // 
-            // labelDescricao
-            // 
-            this.labelDescricao.AutoSize = true;
-            this.labelDescricao.Location = new System.Drawing.Point(5, 57);
-            this.labelDescricao.Name = "labelDescricao";
-            this.labelDescricao.Size = new System.Drawing.Size(61, 15);
-            this.labelDescricao.TabIndex = 1;
-            this.labelDescricao.Text = "Descrição:";
-            // 
-            // textBoxDescricao
-            // 
-            this.textBoxDescricao.Location = new System.Drawing.Point(84, 54);
-            this.textBoxDescricao.MaxLength = 255;
-            this.textBoxDescricao.Name = "textBoxDescricao";
-            this.textBoxDescricao.Size = new System.Drawing.Size(143, 23);
-            this.textBoxDescricao.TabIndex = 0;
-            // 
-            // labelValor
-            // 
-            this.labelValor.AutoSize = true;
-            this.labelValor.Location = new System.Drawing.Point(30, 86);
-            this.labelValor.Name = "labelValor";
-            this.labelValor.Size = new System.Drawing.Size(36, 15);
-            this.labelValor.TabIndex = 3;
-            this.labelValor.Text = "Valor:";
-            // 
-            // textBoxValor
-            // 
-            this.textBoxValor.Location = new System.Drawing.Point(84, 83);
-            this.textBoxValor.MaxLength = 255;
-            this.textBoxValor.Name = "textBoxValor";
-            this.textBoxValor.Size = new System.Drawing.Size(143, 23);
-            this.textBoxValor.TabIndex = 1;
-            // 
             // TelaCadastroTaxaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(346, 218);
+            this.ClientSize = new System.Drawing.Size(278, 331);
             this.Controls.Add(this.groupBoxTaxa);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonGravar);
@@ -169,6 +198,8 @@
             this.Text = "Taxas";
             this.groupBoxTaxa.ResumeLayout(false);
             this.groupBoxTaxa.PerformLayout();
+            this.groupBoxTipo.ResumeLayout(false);
+            this.groupBoxTipo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -185,5 +216,6 @@
         private System.Windows.Forms.TextBox textBoxGuid;
         private System.Windows.Forms.RadioButton radioButtonDiario;
         private System.Windows.Forms.RadioButton radioButtonFixo;
+        private System.Windows.Forms.GroupBox groupBoxTipo;
     }
 }

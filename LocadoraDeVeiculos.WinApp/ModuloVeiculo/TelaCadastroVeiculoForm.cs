@@ -114,5 +114,56 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             textBoxKmPercorrido.AceitaSoNumeros();
             textBoxModelo.Focus();
         }
+
+        private void labelModelo_Click(object sender, EventArgs e)
+        {
+            textBoxModelo.Focus();
+        }
+
+        private void labelPlaca_Click(object sender, EventArgs e)
+        {
+            textBoxPlaca.Focus();
+        }
+
+        private void labelMarca_Click(object sender, EventArgs e)
+        {
+            textBoxMarca.Focus();
+        }
+
+        private void labelAno_Click(object sender, EventArgs e)
+        {
+            textBoxAno.Focus();
+        }
+
+        private void labelCor_Click(object sender, EventArgs e)
+        {
+            comboBoxCor.DroppedDown = true;
+            comboBoxCor.SelectedIndex = 0;
+            comboBoxCor.Select();
+        }
+
+        private void labelCombustivel_Click(object sender, EventArgs e)
+        {
+            comboBoxCombustivel.DroppedDown = true;
+            comboBoxCombustivel.SelectedIndex = 0;
+            comboBoxCombustivel.Select();
+        }
+
+        private void labelTanque_Click(object sender, EventArgs e)
+        {
+            numericUpDownTanque.Focus();
+        }
+
+        private void labelKmPercorrido_Click(object sender, EventArgs e)
+        {
+            textBoxKmPercorrido.Focus();
+        }
+
+        private void labelGrupoVeiculos_Click(object sender, EventArgs e)
+        {
+            comboBoxGrupoVeiculos.DroppedDown = true;
+            comboBoxGrupoVeiculos.SelectedIndex = 0;
+            comboBoxGrupoVeiculos.Select();
+        }
     }
 }

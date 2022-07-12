@@ -65,5 +65,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             textBoxDescricao.AceitaSoLetras();
             textBoxDescricao.Focus();
         }
+
+        private void labelDescricao_Click(object sender, EventArgs e)
+        {
+            textBoxDescricao.Focus();
+        }
+
+        private void labelValor_Click(object sender, EventArgs e)
+        {
+            textBoxValor.Focus();
+        }
     }
 }
