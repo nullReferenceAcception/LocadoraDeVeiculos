@@ -86,12 +86,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             {
                 radioButtonUsarRegistro.Checked = false;
                 comboBoxClienteFisico.Enabled = false;
+                DefinirEstadoCampos(!isChecked);
+                LimparCampos();
             }
             else
             {
                 radioButtonUsarRegistro.Checked = true;
                 isChecked = false;
                 comboBoxClienteFisico.Enabled = true;
+                DefinirEstadoCampos(isChecked);
             }
         }
 
@@ -113,5 +116,29 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             textBoxNome.Focus();
             textBoxNome.AceitaSoLetras();
         }
+
+
+        private void LimparCampos()
+        {
+            textBoxNome.Clear();
+            textBoxEndereco.Clear();
+            textBoxEmail.Clear();
+            maskedTextBoxCNH.Clear();
+            maskedTextBoxCPF.Clear();
+            maskedTextBoxTelefone.Clear();
+            dateTimePickerValidadeCNH.Value = DateTime.Today;
+        }
+
+        private void DefinirEstadoCampos(bool status)
+        {
+            textBoxNome.Enabled = status;
+            textBoxEndereco.Enabled = status;
+            textBoxEmail.Enabled = status;
+            maskedTextBoxCNH.Enabled = status;
+            maskedTextBoxCPF.Enabled = status;
+            maskedTextBoxTelefone.Enabled = status;
+            dateTimePickerValidadeCNH.Enabled = status;
+        }
+
     }
 }
