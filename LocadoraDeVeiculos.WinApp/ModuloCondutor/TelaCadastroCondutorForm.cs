@@ -26,7 +26,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         {
             InitializeComponent();
             this._servicoCliente = servicoCliente;
-            comboBoxEmpresa.DataSource = servicoCliente.SelecionarTodosClientesQueSaoPessoaJuridica();
+            comboBoxEmpresa.DataSource = servicoCliente.SelecionarTodos();
             comboBoxClienteFisico.DataSource = servicoCliente.SelecionarTodosClientesQueSaoPessoaFisica();
             comboBoxClienteFisico.Enabled = false;
             this.ConfigurarTela();
@@ -97,7 +97,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         {
             isChecked = checkBoxUsarRegistro.Checked;
         }
-
 
         private void comboBoxClienteFisico_SelectedIndexChanged(object sender, EventArgs e)
         {
