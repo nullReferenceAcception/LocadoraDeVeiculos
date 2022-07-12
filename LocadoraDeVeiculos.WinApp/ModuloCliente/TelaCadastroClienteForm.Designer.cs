@@ -50,8 +50,8 @@
             this.maskedTextBoxCNH = new System.Windows.Forms.MaskedTextBox();
             this.dateTimePickerValidadeCNH = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxID = new System.Windows.Forms.TextBox();
+            this.labelGuid = new System.Windows.Forms.Label();
+            this.textBoxGuid = new System.Windows.Forms.TextBox();
             this.groupBoxTipoCliente.SuspendLayout();
             this.groupBoxDadosCliente.SuspendLayout();
             this.SuspendLayout();
@@ -83,7 +83,7 @@
             // labelNome
             // 
             this.labelNome.AutoSize = true;
-            this.labelNome.Location = new System.Drawing.Point(44, 48);
+            this.labelNome.Location = new System.Drawing.Point(50, 48);
             this.labelNome.Name = "labelNome";
             this.labelNome.Size = new System.Drawing.Size(43, 15);
             this.labelNome.TabIndex = 6;
@@ -92,7 +92,7 @@
             // labelTelefone
             // 
             this.labelTelefone.AutoSize = true;
-            this.labelTelefone.Location = new System.Drawing.Point(36, 202);
+            this.labelTelefone.Location = new System.Drawing.Point(39, 202);
             this.labelTelefone.Name = "labelTelefone";
             this.labelTelefone.Size = new System.Drawing.Size(54, 15);
             this.labelTelefone.TabIndex = 9;
@@ -101,7 +101,7 @@
             // labelEmail
             // 
             this.labelEmail.AutoSize = true;
-            this.labelEmail.Location = new System.Drawing.Point(51, 170);
+            this.labelEmail.Location = new System.Drawing.Point(54, 170);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(39, 15);
             this.labelEmail.TabIndex = 10;
@@ -110,7 +110,7 @@
             // labelCNH
             // 
             this.labelCNH.AutoSize = true;
-            this.labelCNH.Location = new System.Drawing.Point(51, 109);
+            this.labelCNH.Location = new System.Drawing.Point(57, 109);
             this.labelCNH.Name = "labelCNH";
             this.labelCNH.Size = new System.Drawing.Size(36, 15);
             this.labelCNH.TabIndex = 11;
@@ -119,7 +119,7 @@
             // labelEndereco
             // 
             this.labelEndereco.AutoSize = true;
-            this.labelEndereco.Location = new System.Drawing.Point(28, 77);
+            this.labelEndereco.Location = new System.Drawing.Point(34, 77);
             this.labelEndereco.Name = "labelEndereco";
             this.labelEndereco.Size = new System.Drawing.Size(59, 15);
             this.labelEndereco.TabIndex = 12;
@@ -163,7 +163,7 @@
             // labelCPF
             // 
             this.labelCPF.AutoSize = true;
-            this.labelCPF.Location = new System.Drawing.Point(59, 317);
+            this.labelCPF.Location = new System.Drawing.Point(62, 317);
             this.labelCPF.Name = "labelCPF";
             this.labelCPF.Size = new System.Drawing.Size(31, 15);
             this.labelCPF.TabIndex = 15;
@@ -172,7 +172,7 @@
             // labelCNPJ
             // 
             this.labelCNPJ.AutoSize = true;
-            this.labelCNPJ.Location = new System.Drawing.Point(53, 348);
+            this.labelCNPJ.Location = new System.Drawing.Point(56, 348);
             this.labelCNPJ.Name = "labelCNPJ";
             this.labelCNPJ.Size = new System.Drawing.Size(37, 15);
             this.labelCNPJ.TabIndex = 16;
@@ -234,8 +234,8 @@
             this.groupBoxDadosCliente.Controls.Add(this.dateTimePickerValidadeCNH);
             this.groupBoxDadosCliente.Controls.Add(this.label2);
             this.groupBoxDadosCliente.Controls.Add(this.maskedTextBoxTelefone);
-            this.groupBoxDadosCliente.Controls.Add(this.label1);
-            this.groupBoxDadosCliente.Controls.Add(this.textBoxID);
+            this.groupBoxDadosCliente.Controls.Add(this.labelGuid);
+            this.groupBoxDadosCliente.Controls.Add(this.textBoxGuid);
             this.groupBoxDadosCliente.Controls.Add(this.labelCPF);
             this.groupBoxDadosCliente.Controls.Add(this.groupBoxTipoCliente);
             this.groupBoxDadosCliente.Controls.Add(this.maskedTextBoxCNPJ);
@@ -282,23 +282,23 @@
             this.label2.TabIndex = 26;
             this.label2.Text = "Validade CNH:";
             // 
-            // label1
+            // labelGuid
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(66, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(21, 15);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "guid:";
+            this.labelGuid.AutoSize = true;
+            this.labelGuid.Location = new System.Drawing.Point(58, 19);
+            this.labelGuid.Name = "labelGuid";
+            this.labelGuid.Size = new System.Drawing.Size(35, 15);
+            this.labelGuid.TabIndex = 24;
+            this.labelGuid.Text = "Guid:";
             // 
-            // textBoxID
+            // textBoxGuid
             // 
-            this.textBoxID.Enabled = false;
-            this.textBoxID.Location = new System.Drawing.Point(104, 16);
-            this.textBoxID.Name = "textBoxID";
-            this.textBoxID.ReadOnly = true;
-            this.textBoxID.Size = new System.Drawing.Size(75, 23);
-            this.textBoxID.TabIndex = 23;
+            this.textBoxGuid.Enabled = false;
+            this.textBoxGuid.Location = new System.Drawing.Point(104, 16);
+            this.textBoxGuid.Name = "textBoxGuid";
+            this.textBoxGuid.ReadOnly = true;
+            this.textBoxGuid.Size = new System.Drawing.Size(240, 23);
+            this.textBoxGuid.TabIndex = 23;
             // 
             // TelaCadastroClienteForm
             // 
@@ -340,8 +340,8 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBoxTelefone;
         public System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.GroupBox groupBoxDadosCliente;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxID;
+        private System.Windows.Forms.Label labelGuid;
+        private System.Windows.Forms.TextBox textBoxGuid;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateTimePickerValidadeCNH;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxCNH;

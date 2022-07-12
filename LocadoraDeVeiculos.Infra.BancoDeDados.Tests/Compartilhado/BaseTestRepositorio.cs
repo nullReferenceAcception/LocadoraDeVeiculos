@@ -1,7 +1,4 @@
 ﻿using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
-using Microsoft.Extensions.Configuration;
-using System.Data.SqlClient;
-using System.IO;
 
 namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
 {

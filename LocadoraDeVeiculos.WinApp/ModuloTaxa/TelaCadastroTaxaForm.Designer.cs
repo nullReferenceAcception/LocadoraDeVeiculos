@@ -33,8 +33,8 @@
             this.groupBoxTaxa = new System.Windows.Forms.GroupBox();
             this.radioButtonDiario = new System.Windows.Forms.RadioButton();
             this.radioButtonFixo = new System.Windows.Forms.RadioButton();
-            this.labelID = new System.Windows.Forms.Label();
-            this.textBoxID = new System.Windows.Forms.TextBox();
+            this.labelGuid = new System.Windows.Forms.Label();
+            this.textBoxGuid = new System.Windows.Forms.TextBox();
             this.labelDescricao = new System.Windows.Forms.Label();
             this.textBoxDescricao = new System.Windows.Forms.TextBox();
             this.labelValor = new System.Windows.Forms.Label();
@@ -46,7 +46,7 @@
             // 
             this.buttonCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancelar.Location = new System.Drawing.Point(186, 178);
+            this.buttonCancelar.Location = new System.Drawing.Point(270, 178);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
             this.buttonCancelar.TabIndex = 5;
@@ -57,7 +57,7 @@
             // 
             this.buttonGravar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonGravar.Location = new System.Drawing.Point(113, 178);
+            this.buttonGravar.Location = new System.Drawing.Point(197, 178);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
             this.buttonGravar.TabIndex = 4;
@@ -69,15 +69,15 @@
             // 
             this.groupBoxTaxa.Controls.Add(this.radioButtonDiario);
             this.groupBoxTaxa.Controls.Add(this.radioButtonFixo);
-            this.groupBoxTaxa.Controls.Add(this.labelID);
-            this.groupBoxTaxa.Controls.Add(this.textBoxID);
+            this.groupBoxTaxa.Controls.Add(this.labelGuid);
+            this.groupBoxTaxa.Controls.Add(this.textBoxGuid);
             this.groupBoxTaxa.Controls.Add(this.labelDescricao);
             this.groupBoxTaxa.Controls.Add(this.textBoxDescricao);
             this.groupBoxTaxa.Controls.Add(this.labelValor);
             this.groupBoxTaxa.Controls.Add(this.textBoxValor);
             this.groupBoxTaxa.Location = new System.Drawing.Point(12, 14);
             this.groupBoxTaxa.Name = "groupBoxTaxa";
-            this.groupBoxTaxa.Size = new System.Drawing.Size(241, 158);
+            this.groupBoxTaxa.Size = new System.Drawing.Size(325, 158);
             this.groupBoxTaxa.TabIndex = 6;
             this.groupBoxTaxa.TabStop = false;
             this.groupBoxTaxa.Text = "Dados de taxas:";
@@ -104,23 +104,23 @@
             this.radioButtonFixo.Text = "Fixo";
             this.radioButtonFixo.UseVisualStyleBackColor = true;
             // 
-            // labelID
+            // labelGuid
             // 
-            this.labelID.AutoSize = true;
-            this.labelID.Location = new System.Drawing.Point(45, 29);
-            this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(21, 15);
-            this.labelID.TabIndex = 29;
-            this.labelID.Text = "guid:";
+            this.labelGuid.AutoSize = true;
+            this.labelGuid.Location = new System.Drawing.Point(32, 29);
+            this.labelGuid.Name = "labelGuid";
+            this.labelGuid.Size = new System.Drawing.Size(35, 15);
+            this.labelGuid.TabIndex = 29;
+            this.labelGuid.Text = "Guid:";
             // 
-            // textBoxID
+            // textBoxGuid
             // 
-            this.textBoxID.Enabled = false;
-            this.textBoxID.Location = new System.Drawing.Point(84, 25);
-            this.textBoxID.Name = "textBoxID";
-            this.textBoxID.ReadOnly = true;
-            this.textBoxID.Size = new System.Drawing.Size(75, 23);
-            this.textBoxID.TabIndex = 30;
+            this.textBoxGuid.Enabled = false;
+            this.textBoxGuid.Location = new System.Drawing.Point(85, 26);
+            this.textBoxGuid.Name = "textBoxGuid";
+            this.textBoxGuid.ReadOnly = true;
+            this.textBoxGuid.Size = new System.Drawing.Size(234, 23);
+            this.textBoxGuid.TabIndex = 30;
             // 
             // labelDescricao
             // 
@@ -160,7 +160,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(274, 218);
+            this.ClientSize = new System.Drawing.Size(346, 218);
             this.Controls.Add(this.groupBoxTaxa);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonGravar);
@@ -181,8 +181,8 @@
         private System.Windows.Forms.TextBox textBoxDescricao;
         private System.Windows.Forms.Label labelValor;
         private System.Windows.Forms.TextBox textBoxValor;
-        private System.Windows.Forms.Label labelID;
-        private System.Windows.Forms.TextBox textBoxID;
+        private System.Windows.Forms.Label labelGuid;
+        private System.Windows.Forms.TextBox textBoxGuid;
         private System.Windows.Forms.RadioButton radioButtonDiario;
         private System.Windows.Forms.RadioButton radioButtonFixo;
     }

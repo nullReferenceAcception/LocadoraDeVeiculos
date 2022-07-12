@@ -58,7 +58,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         private void ConfigurarTelaEditar()
         {
-            textBoxID.Text = _funcionario.Guid.ToString();
+            textBoxGuid.Text = _funcionario.Guid.ToString();
             textBoxNome.Text = _funcionario.Nome;
             textBoxEmail.Text = _funcionario.Email;
             maskedTextBoxTelefone.Text = _funcionario.Telefone;

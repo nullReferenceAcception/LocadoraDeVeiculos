@@ -50,8 +50,8 @@
             this.textBoxEndereco = new System.Windows.Forms.TextBox();
             this.maskedTextBoxTelefone = new System.Windows.Forms.MaskedTextBox();
             this.groupBoxDadosFuncionario = new System.Windows.Forms.GroupBox();
-            this.labelID = new System.Windows.Forms.Label();
-            this.textBoxID = new System.Windows.Forms.TextBox();
+            this.labelGuid = new System.Windows.Forms.Label();
+            this.textBoxGuid = new System.Windows.Forms.TextBox();
             this.textBoxCidade = new System.Windows.Forms.TextBox();
             this.labelCidade = new System.Windows.Forms.Label();
             this.groupBoxEhAdmin.SuspendLayout();
@@ -255,8 +255,8 @@
             // 
             // groupBoxDadosFuncionario
             // 
-            this.groupBoxDadosFuncionario.Controls.Add(this.labelID);
-            this.groupBoxDadosFuncionario.Controls.Add(this.textBoxID);
+            this.groupBoxDadosFuncionario.Controls.Add(this.labelGuid);
+            this.groupBoxDadosFuncionario.Controls.Add(this.textBoxGuid);
             this.groupBoxDadosFuncionario.Controls.Add(this.textBoxCidade);
             this.groupBoxDadosFuncionario.Controls.Add(this.labelCidade);
             this.groupBoxDadosFuncionario.Controls.Add(this.groupBoxEhAdmin);
@@ -265,28 +265,28 @@
             this.groupBoxDadosFuncionario.Controls.Add(this.dateTimePickerDataAdmissao);
             this.groupBoxDadosFuncionario.Location = new System.Drawing.Point(15, 12);
             this.groupBoxDadosFuncionario.Name = "groupBoxDadosFuncionario";
-            this.groupBoxDadosFuncionario.Size = new System.Drawing.Size(375, 411);
+            this.groupBoxDadosFuncionario.Size = new System.Drawing.Size(390, 411);
             this.groupBoxDadosFuncionario.TabIndex = 25;
             this.groupBoxDadosFuncionario.TabStop = false;
             this.groupBoxDadosFuncionario.Text = "Dados do funcionário:";
             // 
-            // labelID
+            // labelGuid
             // 
-            this.labelID.AutoSize = true;
-            this.labelID.Location = new System.Drawing.Point(84, 35);
-            this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(21, 15);
-            this.labelID.TabIndex = 26;
-            this.labelID.Text = "guid:";
+            this.labelGuid.AutoSize = true;
+            this.labelGuid.Location = new System.Drawing.Point(71, 35);
+            this.labelGuid.Name = "labelGuid";
+            this.labelGuid.Size = new System.Drawing.Size(35, 15);
+            this.labelGuid.TabIndex = 26;
+            this.labelGuid.Text = "Guid:";
             // 
-            // textBoxID
+            // textBoxGuid
             // 
-            this.textBoxID.Enabled = false;
-            this.textBoxID.Location = new System.Drawing.Point(128, 27);
-            this.textBoxID.Name = "textBoxID";
-            this.textBoxID.ReadOnly = true;
-            this.textBoxID.Size = new System.Drawing.Size(75, 23);
-            this.textBoxID.TabIndex = 26;
+            this.textBoxGuid.Enabled = false;
+            this.textBoxGuid.Location = new System.Drawing.Point(128, 27);
+            this.textBoxGuid.Name = "textBoxGuid";
+            this.textBoxGuid.ReadOnly = true;
+            this.textBoxGuid.Size = new System.Drawing.Size(247, 23);
+            this.textBoxGuid.TabIndex = 26;
             // 
             // textBoxCidade
             // 
@@ -309,7 +309,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(402, 465);
+            this.ClientSize = new System.Drawing.Size(417, 465);
             this.Controls.Add(this.maskedTextBoxTelefone);
             this.Controls.Add(this.labelEndereco);
             this.Controls.Add(this.textBoxEndereco);
@@ -363,7 +363,7 @@
         private System.Windows.Forms.TextBox textBoxCidade;
         private System.Windows.Forms.Label labelCidade;
         public System.Windows.Forms.Button buttonCancelar;
-        private System.Windows.Forms.Label labelID;
-        private System.Windows.Forms.TextBox textBoxID;
+        private System.Windows.Forms.Label labelGuid;
+        private System.Windows.Forms.TextBox textBoxGuid;
     }
 }

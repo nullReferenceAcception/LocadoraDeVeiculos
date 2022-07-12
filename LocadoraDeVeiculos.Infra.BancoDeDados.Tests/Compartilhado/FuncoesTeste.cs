@@ -1,28 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.Compartilhado
 {
     public static class FuncoesTeste
     {
-
         public static string GerarNovaStringAleatoria()
         {
-            const int qtdeLetras = 8;
+            const int qtdeLetras = 10;
 
-            const string letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const string letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ";
 
-            string novaPlaca = "";
+            string stringAleatoria = "";
             Random random = new();
 
             for (int i = 0; i < qtdeLetras; i++)
-                novaPlaca += letras[random.Next(letras.Length)];
+                stringAleatoria += letras[random.Next(letras.Length)];
 
-            return novaPlaca;
+            return stringAleatoria;
         }
-
     }
 }

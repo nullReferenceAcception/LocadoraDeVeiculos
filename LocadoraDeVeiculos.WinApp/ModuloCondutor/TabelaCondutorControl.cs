@@ -1,16 +1,7 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
-
-
 
 namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 {
@@ -28,7 +19,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "guid", HeaderText = "guid"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Guid", HeaderText = "Guid"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
 
@@ -58,15 +49,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             //TODO arrumar mascara para o telefone e CNPJ/CPF aqui
             foreach (Condutor condutor in condutores)
             {
-
-
-                
                     grid.Rows.Add(condutor.Guid, condutor.Nome, condutor.Endereco, double.Parse(condutor.Telefone), condutor.CNH, condutor.Email, double.Parse(condutor.CPF), condutor.Cliente.Nome);
                     this.grid.Columns[6].DefaultCellStyle.Format = @"000\.000\.000\-00";
                     this.grid.Columns[3].DefaultCellStyle.Format = "(##) #####-####";
-
             }
-
         }
     }
 }

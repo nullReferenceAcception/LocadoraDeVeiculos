@@ -20,68 +20,69 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
         [TestMethod]
         public void Deve_inserir_Taxa()
         {
-            Taxa Taxa = CriarTaxa();
+            Taxa taxa = CriarTaxa();
 
-            _servicoTaxa.Inserir(Taxa);
+            _servicoTaxa.Inserir(taxa);
 
-            Taxa Taxa2 = _servicoTaxa.SelecionarPorGuid(Taxa.Guid);
+            Taxa tavaEncontrada = _servicoTaxa.SelecionarPorGuid(taxa.Guid);
 
-            Assert.AreEqual(Taxa, Taxa2);
+            Assert.AreEqual(taxa, tavaEncontrada);
         }
 
         [TestMethod]
         public void Deve_editar_Taxa()
         {
-            Taxa Taxa = CriarTaxa();
+            Taxa taxa = CriarTaxa();
 
-            _servicoTaxa.Inserir(Taxa);
+            _servicoTaxa.Inserir(taxa);
 
-            Taxa.Descricao = "ssssss";
+            taxa.Descricao = "ssssss";
 
-            _servicoTaxa.Editar(Taxa);
+            _servicoTaxa.Editar(taxa);
 
-            Taxa Taxa2 = _servicoTaxa.SelecionarPorGuid(Taxa.Guid);
+            Taxa taxaEncontrada = _servicoTaxa.SelecionarPorGuid(taxa.Guid);
 
-            Assert.AreEqual(Taxa2, Taxa);
+            Assert.AreEqual(taxaEncontrada, taxa);
         }
 
         [TestMethod]
         public void Deve_excluir_Taxa()
         {
-            Taxa Taxa = CriarTaxa();
+            Taxa taxa = CriarTaxa();
 
-            _servicoTaxa.Inserir(Taxa);
+            _servicoTaxa.Inserir(taxa);
 
-            _servicoTaxa.Excluir(Taxa);
+            _servicoTaxa.Excluir(taxa);
 
-            Taxa Taxa2 = _servicoTaxa.SelecionarPorGuid(Taxa.Guid);
+            Taxa taxaEncontrada = _servicoTaxa.SelecionarPorGuid(taxa.Guid);
 
-            Taxa2.Should().Be(null);
+            taxaEncontrada.Should().Be(null);
         }
 
         [TestMethod]
         public void Deve_selecionar_por_id()
         {
-            Taxa registro = CriarTaxa();
-            _servicoTaxa.Inserir(registro);
+            Taxa taxa = CriarTaxa();
 
-            Taxa registro2 = _servicoTaxa.SelecionarPorGuid(registro.Guid);
+            _servicoTaxa.Inserir(taxa);
 
-            Assert.AreEqual(registro2, registro);
+            Taxa taxaEncontrada = _servicoTaxa.SelecionarPorGuid(taxa.Guid);
+
+            Assert.AreEqual(taxaEncontrada, taxa);
         }
 
         [TestMethod]
         public void Nao_Deve_inserir_Taxa_duplicada()
         {
-            Taxa Taxa = CriarTaxa();
+            Taxa taxa = CriarTaxa();
 
-            _servicoTaxa.Inserir(Taxa);
+            _servicoTaxa.Inserir(taxa);
 
-            Taxa Taxa2 = CriarTaxa();
+            Taxa taxaEncontrada = CriarTaxa();
 
-            Taxa2.Descricao = Taxa.Descricao;
+            taxaEncontrada.Descricao = taxa.Descricao;
 
-            ValidationResult validationResult = _servicoTaxa.Inserir(Taxa2);
+            ValidationResult validationResult = _servicoTaxa.Inserir(taxaEncontrada);
 
             validationResult.Errors[0].ErrorMessage.Should().Contain("Descrição já cadastrada");
         }
@@ -89,23 +90,23 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
         [TestMethod]
         public void Deve_selecionar_todos_Taxas()
         {
-            List<Taxa> registros = new List<Taxa>();
+            List<Taxa> taxas = new List<Taxa>();
 
             for (int i = 0; i < 10; i++)
             {
                 Taxa Taxa = new Taxa(FuncoesTeste.GerarNovaStringAleatoria(), (random.Next(0, 100) + (decimal)Math.Round(random.NextDouble(), 2)), true); ;
 
                 _servicoTaxa.Inserir(Taxa);
-                registros.Add(Taxa);
+                taxas.Add(Taxa);
             }
 
-            List<Taxa> registrosDoBanco = _servicoTaxa.SelecionarTodos();
+            List<Taxa> taxasEncontradas = _servicoTaxa.SelecionarTodos();
 
 
-            Assert.IsTrue(registrosDoBanco.Count == registros.Count);
+            Assert.IsTrue(taxasEncontradas.Count == taxas.Count);
 
-            for (int i = 0; i < registrosDoBanco.Count; i++)
-                Assert.IsTrue(registrosDoBanco.Contains(registros[i]));
+            for (int i = 0; i < taxasEncontradas.Count; i++)
+                Assert.IsTrue(taxasEncontradas.Contains(taxas[i]));
         }
 
         //TODO Não pode deixar excluir caso esteja linkado em outro registro

@@ -36,8 +36,8 @@
             this.labelGrupoVeiculos = new System.Windows.Forms.Label();
             this.textBoxPlaca = new System.Windows.Forms.TextBox();
             this.labelFoto = new System.Windows.Forms.Label();
-            this.labelID = new System.Windows.Forms.Label();
-            this.textBoxID = new System.Windows.Forms.TextBox();
+            this.labelGuid = new System.Windows.Forms.Label();
+            this.textBoxGuid = new System.Windows.Forms.TextBox();
             this.textBoxKmPercorrido = new System.Windows.Forms.TextBox();
             this.labelKmPercorrido = new System.Windows.Forms.Label();
             this.numericUpDownTanque = new System.Windows.Forms.NumericUpDown();
@@ -99,8 +99,8 @@
             this.groupBoxDadosVeiculo.Controls.Add(this.labelGrupoVeiculos);
             this.groupBoxDadosVeiculo.Controls.Add(this.textBoxPlaca);
             this.groupBoxDadosVeiculo.Controls.Add(this.labelFoto);
-            this.groupBoxDadosVeiculo.Controls.Add(this.labelID);
-            this.groupBoxDadosVeiculo.Controls.Add(this.textBoxID);
+            this.groupBoxDadosVeiculo.Controls.Add(this.labelGuid);
+            this.groupBoxDadosVeiculo.Controls.Add(this.textBoxGuid);
             this.groupBoxDadosVeiculo.Controls.Add(this.textBoxKmPercorrido);
             this.groupBoxDadosVeiculo.Controls.Add(this.labelKmPercorrido);
             this.groupBoxDadosVeiculo.Controls.Add(this.numericUpDownTanque);
@@ -159,23 +159,23 @@
             this.labelFoto.TabIndex = 33;
             this.labelFoto.Text = "Foto:";
             // 
-            // labelID
+            // labelGuid
             // 
-            this.labelID.AutoSize = true;
-            this.labelID.Location = new System.Drawing.Point(133, 25);
-            this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(21, 15);
-            this.labelID.TabIndex = 31;
-            this.labelID.Text = "guid:";
+            this.labelGuid.AutoSize = true;
+            this.labelGuid.Location = new System.Drawing.Point(119, 25);
+            this.labelGuid.Name = "labelGuid";
+            this.labelGuid.Size = new System.Drawing.Size(35, 15);
+            this.labelGuid.TabIndex = 31;
+            this.labelGuid.Text = "Guid:";
             // 
-            // textBoxID
+            // textBoxGuid
             // 
-            this.textBoxID.Enabled = false;
-            this.textBoxID.Location = new System.Drawing.Point(168, 22);
-            this.textBoxID.Name = "textBoxID";
-            this.textBoxID.ReadOnly = true;
-            this.textBoxID.Size = new System.Drawing.Size(75, 23);
-            this.textBoxID.TabIndex = 32;
+            this.textBoxGuid.Enabled = false;
+            this.textBoxGuid.Location = new System.Drawing.Point(168, 22);
+            this.textBoxGuid.Name = "textBoxGuid";
+            this.textBoxGuid.ReadOnly = true;
+            this.textBoxGuid.Size = new System.Drawing.Size(283, 23);
+            this.textBoxGuid.TabIndex = 32;
             // 
             // textBoxKmPercorrido
             // 
@@ -204,7 +204,7 @@
             65536});
             this.numericUpDownTanque.Location = new System.Drawing.Point(168, 225);
             this.numericUpDownTanque.Name = "numericUpDownTanque";
-            this.numericUpDownTanque.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDownTanque.Size = new System.Drawing.Size(68, 23);
             this.numericUpDownTanque.TabIndex = 6;
             // 
             // labelTanque
@@ -356,8 +356,8 @@
         private System.Windows.Forms.TextBox textBoxModelo;
         private System.Windows.Forms.Label labelModelo;
         private System.Windows.Forms.Label labelFoto;
-        private System.Windows.Forms.Label labelID;
-        private System.Windows.Forms.TextBox textBoxID;
+        private System.Windows.Forms.Label labelGuid;
+        private System.Windows.Forms.TextBox textBoxGuid;
         private System.Windows.Forms.OpenFileDialog openFileDialogFoto;
         private System.Windows.Forms.TextBox textBoxPlaca;
         private System.Windows.Forms.ComboBox comboBoxGrupoVeiculos;

@@ -108,9 +108,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
             Assert.IsTrue(veiculosEncontrados.Count == quantidade);
 
             for (int i = 0; i < quantidade; i++)
-            {
                 Assert.IsTrue(veiculosEncontrados.Contains(veiculos[i]));
-            }
         }
 
         [TestMethod]
