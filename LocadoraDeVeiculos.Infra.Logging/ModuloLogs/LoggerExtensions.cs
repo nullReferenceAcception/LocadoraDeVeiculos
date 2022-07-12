@@ -23,6 +23,7 @@ namespace LocadoraDeVeiculos.Infra.Logging.Log
                    .WriteTo.File(diretorioSaida + "/log.txt",
                rollingInterval: RollingInterval.Day,
                outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
+                   .WriteTo.Seq("http://localhost:5341")
                .CreateLogger();
         }
     }
