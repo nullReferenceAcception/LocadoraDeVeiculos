@@ -111,7 +111,12 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             Log.Logger.Error("Falha ao {funcao} \n {@registro}", funcao, JsonConvert.SerializeObject(registro, Formatting.Indented));
 
             foreach (var item in resultadoValidacao.Errors)
-                Log.Logger.Error(item.ErrorMessage);
+            {
+                if (item  == (resultadoValidacao.Errors[resultadoValidacao.Errors.Count -1]))
+                Log.Logger.Error(item.ErrorMessage + Environment.NewLine);
+                else
+                    Log.Logger.Error(item.ErrorMessage);
+            }
         }
 
         protected bool TiverDuplicidade(T registro)
