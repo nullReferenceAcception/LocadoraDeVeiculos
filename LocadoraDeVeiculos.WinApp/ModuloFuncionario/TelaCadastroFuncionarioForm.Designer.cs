@@ -62,6 +62,7 @@
             // 
             this.buttonCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancelar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.buttonCancelar.Location = new System.Drawing.Point(213, 610);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
@@ -72,17 +73,20 @@
             // labelNome
             // 
             this.labelNome.AutoSize = true;
+            this.labelNome.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelNome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelNome.Location = new System.Drawing.Point(6, 65);
             this.labelNome.Name = "labelNome";
             this.labelNome.Size = new System.Drawing.Size(43, 15);
             this.labelNome.TabIndex = 7;
             this.labelNome.Text = "Nome:";
+            this.labelNome.Click += new System.EventHandler(this.labelNome_Click);
             // 
             // buttonGravar
             // 
             this.buttonGravar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonGravar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.buttonGravar.Location = new System.Drawing.Point(146, 610);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
@@ -103,12 +107,14 @@
             // labelLogin
             // 
             this.labelLogin.AutoSize = true;
+            this.labelLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelLogin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelLogin.Location = new System.Drawing.Point(6, 257);
             this.labelLogin.Name = "labelLogin";
             this.labelLogin.Size = new System.Drawing.Size(40, 15);
             this.labelLogin.TabIndex = 9;
             this.labelLogin.Text = "Login:";
+            this.labelLogin.Click += new System.EventHandler(this.labelLogin_Click);
             // 
             // textBoxLogin
             // 
@@ -122,12 +128,14 @@
             // labelSenha
             // 
             this.labelSenha.AutoSize = true;
+            this.labelSenha.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelSenha.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelSenha.Location = new System.Drawing.Point(6, 305);
             this.labelSenha.Name = "labelSenha";
             this.labelSenha.Size = new System.Drawing.Size(42, 15);
             this.labelSenha.TabIndex = 13;
             this.labelSenha.Text = "Senha:";
+            this.labelSenha.Click += new System.EventHandler(this.labelSenha_Click);
             // 
             // textBoxSenha
             // 
@@ -152,22 +160,26 @@
             // labelDataAdmissao
             // 
             this.labelDataAdmissao.AutoSize = true;
+            this.labelDataAdmissao.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelDataAdmissao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelDataAdmissao.Location = new System.Drawing.Point(6, 353);
             this.labelDataAdmissao.Name = "labelDataAdmissao";
             this.labelDataAdmissao.Size = new System.Drawing.Size(105, 15);
             this.labelDataAdmissao.TabIndex = 15;
             this.labelDataAdmissao.Text = "Data de Admissão:";
+            this.labelDataAdmissao.Click += new System.EventHandler(this.labelDataAdmissao_Click);
             // 
             // labelSalario
             // 
             this.labelSalario.AutoSize = true;
+            this.labelSalario.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelSalario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelSalario.Location = new System.Drawing.Point(6, 401);
             this.labelSalario.Name = "labelSalario";
             this.labelSalario.Size = new System.Drawing.Size(45, 15);
             this.labelSalario.TabIndex = 17;
             this.labelSalario.Text = "Salário:";
+            this.labelSalario.Click += new System.EventHandler(this.labelSalario_Click);
             // 
             // textBoxSalario
             // 
@@ -216,22 +228,26 @@
             // labelEmail
             // 
             this.labelEmail.AutoSize = true;
+            this.labelEmail.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelEmail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelEmail.Location = new System.Drawing.Point(6, 113);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(44, 15);
             this.labelEmail.TabIndex = 19;
             this.labelEmail.Text = "E-mail:";
+            this.labelEmail.Click += new System.EventHandler(this.labelEmail_Click);
             // 
             // labelTelefone
             // 
             this.labelTelefone.AutoSize = true;
+            this.labelTelefone.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelTelefone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelTelefone.Location = new System.Drawing.Point(6, 161);
             this.labelTelefone.Name = "labelTelefone";
             this.labelTelefone.Size = new System.Drawing.Size(54, 15);
             this.labelTelefone.TabIndex = 20;
             this.labelTelefone.Text = "Telefone:";
+            this.labelTelefone.Click += new System.EventHandler(this.labelTelefone_Click);
             // 
             // textBoxEmail
             // 
@@ -245,12 +261,14 @@
             // labelEndereco
             // 
             this.labelEndereco.AutoSize = true;
+            this.labelEndereco.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelEndereco.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelEndereco.Location = new System.Drawing.Point(6, 209);
             this.labelEndereco.Name = "labelEndereco";
             this.labelEndereco.Size = new System.Drawing.Size(59, 15);
             this.labelEndereco.TabIndex = 24;
             this.labelEndereco.Text = "Endereço:";
+            this.labelEndereco.Click += new System.EventHandler(this.labelEndereco_Click);
             // 
             // textBoxEndereco
             // 
@@ -334,12 +352,14 @@
             // labelCidade
             // 
             this.labelCidade.AutoSize = true;
+            this.labelCidade.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelCidade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelCidade.Location = new System.Drawing.Point(6, 449);
             this.labelCidade.Name = "labelCidade";
             this.labelCidade.Size = new System.Drawing.Size(47, 15);
             this.labelCidade.TabIndex = 0;
             this.labelCidade.Text = "Cidade:";
+            this.labelCidade.Click += new System.EventHandler(this.labelCidade_Click);
             // 
             // TelaCadastroFuncionarioForm
             // 

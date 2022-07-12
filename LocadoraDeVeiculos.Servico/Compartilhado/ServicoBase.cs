@@ -114,7 +114,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
                 Log.Logger.Error(item.ErrorMessage);
         }
 
-        private bool TiverDuplicidade(T registro)
+        protected bool TiverDuplicidade(T registro)
         {
             return repositorio.VerificarDuplicidade(repositorio.SqlDuplicidade(registro));
         }

@@ -82,5 +82,51 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             textBoxCidade.AceitaSoLetras();
             textBoxNome.Focus();
         }
+
+        private void labelNome_Click(object sender, EventArgs e)
+        {
+            textBoxNome.Focus();
+        }
+
+        private void labelEmail_Click(object sender, EventArgs e)
+        {
+            textBoxEmail.Focus();
+        }
+
+        private void labelTelefone_Click(object sender, EventArgs e)
+        {
+            maskedTextBoxTelefone.Focus();
+        }
+
+        private void labelEndereco_Click(object sender, EventArgs e)
+        {
+            textBoxEndereco.Focus();
+        }
+
+        private void labelLogin_Click(object sender, EventArgs e)
+        {
+            textBoxLogin.Focus();
+        }
+
+        private void labelSenha_Click(object sender, EventArgs e)
+        {
+            textBoxSenha.Focus();
+        }
+
+        private void labelDataAdmissao_Click(object sender, EventArgs e)
+        {
+            dateTimePickerDataAdmissao.Focus();
+            SendKeys.Send("%{DOWN}");
+        }
+
+        private void labelSalario_Click(object sender, EventArgs e)
+        {
+            textBoxSalario.Focus();
+        }
+
+        private void labelCidade_Click(object sender, EventArgs e)
+        {
+            textBoxCidade.Focus();
+        }
     }
 }
