@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using LocadoraDeVeiculos.Dominio;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -72,7 +73,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             conexao.Close();
         }
 
-        public string Excluir(T registro)
+        public void Excluir(T registro)
         {
             SqlConnection conexao = new SqlConnection(enderecoBanco);
 
@@ -80,27 +81,22 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 
             comandoExclusao.Parameters.AddWithValue("guid", registro.Guid);
 
-            conexao.Open();
-
-            int idRegistrosExcluidos = 0;
-
-            string mensagem = null!;
-
-            // essa gambiarra foi feita porcausa das foreign keys
             try
             {
-                idRegistrosExcluidos = comandoExclusao.ExecuteNonQuery();
-                if (idRegistrosExcluidos == 0)
-                    mensagem = "Não foi possível remover o registro";
+                conexao.Open();
+
+                comandoExclusao.ExecuteNonQuery();
+
+                conexao.Close();
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
-                mensagem = ex.Message;
+                conexao.Close();
+                if (ex != null && ex.Message.Contains("the Delete statement conflicted with the REFRENCE costraint"))
+                    throw new NaoPodeExcluirEsteRegistroException(ex);
+
+                throw;
             }
-
-            conexao.Close();
-
-            return mensagem;
         }
 
         public List<T> SelecionarTodos()

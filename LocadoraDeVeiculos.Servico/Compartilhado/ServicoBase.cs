@@ -71,39 +71,77 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             return resultadoValidacao;
         }
 
-        public ValidationResult Excluir(T registro)
+        public Result Excluir(T registro)
         {
-            Log.Logger.Debug($"Excluindo: {typeof(T).Name}");
+            Log.Logger.Debug("Excluindo: {classe}", typeof(T).Name);
 
-            ValidationResult resultadoValidacao = new();
-
-            string mensagem = repositorio.Excluir(registro);
-
-            if (!string.IsNullOrEmpty(mensagem))
+            try
             {
-                resultadoValidacao.Errors.Add(new ValidationFailure("", mensagem));
-                LogFalha("Excluir", registro, resultadoValidacao);
-                return resultadoValidacao;
+                repositorio.Excluir(registro);
+
+                Log.Logger.Debug("Excluido: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
+
+                return Result.Ok();
+
             }
+            catch (Exception ex)
+            {
+                string msgErro = "Falha no sistema ao tentar excluir o ";
 
-            Log.Logger.Debug("Excluido: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
+                Log.Logger.Error(ex, msgErro + "{classe}" + "{Guid}", typeof(T).Name, registro.Guid);
 
-            return resultadoValidacao;
+                return Result.Fail(msgErro);
+            }
         }
 
-        public List<T> SelecionarTodos()
+        public Result<List<T>> SelecionarTodos()
         {
-            return repositorio.SelecionarTodos();
+
+            try
+            {
+                return Result.Ok(repositorio.SelecionarTodos());
+            }
+            catch (Exception ex)
+            {
+                string msgErro = $"Falha no sistema ao tentar selecionar todos os ";
+
+                Log.Logger.Error(ex, msgErro + "{classe}", typeof(T).Name + "s");
+
+                return Result.Fail(msgErro);
+            }
         }
 
-        public T SelecionarPorGuid(Guid guid)
+        public Result<T> SelecionarPorGuid(Guid guid)
         {
-            return repositorio.SelecionarPorGuid(guid);
+            try
+            {
+                return Result.Ok(repositorio.SelecionarPorGuid(guid));
+            }
+            catch (Exception ex)
+            {
+                string msgErro = $"Falha no sistema ao tentar selecionar o ";
+
+                Log.Logger.Error(ex, msgErro + "{classe}  + {Guid}", typeof(T).Name, guid );
+
+                return Result.Fail(msgErro);
+            }
         }
 
-        public int QuantidadeRegistro()
+        public Result<int> QuantidadeRegistro()
         {
-            return repositorio.QuantidadeRegistros();
+
+            try
+            {
+                return Result.Ok(repositorio.QuantidadeRegistros());
+            }
+            catch (Exception ex)
+            {
+                string msgErro = "Falha no sistema ao pegar quantidade de ";
+
+                Log.Logger.Error(ex, msgErro + "{classe}", typeof(T).Name);
+
+                return Result.Fail(msgErro);
+            }
         }
 
         protected abstract string SqlMensagemDeErroSeTiverDuplicidade { get; }
