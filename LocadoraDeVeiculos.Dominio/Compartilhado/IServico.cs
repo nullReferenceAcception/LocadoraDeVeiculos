@@ -1,4 +1,4 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
 using System;
 using System.Collections.Generic;
 
@@ -6,11 +6,11 @@ namespace LocadoraDeVeiculos.Dominio.Compartilhado
 {
     public interface IServico<T> where T : EntidadeBase<T>
     {
-        ValidationResult Inserir(T novoRegistro);
-        ValidationResult Editar(T registro);
-        ValidationResult Excluir(T registro);
-        List<T> SelecionarTodos();
-        T SelecionarPorGuid(Guid numero);
-        int QuantidadeRegistro();
+        Result<T> Inserir(T novoRegistro);
+        Result<T> Editar(T registro);
+        Result<T> Excluir(T registro);
+        Result<List<T>> SelecionarTodos();
+        Result<T> SelecionarPorGuid(Guid numero);
+        Result<int> QuantidadeRegistro();
     }
 }

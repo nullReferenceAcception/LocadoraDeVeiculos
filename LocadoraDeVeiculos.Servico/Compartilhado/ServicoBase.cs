@@ -89,7 +89,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             if (!string.IsNullOrEmpty(mensagem))
             {
                 resultadoValidacao.Errors.Add(new ValidationFailure("", mensagem));
-                LogFalha("Excluir", registro, resultadoValidacao);
+                //LogFalha("Excluir", registro, resultadoValidacao.Errors);
                 return resultadoValidacao;
             }
 

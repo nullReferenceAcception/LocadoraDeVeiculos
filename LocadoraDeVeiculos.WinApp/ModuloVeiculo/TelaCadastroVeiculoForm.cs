@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System.Drawing;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using FluentResults;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 {
@@ -35,7 +36,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             this.AjustarLabelsHover();
         }
 
-        public Func<Veiculo, ValidationResult> GravarRegistro { get; set; }
+        public Func<Veiculo, Result<Veiculo>> GravarRegistro { get; set; }
 
         private void ConfigurarTelaEditar()
         {
@@ -78,7 +79,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             if (!resultadoValidacao.IsValid)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage,CorParaRodape.Red);
+                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage, CorParaRodape.Red);
                 DialogResult = DialogResult.None;
             }
         }
