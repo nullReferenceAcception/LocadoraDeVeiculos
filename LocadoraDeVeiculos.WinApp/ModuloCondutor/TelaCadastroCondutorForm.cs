@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
+using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
@@ -34,7 +35,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             this.AjustarLabelsHover();
         }
 
-        public Func<Condutor, ValidationResult> GravarRegistro { get; set; }
+        public Func<Condutor, Result<Condutor>> GravarRegistro { get; set; }
 
         private void ConfigurarTelaEditar()
         {
@@ -68,9 +69,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
             var resultadoValidacao = GravarRegistro(_condutor);
 
-            if (!resultadoValidacao.IsValid)
+            if (resultadoValidacao.IsFailed)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage, CorParaRodape.Red);
+                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].Message, CorParaRodape.Red);
                 DialogResult = DialogResult.None;
             }
         }

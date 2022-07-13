@@ -20,7 +20,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
         public override void Inserir()
         {
-            if (_servicoCliente.QuantidadeRegistro() == 0)
+            if (_servicoCliente.QuantidadeRegistro().Value == 0)
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape($"Cadastre no mínimo uma empresa para cadastrar um veículo", CorParaRodape.Yellow);
                 return;
@@ -36,14 +36,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             DialogResult resultado = tela.ShowDialog();
 
             if (resultado == DialogResult.OK)
-                Carregarcondutor();
+                CarregarCondutor();
         }
 
         public override void Editar()
         {
             var numero = _tabelaCondutor.ObtemGuidCondutorSelecionado();
 
-            Condutor condutorSelecionado = _servicoCondutor.SelecionarPorGuid(numero);
+            Condutor condutorSelecionado = _servicoCondutor.SelecionarPorGuid(numero).Value;
 
             if (condutorSelecionado == null)
             {
@@ -60,14 +60,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             DialogResult resultado = tela.ShowDialog();
 
             if (resultado == DialogResult.OK)
-                Carregarcondutor();
+                CarregarCondutor();
         }
   
         public override void Excluir()
         {
             var numero = _tabelaCondutor.ObtemGuidCondutorSelecionado();
 
-            Condutor condutorSelecionado = _servicoCondutor.SelecionarPorGuid(numero);
+            Condutor condutorSelecionado = _servicoCondutor.SelecionarPorGuid(numero).Value;
 
             if (condutorSelecionado == null)
             {
@@ -82,11 +82,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
             if (resultado == DialogResult.OK)
             {
-                validationResult = _servicoCondutor.Excluir(condutorSelecionado);
-                Carregarcondutor();
+                var resultadoExclusao = _servicoCondutor.Excluir(condutorSelecionado);
 
-                if (validationResult.Errors.Count > 0)
-                    TelaPrincipalForm.Instancia.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro", CorParaRodape.Red);
+                if (resultadoExclusao.IsSuccess)
+                    CarregarCondutor();
+
+                else
+                    TelaPrincipalForm.Instancia.AtualizarRodape(resultadoExclusao.Errors[0].Message, CorParaRodape.Red);
             }
         }
 
@@ -94,7 +96,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         {
             var numero = _tabelaCondutor.ObtemGuidCondutorSelecionado();
 
-            Condutor condutorSelecionado = _servicoCondutor.SelecionarPorGuid(numero);
+            Condutor condutorSelecionado = _servicoCondutor.SelecionarPorGuid(numero).Value;
 
             if (condutorSelecionado == null)
             {
@@ -122,14 +124,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             if (_tabelaCondutor == null)
                 _tabelaCondutor = new TabelaCondutorControl();
 
-            Carregarcondutor();
+            CarregarCondutor();
 
             return _tabelaCondutor;
         }
 
-        private void Carregarcondutor()
+        private void CarregarCondutor()
         {
-            List<Condutor> condutores = _servicoCondutor.SelecionarTodos();
+            List<Condutor> condutores = _servicoCondutor.SelecionarTodos().Value;
 
             _tabelaCondutor.AtualizarRegistros(condutores);
 

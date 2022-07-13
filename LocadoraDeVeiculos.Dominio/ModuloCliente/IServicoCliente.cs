@@ -1,11 +1,12 @@
-﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+﻿using FluentResults;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using System.Collections.Generic;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 {
     public interface IServicoCliente : IServico<Cliente>
     {
-        List<Cliente> SelecionarTodosClientesQueSaoPessoaFisica();
-        List<Cliente> SelecionarTodosClientesQueSaoPessoaJuridica();
+        Result<List<Cliente>> SelecionarTodosClientesQueSaoPessoaFisica();
+        Result<List<Cliente>> SelecionarTodosClientesQueSaoPessoaJuridica();
     }
 }

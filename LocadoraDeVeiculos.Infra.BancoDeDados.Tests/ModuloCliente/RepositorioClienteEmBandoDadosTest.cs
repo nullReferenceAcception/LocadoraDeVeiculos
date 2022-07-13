@@ -22,7 +22,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Inserir(cliente);
 
-            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid);
+            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid).Value;
 
             Assert.AreEqual(cliente, cliente2);
         }
@@ -34,7 +34,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Inserir(cliente);
 
-            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid);
+            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid).Value;
 
             Assert.AreEqual(cliente, cliente2);
         }
@@ -50,7 +50,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Editar(cliente);
 
-            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid);
+            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid).Value;
 
             Assert.AreEqual(cliente2, cliente);
         }
@@ -64,7 +64,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Excluir(cliente);
 
-            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid);
+            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid).Value;
 
             cliente2.Should().Be(null);
         }
@@ -82,7 +82,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
                 registros.Add(cliente);
             }
 
-            List<Cliente> registrosDoBanco = _servicoCliente.SelecionarTodos();
+            List<Cliente> registrosDoBanco = _servicoCliente.SelecionarTodos().Value;
 
             Assert.IsTrue(registrosDoBanco.Count == registros.Count);
 
@@ -109,7 +109,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Inserir(clienteCNPJ);
 
-            List<Cliente> clientes = _servicoCliente.SelecionarTodosClientesQueSaoPessoaFisica();
+            List<Cliente> clientes = _servicoCliente.SelecionarTodosClientesQueSaoPessoaFisica().Value;
 
             clientes.Should().Contain(clienteCPF);
             clientes.Should().Contain(clienteCPF2);
@@ -135,7 +135,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Inserir(clienteCNPJ);
 
-            List<Cliente> clientes = _servicoCliente.SelecionarTodosClientesQueSaoPessoaJuridica();
+            List<Cliente> clientes = _servicoCliente.SelecionarTodosClientesQueSaoPessoaJuridica().Value;
 
             clientes.Should().Contain(clienteCNPJ);
         }

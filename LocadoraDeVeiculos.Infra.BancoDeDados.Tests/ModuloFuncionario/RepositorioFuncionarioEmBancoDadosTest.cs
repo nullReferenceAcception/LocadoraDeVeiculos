@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using FluentResults;
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
@@ -22,7 +23,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             servico.Inserir(registro);
 
-            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid);
+            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid).Value;
 
             Assert.AreEqual(registro, registro2);
         }
@@ -38,7 +39,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             servico.Editar(registro);
 
-            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid);
+            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid).Value;
 
             Assert.AreEqual(registro2, registro);
         }
@@ -52,7 +53,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             servico.Excluir(registro);
 
-            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid);
+            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid).Value;
 
             registro2.EstaAtivo.Should().Be(false);
         }
@@ -70,7 +71,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
                 registros.Add(registro);
             }
 
-            List<Funcionario> registrosDoBanco = servico.SelecionarTodos();
+            List<Funcionario> registrosDoBanco = servico.SelecionarTodos().Value;
 
 
             Assert.IsTrue(registrosDoBanco.Count == registros.Count);
@@ -85,7 +86,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
             Funcionario registro = CriarFuncionario();
             servico.Inserir(registro);
 
-            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid);
+            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid).Value;
 
             Assert.AreEqual(registro2, registro);
         }
@@ -103,9 +104,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             registro2.Login = registro.Login;
 
-            ValidationResult validationResult = servico.Inserir(registro2);
+            Result<Funcionario> validationResult = servico.Inserir(registro2).Value;
 
-            validationResult.Errors[0].ErrorMessage.Should().Contain("Login já está cadastrado");
+            validationResult.Errors[0].Message.Should().Contain("Login já está cadastrado");
         }
 
         private Funcionario CriarFuncionario()

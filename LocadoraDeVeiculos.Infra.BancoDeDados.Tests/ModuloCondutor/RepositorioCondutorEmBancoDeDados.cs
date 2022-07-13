@@ -131,7 +131,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 
             servico.Inserir(registro);
 
-            Condutor registro2 = servico.SelecionarPorGuid(registro.Guid);
+            Condutor registro2 = servico.SelecionarPorGuid(registro.Guid).Value;
 
             Assert.AreEqual(registro2, registro);
         }

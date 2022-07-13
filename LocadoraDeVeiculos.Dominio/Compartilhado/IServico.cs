@@ -8,7 +8,7 @@ namespace LocadoraDeVeiculos.Dominio.Compartilhado
     {
         Result<T> Inserir(T novoRegistro);
         Result<T> Editar(T registro);
-        Result<T> Excluir(T registro);
+        Result Excluir(T registro);
         Result<List<T>> SelecionarTodos();
         Result<T> SelecionarPorGuid(Guid numero);
         Result<int> QuantidadeRegistro();

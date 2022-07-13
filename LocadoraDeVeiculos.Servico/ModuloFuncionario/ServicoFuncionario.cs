@@ -1,5 +1,8 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
+﻿using FluentResults;
+using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Servico.Compartilhado;
+using Serilog;
+using System;
 using System.Collections.Generic;
 
 namespace LocadoraDeVeiculos.Servico.ModuloFuncionario
@@ -12,9 +15,20 @@ namespace LocadoraDeVeiculos.Servico.ModuloFuncionario
             this._repositorioFuncionario = repositorioFuncionario;
         }
 
-        public List<Funcionario> SelecionarDesativados()
+        public Result<List<Funcionario>> SelecionarDesativados()
         {
-            return _repositorioFuncionario.SelecionarDesativados();
+            try
+            {
+                return Result.Ok(_repositorioFuncionario.SelecionarDesativados());
+            }
+            catch (Exception ex)
+            {
+                string msgErro = $"Falha no sistema ao tentar selecionar todos os funcionarios desativados";
+
+                Log.Logger.Error(ex, msgErro);
+
+                return Result.Fail(msgErro);
+            }
         }
 
         protected override string SqlMensagemDeErroSeTiverDuplicidade => "Login já está cadastrado";
