@@ -106,7 +106,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
             tela.Condutor = condutorSelecionado;
 
-            tela.EstadoDeHabilitacao(false);
+            tela.Habilitar(false);
             tela.buttonCancelar.Enabled = true;
             tela.buttonCancelar.Text = "Voltar";
             tela.ShowDialog();

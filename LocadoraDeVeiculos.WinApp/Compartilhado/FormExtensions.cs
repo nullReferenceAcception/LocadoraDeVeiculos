@@ -42,21 +42,13 @@ namespace LocadoraDeVeiculos.WinApp
 
     public static class GuiExtensionMethods
     {
-        public static void EstadoDeHabilitacao(this Control con, bool enable)
+        public static void Habilitar(this Form con, bool enable)
         {
             if (con != null)
             {
                 foreach (Control c in con.Controls)
                 {
                     c.Enabled = enable;
-                }
-
-                try
-                {
-                    con.Invoke((MethodInvoker)(() => con.Enabled = enable));
-                }
-                catch
-                {
                 }
             }
         }

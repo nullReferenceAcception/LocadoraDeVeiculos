@@ -96,7 +96,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             tela.Cliente = clienteSelecionado;
 
-            tela.EstadoDeHabilitacao(false);
+            tela.Habilitar(false);
             tela.buttonCancelar.Enabled = true;
             tela.buttonCancelar.Text = "Voltar";
             tela.ShowDialog();
