@@ -7,7 +7,6 @@ namespace LocadoraDeVeiculos.Servico.ModuloCondutor
     {
         public ServicoCondutor(IRepositorioCondutor repositorioCondutor) : base(new ValidadorCondutor(), repositorioCondutor)
         {
-            
         }
 
         protected override string SqlMensagemDeErroSeTiverDuplicidade => "Nome já cadastrado";

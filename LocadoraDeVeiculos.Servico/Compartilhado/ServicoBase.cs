@@ -1,10 +1,12 @@
-﻿using FluentValidation;
+﻿using FluentResults;
+using FluentValidation;
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio;
 using Newtonsoft.Json;
 using Serilog;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Taikandi;
 
 namespace LocadoraDeVeiculos.Servico.Compartilhado
@@ -22,31 +24,39 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             this.repositorio = repositorio;
         }
 
-        public virtual ValidationResult Inserir(T registro)
+        public virtual Result<T> Inserir(T registro)
         {
             registro.Guid = SequentialGuid.NewGuid();
 
             Log.Logger.Debug($"Inserindo: {typeof(T).Name}");
 
-            ValidationResult resultadoValidacao = ValidarRegistro(registro);
+            Result resultadoValidacao = ValidarRegistro(registro);
 
-            if (resultadoValidacao.IsValid == false)
+            if (resultadoValidacao.IsFailed)
             {
-                LogFalha("Inserir", registro, resultadoValidacao);
-                return resultadoValidacao;
+                LogFalha("Inserir", registro, resultadoValidacao.Errors);
+                return Result.Fail(resultadoValidacao.Errors);
             }
 
-            repositorio.Inserir(registro);
-            Log.Logger.Debug("Inserido: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
-
-            return resultadoValidacao;
+            try
+            {
+                repositorio.Inserir(registro);
+                Log.Logger.Debug("Inserido: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
+                return Result.Ok(registro);
+            }
+            catch (Exception ex)
+            {
+                string mensagem = $"Falha no sistema ao tentar inserir o {typeof(T).Name}";
+                Log.Logger.Error(ex, mensagem + registro.Guid);
+                return Result.Fail(mensagem);
+            }
         }
 
         public virtual ValidationResult Editar(T registro)
         {
             Log.Logger.Debug($"Editando: {typeof(T).Name}");
 
-            ValidationResult resultadoValidacao = ValidarRegistro(registro);
+            Result resultadoValidacao = ValidarRegistro(registro);
 
             if (resultadoValidacao.IsValid == false)
             {
@@ -98,24 +108,23 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         protected abstract string SqlMensagemDeErroSeTiverDuplicidade { get; }
 
-        protected virtual ValidationResult HaDuplicidade(T registro, ValidationResult resultadoValidacao)
+        protected virtual bool HaDuplicidade(T registro)
         {
             if (TiverDuplicidade(registro))
-                resultadoValidacao.Errors.Add(new ValidationFailure("", SqlMensagemDeErroSeTiverDuplicidade));
-
-            return resultadoValidacao;
+                return true;
+            return false;
         }
 
-        private static void LogFalha(string funcao, T registro, ValidationResult resultadoValidacao)
+        private void LogFalha(string funcao, T registro, List<IError> erros)
         {
             Log.Logger.Error("Falha ao {funcao} \n {@registro}", funcao, JsonConvert.SerializeObject(registro, Formatting.Indented));
 
-            foreach (var item in resultadoValidacao.Errors)
+            foreach (var item in erros)
             {
-                if (item  == (resultadoValidacao.Errors[resultadoValidacao.Errors.Count -1]))
-                Log.Logger.Error(item.ErrorMessage + Environment.NewLine);
+                if (item == (erros[erros.Count - 1]))
+                    Log.Logger.Error(item.Message + Environment.NewLine);
                 else
-                    Log.Logger.Error(item.ErrorMessage);
+                    Log.Logger.Error(item.Message);
             }
         }
 
@@ -124,16 +133,22 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             return repositorio.VerificarDuplicidade(repositorio.SqlDuplicidade(registro));
         }
 
-        private ValidationResult ValidarRegistro(T registro)
+        private Result ValidarRegistro(T registro)
         {
             var resultadoValidacao = validador.Validate(registro);
 
-            if (resultadoValidacao.IsValid == false)
-                return resultadoValidacao;
+            List<Error> erros = new();
 
-            resultadoValidacao = HaDuplicidade(registro, resultadoValidacao);
+            foreach (ValidationFailure erro in resultadoValidacao.Errors)
+                erros.Add(new Error(erro.ErrorMessage));
 
-            return resultadoValidacao;
+            if (HaDuplicidade(registro))
+                erros.Add(new Error(SqlMensagemDeErroSeTiverDuplicidade));
+
+            if (erros.Any())
+                return Result.Fail(erros);
+
+            return Result.Ok();
         }
     }
 }

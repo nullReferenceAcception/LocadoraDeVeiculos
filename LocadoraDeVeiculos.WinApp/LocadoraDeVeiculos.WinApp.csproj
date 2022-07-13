@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentResults" Version="3.8.0" />
     <PackageReference Include="FluentValidation" Version="11.1.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
