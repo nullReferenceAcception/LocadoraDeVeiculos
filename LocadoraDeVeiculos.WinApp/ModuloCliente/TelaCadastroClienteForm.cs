@@ -78,7 +78,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             maskedTextBoxCNH.Enabled = true;
             maskedTextBoxCPF.Enabled = true;
             maskedTextBoxCNPJ.Enabled = false;
-            dateTimePickerValidadeCNH.EstadoDeHabilitacao(true);
+            dateTimePickerValidadeCNH.Enabled = true;
             maskedTextBoxCNPJ.Clear();
             maskedTextBoxCPF.Focus();
             labelCNPJ.Cursor = DefaultCursor;
@@ -92,7 +92,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             maskedTextBoxCNH.Enabled = false;
             maskedTextBoxCNPJ.Enabled = true;
             maskedTextBoxCPF.Enabled = false;
-            dateTimePickerValidadeCNH.EstadoDeHabilitacao(false);
+            dateTimePickerValidadeCNH.Enabled =false;
             maskedTextBoxCPF.Clear();
             maskedTextBoxCNPJ.Focus();
             maskedTextBoxCNH.Clear();

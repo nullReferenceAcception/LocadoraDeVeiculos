@@ -111,7 +111,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
             tela.PlanoCobranca = planoCobrancaSelecionado;
 
-            tela.EstadoDeHabilitacao(false);
+            tela.Habilitar(false);
             tela.buttonCancelar.Enabled = true;
             tela.buttonCancelar.Text = "Voltar";
             tela.ShowDialog();
