@@ -19,7 +19,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Guid", HeaderText = "Guid"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Guid", HeaderText = "Guid", MinimumWidth = 200},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Modelo", HeaderText = "Modelo"},
 
