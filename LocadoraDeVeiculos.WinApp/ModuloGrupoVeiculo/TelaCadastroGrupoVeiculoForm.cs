@@ -26,6 +26,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
             InitializeComponent();
             this.ConfigurarTela();
             ConfigurarComponentes();
+            this.AjustarLabelsHover();
         }
 
         private void buttonGravar_Click(object sender, EventArgs e)

@@ -9,6 +9,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         {
             InitializeComponent();
             this.ConfigurarTela();
+            this.AjustarLabelsHover();
         }
 
         private void labelLocacao_Click(object sender, EventArgs e)

@@ -162,7 +162,7 @@
             this.textBoxEmail.Location = new System.Drawing.Point(6, 409);
             this.textBoxEmail.MaxLength = 100;
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(163, 23);
+            this.textBoxEmail.Size = new System.Drawing.Size(213, 23);
             this.textBoxEmail.TabIndex = 6;
             // 
             // maskedTextBoxTelefone
@@ -211,7 +211,8 @@
             // 
             this.buttonGravar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonGravar.Location = new System.Drawing.Point(244, 506);
+            this.buttonGravar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.buttonGravar.Location = new System.Drawing.Point(153, 507);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 34);
             this.buttonGravar.TabIndex = 8;
@@ -223,7 +224,8 @@
             // 
             this.buttonCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancelar.Location = new System.Drawing.Point(317, 506);
+            this.buttonCancelar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.buttonCancelar.Location = new System.Drawing.Point(226, 507);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 34);
             this.buttonCancelar.TabIndex = 9;
@@ -275,7 +277,7 @@
             this.groupBoxCondutor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.groupBoxCondutor.Location = new System.Drawing.Point(12, 12);
             this.groupBoxCondutor.Name = "groupBoxCondutor";
-            this.groupBoxCondutor.Size = new System.Drawing.Size(372, 489);
+            this.groupBoxCondutor.Size = new System.Drawing.Size(281, 489);
             this.groupBoxCondutor.TabIndex = 27;
             this.groupBoxCondutor.TabStop = false;
             this.groupBoxCondutor.Text = "Dados do condutor:";
@@ -331,7 +333,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 546);
+            this.ClientSize = new System.Drawing.Size(306, 546);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonGravar);
             this.Controls.Add(this.groupBoxCondutor);

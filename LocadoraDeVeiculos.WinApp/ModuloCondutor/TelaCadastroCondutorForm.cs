@@ -31,6 +31,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             comboBoxClienteFisico.Enabled = false;
             this.ConfigurarTela();
             ConfigurarComponentes();
+            this.AjustarLabelsHover();
         }
 
         public Func<Condutor, ValidationResult> GravarRegistro { get; set; }

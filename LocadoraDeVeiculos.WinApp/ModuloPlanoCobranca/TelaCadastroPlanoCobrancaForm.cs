@@ -31,6 +31,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             this._servicoGrupoVeiculos = servicoGrupoVeiculos;
             textBoxNome.Focus();
             textBoxNome.AceitaSoLetras();
+            this.AjustarLabelsHover();
         }
 
         public Func<PlanoCobranca, ValidationResult> GravarRegistro { get; set; }

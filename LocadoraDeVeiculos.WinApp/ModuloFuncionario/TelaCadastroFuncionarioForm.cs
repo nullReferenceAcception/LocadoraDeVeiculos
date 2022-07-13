@@ -24,6 +24,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             InitializeComponent();
             this.ConfigurarTela();
             ConfigurarComponentes();
+            this.AjustarLabelsHover();
         }
 
         public Func<Funcionario, ValidationResult> GravarRegistro { get; set; }

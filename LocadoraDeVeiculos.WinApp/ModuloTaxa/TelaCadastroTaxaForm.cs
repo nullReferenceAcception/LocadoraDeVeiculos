@@ -25,6 +25,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             textBoxValor.AceitaNumeroEVirgulaPoeMascaraMoeda();
             this.ConfigurarTela();
             ConfigurarComponentes();
+            this.AjustarLabelsHover();
         }
 
         public Func<Taxa, ValidationResult> GravarRegistro { get; set; }

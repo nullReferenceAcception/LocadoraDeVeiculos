@@ -32,6 +32,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             CarregarCombustiveis();
             CarregarGrupoVeiculos();
             ConfigurarComponentes();
+            this.AjustarLabelsHover();
         }
 
         public Func<Veiculo, ValidationResult> GravarRegistro { get; set; }
