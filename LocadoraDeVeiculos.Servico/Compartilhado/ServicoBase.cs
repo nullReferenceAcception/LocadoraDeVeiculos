@@ -28,7 +28,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
         {
             registro.Guid = SequentialGuid.NewGuid();
 
-            Log.Logger.Debug($"Inserindo: {typeof(T).Name}");
+            Log.Logger.Debug("Inserindo: {nome}", typeof(T).Name);
 
             Result resultadoValidacao = ValidarRegistro(registro);
 
@@ -46,29 +46,36 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
             catch (Exception ex)
             {
-                string mensagem = $"Falha no sistema ao tentar inserir o {typeof(T).Name}";
-                Log.Logger.Error(ex, mensagem + registro.Guid);
+                string mensagem = "Falha no sistema ao tentar inserir ";
+                Log.Logger.Error(ex, mensagem + "{nome}" + registro.Guid, typeof(T).Name);
                 return Result.Fail(mensagem);
             }
         }
 
-        public virtual ValidationResult Editar(T registro)
+        public virtual Result<T> Editar(T registro)
         {
-            Log.Logger.Debug($"Editando: {typeof(T).Name}");
+            Log.Logger.Debug("Editando: {nome} - ID: {guid}", typeof(T).Name, registro.Guid);
 
             Result resultadoValidacao = ValidarRegistro(registro);
 
-            if (resultadoValidacao.IsValid == false)
+            if (resultadoValidacao.IsFailed)
             {
-                LogFalha("Editar", registro, resultadoValidacao);
-                return resultadoValidacao;
+                LogFalha("Editar", registro, resultadoValidacao.Errors);
+                return Result.Fail(resultadoValidacao.Errors);
             }
 
-            repositorio.Editar(registro);
-
-            Log.Logger.Debug("Editado: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
-
-            return resultadoValidacao;
+            try
+            {
+                repositorio.Editar(registro);
+                Log.Logger.Debug("Editado: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
+                return Result.Ok(registro);
+            }
+            catch (Exception ex)
+            {
+                string mensagem = "Falha no sistema ao tentar editar ";
+                Log.Logger.Error(ex, mensagem + "{nome}" + registro.Guid, typeof(T).Name);
+                return Result.Fail(mensagem);
+            }
         }
 
         public ValidationResult Excluir(T registro)
