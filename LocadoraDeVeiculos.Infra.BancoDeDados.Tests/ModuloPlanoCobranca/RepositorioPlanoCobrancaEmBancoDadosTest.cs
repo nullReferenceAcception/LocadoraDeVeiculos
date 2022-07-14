@@ -5,7 +5,6 @@ using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca;
-using LocadoraDeVeiculos.Infra.BancoDeDados.Tests.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Servico.ModuloPlanoCobranca;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -98,13 +97,25 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
             GrupoVeiculos grupoVeiculos = new GrupoVeiculos("grupo");
             _servicoGrupoVeiculo.Inserir(grupoVeiculos);
 
-            for (int i = 0; i < 10; i++)
-            {
-                PlanoCobranca PlanoCobranca = new PlanoCobranca(FuncoesTeste.GerarNovaStringAleatoria(), random.Next(1,200), random.Next(1, 200), random.Next(1, 200),PlanoEnum.KmLivre, grupoVeiculos);
+           
+                PlanoCobranca PlanoCobranca = new PlanoCobranca(GerarNovaStringAleatoria(), random.Next(1,200), random.Next(1, 200), random.Next(1, 200),PlanoEnum.KmLivre, grupoVeiculos);
 
-                _servicoPlanoCobranca.Inserir(PlanoCobranca);
-                registros.Add(PlanoCobranca);
-            }
+            PlanoCobranca PlanoCobranca2 = new PlanoCobranca(GerarNovaStringAleatoria(), random.Next(1, 200), random.Next(1, 200), random.Next(1, 200), PlanoEnum.KmControlado, grupoVeiculos);
+
+            PlanoCobranca PlanoCobranca3 = new PlanoCobranca(GerarNovaStringAleatoria(), random.Next(1, 200), random.Next(1, 200), random.Next(1, 200), PlanoEnum.Diario, grupoVeiculos);
+
+            _servicoPlanoCobranca.Inserir(PlanoCobranca);
+
+            _servicoPlanoCobranca.Inserir(PlanoCobranca2);
+
+            _servicoPlanoCobranca.Inserir(PlanoCobranca3);
+
+            registros.Add(PlanoCobranca);
+
+            registros.Add(PlanoCobranca2);
+
+            registros.Add(PlanoCobranca3);
+
 
             List<PlanoCobranca> registrosDoBanco = _servicoPlanoCobranca.SelecionarTodos();
 
@@ -119,7 +130,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
         {
             GrupoVeiculos grupoVeiculos = new GrupoVeiculos("grupo");
             _servicoGrupoVeiculo.Inserir(grupoVeiculos);
-            return new PlanoCobranca(FuncoesTeste.GerarNovaStringAleatoria(), random.Next(1, 200), random.Next(1, 200), random.Next(1, 200),PlanoEnum.KmControlado, grupoVeiculos);
+            return new PlanoCobranca(GerarNovaStringAleatoria(), random.Next(1, 200), random.Next(1, 200), random.Next(1, 200),PlanoEnum.KmControlado, grupoVeiculos);
         }
     }
 }

@@ -1,5 +1,9 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
+﻿using FluentResults;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Servico.Compartilhado;
+using Serilog;
+using System;
 using System.Collections.Generic;
 
 namespace LocadoraDeVeiculos.Servico.ModuloCliente
@@ -13,14 +17,38 @@ namespace LocadoraDeVeiculos.Servico.ModuloCliente
             this._repositorioCliente = repositorioCliente;
         }
 
-        public List<Cliente> SelecionarTodosClientesQueSaoPessoaFisica()
+        public Result<List<Cliente>> SelecionarTodosClientesQueSaoPessoaFisica()
         {
-            return _repositorioCliente.SelecionarTodosClientesQueSaoPessoaFisica();
+
+            try
+            {
+                return Result.Ok(_repositorioCliente.SelecionarTodosClientesQueSaoPessoaFisica());
+            }
+            catch (Exception ex)
+            {
+                string msgErro = $"Falha no sistema ao tentar selecionar todos os clientes fisicos ";
+
+                Log.Logger.Error(ex, msgErro);
+
+                return Result.Fail(msgErro);
+            }
+
         }
 
-        public List<Cliente> SelecionarTodosClientesQueSaoPessoaJuridica()
+        public Result<List<Cliente>> SelecionarTodosClientesQueSaoPessoaJuridica()
         {
-            return _repositorioCliente.SelecionarTodosClientesQueSaoPessoaJuridica();
+            try
+            {
+                return Result.Ok(_repositorioCliente.SelecionarTodosClientesQueSaoPessoaJuridica());
+            }
+            catch (Exception ex)
+            {
+                string msgErro = $"Falha no sistema ao tentar selecionar todos os clientes juridicos";
+
+                Log.Logger.Error(ex, msgErro);
+
+                return Result.Fail(msgErro);
+            }
         }
 
         protected override string SqlMensagemDeErroSeTiverDuplicidade => "Nome já está cadastrado";

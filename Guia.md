@@ -1,7 +1,7 @@
 <h2 style="color:red" id='topo'> Guia de padrões e roteiro de processo </h2>
 
 ___
-<a href="https://i.ibb.co/k4TC8N8/image.png">Modelo atual MVC</a>
+<a href="https://i.ibb.co/k4TC8N8/image.png" target="_blank">Modelo atual MVC</a>
 
 ___
 
@@ -40,7 +40,7 @@ Passos para voltar a <span style="color:#64b2d1">BRANCH</span> na <span style="c
 
 7. Push na main
 
-<a href="https://i.ibb.co/TB9Kj37/fluxoGit.png"><strong style="color:HotPink">Imagem auxiliar</strong></a>
+<a href="https://i.ibb.co/TB9Kj37/fluxoGit.png" target="_blank"><strong style="color:HotPink">Imagem auxiliar</strong></a>
 
 ___
 <h3 id='errosGit' style="color:violet">Erros</h3>

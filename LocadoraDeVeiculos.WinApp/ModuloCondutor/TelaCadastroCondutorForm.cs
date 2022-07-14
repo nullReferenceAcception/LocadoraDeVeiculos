@@ -1,4 +1,4 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
@@ -26,14 +26,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         {
             InitializeComponent();
             this._servicoCliente = servicoCliente;
-            comboBoxEmpresa.DataSource = servicoCliente.SelecionarTodos();
-            comboBoxClienteFisico.DataSource = servicoCliente.SelecionarTodosClientesQueSaoPessoaFisica();
+            comboBoxDirigePara.DataSource = servicoCliente.SelecionarTodos().Value;
+            comboBoxClienteFisico.DataSource = servicoCliente.SelecionarTodosClientesQueSaoPessoaFisica().Value;
             comboBoxClienteFisico.Enabled = false;
             this.ConfigurarTela();
             ConfigurarComponentes();
+            this.AjustarLabelsHover();
         }
 
-        public Func<Condutor, ValidationResult> GravarRegistro { get; set; }
+        public Func<Condutor, Result<Condutor>> GravarRegistro { get; set; }
 
         private void ConfigurarTelaEditar()
         {
@@ -46,7 +47,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             textBoxEmail.Text = _condutor.Email;
             maskedTextBoxTelefone.Text = _condutor.Telefone;
             maskedTextBoxCPF.Text = _condutor.CPF;
-            comboBoxEmpresa.SelectedItem = _condutor.Cliente;
+            comboBoxDirigePara.SelectedItem = _condutor.Cliente;
         }
 
         private void ObterDadosDaTela()
@@ -58,7 +59,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             _condutor.CPF = maskedTextBoxCPF.Text;
             _condutor.Email = textBoxEmail.Text;
             _condutor.Telefone = maskedTextBoxTelefone.Text;
-            _condutor.Cliente = (Cliente)comboBoxEmpresa.SelectedItem;
+            _condutor.Cliente = (Cliente)comboBoxDirigePara.SelectedItem;
         }
  
         private void buttonGravar_Click(object sender, EventArgs e)
@@ -67,9 +68,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
             var resultadoValidacao = GravarRegistro(_condutor);
 
-            if (!resultadoValidacao.IsValid)
+            if (resultadoValidacao.IsFailed)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage, CorParaRodape.Red);
+                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].Message, CorParaRodape.Red);
                 DialogResult = DialogResult.None;
             }
         }
@@ -181,11 +182,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             textBoxEmail.Select();
         }
 
-        private void labelEmpresa_Click(object sender, EventArgs e)
+        private void labelDirigePara_Click(object sender, EventArgs e)
         {
-            comboBoxEmpresa.DroppedDown = true;
-            comboBoxEmpresa.SelectedIndex = 0;
-            comboBoxEmpresa.Select();
+            comboBoxDirigePara.DroppedDown = true;
+            comboBoxDirigePara.SelectedIndex = 0;
+            comboBoxDirigePara.Select();
         }
     }
 }

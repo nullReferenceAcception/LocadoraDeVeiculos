@@ -2,7 +2,6 @@
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente;
-using LocadoraDeVeiculos.Infra.BancoDeDados.Tests.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloCliente;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -23,7 +22,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Inserir(cliente);
 
-            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid);
+            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid).Value;
 
             Assert.AreEqual(cliente, cliente2);
         }
@@ -35,7 +34,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Inserir(cliente);
 
-            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid);
+            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid).Value;
 
             Assert.AreEqual(cliente, cliente2);
         }
@@ -51,7 +50,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Editar(cliente);
 
-            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid);
+            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid).Value;
 
             Assert.AreEqual(cliente2, cliente);
         }
@@ -65,7 +64,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Excluir(cliente);
 
-            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid);
+            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid).Value;
 
             cliente2.Should().Be(null);
         }
@@ -78,12 +77,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             for (int i = 0; i < 10; i++)
             {
-                 cliente = new Cliente(FuncoesTeste.GerarNovaStringAleatoria(), FuncoesTeste.GerarNovaStringAleatoria(), "12345678900", "joao@joao.com", "49989090909", true, "09876543211", null, DateTime.Today);
+                 cliente = new Cliente(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "12345678900", "joao@joao.com", "49989090909", true, "09876543211", null, DateTime.Today);
                 _servicoCliente.Inserir(cliente);
                 registros.Add(cliente);
             }
 
-            List<Cliente> registrosDoBanco = _servicoCliente.SelecionarTodos();
+            List<Cliente> registrosDoBanco = _servicoCliente.SelecionarTodos().Value;
 
             Assert.IsTrue(registrosDoBanco.Count == registros.Count);
 
@@ -110,7 +109,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Inserir(clienteCNPJ);
 
-            List<Cliente> clientes = _servicoCliente.SelecionarTodosClientesQueSaoPessoaFisica();
+            List<Cliente> clientes = _servicoCliente.SelecionarTodosClientesQueSaoPessoaFisica().Value;
 
             clientes.Should().Contain(clienteCPF);
             clientes.Should().Contain(clienteCPF2);
@@ -136,19 +135,19 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Inserir(clienteCNPJ);
 
-            List<Cliente> clientes = _servicoCliente.SelecionarTodosClientesQueSaoPessoaJuridica();
+            List<Cliente> clientes = _servicoCliente.SelecionarTodosClientesQueSaoPessoaJuridica().Value;
 
             clientes.Should().Contain(clienteCNPJ);
         }
 
         private Cliente CriarClienteComCPF()
         {
-            return new Cliente(FuncoesTeste.GerarNovaStringAleatoria(), FuncoesTeste.GerarNovaStringAleatoria(), "12345678900", "joao@joao.com", "49989090909", true, "12340567889", null!, DateTime.Today);
+            return new Cliente(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "12345678900", "joao@joao.com", "49989090909", true, "12340567889", null!, DateTime.Today);
         }
 
         private Cliente CriarClienteComCNPJ()
         {
-            return new Cliente(FuncoesTeste.GerarNovaStringAleatoria(), FuncoesTeste.GerarNovaStringAleatoria(), "12345678900", "joao@joao.com", "49989090909", false, null!, "12340567889876", DateTime.Today);
+            return new Cliente(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "12345678900", "joao@joao.com", "49989090909", false, null!, "12340567889876", DateTime.Today);
         }
     }
 }

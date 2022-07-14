@@ -1,10 +1,12 @@
-﻿using FluentValidation;
+﻿using FluentResults;
+using FluentValidation;
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio;
 using Newtonsoft.Json;
 using Serilog;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Taikandi;
 
 namespace LocadoraDeVeiculos.Servico.Compartilhado
@@ -22,100 +24,148 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             this.repositorio = repositorio;
         }
 
-        public virtual ValidationResult Inserir(T registro)
+        public virtual Result<T> Inserir(T registro)
         {
             registro.Guid = SequentialGuid.NewGuid();
 
-            Log.Logger.Debug($"Inserindo: {typeof(T).Name}");
+            Log.Logger.Debug("Inserindo: {nome}", typeof(T).Name);
 
-            ValidationResult resultadoValidacao = ValidarRegistro(registro);
+            Result resultadoValidacao = ValidarRegistro(registro);
 
-            if (resultadoValidacao.IsValid == false)
+            if (resultadoValidacao.IsFailed)
             {
-                LogFalha("Inserir", registro, resultadoValidacao);
-                return resultadoValidacao;
+                LogFalha("Inserir", registro, resultadoValidacao.Errors);
+                return Result.Fail(resultadoValidacao.Errors);
             }
 
-            repositorio.Inserir(registro);
-            Log.Logger.Debug("Inserido: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
-
-            return resultadoValidacao;
+            try
+            {
+                repositorio.Inserir(registro);
+                Log.Logger.Debug("Inserido: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
+                return Result.Ok(registro);
+            }
+            catch (Exception ex)
+            {
+                string mensagem = "Falha no sistema ao tentar inserir ";
+                Log.Logger.Error(ex, mensagem + "{nome}" + registro.Guid, typeof(T).Name);
+                return Result.Fail(mensagem);
+            }
         }
 
-        public virtual ValidationResult Editar(T registro)
+        public virtual Result<T> Editar(T registro)
         {
-            Log.Logger.Debug($"Editando: {typeof(T).Name}");
+            Log.Logger.Debug("Editando: {nome} - ID: {guid}", typeof(T).Name, registro.Guid);
 
-            ValidationResult resultadoValidacao = ValidarRegistro(registro);
+            Result resultadoValidacao = ValidarRegistro(registro);
 
-            if (resultadoValidacao.IsValid == false)
+            if (resultadoValidacao.IsFailed)
             {
-                LogFalha("Editar", registro, resultadoValidacao);
-                return resultadoValidacao;
+                LogFalha("Editar", registro, resultadoValidacao.Errors);
+                return Result.Fail(resultadoValidacao.Errors);
             }
 
-            repositorio.Editar(registro);
-
-            Log.Logger.Debug("Editado: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
-
-            return resultadoValidacao;
-        }
-
-        public ValidationResult Excluir(T registro)
-        {
-            Log.Logger.Debug($"Excluindo: {typeof(T).Name}");
-
-            ValidationResult resultadoValidacao = new();
-
-            string mensagem = repositorio.Excluir(registro);
-
-            if (!string.IsNullOrEmpty(mensagem))
+            try
             {
-                resultadoValidacao.Errors.Add(new ValidationFailure("", mensagem));
-                LogFalha("Excluir", registro, resultadoValidacao);
-                return resultadoValidacao;
+                repositorio.Editar(registro);
+                Log.Logger.Debug("Editado: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
+                return Result.Ok(registro);
             }
-
-            Log.Logger.Debug("Excluido: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
-
-            return resultadoValidacao;
+            catch (Exception ex)
+            {
+                string mensagem = "Falha no sistema ao tentar editar ";
+                Log.Logger.Error(ex, mensagem + "{nome}" + registro.Guid, typeof(T).Name);
+                return Result.Fail(mensagem);
+            }
         }
 
-        public List<T> SelecionarTodos()
+        public Result Excluir(T registro)
         {
-            return repositorio.SelecionarTodos();
+            Log.Logger.Debug("Excluindo: {classe}", typeof(T).Name);
+
+            try
+            {
+                repositorio.Excluir(registro);
+
+                Log.Logger.Debug("Excluido: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
+
+                return Result.Ok();
+            }
+            catch (Exception ex)
+            {
+                string msgErro = "Falha no sistema ao tentar excluir o ";
+
+                Log.Logger.Error(ex, msgErro + "{classe}" + "{Guid}", typeof(T).Name, registro.Guid);
+
+                return Result.Fail(msgErro);
+            }
         }
 
-        public T SelecionarPorGuid(Guid guid)
+        public Result<List<T>> SelecionarTodos()
         {
-            return repositorio.SelecionarPorGuid(guid);
+            try
+            {
+                return Result.Ok(repositorio.SelecionarTodos());
+            }
+            catch (Exception ex)
+            {
+                string msgErro = $"Falha no sistema ao tentar selecionar todos os ";
+
+                Log.Logger.Error(ex, msgErro + "{classe}", typeof(T).Name + "s");
+
+                return Result.Fail(msgErro);
+            }
         }
 
-        public int QuantidadeRegistro()
+        public Result<T> SelecionarPorGuid(Guid guid)
         {
-            return repositorio.QuantidadeRegistros();
+            try
+            {
+                return Result.Ok(repositorio.SelecionarPorGuid(guid));
+            }
+            catch (Exception ex)
+            {
+                string msgErro = $"Falha no sistema ao tentar selecionar o ";
+
+                Log.Logger.Error(ex, msgErro + "{classe}  + {Guid}", typeof(T).Name, guid );
+
+                return Result.Fail(msgErro);
+            }
+        }
+
+        public Result<int> QuantidadeRegistro()
+        {
+            try
+            {
+                return Result.Ok(repositorio.QuantidadeRegistros());
+            }
+            catch (Exception ex)
+            {
+                string msgErro = "Falha no sistema ao pegar quantidade de ";
+
+                Log.Logger.Error(ex, msgErro + "{classe}", typeof(T).Name);
+                return Result.Fail(msgErro);
+            }
         }
 
         protected abstract string SqlMensagemDeErroSeTiverDuplicidade { get; }
 
-        protected virtual ValidationResult HaDuplicidade(T registro, ValidationResult resultadoValidacao)
+        protected virtual bool HaDuplicidade(T registro)
         {
             if (TiverDuplicidade(registro))
-                resultadoValidacao.Errors.Add(new ValidationFailure("", SqlMensagemDeErroSeTiverDuplicidade));
-
-            return resultadoValidacao;
+                return true;
+            return false;
         }
 
-        private static void LogFalha(string funcao, T registro, ValidationResult resultadoValidacao)
+        private void LogFalha(string funcao, T registro, List<IError> erros)
         {
             Log.Logger.Error("Falha ao {funcao} \n {@registro}", funcao, JsonConvert.SerializeObject(registro, Formatting.Indented));
 
-            foreach (var item in resultadoValidacao.Errors)
+            foreach (var item in erros)
             {
-                if (item  == (resultadoValidacao.Errors[resultadoValidacao.Errors.Count -1]))
-                Log.Logger.Error(item.ErrorMessage + Environment.NewLine);
+                if (item == (erros[erros.Count - 1]))
+                    Log.Logger.Error(item.Message + Environment.NewLine);
                 else
-                    Log.Logger.Error(item.ErrorMessage);
+                    Log.Logger.Error(item.Message);
             }
         }
 
@@ -124,16 +174,22 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             return repositorio.VerificarDuplicidade(repositorio.SqlDuplicidade(registro));
         }
 
-        private ValidationResult ValidarRegistro(T registro)
+        private Result ValidarRegistro(T registro)
         {
             var resultadoValidacao = validador.Validate(registro);
 
-            if (resultadoValidacao.IsValid == false)
-                return resultadoValidacao;
+            List<Error> erros = new();
 
-            resultadoValidacao = HaDuplicidade(registro, resultadoValidacao);
+            foreach (ValidationFailure erro in resultadoValidacao.Errors)
+                erros.Add(new Error(erro.ErrorMessage));
 
-            return resultadoValidacao;
+            if (HaDuplicidade(registro))
+                erros.Add(new Error(SqlMensagemDeErroSeTiverDuplicidade));
+
+            if (erros.Any())
+                return Result.Fail(erros);
+
+            return Result.Ok();
         }
     }
 }

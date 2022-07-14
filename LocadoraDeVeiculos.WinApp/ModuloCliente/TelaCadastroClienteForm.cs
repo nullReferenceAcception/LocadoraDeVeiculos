@@ -1,4 +1,4 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
@@ -25,9 +25,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             InitializeComponent();
             this.ConfigurarTela();
             ConfigurarComponentes();
+            this.AjustarLabelsHover();
         }
 
-        public Func<Cliente, ValidationResult> GravarRegistro { get; set; }
+        public Func<Cliente, Result<Cliente>> GravarRegistro { get; set; }
 
         private void ConfigurarTelaEditar()
         {
@@ -77,7 +78,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             maskedTextBoxCNH.Enabled = true;
             maskedTextBoxCPF.Enabled = true;
             maskedTextBoxCNPJ.Enabled = false;
-            dateTimePickerValidadeCNH.EstadoDeHabilitacao(true);
+            dateTimePickerValidadeCNH.Enabled = true;
             maskedTextBoxCNPJ.Clear();
             maskedTextBoxCPF.Focus();
             labelCNPJ.Cursor = DefaultCursor;
@@ -91,7 +92,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             maskedTextBoxCNH.Enabled = false;
             maskedTextBoxCNPJ.Enabled = true;
             maskedTextBoxCPF.Enabled = false;
-            dateTimePickerValidadeCNH.EstadoDeHabilitacao(false);
+            dateTimePickerValidadeCNH.Enabled = false;
             maskedTextBoxCPF.Clear();
             maskedTextBoxCNPJ.Focus();
             maskedTextBoxCNH.Clear();
@@ -107,9 +108,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             var resultadoValidacao = GravarRegistro(Cliente);
 
-            if (!resultadoValidacao.IsValid)
+            if (resultadoValidacao.IsFailed)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage, CorParaRodape.Red);
+                string erro = resultadoValidacao.Errors[0].Message;
+
+                TelaPrincipalForm.Instancia.AtualizarRodape(erro, CorParaRodape.Red);
+
                 DialogResult = DialogResult.None;
             }
         }

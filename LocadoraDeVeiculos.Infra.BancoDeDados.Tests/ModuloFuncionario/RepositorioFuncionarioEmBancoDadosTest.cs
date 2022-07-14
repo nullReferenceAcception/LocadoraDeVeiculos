@@ -1,9 +1,9 @@
 ﻿using FluentAssertions;
+using FluentResults;
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario;
-using LocadoraDeVeiculos.Infra.BancoDeDados.Tests.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloFuncionario;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -23,7 +23,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             servico.Inserir(registro);
 
-            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid);
+            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid).Value;
 
             Assert.AreEqual(registro, registro2);
         }
@@ -39,7 +39,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             servico.Editar(registro);
 
-            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid);
+            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid).Value;
 
             Assert.AreEqual(registro2, registro);
         }
@@ -53,7 +53,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             servico.Excluir(registro);
 
-            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid);
+            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid).Value;
 
             registro2.EstaAtivo.Should().Be(false);
         }
@@ -65,13 +65,13 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             for (int i = 0; i < 10; i++)
             {
-                Funcionario registro = new(FuncoesTeste.GerarNovaStringAleatoria(), FuncoesTeste.GerarNovaStringAleatoria(), "s@s.s", "49989090909", GerarNovaPlaca(), FuncoesTeste.GerarNovaStringAleatoria(), DateTime.Today, 12, true, FuncoesTeste.GerarNovaStringAleatoria(), true);
+                Funcionario registro = new(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "s@s.s", "49989090909", GerarNovaPlaca(), GerarNovaStringAleatoria(), DateTime.Today, 12, true, GerarNovaStringAleatoria(), true);
 
                 servico.Inserir(registro);
                 registros.Add(registro);
             }
 
-            List<Funcionario> registrosDoBanco = servico.SelecionarTodos();
+            List<Funcionario> registrosDoBanco = servico.SelecionarTodos().Value;
 
 
             Assert.IsTrue(registrosDoBanco.Count == registros.Count);
@@ -86,7 +86,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
             Funcionario registro = CriarFuncionario();
             servico.Inserir(registro);
 
-            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid);
+            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid).Value;
 
             Assert.AreEqual(registro2, registro);
         }
@@ -104,14 +104,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             registro2.Login = registro.Login;
 
-            ValidationResult validationResult = servico.Inserir(registro2);
+            Result<Funcionario> validationResult = servico.Inserir(registro2).Value;
 
-            validationResult.Errors[0].ErrorMessage.Should().Contain("Login já está cadastrado");
+            validationResult.Errors[0].Message.Should().Contain("Login já está cadastrado");
         }
 
         private Funcionario CriarFuncionario()
         {
-            return new(FuncoesTeste.GerarNovaStringAleatoria(), FuncoesTeste.GerarNovaStringAleatoria(), "e@e.e", "49991113939", FuncoesTeste.GerarNovaStringAleatoria(), FuncoesTeste.GerarNovaStringAleatoria(), new DateTime(2020,02,02), 12, true, FuncoesTeste.GerarNovaStringAleatoria(), true);
+            return new(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "e@e.e", "49991113939", GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), new DateTime(2020,02,02), 12, true, GerarNovaStringAleatoria(), true);
         }
 
         private string GerarNovaPlaca()

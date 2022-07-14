@@ -7,7 +7,7 @@ namespace LocadoraDeVeiculos.Dominio
     {
         void Inserir(T novoRegistro);
         void Editar(T registro);
-        string Excluir(T registro);
+        void Excluir(T registro);
         List<T> SelecionarTodos();
         T SelecionarPorGuid(Guid numero);
         public bool VerificarDuplicidade(string sql);

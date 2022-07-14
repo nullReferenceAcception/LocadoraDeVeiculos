@@ -1,4 +1,4 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -32,7 +32,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         {
             var guid = _tabelaTaxas.ObtemGuidTaxaSelecionada();
 
-            Taxa taxaSelecionada = _servicoTaxa.SelecionarPorGuid(guid);
+            Taxa taxaSelecionada = _servicoTaxa.SelecionarPorGuid(guid).Value;
 
             if (taxaSelecionada == null)
             {
@@ -56,7 +56,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         {
             var guid = _tabelaTaxas.ObtemGuidTaxaSelecionada();
 
-            Taxa taxaSelecionada = _servicoTaxa.SelecionarPorGuid(guid);
+            Taxa taxaSelecionada = _servicoTaxa.SelecionarPorGuid(guid).Value;
 
             if (taxaSelecionada == null)
             {
@@ -67,7 +67,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir a Taxa?",
                "Exclusão de Taxas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-            ValidationResult validationResult;
+            Result validationResult;
 
             if (resultado == DialogResult.OK)
             {
@@ -83,7 +83,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         {
             var guid = _tabelaTaxas.ObtemGuidTaxaSelecionada();
 
-            Taxa taxaSelecionada = _servicoTaxa.SelecionarPorGuid(guid);
+            Taxa taxaSelecionada = _servicoTaxa.SelecionarPorGuid(guid).Value;
 
             if (taxaSelecionada == null)
             {
@@ -95,7 +95,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             tela.Taxa = taxaSelecionada;
 
-            tela.EstadoDeHabilitacao(false);
+            tela.Habilitar(false);
             tela.buttonCancelar.Enabled = true;
             tela.buttonCancelar.Text = "Voltar";
             tela.ShowDialog();
@@ -118,7 +118,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
         private void CarregarTaxas()
         {
-            List<Taxa> taxas = _servicoTaxa.SelecionarTodos();
+            List<Taxa> taxas = _servicoTaxa.SelecionarTodos().Value;
 
             _tabelaTaxas.AtualizarRegistros(taxas);
 

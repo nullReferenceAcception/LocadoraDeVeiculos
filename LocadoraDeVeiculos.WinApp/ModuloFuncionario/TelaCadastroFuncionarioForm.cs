@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
+using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
@@ -24,9 +25,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             InitializeComponent();
             this.ConfigurarTela();
             ConfigurarComponentes();
+            this.AjustarLabelsHover();
         }
 
-        public Func<Funcionario, ValidationResult> GravarRegistro { get; set; }
+        public Func<Funcionario, Result<Funcionario>> GravarRegistro { get; set; }
 
         private void buttonGravar_Click(object sender, EventArgs e)
         {
@@ -34,9 +36,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             var resultado = GravarRegistro(Funcionario);
 
-            if (!resultado.IsValid)
+            if (resultado.IsFailed)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape(resultado.Errors[0].ErrorMessage, CorParaRodape.Red);
+                TelaPrincipalForm.Instancia.AtualizarRodape(resultado.Errors[0].Message, CorParaRodape.Red);
                 DialogResult = DialogResult.None;
             }
         }

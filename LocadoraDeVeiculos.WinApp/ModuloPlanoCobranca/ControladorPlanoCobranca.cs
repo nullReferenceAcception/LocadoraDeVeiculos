@@ -1,10 +1,10 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows.Forms;
 using System.Media;
+using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 {
@@ -23,9 +23,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
         public override void Inserir()
         {
             Stream str;
-            if (_servicoGrupoVeiculo.QuantidadeRegistro() == 0)
+            if (_servicoGrupoVeiculo.QuantidadeRegistro().Value == 0)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Cadastre no mínimo 1 'Grupo de Veículos' para cadastrar um plano de cobrança",CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Cadastre no mínimo 1 'Grupo de Veículos' para cadastrar um plano de cobrança", CorParaRodape.Yellow);
                 str = Properties.Resources.som;
 
                 SoundPlayer snd = new(str);
@@ -48,7 +48,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
         {
             var numero = _tabelaPlanoCobrancas.ObtemGuidPlanoCobrancaSelecionada();
 
-            PlanoCobranca planoCobrancaSelecionado = _servicoPlanoCobranca.SelecionarPorGuid(numero);
+            PlanoCobranca planoCobrancaSelecionado = _servicoPlanoCobranca.SelecionarPorGuid(numero).Value;
 
             if (planoCobrancaSelecionado == null)
             {
@@ -72,7 +72,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
         {
             var numero = _tabelaPlanoCobrancas.ObtemGuidPlanoCobrancaSelecionada();
 
-            PlanoCobranca planoCobrancaSelecionado = _servicoPlanoCobranca.SelecionarPorGuid(numero);
+            PlanoCobranca planoCobrancaSelecionado = _servicoPlanoCobranca.SelecionarPorGuid(numero).Value;
 
             if (planoCobrancaSelecionado == null)
             {
@@ -83,14 +83,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir a PlanoCobranca?",
                "Exclusão de PlanoCobrancas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-             ValidationResult validationResult;
+            Result validationResult;
             if (resultado == DialogResult.OK)
             {
                 validationResult = _servicoPlanoCobranca.Excluir(planoCobrancaSelecionado);
                 CarregarPlanoCobrancas();
 
                 if (validationResult.Errors.Count > 0)
-                    TelaPrincipalForm.Instancia.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro",CorParaRodape.Red);
+                    TelaPrincipalForm.Instancia.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro", CorParaRodape.Red);
 
             }
         }
@@ -99,7 +99,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
         {
             var numero = _tabelaPlanoCobrancas.ObtemGuidPlanoCobrancaSelecionada();
 
-            PlanoCobranca planoCobrancaSelecionado = _servicoPlanoCobranca.SelecionarPorGuid(numero);
+            PlanoCobranca planoCobrancaSelecionado = _servicoPlanoCobranca.SelecionarPorGuid(numero).Value;
 
             if (planoCobrancaSelecionado == null)
             {
@@ -111,7 +111,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
             tela.PlanoCobranca = planoCobrancaSelecionado;
 
-            tela.EstadoDeHabilitacao(false);
+            tela.Habilitar(false);
             tela.buttonCancelar.Enabled = true;
             tela.buttonCancelar.Text = "Voltar";
             tela.ShowDialog();
@@ -134,7 +134,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
         private void CarregarPlanoCobrancas()
         {
-            List<PlanoCobranca> planoCobrancas = _servicoPlanoCobranca.SelecionarTodos();
+            List<PlanoCobranca> planoCobrancas = _servicoPlanoCobranca.SelecionarTodos().Value;
 
             _tabelaPlanoCobrancas.AtualizarRegistros(planoCobrancas);
 

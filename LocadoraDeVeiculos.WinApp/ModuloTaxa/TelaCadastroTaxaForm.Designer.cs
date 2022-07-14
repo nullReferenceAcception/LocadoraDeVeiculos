@@ -50,7 +50,7 @@
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.buttonCancelar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.buttonCancelar.Location = new System.Drawing.Point(202, 289);
+            this.buttonCancelar.Location = new System.Drawing.Point(202, 274);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
             this.buttonCancelar.TabIndex = 5;
@@ -62,7 +62,7 @@
             this.buttonGravar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonGravar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.buttonGravar.Location = new System.Drawing.Point(129, 289);
+            this.buttonGravar.Location = new System.Drawing.Point(129, 274);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
             this.buttonGravar.TabIndex = 4;
@@ -82,7 +82,7 @@
             this.groupBoxTaxa.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.groupBoxTaxa.Location = new System.Drawing.Point(12, 14);
             this.groupBoxTaxa.Name = "groupBoxTaxa";
-            this.groupBoxTaxa.Size = new System.Drawing.Size(257, 269);
+            this.groupBoxTaxa.Size = new System.Drawing.Size(257, 254);
             this.groupBoxTaxa.TabIndex = 6;
             this.groupBoxTaxa.TabStop = false;
             this.groupBoxTaxa.Text = "Dados de taxas:";
@@ -91,7 +91,7 @@
             // 
             this.labelGuid.AutoSize = true;
             this.labelGuid.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelGuid.Location = new System.Drawing.Point(6, 29);
+            this.labelGuid.Location = new System.Drawing.Point(6, 19);
             this.labelGuid.Name = "labelGuid";
             this.labelGuid.Size = new System.Drawing.Size(35, 15);
             this.labelGuid.TabIndex = 29;
@@ -101,7 +101,7 @@
             // 
             this.textBoxGuid.Enabled = false;
             this.textBoxGuid.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxGuid.Location = new System.Drawing.Point(6, 47);
+            this.textBoxGuid.Location = new System.Drawing.Point(6, 41);
             this.textBoxGuid.Name = "textBoxGuid";
             this.textBoxGuid.ReadOnly = true;
             this.textBoxGuid.Size = new System.Drawing.Size(245, 23);
@@ -112,7 +112,7 @@
             this.labelDescricao.AutoSize = true;
             this.labelDescricao.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelDescricao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelDescricao.Location = new System.Drawing.Point(6, 84);
+            this.labelDescricao.Location = new System.Drawing.Point(6, 71);
             this.labelDescricao.Name = "labelDescricao";
             this.labelDescricao.Size = new System.Drawing.Size(61, 15);
             this.labelDescricao.TabIndex = 1;
@@ -122,7 +122,7 @@
             // textBoxDescricao
             // 
             this.textBoxDescricao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxDescricao.Location = new System.Drawing.Point(6, 102);
+            this.textBoxDescricao.Location = new System.Drawing.Point(6, 93);
             this.textBoxDescricao.MaxLength = 255;
             this.textBoxDescricao.Name = "textBoxDescricao";
             this.textBoxDescricao.Size = new System.Drawing.Size(143, 23);
@@ -133,7 +133,7 @@
             this.labelValor.AutoSize = true;
             this.labelValor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelValor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelValor.Location = new System.Drawing.Point(6, 137);
+            this.labelValor.Location = new System.Drawing.Point(6, 123);
             this.labelValor.Name = "labelValor";
             this.labelValor.Size = new System.Drawing.Size(36, 15);
             this.labelValor.TabIndex = 3;
@@ -143,7 +143,7 @@
             // textBoxValor
             // 
             this.textBoxValor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxValor.Location = new System.Drawing.Point(6, 155);
+            this.textBoxValor.Location = new System.Drawing.Point(6, 145);
             this.textBoxValor.MaxLength = 255;
             this.textBoxValor.Name = "textBoxValor";
             this.textBoxValor.Size = new System.Drawing.Size(143, 23);
@@ -154,7 +154,7 @@
             this.groupBoxTipo.Controls.Add(this.radioButtonDiario);
             this.groupBoxTipo.Controls.Add(this.radioButtonFixo);
             this.groupBoxTipo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxTipo.Location = new System.Drawing.Point(6, 186);
+            this.groupBoxTipo.Location = new System.Drawing.Point(6, 175);
             this.groupBoxTipo.Name = "groupBoxTipo";
             this.groupBoxTipo.Size = new System.Drawing.Size(88, 73);
             this.groupBoxTipo.TabIndex = 31;
@@ -189,7 +189,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(278, 331);
+            this.ClientSize = new System.Drawing.Size(278, 315);
             this.Controls.Add(this.groupBoxTaxa);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonGravar);

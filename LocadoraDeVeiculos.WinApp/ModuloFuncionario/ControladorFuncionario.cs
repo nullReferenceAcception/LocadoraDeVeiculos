@@ -33,7 +33,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         {
             var numero = _tabelaFuncionario.ObtemGuidFuncionarioSelecionado();
 
-            Funcionario funcionarioSelecionado = _servicoFuncionario.SelecionarPorGuid(numero);
+            Funcionario funcionarioSelecionado = _servicoFuncionario.SelecionarPorGuid(numero).Value;
 
             if (funcionarioSelecionado == null)
             {
@@ -57,7 +57,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         {
             var numero = _tabelaFuncionario.ObtemGuidFuncionarioSelecionado();
 
-            Funcionario funcionarioSelecionado = _servicoFuncionario.SelecionarPorGuid(numero);
+            Funcionario funcionarioSelecionado = _servicoFuncionario.SelecionarPorGuid(numero).Value;
 
             if (funcionarioSelecionado == null)
             {
@@ -68,15 +68,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             DialogResult resultado = MessageBox.Show("Deseja realmente desabilitar o funcionário?",
                "Desabilitar funcionários", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-            ValidationResult validationResult;
 
             if (resultado == DialogResult.OK)
             {
-                validationResult = _servicoFuncionario.Excluir(funcionarioSelecionado);
-                CarregarFuncionariosAtivos();
+                var resultadoExclusao = _servicoFuncionario.Excluir(funcionarioSelecionado);
 
-                if (validationResult.Errors.Count > 0)
-                    TelaPrincipalForm.Instancia.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro", CorParaRodape.Red);
+                if (resultadoExclusao.IsSuccess)
+                    CarregarFuncionariosAtivos();
+
+                else
+                    TelaPrincipalForm.Instancia.AtualizarRodape(resultadoExclusao.Errors[0].Message, CorParaRodape.Red);
             }
         }
 
@@ -84,7 +85,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         {
             var numero = _tabelaFuncionario.ObtemGuidFuncionarioSelecionado();
 
-            Funcionario selecionado = _servicoFuncionario.SelecionarPorGuid(numero);
+            Funcionario selecionado = _servicoFuncionario.SelecionarPorGuid(numero).Value;
 
             if (selecionado == null)
             {
@@ -96,7 +97,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             tela.Funcionario = selecionado;
 
-            tela.EstadoDeHabilitacao(false);
+            tela.Habilitar(false);
             tela.buttonCancelar.Enabled = true;
             tela.buttonCancelar.Text = "Voltar";
             tela.ShowDialog();
@@ -120,7 +121,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         private void CarregarFuncionarioInativos()
         {
-            List<Funcionario> funcionariosDesativados = _servicoFuncionario.SelecionarDesativados();
+            List<Funcionario> funcionariosDesativados = _servicoFuncionario.SelecionarDesativados().Value;
 
             _tabelaFuncionario.AtualizarRegistros(funcionariosDesativados);
 
@@ -144,7 +145,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         private void CarregarFuncionariosAtivos()
         {
-            List<Funcionario> funcionarios = _servicoFuncionario.SelecionarTodos();
+            List<Funcionario> funcionarios = _servicoFuncionario.SelecionarTodos().Value;
 
             _tabelaFuncionario.AtualizarRegistros(funcionarios);
 

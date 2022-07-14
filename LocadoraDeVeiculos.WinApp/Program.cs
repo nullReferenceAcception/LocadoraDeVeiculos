@@ -33,6 +33,7 @@ namespace LocadoraDeVeiculos.WinApp
             Application.Run(new TelaPrincipalForm());
 
             Log.Logger.Information("Programa finalizado");
+            Log.CloseAndFlush();
         }
     }
 }

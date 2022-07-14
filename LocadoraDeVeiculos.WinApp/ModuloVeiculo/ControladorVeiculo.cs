@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
+using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         public override void Inserir()
         {
-            if (servicoGrupoVeiculos.QuantidadeRegistro() == 0)
+            if (servicoGrupoVeiculos.QuantidadeRegistro().Value == 0)
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape($"Cadastre no mínimo 1 'Grupo de Veículos' para cadastrar um veículo",CorParaRodape.Yellow);
                 return;
@@ -42,7 +43,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
         {
             var numero = _tabelaVeiculos.ObtemGuidVeiculoSelecionado();
 
-            Veiculo veiculoSelecionado = _servicoVeiculo.SelecionarPorGuid(numero);
+            var veiculoSelecionado = _servicoVeiculo.SelecionarPorGuid(numero);
 
             if (veiculoSelecionado == null)
             {
@@ -52,7 +53,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             TelaCadastroVeiculoForm tela = new(servicoGrupoVeiculos);
 
-            tela.Veiculo = veiculoSelecionado;
+            tela.Veiculo = veiculoSelecionado.Value;
 
             tela.GravarRegistro = _servicoVeiculo.Editar;
 
@@ -66,7 +67,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
         {
             var numero = _tabelaVeiculos.ObtemGuidVeiculoSelecionado();
 
-            Veiculo veiculoSelecionado = _servicoVeiculo.SelecionarPorGuid(numero);
+            Veiculo veiculoSelecionado = _servicoVeiculo.SelecionarPorGuid(numero).Value;
 
             if (veiculoSelecionado == null)
             {
@@ -77,7 +78,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir o Veículo?",
                "Exclusão de Veículo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-            ValidationResult validationResult;
+            Result validationResult;
 
             if (resultado == DialogResult.OK)
             {
@@ -93,7 +94,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
         {
             var numero = _tabelaVeiculos.ObtemGuidVeiculoSelecionado();
 
-            Veiculo veiculoSelecionado = _servicoVeiculo.SelecionarPorGuid(numero);
+            Veiculo veiculoSelecionado = _servicoVeiculo.SelecionarPorGuid(numero).Value;
 
             if (veiculoSelecionado == null)
             {
@@ -105,7 +106,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             tela.Veiculo = veiculoSelecionado;
 
-            tela.EstadoDeHabilitacao(false);
+            tela.Habilitar(false);
             tela.buttonCancelar.Enabled = true;
             tela.buttonCancelar.Text = "Voltar";
             tela.ShowDialog();
@@ -128,7 +129,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         private void CarregarVeiculos()
         {
-            List<Veiculo> veiculos = _servicoVeiculo.SelecionarTodos();
+            List<Veiculo> veiculos = _servicoVeiculo.SelecionarTodos().Value;
 
             _tabelaVeiculos.AtualizarRegistros(veiculos);
 

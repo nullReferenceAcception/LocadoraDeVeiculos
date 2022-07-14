@@ -1,5 +1,4 @@
-﻿using FluentValidation.Results;
-using LocadoraDeVeiculos.Dominio.ModuloCliente;
+﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -32,7 +31,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         {
             var numero = _tabelaCliente.ObtemGuidClienteSelecionado();
 
-            Cliente clienteSelecionado = _servicoCliente.SelecionarPorGuid(numero);
+            Cliente clienteSelecionado = _servicoCliente.SelecionarPorGuid(numero).Value;
 
             if (clienteSelecionado == null)
             {
@@ -56,7 +55,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         {
             var numero = _tabelaCliente.ObtemGuidClienteSelecionado();
 
-            Cliente clienteSelecionado = _servicoCliente.SelecionarPorGuid(numero);
+            Cliente clienteSelecionado = _servicoCliente.SelecionarPorGuid(numero).Value;
 
             if (clienteSelecionado == null)
             {
@@ -68,15 +67,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                "Exclusão de Cliente", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
 
-            ValidationResult validationResult;
-
             if (resultado == DialogResult.OK)
             {
-                validationResult = _servicoCliente.Excluir(clienteSelecionado);
+               var resultadoExclusao  = _servicoCliente.Excluir(clienteSelecionado);
+
+                if(resultadoExclusao.IsSuccess)
                 CarregarCliente();
 
-                if (validationResult.Errors.Count > 0)
-                    TelaPrincipalForm.Instancia.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro", CorParaRodape.Red);
+                else
+                    TelaPrincipalForm.Instancia.AtualizarRodape(resultadoExclusao.Errors[0].Message, CorParaRodape.Red);
             }
         }
 
@@ -84,7 +83,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         {
             var numero = _tabelaCliente.ObtemGuidClienteSelecionado();
 
-            Cliente clienteSelecionado = _servicoCliente.SelecionarPorGuid(numero);
+            Cliente clienteSelecionado = _servicoCliente.SelecionarPorGuid(numero).Value;
 
             if (clienteSelecionado == null)
             {
@@ -96,7 +95,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             tela.Cliente = clienteSelecionado;
 
-            tela.EstadoDeHabilitacao(false);
+            tela.Habilitar(false);
             tela.buttonCancelar.Enabled = true;
             tela.buttonCancelar.Text = "Voltar";
             tela.ShowDialog();
@@ -119,7 +118,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         private void CarregarCliente()
         {
-            List<Cliente> clientes = _servicoCliente.SelecionarTodos();
+            List<Cliente> clientes = _servicoCliente.SelecionarTodos().Value;
 
             _tabelaCliente.AtualizarRegistros(clientes);
 

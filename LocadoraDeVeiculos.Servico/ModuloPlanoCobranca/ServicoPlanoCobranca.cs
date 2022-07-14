@@ -15,15 +15,15 @@ namespace LocadoraDeVeiculos.Servico.ModuloPlanoCobranca
         protected override string SqlMensagemDeErroSeTiverDuplicidade => "Nome já está cadastrado";
 
 
-        protected override ValidationResult HaDuplicidade(PlanoCobranca registro, ValidationResult resultadoValidacao)
+        protected override bool HaDuplicidade(PlanoCobranca registro)
         {
-           base.HaDuplicidade(registro,resultadoValidacao);
+            if (base.HaDuplicidade(registro))
+                return true;
 
             if (TiverDuplicidadePlano(registro))
-                resultadoValidacao.Errors.Add(new ValidationFailure("", "Plano já está cadastrado"));
+                return true;
 
-
-            return resultadoValidacao;
+            return false;
         }
 
         private bool TiverDuplicidadePlano(PlanoCobranca registro)

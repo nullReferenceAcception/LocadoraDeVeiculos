@@ -1,10 +1,10 @@
-﻿using FluentValidation.Results;
-using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
+﻿using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using System;
 using System.Windows.Forms;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System.Drawing;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using FluentResults;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 {
@@ -32,9 +32,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             CarregarCombustiveis();
             CarregarGrupoVeiculos();
             ConfigurarComponentes();
+            this.AjustarLabelsHover();
         }
 
-        public Func<Veiculo, ValidationResult> GravarRegistro { get; set; }
+        public Func<Veiculo, Result<Veiculo>> GravarRegistro { get; set; }
 
         private void ConfigurarTelaEditar()
         {
@@ -65,7 +66,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         private void CarregarGrupoVeiculos()
         {
-            comboBoxGrupoVeiculos.DataSource = _servicoGrupoVeiculos.SelecionarTodos();
+            comboBoxGrupoVeiculos.DataSource = _servicoGrupoVeiculos.SelecionarTodos().Value;
             comboBoxGrupoVeiculos.SelectedItem = -1;
         }
 
@@ -75,9 +76,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             var resultadoValidacao = GravarRegistro(Veiculo);
 
-            if (!resultadoValidacao.IsValid)
+            if (resultadoValidacao.IsFailed)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage,CorParaRodape.Red);
+                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].Message, CorParaRodape.Red);
                 DialogResult = DialogResult.None;
             }
         }

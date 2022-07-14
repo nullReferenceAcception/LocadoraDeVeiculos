@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
+using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -32,7 +33,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
         {
             var numero = _tabelaGrupoVeiculo.ObtemGuidSelecionada();
 
-            GrupoVeiculos Selecionada = _servicoGrupoVeiculo.SelecionarPorGuid(numero);
+            GrupoVeiculos Selecionada = _servicoGrupoVeiculo.SelecionarPorGuid(numero).Value;
 
             if (Selecionada == null)
             {
@@ -56,7 +57,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
         {
             var numero = _tabelaGrupoVeiculo.ObtemGuidSelecionada();
 
-            GrupoVeiculos Selecionada = _servicoGrupoVeiculo.SelecionarPorGuid(numero);
+            GrupoVeiculos Selecionada = _servicoGrupoVeiculo.SelecionarPorGuid(numero).Value;
 
             if (Selecionada == null)
             {
@@ -67,7 +68,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir a Grupo de Veiculos?",
                "Exclusão de Grupo de Veiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-            ValidationResult validationResult;
+            Result validationResult;
 
             if (resultado == DialogResult.OK)
             {
@@ -83,7 +84,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
         {
             var numero = _tabelaGrupoVeiculo.ObtemGuidSelecionada();
 
-            GrupoVeiculos Selecionado = _servicoGrupoVeiculo.SelecionarPorGuid(numero);
+            GrupoVeiculos Selecionado = _servicoGrupoVeiculo.SelecionarPorGuid(numero).Value;
 
             if (Selecionado == null)
             {
@@ -95,7 +96,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 
             tela.GrupoVeiculos = Selecionado;
 
-            tela.EstadoDeHabilitacao(false);
+            tela.Habilitar(false);
             tela.buttonCancelar.Enabled = true;
             tela.buttonCancelar.Text = "Voltar";
             tela.ShowDialog();
@@ -118,7 +119,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 
         private void carregarGrupoVeiculos()
         {
-            List<GrupoVeiculos> grupoVeiculos = _servicoGrupoVeiculo.SelecionarTodos();
+            List<GrupoVeiculos> grupoVeiculos = _servicoGrupoVeiculo.SelecionarTodos().Value;
 
             _tabelaGrupoVeiculo!.AtualizarRegistros(grupoVeiculos);
 
