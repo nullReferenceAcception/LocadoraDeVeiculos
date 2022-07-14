@@ -89,7 +89,6 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
                 Log.Logger.Debug("Excluido: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
 
                 return Result.Ok();
-
             }
             catch (Exception ex)
             {
@@ -103,7 +102,6 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         public Result<List<T>> SelecionarTodos()
         {
-
             try
             {
                 return Result.Ok(repositorio.SelecionarTodos());
@@ -136,7 +134,6 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         public Result<int> QuantidadeRegistro()
         {
-
             try
             {
                 return Result.Ok(repositorio.QuantidadeRegistros());

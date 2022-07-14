@@ -1,4 +1,4 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
@@ -28,7 +28,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             this.AjustarLabelsHover();
         }
 
-        public Func<Taxa, ValidationResult> GravarRegistro { get; set; }
+        public Func<Taxa, Result<Taxa>> GravarRegistro { get; set; }
 
         private void buttonGravar_Click(object sender, EventArgs e)
         {
@@ -36,9 +36,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             var resultadoValidacao = GravarRegistro(Taxa);
 
-            if (!resultadoValidacao.IsValid)
+            if (resultadoValidacao.IsFailed)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage, CorParaRodape.Red);
+                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].Message, CorParaRodape.Red);
                 DialogResult = DialogResult.None;
             }
         }

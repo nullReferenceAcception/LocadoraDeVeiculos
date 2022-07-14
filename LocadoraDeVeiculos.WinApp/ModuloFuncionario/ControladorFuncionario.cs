@@ -121,7 +121,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         private void CarregarFuncionarioInativos()
         {
-            List<Funcionario> funcionariosDesativados = _servicoFuncionario.SelecionarDesativados();
+            List<Funcionario> funcionariosDesativados = _servicoFuncionario.SelecionarDesativados().Value;
 
             _tabelaFuncionario.AtualizarRegistros(funcionariosDesativados);
 

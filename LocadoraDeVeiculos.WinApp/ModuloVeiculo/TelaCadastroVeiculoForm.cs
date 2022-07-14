@@ -1,5 +1,4 @@
-﻿using FluentValidation.Results;
-using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
+﻿using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using System;
 using System.Windows.Forms;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
@@ -67,7 +66,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         private void CarregarGrupoVeiculos()
         {
-            comboBoxGrupoVeiculos.DataSource = _servicoGrupoVeiculos.SelecionarTodos();
+            comboBoxGrupoVeiculos.DataSource = _servicoGrupoVeiculos.SelecionarTodos().Value;
             comboBoxGrupoVeiculos.SelectedItem = -1;
         }
 

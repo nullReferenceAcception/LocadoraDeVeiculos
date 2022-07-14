@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
+using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
@@ -34,7 +35,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             this.AjustarLabelsHover();
         }
 
-        public Func<PlanoCobranca, ValidationResult> GravarRegistro { get; set; }
+        public Func<PlanoCobranca, Result<PlanoCobranca>> GravarRegistro { get; set; }
 
         private void buttonGravar_Click(object sender, EventArgs e)
         {
@@ -42,9 +43,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
             var resultadoValidacao = GravarRegistro(PlanoCobranca);
 
-            if (!resultadoValidacao.IsValid)
+            if (resultadoValidacao.IsFailed)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].ErrorMessage,CorParaRodape.Red);
+                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].Message, CorParaRodape.Red);
                 DialogResult = DialogResult.None;
             }
         }
@@ -52,7 +53,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
         private void ConfigurarTelaEditar()
         {
             comboBoxPlano.DataSource = Enum.GetValues(typeof(PlanoEnum));
-            comboBoxGrupoVeiculos.DataSource = _servicoGrupoVeiculos.SelecionarTodos();
+            comboBoxGrupoVeiculos.DataSource = _servicoGrupoVeiculos.SelecionarTodos().Value;
 
             textBoxGuid.Text = _planoCobranca.Guid.ToString();
             textBoxNome.Text = _planoCobranca.Nome;

@@ -31,7 +31,7 @@
             this.labelCNH = new System.Windows.Forms.Label();
             this.labelEndereco = new System.Windows.Forms.Label();
             this.labelNome = new System.Windows.Forms.Label();
-            this.labelEmpresa = new System.Windows.Forms.Label();
+            this.labelDirigePara = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelValidadeCNH = new System.Windows.Forms.Label();
             this.labelTelefone = new System.Windows.Forms.Label();
@@ -40,7 +40,7 @@
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.maskedTextBoxTelefone = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBoxCNH = new System.Windows.Forms.MaskedTextBox();
-            this.comboBoxEmpresa = new System.Windows.Forms.ComboBox();
+            this.comboBoxDirigePara = new System.Windows.Forms.ComboBox();
             this.dateTimePickerValidadeCNH = new System.Windows.Forms.DateTimePicker();
             this.buttonGravar = new System.Windows.Forms.Button();
             this.buttonCancelar = new System.Windows.Forms.Button();
@@ -90,17 +90,17 @@
             this.labelNome.Text = "Nome:";
             this.labelNome.Click += new System.EventHandler(this.labelNome_Click);
             // 
-            // labelEmpresa
+            // labelDirigePara
             // 
-            this.labelEmpresa.AutoSize = true;
-            this.labelEmpresa.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelEmpresa.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelEmpresa.Location = new System.Drawing.Point(6, 436);
-            this.labelEmpresa.Name = "labelEmpresa";
-            this.labelEmpresa.Size = new System.Drawing.Size(55, 15);
-            this.labelEmpresa.TabIndex = 5;
-            this.labelEmpresa.Text = "Empresa:";
-            this.labelEmpresa.Click += new System.EventHandler(this.labelEmpresa_Click);
+            this.labelDirigePara.AutoSize = true;
+            this.labelDirigePara.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelDirigePara.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelDirigePara.Location = new System.Drawing.Point(6, 436);
+            this.labelDirigePara.Name = "labelDirigePara";
+            this.labelDirigePara.Size = new System.Drawing.Size(67, 15);
+            this.labelDirigePara.TabIndex = 5;
+            this.labelDirigePara.Text = "Dirige para:";
+            this.labelDirigePara.Click += new System.EventHandler(this.labelDirigePara_Click);
             // 
             // labelEmail
             // 
@@ -187,16 +187,16 @@
             this.maskedTextBoxCNH.TabIndex = 4;
             this.maskedTextBoxCNH.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
-            // comboBoxEmpresa
+            // comboBoxDirigePara
             // 
-            this.comboBoxEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEmpresa.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBoxEmpresa.FormattingEnabled = true;
-            this.comboBoxEmpresa.ItemHeight = 15;
-            this.comboBoxEmpresa.Location = new System.Drawing.Point(6, 455);
-            this.comboBoxEmpresa.Name = "comboBoxEmpresa";
-            this.comboBoxEmpresa.Size = new System.Drawing.Size(163, 23);
-            this.comboBoxEmpresa.TabIndex = 15;
+            this.comboBoxDirigePara.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDirigePara.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBoxDirigePara.FormattingEnabled = true;
+            this.comboBoxDirigePara.ItemHeight = 15;
+            this.comboBoxDirigePara.Location = new System.Drawing.Point(6, 455);
+            this.comboBoxDirigePara.Name = "comboBoxDirigePara";
+            this.comboBoxDirigePara.Size = new System.Drawing.Size(163, 23);
+            this.comboBoxDirigePara.TabIndex = 15;
             // 
             // dateTimePickerValidadeCNH
             // 
@@ -264,8 +264,8 @@
             this.groupBoxCondutor.Controls.Add(this.textBoxNome);
             this.groupBoxCondutor.Controls.Add(this.maskedTextBoxCPF);
             this.groupBoxCondutor.Controls.Add(this.maskedTextBoxCNH);
-            this.groupBoxCondutor.Controls.Add(this.labelEmpresa);
-            this.groupBoxCondutor.Controls.Add(this.comboBoxEmpresa);
+            this.groupBoxCondutor.Controls.Add(this.labelDirigePara);
+            this.groupBoxCondutor.Controls.Add(this.comboBoxDirigePara);
             this.groupBoxCondutor.Controls.Add(this.textBoxEmail);
             this.groupBoxCondutor.Controls.Add(this.labelTelefone);
             this.groupBoxCondutor.Controls.Add(this.dateTimePickerValidadeCNH);
@@ -350,7 +350,7 @@
         private System.Windows.Forms.Label labelCNH;
         private System.Windows.Forms.Label labelEndereco;
         private System.Windows.Forms.Label labelNome;
-        private System.Windows.Forms.Label labelEmpresa;
+        private System.Windows.Forms.Label labelDirigePara;
         private System.Windows.Forms.Label labelEmail;
         private System.Windows.Forms.Label labelValidadeCNH;
         private System.Windows.Forms.Label labelTelefone;
@@ -359,7 +359,7 @@
         private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxTelefone;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxCNH;
-        private System.Windows.Forms.ComboBox comboBoxEmpresa;
+        private System.Windows.Forms.ComboBox comboBoxDirigePara;
         private System.Windows.Forms.DateTimePicker dateTimePickerValidadeCNH;
         private System.Windows.Forms.Button buttonGravar;
         private System.Windows.Forms.Label labelGuid;

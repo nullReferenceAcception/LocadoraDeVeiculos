@@ -1,5 +1,4 @@
 ﻿using FluentResults;
-using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
@@ -93,7 +92,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             maskedTextBoxCNH.Enabled = false;
             maskedTextBoxCNPJ.Enabled = true;
             maskedTextBoxCPF.Enabled = false;
-            dateTimePickerValidadeCNH.Enabled =false;
+            dateTimePickerValidadeCNH.Enabled = false;
             maskedTextBoxCPF.Clear();
             maskedTextBoxCNPJ.Focus();
             maskedTextBoxCNH.Clear();
@@ -113,7 +112,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             {
                 string erro = resultadoValidacao.Errors[0].Message;
 
-                  TelaPrincipalForm.Instancia.AtualizarRodape(erro, CorParaRodape.Red);
+                TelaPrincipalForm.Instancia.AtualizarRodape(erro, CorParaRodape.Red);
 
                 DialogResult = DialogResult.None;
             }
