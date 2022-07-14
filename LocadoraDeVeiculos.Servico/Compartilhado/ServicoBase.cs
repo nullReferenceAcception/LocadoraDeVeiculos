@@ -7,6 +7,7 @@ using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Taikandi;
 
 namespace LocadoraDeVeiculos.Servico.Compartilhado
@@ -46,9 +47,11 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
             catch (Exception ex)
             {
-                string mensagem = "Falha no sistema ao tentar inserir ";
-                Log.Logger.Error(ex, mensagem + "{nome}" + registro.Guid, typeof(T).Name);
-                return Result.Fail(mensagem);
+                StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar inserir ");
+
+                Log.Logger.Error(ex, msgErro + "{classe}" + "{Guid}", typeof(T).Name, registro.Guid);
+
+                return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
         }
 
@@ -72,9 +75,11 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
             catch (Exception ex)
             {
-                string mensagem = "Falha no sistema ao tentar editar ";
-                Log.Logger.Error(ex, mensagem + "{nome}" + registro.Guid, typeof(T).Name);
-                return Result.Fail(mensagem);
+                StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar editar ");
+
+                Log.Logger.Error(ex, msgErro + "{classe}" + "{Guid}", typeof(T).Name, registro.Guid);
+
+                return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
         }
 
@@ -92,11 +97,11 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
             catch (Exception ex)
             {
-                string msgErro = "Falha no sistema ao tentar excluir o ";
+                StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar excluir o ");
 
                 Log.Logger.Error(ex, msgErro + "{classe}" + "{Guid}", typeof(T).Name, registro.Guid);
 
-                return Result.Fail(msgErro);
+                return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
         }
 
@@ -108,11 +113,11 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
             catch (Exception ex)
             {
-                string msgErro = $"Falha no sistema ao tentar selecionar todos os ";
+                StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar selecionar todos os  ");
 
-                Log.Logger.Error(ex, msgErro + "{classe}", typeof(T).Name + "s");
+                Log.Logger.Error(ex, msgErro + "{classe}", typeof(T).Name);
 
-                return Result.Fail(msgErro);
+                return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
         }
 
@@ -124,11 +129,13 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
             catch (Exception ex)
             {
-                string msgErro = $"Falha no sistema ao tentar selecionar o ";
 
-                Log.Logger.Error(ex, msgErro + "{classe}  + {Guid}", typeof(T).Name, guid );
+                StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar selecionar o ");
 
-                return Result.Fail(msgErro);
+                Log.Logger.Error(ex, msgErro + "{classe}", typeof(T).Name);
+
+                return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
+
             }
         }
 
@@ -140,10 +147,11 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
             catch (Exception ex)
             {
-                string msgErro = "Falha no sistema ao pegar quantidade de ";
+                StringBuilder msgErro = new StringBuilder("Falha no sistema ao pegar quantidade de ");
 
                 Log.Logger.Error(ex, msgErro + "{classe}", typeof(T).Name);
-                return Result.Fail(msgErro);
+
+                return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
         }
 

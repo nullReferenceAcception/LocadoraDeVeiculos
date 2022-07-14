@@ -6,7 +6,7 @@ namespace LocadoraDeVeiculos.Infra.Logging.Log
 {
     public static class LoggerExtensions
     {
-        public static void ConfigurarLog(this ILogger log)
+        public static void ConfigurarLogEmArquivo(this ILogger log)
         {
             var configuracao = new ConfigurationBuilder()
               .SetBasePath(Directory.GetCurrentDirectory())
@@ -23,8 +23,17 @@ namespace LocadoraDeVeiculos.Infra.Logging.Log
                    .WriteTo.File(diretorioSaida + "/log.txt",
                rollingInterval: RollingInterval.Day,
                outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
-                   .WriteTo.Seq("http://localhost:5341")
                .CreateLogger();
         }
+
+        public static void ConfigurarLogEmWeb(this ILogger log)
+        {
+            Serilog.Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Seq("http://localhost:5341/")
+                .CreateLogger();
+        }
+
+
     }
 }

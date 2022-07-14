@@ -16,7 +16,7 @@ namespace LocadoraDeVeiculos.WinApp
         [STAThread]
         static void Main()
         {
-            Log.Logger.ConfigurarLog();
+            Log.Logger.ConfigurarLogEmWeb();
 
             string Linguagem = ConfigurationManager.AppSettings.Get("Idioma");
 
