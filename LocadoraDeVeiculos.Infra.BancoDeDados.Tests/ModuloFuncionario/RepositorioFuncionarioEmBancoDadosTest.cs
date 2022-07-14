@@ -104,9 +104,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             registro2.Login = registro.Login;
 
-            Result<Funcionario> validationResult = servico.Inserir(registro2).Value;
+            Result<Funcionario> result = servico.Inserir(registro2);
 
-            validationResult.Errors[0].Message.Should().Contain("Login já está cadastrado");
+            result.Errors[0].Message.Should().Contain("Login já está cadastrado");
         }
 
         private Funcionario CriarFuncionario()

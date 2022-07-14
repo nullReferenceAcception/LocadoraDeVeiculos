@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using FluentResults;
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
@@ -21,7 +22,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
 
             _servicoGrupoVeiculos.Inserir(GrupoVeiculos);
 
-            GrupoVeiculos GrupoVeiculos2 = _servicoGrupoVeiculos.SelecionarPorGuid(GrupoVeiculos.Guid);
+            GrupoVeiculos GrupoVeiculos2 = _servicoGrupoVeiculos.SelecionarPorGuid(GrupoVeiculos.Guid).Value;
 
             Assert.AreEqual(GrupoVeiculos, GrupoVeiculos2);
         }
@@ -37,7 +38,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
 
             _servicoGrupoVeiculos.Editar(GrupoVeiculos);
 
-            GrupoVeiculos GrupoVeiculos2 = _servicoGrupoVeiculos.SelecionarPorGuid(GrupoVeiculos.Guid);
+            GrupoVeiculos GrupoVeiculos2 = _servicoGrupoVeiculos.SelecionarPorGuid(GrupoVeiculos.Guid).Value;
 
             Assert.AreEqual(GrupoVeiculos2, GrupoVeiculos);
         }
@@ -51,7 +52,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
 
             _servicoGrupoVeiculos.Excluir(GrupoVeiculos);
 
-            GrupoVeiculos GrupoVeiculos2 = _servicoGrupoVeiculos.SelecionarPorGuid(GrupoVeiculos.Guid);
+            GrupoVeiculos GrupoVeiculos2 = _servicoGrupoVeiculos.SelecionarPorGuid(GrupoVeiculos.Guid).Value;
 
             GrupoVeiculos2.Should().Be(null);
         }
@@ -69,7 +70,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
                 registros.Add(GrupoVeiculos);
             }
 
-            List<GrupoVeiculos> registrosDoBanco = _servicoGrupoVeiculos.SelecionarTodos();
+            List<GrupoVeiculos> registrosDoBanco = _servicoGrupoVeiculos.SelecionarTodos().Value;
 
             Assert.IsTrue(registrosDoBanco.Count == registros.Count);
 
@@ -84,7 +85,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
             GrupoVeiculos registro = CriarGrupoVeiculos();
             _servicoGrupoVeiculos.Inserir(registro);
 
-            GrupoVeiculos registro2 = _servicoGrupoVeiculos.SelecionarPorGuid(registro.Guid);
+            GrupoVeiculos registro2 = _servicoGrupoVeiculos.SelecionarPorGuid(registro.Guid).Value;
 
             Assert.AreEqual(registro2, registro);
         }
@@ -92,17 +93,17 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
         [TestMethod]
         public void Nao_Deve_inserir_GrupoVeiculos_duplicada()
         {
-            GrupoVeiculos GrupoVeiculos = CriarGrupoVeiculos();
+            GrupoVeiculos grupoVeiculos = CriarGrupoVeiculos();
 
-            _servicoGrupoVeiculos.Inserir(GrupoVeiculos);
+            _servicoGrupoVeiculos.Inserir(grupoVeiculos);
 
-            GrupoVeiculos GrupoVeiculos2 = CriarGrupoVeiculos();
+            GrupoVeiculos grupoVeiculos2 = CriarGrupoVeiculos();
 
-            GrupoVeiculos2.Nome = GrupoVeiculos.Nome;
+            grupoVeiculos2.Nome = grupoVeiculos.Nome;
 
-            ValidationResult validationResult = _servicoGrupoVeiculos.Inserir(GrupoVeiculos2);
+            Result<GrupoVeiculos> result = _servicoGrupoVeiculos.Inserir(grupoVeiculos2);
 
-            validationResult.Errors[0].ErrorMessage.Should().Contain("Nome já está cadastrado");
+            result.Errors[0].Message.Should().Contain("Nome já está cadastrado");
         }
 
         private GrupoVeiculos CriarGrupoVeiculos()

@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using FluentResults;
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
@@ -27,7 +28,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
 
             _servicoPlanoCobranca.Inserir(planoCobranca);
 
-            PlanoCobranca PlanoCobranca2 = _servicoPlanoCobranca.SelecionarPorGuid(planoCobranca.Guid);
+            PlanoCobranca PlanoCobranca2 = _servicoPlanoCobranca.SelecionarPorGuid(planoCobranca.Guid).Value;
 
             Assert.AreEqual(planoCobranca, PlanoCobranca2);
         }
@@ -43,7 +44,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
 
             _servicoPlanoCobranca.Editar(PlanoCobranca);
 
-            PlanoCobranca PlanoCobranca2 = _servicoPlanoCobranca.SelecionarPorGuid(PlanoCobranca.Guid);
+            PlanoCobranca PlanoCobranca2 = _servicoPlanoCobranca.SelecionarPorGuid(PlanoCobranca.Guid).Value;
 
             Assert.AreEqual(PlanoCobranca2, PlanoCobranca);
         }
@@ -57,7 +58,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
 
             _servicoPlanoCobranca.Excluir(PlanoCobranca);
 
-            PlanoCobranca PlanoCobranca2 = _servicoPlanoCobranca.SelecionarPorGuid(PlanoCobranca.Guid);
+            PlanoCobranca PlanoCobranca2 = _servicoPlanoCobranca.SelecionarPorGuid(PlanoCobranca.Guid).Value;
 
             PlanoCobranca2.Should().Be(null);
         }
@@ -68,7 +69,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
             PlanoCobranca registro = CriarPlanoCobranca();
             _servicoPlanoCobranca.Inserir(registro);
 
-            PlanoCobranca registro2 = _servicoPlanoCobranca.SelecionarPorGuid(registro.Guid);
+            PlanoCobranca registro2 = _servicoPlanoCobranca.SelecionarPorGuid(registro.Guid).Value;
 
             Assert.AreEqual(registro2, registro);
         }
@@ -84,9 +85,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
 
             PlanoCobranca2.Nome = PlanoCobranca.Nome;
 
-            ValidationResult validationResult = _servicoPlanoCobranca.Inserir(PlanoCobranca2);
+            Result<PlanoCobranca> validationResult = _servicoPlanoCobranca.Inserir(PlanoCobranca2);
 
-            validationResult.Errors[0].ErrorMessage.Should().Contain("Nome já está cadastrado");
+            validationResult.Errors[0].Message.Should().Contain("Nome já está cadastrado");
         }
 
         [TestMethod]
@@ -117,7 +118,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
             registros.Add(PlanoCobranca3);
 
 
-            List<PlanoCobranca> registrosDoBanco = _servicoPlanoCobranca.SelecionarTodos();
+            List<PlanoCobranca> registrosDoBanco = _servicoPlanoCobranca.SelecionarTodos().Value;
 
 
             Assert.IsTrue(registrosDoBanco.Count == registros.Count);

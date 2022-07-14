@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using FluentResults;
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
@@ -23,7 +24,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
 
             _servicoTaxa.Inserir(taxa);
 
-            Taxa tavaEncontrada = _servicoTaxa.SelecionarPorGuid(taxa.Guid);
+            Taxa tavaEncontrada = _servicoTaxa.SelecionarPorGuid(taxa.Guid).Value;
 
             Assert.AreEqual(taxa, tavaEncontrada);
         }
@@ -39,7 +40,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
 
             _servicoTaxa.Editar(taxa);
 
-            Taxa taxaEncontrada = _servicoTaxa.SelecionarPorGuid(taxa.Guid);
+            Taxa taxaEncontrada = _servicoTaxa.SelecionarPorGuid(taxa.Guid).Value;
 
             Assert.AreEqual(taxaEncontrada, taxa);
         }
@@ -53,7 +54,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
 
             _servicoTaxa.Excluir(taxa);
 
-            Taxa taxaEncontrada = _servicoTaxa.SelecionarPorGuid(taxa.Guid);
+            Taxa taxaEncontrada = _servicoTaxa.SelecionarPorGuid(taxa.Guid).Value;
 
             taxaEncontrada.Should().Be(null);
         }
@@ -65,7 +66,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
 
             _servicoTaxa.Inserir(taxa);
 
-            Taxa taxaEncontrada = _servicoTaxa.SelecionarPorGuid(taxa.Guid);
+            Taxa taxaEncontrada = _servicoTaxa.SelecionarPorGuid(taxa.Guid).Value;
 
             Assert.AreEqual(taxaEncontrada, taxa);
         }
@@ -81,9 +82,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
 
             taxaEncontrada.Descricao = taxa.Descricao;
 
-            ValidationResult validationResult = _servicoTaxa.Inserir(taxaEncontrada);
+            Result<Taxa> validationResult = _servicoTaxa.Inserir(taxaEncontrada);
 
-            validationResult.Errors[0].ErrorMessage.Should().Contain("Descrição já cadastrada");
+            validationResult.Errors[0].Message.Should().Contain("Descrição já cadastrada");
         }
 
         [TestMethod]
@@ -99,8 +100,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
                 taxas.Add(Taxa);
             }
 
-            List<Taxa> taxasEncontradas = _servicoTaxa.SelecionarTodos();
-
+            List<Taxa> taxasEncontradas = _servicoTaxa.SelecionarTodos().Value;
 
             Assert.IsTrue(taxasEncontradas.Count == taxas.Count);
 

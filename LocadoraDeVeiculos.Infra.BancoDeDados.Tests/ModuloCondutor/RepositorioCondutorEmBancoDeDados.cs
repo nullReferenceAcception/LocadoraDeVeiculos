@@ -61,7 +61,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 
             servico.Editar(condutor);
 
-            Condutor condutor2 = servico.SelecionarPorGuid(condutor.Guid);
+            Condutor condutor2 = servico.SelecionarPorGuid(condutor.Guid).Value;
 
             Assert.AreEqual(condutor2, condutor);
         }
