@@ -155,7 +155,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
         }
 
-        protected abstract string SqlMensagemDeErroSeTiverDuplicidade { get; }
+        protected abstract string MensagemDeErroSeTiverDuplicidade { get; }
 
         protected virtual bool HaDuplicidade(T registro)
         {
@@ -192,7 +192,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
                 erros.Add(new Error(erro.ErrorMessage));
 
             if (HaDuplicidade(registro))
-                erros.Add(new Error(SqlMensagemDeErroSeTiverDuplicidade));
+                erros.Add(new Error(MensagemDeErroSeTiverDuplicidade));
 
             if (erros.Any())
                 return Result.Fail(erros);

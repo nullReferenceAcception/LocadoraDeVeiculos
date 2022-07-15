@@ -12,7 +12,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloPlanoCobranca
             this.repositorioPlanoCobranca = repositorioPlanoCobranca;
         }
 
-        protected override string SqlMensagemDeErroSeTiverDuplicidade => "Nome já está cadastrado";
+        protected override string MensagemDeErroSeTiverDuplicidade => "Nome já está cadastrado";
 
 
         protected override bool HaDuplicidade(PlanoCobranca registro)

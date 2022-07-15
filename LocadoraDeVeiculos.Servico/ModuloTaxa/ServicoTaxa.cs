@@ -9,6 +9,6 @@ namespace LocadoraDeVeiculos.Servico.ModuloTaxa
         {
         }
 
-        protected override string SqlMensagemDeErroSeTiverDuplicidade => "Descrição já cadastrada";
+        protected override string MensagemDeErroSeTiverDuplicidade => "Descrição já cadastrada";
     }
 }
