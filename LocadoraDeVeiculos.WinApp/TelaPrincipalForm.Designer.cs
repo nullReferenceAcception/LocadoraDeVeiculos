@@ -48,7 +48,7 @@
             this.planoDeCobrancaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.condutoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionariosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.veículosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.veiculosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelRegistros = new System.Windows.Forms.Panel();
             this.labelRodape = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStripRodape = new System.Windows.Forms.StatusStrip();
@@ -188,7 +188,7 @@
             this.planoDeCobrancaToolStripMenuItem,
             this.condutoresToolStripMenuItem,
             this.funcionariosMenuItem,
-            this.veículosMenuItem});
+            this.veiculosMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -241,13 +241,13 @@
             this.funcionariosMenuItem.Text = "Funcionários";
             this.funcionariosMenuItem.Click += new System.EventHandler(this.funcionariosMenuItem_Click);
             // 
-            // veículosMenuItem
+            // veiculosMenuItem
             // 
-            this.veículosMenuItem.Name = "veículosMenuItem";
-            this.veículosMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F7;
-            this.veículosMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.veículosMenuItem.Text = "Veículos";
-            this.veículosMenuItem.Click += new System.EventHandler(this.veículosMenuItem_Click);
+            this.veiculosMenuItem.Name = "veiculosMenuItem";
+            this.veiculosMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F7;
+            this.veiculosMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.veiculosMenuItem.Text = "Veículos";
+            this.veiculosMenuItem.Click += new System.EventHandler(this.veiculosMenuItem_Click);
             // 
             // panelRegistros
             // 
@@ -321,7 +321,7 @@
         private System.Windows.Forms.Panel panelRegistros;
         private System.Windows.Forms.ToolStripStatusLabel labelRodape;
         private System.Windows.Forms.StatusStrip statusStripRodape;
-        private System.Windows.Forms.ToolStripMenuItem veículosMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem veiculosMenuItem;
         private System.Windows.Forms.ToolStripMenuItem condutoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem planoDeCobrancaToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton btnFuncionariosDesativados;
