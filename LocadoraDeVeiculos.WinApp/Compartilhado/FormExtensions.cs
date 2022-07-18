@@ -28,7 +28,6 @@ namespace LocadoraDeVeiculos.WinApp
                         }
         }
 
-
         public static void AjustarLabelsHoverParaBlack(this Label label)
         {
             label.MouseEnter += label_MouseParaBlack;
@@ -38,7 +37,6 @@ namespace LocadoraDeVeiculos.WinApp
         {
             label.MouseEnter += label_MouseParaBlue;
         }
-
 
         private static void label_MouseParaBlue(object sender, EventArgs e)
         {

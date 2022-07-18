@@ -129,13 +129,11 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
             catch (Exception ex)
             {
-
                 StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar selecionar o ");
 
                 Log.Logger.Error(ex, msgErro + "{classe}", typeof(T).Name);
 
                 return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
-
             }
         }
 
