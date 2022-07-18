@@ -95,7 +95,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
             for (int i = 0; i < 10; i++)
             {
                 Taxa Taxa = new Taxa(GerarNovaStringAleatoria(), (random.Next(0, 100) + (decimal)Math.Round(random.NextDouble(), 2)), true); ;
-
                 _servicoTaxa.Inserir(Taxa);
                 taxas.Add(Taxa);
             }

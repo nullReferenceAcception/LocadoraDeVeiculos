@@ -10,7 +10,6 @@ using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using FluentResults;
-using System.Linq;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 {

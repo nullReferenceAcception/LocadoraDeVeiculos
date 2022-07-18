@@ -24,7 +24,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
         {
             validador = new();
         }
-        
 
         [TestMethod]
         public void Deve_inserir_Condutor()
@@ -39,9 +38,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 
             servico.Inserir(condutor);
 
-            Condutor Condutor2 = servico.SelecionarPorGuid(condutor.Guid).Value;
+            Condutor condutorEncontrado = servico.SelecionarPorGuid(condutor.Guid).Value;
 
-            Assert.AreEqual(condutor, Condutor2);
+            Assert.AreEqual(condutor, condutorEncontrado);
         }
 
         [TestMethod]
@@ -61,9 +60,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 
             servico.Editar(condutor);
 
-            Condutor condutor2 = servico.SelecionarPorGuid(condutor.Guid).Value;
+            Condutor condutorEncontrado = servico.SelecionarPorGuid(condutor.Guid).Value;
 
-            Assert.AreEqual(condutor2, condutor);
+            Assert.AreEqual(condutorEncontrado, condutor);
         }
 
         [TestMethod]
@@ -81,9 +80,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 
             servico.Excluir(condutor);
 
-            Condutor Condutor2 = servico.SelecionarPorGuid(condutor.Guid).Value;
+            Condutor condutorEncontrado = servico.SelecionarPorGuid(condutor.Guid).Value;
 
-            Condutor2.Should().Be(null);
+            condutorEncontrado.Should().Be(null);
         }
 
         [TestMethod]
@@ -125,15 +124,15 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 
             servicoCliente.Inserir(cliente);
 
-            Condutor registro = CriarCondutor();
+            Condutor condutor = CriarCondutor();
 
-            registro.Cliente = cliente;
+            condutor.Cliente = cliente;
 
-            servico.Inserir(registro);
+            servico.Inserir(condutor);
 
-            Condutor registro2 = servico.SelecionarPorGuid(registro.Guid).Value;
+            Condutor condutorEncontrado = servico.SelecionarPorGuid(condutor.Guid).Value;
 
-            Assert.AreEqual(registro2, registro);
+            Assert.AreEqual(condutorEncontrado, condutor);
         }
         
         private Condutor CriarCondutor()

@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using FluentResults;
-using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
@@ -28,64 +27,64 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
 
             _servicoPlanoCobranca.Inserir(planoCobranca);
 
-            PlanoCobranca PlanoCobranca2 = _servicoPlanoCobranca.SelecionarPorGuid(planoCobranca.Guid).Value;
+            PlanoCobranca planoCobrancaEncontrado = _servicoPlanoCobranca.SelecionarPorGuid(planoCobranca.Guid).Value;
 
-            Assert.AreEqual(planoCobranca, PlanoCobranca2);
+            Assert.AreEqual(planoCobranca, planoCobrancaEncontrado);
         }
 
         [TestMethod]
         public void Deve_editar_PlanoCobranca()
         {
-            PlanoCobranca PlanoCobranca = CriarPlanoCobranca();
+            PlanoCobranca planoCobranca = CriarPlanoCobranca();
 
-            _servicoPlanoCobranca.Inserir(PlanoCobranca);
+            _servicoPlanoCobranca.Inserir(planoCobranca);
 
-            PlanoCobranca.Nome = "ssssss";
+            planoCobranca.Nome = "ssssss";
 
-            _servicoPlanoCobranca.Editar(PlanoCobranca);
+            _servicoPlanoCobranca.Editar(planoCobranca);
 
-            PlanoCobranca PlanoCobranca2 = _servicoPlanoCobranca.SelecionarPorGuid(PlanoCobranca.Guid).Value;
+            PlanoCobranca planoCobrancaEncontrado = _servicoPlanoCobranca.SelecionarPorGuid(planoCobranca.Guid).Value;
 
-            Assert.AreEqual(PlanoCobranca2, PlanoCobranca);
+            Assert.AreEqual(planoCobranca, planoCobrancaEncontrado);
         }
 
         [TestMethod]
         public void Deve_excluir_PlanoCobranca()
         {
-            PlanoCobranca PlanoCobranca = CriarPlanoCobranca();
+            PlanoCobranca planoCobranca = CriarPlanoCobranca();
 
-            _servicoPlanoCobranca.Inserir(PlanoCobranca);
+            _servicoPlanoCobranca.Inserir(planoCobranca);
 
-            _servicoPlanoCobranca.Excluir(PlanoCobranca);
+            _servicoPlanoCobranca.Excluir(planoCobranca);
 
-            PlanoCobranca PlanoCobranca2 = _servicoPlanoCobranca.SelecionarPorGuid(PlanoCobranca.Guid).Value;
+            PlanoCobranca planoCobrancaEncontrado = _servicoPlanoCobranca.SelecionarPorGuid(planoCobranca.Guid).Value;
 
-            PlanoCobranca2.Should().Be(null);
+            planoCobrancaEncontrado.Should().Be(null);
         }
 
         [TestMethod]
         public void Deve_selecionar_por_id()
         {
-            PlanoCobranca registro = CriarPlanoCobranca();
-            _servicoPlanoCobranca.Inserir(registro);
+            PlanoCobranca planoCobranca = CriarPlanoCobranca();
+            _servicoPlanoCobranca.Inserir(planoCobranca);
 
-            PlanoCobranca registro2 = _servicoPlanoCobranca.SelecionarPorGuid(registro.Guid).Value;
+            PlanoCobranca planoCobrancaEncontrado = _servicoPlanoCobranca.SelecionarPorGuid(planoCobranca.Guid).Value;
 
-            Assert.AreEqual(registro2, registro);
+            Assert.AreEqual(planoCobranca, planoCobrancaEncontrado);
         }
 
         [TestMethod]
         public void Nao_Deve_inserir_PlanoCobranca_duplicada()
         {
-            PlanoCobranca PlanoCobranca = CriarPlanoCobranca();
+            PlanoCobranca planoCobranca = CriarPlanoCobranca();
 
-            _servicoPlanoCobranca.Inserir(PlanoCobranca);
+            _servicoPlanoCobranca.Inserir(planoCobranca);
 
-            PlanoCobranca PlanoCobranca2 = CriarPlanoCobranca();
+            PlanoCobranca outroPlanoCobranca = CriarPlanoCobranca();
 
-            PlanoCobranca2.Nome = PlanoCobranca.Nome;
+            outroPlanoCobranca.Nome = planoCobranca.Nome;
 
-            Result<PlanoCobranca> validationResult = _servicoPlanoCobranca.Inserir(PlanoCobranca2);
+            Result<PlanoCobranca> validationResult = _servicoPlanoCobranca.Inserir(outroPlanoCobranca);
 
             validationResult.Errors[0].Message.Should().Contain("Nome já está cadastrado");
         }
@@ -98,8 +97,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
             GrupoVeiculos grupoVeiculos = new GrupoVeiculos("grupo");
             _servicoGrupoVeiculo.Inserir(grupoVeiculos);
 
-           
-                PlanoCobranca PlanoCobranca = new PlanoCobranca(GerarNovaStringAleatoria(), random.Next(1,200), random.Next(1, 200), random.Next(1, 200),PlanoEnum.KmLivre, grupoVeiculos);
+            PlanoCobranca PlanoCobranca = new PlanoCobranca(GerarNovaStringAleatoria(), random.Next(1, 200), random.Next(1, 200), random.Next(1, 200), PlanoEnum.KmLivre, grupoVeiculos);
 
             PlanoCobranca PlanoCobranca2 = new PlanoCobranca(GerarNovaStringAleatoria(), random.Next(1, 200), random.Next(1, 200), random.Next(1, 200), PlanoEnum.KmControlado, grupoVeiculos);
 
@@ -117,9 +115,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
 
             registros.Add(PlanoCobranca3);
 
-
             List<PlanoCobranca> registrosDoBanco = _servicoPlanoCobranca.SelecionarTodos().Value;
-
 
             Assert.IsTrue(registrosDoBanco.Count == registros.Count);
 
@@ -131,7 +127,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
         {
             GrupoVeiculos grupoVeiculos = new GrupoVeiculos("grupo");
             _servicoGrupoVeiculo.Inserir(grupoVeiculos);
-            return new PlanoCobranca(GerarNovaStringAleatoria(), random.Next(1, 200), random.Next(1, 200), random.Next(1, 200),PlanoEnum.KmControlado, grupoVeiculos);
+            return new PlanoCobranca(GerarNovaStringAleatoria(), random.Next(1, 200), random.Next(1, 200), random.Next(1, 200), PlanoEnum.KmControlado, grupoVeiculos);
         }
     }
 }

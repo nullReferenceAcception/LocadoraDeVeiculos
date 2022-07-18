@@ -1,18 +1,4 @@
-﻿using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo;
-using LocadoraDeVeiculos.Servico.ModuloCliente;
-using LocadoraDeVeiculos.Servico.ModuloCondutor;
-using LocadoraDeVeiculos.Servico.ModuloFuncionario;
-using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
-using LocadoraDeVeiculos.Servico.ModuloPlanoCobranca;
-using LocadoraDeVeiculos.Servico.ModuloTaxa;
-using LocadoraDeVeiculos.Servico.ModuloVeiculos;
-using LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator;
+﻿using LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator;
 using LocadoraDeVeiculos.WinApp.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.ModuloCondutor;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
@@ -21,7 +7,6 @@ using LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.WinApp.ModuloTaxa;
 using LocadoraDeVeiculos.WinApp.ModuloVeiculo;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 

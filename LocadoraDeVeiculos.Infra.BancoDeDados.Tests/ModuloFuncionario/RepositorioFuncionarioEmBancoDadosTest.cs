@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using FluentResults;
-using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario;
@@ -19,92 +18,92 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
         [TestMethod]
         public void Deve_inserir_Funcionario()
         {
-            Funcionario registro = CriarFuncionario();
+            Funcionario funcionario = CriarFuncionario();
 
-            servico.Inserir(registro);
+            servico.Inserir(funcionario);
 
-            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid).Value;
+            Funcionario funcionarioEncontrado = servico.SelecionarPorGuid(funcionario.Guid).Value;
 
-            Assert.AreEqual(registro, registro2);
+            Assert.AreEqual(funcionario, funcionarioEncontrado);
         }
 
         [TestMethod]
         public void Deve_editar_Funcionario()
         {
-            Funcionario registro = CriarFuncionario();
+            Funcionario funcionario = CriarFuncionario();
 
-            servico.Inserir(registro);
+            servico.Inserir(funcionario);
 
-            registro.Nome = "ssssss";
+            funcionario.Nome = "ssssss";
 
-            servico.Editar(registro);
+            servico.Editar(funcionario);
 
-            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid).Value;
+            Funcionario funcionarioEncontrado = servico.SelecionarPorGuid(funcionario.Guid).Value;
 
-            Assert.AreEqual(registro2, registro);
+            Assert.AreEqual(funcionarioEncontrado, funcionario);
         }
 
         [TestMethod]
         public void Deve_excluir_Funcionario()
         {
-            Funcionario registro = CriarFuncionario();
+            Funcionario funcionario = CriarFuncionario();
 
-            servico.Inserir(registro);
+            servico.Inserir(funcionario);
 
-            servico.Excluir(registro);
+            servico.Excluir(funcionario);
 
-            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid).Value;
+            Funcionario funcionarioEncontrado = servico.SelecionarPorGuid(funcionario.Guid).Value;
 
-            registro2.EstaAtivo.Should().Be(false);
+            funcionarioEncontrado.EstaAtivo.Should().Be(false);
         }
 
         [TestMethod]
         public void Deve_selecionar_todos_Funcionarios()
         {
-            List<Funcionario> registros = new List<Funcionario>();
+            List<Funcionario> funcionarios = new List<Funcionario>();
 
             for (int i = 0; i < 10; i++)
             {
                 Funcionario registro = new(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "s@s.s", "49989090909", GerarNovaPlaca(), GerarNovaStringAleatoria(), DateTime.Today, 12, true, GerarNovaStringAleatoria(), true);
 
                 servico.Inserir(registro);
-                registros.Add(registro);
+                funcionarios.Add(registro);
             }
 
             List<Funcionario> registrosDoBanco = servico.SelecionarTodos().Value;
 
-
-            Assert.IsTrue(registrosDoBanco.Count == registros.Count);
+            Assert.IsTrue(registrosDoBanco.Count == funcionarios.Count);
 
             for (int i = 0; i < registrosDoBanco.Count; i++)
-                Assert.IsTrue(registrosDoBanco.Contains(registros[i]));
+                Assert.IsTrue(registrosDoBanco.Contains(funcionarios[i]));
         }
 
         [TestMethod]
         public void Deve_selecionar_por_id()
         {
-            Funcionario registro = CriarFuncionario();
-            servico.Inserir(registro);
+            Funcionario funcionario = CriarFuncionario();
 
-            Funcionario registro2 = servico.SelecionarPorGuid(registro.Guid).Value;
+            servico.Inserir(funcionario);
 
-            Assert.AreEqual(registro2, registro);
+            Funcionario funcionarioEncontrado = servico.SelecionarPorGuid(funcionario.Guid).Value;
+
+            Assert.AreEqual(funcionarioEncontrado, funcionario);
         }
 
         [TestMethod]
         public void Nao_Deve_inserir_Funcionario_Com_Login_duplicado()
         {
-            Funcionario registro = CriarFuncionario();
+            Funcionario funcionario = CriarFuncionario();
 
-            servico.Inserir(registro);
+            servico.Inserir(funcionario);
 
-            Funcionario registro2 = CriarFuncionario();
+            Funcionario outroFuncionario = CriarFuncionario();
 
-            registro2.Nome = "asjkdhasjkdh";
+            outroFuncionario.Nome = "asjkdhasjkdh";
 
-            registro2.Login = registro.Login;
+            outroFuncionario.Login = funcionario.Login;
 
-            Result<Funcionario> result = servico.Inserir(registro2);
+            Result<Funcionario> result = servico.Inserir(outroFuncionario);
 
             result.Errors[0].Message.Should().Contain("Login já está cadastrado");
         }
@@ -117,7 +116,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
         private string GerarNovaPlaca()
         {
             const int qtdeLetras = 8;
-
             const string letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string novaPlaca = "";
             Random random = new();
@@ -125,10 +123,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
             for (int i = 0; i < qtdeLetras; i++)
                 novaPlaca += letras[random.Next(letras.Length)];
 
-
             return novaPlaca;
         }
-
-
     }
 }

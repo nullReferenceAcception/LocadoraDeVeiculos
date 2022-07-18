@@ -32,7 +32,5 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
 
             return stringAleatoria;
         }
-
-
     }
 }
