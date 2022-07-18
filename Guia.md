@@ -1,7 +1,7 @@
 <h2 style="color:red" id='topo'> Guia de padrões e roteiro de processo </h2>
 
 ___
-<a href="https://i.ibb.co/k4TC8N8/image.png" target="_blank">Modelo atual MVC</a>
+<a href="https://i.ibb.co/k4TC8N8/image.png" target="_blank" rel="noopener noreferrer">Modelo atual MVC</a>
 
 ___
 
