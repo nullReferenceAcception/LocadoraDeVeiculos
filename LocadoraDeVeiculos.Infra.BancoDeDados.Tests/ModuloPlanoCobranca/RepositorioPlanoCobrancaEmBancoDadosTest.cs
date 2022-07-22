@@ -27,7 +27,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
 
             _servicoPlanoCobranca.Inserir(planoCobranca);
 
-            PlanoCobranca planoCobrancaEncontrado = _servicoPlanoCobranca.SelecionarPorGuid(planoCobranca.Guid).Value;
+            PlanoCobranca planoCobrancaEncontrado = _servicoPlanoCobranca.SelecionarPorGuid(planoCobranca.Id).Value;
 
             Assert.AreEqual(planoCobranca, planoCobrancaEncontrado);
         }
@@ -43,7 +43,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
 
             _servicoPlanoCobranca.Editar(planoCobranca);
 
-            PlanoCobranca planoCobrancaEncontrado = _servicoPlanoCobranca.SelecionarPorGuid(planoCobranca.Guid).Value;
+            PlanoCobranca planoCobrancaEncontrado = _servicoPlanoCobranca.SelecionarPorGuid(planoCobranca.Id).Value;
 
             Assert.AreEqual(planoCobranca, planoCobrancaEncontrado);
         }
@@ -57,7 +57,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
 
             _servicoPlanoCobranca.Excluir(planoCobranca);
 
-            PlanoCobranca planoCobrancaEncontrado = _servicoPlanoCobranca.SelecionarPorGuid(planoCobranca.Guid).Value;
+            PlanoCobranca planoCobrancaEncontrado = _servicoPlanoCobranca.SelecionarPorGuid(planoCobranca.Id).Value;
 
             planoCobrancaEncontrado.Should().Be(null);
         }
@@ -68,7 +68,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
             PlanoCobranca planoCobranca = CriarPlanoCobranca();
             _servicoPlanoCobranca.Inserir(planoCobranca);
 
-            PlanoCobranca planoCobrancaEncontrado = _servicoPlanoCobranca.SelecionarPorGuid(planoCobranca.Guid).Value;
+            PlanoCobranca planoCobrancaEncontrado = _servicoPlanoCobranca.SelecionarPorGuid(planoCobranca.Id).Value;
 
             Assert.AreEqual(planoCobranca, planoCobrancaEncontrado);
         }

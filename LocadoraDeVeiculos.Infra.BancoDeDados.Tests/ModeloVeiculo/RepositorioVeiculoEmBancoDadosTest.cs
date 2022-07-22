@@ -32,7 +32,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 
             _servicoVeiculo.Inserir(veiculo);
 
-            Result<Veiculo> result = _servicoVeiculo.SelecionarPorGuid(veiculo.Guid);
+            Result<Veiculo> result = _servicoVeiculo.SelecionarPorGuid(veiculo.Id);
 
             result.Value.Should().Be(veiculo);
             result.Errors.Count.Should().Be(0);
@@ -59,7 +59,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 
             _servicoVeiculo.Editar(veiculo);
 
-            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.Guid);
+            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.Id);
 
             veiculoEncontrado.Value.Should().Be(veiculo);
         }
@@ -79,7 +79,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 
             _servicoVeiculo.Excluir(veiculo);
 
-            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.Guid);
+            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.Id);
 
             veiculoEncontrado.Value.Should().BeNull();
         }
@@ -127,7 +127,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 
             _servicoVeiculo.Inserir(veiculo);
 
-            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.Guid);
+            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.Id);
 
             veiculoEncontrado.Value.Should().Be(veiculo);
         }
@@ -145,7 +145,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 
             _servicoVeiculo.Inserir(veiculo);
 
-            veiculo.Guid = new Guid();
+            veiculo.Id = new Guid();
 
             Result<Veiculo> resultado = _servicoVeiculo.Inserir(veiculo);
 

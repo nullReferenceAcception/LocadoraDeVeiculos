@@ -128,7 +128,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
 
         public string SqlDuplicidade(Veiculo registro)
         {
-            return "SELECT * FROM TB_VEICULO WHERE ([PLACA] = '" + registro.Placa + "')" + $"AND [GUID_VEICULO] != '" + registro.Guid + "'";
+            return "SELECT * FROM TB_VEICULO WHERE ([PLACA] = '" + registro.Placa + "')" + $"AND [GUID_VEICULO] != '" + registro.Id + "'";
         }
     }
 }

@@ -160,7 +160,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
 
         public string SqlDuplicidade(Cliente registro)
         {
-           return "SELECT * FROM TB_CLIENTE WHERE ([NOME] = '" + registro.Nome + "')" + "AND [GUID_CLIENTE] != '" + registro.Guid + "' ";
+           return "SELECT * FROM TB_CLIENTE WHERE ([NOME] = '" + registro.Nome + "')" + "AND [GUID_CLIENTE] != '" + registro.Id + "' ";
         }
         
         public List<Cliente> SelecionarTodosClientesQueSaoPessoaFisica()

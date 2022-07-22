@@ -32,14 +32,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         private void ConfigurarTelaEditar()
         {
-            textBoxGuid.Text = Cliente.Guid.ToString();
+            textBoxGuid.Text = Cliente.Id.ToString();
             textBoxNome.Text = Cliente.Nome;
             textBoxEndereco.Text = Cliente.Endereco;
             maskedTextBoxCNH.Text = Cliente.CNH;
             textBoxEmail.Text = Cliente.Email;
             maskedTextBoxTelefone.Text = Cliente.Telefone;
 
-            if (Cliente.Guid != Guid.Empty)
+            if (Cliente.Id != Guid.Empty)
             {
                 if (string.IsNullOrEmpty(Cliente.CPF))
                 {

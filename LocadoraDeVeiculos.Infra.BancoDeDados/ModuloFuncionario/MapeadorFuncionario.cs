@@ -9,7 +9,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
     {
         public void ConfigurarParametrosRegistro(Funcionario registro, SqlCommand cmdInserir)
         {
-            cmdInserir.Parameters.AddWithValue("GUID_FUNCIONARIO", registro.Guid);
+            cmdInserir.Parameters.AddWithValue("GUID_FUNCIONARIO", registro.Id);
             cmdInserir.Parameters.AddWithValue("NOME", registro.Nome);
             cmdInserir.Parameters.AddWithValue("ENDERECO", registro.Endereco == null ? DBNull.Value : registro.Endereco);
             cmdInserir.Parameters.AddWithValue("EMAIL", registro.Email == null ? DBNull.Value : registro.Email);
@@ -40,7 +40,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
 
             var funcionario = new Funcionario();
 
-            funcionario.Guid = idFuncionario;
+            funcionario.Id = idFuncionario;
             funcionario.Nome = nome;
             funcionario.Endereco = endereco;
             funcionario.Email = email;

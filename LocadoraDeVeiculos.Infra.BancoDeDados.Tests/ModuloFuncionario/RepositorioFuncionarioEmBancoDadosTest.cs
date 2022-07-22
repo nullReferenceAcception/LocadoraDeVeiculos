@@ -22,7 +22,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             servico.Inserir(funcionario);
 
-            Funcionario funcionarioEncontrado = servico.SelecionarPorGuid(funcionario.Guid).Value;
+            Funcionario funcionarioEncontrado = servico.SelecionarPorGuid(funcionario.Id).Value;
 
             Assert.AreEqual(funcionario, funcionarioEncontrado);
         }
@@ -38,7 +38,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             servico.Editar(funcionario);
 
-            Funcionario funcionarioEncontrado = servico.SelecionarPorGuid(funcionario.Guid).Value;
+            Funcionario funcionarioEncontrado = servico.SelecionarPorGuid(funcionario.Id).Value;
 
             Assert.AreEqual(funcionarioEncontrado, funcionario);
         }
@@ -52,7 +52,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             servico.Excluir(funcionario);
 
-            Funcionario funcionarioEncontrado = servico.SelecionarPorGuid(funcionario.Guid).Value;
+            Funcionario funcionarioEncontrado = servico.SelecionarPorGuid(funcionario.Id).Value;
 
             funcionarioEncontrado.EstaAtivo.Should().Be(false);
         }
@@ -85,7 +85,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             servico.Inserir(funcionario);
 
-            Funcionario funcionarioEncontrado = servico.SelecionarPorGuid(funcionario.Guid).Value;
+            Funcionario funcionarioEncontrado = servico.SelecionarPorGuid(funcionario.Id).Value;
 
             Assert.AreEqual(funcionarioEncontrado, funcionario);
         }

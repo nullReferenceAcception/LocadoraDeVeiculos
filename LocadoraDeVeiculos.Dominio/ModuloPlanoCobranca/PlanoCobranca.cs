@@ -37,7 +37,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
         public override bool Equals(object? obj)
         {
             return obj is PlanoCobranca cobranca &&
-                   Guid == cobranca.Guid &&
+                   Id == cobranca.Id &&
                    Nome == cobranca.Nome &&
                    KmLivreIncluso == cobranca.KmLivreIncluso &&
                    ValorDia == cobranca.ValorDia &&

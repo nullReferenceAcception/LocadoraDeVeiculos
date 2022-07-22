@@ -24,7 +24,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         public int ObtemGuidVeiculoSelecionado()
         {
-            return grid.ObterGuid<int>();
+            return grid.ObterId<int>();
         }
 
         public void AtualizarRegistros(/*List<Locacao> locacoes*/)

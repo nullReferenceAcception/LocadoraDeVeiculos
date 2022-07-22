@@ -19,7 +19,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Guid", HeaderText = "Guid"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Descricao", HeaderText = "Descrição"},
 
@@ -33,7 +33,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
         public Guid ObtemGuidTaxaSelecionada()
         {
-            return grid.ObterGuid<Guid>();
+            return grid.ObterId<Guid>();
         }
 
         public void AtualizarRegistros(List<Taxa> taxas)
@@ -42,9 +42,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             foreach (Taxa taxa in taxas)
                 if (taxa.EhDiaria)
-                    grid.Rows.Add(taxa.Guid, taxa.Descricao, taxa.Valor, "Diária");
+                    grid.Rows.Add(taxa.Id, taxa.Descricao, taxa.Valor, "Diária");
                 else
-                    grid.Rows.Add(taxa.Guid, taxa.Descricao, taxa.Valor, "Fixo");
+                    grid.Rows.Add(taxa.Id, taxa.Descricao, taxa.Valor, "Fixo");
         }
     }
 }

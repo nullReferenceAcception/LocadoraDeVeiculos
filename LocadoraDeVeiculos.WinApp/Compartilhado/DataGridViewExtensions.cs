@@ -61,7 +61,7 @@ namespace LocadoraDeVeiculos.WinApp
             };
         }
 
-        public static T ObterGuid<T>(this DataGridView grid)
+        public static T ObterId<T>(this DataGridView grid)
         {
             const int firstLine = 0, firstColumn = 0;
             if (grid.SelectedRows.Count == 0)

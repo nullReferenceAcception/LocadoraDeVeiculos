@@ -38,7 +38,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 
             servico.Inserir(condutor);
 
-            Condutor condutorEncontrado = servico.SelecionarPorGuid(condutor.Guid).Value;
+            Condutor condutorEncontrado = servico.SelecionarPorGuid(condutor.Id).Value;
 
             Assert.AreEqual(condutor, condutorEncontrado);
         }
@@ -60,7 +60,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 
             servico.Editar(condutor);
 
-            Condutor condutorEncontrado = servico.SelecionarPorGuid(condutor.Guid).Value;
+            Condutor condutorEncontrado = servico.SelecionarPorGuid(condutor.Id).Value;
 
             Assert.AreEqual(condutorEncontrado, condutor);
         }
@@ -80,7 +80,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 
             servico.Excluir(condutor);
 
-            Condutor condutorEncontrado = servico.SelecionarPorGuid(condutor.Guid).Value;
+            Condutor condutorEncontrado = servico.SelecionarPorGuid(condutor.Id).Value;
 
             condutorEncontrado.Should().Be(null);
         }
@@ -130,7 +130,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 
             servico.Inserir(condutor);
 
-            Condutor condutorEncontrado = servico.SelecionarPorGuid(condutor.Guid).Value;
+            Condutor condutorEncontrado = servico.SelecionarPorGuid(condutor.Id).Value;
 
             Assert.AreEqual(condutorEncontrado, condutor);
         }

@@ -7,11 +7,11 @@ namespace LocadoraDeVeiculos.Dominio
     {
         protected EntidadeBase()
         {
-            this.Guid = Guid.Empty;
+            this.Id = Guid.Empty;
         }
 
         [JsonProperty(Order = -6)]
-        public Guid Guid { get; set; }
+        public Guid Id { get; set; }
         public abstract override bool Equals(object? obj);
     }
 }

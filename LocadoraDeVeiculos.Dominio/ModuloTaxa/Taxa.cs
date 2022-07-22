@@ -22,7 +22,7 @@
         public override bool Equals(object? obj)
         {
             return obj is Taxa taxa &&
-                   Guid == taxa.Guid &&
+                   Id == taxa.Id &&
                    Descricao == taxa.Descricao &&
                    Valor == taxa.Valor;
         }

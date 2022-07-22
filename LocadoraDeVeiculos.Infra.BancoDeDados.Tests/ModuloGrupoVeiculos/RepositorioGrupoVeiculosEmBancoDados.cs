@@ -22,7 +22,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
 
             _servicoGrupoVeiculos.Inserir(grupoVeiculos);
 
-            GrupoVeiculos grupoVeiculosEncontrado = _servicoGrupoVeiculos.SelecionarPorGuid(grupoVeiculos.Guid).Value;
+            GrupoVeiculos grupoVeiculosEncontrado = _servicoGrupoVeiculos.SelecionarPorGuid(grupoVeiculos.Id).Value;
 
             Assert.AreEqual(grupoVeiculos, grupoVeiculosEncontrado);
         }
@@ -38,7 +38,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
 
             _servicoGrupoVeiculos.Editar(grupoVeiculos);
 
-            GrupoVeiculos grupoVeiculosEncontrado = _servicoGrupoVeiculos.SelecionarPorGuid(grupoVeiculos.Guid).Value;
+            GrupoVeiculos grupoVeiculosEncontrado = _servicoGrupoVeiculos.SelecionarPorGuid(grupoVeiculos.Id).Value;
 
             Assert.AreEqual(grupoVeiculosEncontrado, grupoVeiculos);
         }
@@ -52,7 +52,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
 
             _servicoGrupoVeiculos.Excluir(grupoVeiculos);
 
-            GrupoVeiculos grupoVeiculosEncontrado = _servicoGrupoVeiculos.SelecionarPorGuid(grupoVeiculos.Guid).Value;
+            GrupoVeiculos grupoVeiculosEncontrado = _servicoGrupoVeiculos.SelecionarPorGuid(grupoVeiculos.Id).Value;
 
             grupoVeiculosEncontrado.Should().Be(null);
         }
@@ -84,7 +84,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
             GrupoVeiculos grupoVeiculos = CriarGrupoVeiculos();
             _servicoGrupoVeiculos.Inserir(grupoVeiculos);
 
-            GrupoVeiculos grupoVeiculosEncontrado = _servicoGrupoVeiculos.SelecionarPorGuid(grupoVeiculos.Guid).Value;
+            GrupoVeiculos grupoVeiculosEncontrado = _servicoGrupoVeiculos.SelecionarPorGuid(grupoVeiculos.Id).Value;
 
             Assert.AreEqual(grupoVeiculosEncontrado, grupoVeiculos);
         }

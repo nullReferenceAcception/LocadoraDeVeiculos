@@ -47,7 +47,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         public Guid ObtemGuidVeiculoSelecionado()
         {
-            return grid.ObterGuid<Guid>();
+            return grid.ObterId<Guid>();
         }
 
         public void AtualizarRegistros(List<Veiculo> veiculos)
@@ -55,7 +55,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             grid.Rows.Clear();
 
             foreach (Veiculo veiculo in veiculos)
-                grid.Rows.Add(veiculo.Guid, veiculo.Modelo, veiculo.Marca, veiculo.Placa, veiculo.Cor, veiculo.Ano, veiculo.Combustivel, veiculo.CapacidadeTanque, veiculo.KmPercorrido, veiculo.GrupoVeiculos, veiculo.Foto);
+                grid.Rows.Add(veiculo.Id, veiculo.Modelo, veiculo.Marca, veiculo.Placa, veiculo.Cor, veiculo.Ano, veiculo.Combustivel, veiculo.CapacidadeTanque, veiculo.KmPercorrido, veiculo.GrupoVeiculos, veiculo.Foto);
         }
     }
 }

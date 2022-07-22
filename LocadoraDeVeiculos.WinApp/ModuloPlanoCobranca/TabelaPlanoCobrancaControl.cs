@@ -40,7 +40,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
 
         public Guid ObtemGuidPlanoCobrancaSelecionada()
         {
-            return grid.ObterGuid<Guid>();
+            return grid.ObterId<Guid>();
         }
 
         public void AtualizarRegistros(List<PlanoCobranca> PlanoCobrancas)
@@ -48,7 +48,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             grid.Rows.Clear();
 
             foreach (PlanoCobranca PlanoCobranca in PlanoCobrancas)
-                    grid.Rows.Add(PlanoCobranca.Guid, PlanoCobranca.Nome, PlanoCobranca.KmLivreIncluso, PlanoCobranca.ValorDia, PlanoCobranca.ValorPorKm, PlanoCobranca.GrupoVeiculos.Nome, PlanoCobranca.Plano);
+                    grid.Rows.Add(PlanoCobranca.Id, PlanoCobranca.Nome, PlanoCobranca.KmLivreIncluso, PlanoCobranca.ValorDia, PlanoCobranca.ValorPorKm, PlanoCobranca.GrupoVeiculos.Nome, PlanoCobranca.Plano);
         }
     }
 }

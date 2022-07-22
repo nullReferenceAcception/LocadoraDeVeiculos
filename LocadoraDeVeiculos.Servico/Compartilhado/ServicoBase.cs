@@ -27,7 +27,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         public virtual Result<T> Inserir(T registro)
         {
-            registro.Guid = SequentialGuid.NewGuid();
+            registro.Id = SequentialGuid.NewGuid();
 
             Log.Logger.Debug("Inserindo: {nome}", typeof(T).Name);
 
@@ -49,7 +49,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             {
                 StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar inserir ");
 
-                Log.Logger.Error(ex, msgErro + "{classe}" + "{Guid}", typeof(T).Name, registro.Guid);
+                Log.Logger.Error(ex, msgErro + "{classe}" + "{id}", typeof(T).Name, registro.Id);
 
                 return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
@@ -57,7 +57,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         public virtual Result<T> Editar(T registro)
         {
-            Log.Logger.Debug("Editando: {nome} - ID: {guid}", typeof(T).Name, registro.Guid);
+            Log.Logger.Debug("Editando: {nome} - ID: {id}", typeof(T).Name, registro.Id);
 
             Result resultadoValidacao = ValidarRegistro(registro);
 
@@ -77,7 +77,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             {
                 StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar editar ");
 
-                Log.Logger.Error(ex, msgErro + "{classe}" + "{Guid}", typeof(T).Name, registro.Guid);
+                Log.Logger.Error(ex, msgErro + "{classe}" + "{id}", typeof(T).Name, registro.Id);
 
                 return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
@@ -99,7 +99,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             {
                 StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar excluir o ");
 
-                Log.Logger.Error(ex, msgErro + "{classe}" + "{Guid}", typeof(T).Name, registro.Guid);
+                Log.Logger.Error(ex, msgErro + "{classe}" + "{id}", typeof(T).Name, registro.Id);
 
                 return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
@@ -121,11 +121,11 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
         }
 
-        public Result<T> SelecionarPorGuid(Guid guid)
+        public Result<T> SelecionarPorGuid(Guid id)
         {
             try
             {
-                return Result.Ok(repositorio.SelecionarPorGuid(guid));
+                return Result.Ok(repositorio.SelecionarPorId(id));
             }
             catch (Exception ex)
             {
@@ -159,7 +159,13 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
         {
             if (TiverDuplicidade(registro))
                 return true;
+
             return false;
+        }
+
+        protected bool TiverDuplicidade(T registro)
+        {
+            return repositorio.VerificarDuplicidade(repositorio.SqlDuplicidade(registro));
         }
 
         private void LogFalha(string funcao, T registro, List<IError> erros)
@@ -173,11 +179,6 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
                 else
                     Log.Logger.Error(item.Message);
             }
-        }
-
-        protected bool TiverDuplicidade(T registro)
-        {
-            return repositorio.VerificarDuplicidade(repositorio.SqlDuplicidade(registro));
         }
 
         private Result ValidarRegistro(T registro)
