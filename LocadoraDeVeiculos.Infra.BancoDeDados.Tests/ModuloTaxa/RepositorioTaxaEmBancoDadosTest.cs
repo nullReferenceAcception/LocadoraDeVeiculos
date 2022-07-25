@@ -6,6 +6,7 @@ using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
+using LocadoraDeVeiculos.Infra.ORM.ModuloTaxa;
 using LocadoraDeVeiculos.Servico.ModuloTaxa;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -21,7 +22,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
 
         public RepositorioTaxaEmBancoDadosTest() : base()
         {
-            _servicoTaxa = new(new RepositorioTaxa(), new LocadoraDbContext(Db.conexaoComBanco.ConnectionString));
+            _servicoTaxa = new(new RepositorioTaxaOrm(DbContext), DbContext);
         }
 
         [TestMethod]
