@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using LocadoraDeVeiculos.Infra.Logging.Log;
 using System.Configuration;
 using LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator;
+using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -17,6 +18,9 @@ namespace LocadoraDeVeiculos.WinApp
         [STAThread]
         static void Main()
         {
+
+            MigradorBancoDadosLocadora.AtualizarBancoDados();
+
             Log.Logger.ConfigurarLogEmWeb();
 
             string Linguagem = ConfigurationManager.AppSettings.Get("Idioma");

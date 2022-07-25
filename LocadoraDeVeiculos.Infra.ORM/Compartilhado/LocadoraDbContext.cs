@@ -37,6 +37,12 @@ namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
+            var dllComConfiguracoesOrm = typeof(LocadoraDbContext).Assembly;
+
+            modelBuilder.ApplyConfigurationsFromAssembly(dllComConfiguracoesOrm);
+
+
+
             modelBuilder.ApplyConfiguration(new MapeadorTaxaOrm());
 
 

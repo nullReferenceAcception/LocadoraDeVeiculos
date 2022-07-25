@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator;
 using System;
 

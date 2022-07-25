@@ -7,6 +7,7 @@ using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
+using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario;
@@ -31,6 +32,7 @@ using LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo;
 using LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.WinApp.ModuloTaxa;
 using LocadoraDeVeiculos.WinApp.ModuloVeiculo;
+using System.Configuration;
 
 namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 {
@@ -42,7 +44,10 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterType<LocadoraDbContext>().As<IContextoPersistencia>();
+
+
+            builder.RegisterInstance(new LocadoraDbContext(Db.conexaoComBanco.ConnectionString)).As<IContextoPersistencia>().AsSelf();
+
 
             builder.RegisterType<RepositorioCliente>().As<IRepositorioCliente>();
             builder.RegisterType<RepositorioCondutor>().As<IRepositorioCondutor>();

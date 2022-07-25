@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
@@ -19,8 +20,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
     {
         Random random = new Random();
         ValidadorCondutor validador;
-        ServicoCondutor servico = new(new RepositorioCondutor(), new LocadoraDbContext(Db.conexaoComBanco.ToString()));
-        ServicoCliente servicoCliente = new(new RepositorioCliente(), new LocadoraDbContext(Db.conexaoComBanco.ToString()));
+        ServicoCondutor servico = new(new RepositorioCondutor(), new LocadoraDbContext(Db.conexaoComBanco.ConnectionString));
+        ServicoCliente servicoCliente = new(new RepositorioCliente(), new LocadoraDbContext(Db.conexaoComBanco.ConnectionString));
 
         public RepositorioCondutorEmBancoDeDados()
         {

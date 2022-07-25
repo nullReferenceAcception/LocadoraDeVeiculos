@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using FluentResults;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
@@ -18,8 +19,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
     [TestClass]
     public class RepositorioVeiculoEmBancoDadosTest : BaseTestRepositorio
     {
-        ServicoVeiculo _servicoVeiculo = new(new RepositorioVeiculo(), new LocadoraDbContext(Db.conexaoComBanco.ToString()));
-        ServicoGrupoVeiculos _servicoGrupoVeiculo = new(new RepositorioGrupoVeiculos(), new LocadoraDbContext(Db.conexaoComBanco.ToString()));
+        ServicoVeiculo _servicoVeiculo = new(new RepositorioVeiculo(), new LocadoraDbContext(Db.conexaoComBanco.ConnectionString));
+        ServicoGrupoVeiculos _servicoGrupoVeiculo = new(new RepositorioGrupoVeiculos(), new LocadoraDbContext(Db.conexaoComBanco.ConnectionString));
 
         [TestMethod]
         public void Deve_inserir_veiculo()
