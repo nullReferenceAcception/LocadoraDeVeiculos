@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using System;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
 {
@@ -9,6 +10,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
         public decimal ValorDia { get; set; }
         public decimal ValorPorKm { get; set; }
         public GrupoVeiculos GrupoVeiculos { get; set; }
+        public Guid GrupoVeiculosId { get; set; }
         public PlanoEnum Plano { get; set; }
         
         public PlanoCobranca()
@@ -37,10 +39,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
         public override bool Equals(object? obj)
         {
             return obj is PlanoCobranca cobranca &&
-                   Guid == cobranca.Guid &&
+                   Id == cobranca.Id &&
                    Nome == cobranca.Nome &&
                    KmLivreIncluso == cobranca.KmLivreIncluso &&
                    ValorDia == cobranca.ValorDia &&
+                   GrupoVeiculosId == cobranca.GrupoVeiculosId &&
                    ValorPorKm == cobranca.ValorPorKm;
         }
     }

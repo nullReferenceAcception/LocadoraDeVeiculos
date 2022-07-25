@@ -4,7 +4,6 @@
     {
         public string Descricao { get; set; }
         public decimal Valor { get; set; }
-
         public bool EhDiaria { get; set; }
 
         public Taxa()
@@ -22,7 +21,7 @@
         public override bool Equals(object? obj)
         {
             return obj is Taxa taxa &&
-                   Guid == taxa.Guid &&
+                   Id == taxa.Id &&
                    Descricao == taxa.Descricao &&
                    Valor == taxa.Valor;
         }

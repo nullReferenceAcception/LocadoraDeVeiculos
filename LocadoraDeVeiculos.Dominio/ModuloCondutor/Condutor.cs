@@ -11,6 +11,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
         public string CPF { get; set; }
         public DateTime DataValidadeCNH { get; set; }
         public Cliente Cliente { get; set; }
+        public Guid ClienteId { get; set; } 
 
         public Condutor()
         {
@@ -31,7 +32,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
         public override bool Equals(object? obj)
         {
             return obj is Condutor condutor &&
-                   Guid == condutor.Guid &&
+                   Id == condutor.Id &&
                    Nome == condutor.Nome &&
                    Endereco == condutor.Endereco &&
                    Email == condutor.Email &&
@@ -39,6 +40,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
                    CNH == condutor.CNH &&
                    CPF == condutor.CPF &&
                    EqualityComparer<Cliente>.Default.Equals(Cliente, condutor.Cliente) &&
+                   ClienteId == condutor.ClienteId &&
                    DataValidadeCNH == condutor.DataValidadeCNH;
         }
     }

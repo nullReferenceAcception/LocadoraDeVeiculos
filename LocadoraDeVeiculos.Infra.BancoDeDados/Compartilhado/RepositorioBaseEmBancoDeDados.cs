@@ -79,7 +79,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
 
             SqlCommand comandoExclusao = new SqlCommand(sqlExcluir, conexao);
 
-            comandoExclusao.Parameters.AddWithValue("guid", registro.Guid);
+            comandoExclusao.Parameters.AddWithValue("guid", registro.Id);
 
             try
             {

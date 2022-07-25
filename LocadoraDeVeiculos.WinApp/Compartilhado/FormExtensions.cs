@@ -23,17 +23,27 @@ namespace LocadoraDeVeiculos.WinApp
                     foreach (var x in item.Controls)
                         if (x is Label && ((Label)x).Text != "Guid:")
                         {
-                            ((Label)x).MouseEnter += label_MouseEnter;
-                            ((Label)x).MouseLeave += label_MouseLeave;
+                            ((Label)x).MouseEnter += label_MouseParaBlue;
+                            ((Label)x).MouseLeave += label_MouseParaBlack;
                         }
         }
 
-        private static void label_MouseEnter(object sender, EventArgs e)
+        public static void AjustarLabelsHoverParaBlack(this Label label)
+        {
+            label.MouseEnter += label_MouseParaBlack;
+        }
+
+        public static void AjustarLabelsHoverParaBlue(this Label label)
+        {
+            label.MouseEnter += label_MouseParaBlue;
+        }
+
+        private static void label_MouseParaBlue(object sender, EventArgs e)
         {
             if (sender is Label label)
                 label.ForeColor = Color.DodgerBlue;
         }
-        private static void label_MouseLeave(object? sender, EventArgs e)
+        private static void label_MouseParaBlack(object? sender, EventArgs e)
         {
             if (sender is Label label)
                 label.ForeColor = Color.Black;

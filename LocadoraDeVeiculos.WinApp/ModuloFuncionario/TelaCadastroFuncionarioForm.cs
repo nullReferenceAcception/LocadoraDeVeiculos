@@ -60,7 +60,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         private void ConfigurarTelaEditar()
         {
-            textBoxGuid.Text = _funcionario.Guid.ToString();
+            textBoxGuid.Text = _funcionario.Id.ToString();
             textBoxNome.Text = _funcionario.Nome;
             textBoxEmail.Text = _funcionario.Email;
             maskedTextBoxTelefone.Text = _funcionario.Telefone;
@@ -73,7 +73,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             if (_funcionario.DataAdmissao > DateTime.MinValue)
                 dateTimePickerDataAdmissao.Value = _funcionario.DataAdmissao;
 
-            if(_funcionario.Guid != Guid.Empty)
+            if(_funcionario.Id != Guid.Empty)
                 _ = _funcionario.EhAdmin ? radioButtonAdmin.Checked = true : radioButtonFuncionario.Checked = true;
         }
 

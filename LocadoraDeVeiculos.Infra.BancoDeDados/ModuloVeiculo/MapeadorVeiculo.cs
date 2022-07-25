@@ -11,7 +11,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
     {
         public void ConfigurarParametrosRegistro(Veiculo registro, SqlCommand cmdInserir)
         {
-            cmdInserir.Parameters.AddWithValue("@GUID_VEICULO", registro.Guid);
+            cmdInserir.Parameters.AddWithValue("@GUID_VEICULO", registro.Id);
             cmdInserir.Parameters.AddWithValue("@MODELO", registro.Modelo);
             cmdInserir.Parameters.AddWithValue("@MARCA", registro.Marca);
             cmdInserir.Parameters.AddWithValue("@PLACA", registro.Placa);
@@ -20,7 +20,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
             cmdInserir.Parameters.AddWithValue("@KM_PERCORRIDO", registro.KmPercorrido);
             cmdInserir.Parameters.AddWithValue("@COR", registro.Cor);
             cmdInserir.Parameters.AddWithValue("@COMBUSTIVEL", registro.Combustivel);
-            cmdInserir.Parameters.AddWithValue("@GRUPO_VEICULO_GUID", registro.GrupoVeiculos.Guid);
+            cmdInserir.Parameters.AddWithValue("@GRUPO_VEICULO_GUID", registro.GrupoVeiculos.Id);
             cmdInserir.Parameters.AddWithValue("@FOTO", registro.Foto);
         }
 
@@ -41,7 +41,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
 
             Veiculo veiculo = new();
 
-            veiculo.Guid = guid;
+            veiculo.Id = guid;
             veiculo.Modelo = modelo;
             veiculo.Placa = placa;
             veiculo.Marca = marca;

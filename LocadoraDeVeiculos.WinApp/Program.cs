@@ -5,6 +5,7 @@ using System.Threading;
 using System.Windows.Forms;
 using LocadoraDeVeiculos.Infra.Logging.Log;
 using System.Configuration;
+using LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -16,7 +17,7 @@ namespace LocadoraDeVeiculos.WinApp
         [STAThread]
         static void Main()
         {
-            Log.Logger.ConfigurarLog();
+            Log.Logger.ConfigurarLogEmWeb();
 
             string Linguagem = ConfigurationManager.AppSettings.Get("Idioma");
 
@@ -30,7 +31,8 @@ namespace LocadoraDeVeiculos.WinApp
 
             Log.Logger.Information("Programa inicializado");
 
-            Application.Run(new TelaPrincipalForm());
+            var serviceLocatorAutofac = new ServiceLocatorComAutofac();
+            Application.Run(new TelaPrincipalForm(serviceLocatorAutofac));
 
             Log.Logger.Information("Programa finalizado");
             Log.CloseAndFlush();

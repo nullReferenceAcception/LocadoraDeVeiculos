@@ -18,7 +18,7 @@
         public override bool Equals(object? obj)
         {
             return obj is GrupoVeiculos veiculos &&
-                   Guid == veiculos.Guid &&
+                   Id == veiculos.Id &&
                    Nome == veiculos.Nome;
         }
 

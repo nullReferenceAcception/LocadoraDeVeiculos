@@ -27,6 +27,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             if (resultado == DialogResult.OK)
                 CarregarCliente();
         }
+
         public override void Editar()
         {
             var numero = _tabelaCliente.ObtemGuidClienteSelecionado();
@@ -66,14 +67,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir o Cliente?",
                "Exclusão de Cliente", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-
             if (resultado == DialogResult.OK)
             {
-               var resultadoExclusao  = _servicoCliente.Excluir(clienteSelecionado);
+                var resultadoExclusao = _servicoCliente.Excluir(clienteSelecionado);
 
-                if(resultadoExclusao.IsSuccess)
-                CarregarCliente();
-
+                if (resultadoExclusao.IsSuccess)
+                    CarregarCliente();
                 else
                     TelaPrincipalForm.Instancia.AtualizarRodape(resultadoExclusao.Errors[0].Message, CorParaRodape.Red);
             }

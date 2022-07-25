@@ -32,14 +32,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         private void ConfigurarTelaEditar()
         {
-            textBoxGuid.Text = Cliente.Guid.ToString();
+            textBoxGuid.Text = Cliente.Id.ToString();
             textBoxNome.Text = Cliente.Nome;
             textBoxEndereco.Text = Cliente.Endereco;
             maskedTextBoxCNH.Text = Cliente.CNH;
             textBoxEmail.Text = Cliente.Email;
             maskedTextBoxTelefone.Text = Cliente.Telefone;
 
-            if (Cliente.Guid != Guid.Empty)
+            if (Cliente.Id != Guid.Empty)
             {
                 if (string.IsNullOrEmpty(Cliente.CPF))
                 {
@@ -85,6 +85,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             labelCPF.Cursor = Cursors.Hand;
             labelCNH.Cursor = Cursors.Hand;
             labelValidadeCNH.Cursor = Cursors.Hand;
+            labelCNPJ.AjustarLabelsHoverParaBlack();
+            labelCPF.AjustarLabelsHoverParaBlue();
+            labelCNH.AjustarLabelsHoverParaBlue();
+            labelValidadeCNH.AjustarLabelsHoverParaBlue();
+
         }
 
         private void radioCNPJbtn_CheckedChanged(object sender, EventArgs e)
@@ -100,6 +105,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             labelCNH.Cursor = DefaultCursor;
             labelValidadeCNH.Cursor = DefaultCursor;
             labelCNPJ.Cursor = Cursors.Hand;
+
+
+            labelCNPJ.AjustarLabelsHoverParaBlue();
+            labelCPF.AjustarLabelsHoverParaBlack();
+            labelCNH.AjustarLabelsHoverParaBlack();
+            labelValidadeCNH.AjustarLabelsHoverParaBlack();
+
         }
 
         private void btnGravar_Click(object sender, EventArgs e)

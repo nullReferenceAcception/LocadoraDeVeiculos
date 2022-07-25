@@ -115,12 +115,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
 
         public string SqlDuplicidade(PlanoCobranca registro)
         {
-            return "SELECT * FROM [TB_PLANO_COBRANCA] WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [GUID_PLANO_COBRANCA] != '" + registro.Guid + "'";
+            return "SELECT * FROM [TB_PLANO_COBRANCA] WHERE ([NOME] = '" + registro.Nome + "')" + $"AND [GUID_PLANO_COBRANCA] != '" + registro.Id + "'";
         }
 
         public string SqlDuplicidadePlano(PlanoCobranca registro)
         {
-            return "SELECT * FROM [TB_PLANO_COBRANCA] WHERE ([PLANO] = '" + registro.Plano + "')" + $"AND [GUID_PLANO_COBRANCA] != '" + registro.Guid + "'";
+            return "SELECT * FROM [TB_PLANO_COBRANCA] WHERE ([PLANO] = '" + registro.Plano + "')" + $"AND [GUID_PLANO_COBRANCA] != '" + registro.Id + "'";
         }
 
     }

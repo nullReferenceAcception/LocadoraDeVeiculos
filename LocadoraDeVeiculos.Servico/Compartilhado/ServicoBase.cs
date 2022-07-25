@@ -7,6 +7,7 @@ using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Taikandi;
 
 namespace LocadoraDeVeiculos.Servico.Compartilhado
@@ -26,7 +27,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         public virtual Result<T> Inserir(T registro)
         {
-            registro.Guid = SequentialGuid.NewGuid();
+            registro.Id = SequentialGuid.NewGuid();
 
             Log.Logger.Debug("Inserindo: {nome}", typeof(T).Name);
 
@@ -46,15 +47,17 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
             catch (Exception ex)
             {
-                string mensagem = "Falha no sistema ao tentar inserir ";
-                Log.Logger.Error(ex, mensagem + "{nome}" + registro.Guid, typeof(T).Name);
-                return Result.Fail(mensagem);
+                StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar inserir ");
+
+                Log.Logger.Error(ex, msgErro + "{classe}" + "{id}", typeof(T).Name, registro.Id);
+
+                return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
         }
 
         public virtual Result<T> Editar(T registro)
         {
-            Log.Logger.Debug("Editando: {nome} - ID: {guid}", typeof(T).Name, registro.Guid);
+            Log.Logger.Debug("Editando: {nome} - ID: {id}", typeof(T).Name, registro.Id);
 
             Result resultadoValidacao = ValidarRegistro(registro);
 
@@ -72,9 +75,11 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
             catch (Exception ex)
             {
-                string mensagem = "Falha no sistema ao tentar editar ";
-                Log.Logger.Error(ex, mensagem + "{nome}" + registro.Guid, typeof(T).Name);
-                return Result.Fail(mensagem);
+                StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar editar ");
+
+                Log.Logger.Error(ex, msgErro + "{classe}" + "{id}", typeof(T).Name, registro.Id);
+
+                return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
         }
 
@@ -92,11 +97,11 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
             catch (Exception ex)
             {
-                string msgErro = "Falha no sistema ao tentar excluir o ";
+                StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar excluir o ");
 
-                Log.Logger.Error(ex, msgErro + "{classe}" + "{Guid}", typeof(T).Name, registro.Guid);
+                Log.Logger.Error(ex, msgErro + "{classe}" + "{id}", typeof(T).Name, registro.Id);
 
-                return Result.Fail(msgErro);
+                return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
         }
 
@@ -108,27 +113,27 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
             catch (Exception ex)
             {
-                string msgErro = $"Falha no sistema ao tentar selecionar todos os ";
+                StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar selecionar todos os  ");
 
-                Log.Logger.Error(ex, msgErro + "{classe}", typeof(T).Name + "s");
+                Log.Logger.Error(ex, msgErro + "{classe}", typeof(T).Name);
 
-                return Result.Fail(msgErro);
+                return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
         }
 
-        public Result<T> SelecionarPorGuid(Guid guid)
+        public Result<T> SelecionarPorGuid(Guid id)
         {
             try
             {
-                return Result.Ok(repositorio.SelecionarPorGuid(guid));
+                return Result.Ok(repositorio.SelecionarPorId(id));
             }
             catch (Exception ex)
             {
-                string msgErro = $"Falha no sistema ao tentar selecionar o ";
+                StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar selecionar o ");
 
-                Log.Logger.Error(ex, msgErro + "{classe}  + {Guid}", typeof(T).Name, guid );
+                Log.Logger.Error(ex, msgErro + "{classe}", typeof(T).Name);
 
-                return Result.Fail(msgErro);
+                return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
         }
 
@@ -140,20 +145,27 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
             catch (Exception ex)
             {
-                string msgErro = "Falha no sistema ao pegar quantidade de ";
+                StringBuilder msgErro = new StringBuilder("Falha no sistema ao pegar quantidade de ");
 
                 Log.Logger.Error(ex, msgErro + "{classe}", typeof(T).Name);
-                return Result.Fail(msgErro);
+
+                return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
         }
 
-        protected abstract string SqlMensagemDeErroSeTiverDuplicidade { get; }
+        protected abstract string MensagemDeErroSeTiverDuplicidade { get; }
 
         protected virtual bool HaDuplicidade(T registro)
         {
             if (TiverDuplicidade(registro))
                 return true;
+
             return false;
+        }
+
+        protected bool TiverDuplicidade(T registro)
+        {
+            return repositorio.VerificarDuplicidade(repositorio.SqlDuplicidade(registro));
         }
 
         private void LogFalha(string funcao, T registro, List<IError> erros)
@@ -169,11 +181,6 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
         }
 
-        protected bool TiverDuplicidade(T registro)
-        {
-            return repositorio.VerificarDuplicidade(repositorio.SqlDuplicidade(registro));
-        }
-
         private Result ValidarRegistro(T registro)
         {
             var resultadoValidacao = validador.Validate(registro);
@@ -184,7 +191,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
                 erros.Add(new Error(erro.ErrorMessage));
 
             if (HaDuplicidade(registro))
-                erros.Add(new Error(SqlMensagemDeErroSeTiverDuplicidade));
+                erros.Add(new Error(MensagemDeErroSeTiverDuplicidade));
 
             if (erros.Any())
                 return Result.Fail(erros);

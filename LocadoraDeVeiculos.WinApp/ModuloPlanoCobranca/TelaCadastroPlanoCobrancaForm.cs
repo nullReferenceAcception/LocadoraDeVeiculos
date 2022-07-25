@@ -1,5 +1,4 @@
 ﻿using FluentResults;
-using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
@@ -55,7 +54,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca
             comboBoxPlano.DataSource = Enum.GetValues(typeof(PlanoEnum));
             comboBoxGrupoVeiculos.DataSource = _servicoGrupoVeiculos.SelecionarTodos().Value;
 
-            textBoxGuid.Text = _planoCobranca.Guid.ToString();
+            textBoxGuid.Text = _planoCobranca.Id.ToString();
             textBoxNome.Text = _planoCobranca.Nome;
             textBoxValorDia.Text = "R$ " + _planoCobranca.ValorDia.ToString();
             textBoxValorPorKm.Text = "R$ " + _planoCobranca.ValorPorKm.ToString();

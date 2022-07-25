@@ -26,7 +26,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
         public int ObtemGuidDevolucaoSelecionada()
         {
-            return grid.ObterGuid<int>();
+            return grid.ObterId<int>();
         }
 
         public void AtualizarRegistros(/**/)

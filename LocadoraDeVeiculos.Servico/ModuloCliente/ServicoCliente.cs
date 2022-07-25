@@ -51,6 +51,6 @@ namespace LocadoraDeVeiculos.Servico.ModuloCliente
             }
         }
 
-        protected override string SqlMensagemDeErroSeTiverDuplicidade => "Nome já está cadastrado";
+        protected override string MensagemDeErroSeTiverDuplicidade => "Nome já está cadastrado";
     }
 }

@@ -29,7 +29,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
 
         public Guid ObtemGuidSelecionada()
         {
-            return grid.ObterGuid<Guid>();
+            return grid.ObterId<Guid>();
         }
 
         public void AtualizarRegistros(List<GrupoVeiculos> registros)
@@ -37,7 +37,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
             grid.Rows.Clear();
 
             foreach (GrupoVeiculos registro in registros)
-                grid.Rows.Add(registro.Guid, registro.Nome);
+                grid.Rows.Add(registro.Id, registro.Nome);
         }
     }
 }

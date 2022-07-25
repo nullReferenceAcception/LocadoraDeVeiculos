@@ -22,9 +22,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Inserir(cliente);
 
-            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid).Value;
+            Cliente clienteEncontrado = _servicoCliente.SelecionarPorGuid(cliente.Id).Value;
 
-            Assert.AreEqual(cliente, cliente2);
+            Assert.AreEqual(cliente, clienteEncontrado);
         }
 
         [TestMethod]
@@ -34,9 +34,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Inserir(cliente);
 
-            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid).Value;
+            Cliente clienteEncontrado = _servicoCliente.SelecionarPorGuid(cliente.Id).Value;
 
-            Assert.AreEqual(cliente, cliente2);
+            Assert.AreEqual(cliente, clienteEncontrado);
         }
 
         [TestMethod]
@@ -50,9 +50,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Editar(cliente);
 
-            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid).Value;
+            Cliente clienteEncontrado = _servicoCliente.SelecionarPorGuid(cliente.Id).Value;
 
-            Assert.AreEqual(cliente2, cliente);
+            Assert.AreEqual(clienteEncontrado, cliente);
         }
 
         [TestMethod]
@@ -64,9 +64,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             _servicoCliente.Excluir(cliente);
 
-            Cliente cliente2 = _servicoCliente.SelecionarPorGuid(cliente.Guid).Value;
+            Cliente clienteEncontrado = _servicoCliente.SelecionarPorGuid(cliente.Id).Value;
 
-            cliente2.Should().Be(null);
+            clienteEncontrado.Should().Be(null);
         }
         [TestMethod]
         public void Deve_selecionar_todos_cliente()

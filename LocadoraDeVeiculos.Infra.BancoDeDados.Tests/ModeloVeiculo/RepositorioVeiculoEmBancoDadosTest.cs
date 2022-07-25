@@ -9,6 +9,7 @@ using LocadoraDeVeiculos.Servico.ModuloVeiculos;
 using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using FluentResults;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 {
@@ -31,9 +32,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 
             _servicoVeiculo.Inserir(veiculo);
 
-            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.Guid);
+            Result<Veiculo> result = _servicoVeiculo.SelecionarPorGuid(veiculo.Id);
 
-            veiculoEncontrado.Should().Be(veiculo);
+            result.Value.Should().Be(veiculo);
+            result.Errors.Count.Should().Be(0);
+            result.IsSuccess.Should().BeTrue();
         }
 
         [TestMethod]
@@ -56,9 +59,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 
             _servicoVeiculo.Editar(veiculo);
 
-            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.Guid);
+            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.Id);
 
-            veiculoEncontrado.Should().Be(veiculo);
+            veiculoEncontrado.Value.Should().Be(veiculo);
         }
 
         [TestMethod]
@@ -76,9 +79,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 
             _servicoVeiculo.Excluir(veiculo);
 
-            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.Guid);
+            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.Id);
 
-            veiculoEncontrado.Should().BeNull();
+            veiculoEncontrado.Value.Should().BeNull();
         }
 
         [TestMethod]
@@ -103,7 +106,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
                 veiculos.Add(veiculo);
             }
 
-            List<Veiculo> veiculosEncontrados = _servicoVeiculo.SelecionarTodos();
+            List<Veiculo> veiculosEncontrados = _servicoVeiculo.SelecionarTodos().Value;
 
             Assert.IsTrue(veiculosEncontrados.Count == quantidade);
 
@@ -112,7 +115,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
         }
 
         [TestMethod]
-        public void Deve_selecionar_veiculo_por_id()
+        public void Deve_selecionar_veiculo_por_guid()
         {
             GrupoVeiculos grupo = CriarGrupoDeVeiculos();
 
@@ -124,9 +127,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 
             _servicoVeiculo.Inserir(veiculo);
 
-            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.Guid);
+            var veiculoEncontrado = _servicoVeiculo.SelecionarPorGuid(veiculo.Id);
 
-            veiculoEncontrado.Should().Be(veiculo);
+            veiculoEncontrado.Value.Should().Be(veiculo);
         }
 
         [TestMethod]
@@ -142,10 +145,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 
             _servicoVeiculo.Inserir(veiculo);
 
-            veiculo.Guid = new Guid();
-            var resultado = _servicoVeiculo.Inserir(veiculo);
+            veiculo.Id = new Guid();
 
-            resultado.ToString().Should().Be("Placa já cadastrada");
+            Result<Veiculo> resultado = _servicoVeiculo.Inserir(veiculo);
+
+            resultado.IsFailed.Should().BeTrue();
+            resultado.Errors[0].Message.Should().Contain("Placa já cadastrada");
         }
 
         private Veiculo CriarVeiculoSemGrupo()

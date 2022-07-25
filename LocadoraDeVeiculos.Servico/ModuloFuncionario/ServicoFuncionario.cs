@@ -31,6 +31,6 @@ namespace LocadoraDeVeiculos.Servico.ModuloFuncionario
             }
         }
 
-        protected override string SqlMensagemDeErroSeTiverDuplicidade => "Login já está cadastrado";
+        protected override string MensagemDeErroSeTiverDuplicidade => "Login já está cadastrado";
     }
 }
