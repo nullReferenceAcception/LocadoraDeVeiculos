@@ -1,10 +1,12 @@
 ﻿using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
+using LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator;
 using System;
 
 namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
 {
     public class BaseTestRepositorio
     {
+        public ServiceLocatorComAutofac localizador = new();
         public BaseTestRepositorio()
         {
             //colocar aqui sua tabela de acrodo com os exemplos

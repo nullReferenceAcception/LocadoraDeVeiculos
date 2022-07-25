@@ -1,8 +1,10 @@
 ﻿using FluentAssertions;
 using FluentResults;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
+using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario;
+using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloFuncionario;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -13,7 +15,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
     [TestClass]
     public class servicoFuncionarioEmBancoDadosTest : BaseTestRepositorio
     {
-        ServicoFuncionario servico = new(new RepositorioFuncionario());
+        ServicoFuncionario servico = new(new RepositorioFuncionario(), new LocadoraDbContext(Db.conexaoComBanco.ToString()));
 
         [TestMethod]
         public void Deve_inserir_Funcionario()

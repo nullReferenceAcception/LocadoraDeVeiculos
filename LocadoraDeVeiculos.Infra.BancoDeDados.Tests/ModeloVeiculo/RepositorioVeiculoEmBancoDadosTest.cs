@@ -1,23 +1,25 @@
-﻿using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
+﻿using FluentAssertions;
+using FluentResults;
+using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
+using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
+using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
+using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo;
+using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
+using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Servico.ModuloVeiculos;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FluentAssertions;
 using System;
 using System.Collections.Generic;
-using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo;
-using LocadoraDeVeiculos.Servico.ModuloVeiculos;
-using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
-using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
-using FluentResults;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 {
     [TestClass]
     public class RepositorioVeiculoEmBancoDadosTest : BaseTestRepositorio
     {
-        ServicoVeiculo _servicoVeiculo = new(new RepositorioVeiculo(), new);
-        ServicoGrupoVeiculos _servicoGrupoVeiculo = new(new RepositorioGrupoVeiculos());
+        ServicoVeiculo _servicoVeiculo = new(new RepositorioVeiculo(), new LocadoraDbContext(Db.conexaoComBanco.ToString()));
+        ServicoGrupoVeiculos _servicoGrupoVeiculo = new(new RepositorioGrupoVeiculos(), new LocadoraDbContext(Db.conexaoComBanco.ToString()));
 
         [TestMethod]
         public void Deve_inserir_veiculo()

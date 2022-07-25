@@ -2,8 +2,10 @@
 using FluentResults;
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
@@ -13,7 +15,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
     [TestClass]
     public class RepositorioGrupoVeiculosEmBancoDados : BaseTestRepositorio
     {
-        ServicoGrupoVeiculos _servicoGrupoVeiculos = new(new RepositorioGrupoVeiculos());
+        ServicoGrupoVeiculos _servicoGrupoVeiculos = new(new RepositorioGrupoVeiculos(), new LocadoraDbContext(Db.conexaoComBanco.ToString()));
 
         [TestMethod]
         public void Deve_inserir_GrupoVeiculos()

@@ -16,6 +16,7 @@ using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using LocadoraDeVeiculos.Infra.ORM.ModuloTaxa;
+using LocadoraDeVeiculos.Servico.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloCliente;
 using LocadoraDeVeiculos.Servico.ModuloCondutor;
 using LocadoraDeVeiculos.Servico.ModuloFuncionario;

@@ -19,7 +19,6 @@ namespace LocadoraDeVeiculos.Servico.ModuloCliente
 
         public Result<List<Cliente>> SelecionarTodosClientesQueSaoPessoaFisica()
         {
-
             try
             {
                 return Result.Ok(_repositorioCliente.SelecionarTodosClientesQueSaoPessoaFisica());

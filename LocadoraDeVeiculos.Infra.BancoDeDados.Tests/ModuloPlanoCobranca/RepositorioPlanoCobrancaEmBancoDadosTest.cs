@@ -2,9 +2,11 @@
 using FluentResults;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
+using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca;
+using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Servico.ModuloPlanoCobranca;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -17,8 +19,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
     public class RepositorioPlanoCobrancaEmBancoDadosTest : BaseTestRepositorio
     {
         Random random = new();
-        ServicoPlanoCobranca _servicoPlanoCobranca = new(new RepositorioPlanoCobranca());
-        ServicoGrupoVeiculos _servicoGrupoVeiculo = new(new RepositorioGrupoVeiculos());
+        ServicoPlanoCobranca _servicoPlanoCobranca = new(new RepositorioPlanoCobranca(), new LocadoraDbContext(Db.conexaoComBanco.ToString()));
+        ServicoGrupoVeiculos _servicoGrupoVeiculo = new(new RepositorioGrupoVeiculos(), new LocadoraDbContext(Db.conexaoComBanco.ToString()));
 
         [TestMethod]
         public void Deve_inserir_PlanoCobranca()

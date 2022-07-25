@@ -11,15 +11,15 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
            .AddJsonFile("ConfiguracaoAplicacao.json")
            .Build();
 
-        static SqlConnection ConexcaoComBanco = new SqlConnection(configuracao.GetConnectionString("SqlServer"));
+        public static SqlConnection conexaoComBanco = new SqlConnection(configuracao.GetConnectionString("SqlServer"));
 
         public static void ExecutarSql(string sql)
         {
-            SqlCommand comando = new SqlCommand(sql, ConexcaoComBanco);
+            SqlCommand comando = new SqlCommand(sql, conexaoComBanco);
 
-            ConexcaoComBanco.Open();
+            conexaoComBanco.Open();
             comando.ExecuteNonQuery();
-            ConexcaoComBanco.Close();
+            conexaoComBanco.Close();
         }
     }
 }
