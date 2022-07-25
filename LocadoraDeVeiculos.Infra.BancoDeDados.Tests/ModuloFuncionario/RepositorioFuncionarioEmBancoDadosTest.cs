@@ -16,16 +16,21 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
     [TestClass]
     public class servicoFuncionarioEmBancoDadosTest : BaseTestRepositorio
     {
-        ServicoFuncionario servico = new(new RepositorioFuncionario(), new LocadoraDbContext(Db.conexaoComBanco.ConnectionString));
+        ServicoFuncionario _servicoFuncionario;
+
+        public servicoFuncionarioEmBancoDadosTest()
+        {
+            _servicoFuncionario = new(new RepositorioFuncionario(), new LocadoraDbContext(Db.conexaoComBanco.ConnectionString));
+        }
 
         [TestMethod]
         public void Deve_inserir_Funcionario()
         {
             Funcionario funcionario = CriarFuncionario();
 
-            servico.Inserir(funcionario);
+            _servicoFuncionario.Inserir(funcionario);
 
-            Funcionario funcionarioEncontrado = servico.SelecionarPorGuid(funcionario.Id).Value;
+            Funcionario funcionarioEncontrado = _servicoFuncionario.SelecionarPorGuid(funcionario.Id).Value;
 
             Assert.AreEqual(funcionario, funcionarioEncontrado);
         }
@@ -35,13 +40,13 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
         {
             Funcionario funcionario = CriarFuncionario();
 
-            servico.Inserir(funcionario);
+            _servicoFuncionario.Inserir(funcionario);
 
             funcionario.Nome = "ssssss";
 
-            servico.Editar(funcionario);
+            _servicoFuncionario.Editar(funcionario);
 
-            Funcionario funcionarioEncontrado = servico.SelecionarPorGuid(funcionario.Id).Value;
+            Funcionario funcionarioEncontrado = _servicoFuncionario.SelecionarPorGuid(funcionario.Id).Value;
 
             Assert.AreEqual(funcionarioEncontrado, funcionario);
         }
@@ -51,11 +56,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
         {
             Funcionario funcionario = CriarFuncionario();
 
-            servico.Inserir(funcionario);
+            _servicoFuncionario.Inserir(funcionario);
 
-            servico.Excluir(funcionario);
+            _servicoFuncionario.Excluir(funcionario);
 
-            Funcionario funcionarioEncontrado = servico.SelecionarPorGuid(funcionario.Id).Value;
+            Funcionario funcionarioEncontrado = _servicoFuncionario.SelecionarPorGuid(funcionario.Id).Value;
 
             funcionarioEncontrado.EstaAtivo.Should().Be(false);
         }
@@ -69,11 +74,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
             {
                 Funcionario registro = new(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "s@s.s", "49989090909", GerarNovaPlaca(), GerarNovaStringAleatoria(), DateTime.Today, 12, true, GerarNovaStringAleatoria(), true);
 
-                servico.Inserir(registro);
+                _servicoFuncionario.Inserir(registro);
                 funcionarios.Add(registro);
             }
 
-            List<Funcionario> registrosDoBanco = servico.SelecionarTodos().Value;
+            List<Funcionario> registrosDoBanco = _servicoFuncionario.SelecionarTodos().Value;
 
             Assert.IsTrue(registrosDoBanco.Count == funcionarios.Count);
 
@@ -86,9 +91,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
         {
             Funcionario funcionario = CriarFuncionario();
 
-            servico.Inserir(funcionario);
+            _servicoFuncionario.Inserir(funcionario);
 
-            Funcionario funcionarioEncontrado = servico.SelecionarPorGuid(funcionario.Id).Value;
+            Funcionario funcionarioEncontrado = _servicoFuncionario.SelecionarPorGuid(funcionario.Id).Value;
 
             Assert.AreEqual(funcionarioEncontrado, funcionario);
         }
@@ -98,7 +103,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
         {
             Funcionario funcionario = CriarFuncionario();
 
-            servico.Inserir(funcionario);
+            _servicoFuncionario.Inserir(funcionario);
 
             Funcionario outroFuncionario = CriarFuncionario();
 
@@ -106,7 +111,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             outroFuncionario.Login = funcionario.Login;
 
-            Result<Funcionario> result = servico.Inserir(outroFuncionario);
+            Result<Funcionario> result = _servicoFuncionario.Inserir(outroFuncionario);
 
             result.Errors[0].Message.Should().Contain("Login já está cadastrado");
         }

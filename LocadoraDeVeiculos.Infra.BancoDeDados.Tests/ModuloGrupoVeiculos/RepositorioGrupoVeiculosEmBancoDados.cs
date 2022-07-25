@@ -1,7 +1,5 @@
 ﻿using FluentAssertions;
 using FluentResults;
-using FluentValidation.Results;
-using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
@@ -16,7 +14,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
     [TestClass]
     public class RepositorioGrupoVeiculosEmBancoDados : BaseTestRepositorio
     {
-        ServicoGrupoVeiculos _servicoGrupoVeiculos = new(new RepositorioGrupoVeiculos(), new LocadoraDbContext(Db.conexaoComBanco.ConnectionString));
+        ServicoGrupoVeiculos _servicoGrupoVeiculos;
+
+        public RepositorioGrupoVeiculosEmBancoDados()
+        {
+            _servicoGrupoVeiculos = new(new RepositorioGrupoVeiculos(), new LocadoraDbContext(Db.conexaoComBanco.ConnectionString));
+        }
 
         [TestMethod]
         public void Deve_inserir_GrupoVeiculos()
