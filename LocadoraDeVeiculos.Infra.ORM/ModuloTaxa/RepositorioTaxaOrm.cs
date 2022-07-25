@@ -17,7 +17,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloTaxa
 
         public bool VerificarDuplicidade(Taxa registro)
         {
-          var x =  registros.Where(x => x.Descricao == registro.Descricao);
+          var x =  registros.Where(x => x.Descricao == registro.Descricao && x.Id != registro.Id);
 
             if (x.Count() > 0)
                 return true;
