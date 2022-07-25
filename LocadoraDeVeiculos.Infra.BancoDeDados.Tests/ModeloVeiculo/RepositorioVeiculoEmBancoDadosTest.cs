@@ -18,8 +18,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
     [TestClass]
     public class RepositorioVeiculoEmBancoDadosTest : BaseTestRepositorio
     {
-        ServicoVeiculo _servicoVeiculo = new(new RepositorioVeiculo(), new LocadoraDbContext(Db.conexaoComBanco.ToString()));
-        ServicoGrupoVeiculos _servicoGrupoVeiculo = new(new RepositorioGrupoVeiculos(), new LocadoraDbContext(Db.conexaoComBanco.ToString()));
+        ServicoVeiculo _servicoVeiculo;
+        ServicoGrupoVeiculos _servicoGrupoVeiculo;
+
+        public RepositorioVeiculoEmBancoDadosTest()
+        {
+            _servicoVeiculo = new(new RepositorioVeiculo(), new LocadoraDbContext(Db.conexaoComBanco.ToString()));
+            _servicoGrupoVeiculo = new(new RepositorioGrupoVeiculos(), new LocadoraDbContext(Db.conexaoComBanco.ToString()));
+        }
 
         [TestMethod]
         public void Deve_inserir_veiculo()

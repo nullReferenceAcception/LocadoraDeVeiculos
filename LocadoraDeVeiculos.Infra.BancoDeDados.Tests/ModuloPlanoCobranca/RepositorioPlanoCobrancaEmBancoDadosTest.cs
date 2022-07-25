@@ -19,8 +19,14 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
     public class RepositorioPlanoCobrancaEmBancoDadosTest : BaseTestRepositorio
     {
         Random random = new();
-        ServicoPlanoCobranca _servicoPlanoCobranca = new(new RepositorioPlanoCobranca(), new LocadoraDbContext(Db.conexaoComBanco.ToString()));
-        ServicoGrupoVeiculos _servicoGrupoVeiculo = new(new RepositorioGrupoVeiculos(), new LocadoraDbContext(Db.conexaoComBanco.ToString()));
+        ServicoPlanoCobranca _servicoPlanoCobranca;
+        ServicoGrupoVeiculos _servicoGrupoVeiculo;
+
+        public RepositorioPlanoCobrancaEmBancoDadosTest()
+        {
+            _servicoPlanoCobranca = new(new RepositorioPlanoCobranca(), new LocadoraDbContext(Db.conexaoComBanco.ToString()));
+            _servicoGrupoVeiculo = new(new RepositorioGrupoVeiculos(), new LocadoraDbContext(Db.conexaoComBanco.ToString()));
+        }
 
         [TestMethod]
         public void Deve_inserir_PlanoCobranca()
