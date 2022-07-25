@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using System;
 using System.Collections.Generic;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
@@ -11,9 +12,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
         public int Ano { get; set; }
         public decimal CapacidadeTanque { get; set; }
         public decimal KmPercorrido { get; set; }
-        public CorEnum? Cor { get; set; }
-        public CombustivelEnum? Combustivel { get; set; }
+        public CorEnum Cor { get; set; }
+        public CombustivelEnum Combustivel { get; set; }
         public GrupoVeiculos GrupoVeiculos { get; set; }
+        public Guid  GrupoVeiculosId { get; set; }
         public byte[] Foto { get; set; }
 
         public Veiculo()
@@ -47,6 +49,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
                    Cor == veiculo.Cor &&
                    Combustivel == veiculo.Combustivel &&
                    EqualityComparer<GrupoVeiculos>.Default.Equals(GrupoVeiculos, veiculo.GrupoVeiculos) &&
+                   GrupoVeiculosId == veiculo.GrupoVeiculosId &&
                    EqualsFoto(veiculo);
         }
 

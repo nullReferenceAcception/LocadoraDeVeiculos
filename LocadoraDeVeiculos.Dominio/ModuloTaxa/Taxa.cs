@@ -4,7 +4,6 @@
     {
         public string Descricao { get; set; }
         public decimal Valor { get; set; }
-
         public bool EhDiaria { get; set; }
 
         public Taxa()
