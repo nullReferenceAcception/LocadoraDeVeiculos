@@ -165,5 +165,10 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
         {
             return  "SELECT * FROM TB_FUNCIONARIO WHERE ([LOGIN] = '" + registro.Login + "')" + "AND [GUID_FUNCIONARIO] != + '" + registro.Id + "'";
         }
+        //gambiarra
+        public bool VerificarDuplicidade(Funcionario registro)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
+using System;
 using System.Collections.Generic;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
@@ -171,6 +172,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
         public List<Cliente> SelecionarTodosClientesQueSaoPessoaJuridica()
         {
             return SelecionarTodosPersonalizado(sqlSelecionarTodosPessoasJuridicas);
+        }
+
+        //foda se
+        public bool VerificarDuplicidade(Cliente registro)
+        {
+            throw new NotImplementedException();
         }
     }
 }

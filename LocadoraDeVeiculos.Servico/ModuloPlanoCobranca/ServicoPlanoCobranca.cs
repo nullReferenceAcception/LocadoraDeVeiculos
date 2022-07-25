@@ -1,4 +1,5 @@
 ﻿using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Servico.Compartilhado;
 
@@ -7,7 +8,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloPlanoCobranca
     public class ServicoPlanoCobranca : ServicoBase<PlanoCobranca, ValidadorPlanoCobranca>, IServicoPlanoCobranca
     {
         IRepositorioPlanoCobranca repositorioPlanoCobranca;
-        public ServicoPlanoCobranca(IRepositorioPlanoCobranca repositorioPlanoCobranca) : base(new ValidadorPlanoCobranca(),repositorioPlanoCobranca)
+        public ServicoPlanoCobranca(IRepositorioPlanoCobranca repositorioPlanoCobranca, IContextoPersistencia contexto) : base(new ValidadorPlanoCobranca(),repositorioPlanoCobranca, contexto)
         {
             this.repositorioPlanoCobranca = repositorioPlanoCobranca;
         }
@@ -28,7 +29,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloPlanoCobranca
 
         private bool TiverDuplicidadePlano(PlanoCobranca registro)
         {
-            return repositorioPlanoCobranca.VerificarDuplicidade(repositorioPlanoCobranca.SqlDuplicidadePlano(registro));
+            return repositorioPlanoCobranca.VerificarDuplicidade(registro);
         }
     }
 }

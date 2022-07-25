@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocadoraDeVeiculos.Infra.ORM
+namespace LocadoraDeVeiculos.Dominio.Compartilhado
 {
-    public class LocadoraDbContext
+    public interface IContextoPersistencia
     {
-
+        void GravarDados();
     }
 }

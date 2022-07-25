@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using LocadoraDeVeiculos.Servico.Compartilhado;
 
 namespace LocadoraDeVeiculos.Servico.ModuloVeiculos
@@ -7,7 +8,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloVeiculos
     {
         IRepositorioVeiculo _repositorioVeiculo;
 
-        public ServicoVeiculo(IRepositorioVeiculo repositorioVeiculo) : base(new ValidadorVeiculo(), repositorioVeiculo)
+        public ServicoVeiculo(IRepositorioVeiculo repositorioVeiculo, IContextoPersistencia contexto) : base(new ValidadorVeiculo(), repositorioVeiculo, contexto)
         {
             this._repositorioVeiculo = repositorioVeiculo;
         }

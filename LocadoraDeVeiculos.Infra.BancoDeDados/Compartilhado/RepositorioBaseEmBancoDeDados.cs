@@ -143,7 +143,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             return registros;
         }
 
-        public T SelecionarPorGuid(Guid guid)
+        public T SelecionarPorId(Guid guid)
         {
             SqlConnection conexao = new SqlConnection(enderecoBanco);
 
@@ -186,5 +186,13 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Compartilhado
             conexao.Close();
             return quantidade;
         }
+
+        //gambiarra feita apos implementacao do ORM
+        public bool VerificarDuplicidade(T registro)
+        {
+            throw new System.NotImplementedException();
+        }
+
+
     }
 }

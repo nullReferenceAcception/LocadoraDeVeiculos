@@ -10,8 +10,7 @@ namespace LocadoraDeVeiculos.Dominio
         void Excluir(T registro);
         List<T> SelecionarTodos();
         T SelecionarPorId(Guid numero);
-        public bool VerificarDuplicidade(string sql);
-        string SqlDuplicidade(T registro);
+        public bool VerificarDuplicidade(T registro);
         int QuantidadeRegistros();
     }
 }

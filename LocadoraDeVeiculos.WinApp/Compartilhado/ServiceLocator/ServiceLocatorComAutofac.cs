@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
@@ -13,6 +14,8 @@ using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo;
+using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
+using LocadoraDeVeiculos.Infra.ORM.ModuloTaxa;
 using LocadoraDeVeiculos.Servico.ModuloCliente;
 using LocadoraDeVeiculos.Servico.ModuloCondutor;
 using LocadoraDeVeiculos.Servico.ModuloFuncionario;
@@ -38,13 +41,14 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
         {
             var builder = new ContainerBuilder();
 
+            builder.RegisterType<LocadoraDbContext>().As<IContextoPersistencia>();
+
             builder.RegisterType<RepositorioCliente>().As<IRepositorioCliente>();
             builder.RegisterType<RepositorioCondutor>().As<IRepositorioCondutor>();
             builder.RegisterType<RepositorioFuncionario>().As<IRepositorioFuncionario>();
             builder.RegisterType<RepositorioGrupoVeiculos>().As<IRepositorioGrupoVeiculos>();
             builder.RegisterType<RepositorioPlanoCobranca>().As<IRepositorioPlanoCobranca>();
-            builder.RegisterType<RepositorioTaxa>().As<IRepositorioTaxa>();
-            builder.RegisterType<RepositorioVeiculo>().As<IRepositorioVeiculo>();
+            builder.RegisterType<RepositorioTaxaOrm>().As<IRepositorioTaxa>();
 
             builder.RegisterType<ServicoCliente>().As<IServicoCliente>();
             builder.RegisterType<ServicoCondutor>().As<IServicoCondutor>();

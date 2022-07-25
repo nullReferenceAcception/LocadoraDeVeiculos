@@ -12,7 +12,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloCliente
     {
         IRepositorioCliente _repositorioCliente;
 
-        public ServicoCliente(IRepositorioCliente repositorioCliente) : base(new ValidadorCliente(), repositorioCliente)
+        public ServicoCliente(IRepositorioCliente repositorioCliente, IContextoPersistencia contexto) : base(new ValidadorCliente(), repositorioCliente, contexto)
         {
             this._repositorioCliente = repositorioCliente;
         }

@@ -16,7 +16,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
     [TestClass]
     public class RepositorioVeiculoEmBancoDadosTest : BaseTestRepositorio
     {
-        ServicoVeiculo _servicoVeiculo = new(new RepositorioVeiculo());
+        ServicoVeiculo _servicoVeiculo = new(new RepositorioVeiculo(), new);
         ServicoGrupoVeiculos _servicoGrupoVeiculo = new(new RepositorioGrupoVeiculos());
 
         [TestMethod]
