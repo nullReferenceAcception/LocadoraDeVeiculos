@@ -28,7 +28,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloCliente
 
         public bool VerificarDuplicidade(Cliente registro)
         {
-            var x = registros.Where(x => x.CPF == registro.CPF && x.Id != registro.Id);
+            var x = registros.Where(x => x.CPF != null &&  x.CPF == registro.CPF && x.Id != registro.Id);
 
             if (x.Any())
                 return true;
@@ -40,7 +40,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloCliente
 
         public bool VerificarDuplicidadeCNPJ(Cliente registro)
         {
-            var x = registros.Where(x => x.CNPJ == registro.CNPJ && x.Id != registro.Id);
+            var x = registros.Where(x => x.CNPJ != null  && x.CNPJ == registro.CNPJ && x.Id != registro.Id).ToList();
 
             if (x.Any())
                 return true;
