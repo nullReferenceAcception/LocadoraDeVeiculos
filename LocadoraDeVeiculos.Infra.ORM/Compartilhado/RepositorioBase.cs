@@ -20,33 +20,33 @@ namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
             this.dbContext = dbContext;
         }
 
-        public void Inserir(T novoRegistro)
+        public virtual void Inserir(T novoRegistro)
         {
             registros.Add(novoRegistro);
         }
 
-        public void Editar(T registro)
+        public virtual void Editar(T registro)
         {
             registros.Update(registro);
         }
 
-        public void Excluir(T registro)
+        public virtual void Excluir(T registro)
         {
             registros.Remove(registro);
         }
 
-        public T SelecionarPorId(Guid id)
+        public virtual T SelecionarPorId(Guid id)
         {
             return registros.SingleOrDefault(x => x.Id == id);
         }
 
-        public List<T> SelecionarTodos()
+        public virtual List<T> SelecionarTodos()
         {
             return registros.ToList();
         }
 
 
-        public int QuantidadeRegistros()
+        public virtual int QuantidadeRegistros()
         {
           return registros.Count();
         }
