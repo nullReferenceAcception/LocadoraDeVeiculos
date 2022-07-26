@@ -49,5 +49,18 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             comboBoxPlanoCobranca.SelectedIndex = 0;
             comboBoxPlanoCobranca.Select();
         }
+
+        private void labelGrupoVeiculos_Click(object sender, EventArgs e)
+        {
+            comboBoxGrupoVeiculos.DroppedDown = true;
+            comboBoxGrupoVeiculos.SelectedIndex = 0;
+            comboBoxGrupoVeiculos.Select();
+        }
+
+        private void labelFuncionario_Click(object sender, EventArgs e)
+        {
+            textBoxFuncionario.Focus();
+        }
+              
     }
 }
