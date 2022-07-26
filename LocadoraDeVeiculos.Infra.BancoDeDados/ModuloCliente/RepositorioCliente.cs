@@ -174,8 +174,13 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente
             return SelecionarTodosPersonalizado(sqlSelecionarTodosPessoasJuridicas);
         }
 
-        //foda se
+        // gambiarra feita apos implementacao de Orm
         public bool VerificarDuplicidade(Cliente registro)
+        {
+            throw new NotImplementedException();
+        }
+        // gambiarra feita apos implementacao de Orm
+        public bool VerificarDuplicidadeCNPJ(Cliente registro)
         {
             throw new NotImplementedException();
         }

@@ -6,5 +6,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
     {
         List<Cliente> SelecionarTodosClientesQueSaoPessoaFisica();
         List<Cliente> SelecionarTodosClientesQueSaoPessoaJuridica();
+        public bool VerificarDuplicidadeCNPJ(Cliente registro);
     }
 }
