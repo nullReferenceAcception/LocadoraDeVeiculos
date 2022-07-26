@@ -13,6 +13,6 @@ namespace LocadoraDeVeiculos.Servico.ModuloVeiculos
             this._repositorioVeiculo = repositorioVeiculo;
         }
 
-        protected override string MensagemDeErroSeTiverDuplicidade { get; set; } = "Placa já está cadastrado";
+        protected override string MensagemDeErroSeTiverDuplicidade { get; set; } = "Placa já cadastrada";
     }
 }

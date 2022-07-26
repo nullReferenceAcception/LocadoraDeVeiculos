@@ -11,6 +11,16 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloFuncionario
         {
         }
 
+        public override void Excluir(Funcionario registro)
+        {
+            registros.Update(registro);
+        }
+
+        public override List<Funcionario> SelecionarTodos()
+        {
+            return registros.Where(x => x.EstaAtivo == true).ToList();
+        }
+
         public List<Funcionario> SelecionarDesativados()
         {
             return registros.Where(x => x.EstaAtivo == false).ToList();

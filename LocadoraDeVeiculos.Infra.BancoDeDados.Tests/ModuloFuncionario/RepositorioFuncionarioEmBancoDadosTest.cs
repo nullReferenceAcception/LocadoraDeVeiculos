@@ -55,6 +55,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
 
             _servicoFuncionario.Inserir(funcionario);
 
+            funcionario.EstaAtivo = false;
+
             _servicoFuncionario.Excluir(funcionario);
 
             Funcionario funcionarioEncontrado = _servicoFuncionario.SelecionarPorGuid(funcionario.Id).Value;

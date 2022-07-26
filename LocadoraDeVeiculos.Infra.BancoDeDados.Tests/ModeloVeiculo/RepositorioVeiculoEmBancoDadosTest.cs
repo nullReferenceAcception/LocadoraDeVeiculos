@@ -3,6 +3,7 @@ using FluentResults;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
+using LocadoraDeVeiculos.Infra.ORM.ModuloGrupoVeiculo;
 using LocadoraDeVeiculos.Infra.ORM.ModuloVeiculo;
 using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Servico.ModuloVeiculos;
@@ -21,7 +22,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
         public RepositorioVeiculoEmBancoDadosTest() : base()
         {
             _servicoVeiculo = new(new RepositorioVeiculoOrm(DbContext), DbContext);
-            //_servicoGrupoVeiculo = new(new RepositorioGrupoVeiculosOrm(DbContext), DbContext);
+            _servicoGrupoVeiculo = new(new RepositorioGrupoVeiculoOrm(DbContext), DbContext);
         }
 
         [TestMethod]

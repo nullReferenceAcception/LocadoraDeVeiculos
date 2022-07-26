@@ -71,6 +71,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             if (resultado == DialogResult.OK)
             {
+                funcionarioSelecionado.EstaAtivo = false;
                 var resultadoExclusao = _servicoFuncionario.Excluir(funcionarioSelecionado);
 
                 if (resultadoExclusao.IsSuccess)
