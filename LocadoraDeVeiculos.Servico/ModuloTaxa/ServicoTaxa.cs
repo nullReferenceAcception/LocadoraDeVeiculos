@@ -10,6 +10,6 @@ namespace LocadoraDeVeiculos.Servico.ModuloTaxa
         {
         }
 
-        protected override string MensagemDeErroSeTiverDuplicidade { get; set; } = "Descrição já está cadastrado";
+        protected override string MensagemDeErroSeTiverDuplicidade { get; set; } = "Descrição já está cadastrada";
     }
 }
