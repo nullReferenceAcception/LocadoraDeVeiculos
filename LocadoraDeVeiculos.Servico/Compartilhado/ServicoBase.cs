@@ -159,7 +159,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
         }
 
-        protected abstract string MensagemDeErroSeTiverDuplicidade { get; }
+        protected abstract string MensagemDeErroSeTiverDuplicidade { get; set; }
 
         protected virtual bool HaDuplicidade(T registro)
         {

@@ -3,7 +3,7 @@
     public interface IRepositorioPlanoCobranca : IRepositorio<PlanoCobranca>
     {
 
-        string SqlDuplicidadePlano(PlanoCobranca registro);
+        bool VerificarDuplicidadePlano(PlanoCobranca registro);
 
     }
 }

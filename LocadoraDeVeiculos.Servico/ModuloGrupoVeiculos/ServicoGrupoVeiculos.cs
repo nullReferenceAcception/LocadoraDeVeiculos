@@ -10,6 +10,6 @@ namespace LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos
         {
         }
 
-        protected override string MensagemDeErroSeTiverDuplicidade => "Nome já está cadastrado";
+        protected override string MensagemDeErroSeTiverDuplicidade { get; set; } = "Nome já está cadastrado";
     }
 }

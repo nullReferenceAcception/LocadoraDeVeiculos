@@ -123,5 +123,10 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca
             return "SELECT * FROM [TB_PLANO_COBRANCA] WHERE ([PLANO] = '" + registro.Plano + "')" + $"AND [GUID_PLANO_COBRANCA] != '" + registro.Id + "'";
         }
 
+        // gambiarra feita apos implementacao Orm
+        public bool VerificarDuplicidadePlano(PlanoCobranca registro)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

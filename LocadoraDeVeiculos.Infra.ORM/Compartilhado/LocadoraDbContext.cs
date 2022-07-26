@@ -1,4 +1,6 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Infra.ORM.ModuloGrupoVeiculo;
+using LocadoraDeVeiculos.Infra.ORM.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.ORM.ModuloTaxa;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -45,8 +47,9 @@ namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
 
             modelBuilder.ApplyConfiguration(new MapeadorTaxaOrm());
 
+            modelBuilder.ApplyConfiguration(new MapeadorPlanoCobrancaOrm());
 
-
+            modelBuilder.ApplyConfiguration(new MapeadorGrupoVeiculoOrm());
 
 
             //  EXEMPLOS

@@ -6,6 +6,7 @@ using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
+using LocadoraDeVeiculos.Infra.ORM.ModuloGrupoVeiculo;
 using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
 
         public RepositorioGrupoVeiculosEmBancoDados()
         {
-            _servicoGrupoVeiculos = new(new RepositorioGrupoVeiculos(), new LocadoraDbContext(Db.conexaoComBanco.ConnectionString));
+            _servicoGrupoVeiculos = new(new RepositorioGrupoVeiculoOrm(DbContext), DbContext);
         }
 
         [TestMethod]
