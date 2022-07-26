@@ -5,6 +5,7 @@ using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
+using LocadoraDeVeiculos.Infra.ORM.ModuloCliente;
 using LocadoraDeVeiculos.Servico.ModuloCliente;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -18,9 +19,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
         Random random = new();
         ServicoCliente _servicoCliente;
 
-        public RepositorioClienteEmBandoDadosTest()
+        public RepositorioClienteEmBandoDadosTest() : base()
         {
-            _servicoCliente = new(new RepositorioCliente(), new LocadoraDbContext(Db.conexaoComBanco.ConnectionString));
+            _servicoCliente = new(new RepositorioClienteOrm(DbContext), DbContext);
         }
 
         [TestMethod]
