@@ -37,5 +37,19 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloCliente
             return false;
 
         }
+
+        public bool VerificarDuplicidadeCNPJ(Cliente registro)
+        {
+            var x = registros.Where(x => x.CNPJ == registro.CNPJ && x.Id != registro.Id);
+
+            if (x.Any())
+                return true;
+
+
+            return false;
+
+        }
+
+
     }
 }

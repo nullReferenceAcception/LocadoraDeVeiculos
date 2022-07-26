@@ -49,6 +49,25 @@ namespace LocadoraDeVeiculos.Servico.ModuloCliente
                 return Result.Fail(msgErro);
             }
         }
-        protected override string MensagemDeErroSeTiverDuplicidade { get; set; } = "Nome já está cadastrado";
+        protected override string MensagemDeErroSeTiverDuplicidade { get; set; } = "CNPJ já está cadastrado";
+
+        protected override bool HaDuplicidade(Cliente registro)
+        {
+            if (base.HaDuplicidade(registro))
+                return true;
+
+            else if (TiverDuplicidadeCPF(registro))
+            {
+                MensagemDeErroSeTiverDuplicidade = "CPF já está cadastrado";
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool TiverDuplicidadeCPF(Cliente registro)
+        {
+            return _repositorioCliente.VerificarDuplicidadeCNPJ(registro);
+        }
     }
 }
