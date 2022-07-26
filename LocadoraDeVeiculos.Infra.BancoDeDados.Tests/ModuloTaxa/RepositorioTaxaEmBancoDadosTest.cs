@@ -115,7 +115,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
                 Assert.IsTrue(taxasEncontradas.Contains(taxas[i]));
         }
 
-        //TODO Não pode deixar excluir caso esteja linkado em outro registro
 
         private Taxa CriarTaxa()
         {

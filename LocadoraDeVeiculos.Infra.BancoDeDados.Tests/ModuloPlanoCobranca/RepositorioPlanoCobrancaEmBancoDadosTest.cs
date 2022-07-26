@@ -8,6 +8,8 @@ using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
+using LocadoraDeVeiculos.Infra.ORM.ModuloGrupoVeiculo;
+using LocadoraDeVeiculos.Infra.ORM.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Servico.ModuloPlanoCobranca;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -25,8 +27,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
 
         public RepositorioPlanoCobrancaEmBancoDadosTest()
         {
-            _servicoPlanoCobranca = new(new RepositorioPlanoCobranca(), new LocadoraDbContext(Db.conexaoComBanco.ConnectionString));
-            _servicoGrupoVeiculo = new(new RepositorioGrupoVeiculos(), new LocadoraDbContext(Db.conexaoComBanco.ConnectionString));
+            _servicoPlanoCobranca = new(new RepositorioPlanoCobrancaOrm(DbContext), DbContext);
+            _servicoGrupoVeiculo = new(new RepositorioGrupoVeiculoOrm(DbContext), DbContext);
         }
 
         [TestMethod]

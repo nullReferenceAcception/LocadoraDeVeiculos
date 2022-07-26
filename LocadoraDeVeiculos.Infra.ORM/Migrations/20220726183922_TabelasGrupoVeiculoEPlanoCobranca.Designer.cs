@@ -4,104 +4,22 @@ using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LocadoraDeVeiculos.Infra.ORM.Migrations
 {
     [DbContext(typeof(LocadoraDbContext))]
-    partial class LocadoraDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220726183922_TabelasGrupoVeiculoEPlanoCobranca")]
+    partial class TabelasGrupoVeiculoEPlanoCobranca
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloCliente.Cliente", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CNH")
-                        .IsRequired()
-                        .HasColumnType("char(11)");
-
-                    b.Property<string>("CNPJ")
-                        .HasColumnType("char(14)");
-
-                    b.Property<string>("CPF")
-                        .HasColumnType("char(11)");
-
-                    b.Property<DateTime>("DataValidadeCNH")
-                        .HasColumnType("date");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("varchar(MAX)");
-
-                    b.Property<string>("Endereco")
-                        .IsRequired()
-                        .HasColumnType("varchar(MAX)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("varchar(MAX)");
-
-                    b.Property<bool>("PessoaFisica")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasColumnType("char(11)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tb_cliente");
-                });
-
-            modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloCondutor.Condutor", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CNH")
-                        .IsRequired()
-                        .HasColumnType("char(11)");
-
-                    b.Property<string>("CPF")
-                        .IsRequired()
-                        .HasColumnType("char(11)");
-
-                    b.Property<Guid>("ClienteId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DataValidadeCNH")
-                        .HasColumnType("date");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("varchar(MAX)");
-
-                    b.Property<string>("Endereco")
-                        .IsRequired()
-                        .HasColumnType("varchar(MAX)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("varchar(MAX)");
-
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasColumnType("char(11)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClienteId");
-
-                    b.ToTable("tb_condutor");
-                });
 
             modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos.GrupoVeiculos", b =>
                 {
@@ -167,17 +85,6 @@ namespace LocadoraDeVeiculos.Infra.ORM.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("tb_taxa");
-                });
-
-            modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloCondutor.Condutor", b =>
-                {
-                    b.HasOne("LocadoraDeVeiculos.Dominio.ModuloCliente.Cliente", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cliente");
                 });
 
             modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca.PlanoCobranca", b =>

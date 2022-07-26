@@ -46,7 +46,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         public void AtualizarRegistros(List<Condutor> condutores)
         {
             grid.Rows.Clear();
-            //TODO arrumar mascara para o telefone e CNPJ/CPF aqui
             foreach (Condutor condutor in condutores)
             {
                     grid.Rows.Add(condutor.Id, condutor.Nome, condutor.Endereco, double.Parse(condutor.Telefone), condutor.CNH, condutor.Email, double.Parse(condutor.CPF), condutor.Cliente.Nome);

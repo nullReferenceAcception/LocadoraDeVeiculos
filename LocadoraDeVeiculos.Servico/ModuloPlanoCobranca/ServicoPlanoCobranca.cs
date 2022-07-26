@@ -13,23 +13,25 @@ namespace LocadoraDeVeiculos.Servico.ModuloPlanoCobranca
             this.repositorioPlanoCobranca = repositorioPlanoCobranca;
         }
 
-        protected override string MensagemDeErroSeTiverDuplicidade => "Nome já está cadastrado";
-
+        protected override string MensagemDeErroSeTiverDuplicidade { get; set; } = "Nome já está cadastrado";
 
         protected override bool HaDuplicidade(PlanoCobranca registro)
         {
             if (base.HaDuplicidade(registro))
                 return true;
 
-            if (TiverDuplicidadePlano(registro))
+       else if (TiverDuplicidadePlano(registro))
+            {
+                MensagemDeErroSeTiverDuplicidade = "Plano já está cadastrado";
                 return true;
+            }
 
             return false;
         }
 
         private bool TiverDuplicidadePlano(PlanoCobranca registro)
         {
-            return repositorioPlanoCobranca.VerificarDuplicidade(registro);
+            return repositorioPlanoCobranca.VerificarDuplicidadePlano(registro);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloTaxa
         {
           var x =  registros.Where(x => x.Descricao == registro.Descricao && x.Id != registro.Id);
 
-            if (x.Count() > 0)
+            if (x.Any())
                 return true;
 
 
