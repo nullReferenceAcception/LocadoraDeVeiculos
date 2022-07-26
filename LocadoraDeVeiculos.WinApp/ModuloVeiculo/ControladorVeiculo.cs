@@ -1,5 +1,4 @@
 ﻿using FluentResults;
-using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using System.Collections.Generic;

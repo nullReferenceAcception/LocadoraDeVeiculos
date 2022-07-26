@@ -40,17 +40,13 @@ namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             var dllComConfiguracoesOrm = typeof(LocadoraDbContext).Assembly;
 
             modelBuilder.ApplyConfigurationsFromAssembly(dllComConfiguracoesOrm);
 
-
-
             modelBuilder.ApplyConfiguration(new MapeadorTaxaOrm());
 
             modelBuilder.ApplyConfiguration(new MapeadorClienteOrm());
-
 
             modelBuilder.ApplyConfiguration(new MapeadorCondutorOrm());
 
@@ -79,7 +75,6 @@ namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
             //    entidade.HasOne(x => x.Materia)
             //        .WithMany().OnDelete(DeleteBehavior.NoAction);
             //});
-
         }
     }
 }

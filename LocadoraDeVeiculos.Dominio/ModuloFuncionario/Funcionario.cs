@@ -9,13 +9,12 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
         public string Senha { get; set; }
         public string Cidade { get; set; }
         public DateTime DataAdmissao { get; set; }
-        public Decimal Salario { get; set; }
+        public decimal Salario { get; set; }
         public bool EhAdmin { get; set; } // True é admin, false é comum
         public bool EstaAtivo { get; set; } // True = 1 no BD
 
         public Funcionario()
         {
-
         }
 
         public Funcionario(string nome, string endereco, string email, string telefone, string login, string senha, DateTime dataAdmissao, Decimal salario, bool ehAdmin, string cidade, bool estaAtivo) : base(nome, endereco, email, telefone)
@@ -29,7 +28,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
             EstaAtivo = estaAtivo;
         }
 
-     
         public override bool Equals(object? obj)
         {
             return obj is Funcionario funcionario &&

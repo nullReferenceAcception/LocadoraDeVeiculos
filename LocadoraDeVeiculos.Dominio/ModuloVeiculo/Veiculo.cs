@@ -15,12 +15,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
         public CorEnum Cor { get; set; }
         public CombustivelEnum Combustivel { get; set; }
         public GrupoVeiculos GrupoVeiculos { get; set; }
-        public Guid  GrupoVeiculosId { get; set; }
+        public Guid GrupoVeiculosId { get; set; }
         public byte[] Foto { get; set; }
 
         public Veiculo()
         {
-
         }
 
         public Veiculo(string modelo, string placa, string marca, int ano, decimal capacidadeTanque, decimal kmPercorrido, CorEnum cor, CombustivelEnum combustivel, byte[] foto)
