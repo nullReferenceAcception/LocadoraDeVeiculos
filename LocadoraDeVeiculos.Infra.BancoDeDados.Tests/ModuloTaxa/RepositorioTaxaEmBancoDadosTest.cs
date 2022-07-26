@@ -1,9 +1,12 @@
 ﻿using FluentAssertions;
 using FluentResults;
-using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
+using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa;
+using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
+using LocadoraDeVeiculos.Infra.ORM.ModuloTaxa;
 using LocadoraDeVeiculos.Servico.ModuloTaxa;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -15,7 +18,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
     public class RepositorioTaxaEmBancoDadosTest : BaseTestRepositorio
     {
         Random random = new Random();
-        ServicoTaxa _servicoTaxa = new(new RepositorioTaxa());
+        ServicoTaxa _servicoTaxa;
+
+        public RepositorioTaxaEmBancoDadosTest() : base()
+        {
+            _servicoTaxa = new(new RepositorioTaxaOrm(DbContext), DbContext);
+        }
 
         [TestMethod]
         public void Deve_inserir_Taxa()

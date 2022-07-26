@@ -1,9 +1,12 @@
 ﻿using FluentAssertions;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
+using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor;
+using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloCliente;
 using LocadoraDeVeiculos.Servico.ModuloCondutor;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -15,14 +18,17 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
     [TestClass]
     public class RepositorioCondutorEmBancoDeDados : BaseTestRepositorio
     {
-        Random random = new Random();
+        Random random;
         ValidadorCondutor validador;
-        ServicoCondutor servico = new(new RepositorioCondutor());
-        ServicoCliente servicoCliente = new(new RepositorioCliente());
+        ServicoCondutor _servicoCondutor;
+        ServicoCliente _servicoCliente;
 
         public RepositorioCondutorEmBancoDeDados()
         {
             validador = new();
+            random = new Random();
+            _servicoCondutor = new(new RepositorioCondutor(), new LocadoraDbContext(Db.conexaoComBanco.ConnectionString));
+            _servicoCliente = new(new RepositorioCliente(), new LocadoraDbContext(Db.conexaoComBanco.ConnectionString));
         }
 
         [TestMethod]
@@ -30,15 +36,15 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
         {
             Cliente cliente = CriarCliente();
 
-            servicoCliente.Inserir(cliente);
+            _servicoCliente.Inserir(cliente);
             
             Condutor condutor = CriarCondutor();
 
             condutor.Cliente = cliente;
 
-            servico.Inserir(condutor);
+            _servicoCondutor.Inserir(condutor);
 
-            Condutor condutorEncontrado = servico.SelecionarPorGuid(condutor.Id).Value;
+            Condutor condutorEncontrado = _servicoCondutor.SelecionarPorGuid(condutor.Id).Value;
 
             Assert.AreEqual(condutor, condutorEncontrado);
         }
@@ -48,19 +54,19 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
         {
             Cliente cliente = CriarCliente();
 
-            servicoCliente.Inserir(cliente);
+            _servicoCliente.Inserir(cliente);
 
             Condutor condutor = CriarCondutor();
 
             condutor.Cliente = cliente;
 
-            servico.Inserir(condutor);
+            _servicoCondutor.Inserir(condutor);
 
             condutor.Nome = "ssssss";
 
-            servico.Editar(condutor);
+            _servicoCondutor.Editar(condutor);
 
-            Condutor condutorEncontrado = servico.SelecionarPorGuid(condutor.Id).Value;
+            Condutor condutorEncontrado = _servicoCondutor.SelecionarPorGuid(condutor.Id).Value;
 
             Assert.AreEqual(condutorEncontrado, condutor);
         }
@@ -70,17 +76,17 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
         {
             Cliente cliente = CriarCliente();
 
-            servicoCliente.Inserir(cliente);
+            _servicoCliente.Inserir(cliente);
 
             Condutor condutor = CriarCondutor();
 
             condutor.Cliente = cliente;
 
-            servico.Inserir(condutor);
+            _servicoCondutor.Inserir(condutor);
 
-            servico.Excluir(condutor);
+            _servicoCondutor.Excluir(condutor);
 
-            Condutor condutorEncontrado = servico.SelecionarPorGuid(condutor.Id).Value;
+            Condutor condutorEncontrado = _servicoCondutor.SelecionarPorGuid(condutor.Id).Value;
 
             condutorEncontrado.Should().Be(null);
         }
@@ -94,7 +100,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 
             Cliente cliente = CriarCliente();
 
-            servicoCliente.Inserir(cliente);
+            _servicoCliente.Inserir(cliente);
 
             for (int i = 0; i < 10; i++)
             {
@@ -104,12 +110,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
                     condutor = new Condutor(GerarNovaStringAleatoria(), "rua juvenil 657", "12345678901", "guimotorista445@gmail.com", "49998789432", "11001111111", DateTime.Today);
                 condutor.Cliente = cliente;
 
-                servico.Inserir(condutor);
+                _servicoCondutor.Inserir(condutor);
 
                 registros.Add(condutor);
             }
 
-            List<Condutor> registrosDoBanco = servico.SelecionarTodos().Value;
+            List<Condutor> registrosDoBanco = _servicoCondutor.SelecionarTodos().Value;
 
             Assert.IsTrue(registrosDoBanco.Count == registros.Count);
 
@@ -122,15 +128,15 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
         {
             Cliente cliente = CriarCliente();
 
-            servicoCliente.Inserir(cliente);
+            _servicoCliente.Inserir(cliente);
 
             Condutor condutor = CriarCondutor();
 
             condutor.Cliente = cliente;
 
-            servico.Inserir(condutor);
+            _servicoCondutor.Inserir(condutor);
 
-            Condutor condutorEncontrado = servico.SelecionarPorGuid(condutor.Id).Value;
+            Condutor condutorEncontrado = _servicoCondutor.SelecionarPorGuid(condutor.Id).Value;
 
             Assert.AreEqual(condutorEncontrado, condutor);
         }

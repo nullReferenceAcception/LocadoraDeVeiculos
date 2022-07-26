@@ -87,5 +87,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
             return "SELECT * FROM TB_GRUPO_VEICULO WHERE ([NOME] = '" + registro.Nome + "')" + "AND [GUID_GRUPO_VEICULO] != '" + registro.Id + "'";
         }
 
+       
     }
 }

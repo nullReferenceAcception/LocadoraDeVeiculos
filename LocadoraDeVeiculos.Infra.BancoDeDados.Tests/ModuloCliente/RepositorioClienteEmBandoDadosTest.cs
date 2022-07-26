@@ -1,7 +1,10 @@
 ﻿using FluentAssertions;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
+using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente;
+using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloCliente;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -12,8 +15,13 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
     [TestClass]
     public class RepositorioClienteEmBandoDadosTest : BaseTestRepositorio
     {
-        Random random = new Random();
-        ServicoCliente _servicoCliente = new(new RepositorioCliente());
+        Random random = new();
+        ServicoCliente _servicoCliente;
+
+        public RepositorioClienteEmBandoDadosTest()
+        {
+            _servicoCliente = new(new RepositorioCliente(), new LocadoraDbContext(Db.conexaoComBanco.ConnectionString));
+        }
 
         [TestMethod]
         public void Deve_inserir_cliente_CPF()

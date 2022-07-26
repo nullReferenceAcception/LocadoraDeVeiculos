@@ -1,11 +1,12 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloTaxa;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Servico.Compartilhado;
 
 namespace LocadoraDeVeiculos.Servico.ModuloTaxa
 {
     public class ServicoTaxa : ServicoBase<Taxa, ValidadorTaxa>, IServicoTaxa
     {
-        public ServicoTaxa(IRepositorioTaxa repositorioTaxa) : base(new ValidadorTaxa(), repositorioTaxa)
+        public ServicoTaxa(IRepositorioTaxa repositorioTaxa, IContextoPersistencia contexto) : base(new ValidadorTaxa(), repositorioTaxa, contexto)
         {
         }
 

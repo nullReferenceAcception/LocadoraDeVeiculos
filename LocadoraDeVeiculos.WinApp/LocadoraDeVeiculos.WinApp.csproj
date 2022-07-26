@@ -11,6 +11,10 @@
     <PackageReference Include="Autofac" Version="6.4.0" />
     <PackageReference Include="FluentResults" Version="3.8.0" />
     <PackageReference Include="FluentValidation" Version="11.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
     <PackageReference Include="Serilog.Sinks.Seq" Version="5.1.1" />
@@ -21,6 +25,7 @@
     <ProjectReference Include="..\LocadoraDeVeiculos.Dominio\LocadoraDeVeiculos.Dominio.csproj" />
     <ProjectReference Include="..\LocadoraDeVeiculos.Infra.BancoDeDados\LocadoraDeVeiculos.Infra.BancoDeDados.csproj" />
     <ProjectReference Include="..\LocadoraDeVeiculos.Infra.Logging\LocadoraDeVeiculos.Infra.Logging.csproj" />
+    <ProjectReference Include="..\LocadoraDeVeiculos.Infra.ORM\LocadoraDeVeiculos.Infra.ORM.csproj" />
     <ProjectReference Include="..\LocadoraDeVeiculos.Servico\LocadoraDeVeiculos.Servico.csproj" />
   </ItemGroup>
 

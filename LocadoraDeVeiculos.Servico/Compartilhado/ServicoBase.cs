@@ -2,6 +2,7 @@
 using FluentValidation;
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using Newtonsoft.Json;
 using Serilog;
 using System;
@@ -18,11 +19,13 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
     {
         TValidador validador;
         IRepositorio<T> repositorio;
+        IContextoPersistencia contexto;
 
-        public ServicoBase(AbstractValidator<T> validationRules, IRepositorio<T> repositorio)
+        public ServicoBase(AbstractValidator<T> validationRules, IRepositorio<T> repositorio, IContextoPersistencia contexto)
         {
             this.validador = (TValidador)validationRules;
             this.repositorio = repositorio;
+            this.contexto = contexto;
         }
 
         public virtual Result<T> Inserir(T registro)
@@ -42,6 +45,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             try
             {
                 repositorio.Inserir(registro);
+                contexto.GravarDados();
                 Log.Logger.Debug("Inserido: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
                 return Result.Ok(registro);
             }
@@ -70,6 +74,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             try
             {
                 repositorio.Editar(registro);
+                contexto.GravarDados();
                 Log.Logger.Debug("Editado: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
                 return Result.Ok(registro);
             }
@@ -90,6 +95,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             try
             {
                 repositorio.Excluir(registro);
+                contexto.GravarDados();
 
                 Log.Logger.Debug("Excluido: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
 
@@ -165,7 +171,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         protected bool TiverDuplicidade(T registro)
         {
-            return repositorio.VerificarDuplicidade(repositorio.SqlDuplicidade(registro));
+            return repositorio.VerificarDuplicidade(registro);
         }
 
         private void LogFalha(string funcao, T registro, List<IError> erros)

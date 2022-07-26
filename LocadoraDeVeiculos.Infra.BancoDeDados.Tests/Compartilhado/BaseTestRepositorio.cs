@@ -1,12 +1,20 @@
-﻿using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
+using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
+using LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator;
 using System;
 
 namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
 {
     public class BaseTestRepositorio
     {
-        public BaseTestRepositorio()
+        protected LocadoraDbContext DbContext;
+        protected BaseTestRepositorio()
         {
+
+            MigradorBancoDadosLocadora.AtualizarBancoDados();
+
+            DbContext = new(Db.conexaoComBanco.ConnectionString);
             //colocar aqui sua tabela de acrodo com os exemplos
 
             Db.ExecutarSql("DELETE FROM TB_PLANO_COBRANCA");

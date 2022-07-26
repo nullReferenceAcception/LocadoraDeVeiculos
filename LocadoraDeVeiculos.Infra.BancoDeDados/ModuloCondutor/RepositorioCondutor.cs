@@ -136,5 +136,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
         {
             return "SELECT * FROM TB_CONDUTOR WHERE ([NOME] = '" + registro.Nome + "')" + "AND [GUID_CONDUTOR] != '" + registro.Id + "'";
         }
+
+        //gambiarra
+        public bool VerificarDuplicidade(Condutor registro)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

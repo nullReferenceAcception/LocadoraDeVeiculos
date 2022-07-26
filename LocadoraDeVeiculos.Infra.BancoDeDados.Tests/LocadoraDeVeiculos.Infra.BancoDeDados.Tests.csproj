@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LocadoraDeVeiculos.Infra.BancoDeDados\LocadoraDeVeiculos.Infra.BancoDeDados.csproj" />
+    <ProjectReference Include="..\LocadoraDeVeiculos.WinApp\LocadoraDeVeiculos.WinApp.csproj" />
   </ItemGroup>
 
   <ItemGroup>
