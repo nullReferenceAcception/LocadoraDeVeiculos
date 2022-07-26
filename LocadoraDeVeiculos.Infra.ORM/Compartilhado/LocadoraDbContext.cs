@@ -1,4 +1,6 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Infra.ORM.ModuloCliente;
+using LocadoraDeVeiculos.Infra.ORM.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.ORM.ModuloTaxa;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -45,6 +47,10 @@ namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
 
             modelBuilder.ApplyConfiguration(new MapeadorTaxaOrm());
 
+            modelBuilder.ApplyConfiguration(new MapeadorClienteOrm());
+
+
+            modelBuilder.ApplyConfiguration(new MapeadorCondutorOrm());
 
 
 

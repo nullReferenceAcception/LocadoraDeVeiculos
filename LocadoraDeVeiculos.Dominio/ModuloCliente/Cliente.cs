@@ -9,8 +9,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
         public string CNH { get; set; }
         public DateTime DataValidadeCNH { get; set; }
         public bool PessoaFisica { get; set; } // Falso = Pessoa Juridica
-        public string CPF { get; set; }
-        public string CNPJ { get; set; }
+        public string? CPF { get; set; }
+        public string? CNPJ { get; set; }
 
         public Cliente ()
         {
