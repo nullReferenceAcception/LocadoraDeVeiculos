@@ -21,7 +21,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloVeiculo
             veiculo.Property(x => x.GrupoVeiculosId).HasColumnType("uniqueidentifier").IsRequired();
             veiculo.Property(x => x.Foto).HasColumnType("varbinary(MAX)").IsRequired();
 
-            veiculo.HasOne(x => x.GrupoVeiculos).WithMany().HasForeignKey(x => x.GrupoVeiculosId).OnDelete(DeleteBehavior.NoAction);
+            veiculo.HasOne(x => x.GrupoVeiculos).WithMany().HasForeignKey(x => x.GrupoVeiculosId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
