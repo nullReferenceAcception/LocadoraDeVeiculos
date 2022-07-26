@@ -1,11 +1,7 @@
 ﻿using FluentAssertions;
 using FluentResults;
-using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
-using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa;
-using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using LocadoraDeVeiculos.Infra.ORM.ModuloTaxa;
 using LocadoraDeVeiculos.Servico.ModuloTaxa;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

@@ -7,17 +7,14 @@ using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
-using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCliente;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloPlanoCobranca;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
+using LocadoraDeVeiculos.Infra.ORM.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.ORM.ModuloTaxa;
-using LocadoraDeVeiculos.Servico.Compartilhado;
+using LocadoraDeVeiculos.Infra.ORM.ModuloVeiculo;
 using LocadoraDeVeiculos.Servico.ModuloCliente;
 using LocadoraDeVeiculos.Servico.ModuloCondutor;
 using LocadoraDeVeiculos.Servico.ModuloFuncionario;
@@ -32,7 +29,6 @@ using LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo;
 using LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.WinApp.ModuloTaxa;
 using LocadoraDeVeiculos.WinApp.ModuloVeiculo;
-using System.Configuration;
 
 namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 {
@@ -44,17 +40,15 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
         {
             var builder = new ContainerBuilder();
 
-
-
             builder.RegisterInstance(new LocadoraDbContext(Db.conexaoComBanco.ConnectionString)).As<IContextoPersistencia>().AsSelf();
-
 
             builder.RegisterType<RepositorioCliente>().As<IRepositorioCliente>();
             builder.RegisterType<RepositorioCondutor>().As<IRepositorioCondutor>();
-            builder.RegisterType<RepositorioFuncionario>().As<IRepositorioFuncionario>();
+            builder.RegisterType<RepositorioFuncionarioOrm>().As<IRepositorioFuncionario>();
             builder.RegisterType<RepositorioGrupoVeiculos>().As<IRepositorioGrupoVeiculos>();
             builder.RegisterType<RepositorioPlanoCobranca>().As<IRepositorioPlanoCobranca>();
             builder.RegisterType<RepositorioTaxaOrm>().As<IRepositorioTaxa>();
+            builder.RegisterType<RepositorioVeiculoOrm>().As<IRepositorioVeiculo>();
 
             builder.RegisterType<ServicoCliente>().As<IServicoCliente>();
             builder.RegisterType<ServicoCondutor>().As<IServicoCondutor>();

@@ -1,11 +1,8 @@
 ﻿using LocadoraDeVeiculos.Dominio;
-using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
 {
@@ -45,12 +42,9 @@ namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
             return registros.ToList();
         }
 
-
         public int QuantidadeRegistros()
         {
           return registros.Count();
         }
-
-
     }
 }
