@@ -1,13 +1,9 @@
 ﻿using FluentAssertions;
 using FluentResults;
-using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
-using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 using LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos;
-using LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo;
-using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
+using LocadoraDeVeiculos.Infra.ORM.ModuloVeiculo;
 using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Servico.ModuloVeiculos;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -22,10 +18,10 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
         ServicoVeiculo _servicoVeiculo;
         ServicoGrupoVeiculos _servicoGrupoVeiculo;
 
-        public RepositorioVeiculoEmBancoDadosTest()
+        public RepositorioVeiculoEmBancoDadosTest() : base()
         {
-            _servicoVeiculo = new(new RepositorioVeiculo(), new LocadoraDbContext(Db.conexaoComBanco.ConnectionString));
-            _servicoGrupoVeiculo = new(new RepositorioGrupoVeiculos(), new LocadoraDbContext(Db.conexaoComBanco.ConnectionString));
+            _servicoVeiculo = new(new RepositorioVeiculoOrm(DbContext), DbContext);
+            //_servicoGrupoVeiculo = new(new RepositorioGrupoVeiculosOrm(DbContext), DbContext);
         }
 
         [TestMethod]

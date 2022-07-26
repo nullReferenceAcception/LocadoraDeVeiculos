@@ -19,6 +19,56 @@ namespace LocadoraDeVeiculos.Infra.ORM.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloFuncionario.Funcionario", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Cidade")
+                        .IsRequired()
+                        .HasColumnType("varchar(MAX)");
+
+                    b.Property<DateTime>("DataAdmissao")
+                        .HasColumnType("date");
+
+                    b.Property<bool>("EhAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("varchar(MAX)");
+
+                    b.Property<string>("Endereco")
+                        .IsRequired()
+                        .HasColumnType("varchar(MAX)");
+
+                    b.Property<bool>("EstaAtivo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasColumnType("varchar(MAX)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("varchar(MAX)");
+
+                    b.Property<decimal>("Salario")
+                        .HasColumnType("decimal(11,2)");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasColumnType("varchar(MAX)");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("char(11)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tb_funcionario");
+                });
+
             modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloCliente.Cliente", b =>
                 {
                     b.Property<Guid>("Id")
@@ -189,6 +239,52 @@ namespace LocadoraDeVeiculos.Infra.ORM.Migrations
                         .IsRequired();
 
                     b.Navigation("GrupoVeiculos");
+                });
+
+            modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloVeiculo.Veiculo", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Ano")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("CapacidadeTanque")
+                        .HasColumnType("decimal(11,2)");
+
+                    b.Property<string>("Combustivel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Cor")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("Foto")
+                        .IsRequired()
+                        .HasColumnType("varbinary(MAX)");
+
+                    b.Property<Guid>("GrupoVeiculosId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("KmPercorrido")
+                        .HasColumnType("decimal(11,2)");
+
+                    b.Property<string>("Marca")
+                        .IsRequired()
+                        .HasColumnType("varchar(MAX)");
+
+                    b.Property<string>("Modelo")
+                        .IsRequired()
+                        .HasColumnType("varchar(MAX)");
+
+                    b.Property<string>("Placa")
+                        .IsRequired()
+                        .HasColumnType("char(7)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tb_veiculo");
                 });
 #pragma warning restore 612, 618
         }

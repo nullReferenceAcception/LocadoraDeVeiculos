@@ -4,7 +4,6 @@ using System;
 namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 {
     public class Cliente : Pessoa<Cliente>
-
     {
         public string CNH { get; set; }
         public DateTime DataValidadeCNH { get; set; }

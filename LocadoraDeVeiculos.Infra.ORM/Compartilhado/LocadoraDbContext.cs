@@ -3,7 +3,10 @@ using LocadoraDeVeiculos.Infra.ORM.ModuloCliente;
 using LocadoraDeVeiculos.Infra.ORM.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.ORM.ModuloGrupoVeiculo;
 using LocadoraDeVeiculos.Infra.ORM.ModuloPlanoCobranca;
+using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Infra.ORM.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.ORM.ModuloTaxa;
+using LocadoraDeVeiculos.Infra.ORM.ModuloVeiculo;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Serilog;
@@ -40,12 +43,9 @@ namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             var dllComConfiguracoesOrm = typeof(LocadoraDbContext).Assembly;
 
             modelBuilder.ApplyConfigurationsFromAssembly(dllComConfiguracoesOrm);
-
-
 
             modelBuilder.ApplyConfiguration(new MapeadorTaxaOrm());
 
@@ -79,7 +79,6 @@ namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
             //    entidade.HasOne(x => x.Materia)
             //        .WithMany().OnDelete(DeleteBehavior.NoAction);
             //});
-
         }
     }
 }
