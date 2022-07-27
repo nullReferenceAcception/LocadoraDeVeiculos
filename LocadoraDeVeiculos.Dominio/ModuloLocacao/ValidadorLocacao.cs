@@ -23,6 +23,26 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
             RuleFor(x => x.DataDevolucao)
                     .NotNull().NotEmpty().GreaterThan(DateTime.MinValue).GreaterThan(hoje.AddDays(-1));
 
+            RuleFor(x => x.Funcionario)
+                 .NotNull().NotEmpty();
+
+            RuleFor(x => x.Cliente)
+               .NotNull().NotEmpty();
+
+            RuleFor(x => x.Cliente)
+                .NotNull().NotEmpty();
+
+            RuleFor(x => x.Condutor)
+              .NotNull().NotEmpty();
+
+            RuleFor(x => x.Veiculo)
+             .NotNull().NotEmpty();
+
+            RuleFor(x => x.PlanoCobranca)
+             .NotNull().NotEmpty();
+
+            RuleFor(x => x.Taxas)
+              .NotNull().NotEmpty();
         }
 
     }
