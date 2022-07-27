@@ -20,23 +20,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
     [TestClass]
     public class RepositorioCondutorEmBancoDeDados : BaseTestRepositorio
     {
-        Random random;
-        ValidadorCondutor validador;
-        ServicoCondutor _servicoCondutor;
-        ServicoCliente _servicoCliente;
-
-        public RepositorioCondutorEmBancoDeDados() : base ()
-        {
-            validador = new();
-            random = new Random();
-            _servicoCondutor = new(new RepositorioCondutorOrm(DbContext), DbContext);
-            _servicoCliente = new(new RepositorioClienteOrm(DbContext), DbContext);
-        }
 
         [TestMethod]
         public void Deve_inserir_Condutor()
         {
-            Cliente cliente = CriarCliente();
+            Cliente cliente = CriarClienteComCPF();
 
             _servicoCliente.Inserir(cliente);
             
@@ -54,7 +42,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
         [TestMethod]
         public void Deve_editar_Condutor()
         {
-            Cliente cliente = CriarCliente();
+            Cliente cliente = CriarClienteComCPF();
 
             _servicoCliente.Inserir(cliente);
 
@@ -76,7 +64,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
         [TestMethod]
         public void Deve_excluir_Condutor()
         {
-            Cliente cliente = CriarCliente();
+            Cliente cliente = CriarClienteComCPF();
 
             _servicoCliente.Inserir(cliente);
 
@@ -100,7 +88,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 
             Condutor condutor;
 
-            Cliente cliente = CriarCliente();
+            Cliente cliente = CriarClienteComCPF();
 
             _servicoCliente.Inserir(cliente);
 
@@ -131,7 +119,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
         [TestMethod]
         public void Deve_selecionar_por_id()
         {
-            Cliente cliente = CriarCliente();
+            Cliente cliente = CriarClienteComCPF();
 
             _servicoCliente.Inserir(cliente);
 
@@ -145,19 +133,5 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCondutor
 
             Assert.AreEqual(condutorEncontrado, condutor);
         }
-        
-        private Condutor CriarCondutor()
-        {
-            return new Condutor(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "12345678901", "guimotorista@gmail.com", "49998765432", "11111111111", DateTime.Today);
-        }
-        private Cliente CriarCliente()
-        {
-            return   new Cliente(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "12345678900", "joao@joao.com", "49989090909", false, null!, "12340567123889", DateTime.Today);
-        }
-        private string GerarCpfAleatorio()
-        {
-          return  random.Next(1000,9000).ToString() + random.Next(1000, 9000).ToString() + random.Next(100, 900).ToString();
-        }
-
     }
 }

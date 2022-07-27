@@ -21,15 +21,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
     [TestClass]
     public class RepositorioPlanoCobrancaEmBancoDadosTest : BaseTestRepositorio
     {
-        Random random = new();
-        ServicoPlanoCobranca _servicoPlanoCobranca;
-        ServicoGrupoVeiculos _servicoGrupoVeiculo;
-
-        public RepositorioPlanoCobrancaEmBancoDadosTest()
-        {
-            _servicoPlanoCobranca = new(new RepositorioPlanoCobrancaOrm(DbContext), DbContext);
-            _servicoGrupoVeiculo = new(new RepositorioGrupoVeiculoOrm(DbContext), DbContext);
-        }
 
         [TestMethod]
         public void Deve_inserir_PlanoCobranca()
@@ -132,13 +123,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
 
             for (int i = 0; i < registrosDoBanco.Count; i++)
                 Assert.IsTrue(registrosDoBanco.Contains(registros[i]));
-        }
-
-        private PlanoCobranca CriarPlanoCobranca()
-        {
-            GrupoVeiculos grupoVeiculos = new GrupoVeiculos("grupo");
-            _servicoGrupoVeiculo.Inserir(grupoVeiculos);
-            return new PlanoCobranca(GerarNovaStringAleatoria(), random.Next(1, 200), random.Next(1, 200), random.Next(1, 200), PlanoEnum.KmControlado, grupoVeiculos);
         }
     }
 }

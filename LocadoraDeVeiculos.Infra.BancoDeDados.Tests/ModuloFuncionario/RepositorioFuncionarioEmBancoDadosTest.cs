@@ -13,12 +13,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
     [TestClass]
     public class servicoFuncionarioEmBancoDadosTest : BaseTestRepositorio
     {
-        ServicoFuncionario _servicoFuncionario;
-
-        public servicoFuncionarioEmBancoDadosTest()
-        {
-            _servicoFuncionario = new(new RepositorioFuncionarioOrm(DbContext), DbContext);
-        }
 
         [TestMethod]
         public void Deve_inserir_Funcionario()
@@ -113,24 +107,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloFuncionario
             Result<Funcionario> result = _servicoFuncionario.Inserir(outroFuncionario);
 
             result.Errors[0].Message.Should().Contain("Login já está cadastrado");
-        }
-
-        private Funcionario CriarFuncionario()
-        {
-            return new(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "e@e.e", "49991113939", GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), new DateTime(2020,02,02), 12, true, GerarNovaStringAleatoria(), true);
-        }
-
-        private string GerarNovaPlaca()
-        {
-            const int qtdeLetras = 8;
-            const string letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            string novaPlaca = "";
-            Random random = new();
-
-            for (int i = 0; i < qtdeLetras; i++)
-                novaPlaca += letras[random.Next(letras.Length)];
-
-            return novaPlaca;
         }
     }
 }
