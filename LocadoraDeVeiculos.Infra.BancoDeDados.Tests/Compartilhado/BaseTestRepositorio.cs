@@ -124,7 +124,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
 
         protected string GerarNovaPlaca()
         {
-            const int qtdeLetras = 8;
+            const int qtdeLetras = 7;
             const string letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string novaPlaca = "";
             Random random = new();
