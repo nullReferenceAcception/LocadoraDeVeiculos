@@ -9,9 +9,14 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloDevolucao
         public void Configure(EntityTypeBuilder<Devolucao> devolucao)
         {
             devolucao.ToTable("tb_devolucao");
+
             devolucao.Property(x => x.Id).ValueGeneratedNever();
-            devolucao.Property(x => x.DataDevolucaoReal).IsRequired().HasColumnType("date");
+            devolucao.Property(x => x.DataDevolucaoReal).HasColumnType("date").IsRequired();
+            devolucao.HasMany(x => x.TaxasAdicionais).WithOne().HasForeignKey().OnDelete(DeleteBehavior.NoAction);
+
             devolucao.Property(x => x.Tanque).HasConversion<string>();
+
+            devolucao.Property(x => x.LocacaoId).HasColumnType("uniqueidentifier").IsRequired();
             devolucao.HasOne(x => x.Locacao).WithMany().HasForeignKey(x => x.LocacaoId).OnDelete(DeleteBehavior.Restrict);
         }
     }

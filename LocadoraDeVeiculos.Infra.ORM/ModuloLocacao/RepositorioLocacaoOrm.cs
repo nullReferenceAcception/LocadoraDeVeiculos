@@ -1,10 +1,6 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.ORM.ModuloLocacao
 {
@@ -20,7 +16,6 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloLocacao
 
             if (x.Any())
                 return true;
-
 
             return false;
         }

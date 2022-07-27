@@ -35,7 +35,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Empresa", HeaderText = "Empresa"}
 
-        };
+            };
+
             return colunas;
         }
         public Guid ObtemGuidCondutorSelecionado()
@@ -48,9 +49,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             grid.Rows.Clear();
             foreach (Condutor condutor in condutores)
             {
-                    grid.Rows.Add(condutor.Id, condutor.Nome, condutor.Endereco, double.Parse(condutor.Telefone), condutor.CNH, condutor.Email, double.Parse(condutor.CPF), condutor.Cliente.Nome);
-                    this.grid.Columns[6].DefaultCellStyle.Format = @"000\.000\.000\-00";
-                    this.grid.Columns[3].DefaultCellStyle.Format = "(##) #####-####";
+                grid.Rows.Add(condutor.Id, condutor.Nome, condutor.Endereco, double.Parse(condutor.Telefone), condutor.CNH, condutor.Email, double.Parse(condutor.CPF), condutor.Cliente.Nome);
+                this.grid.Columns[6].DefaultCellStyle.Format = @"000\.000\.000\-00";
+                this.grid.Columns[3].DefaultCellStyle.Format = "(##) #####-####";
             }
         }
     }

@@ -49,10 +49,10 @@
             this.condutoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionariosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.veiculosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.devolucaoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelRegistros = new System.Windows.Forms.Panel();
             this.labelRodape = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStripRodape = new System.Windows.Forms.StatusStrip();
-            this.devolucaoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolbox.SuspendLayout();
             this.menu.SuspendLayout();
             this.statusStripRodape.SuspendLayout();
@@ -251,6 +251,13 @@
             this.veiculosMenuItem.Text = "Veículos";
             this.veiculosMenuItem.Click += new System.EventHandler(this.veiculosMenuItem_Click);
             // 
+            // devolucaoMenuItem
+            // 
+            this.devolucaoMenuItem.Name = "devolucaoMenuItem";
+            this.devolucaoMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.devolucaoMenuItem.Text = "Devolução";
+            this.devolucaoMenuItem.Click += new System.EventHandler(this.devolucaoMenuItem_Click);
+            // 
             // panelRegistros
             // 
             this.panelRegistros.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -277,13 +284,6 @@
             this.statusStripRodape.Size = new System.Drawing.Size(1554, 26);
             this.statusStripRodape.TabIndex = 4;
             this.statusStripRodape.Text = "statusStrip1";
-            // 
-            // devolucaoMenuItem
-            // 
-            this.devolucaoMenuItem.Name = "devolucaoMenuItem";
-            this.devolucaoMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.devolucaoMenuItem.Text = "Devolução";
-            this.devolucaoMenuItem.Click += new System.EventHandler(this.devolucaoMenuItem_Click);
             // 
             // TelaPrincipalForm
             // 

@@ -7,6 +7,9 @@
     <Compile Update="ModuloCondutor\TelaCadastroCondutorForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ModuloConfiguracoes\TabelaConfiguracoesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="ModuloDevolucao\TabelaDevolucaoControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
