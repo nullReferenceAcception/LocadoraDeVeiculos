@@ -15,6 +15,6 @@ namespace LocadoraDeVeiculos.Servico.ModuloLocacao
         {
         }
 
-        protected override string MensagemDeErroSeTiverDuplicidade { get; set; } = "Nome já está cadastrado";
+        protected override string MensagemDeErroSeTiverDuplicidade { get; set; } = "Veiculo já está alocado";
     }
 }

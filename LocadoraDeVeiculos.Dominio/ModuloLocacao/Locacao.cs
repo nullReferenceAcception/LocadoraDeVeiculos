@@ -20,7 +20,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
 
         public Locacao(Funcionario funcionario, Cliente cliente,
             Condutor condutor, Veiculo veiculo, PlanoCobranca planoCobranca,
-            DateTime dataLocacao, DateTime dataDevolucao, List<Taxa> taxas)
+            DateTime dataLocacao, DateTime dataDevolucao, List<Taxa> taxas, bool estaAtivo)
         {
             Funcionario = funcionario;
             Cliente = cliente;
@@ -28,18 +28,25 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
             Veiculo = veiculo;
             PlanoCobranca = planoCobranca;
             DataLocacao = dataLocacao;
-            DataDevolucao = dataDevolucao;
+            DataDevolucaoPrevista = dataDevolucao;
             Taxas = taxas;
+            EstaAtivo = estaAtivo;
         }
 
       public Funcionario Funcionario { get; set; }
+      public Guid FuncionarioId { get; set; }
       public Cliente Cliente { get; set; }
+      public Guid ClienteId { get; set; }
       public Condutor Condutor { get; set; }
+      public Guid CondutorId { get; set; }
       public Veiculo Veiculo { get; set; }
+      public Guid VeiculoId { get; set; }
       public PlanoCobranca PlanoCobranca { get; set; }
+      public Guid PlanoCobrancaId { get; set; }
       public DateTime DataLocacao { get; set; }
       public DateTime DataDevolucaoPrevista { get; set; }
       public List<Taxa> Taxas { get; set; }
+      public bool EstaAtivo { get; set; }
 
         public override bool Equals(object? obj)
         {
@@ -51,7 +58,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
                    EqualityComparer<Veiculo>.Default.Equals(Veiculo, locacao.Veiculo) &&
                    EqualityComparer<PlanoCobranca>.Default.Equals(PlanoCobranca, locacao.PlanoCobranca) &&
                    DataLocacao == locacao.DataLocacao &&
-                   DataDevolucao == locacao.DataDevolucao &&
+                   DataDevolucaoPrevista == locacao.DataDevolucaoPrevista &&
+                   EstaAtivo == locacao.EstaAtivo &&
                   CompararTaxas(locacao);
         }
 

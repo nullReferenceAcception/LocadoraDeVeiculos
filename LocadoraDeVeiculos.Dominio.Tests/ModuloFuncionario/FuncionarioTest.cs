@@ -26,7 +26,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloFuncionario
             resultado.ShouldHaveValidationErrorFor(x => x.Nome);
         }
 
-        private static Funcionario CriarFuncionario()
+        private  Funcionario CriarFuncionario()
         {
             return new("nome","senha","endereco","telefone","login", "senha", DateTime.Now, 12, true, "Lages", true);
         }

@@ -16,14 +16,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
     [TestClass]
     public class RepositorioVeiculoEmBancoDadosTest : BaseTestRepositorio
     {
-        ServicoVeiculo _servicoVeiculo;
-        ServicoGrupoVeiculos _servicoGrupoVeiculo;
-
-        public RepositorioVeiculoEmBancoDadosTest() : base()
-        {
-            _servicoVeiculo = new(new RepositorioLocacaoOrm(DbContext), DbContext);
-            _servicoGrupoVeiculo = new(new RepositorioGrupoVeiculoOrm(DbContext), DbContext);
-        }
 
         [TestMethod]
         public void Deve_inserir_veiculo()
@@ -159,34 +151,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
             resultado.Errors[0].Message.Should().Contain("Placa já cadastrada");
         }
 
-        private Veiculo CriarVeiculoSemGrupo()
-        {
-            byte[] array = { 0, 100, 120, 210, 255 };
-            return new("Uno", GerarNovaPlaca(), "Fiat", 2005, 29.50m, 200000.00m, CorEnum.Azul, CombustivelEnum.Gasolina, array);
-        }
-
         private GrupoVeiculos CriarGrupoDeVeiculos()
         {
             return new("Teste");
-        }
-
-        private string GerarNovaPlaca()
-        {
-            const int qtdeNumeros = 3;
-            const int qtdeLetras = 4;
-
-            const string letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            const string numeros = "0123456789";
-            string novaPlaca = "";
-            Random random = new();
-
-            for (int i = 0; i < qtdeNumeros; i++)
-                novaPlaca += letras[random.Next(letras.Length)];
-
-            for (int i = 0; i < qtdeLetras; i++)
-                novaPlaca += numeros[random.Next(numeros.Length)];
-
-            return novaPlaca;
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using FluentValidation;
+using LocadoraDeVeiculos.Dominio;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
@@ -16,6 +18,7 @@ using LocadoraDeVeiculos.Infra.ORM.ModuloGrupoVeiculo;
 using LocadoraDeVeiculos.Infra.ORM.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.ORM.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.ORM.ModuloVeiculo;
+using LocadoraDeVeiculos.Servico.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloCliente;
 using LocadoraDeVeiculos.Servico.ModuloCondutor;
 using LocadoraDeVeiculos.Servico.ModuloFuncionario;
@@ -80,5 +83,14 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
         {
             return container.Resolve<T>();
         }
+
+        public Servico GetServico<Entidade,Servico,Tvalidador>() 
+            where Servico : ServicoBase<Entidade, Tvalidador>
+            where Entidade : EntidadeBase<Entidade>
+            where Tvalidador : AbstractValidator<Entidade>
+        {
+            return container.Resolve<Servico>();
+        }
+
     }
 }

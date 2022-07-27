@@ -16,14 +16,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
     [TestClass]
     public class RepositorioClienteEmBandoDadosTest : BaseTestRepositorio
     {
-        Random random = new();
-        ServicoCliente _servicoCliente;
-
-        public RepositorioClienteEmBandoDadosTest() : base()
-        {
-            _servicoCliente = new(new RepositorioClienteOrm(DbContext), DbContext);
-        }
-
         [TestMethod]
         public void Deve_inserir_cliente_CPF()
         {
@@ -155,26 +147,5 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
 
             clientes.Should().Contain(clienteCNPJ);
         }
-
-        private Cliente CriarClienteComCPF()
-        {
-            return new Cliente(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "12345678900", "joao@joao.com", "49989090909", true, GerarCpfAleatorio(), null!, DateTime.Today);
-        }
-
-        private Cliente CriarClienteComCNPJ()
-        {
-            return new Cliente(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "12345678900", "joao@joao.com", "49989090909", false, null!, GerarCnpjAleatorio(), DateTime.Today);
-        }
-
-        private string GerarCpfAleatorio()
-        {
-            return random.Next(1000, 9000).ToString() + random.Next(1000, 9000).ToString() + random.Next(100, 900).ToString();
-        }
-
-        private string GerarCnpjAleatorio()
-        {
-            return random.Next(1000, 9000).ToString() + random.Next(1000, 9000).ToString() + random.Next(1000, 9000).ToString() + random.Next(10, 90).ToString();
-        }
-
     }
 }
