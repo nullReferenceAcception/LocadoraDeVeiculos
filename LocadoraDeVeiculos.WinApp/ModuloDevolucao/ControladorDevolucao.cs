@@ -105,7 +105,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         {
             List<Devolucao> devolucoes = _servicoDevolucao.SelecionarTodos().Value;
 
-            //_tabelaDevolucao.AtualizarRegistros(devolucoes, );
+            _tabelaDevolucao.AtualizarRegistros(devolucoes);
 
             TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {devolucoes.Count} {(devolucoes.Count == 1 ? "veículo" : "veículos")}", CorParaRodape.Yellow);
         }
