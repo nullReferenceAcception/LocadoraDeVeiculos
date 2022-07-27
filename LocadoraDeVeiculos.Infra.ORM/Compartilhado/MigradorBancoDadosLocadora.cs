@@ -1,11 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
 {
@@ -24,7 +20,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
 
             var migracoesPendentes = db.Database.GetPendingMigrations();
 
-            if (migracoesPendentes.Count() > 0)
+            if (migracoesPendentes.Any())
                 db.Database.Migrate();
         }
     }

@@ -1,6 +1,5 @@
 using System;
 using Serilog;
-using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 using LocadoraDeVeiculos.Infra.Logging.Log;
@@ -23,11 +22,11 @@ namespace LocadoraDeVeiculos.WinApp
 
             Log.Logger.ConfigurarLogEmWeb();
 
-            string Linguagem = ConfigurationManager.AppSettings.Get("Idioma");
+            string linguagem = ConfigurationManager.AppSettings.Get("Idioma");
 
-            Thread.CurrentThread.CurrentUICulture = new(Linguagem);
+            Thread.CurrentThread.CurrentUICulture = new(linguagem);
 
-            Thread.CurrentThread.CurrentCulture = new(Linguagem);
+            Thread.CurrentThread.CurrentCulture = new(linguagem);
 
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();

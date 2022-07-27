@@ -1,11 +1,6 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.ORM.ModuloLocacao
 {
@@ -15,7 +10,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloLocacao
         {
             builder.ToTable("tb_locacao");
             builder.Property(x => x.Id).ValueGeneratedNever();
-            builder.Property(x => x.).HasColumnType("varchar(200)").IsRequired();
+            builder.Property(x => x.Cliente).HasColumnType("varchar(200)").IsRequired();
         }
     }
 }

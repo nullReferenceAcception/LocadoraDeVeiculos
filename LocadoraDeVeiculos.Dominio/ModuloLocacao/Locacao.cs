@@ -25,18 +25,18 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
             Veiculo = veiculo;
             PlanoCobranca = planoCobranca;
             DataLocacao = dataLocacao;
-            DataDevolucao = dataDevolucao;
+            DataDevolucaoPrevista = dataDevolucao;
             Taxas = taxas;
         }
 
-      public Funcionario Funcionario { get; set; }
-      public Cliente Cliente { get; set; }
-      public Condutor Condutor { get; set; }
-      public Veiculo Veiculo { get; set; }
-      public PlanoCobranca PlanoCobranca { get; set; }
-      public DateTime DataLocacao { get; set; }
-      public DateTime DataDevolucaoPrevista { get; set; }
-      public List<Taxa> Taxas { get; set; }
+        public Funcionario Funcionario { get; set; }
+        public Cliente Cliente { get; set; }
+        public Condutor Condutor { get; set; }
+        public Veiculo Veiculo { get; set; }
+        public PlanoCobranca PlanoCobranca { get; set; }
+        public DateTime DataLocacao { get; set; }
+        public DateTime DataDevolucaoPrevista { get; set; }
+        public List<Taxa> Taxas { get; set; }
 
         public override bool Equals(object? obj)
         {
@@ -48,17 +48,17 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
                    EqualityComparer<Veiculo>.Default.Equals(Veiculo, locacao.Veiculo) &&
                    EqualityComparer<PlanoCobranca>.Default.Equals(PlanoCobranca, locacao.PlanoCobranca) &&
                    DataLocacao == locacao.DataLocacao &&
-                   DataDevolucao == locacao.DataDevolucao &&
-                  CompararTaxas(locacao);
+                   DataDevolucaoPrevista == locacao.DataDevolucaoPrevista &&
+                   CompararTaxas(locacao);
         }
 
         private bool CompararTaxas(Locacao locacao)
         {
             if (Taxas.Count != locacao.Taxas.Count)
                 return false;
-           for (int i = 0; i < Taxas.Count; i++)
+            for (int i = 0; i < Taxas.Count; i++)
             {
-                if(EqualityComparer<Taxa>.Default.Equals(Taxas[i], locacao.Taxas[i]))
+                if (EqualityComparer<Taxa>.Default.Equals(Taxas[i], locacao.Taxas[i]))
                     return false;
             }
             return true;
