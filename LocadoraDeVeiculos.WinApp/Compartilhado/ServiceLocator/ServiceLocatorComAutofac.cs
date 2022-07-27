@@ -4,6 +4,7 @@ using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
@@ -19,6 +20,7 @@ using LocadoraDeVeiculos.Servico.ModuloCliente;
 using LocadoraDeVeiculos.Servico.ModuloCondutor;
 using LocadoraDeVeiculos.Servico.ModuloFuncionario;
 using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Servico.ModuloLocacao;
 using LocadoraDeVeiculos.Servico.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Servico.ModuloTaxa;
 using LocadoraDeVeiculos.Servico.ModuloVeiculos;
@@ -26,6 +28,7 @@ using LocadoraDeVeiculos.WinApp.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.ModuloCondutor;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
 using LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo;
+using LocadoraDeVeiculos.WinApp.ModuloLocacao;
 using LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.WinApp.ModuloTaxa;
 using LocadoraDeVeiculos.WinApp.ModuloVeiculo;
@@ -49,7 +52,8 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             builder.RegisterType<RepositorioGrupoVeiculoOrm>().As<IRepositorioGrupoVeiculos>();
             builder.RegisterType<RepositorioPlanoCobrancaOrm>().As<IRepositorioPlanoCobranca>();
             builder.RegisterType<RepositorioTaxaOrm>().As<IRepositorioTaxa>();
-            builder.RegisterType<RepositorioVeiculoOrm>().As<IRepositorioVeiculo>();
+            builder.RegisterType<RepositorioLocacaoOrm>().As<IRepositorioVeiculo>();
+            builder.RegisterType<RepositorioLocacaoOrm>().As<IRepositorioLocacao>();
 
             builder.RegisterType<ServicoCliente>().As<IServicoCliente>();
             builder.RegisterType<ServicoCondutor>().As<IServicoCondutor>();
@@ -58,6 +62,7 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             builder.RegisterType<ServicoPlanoCobranca>().As<IServicoPlanoCobranca>();
             builder.RegisterType<ServicoTaxa>().As<IServicoTaxa>();
             builder.RegisterType<ServicoVeiculo>().As<IServicoVeiculo>();
+            builder.RegisterType<ServicoLocacao>().As<IServicoLocacao>();
 
             builder.RegisterType<ControladorCliente>().AsSelf();
             builder.RegisterType<ControladorCondutor>().AsSelf();
@@ -66,6 +71,7 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             builder.RegisterType<ControladorPlanoCobranca>().AsSelf();
             builder.RegisterType<ControladorTaxa>().AsSelf();
             builder.RegisterType<ControladorVeiculo>().AsSelf();
+            builder.RegisterType<ControladorLocacao>().AsSelf();
 
             container = builder.Build();
         }

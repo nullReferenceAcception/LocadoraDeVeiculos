@@ -2,6 +2,7 @@
 using LocadoraDeVeiculos.Infra.ORM.ModuloCliente;
 using LocadoraDeVeiculos.Infra.ORM.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.ORM.ModuloGrupoVeiculo;
+using LocadoraDeVeiculos.Infra.ORM.ModuloLocacao;
 using LocadoraDeVeiculos.Infra.ORM.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.ORM.ModuloTaxa;
 using Microsoft.EntityFrameworkCore;
@@ -53,6 +54,8 @@ namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
             modelBuilder.ApplyConfiguration(new MapeadorPlanoCobrancaOrm());
 
             modelBuilder.ApplyConfiguration(new MapeadorGrupoVeiculoOrm());
+
+            modelBuilder.ApplyConfiguration(new MapeadorLocacaoOrm());
 
 
             //  EXEMPLOS

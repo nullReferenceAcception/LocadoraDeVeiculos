@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace LocadoraDeVeiculos.Infra.ORM.ModuloVeiculo
 {
-    public class RepositorioVeiculoOrm : RepositorioBase<Veiculo>, IRepositorioVeiculo
+    public class RepositorioLocacaoOrm : RepositorioBase<Veiculo>, IRepositorioVeiculo
     {
-        public RepositorioVeiculoOrm(LocadoraDbContext dbContext) : base(dbContext)
+        public RepositorioLocacaoOrm(LocadoraDbContext dbContext) : base(dbContext)
         {
         }
 

@@ -21,7 +21,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 
         public RepositorioVeiculoEmBancoDadosTest() : base()
         {
-            _servicoVeiculo = new(new RepositorioVeiculoOrm(DbContext), DbContext);
+            _servicoVeiculo = new(new RepositorioLocacaoOrm(DbContext), DbContext);
             _servicoGrupoVeiculo = new(new RepositorioGrupoVeiculoOrm(DbContext), DbContext);
         }
 
