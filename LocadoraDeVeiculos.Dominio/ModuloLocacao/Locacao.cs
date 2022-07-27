@@ -35,7 +35,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
       public Veiculo Veiculo { get; set; }
       public PlanoCobranca PlanoCobranca { get; set; }
       public DateTime DataLocacao { get; set; }
-      public DateTime DataDevolucao { get; set; }
+      public DateTime DataDevolucaoPrevista { get; set; }
       public List<Taxa> Taxas { get; set; }
 
         public override bool Equals(object? obj)

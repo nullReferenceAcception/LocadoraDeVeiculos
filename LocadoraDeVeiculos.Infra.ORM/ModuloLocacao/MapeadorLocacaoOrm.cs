@@ -13,7 +13,9 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloLocacao
     {
         public void Configure(EntityTypeBuilder<Locacao> builder)
         {
-            throw new NotImplementedException();
+            builder.ToTable("tb_locacao");
+            builder.Property(x => x.Id).ValueGeneratedNever();
+            builder.Property(x => x.).HasColumnType("varchar(200)").IsRequired();
         }
     }
 }
