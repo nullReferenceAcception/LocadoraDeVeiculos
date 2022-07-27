@@ -101,6 +101,11 @@ namespace LocadoraDeVeiculos.WinApp
             ConfigurarTelaPrincipal(serviceLocator.Get<ControladorDevolucao>());
         }
 
+        private void configuracaoMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void ConfigurarBotoes(ConfiguracaoToolboxBase configuracao)
         {
             btnInserir.Enabled = configuracao.InserirHabilitado;
@@ -188,5 +193,7 @@ namespace LocadoraDeVeiculos.WinApp
             else
                 ConfigurarTooltipsInativos();
         }
+
+        
     }
 }

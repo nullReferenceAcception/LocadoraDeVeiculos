@@ -45,6 +45,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPageLogs);
             this.tabControl1.Controls.Add(this.tabPageDatabase);
+            this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -68,6 +69,7 @@
             // 
             // textBoxDiretorioLog
             // 
+            this.textBoxDiretorioLog.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxDiretorioLog.Location = new System.Drawing.Point(24, 45);
             this.textBoxDiretorioLog.Name = "textBoxDiretorioLog";
             this.textBoxDiretorioLog.Size = new System.Drawing.Size(699, 23);
@@ -76,6 +78,7 @@
             // labelDiretorioLogs
             // 
             this.labelDiretorioLogs.AutoSize = true;
+            this.labelDiretorioLogs.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelDiretorioLogs.Location = new System.Drawing.Point(24, 27);
             this.labelDiretorioLogs.Name = "labelDiretorioLogs";
             this.labelDiretorioLogs.Size = new System.Drawing.Size(97, 15);
@@ -95,6 +98,7 @@
             // buttonGravar
             // 
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonGravar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.buttonGravar.Location = new System.Drawing.Point(791, 495);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(136, 50);
@@ -104,6 +108,7 @@
             // 
             // buttonProcurar
             // 
+            this.buttonProcurar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonProcurar.Location = new System.Drawing.Point(729, 45);
             this.buttonProcurar.Name = "buttonProcurar";
             this.buttonProcurar.Size = new System.Drawing.Size(75, 23);
@@ -114,6 +119,7 @@
             // labelUrlSeq
             // 
             this.labelUrlSeq.AutoSize = true;
+            this.labelUrlSeq.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelUrlSeq.Location = new System.Drawing.Point(24, 71);
             this.labelUrlSeq.Name = "labelUrlSeq";
             this.labelUrlSeq.Size = new System.Drawing.Size(55, 15);
@@ -122,6 +128,7 @@
             // 
             // textBoxUrlSeq
             // 
+            this.textBoxUrlSeq.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxUrlSeq.Location = new System.Drawing.Point(24, 89);
             this.textBoxUrlSeq.Name = "textBoxUrlSeq";
             this.textBoxUrlSeq.Size = new System.Drawing.Size(385, 23);

@@ -81,6 +81,7 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             builder.RegisterType<ControladorVeiculo>().AsSelf();
             builder.RegisterType<ControladorLocacao>().AsSelf();
             builder.RegisterType<ControladorDevolucao>().AsSelf();
+            builder.RegisterType<ControladorConfiguracao>().AsSelf();
 
             container = builder.Build();
         }
