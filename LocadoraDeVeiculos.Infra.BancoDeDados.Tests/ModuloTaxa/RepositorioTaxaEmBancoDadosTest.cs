@@ -13,13 +13,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
     [TestClass]
     public class RepositorioTaxaEmBancoDadosTest : BaseTestRepositorio
     {
-        Random random = new Random();
-        ServicoTaxa _servicoTaxa;
-
-        public RepositorioTaxaEmBancoDadosTest() : base()
-        {
-            _servicoTaxa = new(new RepositorioTaxaOrm(DbContext), DbContext);
-        }
 
         [TestMethod]
         public void Deve_inserir_Taxa()
@@ -109,12 +102,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloTaxa
 
             for (int i = 0; i < taxasEncontradas.Count; i++)
                 Assert.IsTrue(taxasEncontradas.Contains(taxas[i]));
-        }
-
-
-        private Taxa CriarTaxa()
-        {
-            return new Taxa(GerarNovaStringAleatoria(), (random.Next(0, 100) + (decimal)Math.Round(random.NextDouble(), 2)), true);
         }
     }
 }

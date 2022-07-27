@@ -17,6 +17,7 @@ using LocadoraDeVeiculos.Infra.ORM.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.ORM.ModuloDevolucao;
 using LocadoraDeVeiculos.Infra.ORM.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.ORM.ModuloGrupoVeiculo;
+using LocadoraDeVeiculos.Infra.ORM.ModuloLocacao;
 using LocadoraDeVeiculos.Infra.ORM.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.ORM.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.ORM.ModuloVeiculo;
@@ -58,19 +59,19 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             builder.RegisterType<RepositorioGrupoVeiculoOrm>().As<IRepositorioGrupoVeiculos>();
             builder.RegisterType<RepositorioPlanoCobrancaOrm>().As<IRepositorioPlanoCobranca>();
             builder.RegisterType<RepositorioTaxaOrm>().As<IRepositorioTaxa>();
-            builder.RegisterType<RepositorioLocacaoOrm>().As<IRepositorioVeiculo>();
+            builder.RegisterType<RepositorioVeiculoOrm>().As<IRepositorioVeiculo>();
             builder.RegisterType<RepositorioLocacaoOrm>().As<IRepositorioLocacao>();
             builder.RegisterType<RepositorioDevolucaoOrm>().As<IRepositorioDevolucao>();
 
-            builder.RegisterType<ServicoCliente>().As<IServicoCliente>();
-            builder.RegisterType<ServicoCondutor>().As<IServicoCondutor>();
-            builder.RegisterType<ServicoFuncionario>().As<IServicoFuncionario>();
-            builder.RegisterType<ServicoGrupoVeiculos>().As<IServicoGrupoVeiculos>();
-            builder.RegisterType<ServicoPlanoCobranca>().As<IServicoPlanoCobranca>();
-            builder.RegisterType<ServicoTaxa>().As<IServicoTaxa>();
-            builder.RegisterType<ServicoVeiculo>().As<IServicoVeiculo>();
-            builder.RegisterType<ServicoLocacao>().As<IServicoLocacao>();
-            builder.RegisterType<ServicoDevolucao>().As<IServicoDevolucao>();
+            builder.RegisterType<ServicoCliente>().As<IServicoCliente>().AsSelf();
+            builder.RegisterType<ServicoCondutor>().As<IServicoCondutor>().AsSelf();
+            builder.RegisterType<ServicoFuncionario>().As<IServicoFuncionario>().AsSelf();
+            builder.RegisterType<ServicoGrupoVeiculos>().As<IServicoGrupoVeiculos>().AsSelf();
+            builder.RegisterType<ServicoPlanoCobranca>().As<IServicoPlanoCobranca>().AsSelf();
+            builder.RegisterType<ServicoTaxa>().As<IServicoTaxa>().AsSelf();
+            builder.RegisterType<ServicoVeiculo>().As<IServicoVeiculo>().AsSelf();
+            builder.RegisterType<ServicoLocacao>().As<IServicoLocacao>().AsSelf();
+            builder.RegisterType<ServicoDevolucao>().As<IServicoDevolucao>().AsSelf();
 
             builder.RegisterType<ControladorCliente>().AsSelf();
             builder.RegisterType<ControladorCondutor>().AsSelf();

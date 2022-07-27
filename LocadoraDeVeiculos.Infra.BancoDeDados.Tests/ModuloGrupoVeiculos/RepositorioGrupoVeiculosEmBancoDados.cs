@@ -16,12 +16,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
     [TestClass]
     public class RepositorioGrupoVeiculosEmBancoDados : BaseTestRepositorio
     {
-        ServicoGrupoVeiculos _servicoGrupoVeiculos;
 
-        public RepositorioGrupoVeiculosEmBancoDados()
-        {
-            _servicoGrupoVeiculos = new(new RepositorioGrupoVeiculoOrm(DbContext), DbContext);
-        }
 
         [TestMethod]
         public void Deve_inserir_GrupoVeiculos()
@@ -111,11 +106,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloGrupoVeiculos
             Result<GrupoVeiculos> result = _servicoGrupoVeiculos.Inserir(grupoVeiculosEncontrado);
 
             result.Errors[0].Message.Should().Contain("Nome já está cadastrado");
-        }
-
-        private GrupoVeiculos CriarGrupoVeiculos()
-        {
-            return new GrupoVeiculos(GerarNovaStringAleatoria());
         }
     }
 }
