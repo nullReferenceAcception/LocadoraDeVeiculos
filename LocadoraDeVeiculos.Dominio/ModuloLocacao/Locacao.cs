@@ -6,9 +6,6 @@ using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
 {
@@ -67,9 +64,9 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
         {
             if (Taxas.Count != locacao.Taxas.Count)
                 return false;
-           for (int i = 0; i < Taxas.Count; i++)
+            for (int i = 0; i < Taxas.Count; i++)
             {
-                if(EqualityComparer<Taxa>.Default.Equals(Taxas[i], locacao.Taxas[i]))
+                if (EqualityComparer<Taxa>.Default.Equals(Taxas[i], locacao.Taxas[i]))
                     return false;
             }
             return true;

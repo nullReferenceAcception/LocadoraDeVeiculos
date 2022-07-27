@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 {
@@ -24,9 +25,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             return colunas;
         }
 
-        public int ObtemGuidDevolucaoSelecionada()
+        public Guid ObtemGuidDevolucaoSelecionada()
         {
-            return grid.ObterId<int>();
+            return grid.ObterId<Guid>();
         }
 
         public void AtualizarRegistros(/**/)
