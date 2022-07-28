@@ -14,7 +14,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloLocacao
         {
         }
 
-        public void RemoverTaxas(Locacao locacao,List<Taxa> taxas)
+        public void RemoverTaxas(Locacao locacao, List<Taxa> taxas)
         {
             foreach (var item in taxas)
             {

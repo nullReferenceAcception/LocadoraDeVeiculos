@@ -13,6 +13,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
         public List<Taxa> TaxasAdicionais { get; set; }
         public TanqueEnum Tanque { get; set; }
 
+        public Devolucao()
+        {
+            TaxasAdicionais = new();
+        }
+
         public override bool Equals(object? obj)
         {
             return obj is Devolucao devolucao &&

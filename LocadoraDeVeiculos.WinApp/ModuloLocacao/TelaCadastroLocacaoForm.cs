@@ -203,7 +203,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             }
         }
 
-
         private void AtualizarTotalPrevisto()
         {
             PlanoCobranca planoCobranca = (PlanoCobranca)comboBoxPlanoCobranca.SelectedItem;

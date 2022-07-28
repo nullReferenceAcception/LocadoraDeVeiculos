@@ -31,16 +31,20 @@
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonGravar = new System.Windows.Forms.Button();
             this.groupBoxDevolucao = new System.Windows.Forms.GroupBox();
+            this.numericUpDownKmRodadosLocacao = new System.Windows.Forms.NumericUpDown();
+            this.groupBoxLocacao = new System.Windows.Forms.GroupBox();
+            this.comboBoxLocacoes = new System.Windows.Forms.ComboBox();
             this.groupBoxValorTotal = new System.Windows.Forms.GroupBox();
             this.textBoxValorTotal = new System.Windows.Forms.TextBox();
             this.tabControlTaxas = new System.Windows.Forms.TabControl();
             this.tabPageTaxasJaSelecionadas = new System.Windows.Forms.TabPage();
+            this.checkedListBoxTaxasSelecionadas = new System.Windows.Forms.CheckedListBox();
             this.tabPageAdicionais = new System.Windows.Forms.TabPage();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.checkedListBoxTaxasAdicionais = new System.Windows.Forms.CheckedListBox();
+            this.comboBoxNivelTanque = new System.Windows.Forms.ComboBox();
             this.labelTanque = new System.Windows.Forms.Label();
             this.dateTimePickerDataDevolucaoReal = new System.Windows.Forms.DateTimePicker();
             this.labelDataDevolucao = new System.Windows.Forms.Label();
-            this.textBoxKmVeiculo = new System.Windows.Forms.TextBox();
             this.labelKmVeiculo = new System.Windows.Forms.Label();
             this.labelDevolucao = new System.Windows.Forms.Label();
             this.dateTimePickerDataDevolucaoPrevista = new System.Windows.Forms.DateTimePicker();
@@ -58,12 +62,13 @@
             this.labelFuncionario = new System.Windows.Forms.Label();
             this.textBoxGuid = new System.Windows.Forms.TextBox();
             this.labelGuid = new System.Windows.Forms.Label();
-            this.groupBoxLocacao = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.groupBoxDevolucao.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownKmRodadosLocacao)).BeginInit();
+            this.groupBoxLocacao.SuspendLayout();
             this.groupBoxValorTotal.SuspendLayout();
             this.tabControlTaxas.SuspendLayout();
-            this.groupBoxLocacao.SuspendLayout();
+            this.tabPageTaxasJaSelecionadas.SuspendLayout();
+            this.tabPageAdicionais.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonCancelar
@@ -93,14 +98,14 @@
             // 
             // groupBoxDevolucao
             // 
+            this.groupBoxDevolucao.Controls.Add(this.numericUpDownKmRodadosLocacao);
             this.groupBoxDevolucao.Controls.Add(this.groupBoxLocacao);
             this.groupBoxDevolucao.Controls.Add(this.groupBoxValorTotal);
             this.groupBoxDevolucao.Controls.Add(this.tabControlTaxas);
-            this.groupBoxDevolucao.Controls.Add(this.comboBox1);
+            this.groupBoxDevolucao.Controls.Add(this.comboBoxNivelTanque);
             this.groupBoxDevolucao.Controls.Add(this.labelTanque);
             this.groupBoxDevolucao.Controls.Add(this.dateTimePickerDataDevolucaoReal);
             this.groupBoxDevolucao.Controls.Add(this.labelDataDevolucao);
-            this.groupBoxDevolucao.Controls.Add(this.textBoxKmVeiculo);
             this.groupBoxDevolucao.Controls.Add(this.labelKmVeiculo);
             this.groupBoxDevolucao.Controls.Add(this.labelDevolucao);
             this.groupBoxDevolucao.Controls.Add(this.dateTimePickerDataDevolucaoPrevista);
@@ -125,6 +130,44 @@
             this.groupBoxDevolucao.TabIndex = 15;
             this.groupBoxDevolucao.TabStop = false;
             this.groupBoxDevolucao.Text = "Dados da devolução:";
+            // 
+            // numericUpDownKmRodadosLocacao
+            // 
+            this.numericUpDownKmRodadosLocacao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDownKmRodadosLocacao.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numericUpDownKmRodadosLocacao.Location = new System.Drawing.Point(15, 461);
+            this.numericUpDownKmRodadosLocacao.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numericUpDownKmRodadosLocacao.Name = "numericUpDownKmRodadosLocacao";
+            this.numericUpDownKmRodadosLocacao.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDownKmRodadosLocacao.TabIndex = 53;
+            this.numericUpDownKmRodadosLocacao.ValueChanged += new System.EventHandler(this.numericUpDownKmRodadosLocacao_ValueChanged);
+            // 
+            // groupBoxLocacao
+            // 
+            this.groupBoxLocacao.Controls.Add(this.comboBoxLocacoes);
+            this.groupBoxLocacao.Location = new System.Drawing.Point(15, 22);
+            this.groupBoxLocacao.Name = "groupBoxLocacao";
+            this.groupBoxLocacao.Size = new System.Drawing.Size(332, 66);
+            this.groupBoxLocacao.TabIndex = 52;
+            this.groupBoxLocacao.TabStop = false;
+            this.groupBoxLocacao.Text = "Locação:";
+            // 
+            // comboBoxLocacoes
+            // 
+            this.comboBoxLocacoes.FormattingEnabled = true;
+            this.comboBoxLocacoes.Location = new System.Drawing.Point(6, 21);
+            this.comboBoxLocacoes.Name = "comboBoxLocacoes";
+            this.comboBoxLocacoes.Size = new System.Drawing.Size(320, 23);
+            this.comboBoxLocacoes.TabIndex = 0;
+            this.comboBoxLocacoes.SelectedIndexChanged += new System.EventHandler(this.comboBoxLocacoes_SelectedIndexChanged);
             // 
             // groupBoxValorTotal
             // 
@@ -158,6 +201,7 @@
             // 
             // tabPageTaxasJaSelecionadas
             // 
+            this.tabPageTaxasJaSelecionadas.Controls.Add(this.checkedListBoxTaxasSelecionadas);
             this.tabPageTaxasJaSelecionadas.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tabPageTaxasJaSelecionadas.Location = new System.Drawing.Point(4, 24);
             this.tabPageTaxasJaSelecionadas.Name = "tabPageTaxasJaSelecionadas";
@@ -167,25 +211,49 @@
             this.tabPageTaxasJaSelecionadas.Text = "Taxas já selecionadas";
             this.tabPageTaxasJaSelecionadas.UseVisualStyleBackColor = true;
             // 
+            // checkedListBoxTaxasSelecionadas
+            // 
+            this.checkedListBoxTaxasSelecionadas.CheckOnClick = true;
+            this.checkedListBoxTaxasSelecionadas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkedListBoxTaxasSelecionadas.Enabled = false;
+            this.checkedListBoxTaxasSelecionadas.FormattingEnabled = true;
+            this.checkedListBoxTaxasSelecionadas.Location = new System.Drawing.Point(3, 3);
+            this.checkedListBoxTaxasSelecionadas.Name = "checkedListBoxTaxasSelecionadas";
+            this.checkedListBoxTaxasSelecionadas.Size = new System.Drawing.Size(367, 333);
+            this.checkedListBoxTaxasSelecionadas.TabIndex = 0;
+            // 
             // tabPageAdicionais
             // 
+            this.tabPageAdicionais.Controls.Add(this.checkedListBoxTaxasAdicionais);
             this.tabPageAdicionais.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tabPageAdicionais.Location = new System.Drawing.Point(4, 24);
             this.tabPageAdicionais.Name = "tabPageAdicionais";
             this.tabPageAdicionais.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAdicionais.Size = new System.Drawing.Size(387, 339);
+            this.tabPageAdicionais.Size = new System.Drawing.Size(373, 339);
             this.tabPageAdicionais.TabIndex = 1;
             this.tabPageAdicionais.Text = "Taxas adicionais";
             this.tabPageAdicionais.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // checkedListBoxTaxasAdicionais
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(15, 549);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(152, 23);
-            this.comboBox1.TabIndex = 2;
+            this.checkedListBoxTaxasAdicionais.CheckOnClick = true;
+            this.checkedListBoxTaxasAdicionais.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkedListBoxTaxasAdicionais.FormattingEnabled = true;
+            this.checkedListBoxTaxasAdicionais.Location = new System.Drawing.Point(3, 3);
+            this.checkedListBoxTaxasAdicionais.Name = "checkedListBoxTaxasAdicionais";
+            this.checkedListBoxTaxasAdicionais.Size = new System.Drawing.Size(367, 333);
+            this.checkedListBoxTaxasAdicionais.TabIndex = 0;
+            this.checkedListBoxTaxasAdicionais.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxTaxasAdicionais_ItemCheck);
+            // 
+            // comboBoxNivelTanque
+            // 
+            this.comboBoxNivelTanque.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBoxNivelTanque.FormattingEnabled = true;
+            this.comboBoxNivelTanque.Location = new System.Drawing.Point(15, 549);
+            this.comboBoxNivelTanque.Name = "comboBoxNivelTanque";
+            this.comboBoxNivelTanque.Size = new System.Drawing.Size(152, 23);
+            this.comboBoxNivelTanque.TabIndex = 2;
+            this.comboBoxNivelTanque.SelectedIndexChanged += new System.EventHandler(this.comboBoxNivelTanque_SelectedIndexChanged);
             // 
             // labelTanque
             // 
@@ -205,6 +273,7 @@
             this.dateTimePickerDataDevolucaoReal.Name = "dateTimePickerDataDevolucaoReal";
             this.dateTimePickerDataDevolucaoReal.Size = new System.Drawing.Size(100, 23);
             this.dateTimePickerDataDevolucaoReal.TabIndex = 1;
+            this.dateTimePickerDataDevolucaoReal.ValueChanged += new System.EventHandler(this.dateTimePickerDataDevolucaoReal_ValueChanged);
             // 
             // labelDataDevolucao
             // 
@@ -215,13 +284,6 @@
             this.labelDataDevolucao.Size = new System.Drawing.Size(109, 15);
             this.labelDataDevolucao.TabIndex = 45;
             this.labelDataDevolucao.Text = "Data de Devolução:";
-            // 
-            // textBoxKmVeiculo
-            // 
-            this.textBoxKmVeiculo.Location = new System.Drawing.Point(15, 461);
-            this.textBoxKmVeiculo.Name = "textBoxKmVeiculo";
-            this.textBoxKmVeiculo.Size = new System.Drawing.Size(100, 23);
-            this.textBoxKmVeiculo.TabIndex = 0;
             // 
             // labelKmVeiculo
             // 
@@ -394,24 +456,6 @@
             this.labelGuid.TabIndex = 28;
             this.labelGuid.Text = "Guid:";
             // 
-            // groupBoxLocacao
-            // 
-            this.groupBoxLocacao.Controls.Add(this.comboBox2);
-            this.groupBoxLocacao.Location = new System.Drawing.Point(15, 22);
-            this.groupBoxLocacao.Name = "groupBoxLocacao";
-            this.groupBoxLocacao.Size = new System.Drawing.Size(332, 66);
-            this.groupBoxLocacao.TabIndex = 52;
-            this.groupBoxLocacao.TabStop = false;
-            this.groupBoxLocacao.Text = "Locação:";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(6, 21);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(320, 23);
-            this.comboBox2.TabIndex = 0;
-            // 
             // TelaCadastroDevolucaoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -425,10 +469,13 @@
             this.Text = "Devolução:";
             this.groupBoxDevolucao.ResumeLayout(false);
             this.groupBoxDevolucao.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownKmRodadosLocacao)).EndInit();
+            this.groupBoxLocacao.ResumeLayout(false);
             this.groupBoxValorTotal.ResumeLayout(false);
             this.groupBoxValorTotal.PerformLayout();
             this.tabControlTaxas.ResumeLayout(false);
-            this.groupBoxLocacao.ResumeLayout(false);
+            this.tabPageTaxasJaSelecionadas.ResumeLayout(false);
+            this.tabPageAdicionais.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -445,11 +492,10 @@
         private System.Windows.Forms.TabControl tabControlTaxas;
         private System.Windows.Forms.TabPage tabPageTaxasJaSelecionadas;
         private System.Windows.Forms.TabPage tabPageAdicionais;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxNivelTanque;
         private System.Windows.Forms.Label labelTanque;
         private System.Windows.Forms.DateTimePicker dateTimePickerDataDevolucaoReal;
         private System.Windows.Forms.Label labelDataDevolucao;
-        private System.Windows.Forms.TextBox textBoxKmVeiculo;
         private System.Windows.Forms.Label labelKmVeiculo;
         private System.Windows.Forms.Label labelDevolucao;
         private System.Windows.Forms.DateTimePicker dateTimePickerDataDevolucaoPrevista;
@@ -466,6 +512,9 @@
         private System.Windows.Forms.TextBox textBoxFuncionario;
         private System.Windows.Forms.Label labelFuncionario;
         private System.Windows.Forms.GroupBox groupBoxLocacao;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBoxLocacoes;
+        private System.Windows.Forms.CheckedListBox checkedListBoxTaxasSelecionadas;
+        private System.Windows.Forms.CheckedListBox checkedListBoxTaxasAdicionais;
+        private System.Windows.Forms.NumericUpDown numericUpDownKmRodadosLocacao;
     }
 }

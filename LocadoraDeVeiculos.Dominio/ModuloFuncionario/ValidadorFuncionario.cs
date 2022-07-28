@@ -10,8 +10,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
         {
             Regex padraoNome = new Regex("^[A-Z a-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]*$");
             Regex padraoTelefone = new(@"^[1-9]{2}[0-9]{4,5}[0-9]{4}$");
-            DateTime hoje = DateTime.Today;
-            hoje = hoje.AddHours(23).AddMinutes(59).AddSeconds(59);
 
             RuleFor(x => x.Nome)
                 .NotNull().NotEmpty().MinimumLength(2).Matches(padraoNome);
@@ -27,8 +25,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
                 .NotNull().NotEmpty();
             RuleFor(x => x.Senha)
                 .NotNull().NotEmpty();
-            RuleFor(x => x.DataAdmissao)
-                .NotNull().NotEmpty().GreaterThan(DateTime.MinValue).LessThanOrEqualTo(hoje);
+            RuleFor(x => x.DataAdmissao.Date)
+                .NotNull().NotEmpty().GreaterThan(DateTime.MinValue).LessThanOrEqualTo(DateTime.Today);
             RuleFor(x => x.Salario)
                 .NotNull().NotEmpty().GreaterThan(0);
             RuleFor(x => x.Cidade)

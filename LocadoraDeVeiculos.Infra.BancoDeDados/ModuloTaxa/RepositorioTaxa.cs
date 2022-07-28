@@ -1,6 +1,7 @@
 ﻿using LocadoraDeVeiculos.Dominio;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
+using System.Collections.Generic;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
 {
@@ -88,13 +89,16 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloTaxa
                     @"SELECT COUNT(*) FROM TB_TAXA";
         }
 
+        public List<Taxa> SelecionarTodosAdicionais()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public bool VerificarDuplicidade(Taxa registro)
         {
             throw new System.NotImplementedException();
         }
 
         #endregion
-
-     
     }
 }

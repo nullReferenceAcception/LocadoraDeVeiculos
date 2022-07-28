@@ -1,5 +1,7 @@
 ﻿using FluentResults;
 using LocadoraDeVeiculos.Dominio.ModuloDevolucao;
+using LocadoraDeVeiculos.Dominio.ModuloLocacao;
+using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -8,33 +10,39 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
     public class ControladorDevolucao : ControladorBase
     {
         private IServicoDevolucao _servicoDevolucao;
+        private IServicoLocacao _servicoLocacao;
+        private IServicoTaxa _servicoTaxa;
         private TabelaDevolucaoControl _tabelaDevolucao;
 
-        public ControladorDevolucao(IServicoDevolucao servicoDevolucao, TabelaDevolucaoControl tabelaDevolucao)
+        public ControladorDevolucao(IServicoDevolucao servicoDevolucao, IServicoLocacao servicoLocacao, IServicoTaxa servicoTaxa)
         {
             _servicoDevolucao = servicoDevolucao;
-            _tabelaDevolucao = tabelaDevolucao;
+            _servicoLocacao = servicoLocacao;
+            _servicoTaxa = servicoTaxa;
         }
 
         public override void Inserir()
         {
-            if (_servicoDevolucao.QuantidadeRegistro().Value == 0)
+            if (_servicoLocacao.QuantidadeRegistro().Value == 0)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Cadastre no mínimo 1 'Grupo de Veículos' para cadastrar um veículo", CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Cadastre no mínimo 1 'Locação' para registrar uma devolução", CorParaRodape.Yellow);
                 return;
             }
 
-            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao);
+            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa);
 
             tela.Devolucao = new();
 
             tela.GravarRegistro = _servicoDevolucao.Inserir;
+
+            tela.RemoverTaxas = _servicoDevolucao.RemoverTaxas;
 
             DialogResult resultado = tela.ShowDialog();
 
             if (resultado == DialogResult.OK)
                 CarregarDevolucoes();
         }
+
         public override void Editar()
         {
             var numero = _tabelaDevolucao.ObtemGuidDevolucaoSelecionada();
@@ -47,7 +55,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 return;
             }
 
-            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao);
+            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa);
 
             tela.Devolucao = devolucaoSelecionada.Value;
 
@@ -107,7 +115,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
             _tabelaDevolucao.AtualizarRegistros(devolucoes);
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {devolucoes.Count} {(devolucoes.Count == 1 ? "veículo" : "veículos")}", CorParaRodape.Yellow);
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {devolucoes.Count} {(devolucoes.Count == 1 ? "devolução" : "devoluções")}", CorParaRodape.White);
         }
     }
 }

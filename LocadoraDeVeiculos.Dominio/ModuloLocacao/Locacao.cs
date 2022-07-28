@@ -72,5 +72,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
             }
             return true;
         }
+
+        public override string ToString()
+        {
+            return Cliente.Nome;
+        }
     }
 }

@@ -12,7 +12,8 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloTaxa
             taxa.Property(x => x.Id).ValueGeneratedNever();
             taxa.Property(x => x.Descricao).HasColumnType("varchar(200)").IsRequired();
             taxa.Property(x => x.Valor).HasColumnType("decimal").IsRequired();
-            taxa.Property(x => x.Descricao).IsRequired();
+            taxa.Property(x => x.EhDiaria).IsRequired();
+            taxa.Property(x => x.EhAdicional).IsRequired();
             taxa.HasMany(x => x.Locacoes).WithMany(x => x.Taxas);
             taxa.HasMany(x => x.Devolucoes).WithMany(x => x.TaxasAdicionais);
         }
