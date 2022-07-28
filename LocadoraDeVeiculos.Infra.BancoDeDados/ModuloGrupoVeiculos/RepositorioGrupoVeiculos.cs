@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
@@ -77,6 +78,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloGrupoVeiculos
         {
             get =>
                     @"SELECT COUNT(*) from TB_GRUPO_VEICULO";
+        }
+
+        //POS ORM
+        public GrupoVeiculos SelecionarGrupoDoPlano(PlanoCobranca p)
+        {
+            throw new System.NotImplementedException();
         }
 
 

@@ -6,6 +6,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
 {
     public interface IServicoGrupoVeiculos : IServico<GrupoVeiculos>
     {
-        Result<GrupoVeiculos> SelecionarTodosDoPlano(PlanoCobranca p);
+        Result<GrupoVeiculos> SelecionarGrupoDoPlano(PlanoCobranca p);
     }
 }
