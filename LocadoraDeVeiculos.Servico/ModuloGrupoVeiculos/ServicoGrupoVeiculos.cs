@@ -1,5 +1,7 @@
-﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+﻿using FluentResults;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Servico.Compartilhado;
 
 namespace LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos
@@ -11,5 +13,10 @@ namespace LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos
         }
 
         protected override string MensagemDeErroSeTiverDuplicidade { get; set; } = "Nome já está cadastrado";
+
+        public Result<GrupoVeiculos> SelecionarTodosDoPlano(PlanoCobranca p)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

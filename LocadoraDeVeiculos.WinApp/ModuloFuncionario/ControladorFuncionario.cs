@@ -75,7 +75,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
                 if (resultadoExclusao.IsSuccess)
                     CarregarFuncionariosAtivos();
-
                 else
                     TelaPrincipalForm.Instancia.AtualizarRodape(resultadoExclusao.Errors[0].Message, CorParaRodape.Red);
             }
