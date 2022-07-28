@@ -16,7 +16,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloFuncionario
             cmdInserir.Parameters.AddWithValue("TELEFONE", registro.Telefone == null ? DBNull.Value : registro.Telefone);
             cmdInserir.Parameters.AddWithValue("LOGIN", registro.Login);
             cmdInserir.Parameters.AddWithValue("EH_ADMIN", registro.EhAdmin);
-            cmdInserir.Parameters.AddWithValue("SENHA", registro.Senha); // TODO > Criptografar
+            cmdInserir.Parameters.AddWithValue("SENHA", registro.Senha);
             cmdInserir.Parameters.AddWithValue("DATA_ADMISSAO", registro.DataAdmissao);
             cmdInserir.Parameters.AddWithValue("SALARIO", registro.Salario);
             cmdInserir.Parameters.AddWithValue("CIDADE", registro.Cidade);

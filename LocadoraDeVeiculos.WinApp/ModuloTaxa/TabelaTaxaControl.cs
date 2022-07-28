@@ -39,7 +39,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         public void AtualizarRegistros(List<Taxa> taxas)
         {
             grid.Rows.Clear();
-
             foreach (Taxa taxa in taxas)
                 if (taxa.EhDiaria)
                     grid.Rows.Add(taxa.Id, taxa.Descricao, taxa.Valor, "Diária");

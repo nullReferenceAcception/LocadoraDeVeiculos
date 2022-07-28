@@ -212,7 +212,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             DateTime dataLocacaoPrevista = dateTimePickerDataPrevistaDevolucao.Value;
 
-            int totalDias = (int)Math.Ceiling((dateTimePickerDataPrevistaDevolucao.Value - dateTimePickerDataLocacao.Value).TotalDays);
+            int totalDias = (int)((dateTimePickerDataPrevistaDevolucao.Value.Date - dateTimePickerDataLocacao.Value.Date).TotalDays);
 
             decimal valor = planoCobranca.ValorDia * totalDias;
 
