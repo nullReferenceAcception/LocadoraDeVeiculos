@@ -1,5 +1,7 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloCondutor;
+﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
+using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
+using System.Collections.Generic;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
 {
@@ -128,6 +130,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloCondutor
         {
             get =>
                     @"SELECT COUNT(*) from TB_CONDUTOR";
+        }
+
+        public List<Condutor> SelecionarTodosDoCliente(Cliente cliente)
+        {
+            throw new System.NotImplementedException();
         }
 
         #endregion

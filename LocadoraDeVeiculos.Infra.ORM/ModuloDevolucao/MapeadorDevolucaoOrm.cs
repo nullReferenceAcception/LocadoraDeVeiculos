@@ -12,7 +12,8 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloDevolucao
 
             devolucao.Property(x => x.Id).ValueGeneratedNever();
             devolucao.Property(x => x.DataDevolucaoReal).HasColumnType("date").IsRequired();
-            devolucao.HasMany(x => x.TaxasAdicionais).WithOne().HasForeignKey(x => x.Id).OnDelete(DeleteBehavior.NoAction);
+            devolucao.HasMany(x => x.TaxasAdicionais).WithMany(x => x.Devolucoes);
+
 
             devolucao.Property(x => x.Tanque).HasConversion<string>();
 

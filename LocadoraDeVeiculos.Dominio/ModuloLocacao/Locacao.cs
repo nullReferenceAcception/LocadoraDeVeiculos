@@ -13,6 +13,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
     {
         public Locacao()
         {
+            Taxas = new();
         }
 
         public Locacao(Funcionario funcionario, Cliente cliente,
@@ -66,7 +67,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
                 return false;
             for (int i = 0; i < Taxas.Count; i++)
             {
-                if (EqualityComparer<Taxa>.Default.Equals(Taxas[i], locacao.Taxas[i]))
+                if (!EqualityComparer<Taxa>.Default.Equals(Taxas[i], locacao.Taxas[i]))
                     return false;
             }
             return true;

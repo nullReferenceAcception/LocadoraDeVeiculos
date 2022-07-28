@@ -8,6 +8,7 @@ using LocadoraDeVeiculos.Infra.ORM.ModuloTaxa;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using System.Linq;
 
 namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
 {
@@ -18,6 +19,35 @@ namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
         public LocadoraDbContext(string enderecoBanco)
         {
             enderecoConexaoComBanco = enderecoBanco;
+        }
+        public void DesfazerAlteracoes()
+        {
+            var contexto = this;
+            var changedEntries = contexto.ChangeTracker.Entries()
+                .Where(x => x.State != EntityState.Unchanged).ToList();
+
+
+            foreach (var entry in changedEntries)
+            {
+
+                switch (entry.State)
+                {
+                    case EntityState.Deleted:
+                        entry.State = EntityState.Unchanged;
+                        break;
+                    case EntityState.Modified:
+                        entry.CurrentValues.SetValues(entry.OriginalValues);
+                        entry.State = EntityState.Unchanged;
+                        break;
+                    case EntityState.Added:
+                        entry.State = EntityState.Detached;
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+                
         }
 
         public void GravarDados()

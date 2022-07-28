@@ -54,6 +54,7 @@
             this.labelRodape = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStripRodape = new System.Windows.Forms.StatusStrip();
             this.configuracaoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.locaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolbox.SuspendLayout();
             this.menu.SuspendLayout();
             this.statusStripRodape.SuspendLayout();
@@ -192,6 +193,8 @@
             this.funcionariosMenuItem,
             this.veiculosMenuItem,
             this.devolucaoMenuItem,
+            this.locaçãoToolStripMenuItem});
+            this.devolucaoMenuItem,
             this.configuracaoMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
@@ -294,6 +297,13 @@
             this.configuracaoMenuItem.Text = "Configurações";
             this.configuracaoMenuItem.Click += new System.EventHandler(this.configuracaoMenuItem_Click);
             // 
+            // locaçãoToolStripMenuItem
+            // 
+            this.locaçãoToolStripMenuItem.Name = "locaçãoToolStripMenuItem";
+            this.locaçãoToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.locaçãoToolStripMenuItem.Text = "Locação";
+            this.locaçãoToolStripMenuItem.Click += new System.EventHandler(this.locaçãoToolStripMenuItem_Click);
+            // 
             // TelaPrincipalForm
             // 
             this.ClientSize = new System.Drawing.Size(1554, 727);
@@ -345,5 +355,6 @@
         private System.Windows.Forms.ToolStripButton btnFuncionariosDesativados;
         private System.Windows.Forms.ToolStripMenuItem devolucaoMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configuracaoMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem locaçãoToolStripMenuItem;
     }
 }

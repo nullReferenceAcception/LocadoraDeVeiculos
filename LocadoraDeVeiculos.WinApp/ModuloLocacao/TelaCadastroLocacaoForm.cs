@@ -1,15 +1,129 @@
-﻿using System;
+﻿using FluentResults;
+using LocadoraDeVeiculos.Dominio.ModuloCliente;
+using LocadoraDeVeiculos.Dominio.ModuloCondutor;
+using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
+using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Dominio.ModuloLocacao;
+using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
+using LocadoraDeVeiculos.Dominio.ModuloTaxa;
+using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 {
     public partial class TelaCadastroLocacaoForm : Form
     {
-        public TelaCadastroLocacaoForm()
+        Locacao _locacao;
+        IServicoVeiculo _servicoVeiculo;
+        IServicoCondutor _servicoCondutor;
+
+        public Locacao Locacao
+        {
+            get { return _locacao; }
+            set
+            {
+                _locacao = value;
+                ConfigurarTelaEditar();
+                AtualizarTotalPrevisto();
+            }
+        }
+        public TelaCadastroLocacaoForm(IServicoPlanoCobranca servicoPlanoCobranca,IServicoCliente servicoCliente,IServicoVeiculo servicoVeiculo,IServicoFuncionario servicoFuncionario,IServicoGrupoVeiculos servicoGrupoVeiculos, IServicoCondutor servicoCondutor, IServicoTaxa servicoTaxa)
         {
             InitializeComponent();
             this.ConfigurarTela();
             this.AjustarLabelsHover();
+
+            _servicoVeiculo = servicoVeiculo;
+            _servicoCondutor = servicoCondutor;
+
+            foreach (var item in servicoTaxa.SelecionarTodos().Value)
+            {
+                checkedListBoxTaxas.Items.Add(item);
+            }
+
+            foreach (var item in servicoFuncionario.SelecionarTodos().Value)
+            {
+                comboBoxFuncionario.Items.Add(item);
+            }
+            foreach (var item in servicoPlanoCobranca.SelecionarTodos().Value)
+            {
+                comboBoxPlanoCobranca.Items.Add(item);
+            }
+            foreach (var item in servicoCliente.SelecionarTodos().Value)
+            {
+                comboBoxCliente.Items.Add(item);
+            }
+            foreach (var item in servicoGrupoVeiculos.SelecionarTodos().Value)
+            {
+                comboBoxGrupoVeiculos.Items.Add(item);
+            }
+
+
+
+        }
+        public Func<Locacao, Result<Locacao>> GravarRegistro { get; set; }
+        public Action<Locacao, List<Taxa>> RemoverTaxas { get; internal set; }
+
+        private void ConfigurarTelaEditar()
+        {
+
+            if (Locacao.Id != Guid.Empty)
+            {
+                textBoxGuid.Text = Locacao.Id.ToString();
+                comboBoxFuncionario.SelectedItem = Locacao.Funcionario;
+                comboBoxGrupoVeiculos.SelectedItem = Locacao.Veiculo.GrupoVeiculos;
+                comboBoxVeiculo.SelectedItem = Locacao.Veiculo;
+                comboBoxCliente.SelectedItem = Locacao.Cliente;
+                comboBoxPlanoCobranca.SelectedItem = Locacao.PlanoCobranca;
+                comboBoxCondutor.SelectedItem = Locacao.Condutor;
+                textBoxKmVeiculo.Text = Locacao.Veiculo.KmPercorrido.ToString();
+                dateTimePickerDataLocacao.Value = Locacao.DataLocacao;
+                dateTimePickerDataPrevistaDevolucao.Value = Locacao.DataDevolucaoPrevista;
+
+
+              
+
+
+                for (int i = 0; i < checkedListBoxTaxas.Items.Count; i++)
+                {
+                    if (Locacao.Taxas.Contains((Taxa)checkedListBoxTaxas.Items[i]))
+                    {
+                        checkedListBoxTaxas.SetItemChecked(i, true);
+                    }
+                }
+            }
+            
+        }
+        private void ObterDadosDaTela()
+        {
+            Locacao.Funcionario = (Funcionario)comboBoxFuncionario.SelectedItem;
+            Locacao.Veiculo = (Veiculo)comboBoxVeiculo.SelectedItem;
+            Locacao.Cliente = (Cliente)comboBoxCliente.SelectedItem;
+            Locacao.PlanoCobranca = (PlanoCobranca)comboBoxPlanoCobranca.SelectedItem;
+            Locacao.Condutor = (Condutor)comboBoxCondutor.SelectedItem;
+            Locacao.DataDevolucaoPrevista = dateTimePickerDataPrevistaDevolucao.Value;
+            Locacao.DataLocacao = dateTimePickerDataLocacao.Value;
+
+            foreach (Taxa taxa in checkedListBoxTaxas.CheckedItems)
+            {
+                if (!Locacao.Taxas.Contains(taxa))
+                   Locacao.Taxas.Add(taxa);
+            }
+
+            List<Taxa> taxas = new();
+
+
+            foreach (Taxa item in checkedListBoxTaxas.Items)
+            {
+                if (!checkedListBoxTaxas.CheckedItems.Contains(item))
+                {
+                    taxas.Add(item);
+                }
+            }
+
+            RemoverTaxas(Locacao,taxas);
         }
 
         private void labelNome_Click(object sender, EventArgs e)
@@ -59,8 +173,86 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         private void labelFuncionario_Click(object sender, EventArgs e)
         {
-            textBoxFuncionario.Focus();
+            comboBoxFuncionario.DroppedDown = true;
+            comboBoxFuncionario.SelectedIndex = 0;
+            comboBoxFuncionario.Select();
         }
-              
+        private void labelCondutor_Click(object sender, EventArgs e)
+        {
+            comboBoxCondutor.DroppedDown = true;
+            comboBoxCondutor.SelectedIndex = 0;
+            comboBoxCondutor.Select();
+        }
+        private void buttonGravar_Click(object sender, EventArgs e)
+        {
+            ObterDadosDaTela();
+
+            var resultadoValidacao = GravarRegistro(Locacao);
+
+            if (resultadoValidacao.IsFailed)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].Message, CorParaRodape.Red);
+                DialogResult = DialogResult.None;
+            }
+        }
+
+        private void comboBoxGrupoVeiculos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (Veiculo item in _servicoVeiculo.SelecionarTodosDoGrupo((GrupoVeiculos)comboBoxGrupoVeiculos.SelectedItem).Value)
+            {
+                comboBoxVeiculo.Items.Add(item);
+            }
+        }
+
+        private void comboBoxCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (Condutor item in _servicoCondutor.SelecionarTodosDoCliente((Cliente)comboBoxCliente.SelectedItem).Value)
+            {
+                comboBoxCondutor.Items.Add(item);
+            }
+        }
+
+     
+        private void AtualizarTotalPrevisto()
+        {
+
+            PlanoCobranca planoCobranca = (PlanoCobranca)comboBoxPlanoCobranca.SelectedItem;
+
+            DateTime dataLocacao = dateTimePickerDataLocacao.Value;
+
+            DateTime dataLocacaoPrevista = dateTimePickerDataPrevistaDevolucao.Value;
+
+            int totalDias = (int)Math.Ceiling((dateTimePickerDataPrevistaDevolucao.Value - dateTimePickerDataLocacao.Value).TotalDays);
+
+            decimal valor = planoCobranca.ValorDia * totalDias;
+
+            foreach (Taxa item in checkedListBoxTaxas.CheckedItems)
+            {
+                if (item.EhDiaria)
+                    valor += item.Valor * totalDias;
+                else
+                    valor += item.Valor;
+            }
+            textBoxTotalPrevisto.Text = Math.Round(valor,3).ToString();
+        }
+
+        private void comboBoxPlanoCobranca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AtualizarTotalPrevisto();
+        }
+
+        private void dateTimePickerDataPrevistaDevolucao_ValueChanged(object sender, EventArgs e)
+        {
+            AtualizarTotalPrevisto();
+        }
+
+        private void checkedListBoxTaxas_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            try
+            {
+                this.BeginInvoke((MethodInvoker)(() => AtualizarTotalPrevisto()));
+            }
+            catch (Exception ex) { }
+        }
     }
 }

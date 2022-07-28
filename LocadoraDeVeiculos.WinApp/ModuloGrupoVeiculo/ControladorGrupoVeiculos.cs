@@ -76,7 +76,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo
                 carregarGrupoVeiculos();
 
                 if (validationResult.Errors.Count > 0)
-                    TelaPrincipalForm.Instancia.AtualizarRodape($"Esse registro esta sendo usado por outro cadastro deletar aquele primeiro",CorParaRodape.Red);
+                    TelaPrincipalForm.Instancia.AtualizarRodape(validationResult.Errors[0].Message, CorParaRodape.Red);
             }
         }
 

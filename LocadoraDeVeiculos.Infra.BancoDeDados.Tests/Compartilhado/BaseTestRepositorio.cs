@@ -8,6 +8,7 @@ using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
+using LocadoraDeVeiculos.Infra.Logging.Log;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloCliente;
 using LocadoraDeVeiculos.Servico.ModuloCondutor;
@@ -18,6 +19,7 @@ using LocadoraDeVeiculos.Servico.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Servico.ModuloTaxa;
 using LocadoraDeVeiculos.Servico.ModuloVeiculos;
 using LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator;
+using Serilog;
 using System;
 using System.Collections.Generic;
 
@@ -31,19 +33,23 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
         protected IServiceLocator locator;
         protected IServicoPlanoCobranca _servicoPlanoCobranca;
         protected IServicoVeiculo _servicoVeiculo;
-        protected IServicoGrupoVeiculos _servicoGrupoVeiculo;
+        protected IServicoGrupoVeiculos _servicoGrupoVeiculos;
         protected IServicoCondutor _servicoCondutor;
         protected IServicoCliente _servicoCliente;
         protected IServicoFuncionario _servicoFuncionario;
-        protected IServicoGrupoVeiculos _servicoGrupoVeiculos;
         protected IServicoTaxa _servicoTaxa;
         protected IServicoLocacao _servicoLocacao;
         protected BaseTestRepositorio()
         {
+           
+            Log.Logger.ConfigurarLogEmWeb();
+
+
+
             locator = new ServiceLocatorComAutofac();
             _servicoPlanoCobranca = locator.GetServico<PlanoCobranca, ServicoPlanoCobranca, ValidadorPlanoCobranca>();
             _servicoVeiculo = locator.GetServico<Veiculo, ServicoVeiculo, ValidadorVeiculo>();
-            _servicoGrupoVeiculo = locator.GetServico<GrupoVeiculos, ServicoGrupoVeiculos, ValidadorGrupoVeiculos>();
+            _servicoGrupoVeiculos = locator.GetServico<GrupoVeiculos, ServicoGrupoVeiculos, ValidadorGrupoVeiculos>();
             _servicoCondutor = locator.GetServico<Condutor, ServicoCondutor, ValidadorCondutor>();
             _servicoCliente = locator.GetServico<Cliente, ServicoCliente, ValidadorCliente>();
             _servicoFuncionario = locator.GetServico<Funcionario, ServicoFuncionario, ValidadorFuncionario>();
@@ -57,6 +63,8 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
             DbContext = new(Db.conexaoComBanco.ConnectionString);
             //colocar aqui sua tabela de acrodo com os exemplos
 
+            Db.ExecutarSql("DELETE FROM TB_LOCACAO");
+            Db.ExecutarSql("DELETE FROM TB_DEVOLUCAO");
             Db.ExecutarSql("DELETE FROM TB_PLANO_COBRANCA");
             Db.ExecutarSql("DELETE FROM TB_CONDUTOR");
             Db.ExecutarSql("DELETE FROM TB_CLIENTE");
@@ -87,8 +95,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
         {
             byte[] array = { 0, 100, 120, 210, 255 };
 
-            Veiculo veiculo = new("Uno", GerarNovaPlaca(), "Fiat", 2005, 29.50m, 200000.00m, CorEnum.Azul, CombustivelEnum.Gasolina, array);
+            Veiculo veiculo = new(GerarNovaStringAleatoria(), GerarNovaPlaca(), GerarNovaStringAleatoria(), 2005, 29.50m, 200000.00m, CorEnum.Azul, CombustivelEnum.Gasolina, array);
             veiculo.GrupoVeiculos = CriarGrupoVeiculos();
+            _servicoGrupoVeiculos.Inserir(veiculo.GrupoVeiculos);
             return veiculo;
         }
 
@@ -143,14 +152,29 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
         protected PlanoCobranca CriarPlanoCobranca()
         {
             GrupoVeiculos grupoVeiculos = CriarGrupoVeiculos();
-            _servicoGrupoVeiculo.Inserir(grupoVeiculos);
+            _servicoGrupoVeiculos.Inserir(grupoVeiculos);
             return new PlanoCobranca(GerarNovaStringAleatoria(), random.Next(1, 200), random.Next(1, 200), random.Next(1, 200), PlanoEnum.KmControlado, grupoVeiculos);
         }
 
         protected Locacao CriarLocacao()
         {
             List<Taxa> taxas = new List<Taxa> { CriarTaxa(), CriarTaxa() };
-            return new Locacao(CriarFuncionario(),CriarClienteComCPF(),CriarCondutor(),CriarVeiculo(),CriarPlanoCobranca(),DateTime.Today,DateTime.Today.AddDays(8),taxas,true);
+            foreach (var item in taxas)
+            {
+                _servicoTaxa.Inserir(item);
+            }
+
+            Locacao locacao = new Locacao(CriarFuncionario(),CriarClienteComCPF(),CriarCondutor(),CriarVeiculo(),CriarPlanoCobranca(),DateTime.Today,DateTime.Today.AddDays(8),taxas,true);
+            locacao.Condutor.Cliente = locacao.Cliente;
+            _servicoFuncionario.Inserir(locacao.Funcionario);
+            _servicoCliente.Inserir(locacao.Cliente);
+            _servicoCondutor.Inserir(locacao.Condutor);
+            _servicoVeiculo.Inserir(locacao.Veiculo);
+            _servicoPlanoCobranca.Inserir(locacao.PlanoCobranca);
+
+
+           
+            return locacao;
         }
 
         protected Taxa CriarTaxa()

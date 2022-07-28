@@ -5,6 +5,7 @@ using LocadoraDeVeiculos.WinApp.ModuloConfiguracoes;
 using LocadoraDeVeiculos.WinApp.ModuloDevolucao;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
 using LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo;
+using LocadoraDeVeiculos.WinApp.ModuloLocacao;
 using LocadoraDeVeiculos.WinApp.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.WinApp.ModuloTaxa;
 using LocadoraDeVeiculos.WinApp.ModuloVeiculo;
@@ -62,7 +63,10 @@ namespace LocadoraDeVeiculos.WinApp
 
             ConfigurarToolTips(tipoFuncionario);
         }
-
+        private void locaçãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal(serviceLocator.Get<ControladorLocacao>());
+        }
         private void clientesMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal(serviceLocator.Get<ControladorCliente>());
@@ -194,7 +198,5 @@ namespace LocadoraDeVeiculos.WinApp
             else
                 ConfigurarTooltipsInativos();
         }
-
-        
     }
 }

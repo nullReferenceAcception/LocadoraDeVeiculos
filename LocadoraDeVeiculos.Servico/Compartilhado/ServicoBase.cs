@@ -3,6 +3,7 @@ using FluentValidation;
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Serilog;
 using System;
@@ -46,7 +47,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             {
                 repositorio.Inserir(registro);
                 contexto.GravarDados();
-                Log.Logger.Debug("Inserido: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
+                Log.Logger.Debug("Inserido: {@registro}", registro, Formatting.Indented);
                 return Result.Ok(registro);
             }
             catch (Exception ex)
@@ -75,7 +76,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             {
                 repositorio.Editar(registro);
                 contexto.GravarDados();
-                Log.Logger.Debug("Editado: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
+                Log.Logger.Debug("Editado: {@registro}", registro, Formatting.Indented);
                 return Result.Ok(registro);
             }
             catch (Exception ex)
@@ -97,17 +98,28 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
                 repositorio.Excluir(registro);
                 contexto.GravarDados();
 
-                Log.Logger.Debug("Excluido: {@registro}", JsonConvert.SerializeObject(registro, Formatting.Indented));
+                Log.Logger.Debug("Excluido: {@registro}", registro, Formatting.Indented);
 
                 return Result.Ok();
             }
             catch (Exception ex)
             {
-                StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar excluir o ");
+                StringBuilder msgErro = new StringBuilder();
 
+
+                if (ex is DbUpdateException || ex is InvalidOperationException)
+                {
+                    msgErro.Append($"O {typeof(T).Name} esta sendo usado por outro registro");
+
+
+                    contexto.DesfazerAlteracoes();
+                }
+
+                else
+                    msgErro.Append($"falha no sistema ao tentar excluir o {typeof(T).Name}");
                 Log.Logger.Error(ex, msgErro + "{classe}" + "{id}", typeof(T).Name, registro.Id);
 
-                return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
+                return Result.Fail(msgErro.ToString());
             }
         }
 
@@ -135,7 +147,8 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
             catch (Exception ex)
             {
-                StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar selecionar o ");
+
+                StringBuilder msgErro = new StringBuilder("Selecionado o ");
 
                 Log.Logger.Error(ex, msgErro + "{classe}", typeof(T).Name);
 
@@ -176,7 +189,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
         private void LogFalha(string funcao, T registro, List<IError> erros)
         {
-            Log.Logger.Error("Falha ao {funcao} \n {@registro}", funcao, JsonConvert.SerializeObject(registro, Formatting.Indented));
+            Log.Logger.Error("Falha ao {funcao} \n {@registro}", funcao, registro);
 
             foreach (var item in erros)
             {
