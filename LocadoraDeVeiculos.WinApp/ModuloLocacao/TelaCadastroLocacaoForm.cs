@@ -18,6 +18,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         Locacao _locacao;
         IServicoVeiculo _servicoVeiculo;
         IServicoCondutor _servicoCondutor;
+        IServicoGrupoVeiculos _servicoGrupoVeiculos;
+
 
         public Locacao Locacao
         {
@@ -26,10 +28,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             {
                 _locacao = value;
                 ConfigurarTelaEditar();
-                AtualizarTotalPrevisto();
             }
         }
-        public TelaCadastroLocacaoForm(IServicoPlanoCobranca servicoPlanoCobranca,IServicoCliente servicoCliente,IServicoVeiculo servicoVeiculo,IServicoFuncionario servicoFuncionario,IServicoGrupoVeiculos servicoGrupoVeiculos, IServicoCondutor servicoCondutor, IServicoTaxa servicoTaxa)
+        public TelaCadastroLocacaoForm(IServicoPlanoCobranca servicoPlanoCobranca, IServicoCliente servicoCliente, IServicoVeiculo servicoVeiculo, IServicoFuncionario servicoFuncionario, IServicoGrupoVeiculos servicoGrupoVeiculos, IServicoCondutor servicoCondutor, IServicoTaxa servicoTaxa)
         {
             InitializeComponent();
             this.ConfigurarTela();
@@ -37,6 +38,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             _servicoVeiculo = servicoVeiculo;
             _servicoCondutor = servicoCondutor;
+            _servicoGrupoVeiculos = servicoGrupoVeiculos;
 
             foreach (var item in servicoTaxa.SelecionarTodos().Value)
             {
@@ -79,7 +81,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 dateTimePickerDataPrevistaDevolucao.Value = Locacao.DataDevolucaoPrevista;
 
 
-              
+
 
 
                 for (int i = 0; i < checkedListBoxTaxas.Items.Count; i++)
@@ -89,8 +91,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                         checkedListBoxTaxas.SetItemChecked(i, true);
                     }
                 }
+                AtualizarTotalPrevisto();
+
             }
-            
+
+
         }
         private void ObterDadosDaTela()
         {
@@ -105,7 +110,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             foreach (Taxa taxa in checkedListBoxTaxas.CheckedItems)
             {
                 if (!Locacao.Taxas.Contains(taxa))
-                   Locacao.Taxas.Add(taxa);
+                    Locacao.Taxas.Add(taxa);
             }
 
             List<Taxa> taxas = new();
@@ -208,7 +213,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             }
         }
 
-     
+
         private void AtualizarTotalPrevisto()
         {
             PlanoCobranca planoCobranca = (PlanoCobranca)comboBoxPlanoCobranca.SelectedItem;
@@ -228,12 +233,17 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 else
                     valor += item.Valor;
             }
-
-            textBoxTotalPrevisto.Text = Math.Round(valor,3).ToString();
+            textBoxTotalPrevisto.Text = Math.Round(valor, 3).ToString();
         }
 
         private void comboBoxPlanoCobranca_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            //foreach (GrupoVeiculos item in _servicoGrupoVeiculos.SelecionarTodosDoPlano((PlanoCobranca)comboBoxPlanoCobranca.SelectedItem).Value)
+            //{
+            //    comboBoxGrupoVeiculos.Items.Add(item);
+            //}
+
             AtualizarTotalPrevisto();
         }
 
