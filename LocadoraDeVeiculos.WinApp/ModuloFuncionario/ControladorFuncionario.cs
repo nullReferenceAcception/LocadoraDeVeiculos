@@ -1,5 +1,4 @@
-﻿using FluentValidation.Results;
-using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
+﻿using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using System.Collections.Generic;
 using System.Windows.Forms;
 

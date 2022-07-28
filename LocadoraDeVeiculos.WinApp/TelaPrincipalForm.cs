@@ -1,6 +1,7 @@
 ﻿using LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator;
 using LocadoraDeVeiculos.WinApp.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.ModuloCondutor;
+using LocadoraDeVeiculos.WinApp.ModuloConfiguracoes;
 using LocadoraDeVeiculos.WinApp.ModuloDevolucao;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
 using LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo;
@@ -103,7 +104,7 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void configuracaoMenuItem_Click(object sender, EventArgs e)
         {
-
+            ConfigurarTelaPrincipal(serviceLocator.Get<ControladorConfiguracao>());
         }
 
         private void ConfigurarBotoes(ConfiguracaoToolboxBase configuracao)
