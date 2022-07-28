@@ -226,7 +226,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             decimal valor = planoCobranca.ValorDia * totalDias;
 
-            decimal totalKm = planoCobranca.KmLivreIncluso - numericUpDownKmPlanejado.Value;
+            decimal totalKm = numericUpDownKmPlanejado.Value - planoCobranca.KmLivreIncluso;
 
 
             if (totalKm > 0)
