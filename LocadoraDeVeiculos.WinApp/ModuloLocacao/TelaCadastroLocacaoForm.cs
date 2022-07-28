@@ -59,16 +59,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             {
                 comboBoxGrupoVeiculos.Items.Add(item);
             }
-
-
-
         }
         public Func<Locacao, Result<Locacao>> GravarRegistro { get; set; }
         public Action<Locacao, List<Taxa>> RemoverTaxas { get; internal set; }
 
         private void ConfigurarTelaEditar()
         {
-
             if (Locacao.Id != Guid.Empty)
             {
                 textBoxGuid.Text = Locacao.Id.ToString();
@@ -123,7 +119,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 }
             }
 
-            RemoverTaxas(Locacao,taxas);
+            RemoverTaxas(Locacao, taxas);
         }
 
         private void labelNome_Click(object sender, EventArgs e)
@@ -215,7 +211,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
      
         private void AtualizarTotalPrevisto()
         {
-
             PlanoCobranca planoCobranca = (PlanoCobranca)comboBoxPlanoCobranca.SelectedItem;
 
             DateTime dataLocacao = dateTimePickerDataLocacao.Value;
@@ -233,6 +228,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 else
                     valor += item.Valor;
             }
+
             textBoxTotalPrevisto.Text = Math.Round(valor,3).ToString();
         }
 

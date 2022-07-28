@@ -193,7 +193,7 @@
             this.funcionariosMenuItem,
             this.veiculosMenuItem,
             this.devolucaoMenuItem,
-            this.locaçãoToolStripMenuItem});
+            this.locaçãoToolStripMenuItem,
             this.devolucaoMenuItem,
             this.configuracaoMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
