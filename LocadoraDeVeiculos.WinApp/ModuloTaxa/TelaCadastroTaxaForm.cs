@@ -49,6 +49,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             textBoxDescricao.Text = _taxa.Descricao;
             textBoxValor.Text = "R$ " + _taxa.Valor.ToString();
             _ = Taxa.EhDiaria ? radioButtonDiario.Checked = true : radioButtonFixo.Checked = true;
+            _ = Taxa.EhAdicional ? checkBoxEhAdicional.Checked = true : false;
         }
 
         private void ObterDadosDaTela()
@@ -59,6 +60,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
                 Taxa.EhDiaria = true;
             else
                 Taxa.EhDiaria = false;
+
+            if (checkBoxEhAdicional.Checked)
+                Taxa.EhAdicional = true;
+            else
+                Taxa.EhAdicional = false;
         }
 
         private void ConfigurarComponentes()

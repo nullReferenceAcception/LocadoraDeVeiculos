@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBoxLocacao = new System.Windows.Forms.GroupBox();
+            this.numericUpDownKmPlanejado = new System.Windows.Forms.NumericUpDown();
+            this.labelKmPrevisto = new System.Windows.Forms.Label();
             this.comboBoxCondutor = new System.Windows.Forms.ComboBox();
+            this.textBoxTotalPrevisto = new System.Windows.Forms.TextBox();
             this.labelCondutor = new System.Windows.Forms.Label();
             this.comboBoxFuncionario = new System.Windows.Forms.ComboBox();
-            this.textBoxTotalPrevisto = new System.Windows.Forms.TextBox();
             this.TotalPrevisto = new System.Windows.Forms.Label();
             this.textBoxKmVeiculo = new System.Windows.Forms.TextBox();
             this.labelKmVeiculo = new System.Windows.Forms.Label();
@@ -55,11 +57,9 @@
             this.checkedListBoxTaxas = new System.Windows.Forms.CheckedListBox();
             this.buttonGravar = new System.Windows.Forms.Button();
             this.buttonCancelar = new System.Windows.Forms.Button();
-            this.labelKmPrevisto = new System.Windows.Forms.Label();
-            this.numericUpDownKmPlanejado = new System.Windows.Forms.NumericUpDown();
             this.groupBoxLocacao.SuspendLayout();
-            this.groupBoxTaxa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownKmPlanejado)).BeginInit();
+            this.groupBoxTaxa.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxLocacao
@@ -97,6 +97,26 @@
             this.groupBoxLocacao.TabStop = false;
             this.groupBoxLocacao.Text = "Dados da locação:";
             // 
+            // numericUpDownKmPlanejado
+            // 
+            this.numericUpDownKmPlanejado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDownKmPlanejado.Location = new System.Drawing.Point(6, 399);
+            this.numericUpDownKmPlanejado.Name = "numericUpDownKmPlanejado";
+            this.numericUpDownKmPlanejado.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDownKmPlanejado.TabIndex = 44;
+            this.numericUpDownKmPlanejado.ValueChanged += new System.EventHandler(this.numericUpDownKmPlanejado_ValueChanged);
+            // 
+            // labelKmPrevisto
+            // 
+            this.labelKmPrevisto.AutoSize = true;
+            this.labelKmPrevisto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelKmPrevisto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelKmPrevisto.Location = new System.Drawing.Point(6, 381);
+            this.labelKmPrevisto.Name = "labelKmPrevisto";
+            this.labelKmPrevisto.Size = new System.Drawing.Size(150, 15);
+            this.labelKmPrevisto.TabIndex = 43;
+            this.labelKmPrevisto.Text = "Quantos Km planeja rodar?";
+            // 
             // comboBoxCondutor
             // 
             this.comboBoxCondutor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -106,6 +126,17 @@
             this.comboBoxCondutor.Name = "comboBoxCondutor";
             this.comboBoxCondutor.Size = new System.Drawing.Size(236, 23);
             this.comboBoxCondutor.TabIndex = 40;
+            // 
+            // textBoxTotalPrevisto
+            // 
+            this.textBoxTotalPrevisto.Enabled = false;
+            this.textBoxTotalPrevisto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxTotalPrevisto.Location = new System.Drawing.Point(6, 541);
+            this.textBoxTotalPrevisto.MaxLength = 255;
+            this.textBoxTotalPrevisto.Name = "textBoxTotalPrevisto";
+            this.textBoxTotalPrevisto.ReadOnly = true;
+            this.textBoxTotalPrevisto.Size = new System.Drawing.Size(180, 23);
+            this.textBoxTotalPrevisto.TabIndex = 37;
             // 
             // labelCondutor
             // 
@@ -129,17 +160,6 @@
             this.comboBoxFuncionario.Name = "comboBoxFuncionario";
             this.comboBoxFuncionario.Size = new System.Drawing.Size(236, 23);
             this.comboBoxFuncionario.TabIndex = 39;
-            // 
-            // textBoxTotalPrevisto
-            // 
-            this.textBoxTotalPrevisto.Enabled = false;
-            this.textBoxTotalPrevisto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxTotalPrevisto.Location = new System.Drawing.Point(6, 541);
-            this.textBoxTotalPrevisto.MaxLength = 255;
-            this.textBoxTotalPrevisto.Name = "textBoxTotalPrevisto";
-            this.textBoxTotalPrevisto.ReadOnly = true;
-            this.textBoxTotalPrevisto.Size = new System.Drawing.Size(180, 23);
-            this.textBoxTotalPrevisto.TabIndex = 37;
             // 
             // TotalPrevisto
             // 
@@ -392,25 +412,6 @@
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.UseVisualStyleBackColor = true;
             // 
-            // labelKmPrevisto
-            // 
-            this.labelKmPrevisto.AutoSize = true;
-            this.labelKmPrevisto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelKmPrevisto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelKmPrevisto.Location = new System.Drawing.Point(6, 381);
-            this.labelKmPrevisto.Name = "labelKmPrevisto";
-            this.labelKmPrevisto.Size = new System.Drawing.Size(150, 15);
-            this.labelKmPrevisto.TabIndex = 43;
-            this.labelKmPrevisto.Text = "Quantos Km planeja rodar?";
-            // 
-            // numericUpDownKmPlanejado
-            // 
-            this.numericUpDownKmPlanejado.Location = new System.Drawing.Point(6, 399);
-            this.numericUpDownKmPlanejado.Name = "numericUpDownKmPlanejado";
-            this.numericUpDownKmPlanejado.Size = new System.Drawing.Size(120, 23);
-            this.numericUpDownKmPlanejado.TabIndex = 44;
-            this.numericUpDownKmPlanejado.ValueChanged += new System.EventHandler(this.numericUpDownKmPlanejado_ValueChanged);
-            // 
             // TelaCadastroLocacaoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -424,8 +425,8 @@
             this.Text = "Locação";
             this.groupBoxLocacao.ResumeLayout(false);
             this.groupBoxLocacao.PerformLayout();
-            this.groupBoxTaxa.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownKmPlanejado)).EndInit();
+            this.groupBoxTaxa.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

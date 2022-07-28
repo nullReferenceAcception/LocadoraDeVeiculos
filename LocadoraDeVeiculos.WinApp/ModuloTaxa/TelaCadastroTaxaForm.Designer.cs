@@ -40,8 +40,11 @@
             this.groupBoxTipo = new System.Windows.Forms.GroupBox();
             this.radioButtonDiario = new System.Windows.Forms.RadioButton();
             this.radioButtonFixo = new System.Windows.Forms.RadioButton();
+            this.groupBoxAdicional = new System.Windows.Forms.GroupBox();
+            this.checkBoxEhAdicional = new System.Windows.Forms.CheckBox();
             this.groupBoxTaxa.SuspendLayout();
             this.groupBoxTipo.SuspendLayout();
+            this.groupBoxAdicional.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonCancelar
@@ -72,6 +75,7 @@
             // 
             // groupBoxTaxa
             // 
+            this.groupBoxTaxa.Controls.Add(this.groupBoxAdicional);
             this.groupBoxTaxa.Controls.Add(this.labelGuid);
             this.groupBoxTaxa.Controls.Add(this.textBoxGuid);
             this.groupBoxTaxa.Controls.Add(this.labelDescricao);
@@ -185,6 +189,26 @@
             this.radioButtonFixo.Text = "Fixo";
             this.radioButtonFixo.UseVisualStyleBackColor = true;
             // 
+            // groupBoxAdicional
+            // 
+            this.groupBoxAdicional.Controls.Add(this.checkBoxEhAdicional);
+            this.groupBoxAdicional.Location = new System.Drawing.Point(100, 175);
+            this.groupBoxAdicional.Name = "groupBoxAdicional";
+            this.groupBoxAdicional.Size = new System.Drawing.Size(84, 73);
+            this.groupBoxAdicional.TabIndex = 32;
+            this.groupBoxAdicional.TabStop = false;
+            this.groupBoxAdicional.Text = "E adicional?";
+            // 
+            // checkBoxEhAdicional
+            // 
+            this.checkBoxEhAdicional.AutoSize = true;
+            this.checkBoxEhAdicional.Location = new System.Drawing.Point(6, 23);
+            this.checkBoxEhAdicional.Name = "checkBoxEhAdicional";
+            this.checkBoxEhAdicional.Size = new System.Drawing.Size(45, 19);
+            this.checkBoxEhAdicional.TabIndex = 0;
+            this.checkBoxEhAdicional.Text = "Sim";
+            this.checkBoxEhAdicional.UseVisualStyleBackColor = true;
+            // 
             // TelaCadastroTaxaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -200,6 +224,8 @@
             this.groupBoxTaxa.PerformLayout();
             this.groupBoxTipo.ResumeLayout(false);
             this.groupBoxTipo.PerformLayout();
+            this.groupBoxAdicional.ResumeLayout(false);
+            this.groupBoxAdicional.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -217,5 +243,7 @@
         private System.Windows.Forms.RadioButton radioButtonDiario;
         private System.Windows.Forms.RadioButton radioButtonFixo;
         private System.Windows.Forms.GroupBox groupBoxTipo;
+        private System.Windows.Forms.GroupBox groupBoxAdicional;
+        private System.Windows.Forms.CheckBox checkBoxEhAdicional;
     }
 }
