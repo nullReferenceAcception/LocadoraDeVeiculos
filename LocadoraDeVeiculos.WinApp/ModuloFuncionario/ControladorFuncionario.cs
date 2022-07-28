@@ -1,5 +1,4 @@
-﻿using FluentValidation.Results;
-using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
+﻿using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -76,7 +75,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
                 if (resultadoExclusao.IsSuccess)
                     CarregarFuncionariosAtivos();
-
                 else
                     TelaPrincipalForm.Instancia.AtualizarRodape(resultadoExclusao.Errors[0].Message, CorParaRodape.Red);
             }

@@ -21,7 +21,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         IServicoCondutor _servicoCondutor;
         IServicoGrupoVeiculos _servicoGrupoVeiculos;
 
-
         public Locacao Locacao
         {
             get { return _locacao; }
@@ -65,23 +64,18 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         private void ConfigurarTelaEditar()
         {
-
             if (Locacao.Id != Guid.Empty)
             {
                 textBoxGuid.Text = Locacao.Id.ToString();
                 comboBoxFuncionario.SelectedItem = Locacao.Funcionario;
                 comboBoxGrupoVeiculos.SelectedItem = Locacao.Veiculo.GrupoVeiculos;
-                comboBoxVeiculo.SelectedItem = Locacao.Veiculo;
+                comboBoxVeiculo.SelectedItem = Locacao.Veiculo.Modelo;
                 comboBoxCliente.SelectedItem = Locacao.Cliente;
                 comboBoxPlanoCobranca.SelectedItem = Locacao.PlanoCobranca;
                 comboBoxCondutor.SelectedItem = Locacao.Condutor;
                 textBoxKmVeiculo.Text = Locacao.Veiculo.KmPercorrido.ToString();
                 dateTimePickerDataLocacao.Value = Locacao.DataLocacao;
                 dateTimePickerDataPrevistaDevolucao.Value = Locacao.DataDevolucaoPrevista;
-
-
-
-
 
                 for (int i = 0; i < checkedListBoxTaxas.Items.Count; i++)
                 {
@@ -91,11 +85,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                     }
                 }
                 AtualizarTotalPrevisto();
-
             }
-
-
         }
+
         private void ObterDadosDaTela()
         {
             Locacao.Funcionario = (Funcionario)comboBoxFuncionario.SelectedItem;
@@ -113,7 +105,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             }
 
             List<Taxa> taxas = new();
-
 
             foreach (Taxa item in checkedListBoxTaxas.Items)
             {
@@ -215,7 +206,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         private void AtualizarTotalPrevisto()
         {
-
             PlanoCobranca planoCobranca = (PlanoCobranca)comboBoxPlanoCobranca.SelectedItem;
 
             DateTime dataLocacao = dateTimePickerDataLocacao.Value;

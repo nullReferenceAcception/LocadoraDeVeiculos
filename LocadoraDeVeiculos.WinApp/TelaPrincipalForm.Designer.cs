@@ -53,6 +53,7 @@
             this.panelRegistros = new System.Windows.Forms.Panel();
             this.labelRodape = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStripRodape = new System.Windows.Forms.StatusStrip();
+            this.configuracaoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.locaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolbox.SuspendLayout();
             this.menu.SuspendLayout();
@@ -192,7 +193,9 @@
             this.funcionariosMenuItem,
             this.veiculosMenuItem,
             this.devolucaoMenuItem,
-            this.locaçãoToolStripMenuItem});
+            this.locaçãoToolStripMenuItem,
+            this.devolucaoMenuItem,
+            this.configuracaoMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -287,6 +290,13 @@
             this.statusStripRodape.TabIndex = 4;
             this.statusStripRodape.Text = "statusStrip1";
             // 
+            // configuracaoMenuItem
+            // 
+            this.configuracaoMenuItem.Name = "configuracaoMenuItem";
+            this.configuracaoMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.configuracaoMenuItem.Text = "Configurações";
+            this.configuracaoMenuItem.Click += new System.EventHandler(this.configuracaoMenuItem_Click);
+            // 
             // locaçãoToolStripMenuItem
             // 
             this.locaçãoToolStripMenuItem.Name = "locaçãoToolStripMenuItem";
@@ -344,6 +354,7 @@
         private System.Windows.Forms.ToolStripMenuItem planoDeCobrancaToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton btnFuncionariosDesativados;
         private System.Windows.Forms.ToolStripMenuItem devolucaoMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem configuracaoMenuItem;
         private System.Windows.Forms.ToolStripMenuItem locaçãoToolStripMenuItem;
     }
 }

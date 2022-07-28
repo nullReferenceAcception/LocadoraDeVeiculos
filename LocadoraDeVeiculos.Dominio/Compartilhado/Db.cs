@@ -6,11 +6,10 @@ namespace LocadoraDeVeiculos.Dominio.Compartilhado
 { 
     public static class Db
     {
-       static IConfigurationRoot configuracao = new ConfigurationBuilder()
+       public static IConfigurationRoot configuracao = new ConfigurationBuilder()
            .SetBasePath(Directory.GetCurrentDirectory())
            .AddJsonFile("ConfiguracaoAplicacao.json")
            .Build();
-
 
         public static SqlConnection conexaoComBanco = new SqlConnection(configuracao.GetConnectionString("SqlServer"));
 

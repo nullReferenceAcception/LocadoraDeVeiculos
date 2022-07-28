@@ -33,6 +33,7 @@ using LocadoraDeVeiculos.Servico.ModuloTaxa;
 using LocadoraDeVeiculos.Servico.ModuloVeiculos;
 using LocadoraDeVeiculos.WinApp.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.ModuloCondutor;
+using LocadoraDeVeiculos.WinApp.ModuloConfiguracoes;
 using LocadoraDeVeiculos.WinApp.ModuloDevolucao;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
 using LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculo;
@@ -82,6 +83,7 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             builder.RegisterType<ControladorVeiculo>().AsSelf();
             builder.RegisterType<ControladorLocacao>().AsSelf();
             builder.RegisterType<ControladorDevolucao>().AsSelf();
+            builder.RegisterType<ControladorConfiguracao>().AsSelf();
 
             container = builder.Build();
         }
@@ -98,6 +100,5 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
         {
             return container.Resolve<Servico>();
         }
-
     }
 }
