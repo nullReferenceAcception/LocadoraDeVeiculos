@@ -7,6 +7,7 @@ using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
+using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -56,10 +57,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             {
                 comboBoxCliente.Items.Add(item);
             }
-            foreach (var item in servicoGrupoVeiculos.SelecionarTodos().Value)
-            {
-                comboBoxGrupoVeiculos.Items.Add(item);
-            }
+
         }
         public Func<Locacao, Result<Locacao>> GravarRegistro { get; set; }
         public Action<Locacao, List<Taxa>> RemoverTaxas { get; internal set; }
@@ -218,6 +216,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             decimal valor = planoCobranca.ValorDia * totalDias;
 
+            decimal totalKm = planoCobranca.KmLivreIncluso - numericUpDownKmPlanejado.Value;
+
+
+            if (totalKm > 0)
+            valor += planoCobranca.ValorPorKm * numericUpDownKmPlanejado.Value;
+
+
             foreach (Taxa item in checkedListBoxTaxas.CheckedItems)
             {
                 if (item.EhDiaria)
@@ -231,10 +236,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         private void comboBoxPlanoCobranca_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            //foreach (GrupoVeiculos item in _servicoGrupoVeiculos.SelecionarTodosDoPlano((PlanoCobranca)comboBoxPlanoCobranca.SelectedItem).Value)
-            //{
-            //    comboBoxGrupoVeiculos.Items.Add(item);
-            //}
+             GrupoVeiculos item = _servicoGrupoVeiculos.SelecionarGrupoDoPlano((PlanoCobranca)comboBoxPlanoCobranca.SelectedItem).Value;
+
+                comboBoxGrupoVeiculos.Items.Add(item);
 
             AtualizarTotalPrevisto();
         }
@@ -251,6 +255,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 this.BeginInvoke((MethodInvoker)(() => AtualizarTotalPrevisto()));
             }
             catch (Exception ex) { }
+        }
+
+        private void textBoxKmPlanejado_TextChanged(object sender, EventArgs e)
+        {
+            AtualizarTotalPrevisto();
+        }
+
+        private void numericUpDownKmPlanejado_ValueChanged(object sender, EventArgs e)
+        {
+            AtualizarTotalPrevisto();
         }
     }
 }

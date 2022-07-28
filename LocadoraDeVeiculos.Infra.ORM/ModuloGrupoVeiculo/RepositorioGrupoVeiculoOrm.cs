@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using System;
@@ -14,6 +15,11 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloGrupoVeiculo
         public RepositorioGrupoVeiculoOrm(LocadoraDbContext dbContext) : base(dbContext)
         {
 
+        }
+
+        public GrupoVeiculos SelecionarGrupoDoPlano(PlanoCobranca p)
+        {
+            return registros.FirstOrDefault(x => x.Id == p.GrupoVeiculosId);
         }
 
         public bool VerificarDuplicidade(GrupoVeiculos registro)
