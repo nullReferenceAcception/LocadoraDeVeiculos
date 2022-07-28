@@ -99,8 +99,12 @@
             // 
             // numericUpDownKmPlanejado
             // 
-            this.numericUpDownKmPlanejado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericUpDownKmPlanejado.Location = new System.Drawing.Point(6, 399);
+            this.numericUpDownKmPlanejado.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
             this.numericUpDownKmPlanejado.Name = "numericUpDownKmPlanejado";
             this.numericUpDownKmPlanejado.Size = new System.Drawing.Size(120, 23);
             this.numericUpDownKmPlanejado.TabIndex = 44;
