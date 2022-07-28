@@ -22,7 +22,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
         {
             GrupoVeiculos grupo = CriarGrupoDeVeiculos();
 
-            _servicoGrupoVeiculo.Inserir(grupo);
+            _servicoGrupoVeiculos.Inserir(grupo);
 
             Veiculo veiculo = CriarVeiculo();
 
@@ -42,7 +42,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
         {
             GrupoVeiculos grupo = CriarGrupoDeVeiculos();
 
-            _servicoGrupoVeiculo.Inserir(grupo);
+            _servicoGrupoVeiculos.Inserir(grupo);
 
             Veiculo veiculo = CriarVeiculo();
 
@@ -67,7 +67,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
         {
             GrupoVeiculos grupo = CriarGrupoDeVeiculos();
 
-            _servicoGrupoVeiculo.Inserir(grupo);
+            _servicoGrupoVeiculos.Inserir(grupo);
 
             Veiculo veiculo = CriarVeiculo();
 
@@ -87,7 +87,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
         {
             GrupoVeiculos grupo = CriarGrupoDeVeiculos();
 
-            _servicoGrupoVeiculo.Inserir(grupo);
+            _servicoGrupoVeiculos.Inserir(grupo);
 
             Veiculo veiculo = CriarVeiculo();
 
@@ -117,7 +117,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
         {
             GrupoVeiculos grupo = CriarGrupoDeVeiculos();
 
-            _servicoGrupoVeiculo.Inserir(grupo);
+            _servicoGrupoVeiculos.Inserir(grupo);
 
             Veiculo veiculo = CriarVeiculo();
 
@@ -135,7 +135,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
         {
             GrupoVeiculos grupo = CriarGrupoDeVeiculos();
 
-            _servicoGrupoVeiculo.Inserir(grupo);
+            _servicoGrupoVeiculos.Inserir(grupo);
 
             Veiculo veiculo = CriarVeiculo();
 

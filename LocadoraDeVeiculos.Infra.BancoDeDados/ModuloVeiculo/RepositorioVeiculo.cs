@@ -1,5 +1,7 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
+﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using LocadoraDeVeiculos.Infra.BancoDados.Compartilhado;
+using System.Collections.Generic;
 
 namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
 {
@@ -124,11 +126,21 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.ModuloVeiculo
         }
 
 
+
         #endregion
 
         public string SqlDuplicidade(Veiculo registro)
         {
             return "SELECT * FROM TB_VEICULO WHERE ([PLACA] = '" + registro.Placa + "')" + $"AND [GUID_VEICULO] != '" + registro.Id + "'";
         }
+
+
+        //gambiarra feita apos ORM
+        public List<Veiculo> SelecionarTodosDoGrupo(GrupoVeiculos grupo)
+        {
+            throw new System.NotImplementedException();
+        }
+
     }
+
 }

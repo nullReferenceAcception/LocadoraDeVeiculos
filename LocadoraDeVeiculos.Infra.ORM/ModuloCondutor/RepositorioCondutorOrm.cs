@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloCondutor;
+﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
+using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -17,7 +18,8 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloCondutor
 
     }
 
-    public bool VerificarDuplicidade(Condutor registro)
+
+        public bool VerificarDuplicidade(Condutor registro)
     {
         var x = registros.Where(x => x.CPF == registro.CPF && x.Id != registro.Id);
 
@@ -28,7 +30,10 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloCondutor
         return false;
 
     }
-
-
-}
+        
+        List<Condutor> IRepositorioCondutor.SelecionarTodosDoCliente(Cliente cliente)
+        {
+            return registros.Where(x => x.Cliente == cliente).ToList();
+        }
+    }
 }

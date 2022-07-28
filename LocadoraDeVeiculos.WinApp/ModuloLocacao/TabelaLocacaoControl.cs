@@ -1,4 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using LocadoraDeVeiculos.Dominio.ModuloLocacao;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 {
@@ -16,23 +19,30 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             var colunas = new DataGridViewColumn[]
             {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Guid", HeaderText = "Guid"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Funcionario", HeaderText = "Funcionario"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Cliente", HeaderText = "Cliente"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Condutor", HeaderText = "Condutor"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Veiculo", HeaderText = "Veiculo"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "PlanoCobranca", HeaderText = "PlanoCobranca"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Data de Locacao", HeaderText = "Data de Locacao"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Data de devolucao prevista", HeaderText = "Data de devolucao prevista"},
 
             };
 
             return colunas;
         }
 
-        public int ObtemGuidVeiculoSelecionado()
+        public Guid ObtemGuidLocacaoSelecionado()
         {
-            return grid.ObterId<int>();
+            return grid.ObterId<Guid>();
         }
 
-        public void AtualizarRegistros(/*List<Locacao> locacoes*/)
+        public void AtualizarRegistros(List<Locacao> locacoes)
         {
             grid.Rows.Clear();
 
-            //foreach (Locacao locacao in locacoes)
-            //    grid.Rows.Add();
+            foreach (Locacao locacao in locacoes)
+                grid.Rows.Add(locacao.Id, locacao.Funcionario.Nome, locacao.Cliente.Nome, locacao.Condutor.Nome, locacao.Veiculo.Placa, locacao.PlanoCobranca.Nome, locacao.DataLocacao, locacao.DataDevolucaoPrevista);
         }
     }
 }

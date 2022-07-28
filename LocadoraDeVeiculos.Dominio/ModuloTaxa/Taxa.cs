@@ -1,4 +1,8 @@
-﻿namespace LocadoraDeVeiculos.Dominio.ModuloTaxa
+﻿using LocadoraDeVeiculos.Dominio.ModuloDevolucao;
+using LocadoraDeVeiculos.Dominio.ModuloLocacao;
+using System.Collections.Generic;
+
+namespace LocadoraDeVeiculos.Dominio.ModuloTaxa
 {
     public class Taxa : EntidadeBase<Taxa>
     {
@@ -6,11 +10,18 @@
         public decimal Valor { get; set; }
         public bool EhDiaria { get; set; }
 
+        public List<Locacao> Locacoes;
+        public List<Devolucao> Devolucoes;
+
         public Taxa()
         {
             Valor = 0;
         }
 
+        public override string ToString()
+        {
+            return Descricao+"," + Valor;
+        }
         public Taxa(string descricao, decimal valor,bool ehDiaria)
         {
             Descricao = descricao;

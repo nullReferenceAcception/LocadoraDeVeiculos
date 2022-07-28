@@ -97,7 +97,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloPlanoCobranca
             List<PlanoCobranca> registros = new List<PlanoCobranca>();
 
             GrupoVeiculos grupoVeiculos = new GrupoVeiculos("grupo");
-            _servicoGrupoVeiculo.Inserir(grupoVeiculos);
+            _servicoGrupoVeiculos.Inserir(grupoVeiculos);
 
             PlanoCobranca PlanoCobranca = new PlanoCobranca(GerarNovaStringAleatoria(), random.Next(1, 200), random.Next(1, 200), random.Next(1, 200), PlanoEnum.KmLivre, grupoVeiculos);
 

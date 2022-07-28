@@ -28,6 +28,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
             EstaAtivo = estaAtivo;
         }
 
+
+        public override string ToString()
+        {
+            return Nome;
+        }
         public override bool Equals(object? obj)
         {
             return obj is Funcionario funcionario &&

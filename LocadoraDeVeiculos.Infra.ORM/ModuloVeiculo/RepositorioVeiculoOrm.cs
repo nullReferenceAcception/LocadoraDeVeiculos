@@ -1,5 +1,7 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
+﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace LocadoraDeVeiculos.Infra.ORM.ModuloVeiculo
@@ -9,6 +11,12 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloVeiculo
         public RepositorioVeiculoOrm(LocadoraDbContext dbContext) : base(dbContext)
         {
         }
+
+        public List<Veiculo> SelecionarTodosDoGrupo(GrupoVeiculos grupo)
+        {
+           return registros.Where(x => x.GrupoVeiculos == grupo).ToList();
+        }
+
 
         public bool VerificarDuplicidade(Veiculo registro)
         {

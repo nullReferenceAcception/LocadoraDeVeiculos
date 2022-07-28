@@ -17,7 +17,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
         {
 
         }
-
+        public override string ToString()
+        {
+            return Nome;
+        }
         public PlanoCobranca(string nome, int kmLivreIncluso, decimal valorDia, decimal valorPorKm, PlanoEnum planoEnum , GrupoVeiculos GrupoVeiculos)
         {
             Nome = nome;
