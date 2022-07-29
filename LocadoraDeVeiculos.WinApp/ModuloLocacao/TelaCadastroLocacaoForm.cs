@@ -134,7 +134,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         {
             comboBoxCondutor.Items.Clear();
         }
-        }
 
         private void AtualizarTotalPrevisto()
         {
