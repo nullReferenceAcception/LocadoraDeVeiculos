@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+﻿using FluentResults;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Servico.Compartilhado;
@@ -33,6 +34,22 @@ namespace LocadoraDeVeiculos.Servico.ModuloLocacao
             }
 
             
+        }
+
+        public Result<List<Locacao>> SelecionarDesativados()
+        {
+            try
+            {
+                return Result.Ok(repositorioLocacao.SelecionarDesativados());
+            }
+            catch (Exception ex)
+            {
+                string msgErro = $"Falha no sistema ao tentar selecionar todos as loc~ções desativadas";
+
+                Log.Logger.Error(ex, msgErro);
+
+                return Result.Fail(msgErro);
+            }
         }
 
         protected override string MensagemDeErroSeTiverDuplicidade { get; set; } = "Veiculo já está alocado";

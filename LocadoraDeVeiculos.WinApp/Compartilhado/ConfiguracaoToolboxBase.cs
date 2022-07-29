@@ -14,7 +14,7 @@
 
         public virtual string? TooltipVisualizar { get; }
 
-        public virtual string? ToolTipFuncionariosDesabilitados { get; }
+        public virtual string? ToolTipDesabilitados { get; }
 
         public virtual bool InserirHabilitado { get { return true; } }
 
@@ -26,6 +26,6 @@
 
         public virtual bool VisualizarHabilitado { get { return true; } }
 
-        public virtual bool FuncionariosDesabilitados { get { return false; } }
+        public virtual bool Desabilitados { get { return false; } }
     }
 }

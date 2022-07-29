@@ -28,6 +28,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         private IServicoCondutor _servicoCondutor;
         private IServicoTaxa _servicoTaxa;
         private TabelaLocacaoControl _tabelaLocacao;
+        private bool estadoLocacao = true;
 
 
         public ControladorLocacao(IServicoLocacao servicoLocacao,IServicoPlanoCobranca planoCobranca, IServicoCliente servicoCliente, IServicoVeiculo servicoVeiculo, IServicoFuncionario servicoFuncionario, IServicoGrupoVeiculos servicoGrupoVeiculo, IServicoCondutor servicoCondutor, IServicoTaxa servicoTaxa)
@@ -98,7 +99,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             DialogResult resultado = tela.ShowDialog();
 
             if (resultado == DialogResult.OK)
-                CarregarLocacao();
+                CarregarLocacaoAtivos();
         }
         public override void Editar()
         {
@@ -123,7 +124,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             DialogResult resultado = tela.ShowDialog();
 
             if (resultado == DialogResult.OK)
-                CarregarLocacao();
+                CarregarLocacaoAtivos();
         }
 
         public override void Excluir()
@@ -146,7 +147,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             if (resultado == DialogResult.OK)
             {
                 validationResult = _servicoLocacao.Excluir(locacaoSelecionada);
-                CarregarLocacao();
+                CarregarLocacaoAtivos();
 
                 if (validationResult.Errors.Count > 0)
                     TelaPrincipalForm.Instancia.AtualizarRodape(validationResult.Errors[0].Message, CorParaRodape.Red);
@@ -185,12 +186,39 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             if (_tabelaLocacao == null)
                 _tabelaLocacao = new TabelaLocacaoControl();
 
-            CarregarLocacao();
+            CarregarLocacaoAtivos();
 
             return _tabelaLocacao;
         }
 
-        private void CarregarLocacao()
+
+        public override bool VisualizarDesativados()
+        {
+            if (estadoLocacao == false)
+            {
+                CarregarLocacaoAtivos();
+                estadoLocacao = true;
+            }
+            else
+            {
+                CarregarLocacaoInativos();
+                estadoLocacao = false;
+            }
+
+            return estadoLocacao;
+        }
+
+        private void CarregarLocacaoInativos()
+        {
+            List<Locacao> locacoesDesativados = _servicoLocacao.SelecionarDesativados().Value;
+
+            _tabelaLocacao.AtualizarRegistros(locacoesDesativados);
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {locacoesDesativados.Count} {(locacoesDesativados.Count == 1 ? "locacao desativada" : "locacoes desativadas")}", CorParaRodape.White);
+        }
+
+
+        private void CarregarLocacaoAtivos()
         {
             List<Locacao> locacaos = _servicoLocacao.SelecionarTodos().Value;
 
