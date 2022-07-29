@@ -1,10 +1,6 @@
 ﻿using FluentValidation;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
 {
@@ -32,8 +28,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
             RuleFor(x => x.Cliente)
                 .NotNull().NotEmpty();
 
-            RuleFor(x => x.Condutor)
-              .NotNull().NotEmpty();
+            When(x => x.Cliente.PessoaFisica == false, () =>
+            {
+                RuleFor(x => x.Condutor)
+                  .NotNull().NotEmpty();
+            });
 
             RuleFor(x => x.Veiculo)
              .NotNull().NotEmpty();
@@ -42,8 +41,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
              .NotNull().NotEmpty();
 
             RuleFor(x => x.Status).IsInEnum();
-
         }
-
     }
 }

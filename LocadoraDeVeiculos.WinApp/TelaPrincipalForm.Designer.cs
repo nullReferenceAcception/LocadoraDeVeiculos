@@ -50,11 +50,11 @@
             this.funcionariosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.veiculosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.devolucaoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.locaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuracaoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelRegistros = new System.Windows.Forms.Panel();
             this.labelRodape = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStripRodape = new System.Windows.Forms.StatusStrip();
-            this.configuracaoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.locaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolbox.SuspendLayout();
             this.menu.SuspendLayout();
             this.statusStripRodape.SuspendLayout();
@@ -192,7 +192,6 @@
             this.condutoresToolStripMenuItem,
             this.funcionariosMenuItem,
             this.veiculosMenuItem,
-            this.devolucaoMenuItem,
             this.locaçãoToolStripMenuItem,
             this.devolucaoMenuItem,
             this.configuracaoMenuItem});
@@ -259,9 +258,26 @@
             // devolucaoMenuItem
             // 
             this.devolucaoMenuItem.Name = "devolucaoMenuItem";
+            this.devolucaoMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F9;
             this.devolucaoMenuItem.Size = new System.Drawing.Size(193, 22);
             this.devolucaoMenuItem.Text = "Devolução";
             this.devolucaoMenuItem.Click += new System.EventHandler(this.devolucaoMenuItem_Click);
+            // 
+            // locaçãoToolStripMenuItem
+            // 
+            this.locaçãoToolStripMenuItem.Name = "locaçãoToolStripMenuItem";
+            this.locaçãoToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F8;
+            this.locaçãoToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.locaçãoToolStripMenuItem.Text = "Locação";
+            this.locaçãoToolStripMenuItem.Click += new System.EventHandler(this.locaçãoToolStripMenuItem_Click);
+            // 
+            // configuracaoMenuItem
+            // 
+            this.configuracaoMenuItem.Name = "configuracaoMenuItem";
+            this.configuracaoMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10;
+            this.configuracaoMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.configuracaoMenuItem.Text = "Configurações";
+            this.configuracaoMenuItem.Click += new System.EventHandler(this.configuracaoMenuItem_Click);
             // 
             // panelRegistros
             // 
@@ -289,20 +305,6 @@
             this.statusStripRodape.Size = new System.Drawing.Size(1554, 26);
             this.statusStripRodape.TabIndex = 4;
             this.statusStripRodape.Text = "statusStrip1";
-            // 
-            // configuracaoMenuItem
-            // 
-            this.configuracaoMenuItem.Name = "configuracaoMenuItem";
-            this.configuracaoMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.configuracaoMenuItem.Text = "Configurações";
-            this.configuracaoMenuItem.Click += new System.EventHandler(this.configuracaoMenuItem_Click);
-            // 
-            // locaçãoToolStripMenuItem
-            // 
-            this.locaçãoToolStripMenuItem.Name = "locaçãoToolStripMenuItem";
-            this.locaçãoToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.locaçãoToolStripMenuItem.Text = "Locação";
-            this.locaçãoToolStripMenuItem.Click += new System.EventHandler(this.locaçãoToolStripMenuItem_Click);
             // 
             // TelaPrincipalForm
             // 
