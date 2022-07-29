@@ -46,7 +46,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloLocacao
         private Locacao CriarLocacao()
         {
             List<Taxa> taxas = new List<Taxa> { CriarTaxa() };
-            return new Locacao(CriarFuncionario(), CriarCliente(), CriarCondutor(), CriarVeiculoSemGrupo(), CriarPlanoCobranca(),DateTime.Today,new DateTime(2100,01,01), taxas,true);
+            return new Locacao(CriarFuncionario(), CriarCliente(), CriarCondutor(), CriarVeiculoSemGrupo(), CriarPlanoCobranca(),DateTime.Today,new DateTime(2100,01,01), taxas,StatusEnum.Ativo);
         }
 
 

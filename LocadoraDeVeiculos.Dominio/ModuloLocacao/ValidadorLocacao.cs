@@ -41,6 +41,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
             RuleFor(x => x.PlanoCobranca)
              .NotNull().NotEmpty();
 
+            RuleFor(x => x.Status).IsInEnum();
+
         }
 
     }

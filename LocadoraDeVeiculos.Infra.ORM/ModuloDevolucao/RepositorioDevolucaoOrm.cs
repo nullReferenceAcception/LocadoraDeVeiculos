@@ -1,6 +1,9 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloDevolucao;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
-using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 
 namespace LocadoraDeVeiculos.Infra.ORM.ModuloDevolucao
 {
@@ -12,7 +15,25 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloDevolucao
 
         public bool VerificarDuplicidade(Devolucao registro)
         {
-            throw new NotImplementedException();
+            return false;
+        }
+
+        public override List<Devolucao> SelecionarTodos()
+        {
+            return registros.Include(x => x.Locacao)
+                .Include(x => x.Locacao.Cliente)
+                .Include(x => x.Locacao.Condutor)
+                .Include(x => x.Locacao.Funcionario)
+                .Include(x => x.Locacao.PlanoCobranca)
+                .Include(x => x.Locacao.Veiculo)
+                .ToList();
+        }
+
+        public void RemoverTaxas(Devolucao devolucao, List<Taxa> taxas)
+        {
+            foreach (Taxa taxa in taxas)
+                if (devolucao.TaxasAdicionais.Contains(taxa))
+                    devolucao.TaxasAdicionais.Remove(taxa);
         }
     }
 }

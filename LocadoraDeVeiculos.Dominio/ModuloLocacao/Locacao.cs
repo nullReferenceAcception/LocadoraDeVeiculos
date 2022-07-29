@@ -18,7 +18,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
 
         public Locacao(Funcionario funcionario, Cliente cliente,
             Condutor condutor, Veiculo veiculo, PlanoCobranca planoCobranca,
-            DateTime dataLocacao, DateTime dataDevolucao, List<Taxa> taxas, bool estaAtivo)
+            DateTime dataLocacao, DateTime dataDevolucao, List<Taxa> taxas, StatusEnum status)
         {
             Funcionario = funcionario;
             Cliente = cliente;
@@ -28,7 +28,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
             DataLocacao = dataLocacao;
             DataDevolucaoPrevista = dataDevolucao;
             Taxas = taxas;
-            EstaAtivo = estaAtivo;
+            Status = status;
         }
 
       public Funcionario Funcionario { get; set; }
@@ -44,7 +44,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
       public DateTime DataLocacao { get; set; }
       public DateTime DataDevolucaoPrevista { get; set; }
       public List<Taxa> Taxas { get; set; }
-      public bool EstaAtivo { get; set; }
+      public StatusEnum Status { get; set; }
 
         public override bool Equals(object? obj)
         {
@@ -57,7 +57,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
                    EqualityComparer<PlanoCobranca>.Default.Equals(PlanoCobranca, locacao.PlanoCobranca) &&
                    DataLocacao == locacao.DataLocacao &&
                    DataDevolucaoPrevista == locacao.DataDevolucaoPrevista &&
-                   EstaAtivo == locacao.EstaAtivo &&
+                   Status == locacao.Status &&
                   CompararTaxas(locacao);
         }
 
@@ -71,6 +71,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
                     return false;
             }
             return true;
+        }
+
+        public override string ToString()
+        {
+            return Cliente.Nome;
         }
     }
 }

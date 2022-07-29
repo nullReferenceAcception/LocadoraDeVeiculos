@@ -2,6 +2,9 @@
 using LocadoraDeVeiculos.Dominio.ModuloDevolucao;
 using SautinSoft.Document;
 using System;
+using LocadoraDeVeiculos.Dominio.ModuloLocacao;
+using LocadoraDeVeiculos.Dominio.ModuloTaxa;
+using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -10,22 +13,28 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
     public class ControladorDevolucao : ControladorBase
     {
         private IServicoDevolucao _servicoDevolucao;
+        private IServicoLocacao _servicoLocacao;
+        private IServicoTaxa _servicoTaxa;
+        private IServicoVeiculo _servicoVeiculo;
         private TabelaDevolucaoControl _tabelaDevolucao;
 
-        public ControladorDevolucao(IServicoDevolucao servicoDevolucao)
+        public ControladorDevolucao(IServicoDevolucao servicoDevolucao, IServicoLocacao servicoLocacao, IServicoTaxa servicoTaxa, IServicoVeiculo servicoVeiculo)
         {
             _servicoDevolucao = servicoDevolucao;
+            _servicoLocacao = servicoLocacao;
+            _servicoTaxa = servicoTaxa;
+            _servicoVeiculo = servicoVeiculo;
         }
 
         public override void Inserir()
         {
-            if (_servicoDevolucao.QuantidadeRegistro().Value == 0)
+            if (_servicoLocacao.QuantidadeRegistro().Value == 0)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Cadastre no mínimo 1 'Grupo de Veículos' para cadastrar um veículo", CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Cadastre no mínimo 1 'Locação' para registrar uma devolução", CorParaRodape.Yellow);
                 return;
             }
 
-            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao);
+            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa, _servicoVeiculo);
 
             tela.Devolucao = new();
 
@@ -36,6 +45,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             if (resultado == DialogResult.OK)
                 CarregarDevolucoes();
         }
+
         public override void Editar()
         {
             var numero = _tabelaDevolucao.ObtemGuidDevolucaoSelecionada();
@@ -48,7 +58,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 return;
             }
 
-            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao);
+            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa, _servicoVeiculo);
 
             tela.Devolucao = devolucaoSelecionada.Value;
 
@@ -108,7 +118,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
             _tabelaDevolucao.AtualizarRegistros(devolucoes);
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {devolucoes.Count} {(devolucoes.Count == 1 ? "veículo" : "veículos")}", CorParaRodape.Yellow);
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {devolucoes.Count} {(devolucoes.Count == 1 ? "devolução" : "devoluções")}", CorParaRodape.White);
         }
         public override void GerarPdf()
         {
@@ -158,9 +168,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             dc.Content.End.Insert("-------------------------------------------------\n ");
             dc.Content.End.Insert("Data da devolucao: " + devolucaoSelecionada.DataDevolucaoReal + "\n");
             dc.Content.End.Insert("-------------------------------------------------\n ");
-            dc.Content.End.Insert("Taxas adicionais: " + devolucaoSelecionada.TaxasAdicionais + "\n");
+            dc.Content.End.Insert("Taxas adicionais:" + "\n");
+            foreach(var taxarAdicionais in devolucaoSelecionada.TaxasAdicionais)
+            {
+                dc.Content.End.Insert(taxarAdicionais.ToString() + "\n");
+            }
             dc.Content.End.Insert("-------------------------------------------------\n ");
-            dc.Content.End.Insert("Tanque: " + devolucaoSelecionada.Tanque.ToString());
+            dc.Content.End.Insert("Tanque: " + devolucaoSelecionada.Tanque.ToString() + "\n");
+            dc.Content.End.Insert("-------------------------------------------------\n ");
+            //dc.Content.End.Insert("Valor Total: " + devolucaoSelecionada.FAZERVALOR)
 
 
 

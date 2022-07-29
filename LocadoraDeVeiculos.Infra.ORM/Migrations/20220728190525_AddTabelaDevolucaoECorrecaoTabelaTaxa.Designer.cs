@@ -4,14 +4,16 @@ using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LocadoraDeVeiculos.Infra.ORM.Migrations
 {
     [DbContext(typeof(LocadoraDbContext))]
-    partial class LocadoraDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220728190525_AddTabelaDevolucaoECorrecaoTabelaTaxa")]
+    partial class AddTabelaDevolucaoECorrecaoTabelaTaxa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -236,15 +238,14 @@ namespace LocadoraDeVeiculos.Infra.ORM.Migrations
                     b.Property<DateTime>("DataLocacao")
                         .HasColumnType("date");
 
+                    b.Property<bool>("EstaAtivo")
+                        .HasColumnType("bit");
+
                     b.Property<Guid>("FuncionarioId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("PlanoCobrancaId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("VeiculoId")
                         .HasColumnType("uniqueidentifier");

@@ -1,5 +1,6 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace LocadoraDeVeiculos.Infra.ORM.ModuloTaxa
@@ -8,6 +9,11 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloTaxa
     {
         public RepositorioTaxaOrm(LocadoraDbContext dbContext) : base(dbContext)
         {
+        }
+
+        public List<Taxa> SelecionarTodosAdicionais()
+        {
+            return registros.Where(x => x.EhAdicional).ToList();
         }
 
         public bool VerificarDuplicidade(Taxa registro)

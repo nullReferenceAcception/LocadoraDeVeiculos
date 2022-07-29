@@ -51,20 +51,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloVeiculo
         }
 
 
-        //TODO arrumar isso depois
-
-        //[TestMethod]
-        //public void Nao_pode_cor_vazia()
-        //{
-        //    Veiculo veiculo = CriarVeiculoSemGrupo();
-
-        //    veiculo.Cor = CorEnum;
-
-        //    var resultado = validador.TestValidate(veiculo);
-
-        //    resultado.ShouldHaveValidationErrorFor(x => x.Cor);
-        //}
-
         [TestMethod]
         public void Nao_pode_ano_abaixo_2000()
         {
@@ -112,21 +98,6 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloVeiculo
 
             resultado.ShouldHaveValidationErrorFor(x => x.Foto);
         }
-
-
-        //TODO arrumar isso depois
-
-        //[TestMethod]
-        //public void Nao_pode_combustivel_nulo()
-        //{
-        //    Veiculo veiculo = CriarVeiculoSemGrupo();
-
-        //    veiculo.Combustivel = null;
-
-        //    var resultado = validador.TestValidate(veiculo);
-
-        //    resultado.ShouldHaveValidationErrorFor(x => x.Combustivel);
-        //}
 
         [TestMethod]
         public void Nao_pode_grupo_de_veiculos_nulo()

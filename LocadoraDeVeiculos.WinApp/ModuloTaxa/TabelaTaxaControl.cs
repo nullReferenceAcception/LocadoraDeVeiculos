@@ -25,7 +25,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Valor", HeaderText = "Valor"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Tipo", HeaderText = "Tipo"}
+                new DataGridViewTextBoxColumn { DataPropertyName = "Tipo", HeaderText = "Tipo"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Adicional", HeaderText = "Adicional"}
             };
 
             return colunas;
@@ -39,12 +41,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         public void AtualizarRegistros(List<Taxa> taxas)
         {
             grid.Rows.Clear();
-
             foreach (Taxa taxa in taxas)
-                if (taxa.EhDiaria)
-                    grid.Rows.Add(taxa.Id, taxa.Descricao, taxa.Valor, "Diária");
-                else
-                    grid.Rows.Add(taxa.Id, taxa.Descricao, taxa.Valor, "Fixo");
+                grid.Rows.Add(taxa.Id, taxa.Descricao, taxa.Valor, taxa.EhDiaria ? "Diária" : "Fixo", taxa.EhAdicional ? "Sim" : "Não");
         }
     }
 }

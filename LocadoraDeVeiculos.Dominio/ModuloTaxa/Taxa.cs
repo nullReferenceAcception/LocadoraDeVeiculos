@@ -9,6 +9,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxa
         public string Descricao { get; set; }
         public decimal Valor { get; set; }
         public bool EhDiaria { get; set; }
+        public bool EhAdicional { get; set; }
 
         public List<Locacao> Locacoes;
         public List<Devolucao> Devolucoes;
@@ -18,23 +19,36 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxa
             Valor = 0;
         }
 
-        public override string ToString()
-        {
-            return Descricao+"," + Valor;
-        }
-        public Taxa(string descricao, decimal valor,bool ehDiaria)
+        public Taxa(string descricao, decimal valor, bool ehDiaria)
         {
             Descricao = descricao;
             Valor = valor;
             this.EhDiaria = ehDiaria;
         }
 
+        public Taxa(string descricao, decimal valor, bool ehDiaria, bool ehAdicional)
+        {
+            Descricao = descricao;
+            Valor = valor;
+            this.EhDiaria = ehDiaria;
+            this.EhAdicional = ehAdicional;
+        }
+
         public override bool Equals(object? obj)
         {
             return obj is Taxa taxa &&
-                   Id == taxa.Id &&
+                   Id.Equals(taxa.Id) &&
                    Descricao == taxa.Descricao &&
-                   Valor == taxa.Valor;
+                   Valor == taxa.Valor &&
+                   EhDiaria == taxa.EhDiaria &&
+                   EhAdicional == taxa.EhAdicional &&
+                   EqualityComparer<List<Locacao>>.Default.Equals(Locacoes, taxa.Locacoes) &&
+                   EqualityComparer<List<Devolucao>>.Default.Equals(Devolucoes, taxa.Devolucoes);
+        }
+
+        public override string ToString()
+        {
+            return Descricao + "," + Valor;
         }
     }
 }

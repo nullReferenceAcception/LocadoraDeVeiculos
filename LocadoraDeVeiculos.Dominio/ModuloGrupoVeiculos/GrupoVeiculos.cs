@@ -13,8 +13,6 @@
             Nome = nome;
         }
 
-        //TODO lista de veiculos
-
         public override bool Equals(object? obj)
         {
             return obj is GrupoVeiculos veiculos &&
