@@ -118,7 +118,7 @@ namespace LocadoraDeVeiculos.WinApp
             btnExcluir.Enabled = configuracao.ExcluirHabilitado;
             btnGerarPdf.Enabled = configuracao.GerarPdfHabilitado;
             btnVisualizar.Enabled = configuracao.VisualizarHabilitado;
-            btnFuncionariosDesativados.Enabled = configuracao.FuncionariosDesabilitados;
+            btnFuncionariosDesativados.Enabled = configuracao.Desabilitados;
         }
 
         private void ConfigurarTooltips(ConfiguracaoToolboxBase configuracao)
@@ -128,7 +128,7 @@ namespace LocadoraDeVeiculos.WinApp
             btnExcluir.ToolTipText = configuracao.TooltipExcluir;
             btnGerarPdf.ToolTipText = configuracao.TooltipGerarPdf;
             btnVisualizar.ToolTipText = configuracao.TooltipVisualizar;
-            btnFuncionariosDesativados.ToolTipText = configuracao.ToolTipFuncionariosDesabilitados;
+            btnFuncionariosDesativados.ToolTipText = configuracao.ToolTipDesabilitados;
         }
 
         private void ConfigurarTooltipsInativos()

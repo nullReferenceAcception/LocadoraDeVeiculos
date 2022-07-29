@@ -7,7 +7,7 @@
         public override string TooltipEditar => "Editar um funcionário existente";
         public override string TooltipExcluir => "Desabilitar um funcionário existente";
         public override string? TooltipVisualizar => "Visualizar um funcionário existente";
-        public override string? ToolTipFuncionariosDesabilitados => "Visualizar funcionários desabilitados";
-        public override bool FuncionariosDesabilitados => true;
+        public override string? ToolTipDesabilitados => "Visualizar funcionários desabilitados";
+        public override bool Desabilitados => true;
     }
 }

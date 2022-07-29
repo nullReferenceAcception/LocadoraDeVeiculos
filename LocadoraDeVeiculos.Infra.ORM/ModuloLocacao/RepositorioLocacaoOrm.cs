@@ -48,5 +48,17 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloLocacao
 
             return false;
         }
+
+        public List<Locacao> SelecionarDesativados()
+        {
+            return registros.Where(x => x.Status == StatusEnum.Inativo || x.Status == StatusEnum.Finalizado).Include(x => x.Condutor)
+                .ThenInclude(x => x.Cliente)
+                .Include(x => x.Cliente)
+                .Include(x => x.Funcionario)
+                .Include(x => x.PlanoCobranca).ThenInclude(x => x.GrupoVeiculos)
+                .Include(x => x.Taxas)
+                .Include(x => x.Veiculo).ThenInclude(x => x.GrupoVeiculos)
+                .ToList();
+        }
     }
 }
