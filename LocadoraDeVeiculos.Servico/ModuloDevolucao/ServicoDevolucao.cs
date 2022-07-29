@@ -1,9 +1,12 @@
-﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+﻿using FluentResults;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloDevolucao;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Servico.Compartilhado;
+using Serilog;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace LocadoraDeVeiculos.Servico.ModuloDevolucao
 {
@@ -15,7 +18,22 @@ namespace LocadoraDeVeiculos.Servico.ModuloDevolucao
             _repositorioDevolucao = repositorio;
         }
 
-        public void RemoverTaxas(Devolucao devolucao, List<Taxa> taxas) => _repositorioDevolucao.RemoverTaxas(devolucao, taxas);
+
+        public void RemoverTaxas(Devolucao devolucao, List<Taxa> taxas)
+        {
+            try
+            {
+                Log.Logger.Information("Removendo taxa de {devolucao}", devolucao);
+                _repositorioDevolucao.RemoverTaxas(devolucao, taxas);
+            }
+            catch (Exception ex)
+            {
+                StringBuilder msgErro = new StringBuilder("erro ao remover taxa de ");
+
+                Log.Logger.Error(ex, msgErro + "{classe}", devolucao);
+            }
+        }
+
 
         protected override string MensagemDeErroSeTiverDuplicidade { get; set; } = "zXy";
     }
