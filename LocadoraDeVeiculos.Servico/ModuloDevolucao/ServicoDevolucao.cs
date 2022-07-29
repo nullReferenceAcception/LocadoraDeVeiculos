@@ -18,7 +18,6 @@ namespace LocadoraDeVeiculos.Servico.ModuloDevolucao
             _repositorioDevolucao = repositorio;
         }
 
-
         public void RemoverTaxas(Devolucao devolucao, List<Taxa> taxas)
         {
             try

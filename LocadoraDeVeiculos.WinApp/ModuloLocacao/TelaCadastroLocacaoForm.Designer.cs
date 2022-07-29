@@ -125,7 +125,6 @@
             // comboBoxCondutor
             // 
             this.comboBoxCondutor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxCondutor.Enabled = false;
             this.comboBoxCondutor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxCondutor.FormattingEnabled = true;
             this.comboBoxCondutor.Location = new System.Drawing.Point(6, 169);

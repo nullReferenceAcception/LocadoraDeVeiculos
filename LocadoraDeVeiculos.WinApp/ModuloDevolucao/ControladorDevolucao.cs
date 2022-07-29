@@ -120,6 +120,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
             TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {devolucoes.Count} {(devolucoes.Count == 1 ? "devolução" : "devoluções")}", CorParaRodape.White);
         }
+
         public override void GerarPdf()
         {
             var numero = _tabelaDevolucao.ObtemGuidDevolucaoSelecionada();
@@ -135,8 +136,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
             DocumentCore dc = new DocumentCore();
 
-            dc.Content.End.Insert("Informaçoes da locação: " + devolucaoSelecionada.Locacao.Id.ToString() + "\n");
-            dc.Content.End.Insert("Data da locação: " + devolucaoSelecionada.Locacao.DataLocacao + "\n");
+            dc.Content.End.Insert("Informaçoes da devolução: " + devolucaoSelecionada.Locacao.Id.ToString() + "\n");
+            dc.Content.End.Insert("Data da locação: " + devolucaoSelecionada.Locacao.DataLocacao.ToShortDateString() + "\n");
             dc.Content.End.Insert("------------------------------------------------- \n");
             dc.Content.End.Insert("Cliente: " + devolucaoSelecionada.Locacao.Cliente.Nome + "\n");
 
@@ -151,6 +152,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 dc.Content.End.Insert("Condutor: " + devolucaoSelecionada.Locacao.Condutor.Nome + "\n");
                 dc.Content.End.Insert("CNH do condutor: " + devolucaoSelecionada.Locacao.Condutor.CNH + "\n");
             }
+
             dc.Content.End.Insert("-------------------------------------------------\n ");
             dc.Content.End.Insert("Veiculo: " + devolucaoSelecionada.Locacao.Veiculo.Modelo + "\n");
             dc.Content.End.Insert("Placa: " + devolucaoSelecionada.Locacao.Veiculo.Placa + "\n");
@@ -159,10 +161,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             dc.Content.End.Insert("Plano de cobrança: " + devolucaoSelecionada.Locacao.PlanoCobranca.ToString() + "\n");
             dc.Content.End.Insert("-------------------------------------------------\n ");
             dc.Content.End.Insert("Taxas: \n");
+
             foreach (var taxa in devolucaoSelecionada.Locacao.Taxas)
-            {
                 dc.Content.End.Insert(taxa.ToString() + "\n");
-            }
+
             dc.Content.End.Insert("-------------------------------------------------\n ");
             dc.Content.End.Insert("Funcionario responsável: " + devolucaoSelecionada.Locacao.Funcionario.Nome + "\n");
             dc.Content.End.Insert("-------------------------------------------------\n ");
@@ -178,15 +180,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             dc.Content.End.Insert("-------------------------------------------------\n ");
             //dc.Content.End.Insert("Valor Total: " + devolucaoSelecionada.FAZERVALOR)
 
-
-
-
-
-
-
-
-
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Devolução"
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Devolução - "
                 + devolucaoSelecionada.Id.ToString() + ".pdf";
 
             dc.Save(path, new PdfSaveOptions()
@@ -194,7 +188,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 Compliance = PdfCompliance.PDF_A1a,
                 PreserveFormFields = true
             });
-
 
             MessageBox.Show("salvo nos documentos");
         }

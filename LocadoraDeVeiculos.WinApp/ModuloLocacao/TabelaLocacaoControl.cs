@@ -50,7 +50,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             grid.Rows.Clear();
 
             foreach (Locacao locacao in locacoes)
-                grid.Rows.Add(locacao.Id, locacao.Funcionario.Nome, locacao.Cliente.Nome, locacao.Condutor == null ? "—" : locacao.Condutor.Nome, locacao.Veiculo.Placa, locacao.PlanoCobranca.Nome, locacao.DataLocacao, locacao.DataDevolucaoPrevista, locacao.Status);
+                grid.Rows.Add(locacao.Id, locacao.Funcionario.Nome, locacao.Cliente.Nome, locacao.Condutor == null ? locacao.Cliente.Nome : locacao.Condutor.Nome, locacao.Veiculo.Modelo, locacao.PlanoCobranca.Nome, locacao.DataLocacao, locacao.DataDevolucaoPrevista, locacao.Status);
         }
     }
 }

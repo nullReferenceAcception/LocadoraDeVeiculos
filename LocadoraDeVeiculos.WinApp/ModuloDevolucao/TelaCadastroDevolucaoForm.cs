@@ -6,6 +6,7 @@ using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
@@ -56,7 +57,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             Locacao loc = (Locacao)comboBoxLocacoes.SelectedItem;
             textBoxGuid.Text = loc.Id.ToString();
             textBoxFuncionario.Text = loc.Funcionario.Nome;
-            textBoxCondutor.Text = loc.Condutor.Nome;
+            if(loc.Condutor != null)
+                textBoxCondutor.Text = loc.Condutor.Nome;
             textBoxGrupoVeiculo.Text = loc.PlanoCobranca.GrupoVeiculos.Nome;
             textBoxVeiculo.Text = loc.Veiculo.Modelo;
             textBoxPlanoCobranca.Text = loc.PlanoCobranca.Nome;
@@ -79,15 +81,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             ObterDadosDaTela();
 
             var resultadoValidacao = GravarRegistro(Devolucao);
+            resultadoValidacao = EditarKmVeiculo();
 
             if (resultadoValidacao.IsFailed)
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].Message, CorParaRodape.Red);
                 DialogResult = DialogResult.None;
             }
-
-            EditarKmVeiculo();
-            FinalizarLocacao();
         }
 
         private void FinalizarLocacao()
@@ -97,11 +97,18 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             _servicoLocacao.Editar(Devolucao.Locacao);
         }
 
-        private void EditarKmVeiculo()
+        private Result<Devolucao> EditarKmVeiculo()
         {
+            if (numericUpDownKmRodadosLocacao.Value == Devolucao.Locacao.Veiculo.KmPercorrido)
+                return Result.Fail(new Error("Quilometragem igual à que o veículo foi alugado!"));
+
             Devolucao.Locacao.Veiculo.KmPercorrido = numericUpDownKmRodadosLocacao.Value;
 
             _servicoVeiculo.Editar(Devolucao.Locacao.Veiculo);
+
+            FinalizarLocacao();
+
+            return Result.Ok();
         }
 
         private void AtualizarTotalPrevisto()
@@ -195,7 +202,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
         private void ObterDadosDaTela()
         {
-            // Editar km do veículo
             Devolucao.DataDevolucaoReal = dateTimePickerDataDevolucaoReal.Value;
             Devolucao.Tanque = (TanqueEnum)comboBoxNivelTanque.SelectedItem;
             Devolucao.Locacao = (Locacao)comboBoxLocacoes.SelectedItem;

@@ -52,7 +52,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 comboBoxCliente.Items.Add(item);
 
             comboBoxPlanoCobranca.SelectedIndex = 0;
-
         }
 
         public Func<Locacao, Result<Locacao>> GravarRegistro { get; set; }
@@ -132,16 +131,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         private void comboBoxCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!((Cliente)comboBoxCliente.SelectedItem).PessoaFisica)
-            {
-                comboBoxCondutor.Enabled = true;
                 foreach (Condutor item in _servicoCondutor.SelecionarTodosDoCliente((Cliente)comboBoxCliente.SelectedItem).Value)
                     comboBoxCondutor.Items.Add(item);
-            }
             else
-            {
-                comboBoxCondutor.Enabled = false;
                 comboBoxCondutor.SelectedIndex = -1;
-            }
         }
 
         private void AtualizarTotalPrevisto()

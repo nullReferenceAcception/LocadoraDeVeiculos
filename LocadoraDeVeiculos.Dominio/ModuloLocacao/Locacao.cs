@@ -75,7 +75,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
 
         public override string ToString()
         {
-            return Cliente.Nome;
+            return $"{Cliente.Nome} — {Veiculo.Modelo} — {Veiculo.Placa}";
         }
     }
 }

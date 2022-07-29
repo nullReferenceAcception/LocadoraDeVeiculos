@@ -49,8 +49,8 @@
             this.condutoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionariosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.veiculosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.devolucaoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.locaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.devolucaoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuracaoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelRegistros = new System.Windows.Forms.Panel();
             this.labelRodape = new System.Windows.Forms.ToolStripStatusLabel();
@@ -256,6 +256,14 @@
             this.veiculosMenuItem.Text = "Veículos";
             this.veiculosMenuItem.Click += new System.EventHandler(this.veiculosMenuItem_Click);
             // 
+            // locaçãoToolStripMenuItem
+            // 
+            this.locaçãoToolStripMenuItem.Name = "locaçãoToolStripMenuItem";
+            this.locaçãoToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F8;
+            this.locaçãoToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.locaçãoToolStripMenuItem.Text = "Locação";
+            this.locaçãoToolStripMenuItem.Click += new System.EventHandler(this.locaçãoToolStripMenuItem_Click);
+            // 
             // devolucaoMenuItem
             // 
             this.devolucaoMenuItem.Name = "devolucaoMenuItem";
@@ -264,17 +272,10 @@
             this.devolucaoMenuItem.Text = "Devolução";
             this.devolucaoMenuItem.Click += new System.EventHandler(this.devolucaoMenuItem_Click);
             // 
-            // locaçãoToolStripMenuItem
-            // 
-            this.locaçãoToolStripMenuItem.Name = "locaçãoToolStripMenuItem";
-
-            this.locaçãoToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.locaçãoToolStripMenuItem.Text = "Locação";
-            this.locaçãoToolStripMenuItem.Click += new System.EventHandler(this.locaçãoToolStripMenuItem_Click);
-            // 
             // configuracaoMenuItem
             // 
             this.configuracaoMenuItem.Name = "configuracaoMenuItem";
+            this.configuracaoMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10;
             this.configuracaoMenuItem.Size = new System.Drawing.Size(193, 22);
             this.configuracaoMenuItem.Text = "Configurações";
             this.configuracaoMenuItem.Click += new System.EventHandler(this.configuracaoMenuItem_Click);
