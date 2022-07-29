@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBoxLocacao = new System.Windows.Forms.GroupBox();
-            this.numericUpDownKmPlanejado = new System.Windows.Forms.NumericUpDown();
-            this.labelKmPrevisto = new System.Windows.Forms.Label();
             this.comboBoxCondutor = new System.Windows.Forms.ComboBox();
             this.textBoxTotalPrevisto = new System.Windows.Forms.TextBox();
             this.labelCondutor = new System.Windows.Forms.Label();
@@ -58,14 +56,11 @@
             this.buttonGravar = new System.Windows.Forms.Button();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.groupBoxLocacao.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownKmPlanejado)).BeginInit();
             this.groupBoxTaxa.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxLocacao
             // 
-            this.groupBoxLocacao.Controls.Add(this.numericUpDownKmPlanejado);
-            this.groupBoxLocacao.Controls.Add(this.labelKmPrevisto);
             this.groupBoxLocacao.Controls.Add(this.comboBoxCondutor);
             this.groupBoxLocacao.Controls.Add(this.textBoxTotalPrevisto);
             this.groupBoxLocacao.Controls.Add(this.labelCondutor);
@@ -92,40 +87,14 @@
             this.groupBoxLocacao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.groupBoxLocacao.Location = new System.Drawing.Point(12, 12);
             this.groupBoxLocacao.Name = "groupBoxLocacao";
-            this.groupBoxLocacao.Size = new System.Drawing.Size(566, 550);
+            this.groupBoxLocacao.Size = new System.Drawing.Size(566, 511);
             this.groupBoxLocacao.TabIndex = 0;
             this.groupBoxLocacao.TabStop = false;
             this.groupBoxLocacao.Text = "Dados da locação:";
             // 
-            // numericUpDownKmPlanejado
-            // 
-            this.numericUpDownKmPlanejado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericUpDownKmPlanejado.Location = new System.Drawing.Point(6, 389);
-            this.numericUpDownKmPlanejado.Maximum = new decimal(new int[] {
-            99999999,
-            0,
-            0,
-            0});
-            this.numericUpDownKmPlanejado.Name = "numericUpDownKmPlanejado";
-            this.numericUpDownKmPlanejado.Size = new System.Drawing.Size(120, 23);
-            this.numericUpDownKmPlanejado.TabIndex = 6;
-            this.numericUpDownKmPlanejado.ValueChanged += new System.EventHandler(this.numericUpDownKmPlanejado_ValueChanged);
-            // 
-            // labelKmPrevisto
-            // 
-            this.labelKmPrevisto.AutoSize = true;
-            this.labelKmPrevisto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelKmPrevisto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelKmPrevisto.Location = new System.Drawing.Point(6, 371);
-            this.labelKmPrevisto.Name = "labelKmPrevisto";
-            this.labelKmPrevisto.Size = new System.Drawing.Size(150, 15);
-            this.labelKmPrevisto.TabIndex = 43;
-            this.labelKmPrevisto.Text = "Quantos Km planeja rodar?";
-            // 
             // comboBoxCondutor
             // 
             this.comboBoxCondutor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxCondutor.Enabled = false;
             this.comboBoxCondutor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxCondutor.FormattingEnabled = true;
             this.comboBoxCondutor.Location = new System.Drawing.Point(6, 169);
@@ -137,7 +106,7 @@
             // 
             this.textBoxTotalPrevisto.Enabled = false;
             this.textBoxTotalPrevisto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxTotalPrevisto.Location = new System.Drawing.Point(6, 521);
+            this.textBoxTotalPrevisto.Location = new System.Drawing.Point(6, 476);
             this.textBoxTotalPrevisto.MaxLength = 255;
             this.textBoxTotalPrevisto.Name = "textBoxTotalPrevisto";
             this.textBoxTotalPrevisto.ReadOnly = true;
@@ -172,7 +141,7 @@
             this.TotalPrevisto.AutoSize = true;
             this.TotalPrevisto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.TotalPrevisto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TotalPrevisto.Location = new System.Drawing.Point(6, 503);
+            this.TotalPrevisto.Location = new System.Drawing.Point(6, 458);
             this.TotalPrevisto.Name = "TotalPrevisto";
             this.TotalPrevisto.Size = new System.Drawing.Size(80, 15);
             this.TotalPrevisto.TabIndex = 38;
@@ -286,7 +255,7 @@
             this.dateTimePickerDataPrevistaDevolucao.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dateTimePickerDataPrevistaDevolucao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePickerDataPrevistaDevolucao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDataPrevistaDevolucao.Location = new System.Drawing.Point(6, 477);
+            this.dateTimePickerDataPrevistaDevolucao.Location = new System.Drawing.Point(6, 432);
             this.dateTimePickerDataPrevistaDevolucao.Name = "dateTimePickerDataPrevistaDevolucao";
             this.dateTimePickerDataPrevistaDevolucao.Size = new System.Drawing.Size(98, 23);
             this.dateTimePickerDataPrevistaDevolucao.TabIndex = 8;
@@ -297,7 +266,7 @@
             this.dateTimePickerDataLocacao.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dateTimePickerDataLocacao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePickerDataLocacao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDataLocacao.Location = new System.Drawing.Point(6, 433);
+            this.dateTimePickerDataLocacao.Location = new System.Drawing.Point(6, 388);
             this.dateTimePickerDataLocacao.Name = "dateTimePickerDataLocacao";
             this.dateTimePickerDataLocacao.Size = new System.Drawing.Size(98, 23);
             this.dateTimePickerDataLocacao.TabIndex = 7;
@@ -307,7 +276,7 @@
             this.labelDevolucao.AutoSize = true;
             this.labelDevolucao.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelDevolucao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelDevolucao.Location = new System.Drawing.Point(6, 459);
+            this.labelDevolucao.Location = new System.Drawing.Point(6, 414);
             this.labelDevolucao.Name = "labelDevolucao";
             this.labelDevolucao.Size = new System.Drawing.Size(152, 15);
             this.labelDevolucao.TabIndex = 8;
@@ -319,7 +288,7 @@
             this.labelDataLocacao.AutoSize = true;
             this.labelDataLocacao.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelDataLocacao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelDataLocacao.Location = new System.Drawing.Point(6, 415);
+            this.labelDataLocacao.Location = new System.Drawing.Point(6, 370);
             this.labelDataLocacao.Name = "labelDataLocacao";
             this.labelDataLocacao.Size = new System.Drawing.Size(94, 15);
             this.labelDataLocacao.TabIndex = 7;
@@ -403,7 +372,7 @@
             this.buttonGravar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonGravar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.buttonGravar.Location = new System.Drawing.Point(438, 568);
+            this.buttonGravar.Location = new System.Drawing.Point(438, 524);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(67, 33);
             this.buttonGravar.TabIndex = 9;
@@ -416,7 +385,7 @@
             this.buttonCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancelar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.buttonCancelar.Location = new System.Drawing.Point(511, 568);
+            this.buttonCancelar.Location = new System.Drawing.Point(511, 524);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(67, 33);
             this.buttonCancelar.TabIndex = 10;
@@ -427,7 +396,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(596, 613);
+            this.ClientSize = new System.Drawing.Size(596, 564);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.groupBoxLocacao);
             this.Controls.Add(this.buttonGravar);
@@ -436,7 +405,6 @@
             this.Text = "Locação";
             this.groupBoxLocacao.ResumeLayout(false);
             this.groupBoxLocacao.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownKmPlanejado)).EndInit();
             this.groupBoxTaxa.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -473,7 +441,5 @@
         private System.Windows.Forms.ComboBox comboBoxFuncionario;
         private System.Windows.Forms.ComboBox comboBoxCondutor;
         private System.Windows.Forms.Label labelCondutor;
-        private System.Windows.Forms.Label labelKmPrevisto;
-        private System.Windows.Forms.NumericUpDown numericUpDownKmPlanejado;
     }
 }
