@@ -110,6 +110,11 @@ namespace LocadoraDeVeiculos.WinApp
         {
             ConfigurarTelaPrincipal(serviceLocator.Get<ControladorConfiguracao>());
         }
+        private void btnGerarPdf_Click(object sender, EventArgs e)
+        {
+            controlador.GerarPdf(); 
+
+        }
 
         private void ConfigurarBotoes(ConfiguracaoToolboxBase configuracao)
         {
@@ -198,5 +203,7 @@ namespace LocadoraDeVeiculos.WinApp
             else
                 ConfigurarTooltipsInativos();
         }
+
+       
     }
 }

@@ -158,6 +158,7 @@
             this.btnGerarPdf.Name = "btnGerarPdf";
             this.btnGerarPdf.Padding = new System.Windows.Forms.Padding(5);
             this.btnGerarPdf.Size = new System.Drawing.Size(38, 38);
+            this.btnGerarPdf.Click += new System.EventHandler(this.btnGerarPdf_Click);
             // 
             // toolStripSeparator1
             // 
@@ -266,7 +267,7 @@
             // locaçãoToolStripMenuItem
             // 
             this.locaçãoToolStripMenuItem.Name = "locaçãoToolStripMenuItem";
-            this.locaçãoToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F8;
+
             this.locaçãoToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.locaçãoToolStripMenuItem.Text = "Locação";
             this.locaçãoToolStripMenuItem.Click += new System.EventHandler(this.locaçãoToolStripMenuItem_Click);
@@ -274,7 +275,6 @@
             // configuracaoMenuItem
             // 
             this.configuracaoMenuItem.Name = "configuracaoMenuItem";
-            this.configuracaoMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10;
             this.configuracaoMenuItem.Size = new System.Drawing.Size(193, 22);
             this.configuracaoMenuItem.Text = "Configurações";
             this.configuracaoMenuItem.Click += new System.EventHandler(this.configuracaoMenuItem_Click);

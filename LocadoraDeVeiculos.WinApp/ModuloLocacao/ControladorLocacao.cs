@@ -8,6 +8,7 @@ using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using LocadoraDeVeiculos.Servico.ModuloFuncionario;
+using SautinSoft.Document;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -226,5 +227,71 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {locacaos.Count} {(locacaos.Count == 1 ? "locacao" : "locacoes")}", CorParaRodape.White);
         }
+
+        public override void GerarPdf()
+        {
+            var guid = _tabelaLocacao.ObtemGuidLocacaoSelecionado();
+
+
+            Locacao locacaoSelecionada = _servicoLocacao.SelecionarPorGuid(guid).Value;
+
+            if (locacaoSelecionada == null)
+            {
+                MessageBox.Show("Selecione uma Locação primeiro",
+                "Exclusão de Locação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            DocumentCore dc = new DocumentCore();
+
+            dc.Content.End.Insert("Locação: " + locacaoSelecionada.Id.ToString() + "\n");
+            dc.Content.End.Insert("Data da locação: " + locacaoSelecionada.DataLocacao + "\n");
+            dc.Content.End.Insert("------------------------------------------------- \n");
+            dc.Content.End.Insert("Cliente: " + locacaoSelecionada.Cliente.Nome + "\n");
+            
+            if(locacaoSelecionada.Cliente.PessoaFisica == true )
+            {
+                dc.Content.End.Insert("CPF: " + locacaoSelecionada.Cliente.CPF + "\n");
+                dc.Content.End.Insert("CNH: " + locacaoSelecionada.Cliente.CNH + "\n");
+            }
+            else
+            {
+                dc.Content.End.Insert("CNPJ: " + locacaoSelecionada.Cliente.CNPJ + "\n");
+                dc.Content.End.Insert("Condutor: " + locacaoSelecionada.Condutor.Nome + "\n");
+                dc.Content.End.Insert("CNH do condutor: " + locacaoSelecionada.Condutor.CNH + "\n");
+            }
+            dc.Content.End.Insert("-------------------------------------------------\n ");
+            dc.Content.End.Insert("Veiculo: " + locacaoSelecionada.Veiculo.Modelo + "\n");
+            dc.Content.End.Insert("Placa: " + locacaoSelecionada.Veiculo.Placa + "\n");
+            dc.Content.End.Insert("Cor: " + locacaoSelecionada.Veiculo.Cor + "\n");
+            dc.Content.End.Insert("-------------------------------------------------\n ");
+            dc.Content.End.Insert("Plano de cobrança: " + locacaoSelecionada.PlanoCobranca.ToString() + "\n");
+            dc.Content.End.Insert("-------------------------------------------------\n ");
+            dc.Content.End.Insert("Taxas: \n");
+            foreach(var taxa in locacaoSelecionada.Taxas)
+            {
+                dc.Content.End.Insert(taxa.ToString() + "\n");
+            }
+            dc.Content.End.Insert("-------------------------------------------------\n ");
+            dc.Content.End.Insert("Funcionario responsável: " + locacaoSelecionada.Funcionario.Nome + "\n");
+
+
+
+
+
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Locação"
+                + locacaoSelecionada.Id.ToString() + ".pdf";
+
+            dc.Save(path, new PdfSaveOptions()
+            {
+                Compliance = PdfCompliance.PDF_A1a,
+                PreserveFormFields = true
+            });
+
+
+            MessageBox.Show("salvo nos documentos");
+
+        }
+
     }
 }
