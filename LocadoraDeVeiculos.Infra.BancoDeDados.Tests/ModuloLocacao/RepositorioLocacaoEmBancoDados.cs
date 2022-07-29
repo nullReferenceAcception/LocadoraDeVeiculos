@@ -41,7 +41,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloLocacao
         }
 
         [TestMethod]
-        public void Deve_excluir_locacao()
+        public void Deve_Inativar_locacao()
         {
             Locacao locacao = CriarLocacao();
 
@@ -52,7 +52,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloLocacao
 
             Locacao locacaoEncontrado = _servicoLocacao.SelecionarPorGuid(locacao.Id).Value;
 
-            locacaoEncontrado.Should().Be(null);
+            locacaoEncontrado.Status.Should().Be(StatusEnum.Inativo);
         }
         [TestMethod]
         public void Deve_selecionar_por_id()

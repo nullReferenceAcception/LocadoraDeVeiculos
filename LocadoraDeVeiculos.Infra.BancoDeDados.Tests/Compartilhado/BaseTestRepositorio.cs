@@ -164,7 +164,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
                 _servicoTaxa.Inserir(item);
             }
 
-            Locacao locacao = new Locacao(CriarFuncionario(),CriarClienteComCPF(),CriarCondutor(),CriarVeiculo(),CriarPlanoCobranca(),DateTime.Today,DateTime.Today.AddDays(8),taxas,true);
+            Locacao locacao = new Locacao(CriarFuncionario(),CriarClienteComCPF(),CriarCondutor(),CriarVeiculo(),CriarPlanoCobranca(),DateTime.Today,DateTime.Today.AddDays(8),taxas,StatusEnum.Ativo);
             locacao.Condutor.Cliente = locacao.Cliente;
             _servicoFuncionario.Inserir(locacao.Funcionario);
             _servicoCliente.Inserir(locacao.Cliente);
@@ -179,7 +179,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
 
         protected Taxa CriarTaxa()
         {
-            return new Taxa(GerarNovaStringAleatoria(), (random.Next(0, 100) + (decimal)Math.Round(random.NextDouble(), 2)), true);
+            return new Taxa(GerarNovaStringAleatoria(), (random.Next(0, 100) + (decimal)Math.Round(random.NextDouble(), 2)), true,true);
         }
         #endregion
     }

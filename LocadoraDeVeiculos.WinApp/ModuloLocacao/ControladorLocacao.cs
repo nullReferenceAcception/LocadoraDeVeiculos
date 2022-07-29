@@ -134,12 +134,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             if (locacaoSelecionada == null)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma locacao para excluir", CorParaRodape.Yellow);
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma locacao para Inativar", CorParaRodape.Yellow);
                 return;
             }
 
-            DialogResult resultado = MessageBox.Show("Deseja realmente excluir a Locacao?",
-               "Exclusão de Locacao", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show("Deseja realmente Inativar a Locacao?",
+               "Inativar Locacao", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             Result validationResult;
 

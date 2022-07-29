@@ -28,9 +28,13 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloLocacao
 
             builder.HasMany(x => x.Taxas).WithMany(x => x.Locacoes);
 
+
+            builder.Property(x => x.Status).HasConversion<string>().IsRequired();
+
             builder.Property(x => x.DataLocacao).HasColumnType("date").IsRequired();
+
             builder.Property(x => x.DataDevolucaoPrevista).HasColumnType("date").IsRequired();
-            builder.Property(x => x.EstaAtivo);
+
         }
     }
 }
