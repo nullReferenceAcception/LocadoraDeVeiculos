@@ -7,6 +7,7 @@ using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 {
@@ -196,7 +197,18 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             });
 
 
-            MessageBox.Show("salvo nos documentos");
+            if (MessageBox.Show("Salvo em documentos, deseja abrir o PDF?", "Devolução", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+
+                var p = new Process();
+                p.StartInfo = new ProcessStartInfo(path)
+                {
+                    UseShellExecute = true
+                };
+                p.Start();
+            }
+       
+            
         }
     }
 }

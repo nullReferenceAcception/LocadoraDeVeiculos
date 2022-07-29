@@ -11,6 +11,7 @@ using LocadoraDeVeiculos.Servico.ModuloFuncionario;
 using SautinSoft.Document;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -289,8 +290,18 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             });
 
 
-            MessageBox.Show("salvo nos documentos");
 
+            if (MessageBox.Show("Salvo em documentos, deseja abrir o PDF?", "Devolução", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+
+                var p = new Process();
+                p.StartInfo = new ProcessStartInfo(path)
+                {
+                    UseShellExecute = true
+                };
+                p.Start();
+            }
+            
         }
 
     }
