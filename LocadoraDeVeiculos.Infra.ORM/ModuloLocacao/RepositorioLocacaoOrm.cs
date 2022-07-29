@@ -20,9 +20,16 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloLocacao
                     locacao.Taxas.Remove(taxa);
         }
 
+        public override void Excluir(Locacao registro)
+        {
+            registro.Status = StatusEnum.Inativo;
+            registros.Update(registro);
+        }
+
+
         public override List<Locacao> SelecionarTodos()
         {
-            return registros.Include(x => x.Condutor)
+            return registros.Where(x => x.Status == StatusEnum.Ativo).Include(x => x.Condutor)
                 .ThenInclude(x => x.Cliente)
                 .Include(x => x.Cliente)
                 .Include(x => x.Funcionario)
@@ -34,7 +41,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloLocacao
 
         public bool VerificarDuplicidade(Locacao registro)
         {
-            var x = registros.Where(x => x.Veiculo == registro.Veiculo && x.EstaAtivo == true && x.Id != registro.Id);
+            var x = registros.Where(x => x.Veiculo == registro.Veiculo && x.Status == StatusEnum.Ativo && x.Id != registro.Id);
 
             if (x.Any())
                 return true;
