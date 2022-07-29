@@ -6,5 +6,7 @@
         public override string TooltipInserir => "Inserir uma nova locação";
         public override string TooltipEditar => "Editar uma locação existente";
         public override string TooltipExcluir => "Excluir uma locação existente";
+        public override string TooltipGerarPdf => "Gerar um PDF de locação";
+        public override bool GerarPdfHabilitado => true;
     }
 }
