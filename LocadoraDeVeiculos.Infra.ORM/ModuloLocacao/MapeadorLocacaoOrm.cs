@@ -17,7 +17,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloLocacao
             builder.Property(x => x.FuncionarioId).HasColumnType("uniqueidentifier").IsRequired();
             builder.HasOne(x => x.Funcionario).WithMany().HasForeignKey(x => x.FuncionarioId).OnDelete(DeleteBehavior.NoAction);
 
-            builder.Property(x => x.CondutorId).HasColumnType("uniqueidentifier").IsRequired();
+            builder.Property(x => x.CondutorId).HasColumnType("uniqueidentifier");
             builder.HasOne(x => x.Condutor).WithMany().HasForeignKey(x => x.CondutorId).OnDelete(DeleteBehavior.NoAction);
 
             builder.Property(x => x.VeiculoId).HasColumnType("uniqueidentifier").IsRequired();

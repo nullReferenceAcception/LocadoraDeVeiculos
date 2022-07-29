@@ -31,20 +31,20 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
             Status = status;
         }
 
-      public Funcionario Funcionario { get; set; }
-      public Guid FuncionarioId { get; set; }
-      public Cliente Cliente { get; set; }
-      public Guid ClienteId { get; set; }
-      public Condutor Condutor { get; set; }
-      public Guid CondutorId { get; set; }
-      public Veiculo Veiculo { get; set; }
-      public Guid VeiculoId { get; set; }
-      public PlanoCobranca PlanoCobranca { get; set; }
-      public Guid PlanoCobrancaId { get; set; }
-      public DateTime DataLocacao { get; set; }
-      public DateTime DataDevolucaoPrevista { get; set; }
-      public List<Taxa> Taxas { get; set; }
-      public StatusEnum Status { get; set; }
+        public Funcionario Funcionario { get; set; }
+        public Guid FuncionarioId { get; set; }
+        public Cliente Cliente { get; set; }
+        public Guid ClienteId { get; set; }
+        public Condutor? Condutor { get; set; }
+        public Guid? CondutorId { get; set; }
+        public Veiculo Veiculo { get; set; }
+        public Guid VeiculoId { get; set; }
+        public PlanoCobranca PlanoCobranca { get; set; }
+        public Guid PlanoCobrancaId { get; set; }
+        public DateTime DataLocacao { get; set; }
+        public DateTime DataDevolucaoPrevista { get; set; }
+        public List<Taxa> Taxas { get; set; }
+        public StatusEnum Status { get; set; }
 
         public override bool Equals(object? obj)
         {
@@ -65,11 +65,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
         {
             if (Taxas.Count != locacao.Taxas.Count)
                 return false;
+
             for (int i = 0; i < Taxas.Count; i++)
-            {
                 if (!EqualityComparer<Taxa>.Default.Equals(Taxas[i], locacao.Taxas[i]))
                     return false;
-            }
+
             return true;
         }
 

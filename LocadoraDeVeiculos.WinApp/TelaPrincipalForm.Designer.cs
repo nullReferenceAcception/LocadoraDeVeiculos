@@ -259,6 +259,7 @@
             // devolucaoMenuItem
             // 
             this.devolucaoMenuItem.Name = "devolucaoMenuItem";
+            this.devolucaoMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F9;
             this.devolucaoMenuItem.Size = new System.Drawing.Size(193, 22);
             this.devolucaoMenuItem.Text = "Devolução";
             this.devolucaoMenuItem.Click += new System.EventHandler(this.devolucaoMenuItem_Click);
@@ -266,6 +267,7 @@
             // locaçãoToolStripMenuItem
             // 
             this.locaçãoToolStripMenuItem.Name = "locaçãoToolStripMenuItem";
+
             this.locaçãoToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.locaçãoToolStripMenuItem.Text = "Locação";
             this.locaçãoToolStripMenuItem.Click += new System.EventHandler(this.locaçãoToolStripMenuItem_Click);

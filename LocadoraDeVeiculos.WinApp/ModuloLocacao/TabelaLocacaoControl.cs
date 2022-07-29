@@ -18,15 +18,23 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Guid", HeaderText = "Guid"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Funcionario", HeaderText = "Funcionario"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Cliente", HeaderText = "Cliente"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Condutor", HeaderText = "Condutor"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Veiculo", HeaderText = "Veiculo"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "PlanoCobranca", HeaderText = "PlanoCobranca"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Data de Locacao", HeaderText = "Data de Locacao"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Data de devolucao prevista", HeaderText = "Data de devolucao prevista"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Guid", HeaderText = "Guid", MinimumWidth = 185},
 
+                new DataGridViewTextBoxColumn { DataPropertyName = "Funcionario", HeaderText = "Funcionário"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Cliente", HeaderText = "Cliente"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Condutor", HeaderText = "Condutor"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Veiculo", HeaderText = "Veículo"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "PlanoCobranca", HeaderText = "Plano de Cobrança"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Data de Locacao", HeaderText = "Data de Locação"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Data de devolucao prevista", HeaderText = "Data de dev. prev."},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Status", HeaderText = "Status"},
             };
 
             return colunas;
@@ -42,7 +50,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             grid.Rows.Clear();
 
             foreach (Locacao locacao in locacoes)
-                grid.Rows.Add(locacao.Id, locacao.Funcionario.Nome, locacao.Cliente.Nome, locacao.Condutor.Nome, locacao.Veiculo.Placa, locacao.PlanoCobranca.Nome, locacao.DataLocacao, locacao.DataDevolucaoPrevista);
+                grid.Rows.Add(locacao.Id, locacao.Funcionario.Nome, locacao.Cliente.Nome, locacao.Condutor == null ? "—" : locacao.Condutor.Nome, locacao.Veiculo.Placa, locacao.PlanoCobranca.Nome, locacao.DataLocacao, locacao.DataDevolucaoPrevista, locacao.Status);
         }
     }
 }

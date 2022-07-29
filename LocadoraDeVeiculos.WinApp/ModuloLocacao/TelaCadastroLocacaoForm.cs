@@ -86,7 +86,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             Locacao.Veiculo = (Veiculo)comboBoxVeiculo.SelectedItem;
             Locacao.Cliente = (Cliente)comboBoxCliente.SelectedItem;
             Locacao.PlanoCobranca = (PlanoCobranca)comboBoxPlanoCobranca.SelectedItem;
-            Locacao.Condutor = (Condutor)comboBoxCondutor.SelectedItem;
+
+            if (!((Cliente)comboBoxCliente.SelectedItem).PessoaFisica)
+                Locacao.Condutor = (Condutor)comboBoxCondutor.SelectedItem;
+
             Locacao.DataDevolucaoPrevista = dateTimePickerDataPrevistaDevolucao.Value;
             Locacao.DataLocacao = dateTimePickerDataLocacao.Value;
 
@@ -103,7 +106,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             RemoverTaxas(Locacao, taxas);
         }
 
-        
         private void buttonGravar_Click(object sender, EventArgs e)
         {
             ObterDadosDaTela();
@@ -119,14 +121,26 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         private void comboBoxGrupoVeiculos_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (comboBoxGrupoVeiculos.SelectedIndex > -1)
+                comboBoxVeiculo.Enabled = true;
+
             foreach (Veiculo item in _servicoVeiculo.SelecionarTodosDoGrupo((GrupoVeiculos)comboBoxGrupoVeiculos.SelectedItem).Value)
                 comboBoxVeiculo.Items.Add(item);
         }
 
         private void comboBoxCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (Condutor item in _servicoCondutor.SelecionarTodosDoCliente((Cliente)comboBoxCliente.SelectedItem).Value)
-                comboBoxCondutor.Items.Add(item);
+            if (!((Cliente)comboBoxCliente.SelectedItem).PessoaFisica)
+            {
+                comboBoxCondutor.Enabled = true;
+                foreach (Condutor item in _servicoCondutor.SelecionarTodosDoCliente((Cliente)comboBoxCliente.SelectedItem).Value)
+                    comboBoxCondutor.Items.Add(item);
+            }
+            else
+            {
+                comboBoxCondutor.Enabled = false;
+                comboBoxCondutor.SelectedIndex = -1;
+            }
         }
 
         private void AtualizarTotalPrevisto()
@@ -157,6 +171,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         private void comboBoxPlanoCobranca_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (comboBoxPlanoCobranca.SelectedIndex > -1)
+            {
+                comboBoxGrupoVeiculos.Enabled = true;
+                checkedListBoxTaxas.Enabled = true;
+            }
+
             GrupoVeiculos item = _servicoGrupoVeiculos.SelecionarGrupoDoPlano((PlanoCobranca)comboBoxPlanoCobranca.SelectedItem).Value;
 
             comboBoxGrupoVeiculos.Items.Add(item);
@@ -186,6 +206,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         private void numericUpDownKmPlanejado_ValueChanged(object sender, EventArgs e)
         {
             AtualizarTotalPrevisto();
+        }
+
+        private void comboBoxVeiculo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBoxKmVeiculo.Text = ((Veiculo)comboBoxVeiculo.SelectedItem).KmPercorrido.ToString();
         }
 
         private void labelCliente_Click(object sender, EventArgs e)
