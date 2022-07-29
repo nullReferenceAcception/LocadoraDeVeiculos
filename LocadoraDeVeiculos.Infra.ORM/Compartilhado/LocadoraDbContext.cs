@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+﻿using Locadora.Infra.Configs;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Infra.ORM.ModuloCliente;
 using LocadoraDeVeiculos.Infra.ORM.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.ORM.ModuloGrupoVeiculo;
@@ -14,11 +15,11 @@ namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
 {
     public class LocadoraDbContext : DbContext, IContextoPersistencia
     {
-        private string enderecoConexaoComBanco;
+        private string connectionString;
 
-        public LocadoraDbContext(string enderecoBanco)
+        public LocadoraDbContext(ConnectionStrings connectionStrings)
         {
-            enderecoConexaoComBanco = enderecoBanco;
+            this.connectionString = connectionStrings.SqlServer;
         }
         public void DesfazerAlteracoes()
         {
@@ -57,7 +58,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(enderecoConexaoComBanco);
+            optionsBuilder.UseSqlServer(connectionString);
 
             ILoggerFactory loggerFactory = LoggerFactory.Create((x) =>
             {

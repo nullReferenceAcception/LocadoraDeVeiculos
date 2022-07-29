@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,10 @@ namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
         protected DbSet<T> registros;
         protected readonly LocadoraDbContext dbContext;
 
-        public RepositorioBase(LocadoraDbContext dbContext)
+        public RepositorioBase(IContextoPersistencia contextoPersistencia)
         {
+            this.dbContext = (LocadoraDbContext)contextoPersistencia;
             registros = dbContext.Set<T>();
-            this.dbContext = dbContext;
         }
 
         public virtual void Inserir(T novoRegistro)

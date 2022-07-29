@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+﻿using Locadora.Infra.Configs;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
@@ -19,6 +20,7 @@ using LocadoraDeVeiculos.Servico.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Servico.ModuloTaxa;
 using LocadoraDeVeiculos.Servico.ModuloVeiculos;
 using LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -43,10 +45,16 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
         {
            
             Log.Logger.ConfigurarLogEmWeb();
-
+            var config = new ConfiguracaoAplicacaoLocadora();
+            var db = new LocadoraDbContext(config.ConnectionStrings);
 
 
             locator = new ServiceLocatorComAutofac();
+
+
+
+            //colocar aqui sua tabela de acrodo com os exemplos
+
             _servicoPlanoCobranca = locator.GetServico<PlanoCobranca, ServicoPlanoCobranca, ValidadorPlanoCobranca>();
             _servicoVeiculo = locator.GetServico<Veiculo, ServicoVeiculo, ValidadorVeiculo>();
             _servicoGrupoVeiculos = locator.GetServico<GrupoVeiculos, ServicoGrupoVeiculos, ValidadorGrupoVeiculos>();
@@ -58,20 +66,25 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
             _servicoLocacao = locator.GetServico<Locacao, ServicoLocacao, ValidadorLocacao>();
 
 
+
+
+
             MigradorBancoDadosLocadora.AtualizarBancoDados();
 
-            DbContext = new(Db.conexaoComBanco.ConnectionString);
+
             //colocar aqui sua tabela de acrodo com os exemplos
 
-            Db.ExecutarSql("DELETE FROM TB_LOCACAO");
-            Db.ExecutarSql("DELETE FROM TB_DEVOLUCAO");
-            Db.ExecutarSql("DELETE FROM TB_PLANO_COBRANCA");
-            Db.ExecutarSql("DELETE FROM TB_CONDUTOR");
-            Db.ExecutarSql("DELETE FROM TB_CLIENTE");
-            Db.ExecutarSql("DELETE FROM TB_TAXA");
-            Db.ExecutarSql("DELETE FROM TB_VEICULO");
-            Db.ExecutarSql("DELETE FROM TB_GRUPO_VEICULO");
-            Db.ExecutarSql("DELETE FROM TB_FUNCIONARIO");
+            db.Database.ExecuteSqlRaw("DELETE FROM TB_LOCACAO");
+            db.Database.ExecuteSqlRaw("DELETE FROM TB_DEVOLUCAO");
+            db.Database.ExecuteSqlRaw("DELETE FROM TB_PLANO_COBRANCA");
+            db.Database.ExecuteSqlRaw("DELETE FROM TB_CONDUTOR");
+            db.Database.ExecuteSqlRaw("DELETE FROM TB_CLIENTE");
+            db.Database.ExecuteSqlRaw("DELETE FROM TB_TAXA");
+            db.Database.ExecuteSqlRaw("DELETE FROM TB_VEICULO");
+            db.Database.ExecuteSqlRaw("DELETE FROM TB_GRUPO_VEICULO");
+            db.Database.ExecuteSqlRaw("DELETE FROM TB_FUNCIONARIO");
+
+
         }
 
 

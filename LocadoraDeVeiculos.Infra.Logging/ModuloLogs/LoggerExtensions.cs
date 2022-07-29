@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Locadora.Infra.Configs;
 using Serilog;
 using System.IO;
 
@@ -8,15 +8,11 @@ namespace LocadoraDeVeiculos.Infra.Logging.Log
     {
         public static void ConfigurarLogEmArquivo(this ILogger log)
         {
-            var configuracao = new ConfigurationBuilder()
-              .SetBasePath(Directory.GetCurrentDirectory())
-              .AddJsonFile("ConfiguracaoAplicacao.json")
-              .Build();
 
-            var diretorioSaida = configuracao
-                .GetSection("ConfiguracaoLogs")
-                .GetSection("DiretorioSaida")
-                .Value;
+            var config = new ConfiguracaoAplicacaoLocadora();
+
+            var diretorioSaida = config.ConfiguracaoLogs.DiretorioSaida;
+
 
             Serilog.Log.Logger = new LoggerConfiguration()
                    .MinimumLevel.Debug()

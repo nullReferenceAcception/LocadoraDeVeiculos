@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Locadora.Infra.Configs;
+using System;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
@@ -6,10 +7,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
     public class ControladorConfiguracao : ControladorBase
     {
         private TabelaConfiguracoesControl _tabelaConfiguracoes;
+        private readonly ConfiguracaoAplicacaoLocadora configuracao;
 
-        public ControladorConfiguracao()
+        public ControladorConfiguracao(ConfiguracaoAplicacaoLocadora configuracao)
         {
-
+            this.configuracao = configuracao;
         }
 
         public override void Inserir()
@@ -34,10 +36,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
 
         public override UserControl ObtemListagem()
         {
-            if (_tabelaConfiguracoes == null)
-                _tabelaConfiguracoes = new TabelaConfiguracoesControl();
-
-            return _tabelaConfiguracoes;
+            return new TabelaConfiguracoesControl(configuracao);
         }
     }
 }

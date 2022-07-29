@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using FluentValidation;
+using Locadora.Infra.Configs;
 using LocadoraDeVeiculos.Dominio;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
@@ -52,7 +53,17 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterInstance(new LocadoraDbContext(Db.conexaoComBanco.ConnectionString)).As<IContextoPersistencia>().AsSelf();
+
+            builder.Register((x) => new ConfiguracaoAplicacaoLocadora().ConnectionStrings)
+             .As<ConnectionStrings>()
+             .SingleInstance(); //Singleton
+
+            builder.RegisterType<ConfiguracaoAplicacaoLocadora>()
+                .SingleInstance(); //Singleton
+
+            builder.RegisterType<LocadoraDbContext>().As<IContextoPersistencia>()
+                .InstancePerLifetimeScope(); //Scoped
+                
 
             builder.RegisterType<RepositorioClienteOrm>().As<IRepositorioCliente>();
             builder.RegisterType<RepositorioCondutorOrm>().As<IRepositorioCondutor>();
@@ -74,16 +85,16 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             builder.RegisterType<ServicoLocacao>().As<IServicoLocacao>().AsSelf();
             builder.RegisterType<ServicoDevolucao>().As<IServicoDevolucao>().AsSelf();
 
-            builder.RegisterType<ControladorCliente>().AsSelf();
-            builder.RegisterType<ControladorCondutor>().AsSelf();
-            builder.RegisterType<ControladorFuncionario>().AsSelf();
-            builder.RegisterType<ControladorGrupoVeiculos>().AsSelf();
-            builder.RegisterType<ControladorPlanoCobranca>().AsSelf();
-            builder.RegisterType<ControladorTaxa>().AsSelf();
-            builder.RegisterType<ControladorVeiculo>().AsSelf();
-            builder.RegisterType<ControladorLocacao>().AsSelf();
-            builder.RegisterType<ControladorDevolucao>().AsSelf();
-            builder.RegisterType<ControladorConfiguracao>().AsSelf();
+            builder.RegisterType<ControladorCliente>();
+            builder.RegisterType<ControladorCondutor>();
+            builder.RegisterType<ControladorFuncionario>();
+            builder.RegisterType<ControladorGrupoVeiculos>();
+            builder.RegisterType<ControladorPlanoCobranca>();
+            builder.RegisterType<ControladorTaxa>();
+            builder.RegisterType<ControladorVeiculo>();
+            builder.RegisterType<ControladorLocacao>();
+            builder.RegisterType<ControladorDevolucao>();
+            builder.RegisterType<ControladorConfiguracao>();
 
             container = builder.Build();
         }

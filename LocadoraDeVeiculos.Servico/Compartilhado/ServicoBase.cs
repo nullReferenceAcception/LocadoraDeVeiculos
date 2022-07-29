@@ -1,6 +1,7 @@
 ﻿using FluentResults;
 using FluentValidation;
 using FluentValidation.Results;
+using Locadora.Infra.Configs;
 using LocadoraDeVeiculos.Dominio;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using Microsoft.EntityFrameworkCore;
@@ -21,12 +22,14 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
         TValidador validador;
         IRepositorio<T> repositorio;
         IContextoPersistencia contexto;
+        private readonly ConfiguracaoAplicacaoLocadora configuracao;
 
-        public ServicoBase(AbstractValidator<T> validationRules, IRepositorio<T> repositorio, IContextoPersistencia contexto)
+        public ServicoBase(AbstractValidator<T> validationRules, IRepositorio<T> repositorio, IContextoPersistencia contexto, ConfiguracaoAplicacaoLocadora configuracao)
         {
             this.validador = (TValidador)validationRules;
             this.repositorio = repositorio;
             this.contexto = contexto;
+            this.configuracao = configuracao;
         }
 
         public virtual Result<T> Inserir(T registro)
@@ -54,7 +57,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             {
                 StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar inserir ");
 
-                Log.Logger.Error(ex, msgErro + "{classe}" + "{id}", typeof(T).Name, registro.Id);
+                Log.Logger.Error(ex, msgErro + "{classe}" + "{id}" + "{VersaoSistema}", typeof(T).Name, registro.Id, configuracao.VersaoSistema);
 
                 return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }

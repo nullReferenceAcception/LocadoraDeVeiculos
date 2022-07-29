@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+﻿using Locadora.Infra.Configs;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using Microsoft.Extensions.Configuration;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using Newtonsoft.Json;
@@ -11,9 +12,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
 {
     public partial class TabelaConfiguracoesControl : UserControl
     {
-        public TabelaConfiguracoesControl()
+        ConfiguracaoAplicacaoLocadora configuracao;
+        public TabelaConfiguracoesControl(ConfiguracaoAplicacaoLocadora configuracao)
         {
             InitializeComponent();
+
+            textBoxConnectionString.Text = configuracao.ConnectionStrings.SqlServer;
+            textBoxDiretorioLog.Text = configuracao.ConfiguracaoLogs.DiretorioSaida;
+
+            this.configuracao = configuracao;
+
         }
 
         private void buttonProcurar_Click(object sender, EventArgs e)
@@ -32,7 +40,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
 
             StreamReader sr = new(caminho);
 
-            var x = Db.configuracao["ConfiguracaoLogs:DiretorioSaida"];
+            var x = configuracao.ConfiguracaoLogs.DiretorioSaida;
 
             var texto = sr.ReadToEnd();
 
