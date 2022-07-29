@@ -50,7 +50,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             foreach (var item in servicoCliente.SelecionarTodos().Value)
                 comboBoxCliente.Items.Add(item);
-            }
+
             comboBoxPlanoCobranca.SelectedIndex = 0;
         }
         public Func<Locacao, Result<Locacao>> GravarRegistro { get; set; }
