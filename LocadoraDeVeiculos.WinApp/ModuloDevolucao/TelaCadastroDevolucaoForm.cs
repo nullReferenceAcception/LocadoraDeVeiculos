@@ -16,6 +16,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         private IServicoDevolucao _servicoDevolucao;
         private IServicoLocacao _servicoLocacao;
         private IServicoTaxa _servicoTaxa;
+        private IServicoVeiculo _servicoVeiculo;
 
         public Devolucao Devolucao
         {
@@ -23,11 +24,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             set
             {
                 _devolucao = value;
-                ConfigurarTelaEditar();
             }
         }
 
-        public TelaCadastroDevolucaoForm(IServicoDevolucao servicoDevolucao, IServicoLocacao servicoLocacao, IServicoTaxa servicoTaxa)
+        public Func<Devolucao, Result<Devolucao>> GravarRegistro { get; set; }
+
+        public TelaCadastroDevolucaoForm(IServicoDevolucao servicoDevolucao, IServicoLocacao servicoLocacao, IServicoTaxa servicoTaxa, IServicoVeiculo servicoVeiculo)
         {
             InitializeComponent();
             this.ConfigurarTela();
@@ -35,6 +37,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             this._servicoDevolucao = servicoDevolucao;
             this._servicoLocacao = servicoLocacao;
             this._servicoTaxa = servicoTaxa;
+            this._servicoVeiculo = servicoVeiculo;
 
             var combustiveis = Enum.GetValues(typeof(TanqueEnum));
 
@@ -46,25 +49,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
             foreach (var taxaAdicional in _servicoTaxa.SelecionarTodosAdicionais().Value)
                 checkedListBoxTaxasAdicionais.Items.Add(taxaAdicional);
-
-            _servicoTaxa = servicoTaxa;
-        }
-
-        public Func<Devolucao, Result<Devolucao>> GravarRegistro { get; set; }
-
-        private void ConfigurarTelaEditar()
-        {
-            if (Devolucao.Id != Guid.Empty)
-            {
-                textBoxGuid.Text = Devolucao.Id.ToString();
-                textBoxFuncionario.Text = "TODO";
-                textBoxCondutor.Text = Devolucao.Locacao.Condutor.Nome;
-                textBoxGrupoVeiculo.Text = "TODO";
-                textBoxVeiculo.Text = Devolucao.Locacao.Veiculo.Modelo;
-                textBoxPlanoCobranca.Text = Devolucao.Locacao.PlanoCobranca.Nome;
-                dateTimePickerDataLocacao.Value = Devolucao.Locacao.DataLocacao;
-                dateTimePickerDataDevolucaoPrevista.Value = Devolucao.Locacao.DataDevolucaoPrevista;
-            }
         }
 
         private void comboBoxLocacoes_SelectedIndexChanged(object sender, EventArgs e)
@@ -83,10 +67,41 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             numericUpDownKmRodadosLocacao.Value = loc.Veiculo.KmPercorrido;
 
             checkedListBoxTaxasSelecionadas.Items.Clear();
+
             foreach (var taxa in loc.Taxas)
                 checkedListBoxTaxasSelecionadas.Items.Add(taxa, true);
 
             AtualizarTotalPrevisto();
+        }
+
+        private void buttonGravar_Click(object sender, EventArgs e)
+        {
+            ObterDadosDaTela();
+
+            var resultadoValidacao = GravarRegistro(Devolucao);
+
+            if (resultadoValidacao.IsFailed)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].Message, CorParaRodape.Red);
+                DialogResult = DialogResult.None;
+            }
+
+            EditarKmVeiculo();
+            FinalizarLocacao();
+        }
+
+        private void FinalizarLocacao()
+        {
+            Devolucao.Locacao.Status = StatusEnum.Finalizado;
+
+            _servicoLocacao.Editar(Devolucao.Locacao);
+        }
+
+        private void EditarKmVeiculo()
+        {
+            Devolucao.Locacao.Veiculo.KmPercorrido = numericUpDownKmRodadosLocacao.Value;
+
+            _servicoVeiculo.Editar(Devolucao.Locacao.Veiculo);
         }
 
         private void AtualizarTotalPrevisto()
@@ -178,43 +193,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             textBoxValorTotal.Text = Math.Round(valorTotal, 2).ToString();
         }
 
-        private void comboBoxNivelTanque_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            AtualizarTotalPrevisto();
-        }
-
-        private void checkedListBoxTaxasAdicionais_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            try
-            {
-                this.BeginInvoke((MethodInvoker)(() => AtualizarTotalPrevisto()));
-            }
-            catch (Exception ex) { }
-        }
-
-        private void dateTimePickerDataDevolucaoReal_ValueChanged(object sender, EventArgs e)
-        {
-            AtualizarTotalPrevisto();
-        }
-
-        private void numericUpDownKmRodadosLocacao_ValueChanged(object sender, EventArgs e)
-        {
-            AtualizarTotalPrevisto();
-        }
-
-        private void buttonGravar_Click(object sender, EventArgs e)
-        {
-            ObterDadosDaTela();
-
-            var resultadoValidacao = GravarRegistro(Devolucao);
-
-            if (resultadoValidacao.IsFailed)
-            {
-                TelaPrincipalForm.Instancia.AtualizarRodape(resultadoValidacao.Errors[0].Message, CorParaRodape.Red);
-                DialogResult = DialogResult.None;
-            }
-        }
-
         private void ObterDadosDaTela()
         {
             // Editar km do veículo
@@ -231,10 +209,30 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             foreach (Taxa item in checkedListBoxTaxasSelecionadas.Items)
                 if (!checkedListBoxTaxasSelecionadas.CheckedItems.Contains(item))
                     taxas.Add(item);
-
-            RemoverTaxas(Devolucao, taxas);
         }
 
-        public Action<Devolucao, List<Taxa>> RemoverTaxas { get; internal set; }
+        private void checkedListBoxTaxasAdicionais_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            try
+            {
+                this.BeginInvoke((MethodInvoker)(() => AtualizarTotalPrevisto()));
+            }
+            catch (Exception ex) { }
+        }
+
+        private void comboBoxNivelTanque_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AtualizarTotalPrevisto();
+        }
+
+        private void dateTimePickerDataDevolucaoReal_ValueChanged(object sender, EventArgs e)
+        {
+            AtualizarTotalPrevisto();
+        }
+
+        private void numericUpDownKmRodadosLocacao_ValueChanged(object sender, EventArgs e)
+        {
+            AtualizarTotalPrevisto();
+        }
     }
 }

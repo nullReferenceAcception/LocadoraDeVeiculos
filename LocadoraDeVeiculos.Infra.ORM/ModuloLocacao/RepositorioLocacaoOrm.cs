@@ -2,7 +2,6 @@
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,11 +15,9 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloLocacao
 
         public void RemoverTaxas(Locacao locacao, List<Taxa> taxas)
         {
-            foreach (var item in taxas)
-            {
-                if (locacao.Taxas.Contains(item))
-                    locacao.Taxas.Remove(item);
-            }
+            foreach (Taxa taxa in taxas)
+                if (locacao.Taxas.Contains(taxa))
+                    locacao.Taxas.Remove(taxa);
         }
 
         public override void Excluir(Locacao registro)

@@ -1,6 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloDevolucao;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
-using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -32,9 +31,9 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloDevolucao
 
         public void RemoverTaxas(Devolucao devolucao, List<Taxa> taxas)
         {
-            foreach (var item in taxas)
-                if (devolucao.TaxasAdicionais.Contains(item))
-                    devolucao.TaxasAdicionais.Remove(item);
+            foreach (Taxa taxa in taxas)
+                if (devolucao.TaxasAdicionais.Contains(taxa))
+                    devolucao.TaxasAdicionais.Remove(taxa);
         }
     }
 }

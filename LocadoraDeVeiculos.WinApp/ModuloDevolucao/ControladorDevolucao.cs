@@ -2,6 +2,7 @@
 using LocadoraDeVeiculos.Dominio.ModuloDevolucao;
 using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
+using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -12,13 +13,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         private IServicoDevolucao _servicoDevolucao;
         private IServicoLocacao _servicoLocacao;
         private IServicoTaxa _servicoTaxa;
+        private IServicoVeiculo _servicoVeiculo;
         private TabelaDevolucaoControl _tabelaDevolucao;
 
-        public ControladorDevolucao(IServicoDevolucao servicoDevolucao, IServicoLocacao servicoLocacao, IServicoTaxa servicoTaxa)
+        public ControladorDevolucao(IServicoDevolucao servicoDevolucao, IServicoLocacao servicoLocacao, IServicoTaxa servicoTaxa, IServicoVeiculo servicoVeiculo)
         {
             _servicoDevolucao = servicoDevolucao;
             _servicoLocacao = servicoLocacao;
             _servicoTaxa = servicoTaxa;
+            _servicoVeiculo = servicoVeiculo;
         }
 
         public override void Inserir()
@@ -29,13 +32,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 return;
             }
 
-            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa);
+            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa, _servicoVeiculo);
 
             tela.Devolucao = new();
 
             tela.GravarRegistro = _servicoDevolucao.Inserir;
-
-            tela.RemoverTaxas = _servicoDevolucao.RemoverTaxas;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -55,7 +56,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 return;
             }
 
-            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa);
+            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa, _servicoVeiculo);
 
             tela.Devolucao = devolucaoSelecionada.Value;
 
