@@ -4,7 +4,9 @@
     {
         public override string TipoCadastro => "Devolução";
         public override string TooltipInserir => "Inserir uma nova devolução";
-        public override string TooltipEditar => "Editar uma devolução???";
-        public override string TooltipExcluir => "Excluir uma devolução!?";
+        public override string TooltipEditar => string.Empty;
+        public override string TooltipExcluir => string.Empty;
+        public override bool EditarHabilitado => false;
+        public override bool ExcluirHabilitado => false;
     }
 }
