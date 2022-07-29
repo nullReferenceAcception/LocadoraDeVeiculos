@@ -121,6 +121,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         private void comboBoxGrupoVeiculos_SelectedIndexChanged(object sender, EventArgs e)
         {
+            comboBoxVeiculo.Items.Clear();
+
             if (comboBoxGrupoVeiculos.SelectedIndex > -1)
                 comboBoxVeiculo.Enabled = true;
 
@@ -130,29 +132,17 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         private void comboBoxCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!((Cliente)comboBoxCliente.SelectedItem).PessoaFisica)
-                foreach (Condutor item in _servicoCondutor.SelecionarTodosDoCliente((Cliente)comboBoxCliente.SelectedItem).Value)
-                    comboBoxCondutor.Items.Add(item);
-            else
-                comboBoxCondutor.SelectedIndex = -1;
+            comboBoxCondutor.Items.Clear();
+        }
         }
 
         private void AtualizarTotalPrevisto()
         {
             PlanoCobranca planoCobranca = (PlanoCobranca)comboBoxPlanoCobranca.SelectedItem;
 
-            DateTime dataLocacao = dateTimePickerDataLocacao.Value;
-
-            DateTime dataLocacaoPrevista = dateTimePickerDataPrevistaDevolucao.Value;
-
             int totalDias = (int)((dateTimePickerDataPrevistaDevolucao.Value.Date - dateTimePickerDataLocacao.Value.Date).TotalDays);
 
             decimal valor = planoCobranca.ValorDia * totalDias;
-
-            decimal totalKm = numericUpDownKmPlanejado.Value - planoCobranca.KmLivreIncluso;
-
-            if (totalKm > 0)
-                valor += planoCobranca.ValorPorKm * numericUpDownKmPlanejado.Value;
 
             foreach (Taxa item in checkedListBoxTaxas.CheckedItems)
                 if (item.EhDiaria)
@@ -165,6 +155,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         private void comboBoxPlanoCobranca_SelectedIndexChanged(object sender, EventArgs e)
         {
+            comboBoxGrupoVeiculos.Items.Clear();
             if (comboBoxPlanoCobranca.SelectedIndex > -1)
             {
                 comboBoxGrupoVeiculos.Enabled = true;
