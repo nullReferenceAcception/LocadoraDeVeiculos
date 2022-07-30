@@ -8,9 +8,9 @@
   },
   "PrecoCombustiveis": {
     "Gasolina": "5,52",
-    "Alcool": "100,00",
+    "Alcool": "5,25",
     "Diesel": "7,22",
     "Etanol": "6,14",
-    "GNV": "1,12"
+    "GNV": "6,14"
   }
 }

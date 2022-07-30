@@ -43,6 +43,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             this._servicoVeiculo = servicoVeiculo;
             this.configuracao = configuracao;
 
+            numericUpDownKmRodadosLocacao.Enabled = false;
+            dateTimePickerDataDevolucaoReal.Enabled = false;
+            comboBoxNivelTanque.Enabled = false;
+            checkedListBoxTaxasAdicionais.Enabled = false;
+
             var combustiveis = Enum.GetValues(typeof(TanqueEnum));
 
             foreach (TanqueEnum combustivel in combustiveis)
@@ -70,6 +75,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             comboBoxNivelTanque.SelectedIndex = 0;
             numericUpDownKmRodadosLocacao.Minimum = loc.Veiculo.KmPercorrido;
             numericUpDownKmRodadosLocacao.Value = loc.Veiculo.KmPercorrido;
+
+
+            numericUpDownKmRodadosLocacao.Enabled = true;
+            dateTimePickerDataDevolucaoReal.Enabled = true;
+            comboBoxNivelTanque.Enabled = true;
+            checkedListBoxTaxasAdicionais.Enabled = true;
+
 
             checkedListBoxTaxasSelecionadas.Items.Clear();
 
