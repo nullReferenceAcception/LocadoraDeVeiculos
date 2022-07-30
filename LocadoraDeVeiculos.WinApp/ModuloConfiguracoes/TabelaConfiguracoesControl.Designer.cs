@@ -37,7 +37,7 @@
             this.tabPageDatabase = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxConnectionString = new System.Windows.Forms.TextBox();
-            this.Combustiveis = new System.Windows.Forms.TabPage();
+            this.tabPageCombustiveis = new System.Windows.Forms.TabPage();
             this.numericUpDownGNV = new System.Windows.Forms.NumericUpDown();
             this.labelGNV = new System.Windows.Forms.Label();
             this.numericUpDownEtanol = new System.Windows.Forms.NumericUpDown();
@@ -52,7 +52,7 @@
             this.tabControl.SuspendLayout();
             this.tabPageLogs.SuspendLayout();
             this.tabPageDatabase.SuspendLayout();
-            this.Combustiveis.SuspendLayout();
+            this.tabPageCombustiveis.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGNV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEtanol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDiesel)).BeginInit();
@@ -64,7 +64,7 @@
             // 
             this.tabControl.Controls.Add(this.tabPageLogs);
             this.tabControl.Controls.Add(this.tabPageDatabase);
-            this.tabControl.Controls.Add(this.Combustiveis);
+            this.tabControl.Controls.Add(this.tabPageCombustiveis);
             this.tabControl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.tabControl.Location = new System.Drawing.Point(3, 3);
             this.tabControl.Name = "tabControl";
@@ -153,30 +153,35 @@
             this.textBoxConnectionString.Size = new System.Drawing.Size(416, 23);
             this.textBoxConnectionString.TabIndex = 4;
             // 
-            // Combustiveis
+            // tabPageCombustiveis
             // 
-            this.Combustiveis.BackColor = System.Drawing.Color.DarkGray;
-            this.Combustiveis.Controls.Add(this.numericUpDownGNV);
-            this.Combustiveis.Controls.Add(this.labelGNV);
-            this.Combustiveis.Controls.Add(this.numericUpDownEtanol);
-            this.Combustiveis.Controls.Add(this.labelEtanol);
-            this.Combustiveis.Controls.Add(this.numericUpDownDiesel);
-            this.Combustiveis.Controls.Add(this.labelDiesel);
-            this.Combustiveis.Controls.Add(this.Alcool);
-            this.Combustiveis.Controls.Add(this.Gasolina);
-            this.Combustiveis.Controls.Add(this.numericUpDownAlcool);
-            this.Combustiveis.Controls.Add(this.numericUpDownGasolina);
-            this.Combustiveis.Location = new System.Drawing.Point(4, 24);
-            this.Combustiveis.Name = "Combustiveis";
-            this.Combustiveis.Size = new System.Drawing.Size(1533, 499);
-            this.Combustiveis.TabIndex = 2;
-            this.Combustiveis.Text = "Configuração do Precos dos Combustiveis";
+            this.tabPageCombustiveis.BackColor = System.Drawing.Color.DarkGray;
+            this.tabPageCombustiveis.Controls.Add(this.numericUpDownGNV);
+            this.tabPageCombustiveis.Controls.Add(this.labelGNV);
+            this.tabPageCombustiveis.Controls.Add(this.numericUpDownEtanol);
+            this.tabPageCombustiveis.Controls.Add(this.labelEtanol);
+            this.tabPageCombustiveis.Controls.Add(this.numericUpDownDiesel);
+            this.tabPageCombustiveis.Controls.Add(this.labelDiesel);
+            this.tabPageCombustiveis.Controls.Add(this.Alcool);
+            this.tabPageCombustiveis.Controls.Add(this.Gasolina);
+            this.tabPageCombustiveis.Controls.Add(this.numericUpDownAlcool);
+            this.tabPageCombustiveis.Controls.Add(this.numericUpDownGasolina);
+            this.tabPageCombustiveis.Location = new System.Drawing.Point(4, 24);
+            this.tabPageCombustiveis.Name = "tabPageCombustiveis";
+            this.tabPageCombustiveis.Size = new System.Drawing.Size(1533, 499);
+            this.tabPageCombustiveis.TabIndex = 2;
+            this.tabPageCombustiveis.Text = "Configuração do Preços dos Combustíveis";
             // 
             // numericUpDownGNV
             // 
             this.numericUpDownGNV.DecimalPlaces = 2;
             this.numericUpDownGNV.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericUpDownGNV.Location = new System.Drawing.Point(14, 198);
+            this.numericUpDownGNV.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numericUpDownGNV.Name = "numericUpDownGNV";
             this.numericUpDownGNV.Size = new System.Drawing.Size(120, 23);
             this.numericUpDownGNV.TabIndex = 9;
@@ -196,6 +201,11 @@
             this.numericUpDownEtanol.DecimalPlaces = 2;
             this.numericUpDownEtanol.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericUpDownEtanol.Location = new System.Drawing.Point(14, 156);
+            this.numericUpDownEtanol.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numericUpDownEtanol.Name = "numericUpDownEtanol";
             this.numericUpDownEtanol.Size = new System.Drawing.Size(120, 23);
             this.numericUpDownEtanol.TabIndex = 7;
@@ -215,6 +225,11 @@
             this.numericUpDownDiesel.DecimalPlaces = 2;
             this.numericUpDownDiesel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericUpDownDiesel.Location = new System.Drawing.Point(14, 115);
+            this.numericUpDownDiesel.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numericUpDownDiesel.Name = "numericUpDownDiesel";
             this.numericUpDownDiesel.Size = new System.Drawing.Size(120, 23);
             this.numericUpDownDiesel.TabIndex = 5;
@@ -254,6 +269,11 @@
             this.numericUpDownAlcool.DecimalPlaces = 2;
             this.numericUpDownAlcool.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericUpDownAlcool.Location = new System.Drawing.Point(14, 71);
+            this.numericUpDownAlcool.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numericUpDownAlcool.Name = "numericUpDownAlcool";
             this.numericUpDownAlcool.Size = new System.Drawing.Size(120, 23);
             this.numericUpDownAlcool.TabIndex = 1;
@@ -263,6 +283,11 @@
             this.numericUpDownGasolina.DecimalPlaces = 2;
             this.numericUpDownGasolina.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericUpDownGasolina.Location = new System.Drawing.Point(14, 27);
+            this.numericUpDownGasolina.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numericUpDownGasolina.Name = "numericUpDownGasolina";
             this.numericUpDownGasolina.Size = new System.Drawing.Size(120, 23);
             this.numericUpDownGasolina.TabIndex = 0;
@@ -293,8 +318,8 @@
             this.tabPageLogs.PerformLayout();
             this.tabPageDatabase.ResumeLayout(false);
             this.tabPageDatabase.PerformLayout();
-            this.Combustiveis.ResumeLayout(false);
-            this.Combustiveis.PerformLayout();
+            this.tabPageCombustiveis.ResumeLayout(false);
+            this.tabPageCombustiveis.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGNV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEtanol)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDiesel)).EndInit();
@@ -316,7 +341,7 @@
         private System.Windows.Forms.Label labelUrlSeq;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxConnectionString;
-        private System.Windows.Forms.TabPage Combustiveis;
+        private System.Windows.Forms.TabPage tabPageCombustiveis;
         private System.Windows.Forms.NumericUpDown numericUpDownAlcool;
         private System.Windows.Forms.NumericUpDown numericUpDownGasolina;
         private System.Windows.Forms.Label Alcool;

@@ -1,10 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Locadora.Infra.Configs
 {
@@ -46,26 +42,25 @@ namespace Locadora.Infra.Configs
                 .Value;
 
             var etanol = configuracao
-            .GetSection("PrecoCombustiveis")
-            .GetSection("Etanol")
-            .Value;
+                .GetSection("PrecoCombustiveis")
+                .GetSection("Etanol")
+                .Value;
 
             var gnv = configuracao
-           .GetSection("PrecoCombustiveis")
-           .GetSection("Etanol")
-           .Value;
+               .GetSection("PrecoCombustiveis")
+               .GetSection("Etanol")
+               .Value;
 
-            PrecoCombustiveis = new PrecoCombustiveis {
-                Gasolina = Math.Round(decimal.Parse(gasolina),2),
+            PrecoCombustiveis = new PrecoCombustiveis
+            {
+                Gasolina = Math.Round(decimal.Parse(gasolina), 2),
                 Alcool = Math.Round(decimal.Parse(alcool), 2),
                 Diesel = Math.Round(decimal.Parse(diesel), 2),
                 Etanol = Math.Round(decimal.Parse(etanol), 2),
                 GNV = Math.Round(decimal.Parse(gnv), 2)
             };
-
-           
-
         }
+
         public string VersaoSistema { get; set; }
 
         public ConfiguracaoLogs ConfiguracaoLogs { get; set; }

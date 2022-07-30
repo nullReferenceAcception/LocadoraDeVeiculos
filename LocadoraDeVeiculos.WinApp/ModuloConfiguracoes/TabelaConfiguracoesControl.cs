@@ -1,9 +1,5 @@
 ﻿using Locadora.Infra.Configs;
-using LocadoraDeVeiculos.Dominio.Compartilhado;
-using Microsoft.Extensions.Configuration;
-using Microsoft.WindowsAPICodePack.Dialogs;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -25,7 +21,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
 
             textBoxUrlSeq.Enabled = false;
 
-            numericUpDownDiesel.Value = configuracao.PrecoCombustiveis.Diesel;
+            numericUpDownDiesel.Value = Math.Round(decimal.Parse(configuracao.PrecoCombustiveis.Diesel.ToString()));
 
             numericUpDownAlcool.Value = configuracao.PrecoCombustiveis.Alcool;
 
@@ -35,11 +31,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
 
             numericUpDownGNV.Value = configuracao.PrecoCombustiveis.GNV;
 
-
-
-
             this.configuracao = configuracao;
-
         }
 
         private void buttonGravar_Click(object sender, EventArgs e)
@@ -54,10 +46,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
 
             configuracao.PrecoCombustiveis.Diesel = decimal.Parse(numericUpDownDiesel.Text);
 
-
-
-
-
             string caminho = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
             string caminhoJson = Path.Combine(caminho, "ConfiguracaoAplicacao.json");
 
@@ -65,7 +53,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
             File.WriteAllText(caminhoJson, json);
 
             MessageBox.Show("Informações gravadas");
-
         }
     }
 }
