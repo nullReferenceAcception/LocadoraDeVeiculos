@@ -159,7 +159,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             switch(loc.Veiculo.Combustivel)
             {
                 case CombustivelEnum.Diesel:
-                    custoCombustivel = configuracao.PrecoCombustiveis.d;
+                    custoCombustivel = configuracao.PrecoCombustiveis.Diesel;
                     break;
                 case CombustivelEnum.Gasolina:
                     custoCombustivel = configuracao.PrecoCombustiveis.Gasolina;
