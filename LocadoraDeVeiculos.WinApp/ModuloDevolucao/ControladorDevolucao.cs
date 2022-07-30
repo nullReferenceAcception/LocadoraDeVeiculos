@@ -8,6 +8,7 @@ using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Diagnostics;
+using Locadora.Infra.Configs;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 {
@@ -17,14 +18,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         private IServicoLocacao _servicoLocacao;
         private IServicoTaxa _servicoTaxa;
         private IServicoVeiculo _servicoVeiculo;
+        private ConfiguracaoAplicacaoLocadora configuracao;
         private TabelaDevolucaoControl _tabelaDevolucao;
 
-        public ControladorDevolucao(IServicoDevolucao servicoDevolucao, IServicoLocacao servicoLocacao, IServicoTaxa servicoTaxa, IServicoVeiculo servicoVeiculo)
+        public ControladorDevolucao(IServicoDevolucao servicoDevolucao, IServicoLocacao servicoLocacao, IServicoTaxa servicoTaxa, IServicoVeiculo servicoVeiculo, ConfiguracaoAplicacaoLocadora configuracao)
         {
             _servicoDevolucao = servicoDevolucao;
             _servicoLocacao = servicoLocacao;
             _servicoTaxa = servicoTaxa;
             _servicoVeiculo = servicoVeiculo;
+            this.configuracao = configuracao;
         }
 
         public override void Inserir()
@@ -35,7 +38,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 return;
             }
 
-            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa, _servicoVeiculo);
+            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa, _servicoVeiculo, configuracao);
 
             tela.Devolucao = new();
 
@@ -59,7 +62,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 return;
             }
 
-            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa, _servicoVeiculo);
+            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa, _servicoVeiculo, configuracao);
 
             tela.Devolucao = devolucaoSelecionada.Value;
 
