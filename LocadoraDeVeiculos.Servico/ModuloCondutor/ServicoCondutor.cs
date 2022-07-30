@@ -1,4 +1,5 @@
 ﻿using FluentResults;
+using Locadora.Infra.Configs;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
@@ -13,7 +14,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloCondutor
     public class ServicoCondutor : ServicoBase<Condutor, ValidadorCondutor>, IServicoCondutor
     {
         IRepositorioCondutor repositorioCondutor;
-        public ServicoCondutor(IRepositorioCondutor repositorioCondutor, IContextoPersistencia contexto) : base(new ValidadorCondutor(), repositorioCondutor, contexto)
+        public ServicoCondutor(IRepositorioCondutor repositorioCondutor, IContextoPersistencia contexto, ConfiguracaoAplicacaoLocadora loc) : base(new ValidadorCondutor(), repositorioCondutor, contexto,loc)
         {
             this.repositorioCondutor = repositorioCondutor;
         }

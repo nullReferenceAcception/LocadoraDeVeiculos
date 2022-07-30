@@ -18,53 +18,54 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
             InitializeComponent();
 
             textBoxConnectionString.Text = configuracao.ConnectionStrings.SqlServer;
+
             textBoxDiretorioLog.Text = configuracao.ConfiguracaoLogs.DiretorioSaida;
+
+            textBoxUrlSeq.Text = "http://localhost:5341/";
+
+            textBoxUrlSeq.Enabled = false;
+
+            numericUpDownDiesel.Value = configuracao.PrecoCombustiveis.Diesel;
+
+            numericUpDownAlcool.Value = configuracao.PrecoCombustiveis.Alcool;
+
+            numericUpDownEtanol.Value = configuracao.PrecoCombustiveis.Etanol;
+
+            numericUpDownGasolina.Value = configuracao.PrecoCombustiveis.Gasolina;
+
+            numericUpDownGNV.Value = configuracao.PrecoCombustiveis.GNV;
+
+
+
 
             this.configuracao = configuracao;
 
         }
 
-        private void buttonProcurar_Click(object sender, EventArgs e)
+        private void buttonGravar_Click(object sender, EventArgs e)
         {
-            string caminho = "C:\\Users\\marco\\source\\repos\\LocadoraDeVeiculos\\LocadoraDeVeiculos.WinApp\\ConfiguracaoAplicacao.json";
+            configuracao.PrecoCombustiveis.Gasolina = decimal.Parse(numericUpDownGasolina.Text);
 
-            var tudo = File.ReadAllText(caminho);
+            configuracao.PrecoCombustiveis.Etanol = decimal.Parse(numericUpDownEtanol.Text);
 
-            dynamic emJson = JsonConvert.DeserializeObject(tudo);
+            configuracao.PrecoCombustiveis.Alcool = decimal.Parse(numericUpDownAlcool.Text);
 
-            emJson["ConfiguracaoLogs:DiretorioSaida"] = "A";
+            configuracao.PrecoCombustiveis.GNV = decimal.Parse(numericUpDownGNV.Text);
 
-            string saida = JsonConvert.SerializeObject(emJson, Formatting.Indented);
+            configuracao.PrecoCombustiveis.Diesel = decimal.Parse(numericUpDownDiesel.Text);
 
-            File.WriteAllText(caminho, saida);
 
-            StreamReader sr = new(caminho);
 
-            var x = configuracao.ConfiguracaoLogs.DiretorioSaida;
 
-            var texto = sr.ReadToEnd();
 
-            var obj = JObject.Parse(texto);
+            string caminho = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+            string caminhoJson = Path.Combine(caminho, "ConfiguracaoAplicacao.json");
 
-            foreach (var item in obj.Properties())
-            {
-                if(item.Value.ToString() == "DiretorioSaida:")
-                {
-                    MessageBox.Show("ACHOU");
-                }
-            }
+            string json = JsonConvert.SerializeObject(configuracao,Formatting.Indented);
+            File.WriteAllText(caminhoJson, json);
 
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            MessageBox.Show("Informações gravadas");
 
-            dialog.InitialDirectory = "C:\\Users";
-
-            dialog.IsFolderPicker = true;
-
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
-            {
-                textBoxDiretorioLog.Text = dialog.FileName;
-                
-            }
         }
     }
 }

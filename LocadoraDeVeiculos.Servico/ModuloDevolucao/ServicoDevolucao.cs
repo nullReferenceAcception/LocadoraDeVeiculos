@@ -1,4 +1,5 @@
 ﻿using FluentResults;
+using Locadora.Infra.Configs;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloDevolucao;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
@@ -13,7 +14,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloDevolucao
     public class ServicoDevolucao : ServicoBase<Devolucao, ValidadorDevolucao>, IServicoDevolucao
     {
         IRepositorioDevolucao _repositorioDevolucao;
-        public ServicoDevolucao(IRepositorioDevolucao repositorio, IContextoPersistencia contexto) : base(new ValidadorDevolucao(), repositorio, contexto)
+        public ServicoDevolucao(IRepositorioDevolucao repositorio, IContextoPersistencia contexto, ConfiguracaoAplicacaoLocadora loc) : base(new ValidadorDevolucao(), repositorio, contexto,loc)
         {
             _repositorioDevolucao = repositorio;
         }

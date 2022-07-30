@@ -1,4 +1,5 @@
 ﻿using FluentValidation.Results;
+using Locadora.Infra.Configs;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Servico.Compartilhado;
@@ -8,7 +9,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloPlanoCobranca
     public class ServicoPlanoCobranca : ServicoBase<PlanoCobranca, ValidadorPlanoCobranca>, IServicoPlanoCobranca
     {
         IRepositorioPlanoCobranca repositorioPlanoCobranca;
-        public ServicoPlanoCobranca(IRepositorioPlanoCobranca repositorioPlanoCobranca, IContextoPersistencia contexto) : base(new ValidadorPlanoCobranca(),repositorioPlanoCobranca, contexto)
+        public ServicoPlanoCobranca(IRepositorioPlanoCobranca repositorioPlanoCobranca, IContextoPersistencia contexto, ConfiguracaoAplicacaoLocadora loc) : base(new ValidadorPlanoCobranca(),repositorioPlanoCobranca, contexto,loc)
         {
             this.repositorioPlanoCobranca = repositorioPlanoCobranca;
         }

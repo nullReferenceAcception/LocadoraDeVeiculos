@@ -1,4 +1,5 @@
 ﻿using FluentResults;
+using Locadora.Infra.Configs;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Servico.Compartilhado;
@@ -12,7 +13,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloCliente
     {
         IRepositorioCliente _repositorioCliente;
 
-        public ServicoCliente(IRepositorioCliente repositorioCliente, IContextoPersistencia contexto) : base(new ValidadorCliente(), repositorioCliente, contexto)
+        public ServicoCliente(IRepositorioCliente repositorioCliente, IContextoPersistencia contexto,ConfiguracaoAplicacaoLocadora loc) : base(new ValidadorCliente(), repositorioCliente, contexto,loc)
         {
             this._repositorioCliente = repositorioCliente;
         }

@@ -86,7 +86,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             {
                 StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar editar ");
 
-                Log.Logger.Error(ex, msgErro + "{classe}" + "{id}", typeof(T).Name, registro.Id);
+                Log.Logger.Error(ex, msgErro + "{classe}" + "{id}" + "{VersaoSistema}", typeof(T).Name, registro.Id, configuracao.VersaoSistema);
 
                 return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
@@ -120,7 +120,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
                 else
                     msgErro.Append($"falha no sistema ao tentar excluir o {typeof(T).Name}");
-                Log.Logger.Error(ex, msgErro + "{classe}" + "{id}", typeof(T).Name, registro.Id);
+                Log.Logger.Error(ex, msgErro + "{classe}" + "{id}" + "{VersaoSistema}", typeof(T).Name, registro.Id, configuracao.VersaoSistema);
 
                 return Result.Fail(msgErro.ToString());
             }
@@ -136,7 +136,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             {
                 StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar selecionar todos os  ");
 
-                Log.Logger.Error(ex, msgErro + "{classe}", typeof(T).Name);
+                Log.Logger.Error(ex, msgErro + "{classe}"  + "{VersaoSistema}", typeof(T).Name,configuracao.VersaoSistema);
 
                 return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
@@ -153,7 +153,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
 
                 StringBuilder msgErro = new StringBuilder("Selecionado o ");
 
-                Log.Logger.Error(ex, msgErro + "{classe}", typeof(T).Name);
+                Log.Logger.Error(ex, msgErro + "{classe}" +  "{VersaoSistema}", typeof(T).Name, configuracao.VersaoSistema);
 
                 return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
@@ -169,7 +169,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             {
                 StringBuilder msgErro = new StringBuilder("Falha no sistema ao pegar quantidade de ");
 
-                Log.Logger.Error(ex, msgErro + "{classe}", typeof(T).Name);
+                Log.Logger.Error(ex, msgErro + "{classe}" +  "{VersaoSistema}", typeof(T).Name, configuracao.VersaoSistema);
 
                 return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }

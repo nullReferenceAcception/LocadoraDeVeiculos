@@ -1,4 +1,5 @@
 ﻿using FluentResults;
+using Locadora.Infra.Configs;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
@@ -12,7 +13,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos
     public class ServicoGrupoVeiculos : ServicoBase<GrupoVeiculos, ValidadorGrupoVeiculos>, IServicoGrupoVeiculos
     {
         IRepositorioGrupoVeiculos repositorioGrupoVeiculos;
-        public ServicoGrupoVeiculos(IRepositorioGrupoVeiculos repositorioGrupoVeiculos, IContextoPersistencia contexto) : base(new ValidadorGrupoVeiculos(), repositorioGrupoVeiculos, contexto)
+        public ServicoGrupoVeiculos(IRepositorioGrupoVeiculos repositorioGrupoVeiculos, IContextoPersistencia contexto, ConfiguracaoAplicacaoLocadora loc) : base(new ValidadorGrupoVeiculos(), repositorioGrupoVeiculos, contexto,loc)
         {
             this.repositorioGrupoVeiculos = repositorioGrupoVeiculos;
         }

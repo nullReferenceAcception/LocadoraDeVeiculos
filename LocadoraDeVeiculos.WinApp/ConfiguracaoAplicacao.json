@@ -1,12 +1,16 @@
 {
-
   "VersaoSistema": "2.0",
-
   "ConfiguracaoLogs": {
     "DiretorioSaida": "D:\\logs"
   },
-
   "ConnectionStrings": {
     "SqlServer": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=locadora_db;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+  },
+  "PrecoCombustiveis": {
+    "Gasolina": 5.52,
+    "Alcool": 100.00,
+    "Diesel": 7.22,
+    "Etanol": 6.14,
+    "GNV": 1.12
   }
-} 
+}

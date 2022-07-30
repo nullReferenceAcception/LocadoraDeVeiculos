@@ -1,4 +1,5 @@
 ﻿using FluentResults;
+using Locadora.Infra.Configs;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Servico.Compartilhado;
@@ -12,7 +13,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloTaxa
     public class ServicoTaxa : ServicoBase<Taxa, ValidadorTaxa>, IServicoTaxa
     {
         private IRepositorioTaxa _repositorioTaxa;
-        public ServicoTaxa(IRepositorioTaxa repositorioTaxa, IContextoPersistencia contexto) : base(new ValidadorTaxa(), repositorioTaxa, contexto)
+        public ServicoTaxa(IRepositorioTaxa repositorioTaxa, IContextoPersistencia contexto, ConfiguracaoAplicacaoLocadora loc) : base(new ValidadorTaxa(), repositorioTaxa, contexto,loc)
         {
             _repositorioTaxa = repositorioTaxa;
         }

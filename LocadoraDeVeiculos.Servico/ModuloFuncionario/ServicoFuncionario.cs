@@ -1,4 +1,5 @@
 ﻿using FluentResults;
+using Locadora.Infra.Configs;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Servico.Compartilhado;
@@ -11,7 +12,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloFuncionario
     public class ServicoFuncionario : ServicoBase<Funcionario, ValidadorFuncionario>, IServicoFuncionario
     {
         IRepositorioFuncionario _repositorioFuncionario;
-        public ServicoFuncionario(IRepositorioFuncionario repositorioFuncionario, IContextoPersistencia contexto) : base(new ValidadorFuncionario(), repositorioFuncionario, contexto)
+        public ServicoFuncionario(IRepositorioFuncionario repositorioFuncionario, IContextoPersistencia contexto, ConfiguracaoAplicacaoLocadora loc) : base(new ValidadorFuncionario(), repositorioFuncionario, contexto,loc)
         {
             this._repositorioFuncionario = repositorioFuncionario;
         }
