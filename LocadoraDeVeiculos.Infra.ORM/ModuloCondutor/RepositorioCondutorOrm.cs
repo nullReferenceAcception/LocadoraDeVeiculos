@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +14,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloCondutor
 {
     public class RepositorioCondutorOrm : RepositorioBase<Condutor>, IRepositorioCondutor
     {
-        public RepositorioCondutorOrm(LocadoraDbContext dbContext) : base(dbContext)
+        public RepositorioCondutorOrm(IContextoPersistencia dbContext) : base(dbContext)
     {
 
     }

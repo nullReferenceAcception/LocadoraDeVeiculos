@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloLocacao;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloLocacao
 {
     public class RepositorioLocacaoOrm : RepositorioBase<Locacao>, IRepositorioLocacao
     {
-        public RepositorioLocacaoOrm(LocadoraDbContext dbContext) : base(dbContext)
+        public RepositorioLocacaoOrm(IContextoPersistencia dbContext) : base(dbContext)
         {
         }
 

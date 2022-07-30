@@ -56,11 +56,11 @@ namespace Locadora.Infra.Configs
            .Value;
 
             PrecoCombustiveis = new PrecoCombustiveis {
-                Gasolina = Math.Round(decimal.Parse(gasolina),2),
-                Alcool = Math.Round(decimal.Parse(alcool), 2),
-                Diesel = Math.Round(decimal.Parse(diesel), 2),
-                Etanol = Math.Round(decimal.Parse(etanol), 2),
-                GNV = Math.Round(decimal.Parse(gnv), 2)
+                Gasolina = gasolina,
+                Alcool = alcool,
+                Diesel = diesel,
+                Etanol = etanol,
+                GNV = gnv
             };
 
            
@@ -87,11 +87,11 @@ namespace Locadora.Infra.Configs
 
     public class PrecoCombustiveis
     {
-        public decimal Gasolina { get; set; }
-        public decimal Alcool { get; set; }
-        public decimal Diesel { get; set; }
-        public decimal Etanol { get; set; }
-        public decimal GNV { get; set; }
+        public string Gasolina { get; set; }
+        public string Alcool { get; set; }
+        public string Diesel { get; set; }
+        public string Etanol { get; set; }
+        public string GNV { get; set; }
     }
 
 }

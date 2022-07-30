@@ -25,15 +25,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
 
             textBoxUrlSeq.Enabled = false;
 
-            numericUpDownDiesel.Value = configuracao.PrecoCombustiveis.Diesel;
+            numericUpDownDiesel.Text = configuracao.PrecoCombustiveis.Diesel;
 
-            numericUpDownAlcool.Value = configuracao.PrecoCombustiveis.Alcool;
+            numericUpDownAlcool.Text = configuracao.PrecoCombustiveis.Alcool;
 
-            numericUpDownEtanol.Value = configuracao.PrecoCombustiveis.Etanol;
+            numericUpDownEtanol.Text = configuracao.PrecoCombustiveis.Etanol;
 
-            numericUpDownGasolina.Value = configuracao.PrecoCombustiveis.Gasolina;
+            numericUpDownGasolina.Text = configuracao.PrecoCombustiveis.Gasolina;
 
-            numericUpDownGNV.Value = configuracao.PrecoCombustiveis.GNV;
+            numericUpDownGNV.Text = configuracao.PrecoCombustiveis.GNV;
 
 
 
@@ -44,15 +44,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
 
         private void buttonGravar_Click(object sender, EventArgs e)
         {
-            configuracao.PrecoCombustiveis.Gasolina = decimal.Parse(numericUpDownGasolina.Text);
+            configuracao.PrecoCombustiveis.Gasolina = numericUpDownGasolina.Text;
 
-            configuracao.PrecoCombustiveis.Etanol = decimal.Parse(numericUpDownEtanol.Text);
+            configuracao.PrecoCombustiveis.Etanol = numericUpDownEtanol.Text;
 
-            configuracao.PrecoCombustiveis.Alcool = decimal.Parse(numericUpDownAlcool.Text);
+            configuracao.PrecoCombustiveis.Alcool = numericUpDownAlcool.Text;
 
-            configuracao.PrecoCombustiveis.GNV = decimal.Parse(numericUpDownGNV.Text);
+            configuracao.PrecoCombustiveis.GNV = numericUpDownGNV.Text;
 
-            configuracao.PrecoCombustiveis.Diesel = decimal.Parse(numericUpDownDiesel.Text);
+            configuracao.PrecoCombustiveis.Diesel = numericUpDownDiesel.Text;
 
 
 

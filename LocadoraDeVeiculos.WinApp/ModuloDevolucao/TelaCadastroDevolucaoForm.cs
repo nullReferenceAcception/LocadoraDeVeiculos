@@ -159,19 +159,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             switch(loc.Veiculo.Combustivel)
             {
                 case CombustivelEnum.Diesel:
-                    custoCombustivel = configuracao.PrecoCombustiveis.Diesel;
+                    custoCombustivel = Decimal.Parse(configuracao.PrecoCombustiveis.Diesel);
                     break;
                 case CombustivelEnum.Gasolina:
-                    custoCombustivel = configuracao.PrecoCombustiveis.Gasolina;
+                    custoCombustivel = Decimal.Parse(configuracao.PrecoCombustiveis.Gasolina);
                     break;
                 case CombustivelEnum.Álcool:
-                    custoCombustivel = configuracao.PrecoCombustiveis.Alcool;
+                    custoCombustivel = Decimal.Parse(configuracao.PrecoCombustiveis.Alcool);
                     break;
                 case CombustivelEnum.Etanol:
-                    custoCombustivel = configuracao.PrecoCombustiveis.Etanol;
+                    custoCombustivel = Decimal.Parse(configuracao.PrecoCombustiveis.Etanol);
                     break;
                 case CombustivelEnum.GNV:
-                    custoCombustivel = configuracao.PrecoCombustiveis.GNV;
+                    custoCombustivel = Decimal.Parse(configuracao.PrecoCombustiveis.GNV);
                     break;
             }
 
