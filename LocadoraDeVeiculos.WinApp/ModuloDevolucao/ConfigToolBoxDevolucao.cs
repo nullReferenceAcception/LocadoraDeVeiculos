@@ -8,5 +8,7 @@
         public override string TooltipExcluir => "Excluir uma devolução!?";
         public override string TooltipGerarPdf => "Gerar PDF da devolução";
         public override bool GerarPdfHabilitado => true;
+        public override bool EditarHabilitado => false;
+        public override bool ExcluirHabilitado => false;
     }
 }

@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
@@ -12,7 +13,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloGrupoVeiculo
 {
     public class RepositorioGrupoVeiculoOrm : RepositorioBase<GrupoVeiculos>, IRepositorioGrupoVeiculos
     {
-        public RepositorioGrupoVeiculoOrm(LocadoraDbContext dbContext) : base(dbContext)
+        public RepositorioGrupoVeiculoOrm(IContextoPersistencia dbContext) : base(dbContext)
         {
 
         }

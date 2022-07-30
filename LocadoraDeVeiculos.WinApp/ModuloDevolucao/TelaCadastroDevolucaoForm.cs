@@ -43,6 +43,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             this._servicoVeiculo = servicoVeiculo;
             this.configuracao = configuracao;
 
+            numericUpDownKmRodadosLocacao.Enabled = false;
+            dateTimePickerDataDevolucaoReal.Enabled = false;
+            comboBoxNivelTanque.Enabled = false;
+            checkedListBoxTaxasAdicionais.Enabled = false;
+
             var combustiveis = Enum.GetValues(typeof(TanqueEnum));
 
             foreach (TanqueEnum combustivel in combustiveis)
@@ -70,6 +75,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             comboBoxNivelTanque.SelectedIndex = 0;
             numericUpDownKmRodadosLocacao.Minimum = loc.Veiculo.KmPercorrido;
             numericUpDownKmRodadosLocacao.Value = loc.Veiculo.KmPercorrido;
+
+
+            numericUpDownKmRodadosLocacao.Enabled = true;
+            dateTimePickerDataDevolucaoReal.Enabled = true;
+            comboBoxNivelTanque.Enabled = true;
+            checkedListBoxTaxasAdicionais.Enabled = true;
+
 
             checkedListBoxTaxasSelecionadas.Items.Clear();
 
@@ -159,19 +171,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             switch(loc.Veiculo.Combustivel)
             {
                 case CombustivelEnum.Diesel:
-                    custoCombustivel = configuracao.PrecoCombustiveis.Diesel;
+                    custoCombustivel = Decimal.Parse(configuracao.PrecoCombustiveis.Diesel);
                     break;
                 case CombustivelEnum.Gasolina:
-                    custoCombustivel = configuracao.PrecoCombustiveis.Gasolina;
+                    custoCombustivel = Decimal.Parse(configuracao.PrecoCombustiveis.Gasolina);
                     break;
                 case CombustivelEnum.Álcool:
-                    custoCombustivel = configuracao.PrecoCombustiveis.Alcool;
+                    custoCombustivel = Decimal.Parse(configuracao.PrecoCombustiveis.Alcool);
                     break;
                 case CombustivelEnum.Etanol:
-                    custoCombustivel = configuracao.PrecoCombustiveis.Etanol;
+                    custoCombustivel = Decimal.Parse(configuracao.PrecoCombustiveis.Etanol);
                     break;
                 case CombustivelEnum.GNV:
-                    custoCombustivel = configuracao.PrecoCombustiveis.GNV;
+                    custoCombustivel = Decimal.Parse(configuracao.PrecoCombustiveis.GNV);
                     break;
             }
 

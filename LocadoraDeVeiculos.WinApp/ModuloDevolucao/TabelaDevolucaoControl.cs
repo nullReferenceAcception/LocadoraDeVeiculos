@@ -51,7 +51,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             grid.Rows.Clear();
 
             foreach (Devolucao devolucao in devolucoes)
-                grid.Rows.Add(devolucao.Id, devolucao.Locacao.Funcionario.Nome, devolucao.Locacao.Cliente.Nome, devolucao.Locacao.Condutor.Nome, devolucao.Locacao.Veiculo.Modelo, devolucao.Locacao.PlanoCobranca, devolucao.Locacao.DataLocacao, devolucao.Locacao.DataDevolucaoPrevista, devolucao.DataDevolucaoReal);
+                grid.Rows.Add(devolucao.Id, devolucao.Locacao.Funcionario.Nome, devolucao.Locacao.Cliente.Nome, devolucao.Locacao.Condutor == null ? devolucao.Locacao.Cliente.Nome : devolucao.Locacao.Condutor.Nome, devolucao.Locacao.Veiculo.Modelo, devolucao.Locacao.PlanoCobranca, devolucao.Locacao.DataLocacao, devolucao.Locacao.DataDevolucaoPrevista, devolucao.DataDevolucaoReal);
         }
     }
 }

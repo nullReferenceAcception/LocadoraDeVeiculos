@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 
 namespace LocadoraDeVeiculos.Infra.ORM.ModuloDevolucao
 {
     public class RepositorioDevolucaoOrm : RepositorioBase<Devolucao>, IRepositorioDevolucao
     {
-        public RepositorioDevolucaoOrm(LocadoraDbContext dbContext) : base(dbContext)
+        public RepositorioDevolucaoOrm(IContextoPersistencia dbContext) : base(dbContext)
         {
         }
 

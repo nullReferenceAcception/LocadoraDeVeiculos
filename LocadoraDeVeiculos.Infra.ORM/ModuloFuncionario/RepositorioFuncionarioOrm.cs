@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloFuncionario
 {
     public class RepositorioFuncionarioOrm : RepositorioBase<Funcionario>, IRepositorioFuncionario
     {
-        public RepositorioFuncionarioOrm(LocadoraDbContext dbContext) : base(dbContext)
+        public RepositorioFuncionarioOrm(IContextoPersistencia dbContext) : base(dbContext)
         {
         }
 

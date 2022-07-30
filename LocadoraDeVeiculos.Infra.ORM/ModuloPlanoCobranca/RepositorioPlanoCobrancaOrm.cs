@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloPlanoCobranca
 {
     public class RepositorioPlanoCobrancaOrm : RepositorioBase<PlanoCobranca>, IRepositorioPlanoCobranca
     {
-        public RepositorioPlanoCobrancaOrm(LocadoraDbContext dbContext) : base(dbContext)
+        public RepositorioPlanoCobrancaOrm(IContextoPersistencia dbContext) : base(dbContext)
         {
         }
 

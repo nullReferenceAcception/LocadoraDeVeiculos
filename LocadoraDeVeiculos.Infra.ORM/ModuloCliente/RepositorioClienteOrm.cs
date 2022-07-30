@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloCliente
 {
     public class RepositorioClienteOrm : RepositorioBase<Cliente>, IRepositorioCliente
     {
-        public RepositorioClienteOrm(LocadoraDbContext dbContext) : base(dbContext)
+        public RepositorioClienteOrm(IContextoPersistencia dbContext) : base(dbContext)
         {
 
         }

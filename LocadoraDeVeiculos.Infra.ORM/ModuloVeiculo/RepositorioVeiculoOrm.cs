@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloVeiculo
 {
     public class RepositorioVeiculoOrm : RepositorioBase<Veiculo>, IRepositorioVeiculo
     {
-        public RepositorioVeiculoOrm(LocadoraDbContext dbContext) : base(dbContext)
+        public RepositorioVeiculoOrm(IContextoPersistencia dbContext) : base(dbContext)
         {
         }
 
