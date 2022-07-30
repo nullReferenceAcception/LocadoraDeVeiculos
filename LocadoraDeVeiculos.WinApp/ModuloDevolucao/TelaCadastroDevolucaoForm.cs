@@ -1,4 +1,5 @@
 ﻿using FluentResults;
+using Locadora.Infra.Configs;
 using LocadoraDeVeiculos.Dominio.ModuloDevolucao;
 using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
@@ -18,6 +19,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         private IServicoLocacao _servicoLocacao;
         private IServicoTaxa _servicoTaxa;
         private IServicoVeiculo _servicoVeiculo;
+        private ConfiguracaoAplicacaoLocadora configuracao;
 
         public Devolucao Devolucao
         {
@@ -30,7 +32,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
         public Func<Devolucao, Result<Devolucao>> GravarRegistro { get; set; }
 
-        public TelaCadastroDevolucaoForm(IServicoDevolucao servicoDevolucao, IServicoLocacao servicoLocacao, IServicoTaxa servicoTaxa, IServicoVeiculo servicoVeiculo)
+        public TelaCadastroDevolucaoForm(IServicoDevolucao servicoDevolucao, IServicoLocacao servicoLocacao, IServicoTaxa servicoTaxa, IServicoVeiculo servicoVeiculo, ConfiguracaoAplicacaoLocadora configuracao)
         {
             InitializeComponent();
             this.ConfigurarTela();
@@ -39,6 +41,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             this._servicoLocacao = servicoLocacao;
             this._servicoTaxa = servicoTaxa;
             this._servicoVeiculo = servicoVeiculo;
+            this.configuracao = configuracao;
 
             var combustiveis = Enum.GetValues(typeof(TanqueEnum));
 
@@ -156,19 +159,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             switch(loc.Veiculo.Combustivel)
             {
                 case CombustivelEnum.Diesel:
-                    custoCombustivel = 8.50m;
+                    custoCombustivel = configuracao.PrecoCombustiveis.d;
                     break;
                 case CombustivelEnum.Gasolina:
-                    custoCombustivel = 7.50m;
+                    custoCombustivel = configuracao.PrecoCombustiveis.Gasolina;
                     break;
                 case CombustivelEnum.Álcool:
-                    custoCombustivel = 5.50m;
+                    custoCombustivel = configuracao.PrecoCombustiveis.Alcool;
                     break;
                 case CombustivelEnum.Etanol:
-                    custoCombustivel = 4.50m;
+                    custoCombustivel = configuracao.PrecoCombustiveis.Etanol;
                     break;
                 case CombustivelEnum.GNV:
-                    custoCombustivel = 3.50m;
+                    custoCombustivel = configuracao.PrecoCombustiveis.GNV;
                     break;
             }
 
