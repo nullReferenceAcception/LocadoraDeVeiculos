@@ -32,7 +32,6 @@
             this.tabPageLogs = new System.Windows.Forms.TabPage();
             this.textBoxUrlSeq = new System.Windows.Forms.TextBox();
             this.labelUrlSeq = new System.Windows.Forms.Label();
-            this.buttonProcurar = new System.Windows.Forms.Button();
             this.textBoxDiretorioLog = new System.Windows.Forms.TextBox();
             this.labelDiretorioLogs = new System.Windows.Forms.Label();
             this.tabPageDatabase = new System.Windows.Forms.TabPage();
@@ -78,7 +77,6 @@
             this.tabPageLogs.BackColor = System.Drawing.Color.DarkGray;
             this.tabPageLogs.Controls.Add(this.textBoxUrlSeq);
             this.tabPageLogs.Controls.Add(this.labelUrlSeq);
-            this.tabPageLogs.Controls.Add(this.buttonProcurar);
             this.tabPageLogs.Controls.Add(this.textBoxDiretorioLog);
             this.tabPageLogs.Controls.Add(this.labelDiretorioLogs);
             this.tabPageLogs.Location = new System.Drawing.Point(4, 24);
@@ -105,16 +103,6 @@
             this.labelUrlSeq.Size = new System.Drawing.Size(55, 15);
             this.labelUrlSeq.TabIndex = 3;
             this.labelUrlSeq.Text = "URL SEQ:";
-            // 
-            // buttonProcurar
-            // 
-            this.buttonProcurar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonProcurar.Location = new System.Drawing.Point(729, 45);
-            this.buttonProcurar.Name = "buttonProcurar";
-            this.buttonProcurar.Size = new System.Drawing.Size(75, 23);
-            this.buttonProcurar.TabIndex = 2;
-            this.buttonProcurar.Text = "Procurar";
-            this.buttonProcurar.UseVisualStyleBackColor = true;
             // 
             // textBoxDiretorioLog
             // 
@@ -324,7 +312,6 @@
         private System.Windows.Forms.Label labelDiretorioLogs;
         private System.Windows.Forms.TabPage tabPageDatabase;
         private System.Windows.Forms.Button buttonGravar;
-        private System.Windows.Forms.Button buttonProcurar;
         private System.Windows.Forms.TextBox textBoxUrlSeq;
         private System.Windows.Forms.Label labelUrlSeq;
         private System.Windows.Forms.Label label3;
