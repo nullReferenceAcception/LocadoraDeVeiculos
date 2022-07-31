@@ -193,7 +193,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             return _tabelaLocacao;
         }
 
-
         public override bool VisualizarDesativados()
         {
             if (estadoLocacao == false)
@@ -216,23 +215,22 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             _tabelaLocacao.AtualizarRegistros(locacoesDesativados);
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {locacoesDesativados.Count} {(locacoesDesativados.Count == 1 ? "locacao desativada" : "locacoes desativadas")}", CorParaRodape.White);
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {locacoesDesativados.Count} {(locacoesDesativados.Count == 1 ? "locação desativada" : "locações desativadas")}", CorParaRodape.White);
         }
 
 
         private void CarregarLocacaoAtivos()
         {
-            List<Locacao> locacaos = _servicoLocacao.SelecionarTodos().Value;
+            List<Locacao> locacoes = _servicoLocacao.SelecionarTodos().Value;
 
-            _tabelaLocacao.AtualizarRegistros(locacaos);
+            _tabelaLocacao.AtualizarRegistros(locacoes);
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {locacaos.Count} {(locacaos.Count == 1 ? "locacao" : "locacoes")}", CorParaRodape.White);
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {locacoes.Count} {(locacoes.Count == 1 ? "locação" : "locações")}", CorParaRodape.White);
         }
 
         public override void GerarPdf()
         {
             var guid = _tabelaLocacao.ObtemGuidLocacaoSelecionado();
-
 
             Locacao locacaoSelecionada = _servicoLocacao.SelecionarPorGuid(guid).Value;
 
@@ -243,7 +241,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 return;
             }
 
-            DocumentCore dc = new DocumentCore();
+            DocumentCore dc = new();
 
             dc.Content.End.Insert("Locação: " + locacaoSelecionada.Id.ToString() + "\n");
             dc.Content.End.Insert("Data da locação: " + locacaoSelecionada.DataLocacao + "\n");
@@ -261,6 +259,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 dc.Content.End.Insert("Condutor: " + locacaoSelecionada.Condutor.Nome + "\n");
                 dc.Content.End.Insert("CNH do condutor: " + locacaoSelecionada.Condutor.CNH + "\n");
             }
+
             dc.Content.End.Insert("-------------------------------------------------\n ");
             dc.Content.End.Insert("Veiculo: " + locacaoSelecionada.Veiculo.Modelo + "\n");
             dc.Content.End.Insert("Placa: " + locacaoSelecionada.Veiculo.Placa + "\n");
@@ -269,16 +268,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             dc.Content.End.Insert("Plano de cobrança: " + locacaoSelecionada.PlanoCobranca.ToString() + "\n");
             dc.Content.End.Insert("-------------------------------------------------\n ");
             dc.Content.End.Insert("Taxas: \n");
+
             foreach(var taxa in locacaoSelecionada.Taxas)
-            {
                 dc.Content.End.Insert(taxa.ToString() + "\n");
-            }
+
             dc.Content.End.Insert("-------------------------------------------------\n ");
             dc.Content.End.Insert("Funcionario responsável: " + locacaoSelecionada.Funcionario.Nome + "\n");
 
-
-
-
+            dc.Content.End.Insert("Valor total previsto: R$" + locacaoSelecionada.ValorTotalPrevisto);
 
             string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Locação"
                 + locacaoSelecionada.Id.ToString() + ".pdf";
@@ -289,11 +286,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 PreserveFormFields = true
             });
 
-
-
             if (MessageBox.Show("Salvo em documentos, deseja abrir o PDF?", "Devolução", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-
                 var p = new Process();
                 p.StartInfo = new ProcessStartInfo(path)
                 {
@@ -301,8 +295,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 };
                 p.Start();
             }
-            
         }
-
     }
 }

@@ -27,7 +27,6 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloLocacao
             registros.Update(registro);
         }
 
-
         public override List<Locacao> SelecionarTodos()
         {
             return registros.Where(x => x.Status == StatusEnum.Ativo).Include(x => x.Condutor)

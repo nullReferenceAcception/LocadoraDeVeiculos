@@ -17,6 +17,8 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloDevolucao
             devolucao.Property(x => x.Tanque).HasConversion<string>();
 
             devolucao.Property(x => x.LocacaoId).HasColumnType("uniqueidentifier").IsRequired();
+            devolucao.Property(x => x.ValorTotalReal).HasColumnType("decimal(11,2)").IsRequired();
+
             devolucao.HasOne(x => x.Locacao).WithMany().HasForeignKey(x => x.LocacaoId).OnDelete(DeleteBehavior.Restrict);
         }
     }

@@ -71,6 +71,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 textBoxKmVeiculo.Text = Locacao.Veiculo.KmPercorrido.ToString();
                 dateTimePickerDataLocacao.Value = Locacao.DataLocacao;
                 dateTimePickerDataPrevistaDevolucao.Value = Locacao.DataDevolucaoPrevista;
+                textBoxTotalPrevisto.Text = Locacao.ValorTotalPrevisto.ToString();
 
                 for (int i = 0; i < checkedListBoxTaxas.Items.Count; i++)
                     if (Locacao.Taxas.Contains((Taxa)checkedListBoxTaxas.Items[i]))
@@ -104,6 +105,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                     taxas.Add(item);
 
             RemoverTaxas(Locacao, taxas);
+
+            Locacao.ValorTotalPrevisto = Convert.ToDecimal(textBoxTotalPrevisto.Text);
         }
 
         private void buttonGravar_Click(object sender, EventArgs e)
@@ -130,11 +133,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 comboBoxVeiculo.Items.Add(item);
         }
 
-        private void comboBoxCliente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            comboBoxCondutor.Items.Clear();
-        }
-
         private void AtualizarTotalPrevisto()
         {
             PlanoCobranca planoCobranca = (PlanoCobranca)comboBoxPlanoCobranca.SelectedItem;
@@ -150,6 +148,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                     valor += item.Valor;
 
             textBoxTotalPrevisto.Text = Math.Round(valor, 3).ToString();
+        }
+
+        private void comboBoxCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxCondutor.Items.Clear();
         }
 
         private void comboBoxPlanoCobranca_SelectedIndexChanged(object sender, EventArgs e)
@@ -250,6 +253,4 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             comboBoxCondutor.Select();
         }
     }
-
 }
-

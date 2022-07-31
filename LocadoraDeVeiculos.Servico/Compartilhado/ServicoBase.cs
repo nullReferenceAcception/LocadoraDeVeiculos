@@ -109,17 +109,14 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             {
                 StringBuilder msgErro = new StringBuilder();
 
-
                 if (ex is DbUpdateException || ex is InvalidOperationException)
                 {
                     msgErro.Append($"O {typeof(T).Name} esta sendo usado por outro registro");
-
-
                     contexto.DesfazerAlteracoes();
                 }
-
                 else
                     msgErro.Append($"falha no sistema ao tentar excluir o {typeof(T).Name}");
+
                 Log.Logger.Error(ex, msgErro + "{classe}" + "{id}" + "{VersaoSistema}", typeof(T).Name, registro.Id, configuracao.VersaoSistema);
 
                 return Result.Fail(msgErro.ToString());
@@ -150,8 +147,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
             catch (Exception ex)
             {
-
-                StringBuilder msgErro = new StringBuilder("Selecionado o ");
+                StringBuilder msgErro = new("Selecionado o ");
 
                 Log.Logger.Error(ex, msgErro + "{classe}" +  "{VersaoSistema}", typeof(T).Name, configuracao.VersaoSistema);
 
@@ -167,7 +163,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             }
             catch (Exception ex)
             {
-                StringBuilder msgErro = new StringBuilder("Falha no sistema ao pegar quantidade de ");
+                StringBuilder msgErro = new("Falha no sistema ao pegar quantidade de ");
 
                 Log.Logger.Error(ex, msgErro + "{classe}" +  "{VersaoSistema}", typeof(T).Name, configuracao.VersaoSistema);
 
@@ -195,12 +191,10 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             Log.Logger.Error("Falha ao {funcao} \n {@registro}", funcao, registro);
 
             foreach (var item in erros)
-            {
                 if (item == (erros[erros.Count - 1]))
                     Log.Logger.Error(item.Message + Environment.NewLine);
                 else
                     Log.Logger.Error(item.Message);
-            }
         }
 
         private Result ValidarRegistro(T registro)

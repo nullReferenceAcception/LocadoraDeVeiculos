@@ -138,7 +138,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 return;
             }
 
-            DocumentCore dc = new DocumentCore();
+            DocumentCore dc = new();
 
             dc.Content.End.Insert("Informaçoes da devolução: " + devolucaoSelecionada.Locacao.Id.ToString() + "\n");
             dc.Content.End.Insert("Data da locação: " + devolucaoSelecionada.Locacao.DataLocacao.ToShortDateString() + "\n");
@@ -175,15 +175,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             dc.Content.End.Insert("Data da devolucao: " + devolucaoSelecionada.DataDevolucaoReal + "\n");
             dc.Content.End.Insert("-------------------------------------------------\n ");
             dc.Content.End.Insert("Taxas adicionais:" + "\n");
+
             foreach(var taxarAdicionais in devolucaoSelecionada.TaxasAdicionais)
-            {
                 dc.Content.End.Insert(taxarAdicionais.ToString() + "\n");
-            }
+
             dc.Content.End.Insert("-------------------------------------------------\n ");
             dc.Content.End.Insert("Tanque: " + devolucaoSelecionada.Tanque.ToString() + "\n");
             dc.Content.End.Insert("-------------------------------------------------\n ");
-            //dc.Content.End.Insert("Valor Total: " + devolucaoSelecionada.FAZERVALOR)
 
+            dc.Content.End.Insert("Valor total real: R$" + devolucaoSelecionada.ValorTotalReal);
             string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Devolução - "
                 + devolucaoSelecionada.Id.ToString() + ".pdf";
 

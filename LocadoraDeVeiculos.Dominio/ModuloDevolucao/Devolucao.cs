@@ -12,6 +12,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
         public DateTime DataDevolucaoReal { get; set; }
         public List<Taxa> TaxasAdicionais { get; set; }
         public TanqueEnum Tanque { get; set; }
+        public decimal ValorTotalReal { get; set; }
 
         public Devolucao()
         {
@@ -26,6 +27,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
                    LocacaoId.Equals(devolucao.LocacaoId) &&
                    DataDevolucaoReal == devolucao.DataDevolucaoReal &&
                    CompararTaxas(devolucao) &&
+                   ValorTotalReal == devolucao.ValorTotalReal &&
                    Tanque == devolucao.Tanque;
         }
 

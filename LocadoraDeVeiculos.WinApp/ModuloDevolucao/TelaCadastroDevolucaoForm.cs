@@ -7,7 +7,6 @@ using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
@@ -76,12 +75,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             numericUpDownKmRodadosLocacao.Minimum = loc.Veiculo.KmPercorrido;
             numericUpDownKmRodadosLocacao.Value = loc.Veiculo.KmPercorrido;
 
-
             numericUpDownKmRodadosLocacao.Enabled = true;
             dateTimePickerDataDevolucaoReal.Enabled = true;
             comboBoxNivelTanque.Enabled = true;
             checkedListBoxTaxasAdicionais.Enabled = true;
-
 
             checkedListBoxTaxasSelecionadas.Items.Clear();
 
@@ -230,6 +227,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             foreach (Taxa item in checkedListBoxTaxasSelecionadas.Items)
                 if (!checkedListBoxTaxasSelecionadas.CheckedItems.Contains(item))
                     taxas.Add(item);
+
+            Devolucao.ValorTotalReal = Convert.ToDecimal(textBoxValorTotal.Text);
         }
 
         private void checkedListBoxTaxasAdicionais_ItemCheck(object sender, ItemCheckEventArgs e)

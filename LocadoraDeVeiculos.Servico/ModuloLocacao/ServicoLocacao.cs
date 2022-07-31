@@ -13,35 +13,32 @@ namespace LocadoraDeVeiculos.Servico.ModuloLocacao
 {
     public class ServicoLocacao : ServicoBase<Locacao, ValidadorLocacao>, IServicoLocacao
     {
-        IRepositorioLocacao repositorioLocacao;
-        public ServicoLocacao(IRepositorioLocacao repositorioLocacao, IContextoPersistencia contexto, ConfiguracaoAplicacaoLocadora loc) : base(new ValidadorLocacao(), repositorioLocacao, contexto,loc)
+        IRepositorioLocacao _repositorioLocacao;
+        public ServicoLocacao(IRepositorioLocacao repositorioLocacao, IContextoPersistencia contexto, ConfiguracaoAplicacaoLocadora loc) : base(new ValidadorLocacao(), repositorioLocacao, contexto, loc)
         {
-            this.repositorioLocacao= repositorioLocacao;
+            this._repositorioLocacao = repositorioLocacao;
         }
-        
-        public void RemoverTaxas(Locacao locacao,List<Taxa> taxas)
+
+        public void RemoverTaxas(Locacao locacao, List<Taxa> taxas)
         {
 
             try
             {
                 Log.Logger.Information("Removendo taxa de {locacao}", locacao);
-                repositorioLocacao.RemoverTaxas(locacao, taxas);
+                _repositorioLocacao.RemoverTaxas(locacao, taxas);
             }
             catch (Exception ex)
             {
-                StringBuilder msgErro = new StringBuilder("erro ao remover taxa de ");
-
+                StringBuilder msgErro = new("erro ao remover taxa de ");
                 Log.Logger.Error(ex, msgErro + "{locacao}", locacao);
             }
-
-            
         }
 
         public Result<List<Locacao>> SelecionarDesativados()
         {
             try
             {
-                return Result.Ok(repositorioLocacao.SelecionarDesativados());
+                return Result.Ok(_repositorioLocacao.SelecionarDesativados());
             }
             catch (Exception ex)
             {

@@ -11,6 +11,22 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
 {
     public class Locacao : EntidadeBase<Locacao>
     {
+        public Funcionario Funcionario { get; set; }
+        public Guid FuncionarioId { get; set; }
+        public Cliente Cliente { get; set; }
+        public Guid ClienteId { get; set; }
+        public Condutor? Condutor { get; set; }
+        public Guid? CondutorId { get; set; }
+        public Veiculo Veiculo { get; set; }
+        public Guid VeiculoId { get; set; }
+        public PlanoCobranca PlanoCobranca { get; set; }
+        public Guid PlanoCobrancaId { get; set; }
+        public DateTime DataLocacao { get; set; }
+        public DateTime DataDevolucaoPrevista { get; set; }
+        public List<Taxa> Taxas { get; set; }
+        public StatusEnum Status { get; set; }
+        public decimal ValorTotalPrevisto { get; set; }
+
         public Locacao()
         {
             Taxas = new();
@@ -31,21 +47,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
             Status = status;
         }
 
-        public Funcionario Funcionario { get; set; }
-        public Guid FuncionarioId { get; set; }
-        public Cliente Cliente { get; set; }
-        public Guid ClienteId { get; set; }
-        public Condutor? Condutor { get; set; }
-        public Guid? CondutorId { get; set; }
-        public Veiculo Veiculo { get; set; }
-        public Guid VeiculoId { get; set; }
-        public PlanoCobranca PlanoCobranca { get; set; }
-        public Guid PlanoCobrancaId { get; set; }
-        public DateTime DataLocacao { get; set; }
-        public DateTime DataDevolucaoPrevista { get; set; }
-        public List<Taxa> Taxas { get; set; }
-        public StatusEnum Status { get; set; }
-
         public override bool Equals(object? obj)
         {
             return obj is Locacao locacao &&
@@ -58,7 +59,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
                    DataLocacao == locacao.DataLocacao &&
                    DataDevolucaoPrevista == locacao.DataDevolucaoPrevista &&
                    Status == locacao.Status &&
-                  CompararTaxas(locacao);
+                   ValorTotalPrevisto == locacao.ValorTotalPrevisto &&
+                   CompararTaxas(locacao);
         }
 
         private bool CompararTaxas(Locacao locacao)
