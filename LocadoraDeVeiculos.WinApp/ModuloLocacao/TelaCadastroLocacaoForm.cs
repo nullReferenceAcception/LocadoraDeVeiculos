@@ -241,7 +241,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         private void labelCondutor_Click(object sender, EventArgs e)
         {
             comboBoxCondutor.DroppedDown = true;
-            comboBoxCondutor.SelectedIndex = 0;
+
+            if(comboBoxCondutor.Items.Count > 0)
+                comboBoxCondutor.SelectedIndex = 0;
+
             comboBoxCondutor.Select();
         }
     }

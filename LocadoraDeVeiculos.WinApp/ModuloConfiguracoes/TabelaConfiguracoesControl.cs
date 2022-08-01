@@ -10,43 +10,33 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
     public partial class TabelaConfiguracoesControl : UserControl
     {
         ConfiguracaoAplicacaoLocadora configuracao;
+        ValidadorConfiguracao _validador;
 
         public TabelaConfiguracoesControl(ConfiguracaoAplicacaoLocadora configuracao)
         {
             InitializeComponent();
 
+            _validador = new();
+
             ConfigurarNumericUpDowns();
 
-            textBoxConnectionString.Text = configuracao.ConnectionStrings.SqlServer;
-
-            textBoxDiretorioLog.Text = configuracao.ConfiguracaoLogs.DiretorioSaida;
-
-            textBoxUrlSeq.Text = "http://localhost:5341/";
-
-            textBoxUrlSeq.Enabled = false;
-
-            numericUpDownDiesel.Text = configuracao.PrecoCombustiveis.Diesel;
-
-            numericUpDownAlcool.Text = configuracao.PrecoCombustiveis.Alcool;
-
-            numericUpDownEtanol.Text = configuracao.PrecoCombustiveis.Etanol;
-
-            numericUpDownGasolina.Text = configuracao.PrecoCombustiveis.Gasolina;
-
-            numericUpDownGNV.Text = configuracao.PrecoCombustiveis.GNV;
-
             this.configuracao = configuracao;
+            AtualizarCampos(configuracao);
         }
 
         private void buttonGravar_Click(object sender, EventArgs e)
         {
-            switch(tabControl.SelectedIndex)
-            {
-                case 0:
-                    break;
-            }
-
+            ObterConnectionString();
             ObterPrecosCombustiveis();
+            ObterConnectionStringSqlServer();
+
+            var res = _validador.Validate(configuracao);
+
+            if (!res.IsValid)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape(res.Errors[0].ErrorMessage, CorParaRodape.Red);
+                return;
+            }
 
             string caminho = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
 
@@ -57,6 +47,45 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
             File.WriteAllText(caminhoJson, json);
 
             MessageBox.Show("Informações gravadas");
+
+            AtualizarCampos(configuracao);
+        }
+
+        private void ObterConnectionStringSqlServer()
+        {
+            configuracao.ConfiguracaoLogs.DiretorioSaida = textBoxDiretorioLog.Text;
+        }
+
+        private void ObterConnectionString()
+        {
+            configuracao.ConnectionStrings.SqlServer = textBoxConnectionString.Text;
+        }
+
+        private void buttonCopiar_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(textBoxConnectionString.Text);
+        }
+
+        private void buttonAbrirSeq_Click(object sender, EventArgs e)
+        {
+            var p = new Process();
+            p.StartInfo = new ProcessStartInfo(textBoxUrlSeq.Text)
+            {
+                UseShellExecute = true
+            };
+            p.Start();
+        }
+
+        private void buttonPesquisar_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new();
+            fbd.Description = "Selecionar pasta para salvar os logs";
+
+            string pastaSelecionada = "";
+
+            if (fbd.ShowDialog() == DialogResult.OK)
+                textBoxDiretorioLog.Text = pastaSelecionada;
+
         }
 
         private void ObterPrecosCombustiveis()
@@ -81,24 +110,25 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
             numericUpDownGNV.Increment = 0.01m;
         }
 
-        private void buttonCopiar_Click(object sender, EventArgs e)
+        private void AtualizarCampos(ConfiguracaoAplicacaoLocadora configuracao)
         {
-            Clipboard.SetText(textBoxConnectionString.Text);
-        }
+            textBoxConnectionString.Text = configuracao.ConnectionStrings.SqlServer;
 
-        private void buttonAbrirSeq_Click(object sender, EventArgs e)
-        {
-            var p = new Process();
-            p.StartInfo = new ProcessStartInfo(textBoxUrlSeq.Text)
-            {
-                UseShellExecute = true
-            };
-            p.Start();
-        }
+            textBoxDiretorioLog.Text = configuracao.ConfiguracaoLogs.DiretorioSaida;
 
-        private void buttonPesquisar_Click(object sender, EventArgs e)
-        {
+            textBoxUrlSeq.Text = "http://localhost:5341/";
 
+            textBoxUrlSeq.Enabled = false;
+
+            numericUpDownDiesel.Text = configuracao.PrecoCombustiveis.Diesel;
+
+            numericUpDownAlcool.Text = configuracao.PrecoCombustiveis.Alcool;
+
+            numericUpDownEtanol.Text = configuracao.PrecoCombustiveis.Etanol;
+
+            numericUpDownGasolina.Text = configuracao.PrecoCombustiveis.Gasolina;
+
+            numericUpDownGNV.Text = configuracao.PrecoCombustiveis.GNV;
         }
     }
 }

@@ -1,11 +1,15 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System;
 using System.IO;
 
 namespace Locadora.Infra.Configs
 {
     public class ConfiguracaoAplicacaoLocadora
     {
+        public string VersaoSistema { get; set; }
+        public ConfiguracaoLogs ConfiguracaoLogs { get; set; }
+        public ConnectionStrings ConnectionStrings { get; set; }
+        public PrecoCombustiveis PrecoCombustiveis { get; set; }
+
         public ConfiguracaoAplicacaoLocadora()
         {
             IConfiguration configuracao = new ConfigurationBuilder()
@@ -59,14 +63,6 @@ namespace Locadora.Infra.Configs
                 GNV = gnv
             };
         }
-
-        public string VersaoSistema { get; set; }
-
-        public ConfiguracaoLogs ConfiguracaoLogs { get; set; }
-
-        public ConnectionStrings ConnectionStrings { get; set; }
-
-        public PrecoCombustiveis PrecoCombustiveis { get; set; }
     }
 
     public class ConfiguracaoLogs
