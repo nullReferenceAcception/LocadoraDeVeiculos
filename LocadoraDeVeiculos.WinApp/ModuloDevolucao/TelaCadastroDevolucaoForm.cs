@@ -126,7 +126,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         private void AtualizarTotalPrevisto()
         {
             ObterDadosDaTela();
-            textBoxValorTotal.Text = Devolucao.CalcularTotal(numericUpDownKmRodadosLocacao.Value, configuracao, (TanqueEnum)comboBoxNivelTanque.SelectedItem).ToString();
+            textBoxValorTotal.Text = Devolucao.ValorTotalReal.ToString();
         }
 
         private void ObterDadosDaTela()
@@ -144,7 +144,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             foreach (Taxa item in checkedListBoxTaxasSelecionadas.Items)
                 if (!checkedListBoxTaxasSelecionadas.CheckedItems.Contains(item))
                     taxas.Add(item);
-            Devolucao.ValorTotalReal = Convert.ToDecimal(textBoxValorTotal.Text);
+            Devolucao.ValorTotalReal = Devolucao.CalcularTotal(numericUpDownKmRodadosLocacao.Value, configuracao, (TanqueEnum)comboBoxNivelTanque.SelectedItem);
         }
 
         private void checkedListBoxTaxasAdicionais_ItemCheck(object sender, ItemCheckEventArgs e)

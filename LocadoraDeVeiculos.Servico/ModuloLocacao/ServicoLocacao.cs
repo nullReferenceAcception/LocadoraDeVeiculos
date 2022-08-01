@@ -24,7 +24,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloLocacao
 
             try
             {
-                Log.Logger.Information("Removendo taxa de {locacao}", locacao);
+                Log.Logger.Information("Removendo taxa de {@locacao}", locacao);
                 _repositorioLocacao.RemoverTaxas(locacao, taxas);
             }
             catch (Exception ex)
@@ -42,7 +42,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloLocacao
             }
             catch (Exception ex)
             {
-                string msgErro = $"Falha no sistema ao tentar selecionar todos as loc~ções desativadas";
+                string msgErro = $"Falha no sistema ao tentar selecionar todos as locações desativadas";
 
                 Log.Logger.Error(ex, msgErro);
 

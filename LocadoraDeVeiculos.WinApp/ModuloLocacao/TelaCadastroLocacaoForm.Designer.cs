@@ -112,6 +112,7 @@
             this.textBoxTotalPrevisto.ReadOnly = true;
             this.textBoxTotalPrevisto.Size = new System.Drawing.Size(180, 23);
             this.textBoxTotalPrevisto.TabIndex = 37;
+            this.textBoxTotalPrevisto.Text = "0";
             // 
             // labelCondutor
             // 
