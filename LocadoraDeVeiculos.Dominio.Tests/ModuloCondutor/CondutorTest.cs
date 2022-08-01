@@ -8,7 +8,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCondutor
     [TestClass]
     public class CondutorTest
     {
-        Random random = new Random();
+        Random random = new();
         ValidadorCondutor validador;
 
         public CondutorTest()
