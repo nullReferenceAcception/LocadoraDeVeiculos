@@ -18,7 +18,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         private IServicoLocacao _servicoLocacao;
         private IServicoTaxa _servicoTaxa;
         private IServicoVeiculo _servicoVeiculo;
-        private ConfiguracaoAplicacaoLocadora configuracao;
+        private ConfiguracaoAplicacaoLocadora _configuracao;
         private TabelaDevolucaoControl _tabelaDevolucao;
 
         public ControladorDevolucao(IServicoDevolucao servicoDevolucao, IServicoLocacao servicoLocacao, IServicoTaxa servicoTaxa, IServicoVeiculo servicoVeiculo, ConfiguracaoAplicacaoLocadora configuracao)
@@ -27,7 +27,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             _servicoLocacao = servicoLocacao;
             _servicoTaxa = servicoTaxa;
             _servicoVeiculo = servicoVeiculo;
-            this.configuracao = configuracao;
+            this._configuracao = configuracao;
         }
 
         public override void Inserir()
@@ -38,7 +38,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 return;
             }
 
-            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa, _servicoVeiculo, configuracao);
+            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa, _servicoVeiculo, _configuracao);
 
             tela.Devolucao = new();
 
@@ -62,7 +62,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 return;
             }
 
-            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa, _servicoVeiculo, configuracao);
+            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa, _servicoVeiculo, _configuracao);
 
             tela.Devolucao = devolucaoSelecionada.Value;
 
@@ -133,8 +133,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
             if (devolucaoSelecionada == null)
             {
-                MessageBox.Show("Selecione uma Locação primeiro",
-                "Exclusão de Locação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Selecione uma devolução primeiro",
+                "Geração de PDF de Locação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
@@ -193,7 +193,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 PreserveFormFields = true
             });
 
-
             if (MessageBox.Show("Salvo em documentos, deseja abrir o PDF?", "Devolução", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 var p = new Process();
@@ -201,6 +200,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 {
                     UseShellExecute = true
                 };
+
                 p.Start();
             }
         }

@@ -7,14 +7,10 @@ using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
-using LocadoraDeVeiculos.Servico.ModuloFuncionario;
 using SautinSoft.Document;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
@@ -30,8 +26,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         private IServicoCondutor _servicoCondutor;
         private IServicoTaxa _servicoTaxa;
         private TabelaLocacaoControl _tabelaLocacao;
-        private bool estadoLocacao = true;
-
+        private bool _estadoLocacao = true;
 
         public ControladorLocacao(IServicoLocacao servicoLocacao,IServicoPlanoCobranca planoCobranca, IServicoCliente servicoCliente, IServicoVeiculo servicoVeiculo, IServicoFuncionario servicoFuncionario, IServicoGrupoVeiculos servicoGrupoVeiculo, IServicoCondutor servicoCondutor, IServicoTaxa servicoTaxa)
         {
@@ -46,7 +41,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         }
         public override void Inserir()
         {
-
             if (_servicoGrupoVeiculo.QuantidadeRegistro().Value == 0)
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape($"Cadastre no mínimo 1 'Grupo de Veículos' para cadastrar uma Locaçáo", CorParaRodape.Yellow);
@@ -88,7 +82,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
                 return;
             }
-
 
             TelaCadastroLocacaoForm tela = new(_planoCobranca,_servicoCliente, _servicoVeiculo, _servicoFuncionario, _servicoGrupoVeiculo, _servicoCondutor, _servicoTaxa);
 
@@ -195,18 +188,18 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         public override bool VisualizarDesativados()
         {
-            if (estadoLocacao == false)
+            if (_estadoLocacao == false)
             {
                 CarregarLocacaoAtivos();
-                estadoLocacao = true;
+                _estadoLocacao = true;
             }
             else
             {
                 CarregarLocacaoInativos();
-                estadoLocacao = false;
+                _estadoLocacao = false;
             }
 
-            return estadoLocacao;
+            return _estadoLocacao;
         }
 
         private void CarregarLocacaoInativos()
@@ -237,7 +230,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             if (locacaoSelecionada == null)
             {
                 MessageBox.Show("Selecione uma Locação primeiro",
-                "Exclusão de Locação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                "Geração de PDF de Locação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
@@ -288,11 +281,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             if (MessageBox.Show("Salvo em documentos, deseja abrir o PDF?", "Devolução", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                var p = new Process();
+                Process p = new();
                 p.StartInfo = new ProcessStartInfo(path)
                 {
                     UseShellExecute = true
                 };
+
                 p.Start();
             }
         }

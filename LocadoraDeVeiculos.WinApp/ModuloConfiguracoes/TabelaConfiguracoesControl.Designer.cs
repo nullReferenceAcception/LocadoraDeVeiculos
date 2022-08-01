@@ -99,6 +99,7 @@
             this.buttonPesquisar.TabIndex = 6;
             this.buttonPesquisar.Text = "Pesquisar";
             this.buttonPesquisar.UseVisualStyleBackColor = true;
+            this.buttonPesquisar.Click += new System.EventHandler(this.buttonPesquisar_Click);
             // 
             // buttonAbrirSeq
             // 

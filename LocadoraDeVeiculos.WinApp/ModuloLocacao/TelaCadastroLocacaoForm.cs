@@ -16,6 +16,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
     public partial class TelaCadastroLocacaoForm : Form
     {
         Locacao _locacao;
+        Locacao _locacaoCalculo;
         IServicoVeiculo _servicoVeiculo;
         IServicoCondutor _servicoCondutor;
         IServicoGrupoVeiculos _servicoGrupoVeiculos;
@@ -29,6 +30,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 ConfigurarTelaEditar();
             }
         }
+
         public TelaCadastroLocacaoForm(IServicoPlanoCobranca servicoPlanoCobranca, IServicoCliente servicoCliente, IServicoVeiculo servicoVeiculo, IServicoFuncionario servicoFuncionario, IServicoGrupoVeiculos servicoGrupoVeiculos, IServicoCondutor servicoCondutor, IServicoTaxa servicoTaxa)
         {
             InitializeComponent();

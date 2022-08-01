@@ -40,6 +40,27 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
 
         private void buttonGravar_Click(object sender, EventArgs e)
         {
+            switch(tabControl.SelectedIndex)
+            {
+                case 0:
+                    break;
+            }
+
+            ObterPrecosCombustiveis();
+
+            string caminho = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+
+            string caminhoJson = Path.Combine(caminho, "ConfiguracaoAplicacao.json");
+
+            string json = JsonConvert.SerializeObject(configuracao, Formatting.Indented);
+
+            File.WriteAllText(caminhoJson, json);
+
+            MessageBox.Show("Informações gravadas");
+        }
+
+        private void ObterPrecosCombustiveis()
+        {
             configuracao.PrecoCombustiveis.Gasolina = numericUpDownGasolina.Text;
 
             configuracao.PrecoCombustiveis.Etanol = numericUpDownEtanol.Text;
@@ -49,14 +70,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
             configuracao.PrecoCombustiveis.GNV = numericUpDownGNV.Text;
 
             configuracao.PrecoCombustiveis.Diesel = numericUpDownDiesel.Text;
-
-            string caminho = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
-            string caminhoJson = Path.Combine(caminho, "ConfiguracaoAplicacao.json");
-
-            string json = JsonConvert.SerializeObject(configuracao, Formatting.Indented);
-            File.WriteAllText(caminhoJson, json);
-
-            MessageBox.Show("Informações gravadas");
         }
 
         private void ConfigurarNumericUpDowns()
@@ -81,6 +94,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
                 UseShellExecute = true
             };
             p.Start();
+        }
+
+        private void buttonPesquisar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
