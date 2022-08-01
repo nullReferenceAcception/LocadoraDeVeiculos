@@ -30,7 +30,7 @@ namespace LocadoraDeVeiculos.Servico.ModuloLocacao
             catch (Exception ex)
             {
                 StringBuilder msgErro = new("erro ao remover taxa de ");
-                Log.Logger.Error(ex, msgErro + "{locacao}", locacao);
+                Log.Logger.Error(ex, msgErro + "{@locacao}", locacao);
             }
         }
 
