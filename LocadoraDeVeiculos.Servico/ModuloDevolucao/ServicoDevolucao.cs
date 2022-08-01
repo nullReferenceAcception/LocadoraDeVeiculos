@@ -23,14 +23,14 @@ namespace LocadoraDeVeiculos.Servico.ModuloDevolucao
         {
             try
             {
-                Log.Logger.Information("Removendo taxa de {devolucao}", devolucao);
+                Log.Logger.Information("Removendo taxa de {@devolucao}", devolucao);
                 _repositorioDevolucao.RemoverTaxas(devolucao, taxas);
             }
             catch (Exception ex)
             {
                 StringBuilder msgErro = new StringBuilder("erro ao remover taxa de ");
 
-                Log.Logger.Error(ex, msgErro + "{classe}", devolucao);
+                Log.Logger.Error(ex, msgErro + "{@classe}", devolucao);
             }
         }
 
