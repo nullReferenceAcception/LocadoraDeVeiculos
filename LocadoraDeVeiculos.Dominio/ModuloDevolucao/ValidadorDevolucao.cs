@@ -13,6 +13,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
                 .NotNull().NotEmpty().GreaterThanOrEqualTo(DateTime.Today).GreaterThanOrEqualTo(x => x.Locacao.DataLocacao);
             RuleFor(x => x.Tanque)
                 .NotNull().NotEmpty();
+            RuleFor(x => x.ValorTotalReal)
+                .NotNull().NotEmpty().GreaterThan(0);
         }
     }
 }
