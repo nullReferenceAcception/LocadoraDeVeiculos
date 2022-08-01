@@ -66,21 +66,6 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloLocacao
             Assert.AreEqual(locacaoEncontrado, locacao);
         }
 
-
-        [TestMethod]
-        public void Nao_Deve_inserir_locacao_com_veiculo_ja_locado()
-        {
-            Locacao locacao = CriarLocacao();
-
-            _servicoLocacao.Inserir(locacao);
-
-            Locacao locacaoEncontrado = _servicoLocacao.SelecionarPorGuid(locacao.Id).Value;
-
-            Result<Locacao> validationResult = _servicoLocacao.Inserir(locacaoEncontrado);
-
-            validationResult.Errors[0].Message.Should().Contain("Veiculo já está alocado");
-        }
-
         [TestMethod]
         public void Deve_selecionar_todos_locacao()
         {
@@ -100,6 +85,21 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloLocacao
             for (int i = 0; i < LocacoesEncontradas.Count; i++)
                 Assert.IsTrue(LocacoesEncontradas.Contains(locacoes[i]));
         }
+
+        [TestMethod]
+        public void Nao_Deve_inserir_locacao_com_veiculo_ja_locado()
+        {
+            Locacao locacao = CriarLocacao();
+
+            _servicoLocacao.Inserir(locacao);
+
+            Locacao locacaoEncontrado = _servicoLocacao.SelecionarPorGuid(locacao.Id).Value;
+
+            Result<Locacao> validationResult = _servicoLocacao.Inserir(locacaoEncontrado);
+
+            validationResult.Errors[0].Message.Should().Contain("Veiculo já está alocado");
+        }
+
     }
 }
 

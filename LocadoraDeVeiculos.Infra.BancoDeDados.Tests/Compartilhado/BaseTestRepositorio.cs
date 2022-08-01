@@ -2,6 +2,7 @@
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
+using LocadoraDeVeiculos.Dominio.ModuloDevolucao;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloLocacao;
@@ -13,6 +14,7 @@ using LocadoraDeVeiculos.Infra.Logging.Log;
 using LocadoraDeVeiculos.Infra.ORM.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloCliente;
 using LocadoraDeVeiculos.Servico.ModuloCondutor;
+using LocadoraDeVeiculos.Servico.ModuloDevolucao;
 using LocadoraDeVeiculos.Servico.ModuloFuncionario;
 using LocadoraDeVeiculos.Servico.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Servico.ModuloLocacao;
@@ -41,6 +43,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
         protected IServicoFuncionario _servicoFuncionario;
         protected IServicoTaxa _servicoTaxa;
         protected IServicoLocacao _servicoLocacao;
+        protected IServicoDevolucao _servicoDevolucao;
         protected BaseTestRepositorio()
         {
            
@@ -64,6 +67,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
             _servicoGrupoVeiculos = locator.GetServico<GrupoVeiculos, ServicoGrupoVeiculos, ValidadorGrupoVeiculos>();
             _servicoTaxa = locator.GetServico<Taxa, ServicoTaxa, ValidadorTaxa>();
             _servicoLocacao = locator.GetServico<Locacao, ServicoLocacao, ValidadorLocacao>();
+            _servicoDevolucao = locator.GetServico<Devolucao, ServicoDevolucao, ValidadorDevolucao>();
 
 
 
@@ -74,6 +78,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
 
             //colocar aqui sua tabela de acrodo com os exemplos
 
+            db.Database.ExecuteSqlRaw("DELETE FROM TB_DEVOLUCAO");
             db.Database.ExecuteSqlRaw("DELETE FROM TB_LOCACAO");
             db.Database.ExecuteSqlRaw("DELETE FROM TB_DEVOLUCAO");
             db.Database.ExecuteSqlRaw("DELETE FROM TB_PLANO_COBRANCA");
@@ -188,6 +193,21 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
 
            
             return locacao;
+        }
+
+        protected Devolucao CriarDevolucao()
+        {
+            Locacao loc = CriarLocacao();
+            _servicoLocacao.Inserir(loc);
+
+            List<Taxa> taxas = new List<Taxa> { CriarTaxa(), CriarTaxa() };
+            foreach (var item in taxas)
+            {
+                _servicoTaxa.Inserir(item);
+            }
+
+            return new(loc,loc.Id,DateTime.Today,taxas,TanqueEnum.TresQuartos,100);
+
         }
 
         protected Taxa CriarTaxa()

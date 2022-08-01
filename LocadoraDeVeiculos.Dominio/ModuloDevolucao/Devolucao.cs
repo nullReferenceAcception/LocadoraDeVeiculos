@@ -19,6 +19,17 @@ namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
             TaxasAdicionais = new();
         }
 
+        public Devolucao(Locacao locacao, Guid locacaoId, DateTime dataDevolucaoReal, 
+            List<Taxa> taxasAdicionais, TanqueEnum tanque, decimal valorTotalReal)
+        {
+            Locacao = locacao;
+            LocacaoId = locacaoId;
+            DataDevolucaoReal = dataDevolucaoReal;
+            TaxasAdicionais = taxasAdicionais;
+            Tanque = tanque;
+            ValorTotalReal = valorTotalReal;
+        }
+
         public override bool Equals(object? obj)
         {
             return obj is Devolucao devolucao &&
@@ -37,7 +48,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
                 return false;
 
             for (int i = 0; i < TaxasAdicionais.Count; i++)
-                if (EqualityComparer<Taxa>.Default.Equals(TaxasAdicionais[i], devolucao.TaxasAdicionais[i]))
+                if (!EqualityComparer<Taxa>.Default.Equals(TaxasAdicionais[i], devolucao.TaxasAdicionais[i]))
                     return false;
 
             return true;
