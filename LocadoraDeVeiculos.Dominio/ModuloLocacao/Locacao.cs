@@ -27,6 +27,22 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
         public StatusEnum Status { get; set; }
         public decimal ValorTotalPrevisto { get; set; }
 
+        public decimal CalcularValor()
+        {
+
+            int totalDias = (int)((DataDevolucaoPrevista.Date - DataLocacao.Date).TotalDays);
+
+            decimal valor = PlanoCobranca.ValorDia * totalDias;
+
+            foreach (Taxa item in Taxas)
+                if (item.EhDiaria)
+                    valor += item.Valor * totalDias;
+                else
+                    valor += item.Valor;
+
+            return Math.Round(valor, 3);
+        }
+
         public Locacao()
         {
             Taxas = new();

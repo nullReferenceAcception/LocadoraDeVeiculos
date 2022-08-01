@@ -109,6 +109,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             RemoverTaxas(Locacao, taxas);
 
             Locacao.ValorTotalPrevisto = Convert.ToDecimal(textBoxTotalPrevisto.Text);
+
         }
 
         private void buttonGravar_Click(object sender, EventArgs e)
@@ -137,19 +138,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         private void AtualizarTotalPrevisto()
         {
-            PlanoCobranca planoCobranca = (PlanoCobranca)comboBoxPlanoCobranca.SelectedItem;
+            ObterDadosDaTela();
+            textBoxTotalPrevisto.Text = _locacao.ValorTotalPrevisto.ToString();
 
-            int totalDias = (int)((dateTimePickerDataPrevistaDevolucao.Value.Date - dateTimePickerDataLocacao.Value.Date).TotalDays);
-
-            decimal valor = planoCobranca.ValorDia * totalDias;
-
-            foreach (Taxa item in checkedListBoxTaxas.CheckedItems)
-                if (item.EhDiaria)
-                    valor += item.Valor * totalDias;
-                else
-                    valor += item.Valor;
-
-            textBoxTotalPrevisto.Text = Math.Round(valor, 3).ToString();
         }
 
         private void comboBoxCliente_SelectedIndexChanged(object sender, EventArgs e)

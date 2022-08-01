@@ -125,91 +125,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
         private void AtualizarTotalPrevisto()
         {
-            Locacao loc = (Locacao)comboBoxLocacoes.SelectedItem;
-
-            PlanoCobranca planoCobranca = loc.PlanoCobranca;
-
-            DateTime dataLocacao = dateTimePickerDataLocacao.Value;
-
-            DateTime dataLocacaoPrevista = dateTimePickerDataDevolucaoPrevista.Value;
-
-            int totalDias = (int)Math.Ceiling((dateTimePickerDataDevolucaoReal.Value.Date - dateTimePickerDataLocacao.Value.Date).TotalDays);
-
-            decimal valorTotal = planoCobranca.ValorDia * totalDias;
-
-            decimal kmRodados = loc.Veiculo.KmPercorrido - numericUpDownKmRodadosLocacao.Value;
-
-            decimal totalKm = planoCobranca.KmLivreIncluso - kmRodados;
-
-            if (totalKm > 0)
-                valorTotal += planoCobranca.ValorPorKm * totalKm;
-
-            foreach (Taxa item in checkedListBoxTaxasSelecionadas.Items)
-            {
-                if (item.EhDiaria)
-                    valorTotal += item.Valor * totalDias;
-                else
-                    valorTotal += item.Valor;
-            }
-
-            foreach (Taxa item in checkedListBoxTaxasAdicionais.CheckedItems)
-            {
-                if (item.EhDiaria)
-                    valorTotal += item.Valor * totalDias;
-                else
-                    valorTotal += item.Valor;
-            }
-
-            if (dateTimePickerDataDevolucaoReal.Value.Date > dateTimePickerDataDevolucaoPrevista.Value.Date)
-                valorTotal += valorTotal * 0.10m;
-
-            var custoCombustivel = 0m;
-
-            switch(loc.Veiculo.Combustivel)
-            {
-                case CombustivelEnum.Diesel:
-                    custoCombustivel = Decimal.Parse(configuracao.PrecoCombustiveis.Diesel);
-                    break;
-                case CombustivelEnum.Gasolina:
-                    custoCombustivel = Decimal.Parse(configuracao.PrecoCombustiveis.Gasolina);
-                    break;
-                case CombustivelEnum.Álcool:
-                    custoCombustivel = Decimal.Parse(configuracao.PrecoCombustiveis.Alcool);
-                    break;
-                case CombustivelEnum.Etanol:
-                    custoCombustivel = Decimal.Parse(configuracao.PrecoCombustiveis.Etanol);
-                    break;
-                case CombustivelEnum.GNV:
-                    custoCombustivel = Decimal.Parse(configuracao.PrecoCombustiveis.GNV);
-                    break;
-            }
-
-            TanqueEnum tipoTanqueRetorno = (TanqueEnum)comboBoxNivelTanque.SelectedItem;
-
-            var tamanhoTanque = loc.Veiculo.CapacidadeTanque;
-
-            switch (tipoTanqueRetorno)
-            {
-                case TanqueEnum.Cheio:
-                    break;
-                case TanqueEnum.TresQuartos:
-                    var umQuarto = tamanhoTanque / 4;
-                    valorTotal += umQuarto * custoCombustivel;
-                    break;
-                case TanqueEnum.Meio:
-                    var meio = tamanhoTanque / 2;
-                    valorTotal += meio * custoCombustivel;
-                    break;
-                case TanqueEnum.UmQuarto:
-                    var tresQuartos = tamanhoTanque * 3 / 4;
-                    valorTotal += tresQuartos * custoCombustivel;
-                    break;
-                case TanqueEnum.Vazio:
-                    valorTotal += tamanhoTanque * custoCombustivel;
-                    break;
-            }
-
-            textBoxValorTotal.Text = Math.Round(valorTotal, 2).ToString();
+            ObterDadosDaTela();
+            textBoxValorTotal.Text = Devolucao.CalcularTotal(numericUpDownKmRodadosLocacao.Value, configuracao, (TanqueEnum)comboBoxNivelTanque.SelectedItem).ToString();
         }
 
         private void ObterDadosDaTela()
@@ -227,7 +144,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             foreach (Taxa item in checkedListBoxTaxasSelecionadas.Items)
                 if (!checkedListBoxTaxasSelecionadas.CheckedItems.Contains(item))
                     taxas.Add(item);
-
             Devolucao.ValorTotalReal = Convert.ToDecimal(textBoxValorTotal.Text);
         }
 
