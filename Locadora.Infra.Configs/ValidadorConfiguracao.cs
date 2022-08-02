@@ -12,20 +12,40 @@ namespace Locadora.Infra.Configs
                 .NotNull().NotEmpty();
             RuleFor(x => x.ConnectionStrings.SqlServer)
                 .NotNull().NotEmpty();
-            RuleFor(x => decimal.Parse(x.PrecoCombustiveis.Etanol))
-                .NotNull().NotEmpty().GreaterThan(0m);
-            RuleFor(x => decimal.Parse(x.PrecoCombustiveis.Alcool))
-                .NotNull().NotEmpty().GreaterThan(0m);
-            RuleFor(x => decimal.Parse(x.PrecoCombustiveis.Gasolina))
-                .NotNull().NotEmpty().GreaterThan(0m);
-            RuleFor(x => decimal.Parse(x.PrecoCombustiveis.Diesel))
-                .NotNull().NotEmpty().GreaterThan(0m);
+
+            RuleFor(x => x.PrecoCombustiveis.Etanol)
+                .Custom((x, contexto) =>
+                {
+                    if ((!(decimal.TryParse(x, out decimal value)) || value <= 0))
+                        contexto.AddFailure($"'{x}' não é válido!");
+                });
+
+            RuleFor(x => x.PrecoCombustiveis.Alcool)
+                .Custom((x, contexto) =>
+                {
+                    if ((!(decimal.TryParse(x, out decimal value)) || value <= 0))
+                        contexto.AddFailure($"'{x}' não é válido!");
+                });
+
+            RuleFor(x => x.PrecoCombustiveis.Gasolina)
+                .Custom((x, contexto) =>
+                {
+                    if ((!(decimal.TryParse(x, out decimal value)) || value <= 0))
+                        contexto.AddFailure($"'{x}' não é válido!");
+                });
+
+            RuleFor(x => x.PrecoCombustiveis.Diesel)
+                .Custom((x, contexto) =>
+                {
+                    if ((!(decimal.TryParse(x, out decimal value)) || value <= 0))
+                        contexto.AddFailure($"'{x}' não é válido!");
+                });
 
             RuleFor(x => x.PrecoCombustiveis.GNV)
-                .Custom((x, context) =>
+                .Custom((x, contexto) =>
                 {
-                    if ((!(decimal.TryParse(x, out decimal value)) || value < 0))
-                        context.AddFailure($"{x} is not a valid number or less than 0");
+                    if ((!(decimal.TryParse(x, out decimal value)) || value <= 0))
+                        contexto.AddFailure($"'{x}' não é válido!");
                 });
         }
     }

@@ -16,11 +16,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
         {
             InitializeComponent();
 
-            _validador = new();
-
             ConfigurarNumericUpDowns();
 
+            _validador = new();
+
             this.configuracao = configuracao;
+
             AtualizarCampos(configuracao);
         }
 
@@ -49,6 +50,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
             MessageBox.Show("Informações gravadas");
 
             AtualizarCampos(configuracao);
+
+            TelaPrincipalForm.Instancia.AtualizarRodape("", CorParaRodape.Red);
         }
 
         private void ObterConnectionStringSqlServer()
