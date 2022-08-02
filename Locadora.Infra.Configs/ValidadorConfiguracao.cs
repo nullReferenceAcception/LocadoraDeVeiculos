@@ -24,8 +24,8 @@ namespace Locadora.Infra.Configs
             RuleFor(x => x.PrecoCombustiveis.GNV)
                 .Custom((x, context) =>
                 {
-                    if (!(int.TryParse(x, out int value)) || value < 0)
-                        context.AddFailure($"'{x}' não é válido!");
+                    if ((!(decimal.TryParse(x, out decimal value)) || value < 0))
+                        context.AddFailure($"{x} is not a valid number or less than 0");
                 });
         }
     }
