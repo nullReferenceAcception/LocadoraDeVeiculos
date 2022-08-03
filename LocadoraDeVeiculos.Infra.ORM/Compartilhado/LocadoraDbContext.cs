@@ -27,10 +27,8 @@ namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
             var changedEntries = contexto.ChangeTracker.Entries()
                 .Where(x => x.State != EntityState.Unchanged).ToList();
 
-
             foreach (var entry in changedEntries)
             {
-
                 switch (entry.State)
                 {
                     case EntityState.Deleted:
@@ -46,9 +44,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
                     default:
                         break;
                 }
-
             }
-                
         }
 
         public void GravarDados()
@@ -87,28 +83,6 @@ namespace LocadoraDeVeiculos.Infra.ORM.Compartilhado
             modelBuilder.ApplyConfiguration(new MapeadorGrupoVeiculoOrm());
 
             modelBuilder.ApplyConfiguration(new MapeadorLocacaoOrm());
-
-
-            //  EXEMPLOS
-
-            //   modelBuilder.ApplyConfiguration(new MapeadorDisciplinaOrm());
-
-            //modelBuilder.Entity<Teste>(entidade =>
-            //{
-            //    entidade.ToTable("TBTeste");
-            //    entidade.Property(x => x.Id).ValueGeneratedNever();
-            //    entidade.Property(x => x.Titulo).IsRequired().HasColumnType("varchar(250)");
-            //    entidade.Property(x => x.QuantidadeQuestoes).IsRequired();
-            //    entidade.Property(x => x.DataGeracao).IsRequired();
-            //    entidade.Property(x => x.Provao).IsRequired();
-            //    entidade.HasMany(x => x.Questoes);
-
-            //    entidade.HasOne(x => x.T)
-            //        .WithMany().OnDelete(DeleteBehavior.NoAction);
-
-            //    entidade.HasOne(x => x.Materia)
-            //        .WithMany().OnDelete(DeleteBehavior.NoAction);
-            //});
         }
     }
 }

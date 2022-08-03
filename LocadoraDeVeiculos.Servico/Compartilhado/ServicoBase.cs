@@ -133,7 +133,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             {
                 StringBuilder msgErro = new StringBuilder("Falha no sistema ao tentar selecionar todos os  ");
 
-                Log.Logger.Error(ex, msgErro + "{classe}"  + "{VersaoSistema}", typeof(T).Name,configuracao.VersaoSistema);
+                Log.Logger.Error(ex, msgErro + "{classe}" + "{VersaoSistema}", typeof(T).Name, configuracao.VersaoSistema);
 
                 return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
@@ -149,7 +149,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             {
                 StringBuilder msgErro = new("Selecionado o ");
 
-                Log.Logger.Error(ex, msgErro + "{classe}" +  "{VersaoSistema}", typeof(T).Name, configuracao.VersaoSistema);
+                Log.Logger.Error(ex, msgErro + "{classe}" + "{VersaoSistema}", typeof(T).Name, configuracao.VersaoSistema);
 
                 return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
@@ -165,7 +165,7 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
             {
                 StringBuilder msgErro = new("Falha no sistema ao pegar quantidade de ");
 
-                Log.Logger.Error(ex, msgErro + "{classe}" +  "{VersaoSistema}", typeof(T).Name, configuracao.VersaoSistema);
+                Log.Logger.Error(ex, msgErro + "{classe}" + "{VersaoSistema}", typeof(T).Name, configuracao.VersaoSistema);
 
                 return Result.Fail(msgErro.Append(typeof(T).Name).ToString());
             }
@@ -210,7 +210,10 @@ namespace LocadoraDeVeiculos.Servico.Compartilhado
                 erros.Add(new Error(MensagemDeErroSeTiverDuplicidade));
 
             if (erros.Any())
+            {
+                contexto.DesfazerAlteracoes();
                 return Result.Fail(erros);
+            }
 
             return Result.Ok();
         }
