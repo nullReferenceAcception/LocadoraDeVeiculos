@@ -89,7 +89,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             Locacao.Cliente = (Cliente)comboBoxCliente.SelectedItem;
             Locacao.PlanoCobranca = (PlanoCobranca)comboBoxPlanoCobranca.SelectedItem;
 
-            if (!((Cliente)comboBoxCliente.SelectedItem).PessoaFisica)
+            if (Locacao.Cliente != null && !((Cliente)comboBoxCliente.SelectedItem).PessoaFisica)
                 Locacao.Condutor = (Condutor)comboBoxCondutor.SelectedItem;
 
             Locacao.DataDevolucaoPrevista = dateTimePickerDataPrevistaDevolucao.Value;
