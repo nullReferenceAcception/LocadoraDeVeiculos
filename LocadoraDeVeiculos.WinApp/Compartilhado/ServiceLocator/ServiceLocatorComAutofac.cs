@@ -22,6 +22,8 @@ using LocadoraDeVeiculos.Infra.ORM.ModuloLocacao;
 using LocadoraDeVeiculos.Infra.ORM.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.ORM.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.ORM.ModuloVeiculo;
+using LocadoraDeVeiculos.Infra.PDF.ModuloDevolucao;
+using LocadoraDeVeiculos.Infra.PDF.Modulolocacao;
 using LocadoraDeVeiculos.Servico.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloCliente;
 using LocadoraDeVeiculos.Servico.ModuloCondutor;
@@ -63,7 +65,13 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 
             builder.RegisterType<LocadoraDbContext>().As<IContextoPersistencia>()
                 .InstancePerLifetimeScope(); //Scoped
-                
+
+
+
+            builder.RegisterType<GeradorRelatorioDevolucao>().As<IGeradorRelatorioDevolucaoPDF>();
+            builder.RegisterType<GeradorRelatorioLocacao>().As<IGeradorRelatorioLocacaoPDF>();
+
+
 
             builder.RegisterType<RepositorioClienteOrm>().As<IRepositorioCliente>();
             builder.RegisterType<RepositorioCondutorOrm>().As<IRepositorioCondutor>();

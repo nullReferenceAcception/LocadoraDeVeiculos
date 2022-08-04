@@ -27,8 +27,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         private IServicoTaxa _servicoTaxa;
         private TabelaLocacaoControl _tabelaLocacao;
         private bool _estadoLocacao = true;
+        private IGeradorRelatorioLocacaoPDF geradoraRelatorio;
 
-        public ControladorLocacao(IServicoLocacao servicoLocacao,IServicoPlanoCobranca planoCobranca, IServicoCliente servicoCliente, IServicoVeiculo servicoVeiculo, IServicoFuncionario servicoFuncionario, IServicoGrupoVeiculos servicoGrupoVeiculo, IServicoCondutor servicoCondutor, IServicoTaxa servicoTaxa)
+        public ControladorLocacao(IGeradorRelatorioLocacaoPDF geradoraRelatorio,IServicoLocacao servicoLocacao,IServicoPlanoCobranca planoCobranca, IServicoCliente servicoCliente, IServicoVeiculo servicoVeiculo, IServicoFuncionario servicoFuncionario, IServicoGrupoVeiculos servicoGrupoVeiculo, IServicoCondutor servicoCondutor, IServicoTaxa servicoTaxa)
         {
             _servicoLocacao = servicoLocacao;
             _planoCobranca = planoCobranca;
@@ -38,6 +39,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             _servicoGrupoVeiculo = servicoGrupoVeiculo;
             _servicoCondutor = servicoCondutor;
             _servicoTaxa = servicoTaxa;
+            this.geradoraRelatorio = geradoraRelatorio;
         }
         public override void Inserir()
         {
@@ -110,11 +112,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             var tela = new TelaCadastroLocacaoForm(_planoCobranca, _servicoCliente, _servicoVeiculo, _servicoFuncionario, _servicoGrupoVeiculo, _servicoCondutor, _servicoTaxa);
 
-            tela.Locacao = locacaoSelecionada;
-
             tela.GravarRegistro = _servicoLocacao.Editar;
 
             tela.RemoverTaxas = _servicoLocacao.RemoverTaxas;
+
+            tela.Locacao = locacaoSelecionada;
+
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -234,50 +237,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 return;
             }
 
-            DocumentCore dc = new();
-
-            dc.Content.End.Insert("Locação: " + locacaoSelecionada.Id.ToString() + "\n");
-            dc.Content.End.Insert("Data da locação: " + locacaoSelecionada.DataLocacao + "\n");
-            dc.Content.End.Insert("------------------------------------------------- \n");
-            dc.Content.End.Insert("Cliente: " + locacaoSelecionada.Cliente.Nome + "\n");
-            
-            if(locacaoSelecionada.Cliente.PessoaFisica == true )
-            {
-                dc.Content.End.Insert("CPF: " + locacaoSelecionada.Cliente.CPF + "\n");
-                dc.Content.End.Insert("CNH: " + locacaoSelecionada.Cliente.CNH + "\n");
-            }
-            else
-            {
-                dc.Content.End.Insert("CNPJ: " + locacaoSelecionada.Cliente.CNPJ + "\n");
-                dc.Content.End.Insert("Condutor: " + locacaoSelecionada.Condutor.Nome + "\n");
-                dc.Content.End.Insert("CNH do condutor: " + locacaoSelecionada.Condutor.CNH + "\n");
-            }
-
-            dc.Content.End.Insert("-------------------------------------------------\n ");
-            dc.Content.End.Insert("Veiculo: " + locacaoSelecionada.Veiculo.Modelo + "\n");
-            dc.Content.End.Insert("Placa: " + locacaoSelecionada.Veiculo.Placa + "\n");
-            dc.Content.End.Insert("Cor: " + locacaoSelecionada.Veiculo.Cor + "\n");
-            dc.Content.End.Insert("-------------------------------------------------\n ");
-            dc.Content.End.Insert("Plano de cobrança: " + locacaoSelecionada.PlanoCobranca.ToString() + "\n");
-            dc.Content.End.Insert("-------------------------------------------------\n ");
-            dc.Content.End.Insert("Taxas: \n");
-
-            foreach(var taxa in locacaoSelecionada.Taxas)
-                dc.Content.End.Insert(taxa.ToString() + "\n");
-
-            dc.Content.End.Insert("-------------------------------------------------\n ");
-            dc.Content.End.Insert("Funcionario responsável: " + locacaoSelecionada.Funcionario.Nome + "\n");
-
-            dc.Content.End.Insert("Valor total previsto: R$" + locacaoSelecionada.ValorTotalPrevisto);
-
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Locação"
-                + locacaoSelecionada.Id.ToString() + ".pdf";
-
-            dc.Save(path, new PdfSaveOptions()
-            {
-                Compliance = PdfCompliance.PDF_A1a,
-                PreserveFormFields = true
-            });
+          string path =  geradoraRelatorio.GerarRelatorio(locacaoSelecionada);
 
             if (MessageBox.Show("Salvo em documentos, deseja abrir o PDF?", "Devolução", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -289,6 +249,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
                 p.Start();
             }
+
+
         }
     }
 }

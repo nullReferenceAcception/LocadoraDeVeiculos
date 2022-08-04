@@ -20,6 +20,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         IServicoVeiculo _servicoVeiculo;
         IServicoCondutor _servicoCondutor;
         IServicoGrupoVeiculos _servicoGrupoVeiculos;
+        /// <summary>
+        ///  para previnir que a variavel _locacao seja mudado os valores
+        /// </summary>
+        private bool previnirMudancasNaLocacao; 
 
         public Locacao Locacao
         {
@@ -62,28 +66,34 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         {
             if (Locacao.Id != Guid.Empty)
             {
+                // ordem de carregamento setado para que todo funcione corretamente so mexer se for necessario
+
+                previnirMudancasNaLocacao = true;
                 textBoxGuid.Text = Locacao.Id.ToString();
-                comboBoxFuncionario.SelectedItem = Locacao.Funcionario;
-                comboBoxGrupoVeiculos.SelectedItem = Locacao.Veiculo.GrupoVeiculos;
-                comboBoxVeiculo.SelectedItem = Locacao.Veiculo.Modelo;
-                comboBoxCliente.SelectedItem = Locacao.Cliente;
                 comboBoxPlanoCobranca.SelectedItem = Locacao.PlanoCobranca;
-                comboBoxCondutor.SelectedItem = Locacao.Condutor;
+                comboBoxGrupoVeiculos.SelectedItem = Locacao.Veiculo.GrupoVeiculos;
+                comboBoxVeiculo.SelectedItem = Locacao.Veiculo;
                 textBoxKmVeiculo.Text = Locacao.Veiculo.KmPercorrido.ToString();
+                comboBoxFuncionario.SelectedItem = Locacao.Funcionario;
+                comboBoxCliente.SelectedItem = Locacao.Cliente;
                 dateTimePickerDataLocacao.Value = Locacao.DataLocacao;
                 dateTimePickerDataPrevistaDevolucao.Value = Locacao.DataDevolucaoPrevista;
                 textBoxTotalPrevisto.Text = Locacao.ValorTotalPrevisto.ToString();
+                comboBoxCondutor.SelectedItem = Locacao.Condutor;
 
                 for (int i = 0; i < checkedListBoxTaxas.Items.Count; i++)
                     if (Locacao.Taxas.Contains((Taxa)checkedListBoxTaxas.Items[i]))
                         checkedListBoxTaxas.SetItemChecked(i, true);
 
                 AtualizarTotalPrevisto();
+                previnirMudancasNaLocacao = false;
             }
         }
 
         private void ObterDadosDaTela()
         {
+            if (previnirMudancasNaLocacao)
+                return;
             Locacao.Funcionario = (Funcionario)comboBoxFuncionario.SelectedItem;
             Locacao.Veiculo = (Veiculo)comboBoxVeiculo.SelectedItem;
             Locacao.Cliente = (Cliente)comboBoxCliente.SelectedItem;
@@ -177,10 +187,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             catch (Exception ex) { }
         }
 
-        private void textBoxKmPlanejado_TextChanged(object sender, EventArgs e)
-        {
-            AtualizarTotalPrevisto();
-        }
 
         private void numericUpDownKmPlanejado_ValueChanged(object sender, EventArgs e)
         {
