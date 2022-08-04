@@ -35,7 +35,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             textBoxGuid.Text = Cliente.Id.ToString();
             textBoxNome.Text = Cliente.Nome;
             textBoxEndereco.Text = Cliente.Endereco;
-            maskedTextBoxCNH.Text = Cliente.CNH;
             textBoxEmail.Text = Cliente.Email;
             maskedTextBoxTelefone.Text = Cliente.Telefone;
 
@@ -50,7 +49,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 {
                     maskedTextBoxCPF.Text = Cliente.CPF;
                     radioButtonCPF.Checked = true;
-                    dateTimePickerValidadeCNH.Value = Cliente.DataValidadeCNH;
                 }
             }
         }
@@ -59,13 +57,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         {
             Cliente.Nome = textBoxNome.Text;
             Cliente.Endereco = textBoxEndereco.Text;
-            Cliente.CNH = maskedTextBoxCNH.Text;
             Cliente.CNPJ = maskedTextBoxCNPJ.Text;
             Cliente.CPF = maskedTextBoxCPF.Text;
             Cliente.Email = textBoxEmail.Text;
             Cliente.Telefone = maskedTextBoxTelefone.Text;
             Cliente.PessoaFisica = radioButtonCPF.Checked == true ? Cliente.PessoaFisica = true : Cliente.PessoaFisica = false;
-            Cliente.DataValidadeCNH = dateTimePickerValidadeCNH.Value;
 
             if (Cliente.PessoaFisica)
                 Cliente.CNPJ = null!;
@@ -75,42 +71,29 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         private void radioCPFbtn_CheckedChanged(object sender, EventArgs e)
         {
-            maskedTextBoxCNH.Enabled = true;
             maskedTextBoxCPF.Enabled = true;
             maskedTextBoxCNPJ.Enabled = false;
-            dateTimePickerValidadeCNH.Enabled = true;
             maskedTextBoxCNPJ.Clear();
             maskedTextBoxCPF.Focus();
             labelCNPJ.Cursor = DefaultCursor;
             labelCPF.Cursor = Cursors.Hand;
-            labelCNH.Cursor = Cursors.Hand;
-            labelValidadeCNH.Cursor = Cursors.Hand;
             labelCNPJ.AjustarLabelsHoverParaBlack();
             labelCPF.AjustarLabelsHoverParaBlue();
-            labelCNH.AjustarLabelsHoverParaBlue();
-            labelValidadeCNH.AjustarLabelsHoverParaBlue();
 
         }
 
         private void radioCNPJbtn_CheckedChanged(object sender, EventArgs e)
         {
-            maskedTextBoxCNH.Enabled = false;
             maskedTextBoxCNPJ.Enabled = true;
             maskedTextBoxCPF.Enabled = false;
-            dateTimePickerValidadeCNH.Enabled = false;
             maskedTextBoxCPF.Clear();
             maskedTextBoxCNPJ.Focus();
-            maskedTextBoxCNH.Clear();
             labelCPF.Cursor = DefaultCursor;
-            labelCNH.Cursor = DefaultCursor;
-            labelValidadeCNH.Cursor = DefaultCursor;
             labelCNPJ.Cursor = Cursors.Hand;
 
 
             labelCNPJ.AjustarLabelsHoverParaBlue();
             labelCPF.AjustarLabelsHoverParaBlack();
-            labelCNH.AjustarLabelsHoverParaBlack();
-            labelValidadeCNH.AjustarLabelsHoverParaBlack();
 
         }
 
@@ -166,15 +149,5 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             maskedTextBoxCNPJ.Select();
         }
 
-        private void labelCNH_Click(object sender, EventArgs e)
-        {
-            maskedTextBoxCNH.Select();
-        }
-
-        private void labelValidadeCNH_Click(object sender, EventArgs e)
-        {
-            dateTimePickerValidadeCNH.Select();
-            SendKeys.Send("%{DOWN}");
-        }
     }
 }

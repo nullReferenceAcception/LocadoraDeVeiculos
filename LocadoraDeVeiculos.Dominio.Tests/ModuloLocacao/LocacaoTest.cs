@@ -57,7 +57,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloLocacao
         }
         private Cliente CriarCliente()
         {
-            return new Cliente("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "09876543211", "1234567889879", DateTime.Today);
+            return new Cliente("joao", "rua abrolingo filho", "joao@joao.com", "49989090909", true, "09876543211", "1234567889879");
         }
         private Condutor CriarCondutor()
         {

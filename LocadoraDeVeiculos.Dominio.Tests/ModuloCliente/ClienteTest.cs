@@ -94,20 +94,11 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloCliente
             resultado.ShouldHaveValidationErrorFor(x => x.CNPJ);
         }
 
-        [TestMethod]
-        public void Nao_Deve_inserir_cnh_com_data_invalido()
-        {
-            Cliente cliente = new("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", false, "", "1234567889879", DateTime.Today);
-            cliente.DataValidadeCNH = new DateTime(2020,02,02);
-
-            var resultado = validador.TestValidate(cliente);
-
-            resultado.ShouldHaveValidationErrorFor(x => x.CNPJ);
-        }
+       
 
         private Cliente CriarCliente()
         {
-            return new Cliente("joao", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, "09876543211", "1234567889879", DateTime.Today);
+            return new Cliente("joao", "rua abrolingo filho", "joao@joao.com", "49989090909", true, "09876543211", "1234567889879");
         }
     }
 }

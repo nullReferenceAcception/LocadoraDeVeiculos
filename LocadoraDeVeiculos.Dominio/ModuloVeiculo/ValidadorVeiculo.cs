@@ -18,12 +18,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
             RuleFor(x => x.GrupoVeiculos)
                 .NotNull().NotEmpty();
 
-            RuleFor(x => x.Combustivel)
-                .NotNull().NotEmpty();
-
-            RuleFor(x => x.Cor)
-                .NotNull().NotEmpty();
-
             RuleFor(x => x.Foto)
                 .NotNull().NotEmpty();
 

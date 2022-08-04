@@ -48,7 +48,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxa
 
         public override string ToString()
         {
-            return Descricao + " , R$" + Valor;
+            return Descricao + " ," + (EhDiaria? "Diario":"Fixo")+ " , R$" + Valor;
         }
     }
 }
