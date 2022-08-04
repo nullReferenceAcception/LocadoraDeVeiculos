@@ -20,10 +20,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         IServicoVeiculo _servicoVeiculo;
         IServicoCondutor _servicoCondutor;
         IServicoGrupoVeiculos _servicoGrupoVeiculos;
-        /// <summary>
-        ///  para previnir que a variavel _locacao seja mudado os valores
-        /// </summary>
-        private bool previnirMudancasNaLocacao; 
+        Locacao locacaoParaCalculos;
 
         public Locacao Locacao
         {
@@ -40,6 +37,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             InitializeComponent();
             this.ConfigurarTela();
             this.AjustarLabelsHover();
+
+            locacaoParaCalculos = new();
 
             _servicoVeiculo = servicoVeiculo;
             _servicoCondutor = servicoCondutor;
@@ -68,7 +67,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             {
                 // ordem de carregamento setado para que todo funcione corretamente so mexer se for necessario
 
-                previnirMudancasNaLocacao = true;
                 textBoxGuid.Text = Locacao.Id.ToString();
                 comboBoxPlanoCobranca.SelectedItem = Locacao.PlanoCobranca;
                 comboBoxGrupoVeiculos.SelectedItem = Locacao.Veiculo.GrupoVeiculos;
@@ -86,28 +84,25 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                         checkedListBoxTaxas.SetItemChecked(i, true);
 
                 AtualizarTotalPrevisto();
-                previnirMudancasNaLocacao = false;
             }
         }
 
-        private void ObterDadosDaTela()
+        private void ObterDadosDaTela(Locacao locacao)
         {
-            if (previnirMudancasNaLocacao)
-                return;
-            Locacao.Funcionario = (Funcionario)comboBoxFuncionario.SelectedItem;
-            Locacao.Veiculo = (Veiculo)comboBoxVeiculo.SelectedItem;
-            Locacao.Cliente = (Cliente)comboBoxCliente.SelectedItem;
-            Locacao.PlanoCobranca = (PlanoCobranca)comboBoxPlanoCobranca.SelectedItem;
+            locacao.Funcionario = (Funcionario)comboBoxFuncionario.SelectedItem;
+            locacao.Veiculo = (Veiculo)comboBoxVeiculo.SelectedItem;
+            locacao.Cliente = (Cliente)comboBoxCliente.SelectedItem;
+            locacao.PlanoCobranca = (PlanoCobranca)comboBoxPlanoCobranca.SelectedItem;
 
-            if (Locacao.Cliente != null && !((Cliente)comboBoxCliente.SelectedItem).PessoaFisica)
-                Locacao.Condutor = (Condutor)comboBoxCondutor.SelectedItem;
+            if (locacao.Cliente != null && !((Cliente)comboBoxCliente.SelectedItem).PessoaFisica)
+                locacao.Condutor = (Condutor)comboBoxCondutor.SelectedItem;
 
-            Locacao.DataDevolucaoPrevista = dateTimePickerDataPrevistaDevolucao.Value;
-            Locacao.DataLocacao = dateTimePickerDataLocacao.Value;
+            locacao.DataDevolucaoPrevista = dateTimePickerDataPrevistaDevolucao.Value;
+            locacao.DataLocacao = dateTimePickerDataLocacao.Value;
 
             foreach (Taxa taxa in checkedListBoxTaxas.CheckedItems)
-                if (!Locacao.Taxas.Contains(taxa))
-                    Locacao.Taxas.Add(taxa);
+                if (!locacao.Taxas.Contains(taxa))
+                    locacao.Taxas.Add(taxa);
 
             List<Taxa> taxas = new();
 
@@ -115,15 +110,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 if (!checkedListBoxTaxas.CheckedItems.Contains(item))
                     taxas.Add(item);
 
-            RemoverTaxas(Locacao, taxas);
+            RemoverTaxas(locacao, taxas);
 
-            Locacao.ValorTotalPrevisto = Locacao.CalcularValor();
+            locacao.ValorTotalPrevisto = locacao.CalcularValor();
 
         }
 
         private void buttonGravar_Click(object sender, EventArgs e)
         {
-            ObterDadosDaTela();
+            ObterDadosDaTela(_locacao);
 
             var resultadoValidacao = GravarRegistro(Locacao);
 
@@ -147,8 +142,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         private void AtualizarTotalPrevisto()
         {
-            ObterDadosDaTela();
-            textBoxTotalPrevisto.Text = _locacao.ValorTotalPrevisto.ToString();
+            
+            ObterDadosDaTela(locacaoParaCalculos);
+            textBoxTotalPrevisto.Text = locacaoParaCalculos.ValorTotalPrevisto.ToString();
 
         }
 
