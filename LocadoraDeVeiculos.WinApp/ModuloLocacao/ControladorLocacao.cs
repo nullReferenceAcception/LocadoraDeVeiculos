@@ -166,6 +166,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             var tela = new TelaCadastroLocacaoForm(_planoCobranca, _servicoCliente, _servicoVeiculo, _servicoFuncionario, _servicoGrupoVeiculo, _servicoCondutor, _servicoTaxa);
 
+            tela.previnirMudancas = true;
             tela.Locacao = locacaoSelecionada;
 
             tela.Habilitar(false);

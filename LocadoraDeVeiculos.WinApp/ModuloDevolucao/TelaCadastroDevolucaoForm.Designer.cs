@@ -489,7 +489,6 @@
         private System.Windows.Forms.Label labelGuid;
         private System.Windows.Forms.GroupBox groupBoxValorTotal;
         private System.Windows.Forms.TextBox textBoxValorTotal;
-        private System.Windows.Forms.TabControl tabControlTaxas;
         private System.Windows.Forms.TabPage tabPageTaxasJaSelecionadas;
         private System.Windows.Forms.TabPage tabPageAdicionais;
         private System.Windows.Forms.ComboBox comboBoxNivelTanque;
@@ -513,8 +512,9 @@
         private System.Windows.Forms.Label labelFuncionario;
         private System.Windows.Forms.GroupBox groupBoxLocacao;
         private System.Windows.Forms.ComboBox comboBoxLocacoes;
+        private System.Windows.Forms.NumericUpDown numericUpDownKmRodadosLocacao;
         private System.Windows.Forms.CheckedListBox checkedListBoxTaxasSelecionadas;
         private System.Windows.Forms.CheckedListBox checkedListBoxTaxasAdicionais;
-        private System.Windows.Forms.NumericUpDown numericUpDownKmRodadosLocacao;
+        private System.Windows.Forms.TabControl tabControlTaxas;
     }
 }

@@ -62,7 +62,7 @@ namespace LocadoraDeVeiculos.Infra.PDF.sautinsoftDocument.ModuloDevolucao
             dc.Content.End.Insert("Tanque: " + devolucaoSelecionada.Tanque.ToString() + "\n");
             dc.Content.End.Insert("-------------------------------------------------\n ");
 
-            dc.Content.End.Insert("KmRodado: " + devolucaoSelecionada.kMRodados + "\n");
+            dc.Content.End.Insert("KmRodado: " + devolucaoSelecionada.KmRodados + "\n");
             dc.Content.End.Insert("-------------------------------------------------\n ");
 
             dc.Content.End.Insert("Valor total real: R$" + devolucaoSelecionada.ValorTotalReal);

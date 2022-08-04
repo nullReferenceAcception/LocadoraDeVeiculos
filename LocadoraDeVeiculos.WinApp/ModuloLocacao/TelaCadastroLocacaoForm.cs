@@ -16,11 +16,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
     public partial class TelaCadastroLocacaoForm : Form
     {
         Locacao _locacao;
-        Locacao _locacaoCalculo;
         IServicoVeiculo _servicoVeiculo;
         IServicoCondutor _servicoCondutor;
         IServicoGrupoVeiculos _servicoGrupoVeiculos;
         Locacao locacaoParaCalculos;
+        public bool previnirMudancas;
 
         public Locacao Locacao
         {
@@ -93,6 +93,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         private void ObterDadosDaTela(Locacao locacao)
         {
+            if (previnirMudancas)
+                return;
             locacao.Funcionario = (Funcionario)comboBoxFuncionario.SelectedItem;
             locacao.Veiculo = (Veiculo)comboBoxVeiculo.SelectedItem;
             locacao.Cliente = (Cliente)comboBoxCliente.SelectedItem;
@@ -151,7 +153,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         {
             
             ObterDadosDaTela(locacaoParaCalculos);
+
+            if(locacaoParaCalculos.ValorTotalPrevisto != 0)
             textBoxTotalPrevisto.Text = locacaoParaCalculos.ValorTotalPrevisto.ToString();
+            else
+                textBoxTotalPrevisto.Text = Locacao.ValorTotalPrevisto.ToString();
 
         }
 

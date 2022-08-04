@@ -162,9 +162,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa, _servicoVeiculo, _configuracao);
 
             tela.Devolucao = devolucaoSelecionada;
-            tela.ConfigurarTelaVizualizar();
 
-            tela.Habilitar(false);
+            tela.ConfigurarTelaVizualizar();
             tela.buttonCancelar.Enabled = true;
             tela.buttonCancelar.Text = "Voltar";
             tela.ShowDialog();

@@ -21,7 +21,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloDevolucao
 
             devolucao.HasOne(x => x.Locacao).WithMany().HasForeignKey(x => x.LocacaoId).OnDelete(DeleteBehavior.Restrict);
 
-            devolucao.Property(x => x.kMRodados).HasColumnType("decimal(11,2)").IsRequired();
+            devolucao.Property(x => x.KmRodados).HasColumnType("decimal(11,2)").IsRequired();
         }
     }
 }
