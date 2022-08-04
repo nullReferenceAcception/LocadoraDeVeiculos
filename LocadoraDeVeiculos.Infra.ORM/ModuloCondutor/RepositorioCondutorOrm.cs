@@ -20,6 +20,13 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloCondutor
     }
 
 
+        public override List<Condutor> SelecionarTodos()
+        {
+            return registros.Include(x => x.Cliente).ToList();
+        }
+
+
+
         public bool VerificarDuplicidade(Condutor registro)
     {
         var x = registros.Where(x => x.CPF == registro.CPF && x.Id != registro.Id);

@@ -45,6 +45,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             _servicoGrupoVeiculos = servicoGrupoVeiculos;
 
             foreach (var item in servicoTaxa.SelecionarTodos().Value)
+                if(!item.EhAdicional)
                 checkedListBoxTaxas.Items.Add(item);
 
             foreach (var item in servicoFuncionario.SelecionarTodos().Value)
@@ -94,7 +95,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             locacao.Cliente = (Cliente)comboBoxCliente.SelectedItem;
             locacao.PlanoCobranca = (PlanoCobranca)comboBoxPlanoCobranca.SelectedItem;
 
-            if (locacao.Cliente != null && !((Cliente)comboBoxCliente.SelectedItem).PessoaFisica)
+            if (locacao.Cliente != null && comboBoxCondutor.SelectedItem != null)
                 locacao.Condutor = (Condutor)comboBoxCondutor.SelectedItem;
 
             locacao.DataDevolucaoPrevista = dateTimePickerDataPrevistaDevolucao.Value;
@@ -151,6 +152,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         private void comboBoxCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxCondutor.Items.Clear();
+
+            foreach (Condutor item in _servicoCondutor.SelecionarTodosDoCliente((Cliente)comboBoxCliente.SelectedItem).Value)
+                comboBoxCondutor.Items.Add(item);
+
         }
 
         private void comboBoxPlanoCobranca_SelectedIndexChanged(object sender, EventArgs e)

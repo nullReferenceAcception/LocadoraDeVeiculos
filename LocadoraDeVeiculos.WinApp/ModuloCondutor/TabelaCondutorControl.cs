@@ -33,7 +33,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "CPF", HeaderText = "CPF"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Empresa", HeaderText = "Empresa"}
+                new DataGridViewTextBoxColumn { DataPropertyName = "Cliente", HeaderText = "Cliente"}
 
             };
 
