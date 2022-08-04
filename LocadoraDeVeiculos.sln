@@ -52,7 +52,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Locadora.Infra.Configs", "L
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PDF", "PDF", "{94994EEA-8EE2-41E5-BD51-6A27AAEE3745}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraDeVeiculos.Infra.PDF", "LocadoraDeVeiculos.Infra.PDF\LocadoraDeVeiculos.Infra.PDF.csproj", "{681A33D9-980D-41B6-A39B-9C62E8AE5089}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraDeVeiculos.Infra.PDF.sautinsoftDocument", "LocadoraDeVeiculos.Infra.PDF\LocadoraDeVeiculos.Infra.PDF.sautinsoftDocument.csproj", "{681A33D9-980D-41B6-A39B-9C62E8AE5089}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
