@@ -10,8 +10,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
             ClassLevelCascadeMode = CascadeMode.Stop;
             RuleFor(x => x.Locacao)
                 .NotNull().NotEmpty();
-            RuleFor(x => x.Tanque)
-                .NotNull().NotEmpty();
             RuleFor(x => x.ValorTotalReal)
                 .NotNull().NotEmpty().GreaterThan(0);
             RuleFor(x => x.DataDevolucaoReal.Date)
