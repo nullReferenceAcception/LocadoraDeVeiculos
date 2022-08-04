@@ -57,6 +57,9 @@ namespace LocadoraDeVeiculos.Infra.PDF.ModuloDevolucao
             dc.Content.End.Insert("Tanque: " + devolucaoSelecionada.Tanque.ToString() + "\n");
             dc.Content.End.Insert("-------------------------------------------------\n ");
 
+            dc.Content.End.Insert("KmRodado: " + devolucaoSelecionada.kMRodados + "\n");
+            dc.Content.End.Insert("-------------------------------------------------\n ");
+
             dc.Content.End.Insert("Valor total real: R$" + devolucaoSelecionada.ValorTotalReal);
             string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Devolução - "
                 + devolucaoSelecionada.Id.ToString() + ".pdf";

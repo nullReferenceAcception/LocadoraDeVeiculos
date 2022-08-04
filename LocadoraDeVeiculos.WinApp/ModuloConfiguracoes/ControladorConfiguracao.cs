@@ -38,5 +38,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloConfiguracoes
         {
             return new TabelaConfiguracoesControl(configuracao);
         }
+
+        public override void Visualizar()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

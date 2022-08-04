@@ -27,6 +27,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloDevolucao
                 .Include(x => x.Locacao.Funcionario)
                 .Include(x => x.Locacao.PlanoCobranca)
                 .Include(x => x.Locacao.Veiculo)
+                .Include(x => x.Locacao.Veiculo.GrupoVeiculos)
                 .ToList();
         }
 

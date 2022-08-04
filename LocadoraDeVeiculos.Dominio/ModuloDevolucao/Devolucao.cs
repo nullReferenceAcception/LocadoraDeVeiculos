@@ -15,6 +15,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
         public List<Taxa> TaxasAdicionais { get; set; }
         public TanqueEnum Tanque { get; set; }
         public decimal ValorTotalReal { get; set; }
+        public decimal kMRodados { get; set; }
 
         public decimal CalcularTotal(decimal kmRodados, ConfiguracaoAplicacaoLocadora configuracao,TanqueEnum nivelTanque)
         {
@@ -23,9 +24,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
 
             decimal valorTotal = Locacao.PlanoCobranca.ValorDia * totalDias;
 
-            decimal kmRodadosTotal = Locacao.Veiculo.KmPercorrido - kmRodados;
+            decimal kmRodadosTotal = kmRodados - Locacao.Veiculo.KmPercorrido;
 
-            decimal totalKm = Locacao.PlanoCobranca.KmLivreIncluso - kmRodadosTotal;
+            kMRodados = kmRodadosTotal;
+
+            decimal totalKm = kmRodadosTotal - Locacao.PlanoCobranca.KmLivreIncluso;
 
             if (totalKm > 0)
                 valorTotal += Locacao.PlanoCobranca.ValorPorKm * totalKm;

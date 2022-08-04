@@ -133,14 +133,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
             Devolucao devolucaoSelecionada = _servicoDevolucao.SelecionarPorGuid(numero).Value;
 
-            if (devolucaoSelecionada == null)
-            {
-                MessageBox.Show("Selecione uma devolução primeiro",
-                "Geração de PDF de Locação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-
-           string path = geradorRelatorio.GerarRelatorio(devolucaoSelecionada);
+            string path = geradorRelatorio.GerarRelatorio(devolucaoSelecionada);
 
             if (MessageBox.Show("Salvo em documentos, deseja abrir o PDF?", "Devolução", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -152,6 +145,29 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
                 p.Start();
             }
+        }
+
+        public override void Visualizar()
+        {
+            var numero = _tabelaDevolucao.ObtemGuidDevolucaoSelecionada();
+
+            Devolucao devolucaoSelecionada = _servicoDevolucao.SelecionarPorGuid(numero).Value;
+
+            if (devolucaoSelecionada == null)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma devolução para excluir", CorParaRodape.Yellow);
+                return;
+            }
+
+            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa, _servicoVeiculo, _configuracao);
+
+            tela.Devolucao = devolucaoSelecionada;
+            tela.ConfigurarTelaVizualizar();
+
+            tela.Habilitar(false);
+            tela.buttonCancelar.Enabled = true;
+            tela.buttonCancelar.Text = "Voltar";
+            tela.ShowDialog();
         }
     }
 }

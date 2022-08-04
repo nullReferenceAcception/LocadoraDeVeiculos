@@ -19,6 +19,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         private IServicoTaxa _servicoTaxa;
         private IServicoVeiculo _servicoVeiculo;
         private ConfiguracaoAplicacaoLocadora configuracao;
+        bool previnirMudancas;
 
         public Devolucao Devolucao
         {
@@ -27,6 +28,40 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             {
                 _devolucao = value;
             }
+        }
+
+        public void ConfigurarTelaVizualizar()
+        {
+            previnirMudancas = true;
+            comboBoxLocacoes.Items.Add(Devolucao.Locacao);
+            comboBoxLocacoes.SelectedItem = Devolucao.Locacao;
+
+            labelKmVeiculo.Text = "KM rodado";
+
+            numericUpDownKmRodadosLocacao.Value = Devolucao.kMRodados;
+
+            textBoxGuid.Text = Devolucao.Id.ToString();
+
+            textBoxFuncionario.Text = Devolucao.Locacao.Funcionario.ToString();
+
+            if(Devolucao.Locacao.Condutor != null)
+            textBoxCondutor.Text = Devolucao.Locacao.Condutor.ToString();
+
+            textBoxGrupoVeiculo.Text = Devolucao.Locacao.Veiculo.GrupoVeiculos.ToString();
+
+            textBoxVeiculo.Text = Devolucao.Locacao.Veiculo.ToString();
+
+            textBoxPlanoCobranca.Text = Devolucao.Locacao.PlanoCobranca.ToString();
+
+            dateTimePickerDataLocacao.Value = Devolucao.Locacao.DataLocacao;
+
+            dateTimePickerDataDevolucaoPrevista.Value = Devolucao.Locacao.DataDevolucaoPrevista;
+
+            dateTimePickerDataDevolucaoReal.Value = Devolucao.DataDevolucaoReal;
+
+            comboBoxNivelTanque.Items.Add(Devolucao.Tanque);
+            comboBoxNivelTanque.SelectedItem = Devolucao.Tanque;
+            previnirMudancas = false;
         }
 
         public Func<Devolucao, Result<Devolucao>> GravarRegistro { get; set; }
@@ -61,6 +96,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
         private void comboBoxLocacoes_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (previnirMudancas)
+                return;
+
             Locacao loc = (Locacao)comboBoxLocacoes.SelectedItem;
             textBoxGuid.Text = loc.Id.ToString();
             textBoxFuncionario.Text = loc.Funcionario.Nome;
@@ -93,7 +131,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             ObterDadosDaTela();
 
             var resultadoValidacao = GravarRegistro(Devolucao);
-            resultadoValidacao = EditarKmVeiculo();
+            if (resultadoValidacao.IsSuccess)
+                resultadoValidacao = EditarKmVeiculo();
 
             if (resultadoValidacao.IsFailed)
             {
@@ -131,6 +170,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
         private void ObterDadosDaTela()
         {
+            if (previnirMudancas)
+                return;
+
             Devolucao.DataDevolucaoReal = dateTimePickerDataDevolucaoReal.Value;
             Devolucao.Tanque = (TanqueEnum)comboBoxNivelTanque.SelectedItem;
             Devolucao.Locacao = (Locacao)comboBoxLocacoes.SelectedItem;
