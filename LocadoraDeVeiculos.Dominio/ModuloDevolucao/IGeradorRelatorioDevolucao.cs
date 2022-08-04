@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
 {
-    public interface IGeradorRelatorioDevolucaoPDF
+    public interface IGeradorRelatorioDevolucao
     {
-        public string GerarRelatorio(Devolucao devolucao);
+        public string GerarRelatorioPDF(Devolucao devolucao);
     }
 }

@@ -20,9 +20,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         private IServicoVeiculo _servicoVeiculo;
         private ConfiguracaoAplicacaoLocadora _configuracao;
         private TabelaDevolucaoControl _tabelaDevolucao;
-        private IGeradorRelatorioDevolucaoPDF geradorRelatorio;
+        private IGeradorRelatorioDevolucao geradorRelatorio;
 
-        public ControladorDevolucao(IServicoDevolucao servicoDevolucao, IServicoLocacao servicoLocacao, IServicoTaxa servicoTaxa, IServicoVeiculo servicoVeiculo, ConfiguracaoAplicacaoLocadora configuracao, IGeradorRelatorioDevolucaoPDF geradorRelatorio)
+        public ControladorDevolucao(IServicoDevolucao servicoDevolucao, IServicoLocacao servicoLocacao, IServicoTaxa servicoTaxa, IServicoVeiculo servicoVeiculo, ConfiguracaoAplicacaoLocadora configuracao, IGeradorRelatorioDevolucao geradorRelatorio)
         {
             _servicoDevolucao = servicoDevolucao;
             _servicoLocacao = servicoLocacao;
@@ -133,7 +133,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
             Devolucao devolucaoSelecionada = _servicoDevolucao.SelecionarPorGuid(numero).Value;
 
-            string path = geradorRelatorio.GerarRelatorio(devolucaoSelecionada);
+            string path = geradorRelatorio.GerarRelatorioPDF(devolucaoSelecionada);
 
             if (MessageBox.Show("Salvo em documentos, deseja abrir o PDF?", "Devolução", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {

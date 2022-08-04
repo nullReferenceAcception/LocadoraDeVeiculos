@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocadoraDeVeiculos.Infra.PDF.Modulolocacao
+namespace LocadoraDeVeiculos.Infra.PDF.sautinsoftDocument.Modulolocacao
 {
-    public class GeradorRelatorioLocacao : IGeradorRelatorioLocacaoPDF
+    public class GeradorRelatorioLocacao : IGeradorRelatorioLocacao
     {
-        public string GerarRelatorio(Locacao locacaoSelecionada)
+        public string GerarRelatorioPDF(Locacao locacaoSelecionada)
         {
             DocumentCore dc = new();
 

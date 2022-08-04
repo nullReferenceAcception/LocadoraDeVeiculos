@@ -22,8 +22,8 @@ using LocadoraDeVeiculos.Infra.ORM.ModuloLocacao;
 using LocadoraDeVeiculos.Infra.ORM.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.ORM.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.ORM.ModuloVeiculo;
-using LocadoraDeVeiculos.Infra.PDF.ModuloDevolucao;
-using LocadoraDeVeiculos.Infra.PDF.Modulolocacao;
+using LocadoraDeVeiculos.Infra.PDF.sautinsoftDocument.ModuloDevolucao;
+using LocadoraDeVeiculos.Infra.PDF.sautinsoftDocument.Modulolocacao;
 using LocadoraDeVeiculos.Servico.Compartilhado;
 using LocadoraDeVeiculos.Servico.ModuloCliente;
 using LocadoraDeVeiculos.Servico.ModuloCondutor;
@@ -68,8 +68,8 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 
 
 
-            builder.RegisterType<GeradorRelatorioDevolucao>().As<IGeradorRelatorioDevolucaoPDF>();
-            builder.RegisterType<GeradorRelatorioLocacao>().As<IGeradorRelatorioLocacaoPDF>();
+            builder.RegisterType<GeradorRelatorioDevolucao>().As<IGeradorRelatorioDevolucao>();
+            builder.RegisterType<GeradorRelatorioLocacao>().As<IGeradorRelatorioLocacao>();
 
 
 

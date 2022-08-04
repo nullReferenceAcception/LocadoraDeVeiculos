@@ -27,9 +27,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         private IServicoTaxa _servicoTaxa;
         private TabelaLocacaoControl _tabelaLocacao;
         private bool _estadoLocacao = true;
-        private IGeradorRelatorioLocacaoPDF geradoraRelatorio;
+        private IGeradorRelatorioLocacao geradoraRelatorio;
 
-        public ControladorLocacao(IGeradorRelatorioLocacaoPDF geradoraRelatorio,IServicoLocacao servicoLocacao,IServicoPlanoCobranca planoCobranca, IServicoCliente servicoCliente, IServicoVeiculo servicoVeiculo, IServicoFuncionario servicoFuncionario, IServicoGrupoVeiculos servicoGrupoVeiculo, IServicoCondutor servicoCondutor, IServicoTaxa servicoTaxa)
+        public ControladorLocacao(IGeradorRelatorioLocacao geradoraRelatorio,IServicoLocacao servicoLocacao,IServicoPlanoCobranca planoCobranca, IServicoCliente servicoCliente, IServicoVeiculo servicoVeiculo, IServicoFuncionario servicoFuncionario, IServicoGrupoVeiculos servicoGrupoVeiculo, IServicoCondutor servicoCondutor, IServicoTaxa servicoTaxa)
         {
             _servicoLocacao = servicoLocacao;
             _planoCobranca = planoCobranca;
@@ -237,7 +237,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 return;
             }
 
-          string path =  geradoraRelatorio.GerarRelatorio(locacaoSelecionada);
+          string path =  geradoraRelatorio.GerarRelatorioPDF(locacaoSelecionada);
 
             if (MessageBox.Show("Salvo em documentos, deseja abrir o PDF?", "Devolução", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
