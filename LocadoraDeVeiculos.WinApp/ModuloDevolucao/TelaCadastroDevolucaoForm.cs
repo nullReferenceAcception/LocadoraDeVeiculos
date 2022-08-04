@@ -135,7 +135,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             Devolucao.Tanque = (TanqueEnum)comboBoxNivelTanque.SelectedItem;
             Devolucao.Locacao = (Locacao)comboBoxLocacoes.SelectedItem;
 
-            foreach (Taxa taxa in checkedListBoxTaxasSelecionadas.CheckedItems)
+            foreach (Taxa taxa in checkedListBoxTaxasAdicionais.CheckedItems)
                 if (!Devolucao.TaxasAdicionais.Contains(taxa))
                     Devolucao.TaxasAdicionais.Add(taxa);
 
