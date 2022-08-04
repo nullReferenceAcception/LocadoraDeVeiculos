@@ -16,6 +16,7 @@ namespace LocadoraDeVeiculos.Infra.PDF.sautinsoftDocument.Modulolocacao
 
             dc.Content.End.Insert("Locação: " + locacaoSelecionada.Id.ToString() + "\n");
             dc.Content.End.Insert("Data da locação: " + locacaoSelecionada.DataLocacao + "\n");
+            dc.Content.End.Insert("Data prevista da devolução: " + locacaoSelecionada.DataDevolucaoPrevista + "\n");
             dc.Content.End.Insert("------------------------------------------------- \n");
             dc.Content.End.Insert("Cliente: " + locacaoSelecionada.Cliente.Nome + "\n");
 
@@ -29,9 +30,12 @@ namespace LocadoraDeVeiculos.Infra.PDF.sautinsoftDocument.Modulolocacao
             else
             {
                 dc.Content.End.Insert("CNPJ: " + locacaoSelecionada.Cliente.CNPJ + "\n");
-                dc.Content.End.Insert("Condutor: " + locacaoSelecionada.Condutor.Nome + "\n");
-                dc.Content.End.Insert("CNH do condutor: " + locacaoSelecionada.Condutor.CNH + "\n");
             }
+
+            dc.Content.End.Insert("-------------------------------------------------\n ");
+            dc.Content.End.Insert("Condutor: " + locacaoSelecionada.Condutor.Nome + "\n");
+            dc.Content.End.Insert("CNH do condutor: " + locacaoSelecionada.Condutor.CNH + "\n");
+
 
             dc.Content.End.Insert("-------------------------------------------------\n ");
             dc.Content.End.Insert("Veiculo: " + locacaoSelecionada.Veiculo.Modelo + "\n");
