@@ -19,19 +19,16 @@ namespace LocadoraDeVeiculos.Infra.PDF.sautinsoftDocument.Modulolocacao
             if (locacaoSelecionada.Cliente.PessoaFisica == true)
             {
                 dc.Content.End.Insert("CPF: " + locacaoSelecionada.Cliente.CPF + "\n");
-                dc.Content.End.Insert("CNH: " + locacaoSelecionada.Cliente.CNH + "\n");
             }
             else
             {
                 dc.Content.End.Insert("CNPJ: " + locacaoSelecionada.Cliente.CNPJ + "\n");
             }
 
-            if (locacaoSelecionada.Condutor != null)
-            {
                 dc.Content.End.Insert("-------------------------------------------------\n ");
                 dc.Content.End.Insert("Condutor: " + locacaoSelecionada.Condutor.Nome + "\n");
                 dc.Content.End.Insert("CNH do condutor: " + locacaoSelecionada.Condutor.CNH + "\n");
-            }
+            
 
             dc.Content.End.Insert("-------------------------------------------------\n ");
             dc.Content.End.Insert("Veiculo: " + locacaoSelecionada.Veiculo.Modelo + "\n");

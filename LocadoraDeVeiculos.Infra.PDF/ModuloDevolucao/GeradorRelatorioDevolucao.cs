@@ -22,19 +22,16 @@ namespace LocadoraDeVeiculos.Infra.PDF.sautinsoftDocument.ModuloDevolucao
             if (devolucaoSelecionada.Locacao.Cliente.PessoaFisica == true)
             {
                 dc.Content.End.Insert("CPF: " + devolucaoSelecionada.Locacao.Cliente.CPF + "\n");
-                dc.Content.End.Insert("CNH: " + devolucaoSelecionada.Locacao.Cliente.CNH + "\n");
             }
             else
             {
                 dc.Content.End.Insert("CNPJ: " + devolucaoSelecionada.Locacao.Cliente.CNPJ + "\n");
             }
 
-            if (devolucaoSelecionada.Locacao.Condutor != null)
-            {
                 dc.Content.End.Insert("-------------------------------------------------\n ");
                 dc.Content.End.Insert("Condutor: " + devolucaoSelecionada.Locacao.Condutor.Nome + "\n");
                 dc.Content.End.Insert("CNH do condutor: " + devolucaoSelecionada.Locacao.Condutor.CNH + "\n");
-            }
+            
 
             dc.Content.End.Insert("-------------------------------------------------\n ");
             dc.Content.End.Insert("Veiculo: " + devolucaoSelecionada.Locacao.Veiculo.Modelo + "\n");

@@ -121,12 +121,12 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
 
         protected Cliente CriarClienteComCPF()
         {
-            return new Cliente(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "12345678900", "joao@joao.com", "49989090909", true, GerarCpfAleatorio(), null!, DateTime.Today);
+            return new Cliente(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "joao@joao.com", "49989090909", true, GerarCpfAleatorio(), null!);
         }
 
         protected Cliente CriarClienteComCNPJ()
         {
-            return new Cliente(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "12345678900", "joao@joao.com", "49989090909", false, null!, GerarCnpjAleatorio(), DateTime.Today);
+            return new Cliente(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "joao@joao.com", "49989090909", false, null!, GerarCnpjAleatorio());
         }
 
         protected string GerarCpfAleatorio()

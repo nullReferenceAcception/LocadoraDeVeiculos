@@ -19,6 +19,9 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
             RuleFor(x => x.DataDevolucaoPrevista)
                     .NotNull().NotEmpty().GreaterThan(DateTime.MinValue).GreaterThan(hoje);
 
+            RuleFor(x => x.Condutor)
+              .NotNull().NotEmpty();
+
             RuleFor(x => x.Funcionario)
                  .NotNull().NotEmpty();
 

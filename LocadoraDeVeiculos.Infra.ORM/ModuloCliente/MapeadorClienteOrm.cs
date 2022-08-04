@@ -17,11 +17,9 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloCliente
             builder.Property(x => x.Id).ValueGeneratedNever();
             builder.Property(x => x.Nome).HasColumnType("varchar(MAX)").IsRequired();
             builder.Property(x => x.Endereco).HasColumnType("varchar(MAX)").IsRequired();
-            builder.Property(x => x.CNH).HasColumnType("char(11)").IsRequired();
             builder.Property(x => x.Email).HasColumnType("varchar(MAX)").IsRequired();
             builder.Property(x => x.Telefone).HasColumnType("char(11)").IsRequired();
             builder.Property(x => x.CPF).HasColumnType("char(11)").IsRequired(false);
-            builder.Property(x => x.DataValidadeCNH).HasColumnType("date").HasDefaultValue(null);
             builder.Property(x => x.PessoaFisica).HasColumnType("bit").IsRequired();
             builder.Property(x => x.CNPJ).HasColumnType("char(14)").IsRequired(false);
 

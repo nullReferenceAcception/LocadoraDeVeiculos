@@ -31,7 +31,7 @@ namespace LocadoraDeVeiculos.Infra.ORM.ModuloPlanoCobranca
 
         public bool VerificarDuplicidadePlano(PlanoCobranca registro)
         {
-            var x = registros.Where(x => x.Plano == registro.Plano && x.Id != registro.Id);
+            var x = registros.Where(x =>x.GrupoVeiculos == registro.GrupoVeiculos && x.Plano == registro.Plano && x.Id != registro.Id);
 
             if (x.Any())
                 return true;

@@ -185,7 +185,6 @@
             // comboBoxGrupoVeiculos
             // 
             this.comboBoxGrupoVeiculos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxGrupoVeiculos.Enabled = false;
             this.comboBoxGrupoVeiculos.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxGrupoVeiculos.FormattingEnabled = true;
             this.comboBoxGrupoVeiculos.ItemHeight = 15;
@@ -299,7 +298,6 @@
             // comboBoxVeiculo
             // 
             this.comboBoxVeiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxVeiculo.Enabled = false;
             this.comboBoxVeiculo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxVeiculo.FormattingEnabled = true;
             this.comboBoxVeiculo.Location = new System.Drawing.Point(6, 301);
@@ -359,7 +357,6 @@
             this.checkedListBoxTaxas.BackColor = System.Drawing.SystemColors.Control;
             this.checkedListBoxTaxas.CheckOnClick = true;
             this.checkedListBoxTaxas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkedListBoxTaxas.Enabled = false;
             this.checkedListBoxTaxas.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkedListBoxTaxas.FormattingEnabled = true;
             this.checkedListBoxTaxas.Location = new System.Drawing.Point(3, 19);

@@ -35,11 +35,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
                 RuleFor(x => x.CPF)
                   .NotNull().NotEmpty().MinimumLength(11).MaximumLength(11);
 
-                RuleFor(x => x.CNH)
-                .NotNull().NotEmpty().MinimumLength(11).MaximumLength(11);
-
-                RuleFor(x => x.DataValidadeCNH)
-                .NotNull().NotEmpty().GreaterThan(DateTime.MinValue).GreaterThanOrEqualTo(hoje.AddDays(-1));
 
             });
 

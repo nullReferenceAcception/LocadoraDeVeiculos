@@ -40,6 +40,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             locacaoParaCalculos = new();
 
+            previnirMudancas = true;
+
             _servicoVeiculo = servicoVeiculo;
             _servicoCondutor = servicoCondutor;
             _servicoGrupoVeiculos = servicoGrupoVeiculos;
@@ -51,11 +53,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             foreach (var item in servicoFuncionario.SelecionarTodos().Value)
                 comboBoxFuncionario.Items.Add(item);
 
+            comboBoxFuncionario.SelectedIndex = 0;
+
             foreach (var item in servicoPlanoCobranca.SelecionarTodos().Value)
                 comboBoxPlanoCobranca.Items.Add(item);
 
+            comboBoxPlanoCobranca.SelectedIndex = 0;
+
             foreach (var item in servicoCliente.SelecionarTodos().Value)
                 comboBoxCliente.Items.Add(item);
+
+            comboBoxCliente.SelectedIndex = 0;
+
+            previnirMudancas = false;
 
         }
 
@@ -77,7 +87,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 comboBoxCliente.SelectedItem = Locacao.Cliente;
                 dateTimePickerDataLocacao.Value = Locacao.DataLocacao;
                 dateTimePickerDataPrevistaDevolucao.Value = Locacao.DataDevolucaoPrevista;
-                textBoxTotalPrevisto.Text = Locacao.ValorTotalPrevisto.ToString();
                 if (Locacao.Condutor == null)
                     comboBoxCondutor.SelectedIndex = 0;
                 else
@@ -88,6 +97,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                         checkedListBoxTaxas.SetItemChecked(i, true);
 
                 AtualizarTotalPrevisto();
+                textBoxTotalPrevisto.Text = Locacao.ValorTotalPrevisto.ToString();
             }
         }
 
@@ -100,11 +110,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             locacao.Cliente = (Cliente)comboBoxCliente.SelectedItem;
             locacao.PlanoCobranca = (PlanoCobranca)comboBoxPlanoCobranca.SelectedItem;
 
-            if (locacao.Cliente != null)
-                if (comboBoxCondutor.SelectedItem.ToString() != "[Vazio]")
-                    locacao.Condutor = (Condutor)comboBoxCondutor.SelectedItem;
-                else
-                    locacao.Condutor = null;
+            locacao.Condutor = (Condutor)comboBoxCondutor.SelectedItem;
 
             locacao.DataDevolucaoPrevista = dateTimePickerDataPrevistaDevolucao.Value;
             locacao.DataLocacao = dateTimePickerDataLocacao.Value;
@@ -142,11 +148,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         {
             comboBoxVeiculo.Items.Clear();
 
-            if (comboBoxGrupoVeiculos.SelectedIndex > -1)
-                comboBoxVeiculo.Enabled = true;
-
             foreach (Veiculo item in _servicoVeiculo.SelecionarTodosDoGrupo((GrupoVeiculos)comboBoxGrupoVeiculos.SelectedItem).Value)
                 comboBoxVeiculo.Items.Add(item);
+
+            comboBoxVeiculo.SelectedIndex = 0;
         }
 
         private void AtualizarTotalPrevisto()
@@ -154,10 +159,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             
             ObterDadosDaTela(locacaoParaCalculos);
 
-            if(locacaoParaCalculos.ValorTotalPrevisto != 0)
             textBoxTotalPrevisto.Text = locacaoParaCalculos.ValorTotalPrevisto.ToString();
-            else
-                textBoxTotalPrevisto.Text = Locacao.ValorTotalPrevisto.ToString();
 
         }
 
@@ -165,27 +167,22 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         {
             comboBoxCondutor.Items.Clear();
 
-            comboBoxCondutor.Items.Add("[Vazio]");
-
-            comboBoxCondutor.SelectedIndex = 0;
-
             foreach (Condutor item in _servicoCondutor.SelecionarTodosDoCliente((Cliente)comboBoxCliente.SelectedItem).Value)
                 comboBoxCondutor.Items.Add(item);
+
+            comboBoxCondutor.SelectedIndex = 0;
 
         }
 
         private void comboBoxPlanoCobranca_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxGrupoVeiculos.Items.Clear();
-            if (comboBoxPlanoCobranca.SelectedIndex > -1)
-            {
-                comboBoxGrupoVeiculos.Enabled = true;
-                checkedListBoxTaxas.Enabled = true;
-            }
 
             GrupoVeiculos item = _servicoGrupoVeiculos.SelecionarGrupoDoPlano((PlanoCobranca)comboBoxPlanoCobranca.SelectedItem).Value;
 
             comboBoxGrupoVeiculos.Items.Add(item);
+
+            comboBoxGrupoVeiculos.SelectedIndex = 0;
 
             AtualizarTotalPrevisto();
         }

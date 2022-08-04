@@ -5,8 +5,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 {
     public class Cliente : Pessoa<Cliente>
     {
-        public string CNH { get; set; }
-        public DateTime DataValidadeCNH { get; set; }
         public bool PessoaFisica { get; set; } // Falso = Pessoa Juridica
         public string? CPF { get; set; }
         public string? CNPJ { get; set; }
@@ -16,17 +14,15 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 
         }
 
-        public Cliente(string nome, string endereco, string cnh, string email, string telefone, bool pessoafisica, string cpf, string cnpj,DateTime data)
+        public Cliente(string nome, string endereco, string email, string telefone, bool pessoafisica, string cpf, string cnpj)
         {
             Nome = nome;
-            CNH = cnh;
             Endereco = endereco;
             Email = email;
             Telefone = telefone;
             PessoaFisica = pessoafisica;
             CPF = cpf;
             CNPJ = cnpj;
-            DataValidadeCNH = data;
         }
 
         public override string? ToString()
@@ -42,8 +38,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
                    Endereco == cliente.Endereco &&
                    Email == cliente.Email &&
                    Telefone == cliente.Telefone &&
-                   CNH == cliente.CNH &&
-                   DataValidadeCNH == cliente.DataValidadeCNH &&
                    PessoaFisica == cliente.PessoaFisica &&
                    CPF == cliente.CPF &&
                    CNPJ == cliente.CNPJ;

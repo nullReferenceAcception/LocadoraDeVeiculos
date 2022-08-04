@@ -17,7 +17,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         private IServicoTaxa _servicoTaxa;
         private IServicoVeiculo _servicoVeiculo;
         private ConfiguracaoAplicacaoLocadora configuracao;
-        private bool vizualizando;
+        private bool previnirMucancas;
 
         public Devolucao Devolucao
         {
@@ -30,7 +30,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
         public void ConfigurarTelaVizualizar()
         {
-            vizualizando = true;
+            previnirMucancas = true;
 
             comboBoxLocacoes.Items.Add(Devolucao.Locacao);
             comboBoxLocacoes.SelectedItem = Devolucao.Locacao;
@@ -76,6 +76,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             this._servicoTaxa = servicoTaxa;
             this._servicoVeiculo = servicoVeiculo;
             this.configuracao = configuracao;
+            previnirMucancas = true;
 
             numericUpDownKmRodadosLocacao.Enabled = false;
             dateTimePickerDataDevolucaoReal.Enabled = false;
@@ -90,8 +91,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             foreach (var locacao in _servicoLocacao.SelecionarTodos().Value)
                 comboBoxLocacoes.Items.Add(locacao);
 
+
+
             foreach (var taxaAdicional in _servicoTaxa.SelecionarTodosAdicionais().Value)
                 checkedListBoxTaxasAdicionais.Items.Add(taxaAdicional);
+
+            previnirMucancas = false;
         }
 
         private void comboBoxLocacoes_SelectedIndexChanged(object sender, EventArgs e)
@@ -126,6 +131,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
         private void buttonGravar_Click(object sender, EventArgs e)
         {
+            if (comboBoxLocacoes.SelectedItem != null)
             ObterDadosDaTela();
 
             var resultadoValidacao = GravarRegistro(Devolucao);
@@ -168,7 +174,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
         private void ObterDadosDaTela()
         {
-            if (vizualizando)
+            if (previnirMucancas)
                 return;
 
             Devolucao.DataDevolucaoReal = dateTimePickerDataDevolucaoReal.Value;

@@ -15,8 +15,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
         public Guid FuncionarioId { get; set; }
         public Cliente Cliente { get; set; }
         public Guid ClienteId { get; set; }
-        public Condutor? Condutor { get; set; }
-        public Guid? CondutorId { get; set; }
+        public Condutor Condutor { get; set; }
+        public Guid CondutorId { get; set; }
         public Veiculo Veiculo { get; set; }
         public Guid VeiculoId { get; set; }
         public PlanoCobranca PlanoCobranca { get; set; }

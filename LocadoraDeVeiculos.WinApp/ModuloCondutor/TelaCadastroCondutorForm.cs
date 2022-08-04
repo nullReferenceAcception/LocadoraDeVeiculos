@@ -111,8 +111,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
             textBoxNome.Text = cliente.Nome;
             textBoxEndereco.Text = cliente.Endereco;
-            maskedTextBoxCNH.Text = cliente.CNH;
-            dateTimePickerValidadeCNH.Value = cliente.DataValidadeCNH;
             textBoxEmail.Text = cliente.Email;
             maskedTextBoxTelefone.Text = cliente.Telefone;
             maskedTextBoxCPF.Text = cliente.CPF;
@@ -140,10 +138,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             textBoxNome.Enabled = status;
             textBoxEndereco.Enabled = status;
             textBoxEmail.Enabled = status;
-            maskedTextBoxCNH.Enabled = status;
             maskedTextBoxCPF.Enabled = status;
             maskedTextBoxTelefone.Enabled = status;
-            dateTimePickerValidadeCNH.Enabled = status;
         }
 
         private void labelNome_Click(object sender, EventArgs e)

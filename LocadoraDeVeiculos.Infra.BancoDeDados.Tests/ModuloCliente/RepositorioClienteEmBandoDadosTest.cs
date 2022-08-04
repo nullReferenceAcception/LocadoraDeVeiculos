@@ -80,9 +80,9 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
             {
 
                 if (i > 5)
-                 cliente = new Cliente(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "12345678900", "joao@joao.com", "49989090909", true, GerarCpfAleatorio(), null, DateTime.Today);
+                 cliente = new Cliente(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "joao@joao.com", "49989090909", true, GerarCpfAleatorio(), null);
              else
-                 cliente = new Cliente(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "12345678900", "joao@joao.com", "49989090909", false, null, GerarCnpjAleatorio(), DateTime.Today);
+                 cliente = new Cliente(GerarNovaStringAleatoria(), GerarNovaStringAleatoria(), "joao@joao.com", "49989090909", false, null, GerarCnpjAleatorio());
 
 
 
@@ -103,11 +103,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
         {
             Cliente clienteCPF = CriarClienteComCPF();
 
-            Cliente clienteCPF2 = new Cliente("joaos", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, GerarCpfAleatorio(), null!, DateTime.Today);
+            Cliente clienteCPF2 = new Cliente("joaos", "rua abrolingo filho", "joao@joao.com", "49989090909", true, GerarCpfAleatorio(), null!);
 
-            Cliente clienteCPF3= new Cliente("joaoes", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, GerarCpfAleatorio(), null!, DateTime.Today);
+            Cliente clienteCPF3= new Cliente("joaoes", "rua abrolingo filho", "joao@joao.com", "49989090909", true, GerarCpfAleatorio(), null!);
 
-            Cliente clienteCNPJ = new Cliente("jo", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", false, null!, GerarCnpjAleatorio(), DateTime.Today);
+            Cliente clienteCNPJ = new Cliente("jo", "rua abrolingo filho", "joao@joao.com", "49989090909", false, null!, GerarCnpjAleatorio());
 
             _servicoCliente.Inserir(clienteCPF);
 
@@ -129,11 +129,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloCliente
         {
             Cliente clienteCPF = CriarClienteComCPF();
 
-            Cliente clienteCPF2 = new Cliente("joaos", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, GerarCpfAleatorio(), null!, DateTime.Today);
+            Cliente clienteCPF2 = new Cliente("joaos", "rua abrolingo filho", "joao@joao.com", "49989090909", true, GerarCpfAleatorio(), null!);
 
-            Cliente clienteCPF3 = new Cliente("joaoes", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", true, GerarCpfAleatorio(), null!, DateTime.Today);
+            Cliente clienteCPF3 = new Cliente("joaoes", "rua abrolingo filho", "joao@joao.com", "49989090909", true, GerarCpfAleatorio(), null!);
 
-            Cliente clienteCNPJ = new Cliente("joasdasdsa", "rua abrolingo filho", "12345678900", "joao@joao.com", "49989090909", false, null!, GerarCnpjAleatorio(), DateTime.Today);
+            Cliente clienteCNPJ = new Cliente("joasdasdsa", "rua abrolingo filho", "joao@joao.com", "49989090909", false, null!, GerarCnpjAleatorio());
 
             _servicoCliente.Inserir(clienteCPF);
 

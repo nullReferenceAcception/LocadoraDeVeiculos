@@ -85,11 +85,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             TelaCadastroLocacaoForm tela = new(_planoCobranca,_servicoCliente, _servicoVeiculo, _servicoFuncionario, _servicoGrupoVeiculo, _servicoCondutor, _servicoTaxa);
 
+
             tela.Locacao = new();
 
+            tela.RemoverTaxas = _servicoLocacao.RemoverTaxas;
             tela.GravarRegistro = _servicoLocacao.Inserir;
 
-            tela.RemoverTaxas = _servicoLocacao.RemoverTaxas;
 
             DialogResult resultado = tela.ShowDialog();
 
