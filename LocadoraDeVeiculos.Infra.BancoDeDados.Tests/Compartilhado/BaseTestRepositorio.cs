@@ -206,7 +206,7 @@ namespace LocadoraDeVeiculos.Infra.BancoDados.Tests.ModuloCompartilhado
                 _servicoTaxa.Inserir(item);
             }
 
-            return new(loc,loc.Id,DateTime.Today,taxas,TanqueEnum.TresQuartos,100);
+            return new(loc,loc.Id,DateTime.Today,taxas,TanqueEnum.TresQuartos,100,50);
 
         }
 

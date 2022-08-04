@@ -93,9 +93,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModuloLocacao
 
             _servicoLocacao.Inserir(locacao);
 
-            Locacao locacaoEncontrado = _servicoLocacao.SelecionarPorGuid(locacao.Id).Value;
+            Locacao locacao2 = CriarLocacao();
 
-            Result<Locacao> validationResult = _servicoLocacao.Inserir(locacaoEncontrado);
+            locacao2.Veiculo = locacao.Veiculo;
+
+            Result<Locacao> validationResult = _servicoLocacao.Inserir(locacao2);
 
             validationResult.Errors[0].Message.Should().Contain("Veiculo já está alocado");
         }

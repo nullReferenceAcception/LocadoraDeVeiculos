@@ -41,7 +41,7 @@ namespace LocadoraDeVeiculos.Dominio.Tests.ModuloDevolucao
         private Devolucao GerarDevolucao()
         {
             List<Taxa> taxas = new();
-            return new Devolucao(new Locacao(), new Guid(), DateTime.Today, taxas, TanqueEnum.Cheio, 500.00m);
+            return new Devolucao(new Locacao(), new Guid(), DateTime.Today, taxas, TanqueEnum.Cheio, 500.00m,50);
         }
     }
 }

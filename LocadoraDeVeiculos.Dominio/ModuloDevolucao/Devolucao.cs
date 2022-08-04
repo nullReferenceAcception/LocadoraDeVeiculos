@@ -100,8 +100,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
             TaxasAdicionais = new();
         }
 
-        public Devolucao(Locacao locacao, Guid locacaoId, DateTime dataDevolucaoReal, 
-            List<Taxa> taxasAdicionais, TanqueEnum tanque, decimal valorTotalReal)
+        public Devolucao(Locacao locacao, Guid locacaoId, DateTime dataDevolucaoReal,
+            List<Taxa> taxasAdicionais, TanqueEnum tanque, decimal valorTotalReal, decimal kmRodados)
         {
             Locacao = locacao;
             LocacaoId = locacaoId;
@@ -109,6 +109,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
             TaxasAdicionais = taxasAdicionais;
             Tanque = tanque;
             ValorTotalReal = valorTotalReal;
+            KmRodados = kmRodados;
         }
 
         public override bool Equals(object? obj)

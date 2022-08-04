@@ -143,9 +143,11 @@ namespace LocadoraDeVeiculos.Infra.BancoDeDados.Tests.ModeloVeiculo
 
             _servicoVeiculo.Inserir(veiculo);
 
-            veiculo.Id = new Guid();
+            Veiculo veiculo2 = CriarVeiculo();
 
-            Result<Veiculo> resultado = _servicoVeiculo.Inserir(veiculo);
+            veiculo2.Placa = veiculo.Placa;
+
+            Result<Veiculo> resultado = _servicoVeiculo.Inserir(veiculo2);
 
             resultado.IsFailed.Should().BeTrue();
             resultado.Errors[0].Message.Should().Contain("Placa já cadastrada");
