@@ -19,7 +19,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
 
         public decimal CalcularTotal(ConfiguracaoAplicacaoLocadora configuracao)
         {
-
             int totalDias = (int)Math.Ceiling((DataDevolucaoReal.Date - Locacao.DataLocacao.Date).TotalDays);
 
             decimal valorTotal = Locacao.PlanoCobranca.ValorDia * totalDias;
@@ -91,8 +90,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
                     valorTotal += tamanhoTanque * custoCombustivel;
                     break;
             }
-            return valorTotal;
 
+            return valorTotal;
         }
 
         public Devolucao()

@@ -1,10 +1,6 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using SautinSoft.Document;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.PDF.sautinsoftDocument.Modulolocacao
 {
@@ -24,9 +20,7 @@ namespace LocadoraDeVeiculos.Infra.PDF.sautinsoftDocument.Modulolocacao
             {
                 dc.Content.End.Insert("CPF: " + locacaoSelecionada.Cliente.CPF + "\n");
                 dc.Content.End.Insert("CNH: " + locacaoSelecionada.Cliente.CNH + "\n");
-
             }
-
             else
             {
                 dc.Content.End.Insert("CNPJ: " + locacaoSelecionada.Cliente.CNPJ + "\n");
@@ -38,7 +32,6 @@ namespace LocadoraDeVeiculos.Infra.PDF.sautinsoftDocument.Modulolocacao
                 dc.Content.End.Insert("Condutor: " + locacaoSelecionada.Condutor.Nome + "\n");
                 dc.Content.End.Insert("CNH do condutor: " + locacaoSelecionada.Condutor.CNH + "\n");
             }
-
 
             dc.Content.End.Insert("-------------------------------------------------\n ");
             dc.Content.End.Insert("Veiculo: " + locacaoSelecionada.Veiculo.Modelo + "\n");
@@ -65,8 +58,8 @@ namespace LocadoraDeVeiculos.Infra.PDF.sautinsoftDocument.Modulolocacao
                 Compliance = PdfCompliance.PDF_A1a,
                 PreserveFormFields = true
             });
+
             return path;
         }
     }
 }
-

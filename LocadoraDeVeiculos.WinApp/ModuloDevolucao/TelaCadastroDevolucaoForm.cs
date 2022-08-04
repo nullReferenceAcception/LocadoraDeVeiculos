@@ -2,11 +2,9 @@
 using Locadora.Infra.Configs;
 using LocadoraDeVeiculos.Dominio.ModuloDevolucao;
 using LocadoraDeVeiculos.Dominio.ModuloLocacao;
-using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
@@ -46,28 +44,24 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 else
                     item.Enabled = false;
             }
+
             checkedListBoxTaxasAdicionais.Enabled = false;
 
+            labelKmVeiculo.Text = "KM rodados";
 
-            labelKmVeiculo.Text = "KM rodado";
-
-            numericUpDownKmRodadosLocacao.Minimum = 0;
+            numericUpDownKmRodadosLocacao.Minimum = Devolucao.KmRodados;
             numericUpDownKmRodadosLocacao.Value = Devolucao.KmRodados;
 
             textBoxGuid.Text = Devolucao.Id.ToString();
-
 
             dateTimePickerDataDevolucaoReal.Value = Devolucao.DataDevolucaoReal;
 
             comboBoxNivelTanque.Items.Add(Devolucao.Tanque);
             comboBoxNivelTanque.SelectedItem = Devolucao.Tanque;
 
-
             for (int i = 0; i < checkedListBoxTaxasAdicionais.Items.Count; i++)
                 if (Devolucao.TaxasAdicionais.Contains((Taxa)checkedListBoxTaxasAdicionais.Items[i]))
                     checkedListBoxTaxasAdicionais.SetItemChecked(i, true);
-
-
         }
 
         public Func<Devolucao, Result<Devolucao>> GravarRegistro { get; set; }
@@ -183,7 +177,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
             foreach (Taxa taxa in checkedListBoxTaxasAdicionais.CheckedItems)
                     Devolucao.TaxasAdicionais.Add(taxa);
-
 
             Devolucao.KmRodados = numericUpDownKmRodadosLocacao.Value - Devolucao.Locacao.Veiculo.KmPercorrido;
 

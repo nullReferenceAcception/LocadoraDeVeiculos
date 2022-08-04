@@ -7,8 +7,6 @@ using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
-using SautinSoft.Document;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -27,7 +25,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         private IServicoTaxa _servicoTaxa;
         private TabelaLocacaoControl _tabelaLocacao;
         private bool _estadoLocacao = true;
-        private IGeradorRelatorioLocacao geradoraRelatorio;
+        private IGeradorRelatorioLocacao _geradorRelatorio;
 
         public ControladorLocacao(IGeradorRelatorioLocacao geradoraRelatorio,IServicoLocacao servicoLocacao,IServicoPlanoCobranca planoCobranca, IServicoCliente servicoCliente, IServicoVeiculo servicoVeiculo, IServicoFuncionario servicoFuncionario, IServicoGrupoVeiculos servicoGrupoVeiculo, IServicoCondutor servicoCondutor, IServicoTaxa servicoTaxa)
         {
@@ -39,7 +37,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             _servicoGrupoVeiculo = servicoGrupoVeiculo;
             _servicoCondutor = servicoCondutor;
             _servicoTaxa = servicoTaxa;
-            this.geradoraRelatorio = geradoraRelatorio;
+            this._geradorRelatorio = geradoraRelatorio;
         }
         public override void Inserir()
         {
@@ -117,7 +115,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             tela.RemoverTaxas = _servicoLocacao.RemoverTaxas;
 
             tela.Locacao = locacaoSelecionada;
-
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -215,7 +212,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {locacoesDesativados.Count} {(locacoesDesativados.Count == 1 ? "locação desativada" : "locações desativadas")}", CorParaRodape.White);
         }
 
-
         private void CarregarLocacaoAtivos()
         {
             List<Locacao> locacoes = _servicoLocacao.SelecionarTodos().Value;
@@ -238,7 +234,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 return;
             }
 
-          string path =  geradoraRelatorio.GerarRelatorioPDF(locacaoSelecionada);
+          string path =  _geradorRelatorio.GerarRelatorioPDF(locacaoSelecionada);
 
             if (MessageBox.Show("Salvo em documentos, deseja abrir o PDF?", "Devolução", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -250,8 +246,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
                 p.Start();
             }
-
-
         }
     }
 }

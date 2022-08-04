@@ -1,7 +1,5 @@
 ﻿using FluentResults;
 using LocadoraDeVeiculos.Dominio.ModuloDevolucao;
-using SautinSoft.Document;
-using System;
 using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
@@ -20,7 +18,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         private IServicoVeiculo _servicoVeiculo;
         private ConfiguracaoAplicacaoLocadora _configuracao;
         private TabelaDevolucaoControl _tabelaDevolucao;
-        private IGeradorRelatorioDevolucao geradorRelatorio;
+        private IGeradorRelatorioDevolucao _geradorRelatorio;
 
         public ControladorDevolucao(IServicoDevolucao servicoDevolucao, IServicoLocacao servicoLocacao, IServicoTaxa servicoTaxa, IServicoVeiculo servicoVeiculo, ConfiguracaoAplicacaoLocadora configuracao, IGeradorRelatorioDevolucao geradorRelatorio)
         {
@@ -29,7 +27,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             _servicoTaxa = servicoTaxa;
             _servicoVeiculo = servicoVeiculo;
             this._configuracao = configuracao;
-            this.geradorRelatorio = geradorRelatorio;
+            this._geradorRelatorio = geradorRelatorio;
         }
 
         public override void Inserir()
@@ -103,6 +101,28 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             }
         }
 
+        public override void Visualizar()
+        {
+            var numero = _tabelaDevolucao.ObtemGuidDevolucaoSelecionada();
+
+            Devolucao devolucaoSelecionada = _servicoDevolucao.SelecionarPorGuid(numero).Value;
+
+            if (devolucaoSelecionada == null)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma devolução para excluir", CorParaRodape.Yellow);
+                return;
+            }
+
+            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa, _servicoVeiculo, _configuracao);
+
+            tela.Devolucao = devolucaoSelecionada;
+
+            tela.ConfigurarTelaVizualizar();
+            tela.buttonCancelar.Enabled = true;
+            tela.buttonCancelar.Text = "Voltar";
+            tela.ShowDialog();
+        }
+
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
         {
             return new ConfigToolBoxDevolucao();
@@ -133,7 +153,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
             Devolucao devolucaoSelecionada = _servicoDevolucao.SelecionarPorGuid(numero).Value;
 
-            string path = geradorRelatorio.GerarRelatorioPDF(devolucaoSelecionada);
+            string path = _geradorRelatorio.GerarRelatorioPDF(devolucaoSelecionada);
 
             if (MessageBox.Show("Salvo em documentos, deseja abrir o PDF?", "Devolução", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -145,28 +165,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
                 p.Start();
             }
-        }
-
-        public override void Visualizar()
-        {
-            var numero = _tabelaDevolucao.ObtemGuidDevolucaoSelecionada();
-
-            Devolucao devolucaoSelecionada = _servicoDevolucao.SelecionarPorGuid(numero).Value;
-
-            if (devolucaoSelecionada == null)
-            {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Selecione uma devolução para excluir", CorParaRodape.Yellow);
-                return;
-            }
-
-            TelaCadastroDevolucaoForm tela = new(_servicoDevolucao, _servicoLocacao, _servicoTaxa, _servicoVeiculo, _configuracao);
-
-            tela.Devolucao = devolucaoSelecionada;
-
-            tela.ConfigurarTelaVizualizar();
-            tela.buttonCancelar.Enabled = true;
-            tela.buttonCancelar.Text = "Voltar";
-            tela.ShowDialog();
         }
     }
 }
