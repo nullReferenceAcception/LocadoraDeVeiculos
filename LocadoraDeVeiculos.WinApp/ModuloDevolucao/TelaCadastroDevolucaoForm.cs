@@ -19,7 +19,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         private IServicoTaxa _servicoTaxa;
         private IServicoVeiculo _servicoVeiculo;
         private ConfiguracaoAplicacaoLocadora configuracao;
-        private bool previnirMudancas;
+        private bool vizualizando;
 
         public Devolucao Devolucao
         {
@@ -32,7 +32,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
         public void ConfigurarTelaVizualizar()
         {
-            previnirMudancas = true;
+            vizualizando = true;
+
+            comboBoxLocacoes.Items.Add(Devolucao.Locacao);
+            comboBoxLocacoes.SelectedItem = Devolucao.Locacao;
+
+            buttonGravar.Enabled = false;
+
             foreach (Control item in groupBoxDevolucao.Controls)
             {
                 if (item is TabControl)
@@ -41,8 +47,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                     item.Enabled = false;
             }
             checkedListBoxTaxasAdicionais.Enabled = false;
-            comboBoxLocacoes.Items.Add(Devolucao.Locacao);
-            comboBoxLocacoes.SelectedItem = Devolucao.Locacao;
+
 
             labelKmVeiculo.Text = "KM rodado";
 
@@ -56,6 +61,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
             comboBoxNivelTanque.Items.Add(Devolucao.Tanque);
             comboBoxNivelTanque.SelectedItem = Devolucao.Tanque;
+
+
+            for (int i = 0; i < checkedListBoxTaxasAdicionais.Items.Count; i++)
+                if (Devolucao.TaxasAdicionais.Contains((Taxa)checkedListBoxTaxasAdicionais.Items[i]))
+                    checkedListBoxTaxasAdicionais.SetItemChecked(i, true);
+
+
         }
 
         public Func<Devolucao, Result<Devolucao>> GravarRegistro { get; set; }
@@ -162,7 +174,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
         private void ObterDadosDaTela()
         {
-            if (previnirMudancas)
+            if (vizualizando)
                 return;
 
             Devolucao.DataDevolucaoReal = dateTimePickerDataDevolucaoReal.Value;
@@ -170,14 +182,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             Devolucao.Locacao = (Locacao)comboBoxLocacoes.SelectedItem;
 
             foreach (Taxa taxa in checkedListBoxTaxasAdicionais.CheckedItems)
-                if (!Devolucao.TaxasAdicionais.Contains(taxa))
                     Devolucao.TaxasAdicionais.Add(taxa);
 
-            List<Taxa> taxas = new();
-
-            foreach (Taxa item in checkedListBoxTaxasSelecionadas.Items)
-                if (!checkedListBoxTaxasSelecionadas.CheckedItems.Contains(item))
-                    taxas.Add(item);
 
             Devolucao.KmRodados = numericUpDownKmRodadosLocacao.Value - Devolucao.Locacao.Veiculo.KmPercorrido;
 
