@@ -78,6 +78,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 dateTimePickerDataLocacao.Value = Locacao.DataLocacao;
                 dateTimePickerDataPrevistaDevolucao.Value = Locacao.DataDevolucaoPrevista;
                 textBoxTotalPrevisto.Text = Locacao.ValorTotalPrevisto.ToString();
+                if (Locacao.Condutor == null)
+                    comboBoxCondutor.SelectedIndex = 0;
+                else
                 comboBoxCondutor.SelectedItem = Locacao.Condutor;
 
                 for (int i = 0; i < checkedListBoxTaxas.Items.Count; i++)
@@ -96,7 +99,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             locacao.PlanoCobranca = (PlanoCobranca)comboBoxPlanoCobranca.SelectedItem;
 
             if (locacao.Cliente != null)
-                locacao.Condutor = (Condutor)comboBoxCondutor.SelectedItem;
+                if (comboBoxCondutor.SelectedItem.ToString() != "[Vazio]")
+                    locacao.Condutor = (Condutor)comboBoxCondutor.SelectedItem;
+                else
+                    locacao.Condutor = null;
 
             locacao.DataDevolucaoPrevista = dateTimePickerDataPrevistaDevolucao.Value;
             locacao.DataLocacao = dateTimePickerDataLocacao.Value;
@@ -152,6 +158,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         private void comboBoxCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxCondutor.Items.Clear();
+
+            comboBoxCondutor.Items.Add("[Vazio]");
+
+            comboBoxCondutor.SelectedIndex = 0;
 
             foreach (Condutor item in _servicoCondutor.SelecionarTodosDoCliente((Cliente)comboBoxCliente.SelectedItem).Value)
                 comboBoxCondutor.Items.Add(item);
